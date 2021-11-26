@@ -1,6 +1,6 @@
 <?php
 
-// Install Criteo API SDK, via composer for example: `composer require criteo/criteo-api-php-sdk`
+// Install Criteo API SDK, via composer for example: `composer require criteo/criteo-api-retailmedia-sdk`
 // Then import it as follow:
 // require_once(__DIR__ . '/vendor/autoload.php');
 

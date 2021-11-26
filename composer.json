@@ -1,5 +1,5 @@
 {
-    "name": "criteo/criteo-api-retailmedia-php-sdk",
+    "name": "criteo/criteo-api-retailmedia-sdk",
     "version": "2021.10.0.211125",
     "description": "Official Criteo API PHP SDK for Retail Media Service",
     "keywords": [
@@ -15,7 +15,7 @@
     "authors": [
         {
             "name": "Criteo",
-            "homepage": "https://github.com/criteo/criteo-api-php-sdk"
+            "homepage": "https://github.com/criteo/criteo-api-retailmedia-sdk"
         }
     ],
     "scripts": {
