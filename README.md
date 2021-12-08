@@ -21,7 +21,7 @@ PHP 7.1 and later
 
 To install the bindings via [Composer](http://getcomposer.org/):
 
-either run the following command: `composer require criteo/criteo-api-retailmedia-sdk`
+either run the following command: `composer require criteo/criteo-api-php-sdk`
 
 or add the following to `composer.json`:
 
