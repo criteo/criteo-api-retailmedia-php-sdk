@@ -1,4 +1,4 @@
-# criteo\api\retailmedia\v2021_10\OAuthApi
+# criteo\api\retailmedia\v2020_10\OAuthApi
 
 All URIs are relative to https://api.criteo.com.
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `createToken()`
 
 ```php
-createToken($client_id, $client_secret, $grant_type): \criteo\api\retailmedia\v2021_10\Model\JwtModel
+createToken($client_id, $client_secret, $grant_type): \criteo\api\retailmedia\v2020_10\Model\JwtModel
 ```
 
 
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2021_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2020_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2021_10\Api\OAuthApi(
+$apiInstance = new criteo\api\retailmedia\v2020_10\Api\OAuthApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2021_10\Model\JwtModel**](../Model/JwtModel.md)
+[**\criteo\api\retailmedia\v2020_10\Model\JwtModel**](../Model/JwtModel.md)
 
 ### Authorization
 

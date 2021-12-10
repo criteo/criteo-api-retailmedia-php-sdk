@@ -21,7 +21,7 @@ PHP 7.1 and later
 
 To install the bindings via [Composer](http://getcomposer.org/):
 
-either run the following command: `composer require criteo/criteo-api-retailmedia-sdk`
+either run the following command: `composer require criteo/criteo-api-php-sdk`
 
 or add the following to `composer.json`:
 
@@ -69,7 +69,7 @@ $clientId = 'YOUR_CLIENT_ID';
 $clientSecret = 'YOUR_CLIENT_SECRET';
 
 // Automatic token refresh
-$apiInstance = new criteo\api\retailmedia\v2021_10\Api\AnalyticsApi(new TokenAutoRefreshClient($clientId, $clientSecret));
+$apiInstance = new criteo\api\retailmedia\v2020_10\Api\AnalyticsApi(new TokenAutoRefreshClient($clientId, $clientSecret));
 
 $report_id = ee439121-13e3-4734-9f67-c504dd921a41;
 
