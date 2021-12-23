@@ -1,8 +1,8 @@
 <?php
 
-use criteo\api\retailmedia\v2021_10\Configuration;
-use criteo\api\retailmedia\v2021_10\ObjectSerializer;
-use criteo\api\retailmedia\v2021_10\TokenAutoRefreshClient;
+use criteo\api\retailmedia\preview\Configuration;
+use criteo\api\retailmedia\preview\ObjectSerializer;
+use criteo\api\retailmedia\preview\TokenAutoRefreshClient;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Uri;
@@ -49,11 +49,11 @@ class TokenAutoRefreshClientTest extends TestCase
 
 
         // Call Authentication endpoint which does not require Authorization header
-        $response = (new criteo\api\retailmedia\v2021_10\Api\OAuthApi($mockClient))
+        $response = (new criteo\api\retailmedia\preview\Api\OAuthApi($mockClient))
             ->createToken($this->clientId, $this->clientSecret, $this->grantType);
 
 
-        $this->assertInstanceOf('criteo\api\retailmedia\v2021_10\Model\JwtModel', $response);
+        $this->assertInstanceOf('criteo\api\retailmedia\preview\Model\JwtModel', $response);
         $this->assertEquals($token, $response->getAccessToken());
     }
 

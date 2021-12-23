@@ -1,11 +1,12 @@
 <?php
 
-// Install Criteo API SDK, via composer for example: `composer require criteo/criteo-api-retailmedia-sdk`
+// Install Criteo API SDK, via composer for example: `composer require criteo/criteo-api-php-sdk`
 // Then import it as follow:
 // require_once(__DIR__ . '/vendor/autoload.php');
 
-use criteo\api\retailmedia\v2021_10\Api\AnalyticsApi;
-use criteo\api\retailmedia\v2021_10\TokenAutoRefreshClient;
+use Criteo\SDK\Api\AnalyticsApi;
+use Criteo\SDK\Model\StatisticsReportQueryMessage;
+use Criteo\SDK\TokenAutoRefreshClient;
 
 /*
  * Although the OpenAPI specification, then this generated client, you can't simply use the API key feature.
@@ -23,11 +24,19 @@ $clientSecret = 'YOUR_CLIENT_SECRET';
 
 $apiInstance = new AnalyticsApi(new TokenAutoRefreshClient($clientId, $clientSecret));
         
-$reportId = 1;
+$stats_query = new StatisticsReportQueryMessage(array(
+    'advertiser_ids'=>"11", # Supposing you have the rights to report on this advertiser
+    'dimensions'=>["AdsetId"],
+    'metrics'=>["Clicks"],
+    'start_date'=>"2021-01-01",
+    'end_date'=>"2021-10-01",
+    'currency'=>"EUR",
+    'format'=>"Csv"
+));
 
 try {
-    $result = $apiInstance->getReportStatus($reportId);
+    $result = $apiInstance->getAdsetReport($stats_query);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->getReportStatus: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->getAdsetReport: ', $e->getMessage(), PHP_EOL;
 }

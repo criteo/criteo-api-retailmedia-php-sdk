@@ -1,9 +1,9 @@
 <?php
 
-namespace criteo\api\retailmedia\v2021_10;
+namespace criteo\api\retailmedia\preview;
 
-use criteo\api\retailmedia\v2021_10\Api\OAuthApi;
-use criteo\api\retailmedia\v2021_10\TokenAutoRefreshClient\Token;
+use criteo\api\retailmedia\preview\Api\OAuthApi;
+use criteo\api\retailmedia\preview\TokenAutoRefreshClient\Token;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\RequestInterface;
@@ -175,7 +175,7 @@ class TokenAutoRefreshClient implements \GuzzleHttp\ClientInterface
     }
 }
 
-namespace criteo\api\retailmedia\v2021_10\TokenAutoRefreshClient;
+namespace criteo\api\retailmedia\preview\TokenAutoRefreshClient;
 
 use DateTime;
 
