@@ -1,6 +1,6 @@
 <?php
 /**
- * JwtModel
+ * ApplicationSummaryModel
  *
  * PHP version 7.3
  *
@@ -32,9 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2021_10\ObjectSerializer;
 
 /**
- * JwtModel Class Doc Comment
+ * ApplicationSummaryModel Class Doc Comment
  *
  * @category Class
+ * @description A summary of an API application
  * @package  criteo\api\retailmedia\v2021_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -42,7 +43,7 @@ use \criteo\api\retailmedia\v2021_10\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApplicationSummaryModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +52,7 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JwtModel';
+    protected static $openAPIModelName = 'ApplicationSummaryModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +60,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'access_token' => 'string',
-        'token_type' => 'string',
-        'expires_in' => 'int'
+        'name' => 'string',
+        'organization_id' => 'int',
+        'description' => 'string',
+        'criteo_service' => 'string'
     ];
 
     /**
@@ -72,9 +74,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'access_token' => null,
-        'token_type' => null,
-        'expires_in' => 'int32'
+        'name' => null,
+        'organization_id' => 'int32',
+        'description' => null,
+        'criteo_service' => null
     ];
 
     /**
@@ -104,9 +107,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'access_token' => 'access_token',
-        'token_type' => 'token_type',
-        'expires_in' => 'expires_in'
+        'name' => 'name',
+        'organization_id' => 'organizationId',
+        'description' => 'description',
+        'criteo_service' => 'criteoService'
     ];
 
     /**
@@ -115,9 +119,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'access_token' => 'setAccessToken',
-        'token_type' => 'setTokenType',
-        'expires_in' => 'setExpiresIn'
+        'name' => 'setName',
+        'organization_id' => 'setOrganizationId',
+        'description' => 'setDescription',
+        'criteo_service' => 'setCriteoService'
     ];
 
     /**
@@ -126,9 +131,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'access_token' => 'getAccessToken',
-        'token_type' => 'getTokenType',
-        'expires_in' => 'getExpiresIn'
+        'name' => 'getName',
+        'organization_id' => 'getOrganizationId',
+        'description' => 'getDescription',
+        'criteo_service' => 'getCriteoService'
     ];
 
     /**
@@ -188,9 +194,10 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['access_token'] = $data['access_token'] ?? null;
-        $this->container['token_type'] = $data['token_type'] ?? null;
-        $this->container['expires_in'] = $data['expires_in'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['organization_id'] = $data['organization_id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['criteo_service'] = $data['criteo_service'] ?? null;
     }
 
     /**
@@ -218,73 +225,97 @@ class JwtModel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets access_token
+     * Gets name
      *
      * @return string|null
      */
-    public function getAccessToken()
+    public function getName()
     {
-        return $this->container['access_token'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets access_token
+     * Sets name
      *
-     * @param string|null $access_token The access token issued by the authorization server.
+     * @param string|null $name The name of the application
      *
      * @return self
      */
-    public function setAccessToken($access_token)
+    public function setName($name)
     {
-        $this->container['access_token'] = $access_token;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets token_type
-     *
-     * @return string|null
-     */
-    public function getTokenType()
-    {
-        return $this->container['token_type'];
-    }
-
-    /**
-     * Sets token_type
-     *
-     * @param string|null $token_type The type of the token issued.
-     *
-     * @return self
-     */
-    public function setTokenType($token_type)
-    {
-        $this->container['token_type'] = $token_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_in
+     * Gets organization_id
      *
      * @return int|null
      */
-    public function getExpiresIn()
+    public function getOrganizationId()
     {
-        return $this->container['expires_in'];
+        return $this->container['organization_id'];
     }
 
     /**
-     * Sets expires_in
+     * Sets organization_id
      *
-     * @param int|null $expires_in The lifetime in seconds of the access token.For  example, the value \"3600\" denotes that the access token will  expire in one hour from the time the response was generated.  If omitted, the authorization server SHOULD provide the  expiration time via other means or document the default value.
+     * @param int|null $organization_id The id of the organization that own this application
      *
      * @return self
      */
-    public function setExpiresIn($expires_in)
+    public function setOrganizationId($organization_id)
     {
-        $this->container['expires_in'] = $expires_in;
+        $this->container['organization_id'] = $organization_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description The description of the application
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets criteo_service
+     *
+     * @return string|null
+     */
+    public function getCriteoService()
+    {
+        return $this->container['criteo_service'];
+    }
+
+    /**
+     * Sets criteo_service
+     *
+     * @param string|null $criteo_service The business service of this application
+     *
+     * @return self
+     */
+    public function setCriteoService($criteo_service)
+    {
+        $this->container['criteo_service'] = $criteo_service;
 
         return $this;
     }
