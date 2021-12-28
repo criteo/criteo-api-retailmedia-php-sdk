@@ -97,6 +97,7 @@ lib/Api/CampaignApi.php
 lib/Api/GatewayApi.php
 lib/Api/OAuthApi.php
 lib/ApiException.php
+lib/ClientCredentialsClient.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AccessTokenModel.php
@@ -182,6 +183,8 @@ lib/Model/SkuDataPreviewListResponse.php
 lib/Model/SkuSearchRequestPreview.php
 lib/Model/SkuSearchRequestPreviewRequest.php
 lib/ObjectSerializer.php
-lib/TokenAutoRefreshClient.php
 phpunit.xml.dist
-test/Api/TokenAutoRefreshClientTest.php
+phpunit.xml.dist
+test/Api/ClientCredentialsClientTest.php
+test/Api/GatewayApiTest.php
+test/Api/OAuthApiTest.php
