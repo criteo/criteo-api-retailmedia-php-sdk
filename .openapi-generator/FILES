@@ -131,6 +131,7 @@ lib/Api/CampaignApi.php
 lib/Api/GatewayApi.php
 lib/Api/OAuthApi.php
 lib/ApiException.php
+lib/ClientCredentialsClient.php
 lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AccessTokenModel.php
@@ -250,6 +251,8 @@ lib/Model/ValueTypeResourceOfKeywordTarget202110.php
 lib/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfStoreTarget202110.php
 lib/ObjectSerializer.php
-lib/TokenAutoRefreshClient.php
 phpunit.xml.dist
-test/Api/TokenAutoRefreshClientTest.php
+phpunit.xml.dist
+test/Api/ClientCredentialsClientTest.php
+test/Api/GatewayApiTest.php
+test/Api/OAuthApiTest.php
