@@ -1,61 +1,231 @@
-# criteo\api\retailmedia\v2022_04\CampaignApi
+# criteo\api\retailmedia\v2021_07\CampaignApi
 
 All URIs are relative to https://api.criteo.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getApi202110ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/balances | 
-[**getApi202110ExternalAccountCreativesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/creatives | 
-[**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2022-04/retail-media/auction-line-items/{line-item-id}/targeting/keywords | 
-[**getApi202110ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2022-04/retail-media/balances/{balance-id}/campaigns | 
-[**getApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2022-04/retail-media/campaigns/{campaign-id}/preferred-line-items | 
-[**getApi202110ExternalLineItemProductsByLineItemId()**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2022-04/retail-media/line-items/{line-item-id}/products | 
-[**getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
-[**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
-[**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
-[**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2022-04/retail-media/retailers/{retailerId}/pages | 
-[**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/brands | 
-[**getApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/campaigns | 
-[**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/retailers | 
-[**getApiV1ExternalAccounts()**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2022-04/retail-media/accounts | 
-[**getApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#getApiV1ExternalCampaignByCampaignId) | **GET** /2022-04/retail-media/campaigns/{campaignId} | 
-[**getApiV1ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2022-04/retail-media/catalogs/{catalogId}/output | 
-[**getApiV1ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2022-04/retail-media/catalogs/{catalogId}/status | 
-[**getApiV2ExternalAccountLineItemsByAccountId()**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/line-items | 
-[**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2022-04/retail-media/auction-line-items/{line-item-id} | 
-[**getApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2022-04/retail-media/campaigns/{campaign-id}/auction-line-items | 
-[**getApiV2ExternalLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2022-04/retail-media/line-items/{line-item-id} | 
-[**getApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
-[**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2022-04/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append | 
-[**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2022-04/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete | 
-[**postApi202110ExternalBalanceCampaignsAppendByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2022-04/retail-media/balances/{balance-id}/campaigns/append | 
-[**postApi202110ExternalBalanceCampaignsDeleteByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsDeleteByBalanceId) | **POST** /2022-04/retail-media/balances/{balance-id}/campaigns/delete | 
-[**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2022-04/retail-media/campaigns/{campaign-id}/preferred-line-items | 
-[**postApi202110ExternalLineItemProductsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2022-04/retail-media/line-items/{line-item-id}/products/append | 
-[**postApi202110ExternalLineItemProductsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2022-04/retail-media/line-items/{line-item-id}/products/delete | 
-[**postApi202110ExternalLineItemProductsPauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2022-04/retail-media/line-items/{line-item-id}/products/pause | 
-[**postApi202110ExternalLineItemProductsUnpauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2022-04/retail-media/line-items/{line-item-id}/products/unpause | 
-[**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | 
-[**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | 
-[**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | 
-[**postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete | 
-[**postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append | 
-[**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete | 
-[**postApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/campaigns | 
-[**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/catalogs | 
-[**postApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2022-04/retail-media/campaigns/{campaign-id}/auction-line-items | 
-[**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
-[**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
-[**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
-[**putApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2022-04/retail-media/campaigns/{campaignId} | 
-[**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-04/retail-media/auction-line-items/{line-item-id} | 
-[**putApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
+[**deleteApiV1ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#deleteApiV1ExternalBalanceCampaignsByBalanceId) | **DELETE** /2021-07/retail-media/balances/{balanceId}/campaigns | 
+[**deleteApiV1ExternalLineItemProductsByLineItemId()**](CampaignApi.md#deleteApiV1ExternalLineItemProductsByLineItemId) | **DELETE** /2021-07/retail-media/line-items/{lineItemId}/products | 
+[**deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId) | **DELETE** /2021-07/retail-media/line-items/{line-item-id}/targeting/keywords | 
+[**getApiV1ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /2021-07/retail-media/accounts/{accountId}/balances | 
+[**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2021-07/retail-media/accounts/{accountId}/brands | 
+[**getApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2021-07/retail-media/accounts/{accountId}/campaigns | 
+[**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2021-07/retail-media/accounts/{accountId}/retailers | 
+[**getApiV1ExternalAccounts()**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2021-07/retail-media/accounts | 
+[**getApiV1ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#getApiV1ExternalBalanceCampaignsByBalanceId) | **GET** /2021-07/retail-media/balances/{balanceId}/campaigns | 
+[**getApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#getApiV1ExternalCampaignByCampaignId) | **GET** /2021-07/retail-media/campaigns/{campaignId} | 
+[**getApiV1ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2021-07/retail-media/catalogs/{catalogId}/output | 
+[**getApiV1ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2021-07/retail-media/catalogs/{catalogId}/status | 
+[**getApiV1ExternalLineItemProductsByLineItemId()**](CampaignApi.md#getApiV1ExternalLineItemProductsByLineItemId) | **GET** /2021-07/retail-media/line-items/{lineItemId}/products | 
+[**getApiV2ExternalAccountLineItemsByAccountId()**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2021-07/retail-media/accounts/{account-id}/line-items | 
+[**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2021-07/retail-media/auction-line-items/{line-item-id} | 
+[**getApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2021-07/retail-media/campaigns/{campaign-id}/auction-line-items | 
+[**getApiV2ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2021-07/retail-media/campaigns/{campaign-id}/preferred-line-items | 
+[**getApiV2ExternalLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2021-07/retail-media/line-items/{line-item-id} | 
+[**getApiV2ExternalLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemTargetingKeywordsByLineItemId) | **GET** /2021-07/retail-media/line-items/{line-item-id}/targeting/keywords | 
+[**getApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /2021-07/retail-media/preferred-line-items/{line-item-id} | 
+[**postApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2021-07/retail-media/accounts/{accountId}/campaigns | 
+[**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2021-07/retail-media/accounts/{accountId}/catalogs | 
+[**postApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2021-07/retail-media/campaigns/{campaign-id}/auction-line-items | 
+[**postApiV2ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2021-07/retail-media/campaigns/{campaign-id}/preferred-line-items | 
+[**putApiV1ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#putApiV1ExternalBalanceCampaignsByBalanceId) | **PUT** /2021-07/retail-media/balances/{balanceId}/campaigns | 
+[**putApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2021-07/retail-media/campaigns/{campaignId} | 
+[**putApiV1ExternalLineItemProductsByLineItemId()**](CampaignApi.md#putApiV1ExternalLineItemProductsByLineItemId) | **PUT** /2021-07/retail-media/line-items/{lineItemId}/products | 
+[**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2021-07/retail-media/auction-line-items/{line-item-id} | 
+[**putApiV2ExternalLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#putApiV2ExternalLineItemTargetingKeywordsByLineItemId) | **PUT** /2021-07/retail-media/line-items/{line-item-id}/targeting/keywords | 
+[**putApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2021-07/retail-media/preferred-line-items/{line-item-id} | 
 
 
-## `getApi202110ExternalAccountBalancesByAccountId()`
+## `deleteApiV1ExternalBalanceCampaignsByBalanceId()`
 
 ```php
-getApi202110ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\Balance202110PagedListResponse
+deleteApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $json_api_data_request_of_delete_balance_campaign): \criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign
+```
+
+
+
+Removes one or more campaigns on the specified balance
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$balance_id = 'balance_id_example'; // string | The balance to remove campaigns from
+$json_api_data_request_of_delete_balance_campaign = new \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfDeleteBalanceCampaign(); // \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfDeleteBalanceCampaign | The campaigns to append
+
+try {
+    $result = $apiInstance->deleteApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $json_api_data_request_of_delete_balance_campaign);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->deleteApiV1ExternalBalanceCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **balance_id** | **string**| The balance to remove campaigns from |
+ **json_api_data_request_of_delete_balance_campaign** | [**\criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfDeleteBalanceCampaign**](../Model/JsonApiDataRequestOfDeleteBalanceCampaign.md)| The campaigns to append | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign**](../Model/PageOfBalanceCampaign.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteApiV1ExternalLineItemProductsByLineItemId()`
+
+```php
+deleteApiV1ExternalLineItemProductsByLineItemId($line_item_id, $json_api_data_request_with_id_of_string_and_promoted_product): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct
+```
+
+
+
+This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+$json_api_data_request_with_id_of_string_and_promoted_product = new \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct(); // \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct
+
+try {
+    $result = $apiInstance->deleteApiV1ExternalLineItemProductsByLineItemId($line_item_id, $json_api_data_request_with_id_of_string_and_promoted_product);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->deleteApiV1ExternalLineItemProductsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+ **json_api_data_request_with_id_of_string_and_promoted_product** | [**\criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct**](../Model/JsonApiDataRequestWithIdOfStringAndPromotedProduct.md)|  | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct**](../Model/JsonApiPageResponseOfStringAndPromotedProduct.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId()`
+
+```php
+deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id, $keyword_target_request): \criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse
+```
+
+
+
+This endpoint removes one or more keywords from targeting on the specified line item.  The resulting state of the keyword target is returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+$keyword_target_request = new \criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest(); // \criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest
+
+try {
+    $result = $apiInstance->deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id, $keyword_target_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->deleteApiV2ExternalLineItemTargetingKeywordsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+ **keyword_target_request** | [**\criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest**](../Model/KeywordTargetRequest.md)|  | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse**](../Model/KeywordTargetResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiV1ExternalAccountBalancesByAccountId()`
+
+```php
+getApiV1ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfBalance
 ```
 
 
@@ -70,10 +240,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -85,10 +255,10 @@ $page_index = 56; // int | The 0 indexed page index you would like to receive gi
 $page_size = 56; // int | The maximum number of items you would like to receive in this request
 
 try {
-    $result = $apiInstance->getApi202110ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getApiV1ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getApiV1ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -103,565 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\Balance202110PagedListResponse**](../Model/Balance202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalAccountCreativesByAccountId()`
-
-```php
-getApi202110ExternalAccountCreativesByAccountId($account_id): \criteo\api\retailmedia\v2022_04\Model\Creative202110ListResponse
-```
-
-
-
-Get account creatives
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | External account id to retrieve creatives for
-
-try {
-    $result = $apiInstance->getApi202110ExternalAccountCreativesByAccountId($account_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalAccountCreativesByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account id to retrieve creatives for |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\Creative202110ListResponse**](../Model/Creative202110ListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId()`
-
-```php
-getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response
-```
-
-
-
-This endpoint gets the keyword target on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-
-try {
-    $result = $apiInstance->getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response**](../Model/KeywordTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalBalanceCampaignsByBalanceId()`
-
-```php
-getApi202110ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse
-```
-
-
-
-Gets page of campaigns for the given balanceId
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$balance_id = 'balance_id_example'; // string | The balance to get campaigns from
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 56; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApi202110ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalBalanceCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to get campaigns from |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalCampaignPreferredLineItemsByCampaignId()`
-
-```php
-getApi202110ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110PagedListResponse
-```
-
-
-
-Gets page of preferred line item objects for the given campaign id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$campaign_id = 'campaign_id_example'; // string | The given campaign id
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 56; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApi202110ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalCampaignPreferredLineItemsByCampaignId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110PagedListResponse**](../Model/PreferredLineItem202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalLineItemProductsByLineItemId()`
-
-```php
-getApi202110ExternalLineItemProductsByLineItemId($line_item_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse
-```
-
-
-
-This endpoint gets the promoted products on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 56; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApi202110ExternalLineItemProductsByLineItemId($line_item_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalLineItemProductsByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse**](../Model/PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()`
-
-```php
-getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response
-```
-
-
-
-This endpoint gets the add to basket target on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-
-try {
-    $result = $apiInstance->getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response**](../Model/AddToBasketTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()`
-
-```php
-getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response
-```
-
-
-
-This endpoint gets the audience target on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-
-try {
-    $result = $apiInstance->getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response**](../Model/AudienceTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()`
-
-```php
-getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response
-```
-
-
-
-This endpoint gets the store target on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-
-try {
-    $result = $apiInstance->getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response**](../Model/StoreTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApi202110ExternalRetailerPagesByRetailerId()`
-
-```php
-getApi202110ExternalRetailerPagesByRetailerId($retailer_id): \criteo\api\retailmedia\v2022_04\Model\ExternalRetailerPages202110
-```
-
-
-
-Get the page types available for the given retailer
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$retailer_id = 56; // int | The retailers to fetch pages for
-
-try {
-    $result = $apiInstance->getApi202110ExternalRetailerPagesByRetailerId($retailer_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApi202110ExternalRetailerPagesByRetailerId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **retailer_id** | **int**| The retailers to fetch pages for |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\ExternalRetailerPages202110**](../Model/ExternalRetailerPages202110.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfBalance**](../Model/JsonApiPageResponseOfBalance.md)
 
 ### Authorization
 
@@ -679,7 +291,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalAccountBrandsByAccountId()`
 
 ```php
-getApiV1ExternalAccountBrandsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfBrand
+getApiV1ExternalAccountBrandsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfBrand
 ```
 
 
@@ -694,10 +306,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -727,7 +339,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfBrand**](../Model/JsonApiPageResponseOfBrand.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfBrand**](../Model/JsonApiPageResponseOfBrand.md)
 
 ### Authorization
 
@@ -745,7 +357,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalAccountCampaignsByAccountId()`
 
 ```php
-getApiV1ExternalAccountCampaignsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfCampaign
+getApiV1ExternalAccountCampaignsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfCampaign
 ```
 
 
@@ -760,10 +372,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -793,7 +405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfCampaign**](../Model/JsonApiPageResponseOfCampaign.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfCampaign**](../Model/JsonApiPageResponseOfCampaign.md)
 
 ### Authorization
 
@@ -811,7 +423,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalAccountRetailersByAccountId()`
 
 ```php
-getApiV1ExternalAccountRetailersByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfRetailer
+getApiV1ExternalAccountRetailersByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfRetailer
 ```
 
 
@@ -826,10 +438,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -859,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfRetailer**](../Model/JsonApiPageResponseOfRetailer.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfRetailer**](../Model/JsonApiPageResponseOfRetailer.md)
 
 ### Authorization
 
@@ -877,7 +489,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalAccounts()`
 
 ```php
-getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfAccount
+getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfAccount
 ```
 
 
@@ -892,10 +504,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -923,7 +535,73 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiPageResponseOfAccount**](../Model/JsonApiPageResponseOfAccount.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfAccount**](../Model/JsonApiPageResponseOfAccount.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiV1ExternalBalanceCampaignsByBalanceId()`
+
+```php
+getApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign
+```
+
+
+
+Gets page of campaigns for the given balanceId
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$balance_id = 'balance_id_example'; // string | The balance to get campaigns from
+$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
+$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
+$page_size = 56; // int | The maximum number of items you would like to receive in this request
+
+try {
+    $result = $apiInstance->getApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApiV1ExternalBalanceCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **balance_id** | **string**| The balance to get campaigns from |
+ **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
+ **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
+ **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign**](../Model/PageOfBalanceCampaign.md)
 
 ### Authorization
 
@@ -941,7 +619,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalCampaignByCampaignId()`
 
 ```php
-getApiV1ExternalCampaignByCampaignId($campaign_id): \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign
+getApiV1ExternalCampaignByCampaignId($campaign_id): \criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign
 ```
 
 
@@ -956,10 +634,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -983,7 +661,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
 
 ### Authorization
 
@@ -1016,10 +694,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1060,7 +738,7 @@ void (empty response body)
 ## `getApiV1ExternalCatalogStatusByCatalogId()`
 
 ```php
-getApiV1ExternalCatalogStatusByCatalogId($catalog_id): \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCatalogStatus
+getApiV1ExternalCatalogStatusByCatalogId($catalog_id): \criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCatalogStatus
 ```
 
 
@@ -1075,10 +753,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1102,7 +780,73 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiV1ExternalLineItemProductsByLineItemId()`
+
+```php
+getApiV1ExternalLineItemProductsByLineItemId($line_item_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct
+```
+
+
+
+This endpoint gets the promoted products on the specified line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
+$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
+$page_size = 56; // int | The maximum number of items you would like to receive in this request
+
+try {
+    $result = $apiInstance->getApiV1ExternalLineItemProductsByLineItemId($line_item_id, $limit_to_id, $page_index, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApiV1ExternalLineItemProductsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+ **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
+ **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
+ **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct**](../Model/JsonApiPageResponseOfStringAndPromotedProduct.md)
 
 ### Authorization
 
@@ -1120,7 +864,7 @@ Name | Type | Description  | Notes
 ## `getApiV2ExternalAccountLineItemsByAccountId()`
 
 ```php
-getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\CommonLineItemPagedListResponse
+getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\CommonLineItemPagedListResponse
 ```
 
 
@@ -1135,10 +879,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1172,7 +916,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\CommonLineItemPagedListResponse**](../Model/CommonLineItemPagedListResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\CommonLineItemPagedListResponse**](../Model/CommonLineItemPagedListResponse.md)
 
 ### Authorization
 
@@ -1190,7 +934,7 @@ Name | Type | Description  | Notes
 ## `getApiV2ExternalAuctionLineItemByLineItemId()`
 
 ```php
-getApiV2ExternalAuctionLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse
+getApiV2ExternalAuctionLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse
 ```
 
 
@@ -1205,10 +949,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1232,7 +976,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
 
 ### Authorization
 
@@ -1250,7 +994,7 @@ Name | Type | Description  | Notes
 ## `getApiV2ExternalCampaignAuctionLineItemsByCampaignId()`
 
 ```php
-getApiV2ExternalCampaignAuctionLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemPagedListResponse
+getApiV2ExternalCampaignAuctionLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemPagedListResponse
 ```
 
 
@@ -1265,10 +1009,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1298,7 +1042,73 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemPagedListResponse**](../Model/AuctionLineItemPagedListResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemPagedListResponse**](../Model/AuctionLineItemPagedListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiV2ExternalCampaignPreferredLineItemsByCampaignId()`
+
+```php
+getApiV2ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemPagedListResponse
+```
+
+
+
+Gets page of preferred line item objects for the given campaign id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | The given campaign id
+$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
+$page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
+$page_size = 56; // int | The maximum number of items you would like to receive in this request
+
+try {
+    $result = $apiInstance->getApiV2ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApiV2ExternalCampaignPreferredLineItemsByCampaignId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaign_id** | **string**| The given campaign id |
+ **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
+ **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
+ **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemPagedListResponse**](../Model/PreferredLineItemPagedListResponse.md)
 
 ### Authorization
 
@@ -1316,7 +1126,7 @@ Name | Type | Description  | Notes
 ## `getApiV2ExternalLineItemByLineItemId()`
 
 ```php
-getApiV2ExternalLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\CommonLineItemResponse
+getApiV2ExternalLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2021_07\Model\CommonLineItemResponse
 ```
 
 
@@ -1331,10 +1141,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1358,7 +1168,67 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\CommonLineItemResponse**](../Model/CommonLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\CommonLineItemResponse**](../Model/CommonLineItemResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiV2ExternalLineItemTargetingKeywordsByLineItemId()`
+
+```php
+getApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id): \criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse
+```
+
+
+
+This endpoint gets the keyword target on the specified line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+
+try {
+    $result = $apiInstance->getApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApiV2ExternalLineItemTargetingKeywordsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse**](../Model/KeywordTargetResponse.md)
 
 ### Authorization
 
@@ -1376,7 +1246,7 @@ Name | Type | Description  | Notes
 ## `getApiV2ExternalPreferredLineItemByLineItemId()`
 
 ```php
-getApiV2ExternalPreferredLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse
+getApiV2ExternalPreferredLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse
 ```
 
 
@@ -1391,10 +1261,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1418,7 +1288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
 
 ### Authorization
 
@@ -1433,938 +1303,10 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId()`
-
-```php
-postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId($line_item_id, $keyword_target202110_request): \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response
-```
-
-
-
-This endpoint appends one or more keywords to targeting on the specified line item.  The resulting state of the keyword target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$keyword_target202110_request = new \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request
-
-try {
-    $result = $apiInstance->postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId($line_item_id, $keyword_target202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response**](../Model/KeywordTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId()`
-
-```php
-postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId($line_item_id, $keyword_target202110_request): \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response
-```
-
-
-
-This endpoint removes one or more keywords from targeting on the specified line item.  The resulting state of the keyword target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$keyword_target202110_request = new \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request
-
-try {
-    $result = $apiInstance->postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId($line_item_id, $keyword_target202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\KeywordTarget202110Response**](../Model/KeywordTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalBalanceCampaignsAppendByBalanceId()`
-
-```php
-postApi202110ExternalBalanceCampaignsAppendByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse
-```
-
-
-
-appends one or more campaigns to the specified balance
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$balance_id = 'balance_id_example'; // string | The balance to add campaigns from
-$balance_campaign202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest | The campaigns to append
-
-try {
-    $result = $apiInstance->postApi202110ExternalBalanceCampaignsAppendByBalanceId($balance_id, $balance_campaign202110_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalBalanceCampaignsAppendByBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to add campaigns from |
- **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalBalanceCampaignsDeleteByBalanceId()`
-
-```php
-postApi202110ExternalBalanceCampaignsDeleteByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse
-```
-
-
-
-Removes one or more campaigns on the specified balance
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$balance_id = 'balance_id_example'; // string | The balance to remove campaigns from
-$balance_campaign202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest | The campaigns to append
-
-try {
-    $result = $apiInstance->postApi202110ExternalBalanceCampaignsDeleteByBalanceId($balance_id, $balance_campaign202110_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalBalanceCampaignsDeleteByBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to remove campaigns from |
- **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalCampaignPreferredLineItemsByCampaignId()`
-
-```php
-postApi202110ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model202110_request): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response
-```
-
-
-
-Creates a new preferred line item with the specified settings
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$campaign_id = 'campaign_id_example'; // string | The given campaign id
-$preferred_line_item_create_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemCreateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemCreateModel202110Request | The line item settings to create a line item with
-
-try {
-    $result = $apiInstance->postApi202110ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalCampaignPreferredLineItemsByCampaignId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **preferred_line_item_create_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemCreateModel202110Request**](../Model/PreferredLineItemCreateModel202110Request.md)| The line item settings to create a line item with | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response**](../Model/PreferredLineItem202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalLineItemProductsAppendByLineItemId()`
-
-```php
-postApi202110ExternalLineItemProductsAppendByLineItemId($line_item_id, $promoted_product202110_list_request): \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse
-```
-
-
-
-This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest | the products to append to this line item
-
-try {
-    $result = $apiInstance->postApi202110ExternalLineItemProductsAppendByLineItemId($line_item_id, $promoted_product202110_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsAppendByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| the products to append to this line item | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse**](../Model/PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalLineItemProductsDeleteByLineItemId()`
-
-```php
-postApi202110ExternalLineItemProductsDeleteByLineItemId($line_item_id, $promoted_product202110_list_request): \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse
-```
-
-
-
-This endpoint removes one or more products from promotion on the specified line item.  The resulting state of the line item is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest
-
-try {
-    $result = $apiInstance->postApi202110ExternalLineItemProductsDeleteByLineItemId($line_item_id, $promoted_product202110_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsDeleteByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)|  | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110PagedListResponse**](../Model/PromotedProduct202110PagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalLineItemProductsPauseByLineItemId()`
-
-```php
-postApi202110ExternalLineItemProductsPauseByLineItemId($line_item_id, $promoted_product202110_list_request)
-```
-
-
-
-This endpoint pauses one or more promoted products on a specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with.
-$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest | The products from which their IDs will be used to pause.
-
-try {
-    $apiInstance->postApi202110ExternalLineItemProductsPauseByLineItemId($line_item_id, $promoted_product202110_list_request);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsPauseByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with. |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalLineItemProductsUnpauseByLineItemId()`
-
-```php
-postApi202110ExternalLineItemProductsUnpauseByLineItemId($line_item_id, $promoted_product202110_list_request)
-```
-
-
-
-This endpoint unpauses one or more promoted products on a specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with.
-$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest | The products from which their IDs will be used to unpause.
-
-try {
-    $apiInstance->postApi202110ExternalLineItemProductsUnpauseByLineItemId($line_item_id, $promoted_product202110_list_request);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsUnpauseByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with. |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_04\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional]
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response
-```
-
-
-
-This endpoint appends one or more add to basket ids to targeting on the specified line item.  The resulting state of the add to basket target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$add_to_basket_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request | Ids to append to the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to append to the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response**](../Model/AddToBasketTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response
-```
-
-
-
-This endpoint removes one or more add to basket ids from targeting on the specified line item.  The resulting state of the add to basket target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$add_to_basket_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request | Ids to remove from the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to remove from the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response**](../Model/AddToBasketTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId($line_item_id, $audience_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response
-```
-
-
-
-This endpoint appends one or more audiences ids to targeting on the specified line item.  The resulting state of the audience target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$audience_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request | Audience ids to append to the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId($line_item_id, $audience_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to append to the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response**](../Model/AudienceTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId($line_item_id, $audience_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response
-```
-
-
-
-This endpoint removes one or more audiences ids from targeting on the specified line item.  The resulting state of the audience target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$audience_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request | Audience ids to remove from the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId($line_item_id, $audience_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to remove from the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response**](../Model/AudienceTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId($line_item_id, $store_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response
-```
-
-
-
-This endpoint appends one or more store ids to targeting on the specified line item.  The resulting state of the store target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$store_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request | Store ids to append to the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId($line_item_id, $store_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to append to the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response**](../Model/StoreTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId()`
-
-```php
-postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId($line_item_id, $store_ids_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response
-```
-
-
-
-This endpoint removes one or more store ids from targeting on the specified line item.  The resulting state of the store target is returned.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$store_ids_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request | Store ids to remove from the target
-
-try {
-    $result = $apiInstance->postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId($line_item_id, $store_ids_update_model202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to remove from the target | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response**](../Model/StoreTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `postApiV1ExternalAccountCampaignsByAccountId()`
 
 ```php
-postApiV1ExternalAccountCampaignsByAccountId($account_id, $external_post_campaign): \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign
+postApiV1ExternalAccountCampaignsByAccountId($account_id, $external_post_campaign): \criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign
 ```
 
 
@@ -2379,17 +1321,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The given account id
-$external_post_campaign = new \criteo\api\retailmedia\v2022_04\Model\ExternalPostCampaign(); // \criteo\api\retailmedia\v2022_04\Model\ExternalPostCampaign | The campaign settings to create a campaign with
+$external_post_campaign = new \criteo\api\retailmedia\v2021_07\Model\ExternalPostCampaign(); // \criteo\api\retailmedia\v2021_07\Model\ExternalPostCampaign | The campaign settings to create a campaign with
 
 try {
     $result = $apiInstance->postApiV1ExternalAccountCampaignsByAccountId($account_id, $external_post_campaign);
@@ -2404,11 +1346,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| The given account id |
- **external_post_campaign** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalPostCampaign**](../Model/ExternalPostCampaign.md)| The campaign settings to create a campaign with | [optional]
+ **external_post_campaign** | [**\criteo\api\retailmedia\v2021_07\Model\ExternalPostCampaign**](../Model/ExternalPostCampaign.md)| The campaign settings to create a campaign with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
 
 ### Authorization
 
@@ -2426,7 +1368,7 @@ Name | Type | Description  | Notes
 ## `postApiV1ExternalAccountCatalogsByAccountId()`
 
 ```php
-postApiV1ExternalAccountCatalogsByAccountId($account_id, $json_api_request_of_catalog_request): \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCatalogStatus
+postApiV1ExternalAccountCatalogsByAccountId($account_id, $json_api_request_of_catalog_request): \criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCatalogStatus
 ```
 
 
@@ -2441,17 +1383,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The account to request the catalog for.
-$json_api_request_of_catalog_request = new \criteo\api\retailmedia\v2022_04\Model\JsonApiRequestOfCatalogRequest(); // \criteo\api\retailmedia\v2022_04\Model\JsonApiRequestOfCatalogRequest
+$json_api_request_of_catalog_request = new \criteo\api\retailmedia\v2021_07\Model\JsonApiRequestOfCatalogRequest(); // \criteo\api\retailmedia\v2021_07\Model\JsonApiRequestOfCatalogRequest
 
 try {
     $result = $apiInstance->postApiV1ExternalAccountCatalogsByAccountId($account_id, $json_api_request_of_catalog_request);
@@ -2466,11 +1408,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| The account to request the catalog for. |
- **json_api_request_of_catalog_request** | [**\criteo\api\retailmedia\v2022_04\Model\JsonApiRequestOfCatalogRequest**](../Model/JsonApiRequestOfCatalogRequest.md)|  | [optional]
+ **json_api_request_of_catalog_request** | [**\criteo\api\retailmedia\v2021_07\Model\JsonApiRequestOfCatalogRequest**](../Model/JsonApiRequestOfCatalogRequest.md)|  | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
 
 ### Authorization
 
@@ -2488,7 +1430,7 @@ Name | Type | Description  | Notes
 ## `postApiV2ExternalCampaignAuctionLineItemsByCampaignId()`
 
 ```php
-postApiV2ExternalCampaignAuctionLineItemsByCampaignId($campaign_id, $auction_line_item_create_model_request): \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse
+postApiV2ExternalCampaignAuctionLineItemsByCampaignId($campaign_id, $auction_line_item_create_model_request): \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse
 ```
 
 
@@ -2503,17 +1445,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | The given campaign id
-$auction_line_item_create_model_request = new \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemCreateModelRequest(); // \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemCreateModelRequest | The line item settings to create a line item with
+$auction_line_item_create_model_request = new \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemCreateModelRequest(); // \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemCreateModelRequest | The line item settings to create a line item with
 
 try {
     $result = $apiInstance->postApiV2ExternalCampaignAuctionLineItemsByCampaignId($campaign_id, $auction_line_item_create_model_request);
@@ -2528,11 +1470,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaign_id** | **string**| The given campaign id |
- **auction_line_item_create_model_request** | [**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemCreateModelRequest**](../Model/AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional]
+ **auction_line_item_create_model_request** | [**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemCreateModelRequest**](../Model/AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
 
 ### Authorization
 
@@ -2547,15 +1489,15 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()`
+## `postApiV2ExternalCampaignPreferredLineItemsByCampaignId()`
 
 ```php
-putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId($line_item_id, $add_to_basket_target202110_request): \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response
+postApiV2ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_request): \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse
 ```
 
 
 
-This endpoint sets the scope of the add to basket target on the specified line item.
+Creates a new preferred line item with the specified settings
 
 ### Example
 
@@ -2565,23 +1507,23 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$add_to_basket_target202110_request = new \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Request | The add to basket target to set the scope for
+$campaign_id = 'campaign_id_example'; // string | The given campaign id
+$preferred_line_item_create_model_request = new \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemCreateModelRequest(); // \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemCreateModelRequest | The line item settings to create a line item with
 
 try {
-    $result = $apiInstance->putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId($line_item_id, $add_to_basket_target202110_request);
+    $result = $apiInstance->postApiV2ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->postApiV2ExternalCampaignPreferredLineItemsByCampaignId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2589,12 +1531,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_target202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Request**](../Model/AddToBasketTarget202110Request.md)| The add to basket target to set the scope for | [optional]
+ **campaign_id** | **string**| The given campaign id |
+ **preferred_line_item_create_model_request** | [**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemCreateModelRequest**](../Model/PreferredLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AddToBasketTarget202110Response**](../Model/AddToBasketTarget202110Response.md)
+[**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
 
 ### Authorization
 
@@ -2609,15 +1551,15 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()`
+## `putApiV1ExternalBalanceCampaignsByBalanceId()`
 
 ```php
-putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId($line_item_id, $audience_target202110_request): \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response
+putApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $json_api_data_request_of_put_balance_campaign): \criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign
 ```
 
 
 
-This endpoint sets the scope of the audience target on the specified line item.
+appends one or more campaigns to the specified balance
 
 ### Example
 
@@ -2627,23 +1569,23 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$audience_target202110_request = new \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Request(); // \criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Request | The audience target to set the scope for
+$balance_id = 'balance_id_example'; // string | The balance to add campaigns from
+$json_api_data_request_of_put_balance_campaign = new \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfPutBalanceCampaign(); // \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfPutBalanceCampaign | The campaigns to append
 
 try {
-    $result = $apiInstance->putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId($line_item_id, $audience_target202110_request);
+    $result = $apiInstance->putApiV1ExternalBalanceCampaignsByBalanceId($balance_id, $json_api_data_request_of_put_balance_campaign);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->putApiV1ExternalBalanceCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2651,74 +1593,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_target202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Request**](../Model/AudienceTarget202110Request.md)| The audience target to set the scope for | [optional]
+ **balance_id** | **string**| The balance to add campaigns from |
+ **json_api_data_request_of_put_balance_campaign** | [**\criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestOfPutBalanceCampaign**](../Model/JsonApiDataRequestOfPutBalanceCampaign.md)| The campaigns to append | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AudienceTarget202110Response**](../Model/AudienceTarget202110Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()`
-
-```php
-putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId($line_item_id, $store_target202110_request): \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response
-```
-
-
-
-This endpoint sets the scope of the store target on the specified line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$store_target202110_request = new \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Request(); // \criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Request | The store target to set the scope for
-
-try {
-    $result = $apiInstance->putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId($line_item_id, $store_target202110_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_target202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Request**](../Model/StoreTarget202110Request.md)| The store target to set the scope for | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\StoreTarget202110Response**](../Model/StoreTarget202110Response.md)
+[**\criteo\api\retailmedia\v2021_07\Model\PageOfBalanceCampaign**](../Model/PageOfBalanceCampaign.md)
 
 ### Authorization
 
@@ -2736,7 +1616,7 @@ Name | Type | Description  | Notes
 ## `putApiV1ExternalCampaignByCampaignId()`
 
 ```php
-putApiV1ExternalCampaignByCampaignId($campaign_id, $external_put_campaign): \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign
+putApiV1ExternalCampaignByCampaignId($campaign_id, $external_put_campaign): \criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign
 ```
 
 
@@ -2751,17 +1631,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | The given campaign id
-$external_put_campaign = new \criteo\api\retailmedia\v2022_04\Model\ExternalPutCampaign(); // \criteo\api\retailmedia\v2022_04\Model\ExternalPutCampaign | The campaign settings to update that campaign with
+$external_put_campaign = new \criteo\api\retailmedia\v2021_07\Model\ExternalPutCampaign(); // \criteo\api\retailmedia\v2021_07\Model\ExternalPutCampaign | The campaign settings to update that campaign with
 
 try {
     $result = $apiInstance->putApiV1ExternalCampaignByCampaignId($campaign_id, $external_put_campaign);
@@ -2776,11 +1656,73 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **campaign_id** | **string**| The given campaign id |
- **external_put_campaign** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalPutCampaign**](../Model/ExternalPutCampaign.md)| The campaign settings to update that campaign with | [optional]
+ **external_put_campaign** | [**\criteo\api\retailmedia\v2021_07\Model\ExternalPutCampaign**](../Model/ExternalPutCampaign.md)| The campaign settings to update that campaign with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiSingleResponseOfCampaign**](../Model/JsonApiSingleResponseOfCampaign.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `putApiV1ExternalLineItemProductsByLineItemId()`
+
+```php
+putApiV1ExternalLineItemProductsByLineItemId($line_item_id, $json_api_data_request_with_id_of_string_and_promoted_product): \criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct
+```
+
+
+
+This endpoint appends one or more products to promote on the specified line item.  The resulting state of the line item is returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+$json_api_data_request_with_id_of_string_and_promoted_product = new \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct(); // \criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct | the products to append to this line item
+
+try {
+    $result = $apiInstance->putApiV1ExternalLineItemProductsByLineItemId($line_item_id, $json_api_data_request_with_id_of_string_and_promoted_product);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->putApiV1ExternalLineItemProductsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+ **json_api_data_request_with_id_of_string_and_promoted_product** | [**\criteo\api\retailmedia\v2021_07\Model\JsonApiDataRequestWithIdOfStringAndPromotedProduct**](../Model/JsonApiDataRequestWithIdOfStringAndPromotedProduct.md)| the products to append to this line item | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\JsonApiPageResponseOfStringAndPromotedProduct**](../Model/JsonApiPageResponseOfStringAndPromotedProduct.md)
 
 ### Authorization
 
@@ -2798,7 +1740,7 @@ Name | Type | Description  | Notes
 ## `putApiV2ExternalAuctionLineItemByLineItemId()`
 
 ```php
-putApiV2ExternalAuctionLineItemByLineItemId($line_item_id, $auction_line_item_update_model_request): \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse
+putApiV2ExternalAuctionLineItemByLineItemId($line_item_id, $auction_line_item_update_model_request): \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse
 ```
 
 
@@ -2813,17 +1755,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The given line item id
-$auction_line_item_update_model_request = new \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemUpdateModelRequest(); // \criteo\api\retailmedia\v2022_04\Model\AuctionLineItemUpdateModelRequest | The line item settings to create a line item with
+$auction_line_item_update_model_request = new \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemUpdateModelRequest(); // \criteo\api\retailmedia\v2021_07\Model\AuctionLineItemUpdateModelRequest | The line item settings to create a line item with
 
 try {
     $result = $apiInstance->putApiV2ExternalAuctionLineItemByLineItemId($line_item_id, $auction_line_item_update_model_request);
@@ -2838,11 +1780,73 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **line_item_id** | **string**| The given line item id |
- **auction_line_item_update_model_request** | [**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemUpdateModelRequest**](../Model/AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
+ **auction_line_item_update_model_request** | [**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemUpdateModelRequest**](../Model/AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `putApiV2ExternalLineItemTargetingKeywordsByLineItemId()`
+
+```php
+putApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id, $keyword_target_request): \criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse
+```
+
+
+
+This endpoint appends one or more keywords to targeting on the specified line item.  The resulting state of the keyword target is returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with
+$keyword_target_request = new \criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest(); // \criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest
+
+try {
+    $result = $apiInstance->putApiV2ExternalLineItemTargetingKeywordsByLineItemId($line_item_id, $keyword_target_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->putApiV2ExternalLineItemTargetingKeywordsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with |
+ **keyword_target_request** | [**\criteo\api\retailmedia\v2021_07\Model\KeywordTargetRequest**](../Model/KeywordTargetRequest.md)|  | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2021_07\Model\KeywordTargetResponse**](../Model/KeywordTargetResponse.md)
 
 ### Authorization
 
@@ -2860,7 +1864,7 @@ Name | Type | Description  | Notes
 ## `putApiV2ExternalPreferredLineItemByLineItemId()`
 
 ```php
-putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse
+putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request): \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse
 ```
 
 
@@ -2875,17 +1879,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2021_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+$apiInstance = new criteo\api\retailmedia\v2021_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The given line item id
-$preferred_line_item_update_model_request = new \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest(); // \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest | The line item settings to create a line item with
+$preferred_line_item_update_model_request = new \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemUpdateModelRequest(); // \criteo\api\retailmedia\v2021_07\Model\PreferredLineItemUpdateModelRequest | The line item settings to create a line item with
 
 try {
     $result = $apiInstance->putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request);
@@ -2900,11 +1904,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **line_item_id** | **string**| The given line item id |
- **preferred_line_item_update_model_request** | [**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest**](../Model/PreferredLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
+ **preferred_line_item_update_model_request** | [**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemUpdateModelRequest**](../Model/PreferredLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
+[**\criteo\api\retailmedia\v2021_07\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
 
 ### Authorization
 
