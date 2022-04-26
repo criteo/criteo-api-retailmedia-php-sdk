@@ -33,6 +33,8 @@ Method | HTTP request | Description
 [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2022-01/retail-media/campaigns/{campaign-id}/preferred-line-items | 
 [**postApi202110ExternalLineItemProductsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2022-01/retail-media/line-items/{line-item-id}/products/append | 
 [**postApi202110ExternalLineItemProductsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2022-01/retail-media/line-items/{line-item-id}/products/delete | 
+[**postApi202110ExternalLineItemProductsPauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2022-01/retail-media/line-items/{line-item-id}/products/pause | 
+[**postApi202110ExternalLineItemProductsUnpauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2022-01/retail-media/line-items/{line-item-id}/products/unpause | 
 [**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2022-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | 
 [**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2022-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | 
 [**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2022-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | 
@@ -1860,6 +1862,128 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: `application/json`
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postApi202110ExternalLineItemProductsPauseByLineItemId()`
+
+```php
+postApi202110ExternalLineItemProductsPauseByLineItemId($line_item_id, $promoted_product202110_list_request)
+```
+
+
+
+This endpoint pauses one or more promoted products on a specified line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_01\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with.
+$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest | The products from which their IDs will be used to pause.
+
+try {
+    $apiInstance->postApi202110ExternalLineItemProductsPauseByLineItemId($line_item_id, $promoted_product202110_list_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsPauseByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with. |
+ **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postApi202110ExternalLineItemProductsUnpauseByLineItemId()`
+
+```php
+postApi202110ExternalLineItemProductsUnpauseByLineItemId($line_item_id, $promoted_product202110_list_request)
+```
+
+
+
+This endpoint unpauses one or more promoted products on a specified line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_01\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item to interact with.
+$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest | The products from which their IDs will be used to unpause.
+
+try {
+    $apiInstance->postApi202110ExternalLineItemProductsUnpauseByLineItemId($line_item_id, $promoted_product202110_list_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->postApi202110ExternalLineItemProductsUnpauseByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The line item to interact with. |
+ **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional]
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

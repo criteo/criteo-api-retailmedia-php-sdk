@@ -60,7 +60,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string'
+        'name' => 'string',
+        'campaign_eligibilities' => 'string[]'
     ];
 
     /**
@@ -71,7 +72,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null
+        'name' => null,
+        'campaign_eligibilities' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name'
+        'name' => 'name',
+        'campaign_eligibilities' => 'campaignEligibilities'
     ];
 
     /**
@@ -110,7 +113,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName'
+        'name' => 'setName',
+        'campaign_eligibilities' => 'setCampaignEligibilities'
     ];
 
     /**
@@ -119,7 +123,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName'
+        'name' => 'getName',
+        'campaign_eligibilities' => 'getCampaignEligibilities'
     ];
 
     /**
@@ -163,6 +168,23 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const CAMPAIGN_ELIGIBILITIES_UNKNOWN = 'unknown';
+    const CAMPAIGN_ELIGIBILITIES_AUCTION = 'auction';
+    const CAMPAIGN_ELIGIBILITIES_PREFERRED = 'preferred';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignEligibilitiesAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_ELIGIBILITIES_UNKNOWN,
+            self::CAMPAIGN_ELIGIBILITIES_AUCTION,
+            self::CAMPAIGN_ELIGIBILITIES_PREFERRED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -180,6 +202,7 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['campaign_eligibilities'] = $data['campaign_eligibilities'] ?? null;
     }
 
     /**
@@ -237,6 +260,39 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_eligibilities
+     *
+     * @return string[]|null
+     */
+    public function getCampaignEligibilities()
+    {
+        return $this->container['campaign_eligibilities'];
+    }
+
+    /**
+     * Sets campaign_eligibilities
+     *
+     * @param string[]|null $campaign_eligibilities campaign_eligibilities
+     *
+     * @return self
+     */
+    public function setCampaignEligibilities($campaign_eligibilities)
+    {
+        $allowedValues = $this->getCampaignEligibilitiesAllowableValues();
+        if (!is_null($campaign_eligibilities) && array_diff($campaign_eligibilities, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'campaign_eligibilities', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_eligibilities'] = $campaign_eligibilities;
 
         return $this;
     }

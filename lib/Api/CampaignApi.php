@@ -8400,6 +8400,458 @@ class CampaignApi
     }
 
     /**
+     * Operation postApi202110ExternalLineItemProductsPauseByLineItemId
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to pause. (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function postApi202110ExternalLineItemProductsPauseByLineItemId($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $this->postApi202110ExternalLineItemProductsPauseByLineItemIdWithHttpInfo($line_item_id, $promoted_product202110_list_request);
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsPauseByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to pause. (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postApi202110ExternalLineItemProductsPauseByLineItemIdWithHttpInfo($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $request = $this->postApi202110ExternalLineItemProductsPauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsPauseByLineItemIdAsync
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to pause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202110ExternalLineItemProductsPauseByLineItemIdAsync($line_item_id, $promoted_product202110_list_request = null)
+    {
+        return $this->postApi202110ExternalLineItemProductsPauseByLineItemIdAsyncWithHttpInfo($line_item_id, $promoted_product202110_list_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsPauseByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to pause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202110ExternalLineItemProductsPauseByLineItemIdAsyncWithHttpInfo($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $returnType = '';
+        $request = $this->postApi202110ExternalLineItemProductsPauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postApi202110ExternalLineItemProductsPauseByLineItemId'
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to pause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postApi202110ExternalLineItemProductsPauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request = null)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling postApi202110ExternalLineItemProductsPauseByLineItemId'
+            );
+        }
+
+        $resourcePath = '/2022-01/retail-media/line-items/{line-item-id}/products/pause';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($promoted_product202110_list_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($promoted_product202110_list_request));
+            } else {
+                $httpBody = $promoted_product202110_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsUnpauseByLineItemId
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to unpause. (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function postApi202110ExternalLineItemProductsUnpauseByLineItemId($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $this->postApi202110ExternalLineItemProductsUnpauseByLineItemIdWithHttpInfo($line_item_id, $promoted_product202110_list_request);
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsUnpauseByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to unpause. (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postApi202110ExternalLineItemProductsUnpauseByLineItemIdWithHttpInfo($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $request = $this->postApi202110ExternalLineItemProductsUnpauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsync
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to unpause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsync($line_item_id, $promoted_product202110_list_request = null)
+    {
+        return $this->postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsyncWithHttpInfo($line_item_id, $promoted_product202110_list_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to unpause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202110ExternalLineItemProductsUnpauseByLineItemIdAsyncWithHttpInfo($line_item_id, $promoted_product202110_list_request = null)
+    {
+        $returnType = '';
+        $request = $this->postApi202110ExternalLineItemProductsUnpauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postApi202110ExternalLineItemProductsUnpauseByLineItemId'
+     *
+     * @param  string $line_item_id The line item to interact with. (required)
+     * @param  \criteo\api\retailmedia\v2022_01\Model\PromotedProduct202110ListRequest $promoted_product202110_list_request The products from which their IDs will be used to unpause. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postApi202110ExternalLineItemProductsUnpauseByLineItemIdRequest($line_item_id, $promoted_product202110_list_request = null)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling postApi202110ExternalLineItemProductsUnpauseByLineItemId'
+            );
+        }
+
+        $resourcePath = '/2022-01/retail-media/line-items/{line-item-id}/products/unpause';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($promoted_product202110_list_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($promoted_product202110_list_request));
+            } else {
+                $httpBody = $promoted_product202110_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId
      *
      * @param  string $line_item_id The line item to interact with (required)
@@ -10153,7 +10605,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\criteo\api\retailmedia\v2022_01\Model\JsonApiSingleResponseOfCampaign
+     * @return \criteo\api\retailmedia\v2022_01\Model\JsonApiSingleResponseOfCampaign
      */
     public function postApiV1ExternalAccountCampaignsByAccountId($account_id, $external_post_campaign = null)
     {
@@ -10169,7 +10621,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2022_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\criteo\api\retailmedia\v2022_01\Model\JsonApiSingleResponseOfCampaign, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2022_01\Model\JsonApiSingleResponseOfCampaign, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApiV1ExternalAccountCampaignsByAccountIdWithHttpInfo($account_id, $external_post_campaign = null)
     {
