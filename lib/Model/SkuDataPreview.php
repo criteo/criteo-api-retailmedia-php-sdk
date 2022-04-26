@@ -65,6 +65,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'category_id' => 'string',
         'category' => 'string',
+        'is_seller_sku' => 'bool',
         'seller_id' => 'string',
         'seller_name' => 'string',
         'brand_id' => 'string',
@@ -93,6 +94,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'category_id' => null,
         'category' => null,
+        'is_seller_sku' => null,
         'seller_id' => null,
         'seller_name' => null,
         'brand_id' => null,
@@ -140,6 +142,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'category_id' => 'categoryId',
         'category' => 'category',
+        'is_seller_sku' => 'isSellerSku',
         'seller_id' => 'sellerId',
         'seller_name' => 'sellerName',
         'brand_id' => 'brandId',
@@ -166,6 +169,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'category_id' => 'setCategoryId',
         'category' => 'setCategory',
+        'is_seller_sku' => 'setIsSellerSku',
         'seller_id' => 'setSellerId',
         'seller_name' => 'setSellerName',
         'brand_id' => 'setBrandId',
@@ -192,6 +196,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'category_id' => 'getCategoryId',
         'category' => 'getCategory',
+        'is_seller_sku' => 'getIsSellerSku',
         'seller_id' => 'getSellerId',
         'seller_name' => 'getSellerName',
         'brand_id' => 'getBrandId',
@@ -269,6 +274,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['description'] = $data['description'] ?? null;
         $this->container['category_id'] = $data['category_id'] ?? null;
         $this->container['category'] = $data['category'] ?? null;
+        $this->container['is_seller_sku'] = $data['is_seller_sku'] ?? null;
         $this->container['seller_id'] = $data['seller_id'] ?? null;
         $this->container['seller_name'] = $data['seller_name'] ?? null;
         $this->container['brand_id'] = $data['brand_id'] ?? null;
@@ -494,6 +500,30 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_seller_sku
+     *
+     * @return bool|null
+     */
+    public function getIsSellerSku()
+    {
+        return $this->container['is_seller_sku'];
+    }
+
+    /**
+     * Sets is_seller_sku
+     *
+     * @param bool|null $is_seller_sku An indication of if the sku is seller sku.
+     *
+     * @return self
+     */
+    public function setIsSellerSku($is_seller_sku)
+    {
+        $this->container['is_seller_sku'] = $is_seller_sku;
 
         return $this;
     }

@@ -14,6 +14,8 @@ docs/Model/ApplicationSummaryModel.md
 docs/Model/ApplicationSummaryModelResource.md
 docs/Model/ApplicationSummaryModelResponse.md
 docs/Model/BadRequest.md
+docs/Model/BrandPreview.md
+docs/Model/BrandPreviewListResponse.md
 docs/Model/CommonError.md
 docs/Model/CommonProblem.md
 docs/Model/CommonWarning.md
@@ -79,6 +81,7 @@ docs/Model/ReportRequest.md
 docs/Model/ReportRequestAttributes.md
 docs/Model/ReportStatus.md
 docs/Model/ReportStatusAttributes.md
+docs/Model/ResourceOfBrandPreview.md
 docs/Model/ResourceOfSellerPreview.md
 docs/Model/ResourceOfSkuDataPreview.md
 docs/Model/ResourceOfSkuSearchRequestPreview.md
@@ -105,6 +108,8 @@ lib/Model/ApplicationSummaryModel.php
 lib/Model/ApplicationSummaryModelResource.php
 lib/Model/ApplicationSummaryModelResponse.php
 lib/Model/BadRequest.php
+lib/Model/BrandPreview.php
+lib/Model/BrandPreviewListResponse.php
 lib/Model/CommonError.php
 lib/Model/CommonProblem.php
 lib/Model/CommonWarning.php
@@ -171,6 +176,7 @@ lib/Model/ReportRequest.php
 lib/Model/ReportRequestAttributes.php
 lib/Model/ReportStatus.php
 lib/Model/ReportStatusAttributes.php
+lib/Model/ResourceOfBrandPreview.php
 lib/Model/ResourceOfSellerPreview.php
 lib/Model/ResourceOfSkuDataPreview.php
 lib/Model/ResourceOfSkuSearchRequestPreview.php

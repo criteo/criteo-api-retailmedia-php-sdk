@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** | A product description. | [optional]
 **category_id** | **string** | The category Id. | [optional]
 **category** | **string** | The full category breadcrumb in the retailers catalog. | [optional]
+**is_seller_sku** | **bool** | An indication of if the sku is seller sku. | [optional]
 **seller_id** | **string** | The id of the seller. | [optional]
 **seller_name** | **string** | The name of the seller. | [optional]
 **brand_id** | **string** | The global brand id associated to the product. |

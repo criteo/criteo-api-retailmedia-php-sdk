@@ -1,6 +1,6 @@
 <?php
 /**
- * SkuSearchRequestPreview
+ * ResourceOfBrandPreview
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SkuSearchRequestPreview Class Doc Comment
+ * ResourceOfBrandPreview Class Doc Comment
  *
  * @category Class
- * @description A request for sku by sellers or brands.
+ * @description Data model for a Resource
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceOfBrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SkuSearchRequestPreview';
+    protected static $openAPIModelName = 'ResourceOfBrandPreview';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +60,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'query_string' => 'string',
-        'retailer_id' => 'string',
-        'sellers' => 'string[]',
-        'brand_ids' => 'string[]',
-        'sku_type' => 'string'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\BrandPreview',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -75,11 +73,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'query_string' => null,
-        'retailer_id' => 'long-id',
-        'sellers' => null,
-        'brand_ids' => 'long-id',
-        'sku_type' => null
+        'attributes' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -109,11 +105,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'query_string' => 'queryString',
-        'retailer_id' => 'retailerId',
-        'sellers' => 'sellers',
-        'brand_ids' => 'brandIds',
-        'sku_type' => 'skuType'
+        'attributes' => 'attributes',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -122,11 +116,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'query_string' => 'setQueryString',
-        'retailer_id' => 'setRetailerId',
-        'sellers' => 'setSellers',
-        'brand_ids' => 'setBrandIds',
-        'sku_type' => 'setSkuType'
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -135,11 +127,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'query_string' => 'getQueryString',
-        'retailer_id' => 'getRetailerId',
-        'sellers' => 'getSellers',
-        'brand_ids' => 'getBrandIds',
-        'sku_type' => 'getSkuType'
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -183,23 +173,6 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const SKU_TYPE_BRAND = 'brand';
-    const SKU_TYPE_SELLER = 'seller';
-    const SKU_TYPE_ALL = 'all';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSkuTypeAllowableValues()
-    {
-        return [
-            self::SKU_TYPE_BRAND,
-            self::SKU_TYPE_SELLER,
-            self::SKU_TYPE_ALL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -216,11 +189,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['query_string'] = $data['query_string'] ?? null;
-        $this->container['retailer_id'] = $data['retailer_id'] ?? null;
-        $this->container['sellers'] = $data['sellers'] ?? null;
-        $this->container['brand_ids'] = $data['brand_ids'] ?? null;
-        $this->container['sku_type'] = $data['sku_type'] ?? SKU_TYPE_BRAND;
+        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -231,21 +202,6 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['query_string'] === null) {
-            $invalidProperties[] = "'query_string' can't be null";
-        }
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        $allowedValues = $this->getSkuTypeAllowableValues();
-        if (!is_null($this->container['sku_type']) && !in_array($this->container['sku_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sku_type', must be one of '%s'",
-                $this->container['sku_type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -263,131 +219,73 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets query_string
+     * Gets attributes
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\BrandPreview|null
      */
-    public function getQueryString()
+    public function getAttributes()
     {
-        return $this->container['query_string'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets query_string
+     * Sets attributes
      *
-     * @param string $query_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
+     * @param \criteo\api\retailmedia\preview\Model\BrandPreview|null $attributes attributes
      *
      * @return self
      */
-    public function setQueryString($query_string)
+    public function setAttributes($attributes)
     {
-        $this->container['query_string'] = $query_string;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets retailer_id
-     *
-     * @return string
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string $retailer_id Retailer Id
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets sellers
-     *
-     * @return string[]|null
-     */
-    public function getSellers()
-    {
-        return $this->container['sellers'];
-    }
-
-    /**
-     * Sets sellers
-     *
-     * @param string[]|null $sellers A list of seller names and/or seller Id's
-     *
-     * @return self
-     */
-    public function setSellers($sellers)
-    {
-        $this->container['sellers'] = $sellers;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_ids
-     *
-     * @return string[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param string[]|null $brand_ids A list of brand Id's
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        $this->container['brand_ids'] = $brand_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_type
+     * Gets id
      *
      * @return string|null
      */
-    public function getSkuType()
+    public function getId()
     {
-        return $this->container['sku_type'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets sku_type
+     * Sets id
      *
-     * @param string|null $sku_type Enum to set isSellerSku field
+     * @param string|null $id Id of the entity
      *
      * @return self
      */
-    public function setSkuType($sku_type)
+    public function setId($id)
     {
-        $allowedValues = $this->getSkuTypeAllowableValues();
-        if (!is_null($sku_type) && !in_array($sku_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sku_type', must be one of '%s'",
-                    $sku_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sku_type'] = $sku_type;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Canonical type name of the entity
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }
