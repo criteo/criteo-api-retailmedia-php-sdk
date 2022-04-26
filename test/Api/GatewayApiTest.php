@@ -1,10 +1,10 @@
 <?php
-namespace criteo\api\retailmedia\preview;
+namespace criteo\api\retailmedia\v2022_04;
 
-use criteo\api\retailmedia\preview\Api\GatewayApi;
-use criteo\api\retailmedia\preview\ClientCredentialsClient;
-use criteo\api\retailmedia\preview\ApiException;
-use criteo\api\retailmedia\preview\ObjectSerializer;
+use criteo\api\retailmedia\v2022_04\Api\GatewayApi;
+use criteo\api\retailmedia\v2022_04\ClientCredentialsClient;
+use criteo\api\retailmedia\v2022_04\ApiException;
+use criteo\api\retailmedia\v2022_04\ObjectSerializer;
 use Jchook\AssertThrows\AssertThrows;
 use PHPUnit\Framework\TestCase;
 
@@ -33,7 +33,7 @@ class GatewayApiTest extends TestCase
         
         $this->clientId = $_SERVER["TEST_CLIENT_ID"];
         $this->clientSecret = $_SERVER["TEST_CLIENT_SECRET"];
-        $this->applicationId = $_SERVER["TEST_APPLICATION_ID"];
+        $this->applicationId = (int) $_SERVER["TEST_APPLICATION_ID"];
     }
 
     public function secretEnvironmentVariables()
@@ -53,7 +53,7 @@ class GatewayApiTest extends TestCase
 
         // Assert
         $this->assertEquals(200, $response[1]);
-        $this->assertEquals($this->applicationId, $response[0]->getData()->getId());
+        $this->assertEquals($this->applicationId, $response[0]->getData()->getAttributes()->getApplicationId());
     }
 
     public function testGetCurrentApplicationShouldSucceedWithRenewedInvalidToken()
@@ -67,7 +67,7 @@ class GatewayApiTest extends TestCase
 
         // Assert
         $this->assertEquals(200, $response[1]);
-        $this->assertEquals($this->applicationId, $response[0]->getData()->getId());
+        $this->assertEquals($this->applicationId, $response[0]->getData()->getAttributes()->getApplicationId());
     }
 
     public function testGetCurrentApplicationShouldFailWithoutToken()
@@ -83,7 +83,7 @@ class GatewayApiTest extends TestCase
             function($exception) {
                 $data = ObjectSerializer::deserialize(
                     $exception->getResponseBody(),
-                    '\criteo\api\retailmedia\preview\Model\ApplicationSummaryModelResponse',
+                    '\criteo\api\retailmedia\v2022_04\Model\ApplicationSummaryModelResponse',
                     $exception->getResponseHeaders()
                 );
 

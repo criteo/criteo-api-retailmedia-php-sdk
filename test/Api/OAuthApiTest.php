@@ -1,10 +1,10 @@
 <?php
-namespace criteo\api\retailmedia\preview;
+namespace criteo\api\retailmedia\v2022_04;
 
-use criteo\api\retailmedia\preview\Api\OAuthApi;
-use criteo\api\retailmedia\preview\TokenAutoRefreshClient;
-use criteo\api\retailmedia\preview\ApiException;
-use criteo\api\retailmedia\preview\ObjectSerializer;
+use criteo\api\retailmedia\v2022_04\Api\OAuthApi;
+use criteo\api\retailmedia\v2022_04\TokenAutoRefreshClient;
+use criteo\api\retailmedia\v2022_04\ApiException;
+use criteo\api\retailmedia\v2022_04\ObjectSerializer;
 use Jchook\AssertThrows\AssertThrows;
 use PHPUnit\Framework\TestCase;
 
@@ -69,7 +69,7 @@ class OAuthApiTest extends TestCase
             function($exception) {
                 $data = ObjectSerializer::deserialize(
                     $exception->getResponseBody(),
-                    'criteo\api\retailmedia\preview\Model\OAuthErrorModel',
+                    'criteo\api\retailmedia\v2022_04\Model\OAuthErrorModel',
                     $exception->getResponseHeaders()
                 );
 

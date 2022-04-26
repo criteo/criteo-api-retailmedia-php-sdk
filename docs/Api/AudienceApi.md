@@ -1,17 +1,17 @@
-# criteo\api\retailmedia\preview\AudienceApi
+# criteo\api\retailmedia\v2022_04\AudienceApi
 
 All URIs are relative to https://api.criteo.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createAudience()**](AudienceApi.md#createAudience) | **POST** /preview/retail-media/accounts/{accountId}/audiences | 
-[**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/audiences | 
+[**createAudience()**](AudienceApi.md#createAudience) | **POST** /2022-04/retail-media/accounts/{accountId}/audiences | 
+[**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/audiences | 
 
 
 ## `createAudience()`
 
 ```php
-createAudience($account_id, $create_audience_request): \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse
+createAudience($account_id, $create_audience_request): \criteo\api\retailmedia\v2022_04\Model\CreateRetailMediaAudienceResponse
 ```
 
 
@@ -26,17 +26,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
-$create_audience_request = new \criteo\api\retailmedia\preview\Model\CreateAudienceRequest(); // \criteo\api\retailmedia\preview\Model\CreateAudienceRequest
+$create_audience_request = new \criteo\api\retailmedia\v2022_04\Model\CreateAudienceRequest(); // \criteo\api\retailmedia\v2022_04\Model\CreateAudienceRequest
 
 try {
     $result = $apiInstance->createAudience($account_id, $create_audience_request);
@@ -51,11 +51,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account to which this audience belongs. |
- **create_audience_request** | [**\criteo\api\retailmedia\preview\Model\CreateAudienceRequest**](../Model/CreateAudienceRequest.md)|  |
+ **create_audience_request** | [**\criteo\api\retailmedia\v2022_04\Model\CreateAudienceRequest**](../Model/CreateAudienceRequest.md)|  |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse**](../Model/CreateRetailMediaAudienceResponse.md)
+[**\criteo\api\retailmedia\v2022_04\Model\CreateRetailMediaAudienceResponse**](../Model/CreateRetailMediaAudienceResponse.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 ## `getAudiencesByAccountId()`
 
 ```php
-getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse
+getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2022_04\Model\GetPageOfAudiencesByAccountIdResponse
 ```
 
 
@@ -88,10 +88,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse**](../Model/GetPageOfAudiencesByAccountIdResponse.md)
+[**\criteo\api\retailmedia\v2022_04\Model\GetPageOfAudiencesByAccountIdResponse**](../Model/GetPageOfAudiencesByAccountIdResponse.md)
 
 ### Authorization
 
