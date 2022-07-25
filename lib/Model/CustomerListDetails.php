@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceBody
+ * CustomerListDetails
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_01\ObjectSerializer;
 
 /**
- * CreateAudienceBody Class Doc Comment
+ * CustomerListDetails Class Doc Comment
  *
  * @category Class
- * @description Request body of CreateAudienceRequest
+ * @description Details of a customer list audience
  * @package  criteo\api\retailmedia\v2022_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_01\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerListDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceBody';
+    protected static $openAPIModelName = 'CustomerListDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2022_01\Model\RetailMediaAudienceAttributes'
+        'size' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'size' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'size' => 'size'
     ];
 
     /**
@@ -113,8 +110,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'size' => 'setSize'
     ];
 
     /**
@@ -123,8 +119,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'size' => 'getSize'
     ];
 
     /**
@@ -184,8 +179,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
     }
 
     /**
@@ -197,11 +191,8 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -219,49 +210,25 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets type
+     * Gets size
      *
      * @return string
      */
-    public function getType()
+    public function getSize()
     {
-        return $this->container['type'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets type
+     * Sets size
      *
-     * @param string $type the name of the entity type
+     * @param string $size Number of users in the customer list audience.
      *
      * @return self
      */
-    public function setType($type)
+    public function setSize($size)
     {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2022_01\Model\RetailMediaAudienceAttributes
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2022_01\Model\RetailMediaAudienceAttributes $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        $this->container['attributes'] = $attributes;
+        $this->container['size'] = $size;
 
         return $this;
     }

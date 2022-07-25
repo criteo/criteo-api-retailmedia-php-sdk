@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceRequest
+ * CreateRetailMediaAudienceBody
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_01\ObjectSerializer;
 
 /**
- * CreateAudienceRequest Class Doc Comment
+ * CreateRetailMediaAudienceBody Class Doc Comment
  *
  * @category Class
- * @description Request to create an audience
+ * @description Request body of CreateRetailMediaAudienceRequest
  * @package  criteo\api\retailmedia\v2022_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_01\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateRetailMediaAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceRequest';
+    protected static $openAPIModelName = 'CreateRetailMediaAudienceBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2022_01\Model\CreateAudienceBody'
+        'type' => 'string',
+        'attributes' => '\criteo\api\retailmedia\v2022_01\Model\CreateRetailMediaAudienceAttributes'
     ];
 
     /**
@@ -71,7 +72,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -110,7 +113,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -119,7 +123,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -179,7 +184,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
     /**
@@ -191,8 +197,11 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
         }
         return $invalidProperties;
     }
@@ -210,25 +219,49 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets data
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\v2022_01\Model\CreateAudienceBody
+     * @return string
      */
-    public function getData()
+    public function getType()
     {
-        return $this->container['data'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets data
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\v2022_01\Model\CreateAudienceBody $data data
+     * @param string $type the name of the entity type
      *
      * @return self
      */
-    public function setData($data)
+    public function setType($type)
     {
-        $this->container['data'] = $data;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\v2022_01\Model\CreateRetailMediaAudienceAttributes
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\v2022_01\Model\CreateRetailMediaAudienceAttributes $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

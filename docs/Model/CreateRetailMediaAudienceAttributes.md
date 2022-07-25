@@ -1,12 +1,14 @@
-# # RetailMediaAudienceAttributes
+# # CreateRetailMediaAudienceAttributes
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**user_type** | **string** | Type of the user |
+**lookback_window** | **string** | Length of lookback window |
+**brand_ids** | **string[]** | The brands to target | [optional]
+**category_ids** | **string[]** | The categories to target | [optional]
 **retailer_id** | **string** | ID of the retailer associated with this audience |
 **name** | **string** | Name of the audience. |
-**user_behavior_details** | [**\criteo\api\retailmedia\v2022_01\Model\UserBehaviorDetails**](UserBehaviorDetails.md) |  | [optional]
-**customer_list_details** | [**\criteo\api\retailmedia\v2022_01\Model\CustomerListDetails**](CustomerListDetails.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
