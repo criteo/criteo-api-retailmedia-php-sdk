@@ -4,6 +4,7 @@ All URIs are relative to https://api.criteo.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createAsset()**](CampaignApi.md#createAsset) | **POST** /2022-04/retail-media/assets | 
 [**getApi202110ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/balances | 
 [**getApi202110ExternalAccountCreativesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2022-04/retail-media/accounts/{account-id}/creatives | 
 [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2022-04/retail-media/auction-line-items/{line-item-id}/targeting/keywords | 
@@ -14,6 +15,8 @@ Method | HTTP request | Description
 [**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
 [**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
 [**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2022-04/retail-media/retailers/{retailerId}/pages | 
+[**getApi202204ExternalCategorieByCategoryId()**](CampaignApi.md#getApi202204ExternalCategorieByCategoryId) | **GET** /2022-04/retail-media/categories/{categoryId} | 
+[**getApi202204ExternalCategories()**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2022-04/retail-media/categories | 
 [**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/brands | 
 [**getApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/campaigns | 
 [**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2022-04/retail-media/accounts/{accountId}/retailers | 
@@ -51,6 +54,66 @@ Method | HTTP request | Description
 [**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-04/retail-media/auction-line-items/{line-item-id} | 
 [**putApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
 
+
+## `createAsset()`
+
+```php
+createAsset($asset_file): \criteo\api\retailmedia\v2022_04\Model\AssetResponse
+```
+
+
+
+Creates an asset
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$asset_file = "/path/to/file.txt"; // \SplFileObject | The asset binary content
+
+try {
+    $result = $apiInstance->createAsset($asset_file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->createAsset: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asset_file** | [**\SplFileObject**](../Model/\SplFileObject.md)| The asset binary content |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2022_04\Model\AssetResponse**](../Model/AssetResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getApi202110ExternalAccountBalancesByAccountId()`
 
@@ -662,6 +725,132 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\criteo\api\retailmedia\v2022_04\Model\ExternalRetailerPages202110**](../Model/ExternalRetailerPages202110.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApi202204ExternalCategorieByCategoryId()`
+
+```php
+getApi202204ExternalCategorieByCategoryId($category_id): \criteo\api\retailmedia\v2022_04\Model\Category202204
+```
+
+
+
+Endpoint to search for a specific category by categoryId.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$category_id = 56; // int | ID of the desired category
+
+try {
+    $result = $apiInstance->getApi202204ExternalCategorieByCategoryId($category_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApi202204ExternalCategorieByCategoryId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **category_id** | **int**| ID of the desired category |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2022_04\Model\Category202204**](../Model/Category202204.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApi202204ExternalCategories()`
+
+```php
+getApi202204ExternalCategories($retailer_id, $text_substring, $page_index, $page_size): \criteo\api\retailmedia\v2022_04\Model\Category202204ListResponse
+```
+
+
+
+Endpoint to search categories by text and retailer.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$retailer_id = 56; // int | The retailer id for which Categories fetched
+$text_substring = 'text_substring_example'; // string | Query string to search across Categories
+$page_index = 0; // int | The start position in the overall list of matches. Must be zero or greater.
+$page_size = 100; // int | The maximum number of results to return with each call. Must be greater than zero.
+
+try {
+    $result = $apiInstance->getApi202204ExternalCategories($retailer_id, $text_substring, $page_index, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApi202204ExternalCategories: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **retailer_id** | **int**| The retailer id for which Categories fetched | [optional]
+ **text_substring** | **string**| Query string to search across Categories | [optional]
+ **page_index** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0]
+ **page_size** | **int**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2022_04\Model\Category202204ListResponse**](../Model/Category202204ListResponse.md)
 
 ### Authorization
 

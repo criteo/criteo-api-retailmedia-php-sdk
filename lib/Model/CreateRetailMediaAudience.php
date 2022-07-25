@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceBody
+ * CreateRetailMediaAudience
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
 
 /**
- * CreateAudienceBody Class Doc Comment
+ * CreateRetailMediaAudience Class Doc Comment
  *
  * @category Class
- * @description Request body of CreateAudienceRequest
+ * @description Retail Media audience used in audience creation
  * @package  criteo\api\retailmedia\v2022_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateRetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceBody';
+    protected static $openAPIModelName = 'CreateRetailMediaAudience';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,8 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2022_04\Model\RetailMediaAudienceAttributes'
+        'id' => 'int',
+        'attributes' => '\criteo\api\retailmedia\v2022_04\Model\CreateRetailMediaAudienceAttributes'
     ];
 
     /**
@@ -73,6 +74,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'type' => null,
+        'id' => 'int64',
         'attributes' => null
     ];
 
@@ -104,6 +106,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'type' => 'type',
+        'id' => 'id',
         'attributes' => 'attributes'
     ];
 
@@ -114,6 +117,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'type' => 'setType',
+        'id' => 'setId',
         'attributes' => 'setAttributes'
     ];
 
@@ -124,6 +128,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'type' => 'getType',
+        'id' => 'getId',
         'attributes' => 'getAttributes'
     ];
 
@@ -185,6 +190,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->container['type'] = $data['type'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
     }
 
@@ -199,6 +205,9 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['attributes'] === null) {
             $invalidProperties[] = "'attributes' can't be null";
@@ -243,9 +252,33 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param int $id Unique ID of this audience.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2022_04\Model\RetailMediaAudienceAttributes
+     * @return \criteo\api\retailmedia\v2022_04\Model\CreateRetailMediaAudienceAttributes
      */
     public function getAttributes()
     {
@@ -255,7 +288,7 @@ class CreateAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2022_04\Model\RetailMediaAudienceAttributes $attributes attributes
+     * @param \criteo\api\retailmedia\v2022_04\Model\CreateRetailMediaAudienceAttributes $attributes attributes
      *
      * @return self
      */

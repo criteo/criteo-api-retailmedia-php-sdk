@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceRequest
+ * Asset
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
 
 /**
- * CreateAudienceRequest Class Doc Comment
+ * Asset Class Doc Comment
  *
  * @category Class
- * @description Request to create an audience
+ * @description Handles pointing towards binary content that advertisers can use later on, for example in their creatives.
  * @package  criteo\api\retailmedia\v2022_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceRequest';
+    protected static $openAPIModelName = 'Asset';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2022_04\Model\CreateAudienceBody'
+        'file_extension' => 'string',
+        'file_location' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -71,7 +73,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'file_extension' => null,
+        'file_location' => null,
+        'id' => null
     ];
 
     /**
@@ -101,7 +105,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'file_extension' => 'fileExtension',
+        'file_location' => 'fileLocation',
+        'id' => 'id'
     ];
 
     /**
@@ -110,7 +116,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'file_extension' => 'setFileExtension',
+        'file_location' => 'setFileLocation',
+        'id' => 'setId'
     ];
 
     /**
@@ -119,7 +127,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'file_extension' => 'getFileExtension',
+        'file_location' => 'getFileLocation',
+        'id' => 'getId'
     ];
 
     /**
@@ -179,7 +189,9 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['file_extension'] = $data['file_extension'] ?? null;
+        $this->container['file_location'] = $data['file_location'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
     }
 
     /**
@@ -191,8 +203,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['file_extension'] === null) {
+            $invalidProperties[] = "'file_extension' can't be null";
         }
         return $invalidProperties;
     }
@@ -210,25 +222,73 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets data
+     * Gets file_extension
      *
-     * @return \criteo\api\retailmedia\v2022_04\Model\CreateAudienceBody
+     * @return string
      */
-    public function getData()
+    public function getFileExtension()
     {
-        return $this->container['data'];
+        return $this->container['file_extension'];
     }
 
     /**
-     * Sets data
+     * Sets file_extension
      *
-     * @param \criteo\api\retailmedia\v2022_04\Model\CreateAudienceBody $data data
+     * @param string $file_extension The file extension that is asset is representing. Example: jpg, png, gif or pdf.
      *
      * @return self
      */
-    public function setData($data)
+    public function setFileExtension($file_extension)
     {
-        $this->container['data'] = $data;
+        $this->container['file_extension'] = $file_extension;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_location
+     *
+     * @return string|null
+     */
+    public function getFileLocation()
+    {
+        return $this->container['file_location'];
+    }
+
+    /**
+     * Sets file_location
+     *
+     * @param string|null $file_location A url pointing towards the static file the asset represents.
+     *
+     * @return self
+     */
+    public function setFileLocation($file_location)
+    {
+        $this->container['file_location'] = $file_location;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
 
         return $this;
     }

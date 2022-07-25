@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaAudienceAttributes
+ * Category202204
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
 
 /**
- * RetailMediaAudienceAttributes Class Doc Comment
+ * Category202204 Class Doc Comment
  *
  * @category Class
- * @description Fields of a retail media audience
+ * @description List of retailer&#39;s categories, including the full hierarchy of categories and their parent category ID
  * @package  criteo\api\retailmedia\v2022_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaAudienceAttributes';
+    protected static $openAPIModelName = 'Category202204';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id' => 'string',
+        'text' => 'string',
         'name' => 'string',
-        'user_behavior_details' => '\criteo\api\retailmedia\v2022_04\Model\UserBehaviorDetails',
-        'customer_list_details' => '\criteo\api\retailmedia\v2022_04\Model\CustomerListDetails'
+        'parent_id' => 'string'
     ];
 
     /**
@@ -74,10 +73,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id' => null,
+        'text' => null,
         'name' => null,
-        'user_behavior_details' => null,
-        'customer_list_details' => null
+        'parent_id' => null
     ];
 
     /**
@@ -107,10 +105,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id' => 'retailerId',
+        'text' => 'text',
         'name' => 'name',
-        'user_behavior_details' => 'userBehaviorDetails',
-        'customer_list_details' => 'customerListDetails'
+        'parent_id' => 'parentId'
     ];
 
     /**
@@ -119,10 +116,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id' => 'setRetailerId',
+        'text' => 'setText',
         'name' => 'setName',
-        'user_behavior_details' => 'setUserBehaviorDetails',
-        'customer_list_details' => 'setCustomerListDetails'
+        'parent_id' => 'setParentId'
     ];
 
     /**
@@ -131,10 +127,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id' => 'getRetailerId',
+        'text' => 'getText',
         'name' => 'getName',
-        'user_behavior_details' => 'getUserBehaviorDetails',
-        'customer_list_details' => 'getCustomerListDetails'
+        'parent_id' => 'getParentId'
     ];
 
     /**
@@ -194,10 +189,9 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['retailer_id'] = $data['retailer_id'] ?? null;
+        $this->container['text'] = $data['text'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
-        $this->container['user_behavior_details'] = $data['user_behavior_details'] ?? null;
-        $this->container['customer_list_details'] = $data['customer_list_details'] ?? null;
+        $this->container['parent_id'] = $data['parent_id'] ?? null;
     }
 
     /**
@@ -209,11 +203,14 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['parent_id'] === null) {
+            $invalidProperties[] = "'parent_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,25 +228,25 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets retailer_id
+     * Gets text
      *
      * @return string
      */
-    public function getRetailerId()
+    public function getText()
     {
-        return $this->container['retailer_id'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets text
      *
-     * @param string $retailer_id ID of the retailer associated with this audience
+     * @param string $text Category Text
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setText($text)
     {
-        $this->container['retailer_id'] = $retailer_id;
+        $this->container['text'] = $text;
 
         return $this;
     }
@@ -267,7 +264,7 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets name
      *
-     * @param string $name Name of the audience.
+     * @param string $name Category Name
      *
      * @return self
      */
@@ -279,49 +276,25 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets user_behavior_details
+     * Gets parent_id
      *
-     * @return \criteo\api\retailmedia\v2022_04\Model\UserBehaviorDetails|null
+     * @return string
      */
-    public function getUserBehaviorDetails()
+    public function getParentId()
     {
-        return $this->container['user_behavior_details'];
+        return $this->container['parent_id'];
     }
 
     /**
-     * Sets user_behavior_details
+     * Sets parent_id
      *
-     * @param \criteo\api\retailmedia\v2022_04\Model\UserBehaviorDetails|null $user_behavior_details user_behavior_details
+     * @param string $parent_id Category ParentId
      *
      * @return self
      */
-    public function setUserBehaviorDetails($user_behavior_details)
+    public function setParentId($parent_id)
     {
-        $this->container['user_behavior_details'] = $user_behavior_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer_list_details
-     *
-     * @return \criteo\api\retailmedia\v2022_04\Model\CustomerListDetails|null
-     */
-    public function getCustomerListDetails()
-    {
-        return $this->container['customer_list_details'];
-    }
-
-    /**
-     * Sets customer_list_details
-     *
-     * @param \criteo\api\retailmedia\v2022_04\Model\CustomerListDetails|null $customer_list_details customer_list_details
-     *
-     * @return self
-     */
-    public function setCustomerListDetails($customer_list_details)
-    {
-        $this->container['customer_list_details'] = $customer_list_details;
+        $this->container['parent_id'] = $parent_id;
 
         return $this;
     }
