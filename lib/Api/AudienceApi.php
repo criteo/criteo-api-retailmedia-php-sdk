@@ -118,15 +118,15 @@ class AudienceApi
      * Operation createAudience
      *
      * @param  string $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateAudienceRequest $create_audience_request create_audience_request (required)
+     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request create_retail_media_audience_request (required)
      *
      * @throws \criteo\api\retailmedia\v2021_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceResponse
      */
-    public function createAudience($account_id, $create_audience_request)
+    public function createAudience($account_id, $create_retail_media_audience_request)
     {
-        list($response) = $this->createAudienceWithHttpInfo($account_id, $create_audience_request);
+        list($response) = $this->createAudienceWithHttpInfo($account_id, $create_retail_media_audience_request);
         return $response;
     }
 
@@ -134,15 +134,15 @@ class AudienceApi
      * Operation createAudienceWithHttpInfo
      *
      * @param  string $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateAudienceRequest $create_audience_request (required)
+     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
      *
      * @throws \criteo\api\retailmedia\v2021_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAudienceWithHttpInfo($account_id, $create_audience_request)
+    public function createAudienceWithHttpInfo($account_id, $create_retail_media_audience_request)
     {
-        $request = $this->createAudienceRequest($account_id, $create_audience_request);
+        $request = $this->createAudienceRequest($account_id, $create_retail_media_audience_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -219,14 +219,14 @@ class AudienceApi
      * Operation createAudienceAsync
      *
      * @param  string $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateAudienceRequest $create_audience_request (required)
+     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAudienceAsync($account_id, $create_audience_request)
+    public function createAudienceAsync($account_id, $create_retail_media_audience_request)
     {
-        return $this->createAudienceAsyncWithHttpInfo($account_id, $create_audience_request)
+        return $this->createAudienceAsyncWithHttpInfo($account_id, $create_retail_media_audience_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -238,15 +238,15 @@ class AudienceApi
      * Operation createAudienceAsyncWithHttpInfo
      *
      * @param  string $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateAudienceRequest $create_audience_request (required)
+     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAudienceAsyncWithHttpInfo($account_id, $create_audience_request)
+    public function createAudienceAsyncWithHttpInfo($account_id, $create_retail_media_audience_request)
     {
         $returnType = '\criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceResponse';
-        $request = $this->createAudienceRequest($account_id, $create_audience_request);
+        $request = $this->createAudienceRequest($account_id, $create_retail_media_audience_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,12 +285,12 @@ class AudienceApi
      * Create request for operation 'createAudience'
      *
      * @param  string $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateAudienceRequest $create_audience_request (required)
+     * @param  \criteo\api\retailmedia\v2021_10\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAudienceRequest($account_id, $create_audience_request)
+    public function createAudienceRequest($account_id, $create_retail_media_audience_request)
     {
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
@@ -298,10 +298,10 @@ class AudienceApi
                 'Missing the required parameter $account_id when calling createAudience'
             );
         }
-        // verify the required parameter 'create_audience_request' is set
-        if ($create_audience_request === null || (is_array($create_audience_request) && count($create_audience_request) === 0)) {
+        // verify the required parameter 'create_retail_media_audience_request' is set
+        if ($create_retail_media_audience_request === null || (is_array($create_retail_media_audience_request) && count($create_retail_media_audience_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_audience_request when calling createAudience'
+                'Missing the required parameter $create_retail_media_audience_request when calling createAudience'
             );
         }
 
@@ -336,11 +336,11 @@ class AudienceApi
         }
 
         // for model (json/xml)
-        if (isset($create_audience_request)) {
+        if (isset($create_retail_media_audience_request)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_audience_request));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_retail_media_audience_request));
             } else {
-                $httpBody = $create_audience_request;
+                $httpBody = $create_retail_media_audience_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

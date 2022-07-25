@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceRequest
+ * CustomerListDetails
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2021_10\ObjectSerializer;
 
 /**
- * CreateAudienceRequest Class Doc Comment
+ * CustomerListDetails Class Doc Comment
  *
  * @category Class
- * @description Request to create an audience
+ * @description Details of a customer list audience
  * @package  criteo\api\retailmedia\v2021_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2021_10\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerListDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceRequest';
+    protected static $openAPIModelName = 'CustomerListDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2021_10\Model\CreateAudienceBody'
+        'size' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'size' => null
     ];
 
     /**
@@ -101,7 +101,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'size' => 'size'
     ];
 
     /**
@@ -110,7 +110,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'size' => 'setSize'
     ];
 
     /**
@@ -119,7 +119,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'size' => 'getSize'
     ];
 
     /**
@@ -179,7 +179,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
     }
 
     /**
@@ -191,8 +191,8 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -210,25 +210,25 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets data
+     * Gets size
      *
-     * @return \criteo\api\retailmedia\v2021_10\Model\CreateAudienceBody
+     * @return string
      */
-    public function getData()
+    public function getSize()
     {
-        return $this->container['data'];
+        return $this->container['size'];
     }
 
     /**
-     * Sets data
+     * Sets size
      *
-     * @param \criteo\api\retailmedia\v2021_10\Model\CreateAudienceBody $data data
+     * @param string $size Number of users in the customer list audience.
      *
      * @return self
      */
-    public function setData($data)
+    public function setSize($size)
     {
-        $this->container['data'] = $data;
+        $this->container['size'] = $size;
 
         return $this;
     }
