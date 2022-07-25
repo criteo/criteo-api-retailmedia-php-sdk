@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2022_04\Model\ReportStatusAttributes**](ReportStatusAttributes.md) |  |
+**attributes** | [**\criteo\api\retailmedia\v2022_07\Model\ReportStatusAttributes**](ReportStatusAttributes.md) |  |
 **id** | **string** | The reportId |
 **type** | **string** | Always \&quot;RetailMediaReportStatus\&quot; |
 

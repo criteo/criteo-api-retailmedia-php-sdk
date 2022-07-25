@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **end_date** | [**\DateTime**](\DateTime.md) | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
 **status** | **string** |  | [optional]
 **pacing** | **string** |  |
-**capping** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping202110**](ExternalLineItemCapping202110.md) |  | [optional]
-**page** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemPage202110**](ExternalLineItemPage202110.md) |  |
+**capping** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping202110**](ExternalLineItemCapping202110.md) |  | [optional]
+**page** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemPage202110**](ExternalLineItemPage202110.md) |  |
 **target_retailer_id** | **string** |  |
 **budget** | **double** |  |
 **creative_id** | **string** |  | [optional]

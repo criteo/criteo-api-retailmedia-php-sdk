@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **end_date** | [**\DateTime**](\DateTime.md) | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
 **status** | **string** |  |
 **pacing** | **string** |  |
-**capping** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping**](ExternalLineItemCapping.md) |  | [optional]
+**capping** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping**](ExternalLineItemCapping.md) |  | [optional]
 **target_retailer_id** | **string** |  |
 **budget** | **float** |  | [optional]
 **campaign_id** | **string** |  |

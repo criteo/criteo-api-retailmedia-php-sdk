@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [optional]
-**attributes** | [**\criteo\api\retailmedia\v2022_04\Model\ExternalKeywordTarget202110**](ExternalKeywordTarget202110.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalKeywordTarget202110**](ExternalKeywordTarget202110.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
