@@ -19,9 +19,12 @@ docs/Model/BrandPreviewListResponse.md
 docs/Model/CommonError.md
 docs/Model/CommonProblem.md
 docs/Model/CommonWarning.md
-docs/Model/CreateAudienceBody.md
-docs/Model/CreateAudienceRequest.md
+docs/Model/CreateRetailMediaAudience.md
+docs/Model/CreateRetailMediaAudienceAttributes.md
+docs/Model/CreateRetailMediaAudienceBody.md
+docs/Model/CreateRetailMediaAudienceRequest.md
 docs/Model/CreateRetailMediaAudienceResponse.md
+docs/Model/CustomerListDetails.md
 docs/Model/EnvelopeReportRequest.md
 docs/Model/EnvelopeReportStatus.md
 docs/Model/Error.md
@@ -93,6 +96,7 @@ docs/Model/SkuDataPreview.md
 docs/Model/SkuDataPreviewListResponse.md
 docs/Model/SkuSearchRequestPreview.md
 docs/Model/SkuSearchRequestPreviewRequest.md
+docs/Model/UserBehaviorDetails.md
 git_push.sh
 lib/Api/AnalyticsApi.php
 lib/Api/AudienceApi.php
@@ -113,9 +117,12 @@ lib/Model/BrandPreviewListResponse.php
 lib/Model/CommonError.php
 lib/Model/CommonProblem.php
 lib/Model/CommonWarning.php
-lib/Model/CreateAudienceBody.php
-lib/Model/CreateAudienceRequest.php
+lib/Model/CreateRetailMediaAudience.php
+lib/Model/CreateRetailMediaAudienceAttributes.php
+lib/Model/CreateRetailMediaAudienceBody.php
+lib/Model/CreateRetailMediaAudienceRequest.php
 lib/Model/CreateRetailMediaAudienceResponse.php
+lib/Model/CustomerListDetails.php
 lib/Model/EnvelopeReportRequest.php
 lib/Model/EnvelopeReportStatus.php
 lib/Model/Error.php
@@ -188,6 +195,7 @@ lib/Model/SkuDataPreview.php
 lib/Model/SkuDataPreviewListResponse.php
 lib/Model/SkuSearchRequestPreview.php
 lib/Model/SkuSearchRequestPreviewRequest.php
+lib/Model/UserBehaviorDetails.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ClientCredentialsClientTest.php

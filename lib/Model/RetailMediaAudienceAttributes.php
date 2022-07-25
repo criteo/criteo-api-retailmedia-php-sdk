@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RetailMediaAudienceAttributes Class Doc Comment
  *
  * @category Class
- * @description Parameters needed to create an audience
+ * @description Fields of a retail media audience
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,12 +60,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_type' => 'string',
-        'lookback_window' => 'string',
-        'brand_ids' => 'string[]',
-        'category_ids' => 'string[]',
         'retailer_id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'user_behavior_details' => '\criteo\api\retailmedia\preview\Model\UserBehaviorDetails',
+        'customer_list_details' => '\criteo\api\retailmedia\preview\Model\CustomerListDetails'
     ];
 
     /**
@@ -76,12 +74,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_type' => null,
-        'lookback_window' => null,
-        'brand_ids' => null,
-        'category_ids' => null,
         'retailer_id' => null,
-        'name' => null
+        'name' => null,
+        'user_behavior_details' => null,
+        'customer_list_details' => null
     ];
 
     /**
@@ -111,12 +107,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_type' => 'userType',
-        'lookback_window' => 'lookbackWindow',
-        'brand_ids' => 'brandIds',
-        'category_ids' => 'categoryIds',
         'retailer_id' => 'retailerId',
-        'name' => 'name'
+        'name' => 'name',
+        'user_behavior_details' => 'userBehaviorDetails',
+        'customer_list_details' => 'customerListDetails'
     ];
 
     /**
@@ -125,12 +119,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'user_type' => 'setUserType',
-        'lookback_window' => 'setLookbackWindow',
-        'brand_ids' => 'setBrandIds',
-        'category_ids' => 'setCategoryIds',
         'retailer_id' => 'setRetailerId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'user_behavior_details' => 'setUserBehaviorDetails',
+        'customer_list_details' => 'setCustomerListDetails'
     ];
 
     /**
@@ -139,12 +131,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'user_type' => 'getUserType',
-        'lookback_window' => 'getLookbackWindow',
-        'brand_ids' => 'getBrandIds',
-        'category_ids' => 'getCategoryIds',
         'retailer_id' => 'getRetailerId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'user_behavior_details' => 'getUserBehaviorDetails',
+        'customer_list_details' => 'getCustomerListDetails'
     ];
 
     /**
@@ -188,50 +178,6 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    const USER_TYPE_VIEWER = 'viewer';
-    const USER_TYPE_BUYER = 'buyer';
-    const LOOKBACK_WINDOW_P7_D = 'P7D';
-    const LOOKBACK_WINDOW_P14_D = 'P14D';
-    const LOOKBACK_WINDOW_P30_D = 'P30D';
-    const LOOKBACK_WINDOW_P45_D = 'P45D';
-    const LOOKBACK_WINDOW_P60_D = 'P60D';
-    const LOOKBACK_WINDOW_P90_D = 'P90D';
-    const LOOKBACK_WINDOW_P120_D = 'P120D';
-    const LOOKBACK_WINDOW_P150_D = 'P150D';
-    const LOOKBACK_WINDOW_P180_D = 'P180D';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUserTypeAllowableValues()
-    {
-        return [
-            self::USER_TYPE_VIEWER,
-            self::USER_TYPE_BUYER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getLookbackWindowAllowableValues()
-    {
-        return [
-            self::LOOKBACK_WINDOW_P7_D,
-            self::LOOKBACK_WINDOW_P14_D,
-            self::LOOKBACK_WINDOW_P30_D,
-            self::LOOKBACK_WINDOW_P45_D,
-            self::LOOKBACK_WINDOW_P60_D,
-            self::LOOKBACK_WINDOW_P90_D,
-            self::LOOKBACK_WINDOW_P120_D,
-            self::LOOKBACK_WINDOW_P150_D,
-            self::LOOKBACK_WINDOW_P180_D,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -248,12 +194,10 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['user_type'] = $data['user_type'] ?? null;
-        $this->container['lookback_window'] = $data['lookback_window'] ?? null;
-        $this->container['brand_ids'] = $data['brand_ids'] ?? null;
-        $this->container['category_ids'] = $data['category_ids'] ?? null;
         $this->container['retailer_id'] = $data['retailer_id'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['user_behavior_details'] = $data['user_behavior_details'] ?? null;
+        $this->container['customer_list_details'] = $data['customer_list_details'] ?? null;
     }
 
     /**
@@ -264,30 +208,6 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['user_type'] === null) {
-            $invalidProperties[] = "'user_type' can't be null";
-        }
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'user_type', must be one of '%s'",
-                $this->container['user_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['lookback_window'] === null) {
-            $invalidProperties[] = "'lookback_window' can't be null";
-        }
-        $allowedValues = $this->getLookbackWindowAllowableValues();
-        if (!is_null($this->container['lookback_window']) && !in_array($this->container['lookback_window'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'lookback_window', must be one of '%s'",
-                $this->container['lookback_window'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
@@ -309,122 +229,6 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets user_type
-     *
-     * @return string
-     */
-    public function getUserType()
-    {
-        return $this->container['user_type'];
-    }
-
-    /**
-     * Sets user_type
-     *
-     * @param string $user_type Type of the user
-     *
-     * @return self
-     */
-    public function setUserType($user_type)
-    {
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!in_array($user_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'user_type', must be one of '%s'",
-                    $user_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['user_type'] = $user_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets lookback_window
-     *
-     * @return string
-     */
-    public function getLookbackWindow()
-    {
-        return $this->container['lookback_window'];
-    }
-
-    /**
-     * Sets lookback_window
-     *
-     * @param string $lookback_window Length of lookback window
-     *
-     * @return self
-     */
-    public function setLookbackWindow($lookback_window)
-    {
-        $allowedValues = $this->getLookbackWindowAllowableValues();
-        if (!in_array($lookback_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'lookback_window', must be one of '%s'",
-                    $lookback_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['lookback_window'] = $lookback_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_ids
-     *
-     * @return string[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param string[]|null $brand_ids The brands to target
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        $this->container['brand_ids'] = $brand_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets category_ids
-     *
-     * @return string[]|null
-     */
-    public function getCategoryIds()
-    {
-        return $this->container['category_ids'];
-    }
-
-    /**
-     * Sets category_ids
-     *
-     * @param string[]|null $category_ids The categories to target
-     *
-     * @return self
-     */
-    public function setCategoryIds($category_ids)
-    {
-        $this->container['category_ids'] = $category_ids;
-
-        return $this;
-    }
 
     /**
      * Gets retailer_id
@@ -463,13 +267,61 @@ class RetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name Name of the audience.
      *
      * @return self
      */
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_behavior_details
+     *
+     * @return \criteo\api\retailmedia\preview\Model\UserBehaviorDetails|null
+     */
+    public function getUserBehaviorDetails()
+    {
+        return $this->container['user_behavior_details'];
+    }
+
+    /**
+     * Sets user_behavior_details
+     *
+     * @param \criteo\api\retailmedia\preview\Model\UserBehaviorDetails|null $user_behavior_details user_behavior_details
+     *
+     * @return self
+     */
+    public function setUserBehaviorDetails($user_behavior_details)
+    {
+        $this->container['user_behavior_details'] = $user_behavior_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_list_details
+     *
+     * @return \criteo\api\retailmedia\preview\Model\CustomerListDetails|null
+     */
+    public function getCustomerListDetails()
+    {
+        return $this->container['customer_list_details'];
+    }
+
+    /**
+     * Sets customer_list_details
+     *
+     * @param \criteo\api\retailmedia\preview\Model\CustomerListDetails|null $customer_list_details customer_list_details
+     *
+     * @return self
+     */
+    public function setCustomerListDetails($customer_list_details)
+    {
+        $this->container['customer_list_details'] = $customer_list_details;
 
         return $this;
     }

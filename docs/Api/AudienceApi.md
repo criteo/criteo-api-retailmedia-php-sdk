@@ -11,7 +11,7 @@ Method | HTTP request | Description
 ## `createAudience()`
 
 ```php
-createAudience($account_id, $create_audience_request): \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse
+createAudience($account_id, $create_retail_media_audience_request): \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse
 ```
 
 
@@ -36,10 +36,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
-$create_audience_request = new \criteo\api\retailmedia\preview\Model\CreateAudienceRequest(); // \criteo\api\retailmedia\preview\Model\CreateAudienceRequest
+$create_retail_media_audience_request = new \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest(); // \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest
 
 try {
-    $result = $apiInstance->createAudience($account_id, $create_audience_request);
+    $result = $apiInstance->createAudience($account_id, $create_retail_media_audience_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceApi->createAudience: ', $e->getMessage(), PHP_EOL;
@@ -51,7 +51,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account to which this audience belongs. |
- **create_audience_request** | [**\criteo\api\retailmedia\preview\Model\CreateAudienceRequest**](../Model/CreateAudienceRequest.md)|  |
+ **create_retail_media_audience_request** | [**\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  |
 
 ### Return type
 

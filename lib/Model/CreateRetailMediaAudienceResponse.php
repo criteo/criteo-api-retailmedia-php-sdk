@@ -60,7 +60,7 @@ class CreateRetailMediaAudienceResponse implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\RetailMediaAudience',
+        'data' => '\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudience',
         'errors' => '\criteo\api\retailmedia\preview\Model\CommonError[]',
         'warnings' => '\criteo\api\retailmedia\preview\Model\CommonWarning[]'
     ];
@@ -203,9 +203,6 @@ class CreateRetailMediaAudienceResponse implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -224,7 +221,7 @@ class CreateRetailMediaAudienceResponse implements ModelInterface, ArrayAccess, 
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\RetailMediaAudience
+     * @return \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudience|null
      */
     public function getData()
     {
@@ -234,7 +231,7 @@ class CreateRetailMediaAudienceResponse implements ModelInterface, ArrayAccess, 
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\RetailMediaAudience $data data
+     * @param \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudience|null $data data
      *
      * @return self
      */

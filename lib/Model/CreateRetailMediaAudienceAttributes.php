@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaAudience
+ * CreateRetailMediaAudienceAttributes
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailMediaAudience Class Doc Comment
+ * CreateRetailMediaAudienceAttributes Class Doc Comment
  *
  * @category Class
- * @description All the information about a retail media audience
+ * @description Parameters needed to create an audience
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateRetailMediaAudienceAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaAudience';
+    protected static $openAPIModelName = 'CreateRetailMediaAudienceAttributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'audience_type' => 'string',
-        'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes'
+        'user_type' => 'string',
+        'lookback_window' => 'string',
+        'brand_ids' => 'string[]',
+        'category_ids' => 'string[]',
+        'retailer_id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -74,10 +76,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'audience_type' => null,
-        'id' => null,
-        'type' => null,
-        'attributes' => null
+        'user_type' => null,
+        'lookback_window' => null,
+        'brand_ids' => null,
+        'category_ids' => null,
+        'retailer_id' => null,
+        'name' => null
     ];
 
     /**
@@ -107,10 +111,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'audience_type' => 'audienceType',
-        'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'user_type' => 'userType',
+        'lookback_window' => 'lookbackWindow',
+        'brand_ids' => 'brandIds',
+        'category_ids' => 'categoryIds',
+        'retailer_id' => 'retailerId',
+        'name' => 'name'
     ];
 
     /**
@@ -119,10 +125,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'audience_type' => 'setAudienceType',
-        'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'user_type' => 'setUserType',
+        'lookback_window' => 'setLookbackWindow',
+        'brand_ids' => 'setBrandIds',
+        'category_ids' => 'setCategoryIds',
+        'retailer_id' => 'setRetailerId',
+        'name' => 'setName'
     ];
 
     /**
@@ -131,10 +139,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'audience_type' => 'getAudienceType',
-        'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'user_type' => 'getUserType',
+        'lookback_window' => 'getLookbackWindow',
+        'brand_ids' => 'getBrandIds',
+        'category_ids' => 'getCategoryIds',
+        'retailer_id' => 'getRetailerId',
+        'name' => 'getName'
     ];
 
     /**
@@ -178,19 +188,48 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    const AUDIENCE_TYPE_CUSTOMER_LIST = 'customerList';
-    const AUDIENCE_TYPE_USER_BEHAVIOR = 'userBehavior';
+    const USER_TYPE_VIEWER = 'viewer';
+    const USER_TYPE_BUYER = 'buyer';
+    const LOOKBACK_WINDOW_P7_D = 'P7D';
+    const LOOKBACK_WINDOW_P14_D = 'P14D';
+    const LOOKBACK_WINDOW_P30_D = 'P30D';
+    const LOOKBACK_WINDOW_P45_D = 'P45D';
+    const LOOKBACK_WINDOW_P60_D = 'P60D';
+    const LOOKBACK_WINDOW_P90_D = 'P90D';
+    const LOOKBACK_WINDOW_P120_D = 'P120D';
+    const LOOKBACK_WINDOW_P150_D = 'P150D';
+    const LOOKBACK_WINDOW_P180_D = 'P180D';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getAudienceTypeAllowableValues()
+    public function getUserTypeAllowableValues()
     {
         return [
-            self::AUDIENCE_TYPE_CUSTOMER_LIST,
-            self::AUDIENCE_TYPE_USER_BEHAVIOR,
+            self::USER_TYPE_VIEWER,
+            self::USER_TYPE_BUYER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLookbackWindowAllowableValues()
+    {
+        return [
+            self::LOOKBACK_WINDOW_P7_D,
+            self::LOOKBACK_WINDOW_P14_D,
+            self::LOOKBACK_WINDOW_P30_D,
+            self::LOOKBACK_WINDOW_P45_D,
+            self::LOOKBACK_WINDOW_P60_D,
+            self::LOOKBACK_WINDOW_P90_D,
+            self::LOOKBACK_WINDOW_P120_D,
+            self::LOOKBACK_WINDOW_P150_D,
+            self::LOOKBACK_WINDOW_P180_D,
         ];
     }
 
@@ -209,10 +248,12 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['audience_type'] = $data['audience_type'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['user_type'] = $data['user_type'] ?? null;
+        $this->container['lookback_window'] = $data['lookback_window'] ?? null;
+        $this->container['brand_ids'] = $data['brand_ids'] ?? null;
+        $this->container['category_ids'] = $data['category_ids'] ?? null;
+        $this->container['retailer_id'] = $data['retailer_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
     }
 
     /**
@@ -224,26 +265,35 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['audience_type'] === null) {
-            $invalidProperties[] = "'audience_type' can't be null";
+        if ($this->container['user_type'] === null) {
+            $invalidProperties[] = "'user_type' can't be null";
         }
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($this->container['audience_type']) && !in_array($this->container['audience_type'], $allowedValues, true)) {
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'audience_type', must be one of '%s'",
-                $this->container['audience_type'],
+                "invalid value '%s' for 'user_type', must be one of '%s'",
+                $this->container['user_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['lookback_window'] === null) {
+            $invalidProperties[] = "'lookback_window' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        $allowedValues = $this->getLookbackWindowAllowableValues();
+        if (!is_null($this->container['lookback_window']) && !in_array($this->container['lookback_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'lookback_window', must be one of '%s'",
+                $this->container['lookback_window'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
+
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -261,107 +311,165 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets audience_type
+     * Gets user_type
      *
      * @return string
      */
-    public function getAudienceType()
+    public function getUserType()
     {
-        return $this->container['audience_type'];
+        return $this->container['user_type'];
     }
 
     /**
-     * Sets audience_type
+     * Sets user_type
      *
-     * @param string $audience_type Type of the audience
+     * @param string $user_type Type of the user
      *
      * @return self
      */
-    public function setAudienceType($audience_type)
+    public function setUserType($user_type)
     {
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!in_array($audience_type, $allowedValues, true)) {
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!in_array($user_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'audience_type', must be one of '%s'",
-                    $audience_type,
+                    "Invalid value '%s' for 'user_type', must be one of '%s'",
+                    $user_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['audience_type'] = $audience_type;
+        $this->container['user_type'] = $user_type;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets lookback_window
      *
      * @return string
      */
-    public function getId()
+    public function getLookbackWindow()
     {
-        return $this->container['id'];
+        return $this->container['lookback_window'];
     }
 
     /**
-     * Sets id
+     * Sets lookback_window
      *
-     * @param string $id Unique ID of this audience.
+     * @param string $lookback_window Length of lookback window
      *
      * @return self
      */
-    public function setId($id)
+    public function setLookbackWindow($lookback_window)
     {
-        $this->container['id'] = $id;
+        $allowedValues = $this->getLookbackWindowAllowableValues();
+        if (!in_array($lookback_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_window', must be one of '%s'",
+                    $lookback_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_window'] = $lookback_window;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets brand_ids
+     *
+     * @return string[]|null
+     */
+    public function getBrandIds()
+    {
+        return $this->container['brand_ids'];
+    }
+
+    /**
+     * Sets brand_ids
+     *
+     * @param string[]|null $brand_ids The brands to target
+     *
+     * @return self
+     */
+    public function setBrandIds($brand_ids)
+    {
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return string[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param string[]|null $category_ids The categories to target
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        $this->container['category_ids'] = $category_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
      *
      * @return string
      */
-    public function getType()
+    public function getRetailerId()
     {
-        return $this->container['type'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets type
+     * Sets retailer_id
      *
-     * @param string $type Name of the entity i.e. RetailMediaAudienceSummary
+     * @param string $retailer_id ID of the retailer associated with this audience
      *
      * @return self
      */
-    public function setType($type)
+    public function setRetailerId($retailer_id)
     {
-        $this->container['type'] = $type;
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets name
      *
-     * @return \criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes
+     * @return string
      */
-    public function getAttributes()
+    public function getName()
     {
-        return $this->container['attributes'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets attributes
+     * Sets name
      *
-     * @param \criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes $attributes attributes
+     * @param string $name Name of the audience.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setName($name)
     {
-        $this->container['attributes'] = $attributes;
+        $this->container['name'] = $name;
 
         return $this;
     }

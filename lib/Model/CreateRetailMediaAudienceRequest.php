@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAudienceRequest
+ * CreateRetailMediaAudienceRequest
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * CreateAudienceRequest Class Doc Comment
+ * CreateRetailMediaAudienceRequest Class Doc Comment
  *
  * @category Class
  * @description Request to create an audience
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateRetailMediaAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateAudienceRequest';
+    protected static $openAPIModelName = 'CreateRetailMediaAudienceRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\CreateAudienceBody'
+        'data' => '\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceBody'
     ];
 
     /**
@@ -212,7 +212,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\CreateAudienceBody
+     * @return \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceBody
      */
     public function getData()
     {
@@ -222,7 +222,7 @@ class CreateAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\CreateAudienceBody $data data
+     * @param \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceBody $data data
      *
      * @return self
      */

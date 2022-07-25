@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaAudience
+ * CreateRetailMediaAudienceBody
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailMediaAudience Class Doc Comment
+ * CreateRetailMediaAudienceBody Class Doc Comment
  *
  * @category Class
- * @description All the information about a retail media audience
+ * @description Request body of CreateRetailMediaAudienceRequest
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateRetailMediaAudienceBody implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaAudience';
+    protected static $openAPIModelName = 'CreateRetailMediaAudienceBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,8 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'audience_type' => 'string',
-        'id' => 'string',
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceAttributes'
     ];
 
     /**
@@ -74,8 +72,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'audience_type' => null,
-        'id' => null,
         'type' => null,
         'attributes' => null
     ];
@@ -107,8 +103,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'audience_type' => 'audienceType',
-        'id' => 'id',
         'type' => 'type',
         'attributes' => 'attributes'
     ];
@@ -119,8 +113,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'audience_type' => 'setAudienceType',
-        'id' => 'setId',
         'type' => 'setType',
         'attributes' => 'setAttributes'
     ];
@@ -131,8 +123,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'audience_type' => 'getAudienceType',
-        'id' => 'getId',
         'type' => 'getType',
         'attributes' => 'getAttributes'
     ];
@@ -178,21 +168,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    const AUDIENCE_TYPE_CUSTOMER_LIST = 'customerList';
-    const AUDIENCE_TYPE_USER_BEHAVIOR = 'userBehavior';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAudienceTypeAllowableValues()
-    {
-        return [
-            self::AUDIENCE_TYPE_CUSTOMER_LIST,
-            self::AUDIENCE_TYPE_USER_BEHAVIOR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -209,8 +184,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['audience_type'] = $data['audience_type'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
         $this->container['attributes'] = $data['attributes'] ?? null;
     }
@@ -224,21 +197,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['audience_type'] === null) {
-            $invalidProperties[] = "'audience_type' can't be null";
-        }
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($this->container['audience_type']) && !in_array($this->container['audience_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'audience_type', must be one of '%s'",
-                $this->container['audience_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -261,64 +219,6 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets audience_type
-     *
-     * @return string
-     */
-    public function getAudienceType()
-    {
-        return $this->container['audience_type'];
-    }
-
-    /**
-     * Sets audience_type
-     *
-     * @param string $audience_type Type of the audience
-     *
-     * @return self
-     */
-    public function setAudienceType($audience_type)
-    {
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!in_array($audience_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'audience_type', must be one of '%s'",
-                    $audience_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['audience_type'] = $audience_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Unique ID of this audience.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string
@@ -331,7 +231,7 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets type
      *
-     * @param string $type Name of the entity i.e. RetailMediaAudienceSummary
+     * @param string $type the name of the entity type
      *
      * @return self
      */
@@ -345,7 +245,7 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes
+     * @return \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceAttributes
      */
     public function getAttributes()
     {
@@ -355,7 +255,7 @@ class RetailMediaAudience implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\RetailMediaAudienceAttributes $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceAttributes $attributes attributes
      *
      * @return self
      */
