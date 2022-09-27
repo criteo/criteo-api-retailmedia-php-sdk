@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getApi202110ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2022-07/retail-media/balances/{balance-id}/campaigns | 
 [**getApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items | 
 [**getApi202110ExternalLineItemProductsByLineItemId()**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id}/products | 
+[**getApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id} | 
 [**getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
 [**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
 [**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
@@ -28,7 +29,6 @@ Method | HTTP request | Description
 [**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2022-07/retail-media/auction-line-items/{line-item-id} | 
 [**getApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items | 
 [**getApiV2ExternalLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id} | 
-[**getApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id} | 
 [**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append | 
 [**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete | 
 [**postApi202110ExternalBalanceCampaignsAppendByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2022-07/retail-media/balances/{balance-id}/campaigns/append | 
@@ -485,6 +485,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110PagedListResponse**](../Model/PromotedProduct202110PagedListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApi202110ExternalPreferredLineItemByLineItemId()`
+
+```php
+getApi202110ExternalPreferredLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_07\Model\PreferredLineItem202110Response
+```
+
+
+
+Gets the preferred line item for the given line item id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The given line item id
+
+try {
+    $result = $apiInstance->getApi202110ExternalPreferredLineItemByLineItemId($line_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApi202110ExternalPreferredLineItemByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The given line item id |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItem202110Response**](../Model/PreferredLineItem202110Response.md)
 
 ### Authorization
 
@@ -1548,66 +1608,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\criteo\api\retailmedia\v2022_07\Model\CommonLineItemResponse**](../Model/CommonLineItemResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApiV2ExternalPreferredLineItemByLineItemId()`
-
-```php
-getApiV2ExternalPreferredLineItemByLineItemId($line_item_id): \criteo\api\retailmedia\v2022_07\Model\PreferredLineItemResponse
-```
-
-
-
-Gets the preferred line item for the given line item id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The given line item id
-
-try {
-    $result = $apiInstance->getApiV2ExternalPreferredLineItemByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV2ExternalPreferredLineItemByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
 
 ### Authorization
 
