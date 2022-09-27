@@ -4100,14 +4100,15 @@ class CampaignApi
      * Operation getApiV1ExternalRetailerBrandsByRetailerId
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerId($retailer_id)
+    public function getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter = null)
     {
-        list($response) = $this->getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id);
+        list($response) = $this->getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $sku_stock_type_filter);
         return $response;
     }
 
@@ -4115,14 +4116,15 @@ class CampaignApi
      * Operation getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id)
+    public function getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $sku_stock_type_filter = null)
     {
-        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id);
+        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $sku_stock_type_filter);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4199,13 +4201,14 @@ class CampaignApi
      * Operation getApiV1ExternalRetailerBrandsByRetailerIdAsync
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdAsync($retailer_id)
+    public function getApiV1ExternalRetailerBrandsByRetailerIdAsync($retailer_id, $sku_stock_type_filter = null)
     {
-        return $this->getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id)
+        return $this->getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $sku_stock_type_filter)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4217,14 +4220,15 @@ class CampaignApi
      * Operation getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id)
+    public function getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $sku_stock_type_filter = null)
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BrandPreviewListResponse';
-        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id);
+        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $sku_stock_type_filter);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4263,11 +4267,12 @@ class CampaignApi
      * Create request for operation 'getApiV1ExternalRetailerBrandsByRetailerId'
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id)
+    public function getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $sku_stock_type_filter = null)
     {
         // verify the required parameter 'retailer_id' is set
         if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
@@ -4283,6 +4288,17 @@ class CampaignApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($sku_stock_type_filter !== null) {
+            if('form' === 'form' && is_array($sku_stock_type_filter)) {
+                foreach($sku_stock_type_filter as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['sku-stock-type-filter'] = $sku_stock_type_filter;
+            }
+        }
 
 
         // path params

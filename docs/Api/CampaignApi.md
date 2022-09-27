@@ -923,7 +923,7 @@ Name | Type | Description  | Notes
 ## `getApiV1ExternalRetailerBrandsByRetailerId()`
 
 ```php
-getApiV1ExternalRetailerBrandsByRetailerId($retailer_id): \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
+getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter): \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
 ```
 
 
@@ -948,9 +948,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $retailer_id = 56; // int | The retailer id for which brands should be fetched.
+$sku_stock_type_filter = 'sku_stock_type_filter_example'; // string | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
 
 try {
-    $result = $apiInstance->getApiV1ExternalRetailerBrandsByRetailerId($retailer_id);
+    $result = $apiInstance->getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getApiV1ExternalRetailerBrandsByRetailerId: ', $e->getMessage(), PHP_EOL;
@@ -962,6 +963,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **retailer_id** | **int**| The retailer id for which brands should be fetched. |
+ **sku_stock_type_filter** | **string**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional]
 
 ### Return type
 
