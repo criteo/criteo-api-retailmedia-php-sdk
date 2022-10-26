@@ -128,6 +128,8 @@ docs/Model/ValueTypeResourceOfAudienceTarget202110.md
 docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
+examples/Advertiser.php
+examples/Analytics.php
 git_push.sh
 lib/Api/AnalyticsApi.php
 lib/Api/AudienceApi.php
