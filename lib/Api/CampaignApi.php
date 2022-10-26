@@ -115,6 +115,240 @@ class CampaignApi
     }
 
     /**
+     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id)
+    {
+        $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id);
+    }
+
+    /**
+     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id)
+    {
+        $request = $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id)
+    {
+        return $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id)
+    {
+        $returnType = '';
+        $request = $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+        // verify the required parameter 'product_button_id' is set
+        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_id when calling deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($product_button_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product-button-id' . '}',
+                ObjectSerializer::toPathValue($product_button_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteApiV1ExternalBalanceCampaignsByBalanceId
      *
      * @param  string $balance_id The balance to remove campaigns from (required)
@@ -650,6 +884,545 @@ class CampaignApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemId
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemId($line_item_id)
+    {
+        list($response) = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id);
+        return $response;
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id)
+    {
+        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdAsync
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdAsync($line_item_id)
+    {
+        return $this->getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApi202210ExternalLineItemProductButtonsByLineItemId'
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling getApi202210ExternalLineItemProductButtonsByLineItemId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponse
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id)
+    {
+        list($response) = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id);
+        return $response;
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id)
+    {
+        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id)
+    {
+        return $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponse';
+        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+        // verify the required parameter 'product_button_id' is set
+        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_id when calling getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($product_button_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product-button-id' . '}',
+                ObjectSerializer::toPathValue($product_button_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -4652,6 +5425,277 @@ class CampaignApi
     }
 
     /**
+     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemId
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
+     */
+    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemId($line_item_id, $product_button_list_request = null)
+    {
+        list($response) = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_list_request);
+        return $response;
+    }
+
+    /**
+     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_list_request = null)
+    {
+        $request = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsync
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsync($line_item_id, $product_button_list_request = null)
+    {
+        return $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_list_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_list_request = null)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+        $request = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postApi202210ExternalLineItemProductButtonsCreateByLineItemId'
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request = null)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling postApi202210ExternalLineItemProductButtonsCreateByLineItemId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($product_button_list_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($product_button_list_request));
+            } else {
+                $httpBody = $product_button_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation postApiV0ExternalAccountCatalogsByAccountId
      *
      * @param  string $account_id The account to request the catalog for. (required)
@@ -6055,6 +7099,296 @@ class CampaignApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponse
+     */
+    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, $product_button_request = null)
+    {
+        list($response) = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request);
+        return $response;
+    }
+
+    /**
+     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request = null)
+    {
+        $request = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id, $product_button_request = null)
+    {
+        return $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request = null)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponse';
+        $request = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+     *
+     * @param  string $line_item_id Long external id of the associated line item (required)
+     * @param  string $product_button_id Sequential id of the product button (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request = null)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+        // verify the required parameter 'product_button_id' is set
+        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_id when calling putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($product_button_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product-button-id' . '}',
+                ObjectSerializer::toPathValue($product_button_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($product_button_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($product_button_request));
+            } else {
+                $httpBody = $product_button_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
