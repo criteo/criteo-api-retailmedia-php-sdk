@@ -47,12 +47,12 @@ Method | HTTP request | Description
 [**postApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/campaigns | 
 [**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2022-04/retail-media/accounts/{accountId}/catalogs | 
 [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2022-04/retail-media/campaigns/{campaign-id}/auction-line-items | 
+[**putApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
 [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
 [**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
 [**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
 [**putApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2022-04/retail-media/campaigns/{campaignId} | 
 [**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-04/retail-media/auction-line-items/{line-item-id} | 
-[**putApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalPreferredLineItemByLineItemId) | **PUT** /2022-04/retail-media/preferred-line-items/{line-item-id} | 
 
 
 ## `createAsset()`
@@ -2736,6 +2736,68 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `putApi202110ExternalPreferredLineItemByLineItemId()`
+
+```php
+putApi202110ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model202110_request): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response
+```
+
+
+
+Updates the preferred line item for the given line item id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The given line item id
+$preferred_line_item_update_model202110_request = new \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request(); // \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request | The line item settings to create a line item with
+
+try {
+    $result = $apiInstance->putApi202110ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model202110_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->putApi202110ExternalPreferredLineItemByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **line_item_id** | **string**| The given line item id |
+ **preferred_line_item_update_model202110_request** | [**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request**](../Model/PreferredLineItemUpdateModel202110Request.md)| The line item settings to create a line item with | [optional]
+
+### Return type
+
+[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response**](../Model/PreferredLineItem202110Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()`
 
 ```php
@@ -3032,68 +3094,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\criteo\api\retailmedia\v2022_04\Model\AuctionLineItemResponse**](../Model/AuctionLineItemResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `putApiV2ExternalPreferredLineItemByLineItemId()`
-
-```php
-putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request): \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse
-```
-
-
-
-Updates the preferred line item for the given line item id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2022_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2022_04\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The given line item id
-$preferred_line_item_update_model_request = new \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest(); // \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest | The line item settings to create a line item with
-
-try {
-    $result = $apiInstance->putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->putApiV2ExternalPreferredLineItemByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
- **preferred_line_item_update_model_request** | [**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest**](../Model/PreferredLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
-
-### Return type
-
-[**\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse**](../Model/PreferredLineItemResponse.md)
 
 ### Authorization
 

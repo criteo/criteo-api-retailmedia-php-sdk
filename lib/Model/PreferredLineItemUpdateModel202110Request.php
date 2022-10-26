@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalLineItemCapping
+ * PreferredLineItemUpdateModel202110Request
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
 
 /**
- * ExternalLineItemCapping Class Doc Comment
+ * PreferredLineItemUpdateModel202110Request Class Doc Comment
  *
  * @category Class
- * @description Frequency capping for a preferred line item
+ * @description Data model for an input resource
  * @package  criteo\api\retailmedia\v2022_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreferredLineItemUpdateModel202110Request implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalLineItemCapping';
+    protected static $openAPIModelName = 'PreferredLineItemUpdateModel202110Request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'count' => 'int'
+        'data' => '\criteo\api\retailmedia\v2022_04\Model\ResourceOfPreferredLineItemUpdateModel202110'
     ];
 
     /**
@@ -72,8 +71,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'count' => 'int32'
+        'data' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'count' => 'count'
+        'data' => 'data'
     ];
 
     /**
@@ -113,8 +110,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'count' => 'setCount'
+        'data' => 'setData'
     ];
 
     /**
@@ -123,8 +119,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'count' => 'getCount'
+        'data' => 'getData'
     ];
 
     /**
@@ -168,23 +163,6 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const TYPE_UNKNOWN = 'unknown';
-    const TYPE_DAY = 'day';
-    const TYPE_SESSION = 'session';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_DAY,
-            self::TYPE_SESSION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -201,8 +179,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['count'] = $data['count'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -214,21 +191,6 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -245,59 +207,25 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets type
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\v2022_04\Model\ResourceOfPreferredLineItemUpdateModel202110|null
      */
-    public function getType()
+    public function getData()
     {
-        return $this->container['type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets type
+     * Sets data
      *
-     * @param string $type type
+     * @param \criteo\api\retailmedia\v2022_04\Model\ResourceOfPreferredLineItemUpdateModel202110|null $data data
      *
      * @return self
      */
-    public function setType($type)
+    public function setData($data)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets count
-     *
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int $count count
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        $this->container['count'] = $count;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -12266,6 +12266,297 @@ class CampaignApi
     }
 
     /**
+     * Operation putApi202110ExternalPreferredLineItemByLineItemId
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request $preferred_line_item_update_model202110_request The line item settings to create a line item with (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response|\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response
+     */
+    public function putApi202110ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model202110_request = null)
+    {
+        list($response) = $this->putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model202110_request);
+        return $response;
+    }
+
+    /**
+     * Operation putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request $preferred_line_item_update_model202110_request The line item settings to create a line item with (optional)
+     *
+     * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response|\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model202110_request = null)
+    {
+        $request = $this->putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model202110_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putApi202110ExternalPreferredLineItemByLineItemIdAsync
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request $preferred_line_item_update_model202110_request The line item settings to create a line item with (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApi202110ExternalPreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model202110_request = null)
+    {
+        return $this->putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model202110_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request $preferred_line_item_update_model202110_request The line item settings to create a line item with (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model202110_request = null)
+    {
+        $returnType = '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItem202110Response';
+        $request = $this->putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model202110_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'putApi202110ExternalPreferredLineItemByLineItemId'
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModel202110Request $preferred_line_item_update_model202110_request The line item settings to create a line item with (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model202110_request = null)
+    {
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling putApi202110ExternalPreferredLineItemByLineItemId'
+            );
+        }
+
+        $resourcePath = '/2022-04/retail-media/preferred-line-items/{line-item-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($preferred_line_item_update_model202110_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_update_model202110_request));
+            } else {
+                $httpBody = $preferred_line_item_update_model202110_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId
      *
      * @param  string $line_item_id The line item to interact with (required)
@@ -13650,297 +13941,6 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($auction_line_item_update_model_request));
             } else {
                 $httpBody = $auction_line_item_update_model_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if ($this->config->getAccessToken() !== null) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation putApiV2ExternalPreferredLineItemByLineItemId
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest $preferred_line_item_update_model_request The line item settings to create a line item with (optional)
-     *
-     * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse|\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse
-     */
-    public function putApiV2ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_request = null)
-    {
-        list($response) = $this->putApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_request);
-        return $response;
-    }
-
-    /**
-     * Operation putApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest $preferred_line_item_update_model_request The line item settings to create a line item with (optional)
-     *
-     * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse|\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_request = null)
-    {
-        $request = $this->putApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_request);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putApiV2ExternalPreferredLineItemByLineItemIdAsync
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest $preferred_line_item_update_model_request The line item settings to create a line item with (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApiV2ExternalPreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model_request = null)
-    {
-        return $this->putApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_request)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation putApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest $preferred_line_item_update_model_request The line item settings to create a line item with (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_request = null)
-    {
-        $returnType = '\criteo\api\retailmedia\v2022_04\Model\PreferredLineItemResponse';
-        $request = $this->putApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_request);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'putApiV2ExternalPreferredLineItemByLineItemId'
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\v2022_04\Model\PreferredLineItemUpdateModelRequest $preferred_line_item_update_model_request The line item settings to create a line item with (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function putApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_request = null)
-    {
-        // verify the required parameter 'line_item_id' is set
-        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling putApiV2ExternalPreferredLineItemByLineItemId'
-            );
-        }
-
-        $resourcePath = '/2022-04/retail-media/preferred-line-items/{line-item-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($line_item_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'line-item-id' . '}',
-                ObjectSerializer::toPathValue($line_item_id),
-                $resourcePath
-            );
-        }
-
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($preferred_line_item_update_model_request)) {
-            if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_update_model_request));
-            } else {
-                $httpBody = $preferred_line_item_update_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

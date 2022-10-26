@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalPreferredLineItemUpdateModel
+ * ExternalPreferredLineItemUpdateModel202110
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
 
 /**
- * ExternalPreferredLineItemUpdateModel Class Doc Comment
+ * ExternalPreferredLineItemUpdateModel202110 Class Doc Comment
  *
  * @category Class
  * @description Model used to update a preferred line item
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_04\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalPreferredLineItemUpdateModel202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalPreferredLineItemUpdateModel';
+    protected static $openAPIModelName = 'ExternalPreferredLineItemUpdateModel202110';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -65,7 +65,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         'end_date' => '\DateTime',
         'status' => 'string',
         'pacing' => 'string',
-        'capping' => '\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping'
+        'capping' => '\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping202110',
+        'page' => '\criteo\api\retailmedia\v2022_04\Model\ExternalLineItemPage202110',
+        'budget' => 'double',
+        'creative_id' => 'string'
     ];
 
     /**
@@ -81,7 +84,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         'end_date' => 'date',
         'status' => null,
         'pacing' => null,
-        'capping' => null
+        'capping' => null,
+        'page' => null,
+        'budget' => 'double',
+        'creative_id' => 'long-id'
     ];
 
     /**
@@ -116,7 +122,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         'end_date' => 'endDate',
         'status' => 'status',
         'pacing' => 'pacing',
-        'capping' => 'capping'
+        'capping' => 'capping',
+        'page' => 'page',
+        'budget' => 'budget',
+        'creative_id' => 'creativeId'
     ];
 
     /**
@@ -130,7 +139,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         'end_date' => 'setEndDate',
         'status' => 'setStatus',
         'pacing' => 'setPacing',
-        'capping' => 'setCapping'
+        'capping' => 'setCapping',
+        'page' => 'setPage',
+        'budget' => 'setBudget',
+        'creative_id' => 'setCreativeId'
     ];
 
     /**
@@ -144,7 +156,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         'end_date' => 'getEndDate',
         'status' => 'getStatus',
         'pacing' => 'getPacing',
-        'capping' => 'getCapping'
+        'capping' => 'getCapping',
+        'page' => 'getPage',
+        'budget' => 'getBudget',
+        'creative_id' => 'getCreativeId'
     ];
 
     /**
@@ -256,6 +271,9 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
         $this->container['status'] = $data['status'] ?? null;
         $this->container['pacing'] = $data['pacing'] ?? PACING_ACCELERATED;
         $this->container['capping'] = $data['capping'] ?? null;
+        $this->container['page'] = $data['page'] ?? null;
+        $this->container['budget'] = $data['budget'] ?? null;
+        $this->container['creative_id'] = $data['creative_id'] ?? null;
     }
 
     /**
@@ -340,10 +358,10 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
     public function setName($name)
     {
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel202110., must be smaller than or equal to 255.');
         }
         if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel202110., must be bigger than or equal to 0.');
         }
 
         $this->container['name'] = $name;
@@ -470,7 +488,7 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
     /**
      * Gets capping
      *
-     * @return \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping|null
+     * @return \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping202110|null
      */
     public function getCapping()
     {
@@ -480,13 +498,85 @@ class ExternalPreferredLineItemUpdateModel implements ModelInterface, ArrayAcces
     /**
      * Sets capping
      *
-     * @param \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping|null $capping capping
+     * @param \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemCapping202110|null $capping capping
      *
      * @return self
      */
     public function setCapping($capping)
     {
         $this->container['capping'] = $capping;
+
+        return $this;
+    }
+
+    /**
+     * Gets page
+     *
+     * @return \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemPage202110|null
+     */
+    public function getPage()
+    {
+        return $this->container['page'];
+    }
+
+    /**
+     * Sets page
+     *
+     * @param \criteo\api\retailmedia\v2022_04\Model\ExternalLineItemPage202110|null $page page
+     *
+     * @return self
+     */
+    public function setPage($page)
+    {
+        $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget
+     *
+     * @return double|null
+     */
+    public function getBudget()
+    {
+        return $this->container['budget'];
+    }
+
+    /**
+     * Sets budget
+     *
+     * @param double|null $budget budget
+     *
+     * @return self
+     */
+    public function setBudget($budget)
+    {
+        $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_id
+     *
+     * @return string|null
+     */
+    public function getCreativeId()
+    {
+        return $this->container['creative_id'];
+    }
+
+    /**
+     * Sets creative_id
+     *
+     * @param string|null $creative_id creative_id
+     *
+     * @return self
+     */
+    public function setCreativeId($creative_id)
+    {
+        $this->container['creative_id'] = $creative_id;
 
         return $this;
     }
