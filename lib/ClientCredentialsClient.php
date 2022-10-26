@@ -1,9 +1,9 @@
 <?php
-namespace criteo\api\retailmedia\v2022_01;
+namespace criteo\api\retailmedia\v2022_10;
 
-use criteo\api\retailmedia\v2022_01\ApiException;
-use criteo\api\retailmedia\v2022_01\Api\OAuthApi;
-use criteo\api\retailmedia\v2022_01\ClientCredentialsClient\Token;
+use criteo\api\retailmedia\v2022_10\ApiException;
+use criteo\api\retailmedia\v2022_10\Api\OAuthApi;
+use criteo\api\retailmedia\v2022_10\ClientCredentialsClient\Token;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\RequestInterface;
@@ -175,7 +175,7 @@ class ClientCredentialsClient implements \GuzzleHttp\ClientInterface
     }
 }
 
-namespace criteo\api\retailmedia\v2022_01\ClientCredentialsClient;
+namespace criteo\api\retailmedia\v2022_10\ClientCredentialsClient;
 
 use DateTime;
 

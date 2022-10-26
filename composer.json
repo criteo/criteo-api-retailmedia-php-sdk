@@ -1,6 +1,6 @@
 {
     "name": "criteo/criteo-api-retailmedia-sdk",
-    "description": "PHP SDK for Criteo API 2022.01.0.221026 version",
+    "description": "PHP SDK for Criteo API 2022.10.0.221026 version",
     "keywords": [
         "criteo",
         "openapi generator",
@@ -35,9 +35,9 @@
         "jchook/phpunit-assert-throws": "^1.0"
     },
     "autoload": {
-        "psr-4": { "criteo\\api\\retailmedia\\v2022_01\\" : "lib/" }
+        "psr-4": { "criteo\\api\\retailmedia\\v2022_10\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "criteo\\api\\retailmedia\\v2022_01\\" : "test/" }
+        "psr-4": { "criteo\\api\\retailmedia\\v2022_10\\" : "test/" }
     }
 }

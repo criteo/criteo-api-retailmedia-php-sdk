@@ -1,9 +1,9 @@
 <?php
 
-use criteo\api\retailmedia\v2022_01\Configuration;
-use criteo\api\retailmedia\v2022_01\ObjectSerializer;
-use criteo\api\retailmedia\v2022_01\ClientCredentialsClient;
-use criteo\api\retailmedia\v2022_01\Model\AccessTokenModel;
+use criteo\api\retailmedia\v2022_10\Configuration;
+use criteo\api\retailmedia\v2022_10\ObjectSerializer;
+use criteo\api\retailmedia\v2022_10\ClientCredentialsClient;
+use criteo\api\retailmedia\v2022_10\Model\AccessTokenModel;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Uri;
@@ -50,7 +50,7 @@ class ClientCredentialsClientTest extends TestCase
 
 
         // Call Authentication endpoint which does not require Authorization header
-        $response = (new criteo\api\retailmedia\v2022_01\Api\OAuthApi($mockClient))
+        $response = (new criteo\api\retailmedia\v2022_10\Api\OAuthApi($mockClient))
             ->getToken('client_credentials', $this->clientId, $this->clientSecret, $this->grantType);
 
         $this->assertInstanceOf(AccessTokenModel::class, $response);

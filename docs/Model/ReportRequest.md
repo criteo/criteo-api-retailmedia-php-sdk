@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2022_01\Model\ReportRequestAttributes**](ReportRequestAttributes.md) |  |
+**attributes** | [**\criteo\api\retailmedia\v2022_10\Model\ReportRequestAttributes**](ReportRequestAttributes.md) |  |
 **type** | **string** | Always \&quot;RetailMediaReportRequest\&quot; |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
