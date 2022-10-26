@@ -1,10 +1,10 @@
-# # PreferredLineItemResponse
+# # TemplateResponse
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItem**](ResourceOfPreferredLineItem.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\v2022_07\Model\ResourceOfTemplate**](ResourceOfTemplate.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]**](ProblemDetails.md) |  | [optional] [readonly]
 **errors** | [**\criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]**](ProblemDetails.md) |  | [optional] [readonly]
 

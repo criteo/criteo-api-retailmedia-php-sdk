@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalLineItemCapping
+ * FilesVariablesSpecification
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * ExternalLineItemCapping Class Doc Comment
+ * FilesVariablesSpecification Class Doc Comment
  *
  * @category Class
- * @description Frequency capping for a preferred line item
+ * @description Specification of a file variable
  * @package  criteo\api\retailmedia\v2022_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSerializable
+class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalLineItemCapping';
+    protected static $openAPIModelName = 'FilesVariablesSpecification';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'count' => 'int'
+        'extensions' => 'string[]',
+        'max_bytes' => 'int',
+        'min_files' => 'int',
+        'max_file' => 'int'
     ];
 
     /**
@@ -72,8 +74,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'count' => 'int32'
+        'extensions' => null,
+        'max_bytes' => 'int32',
+        'min_files' => 'int32',
+        'max_file' => 'int32'
     ];
 
     /**
@@ -103,8 +107,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'count' => 'count'
+        'extensions' => 'extensions',
+        'max_bytes' => 'maxBytes',
+        'min_files' => 'minFiles',
+        'max_file' => 'maxFile'
     ];
 
     /**
@@ -113,8 +119,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'count' => 'setCount'
+        'extensions' => 'setExtensions',
+        'max_bytes' => 'setMaxBytes',
+        'min_files' => 'setMinFiles',
+        'max_file' => 'setMaxFile'
     ];
 
     /**
@@ -123,8 +131,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'count' => 'getCount'
+        'extensions' => 'getExtensions',
+        'max_bytes' => 'getMaxBytes',
+        'min_files' => 'getMinFiles',
+        'max_file' => 'getMaxFile'
     ];
 
     /**
@@ -168,21 +178,25 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const TYPE_UNKNOWN = 'unknown';
-    const TYPE_DAY = 'day';
-    const TYPE_SESSION = 'session';
+    const EXTENSIONS_UNKNOWN = 'Unknown';
+    const EXTENSIONS_JPEG = 'Jpeg';
+    const EXTENSIONS_PNG = 'Png';
+    const EXTENSIONS_GIF = 'Gif';
+    const EXTENSIONS_PDF = 'Pdf';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getExtensionsAllowableValues()
     {
         return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_DAY,
-            self::TYPE_SESSION,
+            self::EXTENSIONS_UNKNOWN,
+            self::EXTENSIONS_JPEG,
+            self::EXTENSIONS_PNG,
+            self::EXTENSIONS_GIF,
+            self::EXTENSIONS_PDF,
         ];
     }
 
@@ -201,8 +215,10 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['count'] = $data['count'] ?? null;
+        $this->container['extensions'] = $data['extensions'] ?? null;
+        $this->container['max_bytes'] = $data['max_bytes'] ?? null;
+        $this->container['min_files'] = $data['min_files'] ?? null;
+        $this->container['max_file'] = $data['max_file'] ?? null;
     }
 
     /**
@@ -214,20 +230,11 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['extensions'] === null) {
+            $invalidProperties[] = "'extensions' can't be null";
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
+        if ($this->container['min_files'] === null) {
+            $invalidProperties[] = "'min_files' can't be null";
         }
         return $invalidProperties;
     }
@@ -245,59 +252,106 @@ class ExternalLineItemCapping implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets type
+     * Gets extensions
      *
-     * @return string
+     * @return string[]
      */
-    public function getType()
+    public function getExtensions()
     {
-        return $this->container['type'];
+        return $this->container['extensions'];
     }
 
     /**
-     * Sets type
+     * Sets extensions
      *
-     * @param string $type type
+     * @param string[] $extensions The accepted file extensions
      *
      * @return self
      */
-    public function setType($type)
+    public function setExtensions($extensions)
     {
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getExtensionsAllowableValues();
+        if (array_diff($extensions, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value for 'extensions', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['extensions'] = $extensions;
 
         return $this;
     }
 
     /**
-     * Gets count
+     * Gets max_bytes
      *
-     * @return int
+     * @return int|null
      */
-    public function getCount()
+    public function getMaxBytes()
     {
-        return $this->container['count'];
+        return $this->container['max_bytes'];
     }
 
     /**
-     * Sets count
+     * Sets max_bytes
      *
-     * @param int $count count
+     * @param int|null $max_bytes The maximum amount of bytes per file
      *
      * @return self
      */
-    public function setCount($count)
+    public function setMaxBytes($max_bytes)
     {
-        $this->container['count'] = $count;
+        $this->container['max_bytes'] = $max_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_files
+     *
+     * @return int
+     */
+    public function getMinFiles()
+    {
+        return $this->container['min_files'];
+    }
+
+    /**
+     * Sets min_files
+     *
+     * @param int $min_files The minimum amount of files requires
+     *
+     * @return self
+     */
+    public function setMinFiles($min_files)
+    {
+        $this->container['min_files'] = $min_files;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_file
+     *
+     * @return int|null
+     */
+    public function getMaxFile()
+    {
+        return $this->container['max_file'];
+    }
+
+    /**
+     * Sets max_file
+     *
+     * @param int|null $max_file The maximum amount of files required
+     *
+     * @return self
+     */
+    public function setMaxFile($max_file)
+    {
+        $this->container['max_file'] = $max_file;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfPreferredLineItem
+ * ResourceOfPreferredLineItemUpdateModel202110
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * ResourceOfPreferredLineItem Class Doc Comment
+ * ResourceOfPreferredLineItemUpdateModel202110 Class Doc Comment
  *
  * @category Class
  * @description Data model for a Resource
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ResourceOfPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ResourceOfPreferredLineItem implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfPreferredLineItem';
+    protected static $openAPIModelName = 'ResourceOfPreferredLineItemUpdateModel202110';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -62,7 +62,7 @@ class ResourceOfPreferredLineItem implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'id' => 'string',
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItem'
+        'attributes' => '\criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel202110'
     ];
 
     /**
@@ -269,7 +269,7 @@ class ResourceOfPreferredLineItem implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItem|null
+     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel202110|null
      */
     public function getAttributes()
     {
@@ -279,7 +279,7 @@ class ResourceOfPreferredLineItem implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItem|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel202110|null $attributes attributes
      *
      * @return self
      */

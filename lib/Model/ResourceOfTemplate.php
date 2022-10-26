@@ -1,6 +1,6 @@
 <?php
 /**
- * PreferredLineItemResponse
+ * ResourceOfTemplate
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * PreferredLineItemResponse Class Doc Comment
+ * ResourceOfTemplate Class Doc Comment
  *
  * @category Class
- * @description Data model for response resource
+ * @description Data model for a Resource
  * @package  criteo\api\retailmedia\v2022_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceOfTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PreferredLineItemResponse';
+    protected static $openAPIModelName = 'ResourceOfTemplate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItem',
-        'warnings' => '\criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]',
-        'errors' => '\criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]'
+        'attributes' => '\criteo\api\retailmedia\v2022_07\Model\Template',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -73,9 +73,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'attributes' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -105,9 +105,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'attributes' => 'attributes',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -116,9 +116,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -127,9 +127,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -189,9 +189,9 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['data'] = $data['data'] ?? null;
-        $this->container['warnings'] = $data['warnings'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
     }
 
     /**
@@ -219,73 +219,73 @@ class PreferredLineItemResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets data
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItem|null
+     * @return \criteo\api\retailmedia\v2022_07\Model\Template|null
      */
-    public function getData()
+    public function getAttributes()
     {
-        return $this->container['data'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets data
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItem|null $data data
+     * @param \criteo\api\retailmedia\v2022_07\Model\Template|null $attributes attributes
      *
      * @return self
      */
-    public function setData($data)
+    public function setAttributes($attributes)
     {
-        $this->container['data'] = $data;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets id
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]|null
+     * @return string|null
      */
-    public function getWarnings()
+    public function getId()
     {
-        return $this->container['warnings'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets warnings
+     * Sets id
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]|null $warnings warnings
+     * @param string|null $id Id of the entity
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setId($id)
     {
-        $this->container['warnings'] = $warnings;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]|null
+     * @return string|null
      */
-    public function getErrors()
+    public function getType()
     {
-        return $this->container['errors'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets errors
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ProblemDetails[]|null $errors errors
+     * @param string|null $type Canonical type name of the entity
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setType($type)
     {
-        $this->container['errors'] = $errors;
+        $this->container['type'] = $type;
 
         return $this;
     }

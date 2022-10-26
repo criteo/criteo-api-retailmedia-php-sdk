@@ -1,6 +1,6 @@
 <?php
 /**
- * PreferredLineItemUpdateModelRequest
+ * PreferredLineItemUpdateModel202110Request
  *
  * PHP version 7.3
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * PreferredLineItemUpdateModelRequest Class Doc Comment
+ * PreferredLineItemUpdateModel202110Request Class Doc Comment
  *
  * @category Class
  * @description Data model for an input resource
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class PreferredLineItemUpdateModelRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreferredLineItemUpdateModel202110Request implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class PreferredLineItemUpdateModelRequest implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PreferredLineItemUpdateModelRequest';
+    protected static $openAPIModelName = 'PreferredLineItemUpdateModel202110Request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class PreferredLineItemUpdateModelRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel'
+        'data' => '\criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel202110'
     ];
 
     /**
@@ -209,7 +209,7 @@ class PreferredLineItemUpdateModelRequest implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel|null
+     * @return \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel202110|null
      */
     public function getData()
     {
@@ -219,7 +219,7 @@ class PreferredLineItemUpdateModelRequest implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel|null $data data
+     * @param \criteo\api\retailmedia\v2022_07\Model\ResourceOfPreferredLineItemUpdateModel202110|null $data data
      *
      * @return self
      */

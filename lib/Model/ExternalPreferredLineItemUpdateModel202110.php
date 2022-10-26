@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalPreferredLineItem
+ * ExternalPreferredLineItemUpdateModel202110
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * ExternalPreferredLineItem Class Doc Comment
+ * ExternalPreferredLineItemUpdateModel202110 Class Doc Comment
  *
  * @category Class
- * @description A Retail Media Preferred Line Item used to hold bid settings for one or many promoted products on a single retailer
+ * @description Model used to update a preferred line item
  * @package  criteo\api\retailmedia\v2022_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalPreferredLineItemUpdateModel202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalPreferredLineItem';
+    protected static $openAPIModelName = 'ExternalPreferredLineItemUpdateModel202110';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -65,14 +65,10 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => '\DateTime',
         'status' => 'string',
         'pacing' => 'string',
-        'capping' => '\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping',
-        'target_retailer_id' => 'string',
-        'budget' => 'float',
-        'campaign_id' => 'string',
-        'budget_spent' => 'double',
-        'budget_remaining' => 'float',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'capping' => '\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping202110',
+        'page' => '\criteo\api\retailmedia\v2022_07\Model\ExternalLineItemPage202110',
+        'budget' => 'double',
+        'creative_id' => 'string'
     ];
 
     /**
@@ -89,13 +85,9 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'status' => null,
         'pacing' => null,
         'capping' => null,
-        'target_retailer_id' => 'long-id',
-        'budget' => 'decimal',
-        'campaign_id' => 'long-id',
-        'budget_spent' => 'double',
-        'budget_remaining' => 'decimal',
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'page' => null,
+        'budget' => 'double',
+        'creative_id' => 'long-id'
     ];
 
     /**
@@ -131,13 +123,9 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'status',
         'pacing' => 'pacing',
         'capping' => 'capping',
-        'target_retailer_id' => 'targetRetailerId',
+        'page' => 'page',
         'budget' => 'budget',
-        'campaign_id' => 'campaignId',
-        'budget_spent' => 'budgetSpent',
-        'budget_remaining' => 'budgetRemaining',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'creative_id' => 'creativeId'
     ];
 
     /**
@@ -152,13 +140,9 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'setStatus',
         'pacing' => 'setPacing',
         'capping' => 'setCapping',
-        'target_retailer_id' => 'setTargetRetailerId',
+        'page' => 'setPage',
         'budget' => 'setBudget',
-        'campaign_id' => 'setCampaignId',
-        'budget_spent' => 'setBudgetSpent',
-        'budget_remaining' => 'setBudgetRemaining',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'creative_id' => 'setCreativeId'
     ];
 
     /**
@@ -173,13 +157,9 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'status' => 'getStatus',
         'pacing' => 'getPacing',
         'capping' => 'getCapping',
-        'target_retailer_id' => 'getTargetRetailerId',
+        'page' => 'getPage',
         'budget' => 'getBudget',
-        'campaign_id' => 'getCampaignId',
-        'budget_spent' => 'getBudgetSpent',
-        'budget_remaining' => 'getBudgetRemaining',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'creative_id' => 'getCreativeId'
     ];
 
     /**
@@ -289,15 +269,11 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['start_date'] = $data['start_date'] ?? null;
         $this->container['end_date'] = $data['end_date'] ?? null;
         $this->container['status'] = $data['status'] ?? null;
-        $this->container['pacing'] = $data['pacing'] ?? null;
+        $this->container['pacing'] = $data['pacing'] ?? PACING_ACCELERATED;
         $this->container['capping'] = $data['capping'] ?? null;
-        $this->container['target_retailer_id'] = $data['target_retailer_id'] ?? null;
+        $this->container['page'] = $data['page'] ?? null;
         $this->container['budget'] = $data['budget'] ?? null;
-        $this->container['campaign_id'] = $data['campaign_id'] ?? null;
-        $this->container['budget_spent'] = $data['budget_spent'] ?? null;
-        $this->container['budget_remaining'] = $data['budget_remaining'] ?? null;
-        $this->container['created_at'] = $data['created_at'] ?? null;
-        $this->container['updated_at'] = $data['updated_at'] ?? null;
+        $this->container['creative_id'] = $data['creative_id'] ?? null;
     }
 
     /**
@@ -338,9 +314,6 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if ($this->container['pacing'] === null) {
-            $invalidProperties[] = "'pacing' can't be null";
-        }
         $allowedValues = $this->getPacingAllowableValues();
         if (!is_null($this->container['pacing']) && !in_array($this->container['pacing'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -350,21 +323,6 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if ($this->container['target_retailer_id'] === null) {
-            $invalidProperties[] = "'target_retailer_id' can't be null";
-        }
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
-        }
-        if ($this->container['budget_remaining'] === null) {
-            $invalidProperties[] = "'budget_remaining' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -400,10 +358,10 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public function setName($name)
     {
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel202110., must be smaller than or equal to 255.');
         }
         if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModel202110., must be bigger than or equal to 0.');
         }
 
         $this->container['name'] = $name;
@@ -496,7 +454,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets pacing
      *
-     * @return string
+     * @return string|null
      */
     public function getPacing()
     {
@@ -506,14 +464,14 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets pacing
      *
-     * @param string $pacing pacing
+     * @param string|null $pacing pacing
      *
      * @return self
      */
     public function setPacing($pacing)
     {
         $allowedValues = $this->getPacingAllowableValues();
-        if (!in_array($pacing, $allowedValues, true)) {
+        if (!is_null($pacing) && !in_array($pacing, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'pacing', must be one of '%s'",
@@ -530,7 +488,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets capping
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping|null
+     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping202110|null
      */
     public function getCapping()
     {
@@ -540,7 +498,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets capping
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping|null $capping capping
+     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemCapping202110|null $capping capping
      *
      * @return self
      */
@@ -552,25 +510,25 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets target_retailer_id
+     * Gets page
      *
-     * @return string
+     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemPage202110|null
      */
-    public function getTargetRetailerId()
+    public function getPage()
     {
-        return $this->container['target_retailer_id'];
+        return $this->container['page'];
     }
 
     /**
-     * Sets target_retailer_id
+     * Sets page
      *
-     * @param string $target_retailer_id target_retailer_id
+     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalLineItemPage202110|null $page page
      *
      * @return self
      */
-    public function setTargetRetailerId($target_retailer_id)
+    public function setPage($page)
     {
-        $this->container['target_retailer_id'] = $target_retailer_id;
+        $this->container['page'] = $page;
 
         return $this;
     }
@@ -578,7 +536,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets budget
      *
-     * @return float|null
+     * @return double|null
      */
     public function getBudget()
     {
@@ -588,7 +546,7 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget
      *
-     * @param float|null $budget budget
+     * @param double|null $budget budget
      *
      * @return self
      */
@@ -600,121 +558,25 @@ class ExternalPreferredLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets campaign_id
+     * Gets creative_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getCampaignId()
+    public function getCreativeId()
     {
-        return $this->container['campaign_id'];
+        return $this->container['creative_id'];
     }
 
     /**
-     * Sets campaign_id
+     * Sets creative_id
      *
-     * @param string $campaign_id campaign_id
+     * @param string|null $creative_id creative_id
      *
      * @return self
      */
-    public function setCampaignId($campaign_id)
+    public function setCreativeId($creative_id)
     {
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return double|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param double|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        $this->container['budget_spent'] = $budget_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_remaining
-     *
-     * @return float
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        $this->container['updated_at'] = $updated_at;
+        $this->container['creative_id'] = $creative_id;
 
         return $this;
     }

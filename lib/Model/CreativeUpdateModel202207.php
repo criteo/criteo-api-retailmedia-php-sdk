@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfPreferredLineItemUpdateModel
+ * CreativeUpdateModel202207
  *
  * PHP version 7.3
  *
@@ -32,10 +32,10 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
 
 /**
- * ResourceOfPreferredLineItemUpdateModel Class Doc Comment
+ * CreativeUpdateModel202207 Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description Update model of a creative
  * @package  criteo\api\retailmedia\v2022_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -43,7 +43,7 @@ use \criteo\api\retailmedia\v2022_07\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreativeUpdateModel202207 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfPreferredLineItemUpdateModel';
+    protected static $openAPIModelName = 'CreativeUpdateModel202207';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +60,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel'
+        'name' => 'string',
+        'brand_id' => 'int',
+        'retailer_id' => 'int',
+        'template_id' => 'int',
+        'template_variable_values' => '\criteo\api\retailmedia\v2022_07\Model\TemplateVariableValue[]'
     ];
 
     /**
@@ -73,9 +75,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'type' => null,
-        'attributes' => null
+        'name' => null,
+        'brand_id' => 'int64',
+        'retailer_id' => 'int32',
+        'template_id' => 'int32',
+        'template_variable_values' => null
     ];
 
     /**
@@ -105,9 +109,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'name' => 'name',
+        'brand_id' => 'brandId',
+        'retailer_id' => 'retailerId',
+        'template_id' => 'templateId',
+        'template_variable_values' => 'templateVariableValues'
     ];
 
     /**
@@ -116,9 +122,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'name' => 'setName',
+        'brand_id' => 'setBrandId',
+        'retailer_id' => 'setRetailerId',
+        'template_id' => 'setTemplateId',
+        'template_variable_values' => 'setTemplateVariableValues'
     ];
 
     /**
@@ -127,9 +135,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'name' => 'getName',
+        'brand_id' => 'getBrandId',
+        'retailer_id' => 'getRetailerId',
+        'template_id' => 'getTemplateId',
+        'template_variable_values' => 'getTemplateVariableValues'
     ];
 
     /**
@@ -189,9 +199,11 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['brand_id'] = $data['brand_id'] ?? null;
+        $this->container['retailer_id'] = $data['retailer_id'] ?? null;
+        $this->container['template_id'] = $data['template_id'] ?? null;
+        $this->container['template_variable_values'] = $data['template_variable_values'] ?? null;
     }
 
     /**
@@ -203,6 +215,18 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['template_id'] === null) {
+            $invalidProperties[] = "'template_id' can't be null";
+        }
+        if ($this->container['template_variable_values'] === null) {
+            $invalidProperties[] = "'template_variable_values' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -219,73 +243,121 @@ class ResourceOfPreferredLineItemUpdateModel implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets id
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getName()
     {
-        return $this->container['id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets id
+     * Sets name
      *
-     * @param string|null $id Id of the entity
+     * @param string $name The name of the creative
      *
      * @return self
      */
-    public function setId($id)
+    public function setName($name)
     {
-        $this->container['id'] = $id;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets brand_id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getBrandId()
     {
-        return $this->container['type'];
+        return $this->container['brand_id'];
     }
 
     /**
-     * Sets type
+     * Sets brand_id
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param int|null $brand_id The brand associated to the creative
      *
      * @return self
      */
-    public function setType($type)
+    public function setBrandId($brand_id)
     {
-        $this->container['type'] = $type;
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets retailer_id
      *
-     * @return \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel|null
+     * @return int
      */
-    public function getAttributes()
+    public function getRetailerId()
     {
-        return $this->container['attributes'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets attributes
+     * Sets retailer_id
      *
-     * @param \criteo\api\retailmedia\v2022_07\Model\ExternalPreferredLineItemUpdateModel|null $attributes attributes
+     * @param int $retailer_id The retailer associated to the creative
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setRetailerId($retailer_id)
     {
-        $this->container['attributes'] = $attributes;
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_id
+     *
+     * @return int
+     */
+    public function getTemplateId()
+    {
+        return $this->container['template_id'];
+    }
+
+    /**
+     * Sets template_id
+     *
+     * @param int $template_id The creative template used for this creative
+     *
+     * @return self
+     */
+    public function setTemplateId($template_id)
+    {
+        $this->container['template_id'] = $template_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_variable_values
+     *
+     * @return \criteo\api\retailmedia\v2022_07\Model\TemplateVariableValue[]
+     */
+    public function getTemplateVariableValues()
+    {
+        return $this->container['template_variable_values'];
+    }
+
+    /**
+     * Sets template_variable_values
+     *
+     * @param \criteo\api\retailmedia\v2022_07\Model\TemplateVariableValue[] $template_variable_values The template chosen values
+     *
+     * @return self
+     */
+    public function setTemplateVariableValues($template_variable_values)
+    {
+        $this->container['template_variable_values'] = $template_variable_values;
 
         return $this;
     }
