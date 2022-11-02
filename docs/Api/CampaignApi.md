@@ -101,7 +101,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asset_file** | [**\SplFileObject**](../Model/\SplFileObject.md)| The asset binary content |
+ **asset_file** | **\SplFileObject****\SplFileObject**| The asset binary content |
 
 ### Return type
 
