@@ -306,7 +306,15 @@ class CampaignApi
 
         // form params
         if ($asset_file !== null) {
-            $formParams['AssetFile'] = ObjectSerializer::toFormValue($asset_file);
+            $multipart = true;
+            $formParams['AssetFile'] = [];
+            $paramFiles = is_array($asset_file) ? $asset_file : [$asset_file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['AssetFile'][] = \GuzzleHttp\Psr7\try_fopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
         }
 
         if ($multipart) {
