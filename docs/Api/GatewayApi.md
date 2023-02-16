@@ -1,4 +1,4 @@
-# criteo\api\retailmedia\preview\GatewayApi
+# criteo\api\retailmedia\v2023_01\GatewayApi
 
 All URIs are relative to https://api.criteo.com.
 
@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getCurrentApplication()`
 
 ```php
-getCurrentApplication(): \criteo\api\retailmedia\preview\Model\ApplicationSummaryModelResponse
+getCurrentApplication(): \criteo\api\retailmedia\v2023_01\Model\ApplicationSummaryModelResponse
 ```
 
 
@@ -25,10 +25,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\GatewayApi(
+$apiInstance = new criteo\api\retailmedia\v2023_01\Api\GatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -49,7 +49,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
+[**\criteo\api\retailmedia\v2023_01\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
 
 ### Authorization
 
