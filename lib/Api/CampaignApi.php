@@ -306,15 +306,7 @@ class CampaignApi
 
         // form params
         if ($asset_file !== null) {
-            $multipart = true;
-            $formParams['AssetFile'] = [];
-            $paramFiles = is_array($asset_file) ? $asset_file : [$asset_file];
-            foreach ($paramFiles as $paramFile) {
-                $formParams['AssetFile'][] = \GuzzleHttp\Psr7\try_fopen(
-                    ObjectSerializer::toFormValue($paramFile),
-                    'rb'
-                );
-            }
+            $formParams['AssetFile'] = ObjectSerializer::toFormValue($asset_file);
         }
 
         if ($multipart) {
@@ -11448,7 +11440,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign
+     * @return |\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign
      */
     public function postApiV1ExternalAccountCampaignsByAccountId($account_id, $external_post_campaign = null)
     {
@@ -11464,7 +11456,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2022_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\criteo\api\retailmedia\v2022_04\Model\JsonApiSingleResponseOfCampaign, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApiV1ExternalAccountCampaignsByAccountIdWithHttpInfo($account_id, $external_post_campaign = null)
     {
