@@ -392,6 +392,383 @@ class AudienceApi
     }
 
     /**
+     * Operation createRetailMediaAudienceV2
+     *
+     * @param  string $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request create_retail_media_audience_v2_request (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse
+     */
+    public function createRetailMediaAudienceV2($account_id, $create_retail_media_audience_v2_request)
+    {
+        list($response) = $this->createRetailMediaAudienceV2WithHttpInfo($account_id, $create_retail_media_audience_v2_request);
+        return $response;
+    }
+
+    /**
+     * Operation createRetailMediaAudienceV2WithHttpInfo
+     *
+     * @param  string $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createRetailMediaAudienceV2WithHttpInfo($account_id, $create_retail_media_audience_v2_request)
+    {
+        $request = $this->createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 406:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 415:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 415:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createRetailMediaAudienceV2Async
+     *
+     * @param  string $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRetailMediaAudienceV2Async($account_id, $create_retail_media_audience_v2_request)
+    {
+        return $this->createRetailMediaAudienceV2AsyncWithHttpInfo($account_id, $create_retail_media_audience_v2_request)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createRetailMediaAudienceV2AsyncWithHttpInfo
+     *
+     * @param  string $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createRetailMediaAudienceV2AsyncWithHttpInfo($account_id, $create_retail_media_audience_v2_request)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response';
+        $request = $this->createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createRetailMediaAudienceV2'
+     *
+     * @param  string $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request)
+    {
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createRetailMediaAudienceV2'
+            );
+        }
+        // verify the required parameter 'create_retail_media_audience_v2_request' is set
+        if ($create_retail_media_audience_v2_request === null || (is_array($create_retail_media_audience_v2_request) && count($create_retail_media_audience_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_retail_media_audience_v2_request when calling createRetailMediaAudienceV2'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/v2/accounts/{accountId}/audiences';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($create_retail_media_audience_v2_request)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($create_retail_media_audience_v2_request));
+            } else {
+                $httpBody = $create_retail_media_audience_v2_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAudiencesByAccountId
      *
      * @param  string $account_id External account ID which owns audience. (required)
@@ -587,6 +964,374 @@ class AudienceApi
         }
 
         $resourcePath = '/preview/retail-media/accounts/{accountId}/audiences';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($limit_to_id !== null) {
+            if('form' === 'form' && is_array($limit_to_id)) {
+                foreach($limit_to_id as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['limitToId'] = $limit_to_id;
+            }
+        }
+        // query params
+        if ($page_size !== null) {
+            if('form' === 'form' && is_array($page_size)) {
+                foreach($page_size as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageSize'] = $page_size;
+            }
+        }
+        // query params
+        if ($page_index !== null) {
+            if('form' === 'form' && is_array($page_index)) {
+                foreach($page_index as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['pageIndex'] = $page_index;
+            }
+        }
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getRetailMediaAudienceV2ListByAccountId
+     *
+     * @param  string $account_id External account ID which owns audience. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse
+     */
+    public function getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id = null, $page_size = null, $page_index = null)
+    {
+        list($response) = $this->getRetailMediaAudienceV2ListByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index);
+        return $response;
+    }
+
+    /**
+     * Operation getRetailMediaAudienceV2ListByAccountIdWithHttpInfo
+     *
+     * @param  string $account_id External account ID which owns audience. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getRetailMediaAudienceV2ListByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null)
+    {
+        $request = $this->getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 406:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 415:
+                    if ('\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 406:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 415:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CommonStatusCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getRetailMediaAudienceV2ListByAccountIdAsync
+     *
+     * @param  string $account_id External account ID which owns audience. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRetailMediaAudienceV2ListByAccountIdAsync($account_id, $limit_to_id = null, $page_size = null, $page_index = null)
+    {
+        return $this->getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id External account ID which owns audience. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null)
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse';
+        $request = $this->getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getRetailMediaAudienceV2ListByAccountId'
+     *
+     * @param  string $account_id External account ID which owns audience. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id = null, $page_size = null, $page_index = null)
+    {
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getRetailMediaAudienceV2ListByAccountId'
+            );
+        }
+
+        $resourcePath = '/preview/retail-media/v2/accounts/{accountId}/audiences';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
