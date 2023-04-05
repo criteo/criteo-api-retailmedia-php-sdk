@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **brand_id** | **int** | Brand Id | [optional]
 **retailer_id** | **int** | Retailer Id |
 **associated_line_item_ids** | **string[]** | Associated Line Item Ids | [optional]
-**updated_at** | [**\DateTime**](\DateTime.md) | Updated at time | [optional]
+**updated_at** | **\DateTime** | Updated at time | [optional]
 **creative_format_type** | **string** | Creative format type |
 **environments** | **string[]** | Environment type (e.g. mobile, web, app) |
 **template_variable_values** | [**\criteo\api\retailmedia\v2022_10\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |

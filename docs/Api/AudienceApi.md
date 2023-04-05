@@ -1,11 +1,11 @@
 # criteo\api\retailmedia\v2022_10\AudienceApi
 
-All URIs are relative to https://api.criteo.com.
+All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAudience()**](AudienceApi.md#createAudience) | **POST** /2022-10/retail-media/accounts/{accountId}/audiences | 
-[**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /2022-10/retail-media/accounts/{accountId}/audiences | 
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createAudience()**](AudienceApi.md#createAudience) | **POST** /2022-10/retail-media/accounts/{accountId}/audiences |  |
+| [**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /2022-10/retail-media/accounts/{accountId}/audiences |  |
 
 
 ## `createAudience()`
@@ -48,10 +48,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| ID of the account to which this audience belongs. |
- **create_retail_media_audience_request** | [**\criteo\api\retailmedia\v2022_10\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| ID of the account to which this audience belongs. | |
+| **create_retail_media_audience_request** | [**\criteo\api\retailmedia\v2022_10\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type
 
@@ -112,12 +112,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account ID which owns audience. |
- **limit_to_id** | [**string[]**](../Model/string.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional]
- **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional]
- **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account ID which owns audience. | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
+| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional] |
+| **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional] |
 
 ### Return type
 
