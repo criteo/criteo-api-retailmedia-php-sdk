@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **sku_per_collection_max** | **int** | TODO: what is it ? | [optional]
 **displayable_skus_max** | **int** | TODO: what is it ? | [optional]
 **all_collections_mandatory** | **bool** | TODO: what is it ? |
-**created_at** | [**\DateTime**](\DateTime.md) | The time at which the template was created |
-**updated_at** | [**\DateTime**](\DateTime.md) | The time at which the template was updated |
+**created_at** | **\DateTime** | The time at which the template was created |
+**updated_at** | **\DateTime** | The time at which the template was updated |
 **sections** | [**\criteo\api\retailmedia\v2022_07\Model\Section[]**](Section.md) | The sections holding various template variables |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

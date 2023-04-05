@@ -1,63 +1,63 @@
 # criteo\api\retailmedia\v2022_07\CampaignApi
 
-All URIs are relative to https://api.criteo.com.
+All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAsset()**](CampaignApi.md#createAsset) | **POST** /2022-07/retail-media/assets | 
-[**getApi202110ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/balances | 
-[**getApi202110ExternalAccountCreativesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/creatives | 
-[**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords | 
-[**getApi202110ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2022-07/retail-media/balances/{balance-id}/campaigns | 
-[**getApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items | 
-[**getApi202110ExternalLineItemProductsByLineItemId()**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id}/products | 
-[**getApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id} | 
-[**getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
-[**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
-[**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
-[**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2022-07/retail-media/retailers/{retailerId}/pages | 
-[**getApi202204ExternalCategorieByCategoryId()**](CampaignApi.md#getApi202204ExternalCategorieByCategoryId) | **GET** /2022-07/retail-media/categories/{categoryId} | 
-[**getApi202204ExternalCategories()**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2022-07/retail-media/categories | 
-[**getApi202207ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#getApi202207ExternalAccountByAccountIdCreativescreativeId) | **GET** /2022-07/retail-media/accounts/{account-id}/creatives/{creative-id} | 
-[**getApi202207ExternalRetailerByRetailerIdTemplatestemplateId()**](CampaignApi.md#getApi202207ExternalRetailerByRetailerIdTemplatestemplateId) | **GET** /2022-07/retail-media/retailers/{retailer-id}/templates/{template-id} | 
-[**getApi202207ExternalRetailerTemplatesByRetailerId()**](CampaignApi.md#getApi202207ExternalRetailerTemplatesByRetailerId) | **GET** /2022-07/retail-media/retailers/{retailer-id}/templates | 
-[**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/brands | 
-[**getApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/campaigns | 
-[**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/retailers | 
-[**getApiV1ExternalAccounts()**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2022-07/retail-media/accounts | 
-[**getApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#getApiV1ExternalCampaignByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaignId} | 
-[**getApiV1ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2022-07/retail-media/catalogs/{catalogId}/output | 
-[**getApiV1ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2022-07/retail-media/catalogs/{catalogId}/status | 
-[**getApiV2ExternalAccountLineItemsByAccountId()**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/line-items | 
-[**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2022-07/retail-media/auction-line-items/{line-item-id} | 
-[**getApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items | 
-[**getApiV2ExternalLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id} | 
-[**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append | 
-[**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete | 
-[**postApi202110ExternalBalanceCampaignsAppendByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2022-07/retail-media/balances/{balance-id}/campaigns/append | 
-[**postApi202110ExternalBalanceCampaignsDeleteByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsDeleteByBalanceId) | **POST** /2022-07/retail-media/balances/{balance-id}/campaigns/delete | 
-[**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items | 
-[**postApi202110ExternalLineItemProductsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/append | 
-[**postApi202110ExternalLineItemProductsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/delete | 
-[**postApi202110ExternalLineItemProductsPauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/pause | 
-[**postApi202110ExternalLineItemProductsUnpauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/unpause | 
-[**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | 
-[**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | 
-[**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | 
-[**postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete | 
-[**postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append | 
-[**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete | 
-[**postApi202207ExternalAccountCreativesByAccountId()**](CampaignApi.md#postApi202207ExternalAccountCreativesByAccountId) | **POST** /2022-07/retail-media/accounts/{account-id}/creatives | 
-[**postApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2022-07/retail-media/accounts/{accountId}/campaigns | 
-[**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2022-07/retail-media/accounts/{accountId}/catalogs | 
-[**postApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items | 
-[**putApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id} | 
-[**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | 
-[**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | 
-[**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores | 
-[**putApi202207ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#putApi202207ExternalAccountByAccountIdCreativescreativeId) | **PUT** /2022-07/retail-media/accounts/{account-id}/creatives/{creative-id} | 
-[**putApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2022-07/retail-media/campaigns/{campaignId} | 
-[**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-07/retail-media/auction-line-items/{line-item-id} | 
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createAsset()**](CampaignApi.md#createAsset) | **POST** /2022-07/retail-media/assets |  |
+| [**getApi202110ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountBalancesByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/balances |  |
+| [**getApi202110ExternalAccountCreativesByAccountId()**](CampaignApi.md#getApi202110ExternalAccountCreativesByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/creatives |  |
+| [**getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId()**](CampaignApi.md#getApi202110ExternalAuctionLineItemTargetingKeywordsByLineItemId) | **GET** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords |  |
+| [**getApi202110ExternalBalanceCampaignsByBalanceId()**](CampaignApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2022-07/retail-media/balances/{balance-id}/campaigns |  |
+| [**getApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
+| [**getApi202110ExternalLineItemProductsByLineItemId()**](CampaignApi.md#getApi202110ExternalLineItemProductsByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id}/products |  |
+| [**getApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id} |  |
+| [**getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
+| [**getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
+| [**getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#getApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **GET** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
+| [**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2022-07/retail-media/retailers/{retailerId}/pages |  |
+| [**getApi202204ExternalCategorieByCategoryId()**](CampaignApi.md#getApi202204ExternalCategorieByCategoryId) | **GET** /2022-07/retail-media/categories/{categoryId} |  |
+| [**getApi202204ExternalCategories()**](CampaignApi.md#getApi202204ExternalCategories) | **GET** /2022-07/retail-media/categories |  |
+| [**getApi202207ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#getApi202207ExternalAccountByAccountIdCreativescreativeId) | **GET** /2022-07/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
+| [**getApi202207ExternalRetailerByRetailerIdTemplatestemplateId()**](CampaignApi.md#getApi202207ExternalRetailerByRetailerIdTemplatestemplateId) | **GET** /2022-07/retail-media/retailers/{retailer-id}/templates/{template-id} |  |
+| [**getApi202207ExternalRetailerTemplatesByRetailerId()**](CampaignApi.md#getApi202207ExternalRetailerTemplatesByRetailerId) | **GET** /2022-07/retail-media/retailers/{retailer-id}/templates |  |
+| [**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/brands |  |
+| [**getApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountCampaignsByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/campaigns |  |
+| [**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2022-07/retail-media/accounts/{accountId}/retailers |  |
+| [**getApiV1ExternalAccounts()**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /2022-07/retail-media/accounts |  |
+| [**getApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#getApiV1ExternalCampaignByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaignId} |  |
+| [**getApiV1ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2022-07/retail-media/catalogs/{catalogId}/output |  |
+| [**getApiV1ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2022-07/retail-media/catalogs/{catalogId}/status |  |
+| [**getApiV2ExternalAccountLineItemsByAccountId()**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2022-07/retail-media/accounts/{account-id}/line-items |  |
+| [**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2022-07/retail-media/auction-line-items/{line-item-id} |  |
+| [**getApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **GET** /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items |  |
+| [**getApiV2ExternalLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemByLineItemId) | **GET** /2022-07/retail-media/line-items/{line-item-id} |  |
+| [**postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/append |  |
+| [**postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId) | **POST** /2022-07/retail-media/auction-line-items/{line-item-id}/targeting/keywords/delete |  |
+| [**postApi202110ExternalBalanceCampaignsAppendByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsAppendByBalanceId) | **POST** /2022-07/retail-media/balances/{balance-id}/campaigns/append |  |
+| [**postApi202110ExternalBalanceCampaignsDeleteByBalanceId()**](CampaignApi.md#postApi202110ExternalBalanceCampaignsDeleteByBalanceId) | **POST** /2022-07/retail-media/balances/{balance-id}/campaigns/delete |  |
+| [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /2022-07/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
+| [**postApi202110ExternalLineItemProductsAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsAppendByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/append |  |
+| [**postApi202110ExternalLineItemProductsDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsDeleteByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/delete |  |
+| [**postApi202110ExternalLineItemProductsPauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsPauseByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/pause |  |
+| [**postApi202110ExternalLineItemProductsUnpauseByLineItemId()**](CampaignApi.md#postApi202110ExternalLineItemProductsUnpauseByLineItemId) | **POST** /2022-07/retail-media/line-items/{line-item-id}/products/unpause |  |
+| [**postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |  |
+| [**postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAddToBasketDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |  |
+| [**postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |  |
+| [**postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingAudiencesDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |  |
+| [**postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresAppendByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |  |
+| [**postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId()**](CampaignApi.md#postApi202110ExternalPreferredLineItemTargetingStoresDeleteByLineItemId) | **POST** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |  |
+| [**postApi202207ExternalAccountCreativesByAccountId()**](CampaignApi.md#postApi202207ExternalAccountCreativesByAccountId) | **POST** /2022-07/retail-media/accounts/{account-id}/creatives |  |
+| [**postApiV1ExternalAccountCampaignsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCampaignsByAccountId) | **POST** /2022-07/retail-media/accounts/{accountId}/campaigns |  |
+| [**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2022-07/retail-media/accounts/{accountId}/catalogs |  |
+| [**postApiV2ExternalCampaignAuctionLineItemsByCampaignId()**](CampaignApi.md#postApiV2ExternalCampaignAuctionLineItemsByCampaignId) | **POST** /2022-07/retail-media/campaigns/{campaign-id}/auction-line-items |  |
+| [**putApi202110ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id} |  |
+| [**putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAddToBasketByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
+| [**putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingAudiencesByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
+| [**putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId()**](CampaignApi.md#putApi202110ExternalPreferredLineItemTargetingStoresByLineItemId) | **PUT** /2022-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
+| [**putApi202207ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#putApi202207ExternalAccountByAccountIdCreativescreativeId) | **PUT** /2022-07/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
+| [**putApiV1ExternalCampaignByCampaignId()**](CampaignApi.md#putApiV1ExternalCampaignByCampaignId) | **PUT** /2022-07/retail-media/campaigns/{campaignId} |  |
+| [**putApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#putApiV2ExternalAuctionLineItemByLineItemId) | **PUT** /2022-07/retail-media/auction-line-items/{line-item-id} |  |
 
 
 ## `createAsset()`
@@ -99,9 +99,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asset_file** | **\SplFileObject****\SplFileObject**| The asset binary content |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **asset_file** | **\SplFileObject****\SplFileObject**| The asset binary content | |
 
 ### Return type
 
@@ -162,12 +162,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The account to get balances for |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The account to get balances for | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -225,9 +225,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account id to retrieve creatives for |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account id to retrieve creatives for | |
 
 ### Return type
 
@@ -285,9 +285,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
 
 ### Return type
 
@@ -348,12 +348,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to get campaigns from |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **balance_id** | **string**| The balance to get campaigns from | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -414,12 +414,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -480,12 +480,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -543,9 +543,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The given line item id | |
 
 ### Return type
 
@@ -603,9 +603,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
 
 ### Return type
 
@@ -663,9 +663,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
 
 ### Return type
 
@@ -723,9 +723,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
 
 ### Return type
 
@@ -783,9 +783,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **retailer_id** | **int**| The retailers to fetch pages for |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retailer_id** | **int**| The retailers to fetch pages for | |
 
 ### Return type
 
@@ -843,9 +843,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **category_id** | **int**| ID of the desired category |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **category_id** | **int**| ID of the desired category | |
 
 ### Return type
 
@@ -906,12 +906,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **retailer_id** | **int**| The retailer id for which Categories fetched | [optional]
- **text_substring** | **string**| Query string to search across Categories | [optional]
- **page_index** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0]
- **page_size** | **int**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retailer_id** | **int**| The retailer id for which Categories fetched | [optional] |
+| **text_substring** | **string**| Query string to search across Categories | [optional] |
+| **page_index** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
+| **page_size** | **int**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100] |
 
 ### Return type
 
@@ -970,10 +970,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account id to retrieve creatives for |
- **creative_id** | **string**| Creative to get |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account id to retrieve creatives for | |
+| **creative_id** | **string**| Creative to get | |
 
 ### Return type
 
@@ -1032,10 +1032,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **retailer_id** | **int**| Retailer Id |
- **template_id** | **int**| Template Id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retailer_id** | **int**| Retailer Id | |
+| **template_id** | **int**| Template Id | |
 
 ### Return type
 
@@ -1093,9 +1093,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **retailer_id** | **int**| External retailer id to retrieve creative templates for |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retailer_id** | **int**| External retailer id to retrieve creative templates for | |
 
 ### Return type
 
@@ -1156,12 +1156,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The given account id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The given account id | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1222,12 +1222,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The given account id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The given account id | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1288,12 +1288,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The given account id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The given account id | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1353,11 +1353,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1415,9 +1415,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
 
 ### Return type
 
@@ -1474,9 +1474,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **string**| A catalog ID returned from an account catalog request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **catalog_id** | **string**| A catalog ID returned from an account catalog request. | |
 
 ### Return type
 
@@ -1534,9 +1534,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **catalog_id** | **string**| A catalog ID returned from an account catalog request. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **catalog_id** | **string**| A catalog ID returned from an account catalog request. | |
 
 ### Return type
 
@@ -1599,14 +1599,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The given account id |
- **limit_to_campaign_id** | [**string[]**](../Model/string.md)| The campaign ids that you would like to limit your result set to | [optional]
- **limit_to_type** | **string**| The campaign types that you would like to limit your result set to | [optional]
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The given account id | |
+| **limit_to_campaign_id** | [**string[]**](../Model/string.md)| The campaign ids that you would like to limit your result set to | [optional] |
+| **limit_to_type** | **string**| The campaign types that you would like to limit your result set to | [optional] |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1664,9 +1664,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The given line item id | |
 
 ### Return type
 
@@ -1727,12 +1727,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional]
- **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional]
- **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
+| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 
 ### Return type
 
@@ -1790,9 +1790,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The given line item id | |
 
 ### Return type
 
@@ -1839,7 +1839,7 @@ $apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$keyword_target202110_request = new \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request
+$keyword_target202110_request = new \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request | 
 
 try {
     $result = $apiInstance->postApi202110ExternalAuctionLineItemTargetingKeywordsAppendByLineItemId($line_item_id, $keyword_target202110_request);
@@ -1851,10 +1851,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional] |
 
 ### Return type
 
@@ -1901,7 +1901,7 @@ $apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$keyword_target202110_request = new \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request
+$keyword_target202110_request = new \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request(); // \criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request | 
 
 try {
     $result = $apiInstance->postApi202110ExternalAuctionLineItemTargetingKeywordsDeleteByLineItemId($line_item_id, $keyword_target202110_request);
@@ -1913,10 +1913,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **keyword_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\KeywordTarget202110Request**](../Model/KeywordTarget202110Request.md)|  | [optional] |
 
 ### Return type
 
@@ -1975,10 +1975,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to add campaigns from |
- **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **balance_id** | **string**| The balance to add campaigns from | |
+| **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
 
 ### Return type
 
@@ -2037,10 +2037,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **balance_id** | **string**| The balance to remove campaigns from |
- **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **balance_id** | **string**| The balance to remove campaigns from | |
+| **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
 
 ### Return type
 
@@ -2099,10 +2099,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **preferred_line_item_create_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItemCreateModel202110Request**](../Model/PreferredLineItemCreateModel202110Request.md)| The line item settings to create a line item with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
+| **preferred_line_item_create_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItemCreateModel202110Request**](../Model/PreferredLineItemCreateModel202110Request.md)| The line item settings to create a line item with | [optional] |
 
 ### Return type
 
@@ -2161,10 +2161,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| the products to append to this line item | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| the products to append to this line item | [optional] |
 
 ### Return type
 
@@ -2211,7 +2211,7 @@ $apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item to interact with
-$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest
+$promoted_product202110_list_request = new \criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest(); // \criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest | 
 
 try {
     $result = $apiInstance->postApi202110ExternalLineItemProductsDeleteByLineItemId($line_item_id, $promoted_product202110_list_request);
@@ -2223,10 +2223,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -2284,10 +2284,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with. |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with. | |
+| **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to pause. | [optional] |
 
 ### Return type
 
@@ -2345,10 +2345,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with. |
- **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with. | |
+| **promoted_product202110_list_request** | [**\criteo\api\retailmedia\v2022_07\Model\PromotedProduct202110ListRequest**](../Model/PromotedProduct202110ListRequest.md)| The products from which their IDs will be used to unpause. | [optional] |
 
 ### Return type
 
@@ -2407,10 +2407,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to append to the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to append to the target | [optional] |
 
 ### Return type
 
@@ -2469,10 +2469,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to remove from the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **add_to_basket_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketIdsUpdateModel202110Request**](../Model/AddToBasketIdsUpdateModel202110Request.md)| Ids to remove from the target | [optional] |
 
 ### Return type
 
@@ -2531,10 +2531,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to append to the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to append to the target | [optional] |
 
 ### Return type
 
@@ -2593,10 +2593,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to remove from the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **audience_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceIdsUpdateModel202110Request**](../Model/AudienceIdsUpdateModel202110Request.md)| Audience ids to remove from the target | [optional] |
 
 ### Return type
 
@@ -2655,10 +2655,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to append to the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to append to the target | [optional] |
 
 ### Return type
 
@@ -2717,10 +2717,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to remove from the target | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **store_ids_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreIdsUpdateModel202110Request**](../Model/StoreIdsUpdateModel202110Request.md)| Store ids to remove from the target | [optional] |
 
 ### Return type
 
@@ -2779,10 +2779,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account id to create a creative for |
- **creative_create_model202207** | [**\criteo\api\retailmedia\v2022_07\Model\CreativeCreateModel202207**](../Model/CreativeCreateModel202207.md)| The creative to create | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account id to create a creative for | |
+| **creative_create_model202207** | [**\criteo\api\retailmedia\v2022_07\Model\CreativeCreateModel202207**](../Model/CreativeCreateModel202207.md)| The creative to create | [optional] |
 
 ### Return type
 
@@ -2841,10 +2841,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The given account id |
- **external_post_campaign** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalPostCampaign**](../Model/ExternalPostCampaign.md)| The campaign settings to create a campaign with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The given account id | |
+| **external_post_campaign** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalPostCampaign**](../Model/ExternalPostCampaign.md)| The campaign settings to create a campaign with | [optional] |
 
 ### Return type
 
@@ -2903,10 +2903,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| The account to request the catalog for. |
- **json_api_request_of_catalog_request** | [**\criteo\api\retailmedia\v2022_07\Model\JsonApiRequestOfCatalogRequest**](../Model/JsonApiRequestOfCatalogRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The account to request the catalog for. | |
+| **json_api_request_of_catalog_request** | [**\criteo\api\retailmedia\v2022_07\Model\JsonApiRequestOfCatalogRequest**](../Model/JsonApiRequestOfCatalogRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -2965,10 +2965,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **auction_line_item_create_model_request** | [**\criteo\api\retailmedia\v2022_07\Model\AuctionLineItemCreateModelRequest**](../Model/AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
+| **auction_line_item_create_model_request** | [**\criteo\api\retailmedia\v2022_07\Model\AuctionLineItemCreateModelRequest**](../Model/AuctionLineItemCreateModelRequest.md)| The line item settings to create a line item with | [optional] |
 
 ### Return type
 
@@ -3027,10 +3027,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
- **preferred_line_item_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItemUpdateModel202110Request**](../Model/PreferredLineItemUpdateModel202110Request.md)| The line item settings to create a line item with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The given line item id | |
+| **preferred_line_item_update_model202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\PreferredLineItemUpdateModel202110Request**](../Model/PreferredLineItemUpdateModel202110Request.md)| The line item settings to create a line item with | [optional] |
 
 ### Return type
 
@@ -3089,10 +3089,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **add_to_basket_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketTarget202110Request**](../Model/AddToBasketTarget202110Request.md)| The add to basket target to set the scope for | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **add_to_basket_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AddToBasketTarget202110Request**](../Model/AddToBasketTarget202110Request.md)| The add to basket target to set the scope for | [optional] |
 
 ### Return type
 
@@ -3151,10 +3151,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **audience_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceTarget202110Request**](../Model/AudienceTarget202110Request.md)| The audience target to set the scope for | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **audience_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\AudienceTarget202110Request**](../Model/AudienceTarget202110Request.md)| The audience target to set the scope for | [optional] |
 
 ### Return type
 
@@ -3213,10 +3213,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The line item to interact with |
- **store_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreTarget202110Request**](../Model/StoreTarget202110Request.md)| The store target to set the scope for | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item to interact with | |
+| **store_target202110_request** | [**\criteo\api\retailmedia\v2022_07\Model\StoreTarget202110Request**](../Model/StoreTarget202110Request.md)| The store target to set the scope for | [optional] |
 
 ### Return type
 
@@ -3276,11 +3276,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| External account id containing the creative |
- **creative_id** | **string**| Creative to update |
- **creative_update_model202207** | [**\criteo\api\retailmedia\v2022_07\Model\CreativeUpdateModel202207**](../Model/CreativeUpdateModel202207.md)| The creative to create | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account id containing the creative | |
+| **creative_id** | **string**| Creative to update | |
+| **creative_update_model202207** | [**\criteo\api\retailmedia\v2022_07\Model\CreativeUpdateModel202207**](../Model/CreativeUpdateModel202207.md)| The creative to create | [optional] |
 
 ### Return type
 
@@ -3339,10 +3339,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **campaign_id** | **string**| The given campaign id |
- **external_put_campaign** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalPutCampaign**](../Model/ExternalPutCampaign.md)| The campaign settings to update that campaign with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The given campaign id | |
+| **external_put_campaign** | [**\criteo\api\retailmedia\v2022_07\Model\ExternalPutCampaign**](../Model/ExternalPutCampaign.md)| The campaign settings to update that campaign with | [optional] |
 
 ### Return type
 
@@ -3401,10 +3401,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **line_item_id** | **string**| The given line item id |
- **auction_line_item_update_model_request** | [**\criteo\api\retailmedia\v2022_07\Model\AuctionLineItemUpdateModelRequest**](../Model/AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The given line item id | |
+| **auction_line_item_update_model_request** | [**\criteo\api\retailmedia\v2022_07\Model\AuctionLineItemUpdateModelRequest**](../Model/AuctionLineItemUpdateModelRequest.md)| The line item settings to create a line item with | [optional] |
 
 ### Return type
 
