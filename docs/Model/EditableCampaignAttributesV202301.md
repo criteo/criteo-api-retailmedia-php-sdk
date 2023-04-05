@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **monthly_pacing** | **float** |  | [optional]
 **daily_pacing** | **float** |  | [optional]
 **is_auto_daily_pacing** | **bool** |  |
-**start_date** | [**\DateTime**](\DateTime.md) |  |
-**end_date** | [**\DateTime**](\DateTime.md) |  |
+**start_date** | **\DateTime** |  |
+**end_date** | **\DateTime** |  |
 **click_attribution_window** | **string** |  |
 **view_attribution_window** | **string** |  |
 **click_attribution_scope** | **string** |  | [optional]

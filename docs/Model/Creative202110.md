@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **brand_id** | **int** |  | [optional]
 **retailer_id** | **int** |  |
 **associated_line_item_ids** | **string[]** |  | [optional]
-**updated_at** | [**\DateTime**](\DateTime.md) |  | [optional]
+**updated_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
