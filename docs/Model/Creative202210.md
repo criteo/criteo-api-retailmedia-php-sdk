@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **template_name** | **string** | Template Name |
 **format_id** | **int** | Format Id |
 **associated_line_item_ids** | **string[]** | Associated Line Item Ids | [optional]
-**updated_at** | [**\DateTime**](\DateTime.md) | Updated at time | [optional]
+**updated_at** | **\DateTime** | Updated at time | [optional]
 **creative_format_type** | **string** | Creative format type |
 **environments** | [**\criteo\api\retailmedia\preview\Model\PageTypeEnvironment[]**](PageTypeEnvironment.md) | Environment type (e.g. mobile, web, app) |
 **template_variable_values** | [**\criteo\api\retailmedia\preview\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |

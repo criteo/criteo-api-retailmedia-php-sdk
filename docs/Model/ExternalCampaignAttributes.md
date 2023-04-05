@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | [optional] [default to TYPE_AUCTION]
+**type** | **string** |  | [optional] [default to 'auction']
 **drawable_balance_ids** | **string[]** |  | [optional]
-**click_attribution_window** | **string** |  | [optional] [default to CLICK_ATTRIBUTION_WINDOW__30_D]
-**view_attribution_window** | **string** |  | [optional] [default to VIEW_ATTRIBUTION_WINDOW_NONE]
+**click_attribution_window** | **string** |  | [optional] [default to '30D']
+**view_attribution_window** | **string** |  | [optional] [default to 'none']
 **name** | **string** |  |
 **budget** | **float** |  | [optional]
 **click_attribution_scope** | **string** |  | [optional]
