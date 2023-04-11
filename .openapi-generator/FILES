@@ -8,8 +8,6 @@ docs/Api/AnalyticsApi.md
 docs/Api/AudienceApi.md
 docs/Api/CampaignApi.md
 docs/Api/GatewayApi.md
-docs/Api/OAuthApi.md
-docs/Model/AccessTokenModel.md
 docs/Model/AddToBasketIdsUpdateModel202110Request.md
 docs/Model/AddToBasketTarget202110Request.md
 docs/Model/AddToBasketTarget202110Response.md
@@ -118,7 +116,6 @@ docs/Model/KeywordTarget202110Response.md
 docs/Model/LineItemBidMultipliers.md
 docs/Model/LineItemBidMultipliersRequest.md
 docs/Model/LineItemBidMultipliersResponse.md
-docs/Model/OAuthErrorModel.md
 docs/Model/PageMetadata.md
 docs/Model/PostCampaignV202301.md
 docs/Model/PreferredLineItem202110PagedListResponse.md
@@ -179,12 +176,10 @@ lib/Api/AnalyticsApi.php
 lib/Api/AudienceApi.php
 lib/Api/CampaignApi.php
 lib/Api/GatewayApi.php
-lib/Api/OAuthApi.php
 lib/ApiException.php
 lib/ClientCredentialsClient.php
 lib/Configuration.php
 lib/HeaderSelector.php
-lib/Model/AccessTokenModel.php
 lib/Model/AddToBasketIdsUpdateModel202110Request.php
 lib/Model/AddToBasketTarget202110Request.php
 lib/Model/AddToBasketTarget202110Response.php
@@ -294,7 +289,6 @@ lib/Model/LineItemBidMultipliers.php
 lib/Model/LineItemBidMultipliersRequest.php
 lib/Model/LineItemBidMultipliersResponse.php
 lib/Model/ModelInterface.php
-lib/Model/OAuthErrorModel.php
 lib/Model/PageMetadata.php
 lib/Model/PostCampaignV202301.php
 lib/Model/PreferredLineItem202110PagedListResponse.php
@@ -352,4 +346,3 @@ lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ClientCredentialsClientTest.php
 test/Api/GatewayApiTest.php
-test/Api/OAuthApiTest.php
