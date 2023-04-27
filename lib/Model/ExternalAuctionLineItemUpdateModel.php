@@ -102,11 +102,11 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
 		'start_date' => false,
 		'end_date' => false,
 		'status' => false,
-		'budget' => false,
-		'target_bid' => false,
-		'max_bid' => false,
-		'monthly_pacing' => false,
-		'daily_pacing' => false,
+		'budget' => true,
+		'target_bid' => true,
+		'max_bid' => true,
+		'monthly_pacing' => true,
+		'daily_pacing' => true,
 		'is_auto_daily_pacing' => false,
 		'bid_strategy' => false
     ];
@@ -594,7 +594,14 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -621,7 +628,14 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public function setTargetBid($target_bid)
     {
         if (is_null($target_bid)) {
-            throw new \InvalidArgumentException('non-nullable target_bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'target_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('target_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['target_bid'] = $target_bid;
 
@@ -648,7 +662,14 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public function setMaxBid($max_bid)
     {
         if (is_null($max_bid)) {
-            throw new \InvalidArgumentException('non-nullable max_bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_bid'] = $max_bid;
 
@@ -675,7 +696,14 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public function setMonthlyPacing($monthly_pacing)
     {
         if (is_null($monthly_pacing)) {
-            throw new \InvalidArgumentException('non-nullable monthly_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['monthly_pacing'] = $monthly_pacing;
 
@@ -702,7 +730,14 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public function setDailyPacing($daily_pacing)
     {
         if (is_null($daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable daily_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['daily_pacing'] = $daily_pacing;
 

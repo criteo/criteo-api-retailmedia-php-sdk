@@ -85,9 +85,9 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'extensions' => false,
-		'max_bytes' => false,
-		'min_files' => false,
-		'max_file' => false
+		'max_bytes' => true,
+		'min_files' => true,
+		'max_file' => true
     ];
 
     /**
@@ -394,7 +394,14 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     public function setMaxBytes($max_bytes)
     {
         if (is_null($max_bytes)) {
-            throw new \InvalidArgumentException('non-nullable max_bytes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_bytes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_bytes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_bytes'] = $max_bytes;
 
@@ -421,7 +428,14 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     public function setMinFiles($min_files)
     {
         if (is_null($min_files)) {
-            throw new \InvalidArgumentException('non-nullable min_files cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'min_files');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('min_files', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['min_files'] = $min_files;
 
@@ -448,7 +462,14 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     public function setMaxFile($max_file)
     {
         if (is_null($max_file)) {
-            throw new \InvalidArgumentException('non-nullable max_file cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_file');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_file', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_file'] = $max_file;
 

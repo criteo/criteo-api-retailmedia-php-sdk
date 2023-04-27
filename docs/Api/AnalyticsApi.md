@@ -30,6 +30,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new criteo\api\retailmedia\v2022_07\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -59,7 +62,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -86,6 +89,9 @@ Get the status of the report
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -119,7 +125,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -146,6 +152,9 @@ Request a campaign report
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -179,7 +188,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -206,6 +215,9 @@ Request a line item report
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -239,7 +251,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 

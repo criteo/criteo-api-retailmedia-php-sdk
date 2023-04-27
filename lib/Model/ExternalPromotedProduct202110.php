@@ -78,7 +78,7 @@ class ExternalPromotedProduct202110 implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'bid_override' => false
+        'bid_override' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class ExternalPromotedProduct202110 implements ModelInterface, ArrayAccess, \Jso
     public function setBidOverride($bid_override)
     {
         if (is_null($bid_override)) {
-            throw new \InvalidArgumentException('non-nullable bid_override cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid_override');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid_override', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid_override'] = $bid_override;
 

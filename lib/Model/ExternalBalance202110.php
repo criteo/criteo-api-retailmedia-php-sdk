@@ -101,9 +101,9 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'name' => false,
 		'po_number' => false,
 		'memo' => false,
-		'deposited' => false,
-		'spent' => false,
-		'remaining' => false,
+		'deposited' => true,
+		'spent' => true,
+		'remaining' => true,
 		'start_date' => false,
 		'end_date' => false,
 		'status' => false,
@@ -522,7 +522,14 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setDeposited($deposited)
     {
         if (is_null($deposited)) {
-            throw new \InvalidArgumentException('non-nullable deposited cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'deposited');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deposited', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['deposited'] = $deposited;
 
@@ -549,7 +556,14 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setSpent($spent)
     {
         if (is_null($spent)) {
-            throw new \InvalidArgumentException('non-nullable spent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'spent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['spent'] = $spent;
 
@@ -576,7 +590,14 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRemaining($remaining)
     {
         if (is_null($remaining)) {
-            throw new \InvalidArgumentException('non-nullable remaining cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['remaining'] = $remaining;
 

@@ -92,11 +92,11 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'status' => false,
 		'currency' => false,
-		'row_count' => false,
-		'file_size_bytes' => false,
-		'md5_checksum' => false,
+		'row_count' => true,
+		'file_size_bytes' => true,
+		'md5_checksum' => true,
 		'created_at' => false,
-		'message' => false
+		'message' => true
     ];
 
     /**
@@ -265,11 +265,11 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const STATUS_UNKNOWN = 'Unknown';
-    public const STATUS_PENDING = 'Pending';
-    public const STATUS_SUCCESS = 'Success';
-    public const STATUS_FAILURE = 'Failure';
-    public const STATUS_EXPIRED = 'Expired';
+    public const STATUS_UNKNOWN = 'unknown';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_SUCCESS = 'success';
+    public const STATUS_FAILURE = 'failure';
+    public const STATUS_EXPIRED = 'expired';
 
     /**
      * Gets allowable values of the enum
@@ -467,7 +467,14 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRowCount($row_count)
     {
         if (is_null($row_count)) {
-            throw new \InvalidArgumentException('non-nullable row_count cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'row_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('row_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['row_count'] = $row_count;
 
@@ -494,7 +501,14 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFileSizeBytes($file_size_bytes)
     {
         if (is_null($file_size_bytes)) {
-            throw new \InvalidArgumentException('non-nullable file_size_bytes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_size_bytes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['file_size_bytes'] = $file_size_bytes;
 
@@ -521,7 +535,14 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setMd5Checksum($md5_checksum)
     {
         if (is_null($md5_checksum)) {
-            throw new \InvalidArgumentException('non-nullable md5_checksum cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'md5_checksum');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('md5_checksum', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['md5_checksum'] = $md5_checksum;
 
@@ -575,7 +596,14 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setMessage($message)
     {
         if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['message'] = $message;
 

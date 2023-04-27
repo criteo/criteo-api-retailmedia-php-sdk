@@ -80,6 +80,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
 
 $apiInstance = new criteo\api\retailmedia\v2022_07\Api\CampaignApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -109,7 +112,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -136,6 +139,9 @@ Gets page of balance objects for the given account id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -175,7 +181,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -202,6 +208,9 @@ Get account creatives
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -235,7 +244,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -262,6 +271,9 @@ This endpoint gets the keyword target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -295,7 +307,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -322,6 +334,9 @@ Gets page of campaigns for the given balanceId
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -361,7 +376,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -388,6 +403,9 @@ Gets page of preferred line item objects for the given campaign id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -427,7 +445,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -454,6 +472,9 @@ This endpoint gets the promoted products on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -493,7 +514,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -520,6 +541,9 @@ Gets the preferred line item for the given line item id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -553,7 +577,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -580,6 +604,9 @@ This endpoint gets the add to basket target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -613,7 +640,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -640,6 +667,9 @@ This endpoint gets the audience target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -673,7 +703,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -700,6 +730,9 @@ This endpoint gets the store target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -733,7 +766,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -760,6 +793,9 @@ Get the page types available for the given retailer
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -793,7 +829,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -820,6 +856,9 @@ Endpoint to search for a specific category by categoryId.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -853,7 +892,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -880,6 +919,9 @@ Endpoint to search categories by text and retailer.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -919,7 +961,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -946,6 +988,9 @@ Get the specified creative
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -981,7 +1026,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1008,6 +1053,9 @@ Gets the template for the specified retailer id and template id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1043,7 +1091,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1070,6 +1118,9 @@ Get retailer creative templates
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1103,7 +1154,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1130,6 +1181,9 @@ Gets page of retailer objects that are associated with the given account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1169,7 +1223,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1196,6 +1250,9 @@ Gets page of campaign objects for the given account id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1235,7 +1292,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1262,6 +1319,9 @@ Gets page of retailer objects that are associated with the given account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1301,7 +1361,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1328,6 +1388,9 @@ Gets page of account objects that the current user can access
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1365,7 +1428,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1392,6 +1455,9 @@ Gets the campaign for the given campaign id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1425,7 +1491,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1452,6 +1518,9 @@ Output the indicated catalog. Catalogs are only available for retrieval when the
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1484,7 +1553,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1511,6 +1580,9 @@ Check the status of a catalog request.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1544,7 +1616,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1571,6 +1643,9 @@ Gets page of line item objects for the given account id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1614,7 +1689,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1641,6 +1716,9 @@ Gets the auction line item for the given line item id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1674,7 +1752,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1701,6 +1779,9 @@ Gets page of auction line item objects for the given campaign id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1740,7 +1821,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1767,6 +1848,9 @@ Gets the line item for the given line item id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1800,7 +1884,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1827,6 +1911,9 @@ This endpoint appends one or more keywords to targeting on the specified line it
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1862,7 +1949,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1889,6 +1976,9 @@ This endpoint removes one or more keywords from targeting on the specified line 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1924,7 +2014,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -1951,6 +2041,9 @@ appends one or more campaigns to the specified balance
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -1986,7 +2079,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2013,6 +2106,9 @@ Removes one or more campaigns on the specified balance
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2048,7 +2144,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2075,6 +2171,9 @@ Creates a new preferred line item with the specified settings
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2110,7 +2209,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2137,6 +2236,9 @@ This endpoint appends one or more products to promote on the specified line item
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2172,7 +2274,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2199,6 +2301,9 @@ This endpoint removes one or more products from promotion on the specified line 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2234,7 +2339,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2261,6 +2366,9 @@ This endpoint pauses one or more promoted products on a specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2295,7 +2403,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2322,6 +2430,9 @@ This endpoint unpauses one or more promoted products on a specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2356,7 +2467,7 @@ void (empty response body)
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2383,6 +2494,9 @@ This endpoint appends one or more add to basket ids to targeting on the specifie
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2418,7 +2532,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2445,6 +2559,9 @@ This endpoint removes one or more add to basket ids from targeting on the specif
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2480,7 +2597,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2507,6 +2624,9 @@ This endpoint appends one or more audiences ids to targeting on the specified li
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2542,7 +2662,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2569,6 +2689,9 @@ This endpoint removes one or more audiences ids from targeting on the specified 
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2604,7 +2727,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2631,6 +2754,9 @@ This endpoint appends one or more store ids to targeting on the specified line i
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2666,7 +2792,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2693,6 +2819,9 @@ This endpoint removes one or more store ids from targeting on the specified line
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2728,7 +2857,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2755,6 +2884,9 @@ Create a creative for an account
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2790,7 +2922,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2817,6 +2949,9 @@ Creates a new campaign with the specified settings
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2852,7 +2987,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2879,6 +3014,9 @@ Create a request for a Catalog available to the indicated account.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2914,7 +3052,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -2941,6 +3079,9 @@ Creates new auction line item with the specified settings
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -2976,7 +3117,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3003,6 +3144,9 @@ Updates the preferred line item for the given line item id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3038,7 +3182,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3065,6 +3209,9 @@ This endpoint sets the scope of the add to basket target on the specified line i
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3100,7 +3247,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3127,6 +3274,9 @@ This endpoint sets the scope of the audience target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3162,7 +3312,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3189,6 +3339,9 @@ This endpoint sets the scope of the store target on the specified line item.
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3224,7 +3377,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3251,6 +3404,9 @@ Update a creative
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3288,7 +3444,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3315,6 +3471,9 @@ Updates the campaign for the given campaign id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3350,7 +3509,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
@@ -3377,6 +3536,9 @@ Updates the auction line item for the given line item id
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
 $config = criteo\api\retailmedia\v2022_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
@@ -3412,7 +3574,7 @@ try {
 
 ### Authorization
 
-[oauth](../../README.md#oauth)
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
 
 ### HTTP request headers
 
