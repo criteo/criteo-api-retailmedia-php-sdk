@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **is_in_stock** | **bool** | An indication of if the retailer currently has the product in stock. |
 **gtin** | **string** | A GTIN identifier for the product if available. Covers variations such as EANs and UPCs. | [optional]
 **mpn** | **string** | The MPN for the product if available. | [optional]
+**model_number** | **string** | The Model Number for the product if available. | [optional]
+**parent_id** | **string** | The ParentId for the product if available. | [optional]
 **image_url** | **string** | An http image resource provided by the retailer. | [optional]
 **product_page** | **string** | An The product page URL | [optional]
 **updated_at** | **\DateTime** | The last time this product was updated in the Retail Media Catalog. Represented as a UTC ISO8601 string. |

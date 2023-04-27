@@ -62,7 +62,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         'retailer_id' => 'string',
         'sellers' => 'string[]',
         'brand_ids' => 'string[]',
-        'sku_type' => 'string'
+        'sku_type' => 'string',
+        'product_id_type' => 'string',
+        'product_ids' => 'string[]'
     ];
 
     /**
@@ -77,7 +79,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         'retailer_id' => 'long-id',
         'sellers' => null,
         'brand_ids' => 'long-id',
-        'sku_type' => null
+        'sku_type' => null,
+        'product_id_type' => null,
+        'product_ids' => null
     ];
 
     /**
@@ -90,7 +94,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
 		'retailer_id' => false,
 		'sellers' => false,
 		'brand_ids' => false,
-		'sku_type' => false
+		'sku_type' => false,
+		'product_id_type' => false,
+		'product_ids' => false
     ];
 
     /**
@@ -183,7 +189,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         'retailer_id' => 'retailerId',
         'sellers' => 'sellers',
         'brand_ids' => 'brandIds',
-        'sku_type' => 'skuType'
+        'sku_type' => 'skuType',
+        'product_id_type' => 'productIdType',
+        'product_ids' => 'productIds'
     ];
 
     /**
@@ -196,7 +204,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         'retailer_id' => 'setRetailerId',
         'sellers' => 'setSellers',
         'brand_ids' => 'setBrandIds',
-        'sku_type' => 'setSkuType'
+        'sku_type' => 'setSkuType',
+        'product_id_type' => 'setProductIdType',
+        'product_ids' => 'setProductIds'
     ];
 
     /**
@@ -209,7 +219,9 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         'retailer_id' => 'getRetailerId',
         'sellers' => 'getSellers',
         'brand_ids' => 'getBrandIds',
-        'sku_type' => 'getSkuType'
+        'sku_type' => 'getSkuType',
+        'product_id_type' => 'getProductIdType',
+        'product_ids' => 'getProductIds'
     ];
 
     /**
@@ -256,6 +268,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
     public const SKU_TYPE_BRAND = 'brand';
     public const SKU_TYPE_SELLER = 'seller';
     public const SKU_TYPE_ALL = 'all';
+    public const PRODUCT_ID_TYPE_SKU_KEY = 'skuKey';
+    public const PRODUCT_ID_TYPE_GTIN = 'gtin';
+    public const PRODUCT_ID_TYPE_MPN = 'mpn';
+    public const PRODUCT_ID_TYPE_MODEL = 'model';
+    public const PRODUCT_ID_TYPE_SKU_ID = 'skuId';
+    public const PRODUCT_ID_TYPE_PARENT_ID = 'parentId';
 
     /**
      * Gets allowable values of the enum
@@ -268,6 +286,23 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
             self::SKU_TYPE_BRAND,
             self::SKU_TYPE_SELLER,
             self::SKU_TYPE_ALL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getProductIdTypeAllowableValues()
+    {
+        return [
+            self::PRODUCT_ID_TYPE_SKU_KEY,
+            self::PRODUCT_ID_TYPE_GTIN,
+            self::PRODUCT_ID_TYPE_MPN,
+            self::PRODUCT_ID_TYPE_MODEL,
+            self::PRODUCT_ID_TYPE_SKU_ID,
+            self::PRODUCT_ID_TYPE_PARENT_ID,
         ];
     }
 
@@ -291,6 +326,8 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('sellers', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
         $this->setIfExists('sku_type', $data ?? [], 'brand');
+        $this->setIfExists('product_id_type', $data ?? [], 'skuKey');
+        $this->setIfExists('product_ids', $data ?? [], null);
     }
 
     /**
@@ -331,6 +368,15 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'sku_type', must be one of '%s'",
                 $this->container['sku_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getProductIdTypeAllowableValues();
+        if (!is_null($this->container['product_id_type']) && !in_array($this->container['product_id_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'product_id_type', must be one of '%s'",
+                $this->container['product_id_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -491,6 +537,70 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['sku_type'] = $sku_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_id_type
+     *
+     * @return string|null
+     */
+    public function getProductIdType()
+    {
+        return $this->container['product_id_type'];
+    }
+
+    /**
+     * Sets product_id_type
+     *
+     * @param string|null $product_id_type Type of product Ids to search for(SkuKey, SkuId, Gtin, Mpn, Model, ParentId)
+     *
+     * @return self
+     */
+    public function setProductIdType($product_id_type)
+    {
+        if (is_null($product_id_type)) {
+            throw new \InvalidArgumentException('non-nullable product_id_type cannot be null');
+        }
+        $allowedValues = $this->getProductIdTypeAllowableValues();
+        if (!in_array($product_id_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'product_id_type', must be one of '%s'",
+                    $product_id_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['product_id_type'] = $product_id_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_ids
+     *
+     * @return string[]|null
+     */
+    public function getProductIds()
+    {
+        return $this->container['product_ids'];
+    }
+
+    /**
+     * Sets product_ids
+     *
+     * @param string[]|null $product_ids A list of product Id's, if not passed ignore and search by QueryString
+     *
+     * @return self
+     */
+    public function setProductIds($product_ids)
+    {
+        if (is_null($product_ids)) {
+            throw new \InvalidArgumentException('non-nullable product_ids cannot be null');
+        }
+        $this->container['product_ids'] = $product_ids;
 
         return $this;
     }

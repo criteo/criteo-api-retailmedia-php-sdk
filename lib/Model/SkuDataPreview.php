@@ -75,6 +75,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_in_stock' => 'bool',
         'gtin' => 'string',
         'mpn' => 'string',
+        'model_number' => 'string',
+        'parent_id' => 'string',
         'image_url' => 'string',
         'product_page' => 'string',
         'updated_at' => '\DateTime'
@@ -105,6 +107,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_in_stock' => null,
         'gtin' => null,
         'mpn' => null,
+        'model_number' => null,
+        'parent_id' => null,
         'image_url' => null,
         'product_page' => null,
         'updated_at' => 'date-time'
@@ -133,6 +137,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
 		'is_in_stock' => false,
 		'gtin' => false,
 		'mpn' => false,
+		'model_number' => false,
+		'parent_id' => false,
 		'image_url' => false,
 		'product_page' => false,
 		'updated_at' => false
@@ -241,6 +247,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_in_stock' => 'isInStock',
         'gtin' => 'gtin',
         'mpn' => 'mpn',
+        'model_number' => 'modelNumber',
+        'parent_id' => 'parentId',
         'image_url' => 'imageUrl',
         'product_page' => 'productPage',
         'updated_at' => 'updatedAt'
@@ -269,6 +277,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_in_stock' => 'setIsInStock',
         'gtin' => 'setGtin',
         'mpn' => 'setMpn',
+        'model_number' => 'setModelNumber',
+        'parent_id' => 'setParentId',
         'image_url' => 'setImageUrl',
         'product_page' => 'setProductPage',
         'updated_at' => 'setUpdatedAt'
@@ -297,6 +307,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_in_stock' => 'getIsInStock',
         'gtin' => 'getGtin',
         'mpn' => 'getMpn',
+        'model_number' => 'getModelNumber',
+        'parent_id' => 'getParentId',
         'image_url' => 'getImageUrl',
         'product_page' => 'getProductPage',
         'updated_at' => 'getUpdatedAt'
@@ -376,6 +388,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_in_stock', $data ?? [], null);
         $this->setIfExists('gtin', $data ?? [], null);
         $this->setIfExists('mpn', $data ?? [], null);
+        $this->setIfExists('model_number', $data ?? [], null);
+        $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('product_page', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
@@ -962,6 +976,60 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable mpn cannot be null');
         }
         $this->container['mpn'] = $mpn;
+
+        return $this;
+    }
+
+    /**
+     * Gets model_number
+     *
+     * @return string|null
+     */
+    public function getModelNumber()
+    {
+        return $this->container['model_number'];
+    }
+
+    /**
+     * Sets model_number
+     *
+     * @param string|null $model_number The Model Number for the product if available.
+     *
+     * @return self
+     */
+    public function setModelNumber($model_number)
+    {
+        if (is_null($model_number)) {
+            throw new \InvalidArgumentException('non-nullable model_number cannot be null');
+        }
+        $this->container['model_number'] = $model_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return string|null
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param string|null $parent_id The ParentId for the product if available.
+     *
+     * @return self
+     */
+    public function setParentId($parent_id)
+    {
+        if (is_null($parent_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+        }
+        $this->container['parent_id'] = $parent_id;
 
         return $this;
     }

@@ -102,7 +102,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
 		'status' => false,
-		'brand_id' => false,
+		'brand_id' => true,
 		'retailer_id' => false,
 		'template_id' => false,
 		'template_name' => false,
@@ -546,7 +546,14 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBrandId($brand_id)
     {
         if (is_null($brand_id)) {
-            throw new \InvalidArgumentException('non-nullable brand_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_id'] = $brand_id;
 
