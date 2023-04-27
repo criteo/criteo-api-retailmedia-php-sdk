@@ -105,7 +105,7 @@ class ExternalPreferredLineItemCreateModel202110 implements ModelInterface, Arra
 		'page' => false,
 		'target_retailer_id' => false,
 		'budget' => false,
-		'creative_id' => false
+		'creative_id' => true
     ];
 
     /**
@@ -736,7 +736,14 @@ class ExternalPreferredLineItemCreateModel202110 implements ModelInterface, Arra
     public function setCreativeId($creative_id)
     {
         if (is_null($creative_id)) {
-            throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'creative_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creative_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['creative_id'] = $creative_id;
 

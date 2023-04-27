@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **creative_format** | **string** | The kind of creative this template can be used to build. |
 **name** | **string** | The name of the template |
-**retailer_id** | **int** | The retailer associated to the template |
+**retailer_id** | **int** | The retailer associated to the template | [optional]
 **sku_collection_min** | **int** | TODO: what is it ? |
 **sku_collection_max** | **int** | TODO: what is it ? | [optional]
 **sku_per_collection_min** | **int** | TODO: what is it ? |

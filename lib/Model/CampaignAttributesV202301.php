@@ -107,14 +107,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
 		'click_attribution_window' => false,
 		'view_attribution_window' => false,
 		'name' => false,
-		'budget' => false,
-		'monthly_pacing' => false,
-		'daily_pacing' => false,
+		'budget' => true,
+		'monthly_pacing' => true,
+		'daily_pacing' => true,
 		'is_auto_daily_pacing' => false,
-		'start_date' => false,
-		'end_date' => false,
-		'click_attribution_scope' => false,
-		'view_attribution_scope' => false
+		'start_date' => true,
+		'end_date' => true,
+		'click_attribution_scope' => true,
+		'view_attribution_scope' => true
     ];
 
     /**
@@ -728,7 +728,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -755,7 +762,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setMonthlyPacing($monthly_pacing)
     {
         if (is_null($monthly_pacing)) {
-            throw new \InvalidArgumentException('non-nullable monthly_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['monthly_pacing'] = $monthly_pacing;
 
@@ -782,7 +796,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setDailyPacing($daily_pacing)
     {
         if (is_null($daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable daily_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['daily_pacing'] = $daily_pacing;
 
@@ -836,7 +857,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setStartDate($start_date)
     {
         if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['start_date'] = $start_date;
 
@@ -863,7 +891,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_date'] = $end_date;
 
@@ -890,10 +925,17 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setClickAttributionScope($click_attribution_scope)
     {
         if (is_null($click_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionScopeAllowableValues();
-        if (!in_array($click_attribution_scope, $allowedValues, true)) {
+        if (!is_null($click_attribution_scope) && !in_array($click_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_scope', must be one of '%s'",
@@ -927,10 +969,17 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public function setViewAttributionScope($view_attribution_scope)
     {
         if (is_null($view_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionScopeAllowableValues();
-        if (!in_array($view_attribution_scope, $allowedValues, true)) {
+        if (!is_null($view_attribution_scope) && !in_array($view_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_scope', must be one of '%s'",

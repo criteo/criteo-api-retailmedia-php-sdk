@@ -83,8 +83,8 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'options' => false,
-		'max_selected' => false,
-		'min_selected' => false
+		'max_selected' => true,
+		'min_selected' => true
     ];
 
     /**
@@ -354,7 +354,14 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
     public function setMaxSelected($max_selected)
     {
         if (is_null($max_selected)) {
-            throw new \InvalidArgumentException('non-nullable max_selected cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_selected');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_selected', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_selected'] = $max_selected;
 
@@ -381,7 +388,14 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
     public function setMinSelected($min_selected)
     {
         if (is_null($min_selected)) {
-            throw new \InvalidArgumentException('non-nullable min_selected cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'min_selected');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('min_selected', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['min_selected'] = $min_selected;
 

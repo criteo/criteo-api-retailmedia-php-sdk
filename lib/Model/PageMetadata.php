@@ -88,10 +88,10 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_items_across_all_pages' => false,
+        'total_items_across_all_pages' => true,
 		'current_page_size' => false,
 		'current_page_index' => false,
-		'total_pages' => false,
+		'total_pages' => true,
 		'next_page' => false,
 		'previous_page' => false
     ];
@@ -351,7 +351,14 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalItemsAcrossAllPages($total_items_across_all_pages)
     {
         if (is_null($total_items_across_all_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_items_across_all_pages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_items_across_all_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_items_across_all_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_items_across_all_pages'] = $total_items_across_all_pages;
 
@@ -432,7 +439,14 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTotalPages($total_pages)
     {
         if (is_null($total_pages)) {
-            throw new \InvalidArgumentException('non-nullable total_pages cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'total_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['total_pages'] = $total_pages;
 
