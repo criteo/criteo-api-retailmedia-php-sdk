@@ -92,7 +92,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
 		'type' => false,
-		'subtype' => false,
+		'subtype' => true,
 		'countries' => false,
 		'currency' => false,
 		'parent_account_label' => false,
@@ -509,10 +509,17 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSubtype($subtype)
     {
         if (is_null($subtype)) {
-            throw new \InvalidArgumentException('non-nullable subtype cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'subtype');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subtype', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSubtypeAllowableValues();
-        if (!in_array($subtype, $allowedValues, true)) {
+        if (!is_null($subtype) && !in_array($subtype, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'subtype', must be one of '%s'",

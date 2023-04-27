@@ -108,8 +108,8 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'account_id' => false,
 		'promoted_brand_ids' => false,
-		'budget_spent' => false,
-		'budget_remaining' => false,
+		'budget_spent' => true,
+		'budget_remaining' => true,
 		'status' => false,
 		'created_at' => false,
 		'updated_at' => false,
@@ -118,9 +118,9 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
 		'click_attribution_window' => false,
 		'view_attribution_window' => false,
 		'name' => false,
-		'budget' => false,
-		'click_attribution_scope' => false,
-		'view_attribution_scope' => false
+		'budget' => true,
+		'click_attribution_scope' => true,
+		'view_attribution_scope' => true
     ];
 
     /**
@@ -659,7 +659,14 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBudgetSpent($budget_spent)
     {
         if (is_null($budget_spent)) {
-            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget_spent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_spent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget_spent'] = $budget_spent;
 
@@ -686,7 +693,14 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBudgetRemaining($budget_remaining)
     {
         if (is_null($budget_remaining)) {
-            throw new \InvalidArgumentException('non-nullable budget_remaining cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget_remaining'] = $budget_remaining;
 
@@ -976,7 +990,14 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -1003,10 +1024,17 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClickAttributionScope($click_attribution_scope)
     {
         if (is_null($click_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionScopeAllowableValues();
-        if (!in_array($click_attribution_scope, $allowedValues, true)) {
+        if (!is_null($click_attribution_scope) && !in_array($click_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_scope', must be one of '%s'",
@@ -1040,10 +1068,17 @@ class ExternalCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setViewAttributionScope($view_attribution_scope)
     {
         if (is_null($view_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionScopeAllowableValues();
-        if (!in_array($view_attribution_scope, $allowedValues, true)) {
+        if (!is_null($view_attribution_scope) && !in_array($view_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_scope', must be one of '%s'",

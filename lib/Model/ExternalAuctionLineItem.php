@@ -113,18 +113,18 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'name' => false,
 		'start_date' => false,
 		'end_date' => false,
-		'max_bid' => false,
-		'budget' => false,
-		'monthly_pacing' => false,
-		'daily_pacing' => false,
+		'max_bid' => true,
+		'budget' => true,
+		'monthly_pacing' => true,
+		'daily_pacing' => true,
 		'bid_strategy' => false,
 		'target_retailer_id' => false,
 		'status' => false,
-		'target_bid' => false,
+		'target_bid' => true,
 		'is_auto_daily_pacing' => false,
 		'campaign_id' => false,
 		'budget_spent' => false,
-		'budget_remaining' => false,
+		'budget_remaining' => true,
 		'created_at' => false,
 		'updated_at' => false
     ];
@@ -605,7 +605,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setMaxBid($max_bid)
     {
         if (is_null($max_bid)) {
-            throw new \InvalidArgumentException('non-nullable max_bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_bid'] = $max_bid;
 
@@ -632,7 +639,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -659,7 +673,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setMonthlyPacing($monthly_pacing)
     {
         if (is_null($monthly_pacing)) {
-            throw new \InvalidArgumentException('non-nullable monthly_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['monthly_pacing'] = $monthly_pacing;
 
@@ -686,7 +707,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setDailyPacing($daily_pacing)
     {
         if (is_null($daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable daily_pacing cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['daily_pacing'] = $daily_pacing;
 
@@ -814,7 +842,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTargetBid($target_bid)
     {
         if (is_null($target_bid)) {
-            throw new \InvalidArgumentException('non-nullable target_bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'target_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('target_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['target_bid'] = $target_bid;
 
@@ -922,7 +957,14 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     public function setBudgetRemaining($budget_remaining)
     {
         if (is_null($budget_remaining)) {
-            throw new \InvalidArgumentException('non-nullable budget_remaining cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget_remaining'] = $budget_remaining;
 

@@ -120,7 +120,7 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
 		'budget_remaining' => false,
 		'created_at' => false,
 		'updated_at' => false,
-		'creative_id' => false
+		'creative_id' => true
     ];
 
     /**
@@ -918,7 +918,14 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     public function setCreativeId($creative_id)
     {
         if (is_null($creative_id)) {
-            throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'creative_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creative_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['creative_id'] = $creative_id;
 

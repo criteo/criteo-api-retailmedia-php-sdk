@@ -78,7 +78,7 @@ class TextVariableSpecification implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'max_chars' => false
+        'max_chars' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class TextVariableSpecification implements ModelInterface, ArrayAccess, \JsonSer
     public function setMaxChars($max_chars)
     {
         if (is_null($max_chars)) {
-            throw new \InvalidArgumentException('non-nullable max_chars cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'max_chars');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_chars', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['max_chars'] = $max_chars;
 

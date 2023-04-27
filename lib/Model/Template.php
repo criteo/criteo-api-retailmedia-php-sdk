@@ -104,10 +104,10 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
 		'name' => false,
 		'retailer_id' => false,
 		'sku_collection_min' => false,
-		'sku_collection_max' => false,
+		'sku_collection_max' => true,
 		'sku_per_collection_min' => false,
-		'sku_per_collection_max' => false,
-		'displayable_skus_max' => false,
+		'sku_per_collection_max' => true,
+		'displayable_skus_max' => true,
 		'all_collections_mandatory' => false,
 		'created_at' => false,
 		'updated_at' => false,
@@ -398,9 +398,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
         if ($this->container['sku_collection_min'] === null) {
             $invalidProperties[] = "'sku_collection_min' can't be null";
         }
@@ -501,7 +498,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets retailer_id
      *
-     * @return int
+     * @return int|null
      */
     public function getRetailerId()
     {
@@ -511,7 +508,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retailer_id
      *
-     * @param int $retailer_id The retailer associated to the template
+     * @param int|null $retailer_id The retailer associated to the template
      *
      * @return self
      */
@@ -572,7 +569,14 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSkuCollectionMax($sku_collection_max)
     {
         if (is_null($sku_collection_max)) {
-            throw new \InvalidArgumentException('non-nullable sku_collection_max cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_collection_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_collection_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_collection_max'] = $sku_collection_max;
 
@@ -626,7 +630,14 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSkuPerCollectionMax($sku_per_collection_max)
     {
         if (is_null($sku_per_collection_max)) {
-            throw new \InvalidArgumentException('non-nullable sku_per_collection_max cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sku_per_collection_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_per_collection_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sku_per_collection_max'] = $sku_per_collection_max;
 
@@ -653,7 +664,14 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDisplayableSkusMax($displayable_skus_max)
     {
         if (is_null($displayable_skus_max)) {
-            throw new \InvalidArgumentException('non-nullable displayable_skus_max cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'displayable_skus_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_skus_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['displayable_skus_max'] = $displayable_skus_max;
 

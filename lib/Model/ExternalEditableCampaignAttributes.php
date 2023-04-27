@@ -89,11 +89,11 @@ class ExternalEditableCampaignAttributes implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'budget' => false,
+		'budget' => true,
 		'click_attribution_window' => false,
 		'view_attribution_window' => false,
-		'click_attribution_scope' => false,
-		'view_attribution_scope' => false
+		'click_attribution_scope' => true,
+		'view_attribution_scope' => true
     ];
 
     /**
@@ -512,7 +512,14 @@ class ExternalEditableCampaignAttributes implements ModelInterface, ArrayAccess,
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -613,10 +620,17 @@ class ExternalEditableCampaignAttributes implements ModelInterface, ArrayAccess,
     public function setClickAttributionScope($click_attribution_scope)
     {
         if (is_null($click_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionScopeAllowableValues();
-        if (!in_array($click_attribution_scope, $allowedValues, true)) {
+        if (!is_null($click_attribution_scope) && !in_array($click_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_scope', must be one of '%s'",
@@ -650,10 +664,17 @@ class ExternalEditableCampaignAttributes implements ModelInterface, ArrayAccess,
     public function setViewAttributionScope($view_attribution_scope)
     {
         if (is_null($view_attribution_scope)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_scope cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_scope');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_scope', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionScopeAllowableValues();
-        if (!in_array($view_attribution_scope, $allowedValues, true)) {
+        if (!is_null($view_attribution_scope) && !in_array($view_attribution_scope, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_scope', must be one of '%s'",

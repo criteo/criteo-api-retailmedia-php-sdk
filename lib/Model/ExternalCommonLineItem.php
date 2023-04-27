@@ -106,10 +106,10 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
 		'end_date' => false,
 		'status' => false,
 		'target_retailer_id' => false,
-		'budget' => false,
+		'budget' => true,
 		'campaign_id' => false,
 		'budget_spent' => false,
-		'budget_remaining' => false,
+		'budget_remaining' => true,
 		'created_at' => false,
 		'updated_at' => false
     ];
@@ -672,7 +672,14 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget'] = $budget;
 
@@ -753,7 +760,14 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBudgetRemaining($budget_remaining)
     {
         if (is_null($budget_remaining)) {
-            throw new \InvalidArgumentException('non-nullable budget_remaining cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['budget_remaining'] = $budget_remaining;
 

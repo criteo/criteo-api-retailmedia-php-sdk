@@ -152,8 +152,6 @@ docs/Model/ValueTypeResourceOfAudienceTarget202110.md
 docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
-examples/Advertiser.php
-examples/Analytics.php
 git_push.sh
 lib/Api/AnalyticsApi.php
 lib/Api/AudienceApi.php
@@ -162,6 +160,7 @@ lib/Api/GatewayApi.php
 lib/ApiException.php
 lib/ClientCredentialsClient.php
 lib/Configuration.php
+lib/ExampleApplication.php
 lib/HeaderSelector.php
 lib/Model/AddToBasketIdsUpdateModel202110Request.php
 lib/Model/AddToBasketTarget202110Request.php
@@ -311,4 +310,4 @@ lib/Model/ValueTypeResourceOfStoreTarget202110.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ClientCredentialsClientTest.php
-test/Api/GatewayApiTest.php
+test/GatewayApiTest.php
