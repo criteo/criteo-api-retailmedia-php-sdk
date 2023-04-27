@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\LineItemBidMultipliers**](LineItemBidMultipliers.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2023_04\Model\LineItemBidMultipliers**](LineItemBidMultipliers.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 

@@ -1,19 +1,19 @@
-# criteo\api\retailmedia\preview\AudienceApi
+# criteo\api\retailmedia\v2023_04\AudienceApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createAudience()**](AudienceApi.md#createAudience) | **POST** /preview/retail-media/accounts/{accountId}/audiences |  |
-| [**createRetailMediaAudienceV2()**](AudienceApi.md#createRetailMediaAudienceV2) | **POST** /preview/retail-media/v2/accounts/{accountId}/audiences |  |
-| [**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/audiences |  |
-| [**getRetailMediaAudienceV2ListByAccountId()**](AudienceApi.md#getRetailMediaAudienceV2ListByAccountId) | **GET** /preview/retail-media/v2/accounts/{accountId}/audiences |  |
+| [**createAudience()**](AudienceApi.md#createAudience) | **POST** /2023-04/retail-media/accounts/{accountId}/audiences |  |
+| [**createRetailMediaAudienceV2()**](AudienceApi.md#createRetailMediaAudienceV2) | **POST** /2023-04/retail-media/v2/accounts/{accountId}/audiences |  |
+| [**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /2023-04/retail-media/accounts/{accountId}/audiences |  |
+| [**getRetailMediaAudienceV2ListByAccountId()**](AudienceApi.md#getRetailMediaAudienceV2ListByAccountId) | **GET** /2023-04/retail-media/v2/accounts/{accountId}/audiences |  |
 
 
 ## `createAudience()`
 
 ```php
-createAudience($account_id, $create_retail_media_audience_request): \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse
+createAudience($account_id, $create_retail_media_audience_request): \criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceResponse
 ```
 
 
@@ -28,20 +28,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2023_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
-$create_retail_media_audience_request = new \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest(); // \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest
+$create_retail_media_audience_request = new \criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceRequest(); // \criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceRequest
 
 try {
     $result = $apiInstance->createAudience($account_id, $create_retail_media_audience_request);
@@ -56,11 +56,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| ID of the account to which this audience belongs. | |
-| **create_retail_media_audience_request** | [**\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  | |
+| **create_retail_media_audience_request** | [**\criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceResponse**](../Model/CreateRetailMediaAudienceResponse.md)
+[**\criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceResponse**](../Model/CreateRetailMediaAudienceResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `createRetailMediaAudienceV2()`
 
 ```php
-createRetailMediaAudienceV2($account_id, $create_retail_media_audience_v2_request): \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response
+createRetailMediaAudienceV2($account_id, $create_retail_media_audience_v2_request): \criteo\api\retailmedia\v2023_04\Model\RetailMediaAudienceV2Response
 ```
 
 
@@ -93,20 +93,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2023_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
-$create_retail_media_audience_v2_request = new \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request(); // \criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request
+$create_retail_media_audience_v2_request = new \criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceV2Request(); // \criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceV2Request
 
 try {
     $result = $apiInstance->createRetailMediaAudienceV2($account_id, $create_retail_media_audience_v2_request);
@@ -121,11 +121,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| ID of the account to which this audience belongs. | |
-| **create_retail_media_audience_v2_request** | [**\criteo\api\retailmedia\preview\Model\CreateRetailMediaAudienceV2Request**](../Model/CreateRetailMediaAudienceV2Request.md)|  | |
+| **create_retail_media_audience_v2_request** | [**\criteo\api\retailmedia\v2023_04\Model\CreateRetailMediaAudienceV2Request**](../Model/CreateRetailMediaAudienceV2Request.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2Response**](../Model/RetailMediaAudienceV2Response.md)
+[**\criteo\api\retailmedia\v2023_04\Model\RetailMediaAudienceV2Response**](../Model/RetailMediaAudienceV2Response.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ try {
 ## `getAudiencesByAccountId()`
 
 ```php
-getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse
+getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2023_04\Model\GetPageOfAudiencesByAccountIdResponse
 ```
 
 
@@ -158,13 +158,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2023_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -194,7 +194,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse**](../Model/GetPageOfAudiencesByAccountIdResponse.md)
+[**\criteo\api\retailmedia\v2023_04\Model\GetPageOfAudiencesByAccountIdResponse**](../Model/GetPageOfAudiencesByAccountIdResponse.md)
 
 ### Authorization
 
@@ -212,7 +212,7 @@ try {
 ## `getRetailMediaAudienceV2ListByAccountId()`
 
 ```php
-getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse
+getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2023_04\Model\RetailMediaAudienceV2ListResponse
 ```
 
 
@@ -227,13 +227,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2023_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -263,7 +263,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse**](../Model/RetailMediaAudienceV2ListResponse.md)
+[**\criteo\api\retailmedia\v2023_04\Model\RetailMediaAudienceV2ListResponse**](../Model/RetailMediaAudienceV2ListResponse.md)
 
 ### Authorization
 
