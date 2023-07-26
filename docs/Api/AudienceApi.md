@@ -40,7 +40,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_01\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
+$account_id = 56; // int | ID of the account to which this audience belongs.
 $create_retail_media_audience_request = new \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest(); // \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest
 
 try {
@@ -55,7 +55,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| ID of the account to which this audience belongs. | |
+| **account_id** | **int**| ID of the account to which this audience belongs. | |
 | **create_retail_media_audience_request** | [**\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type
@@ -105,7 +105,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_01\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
+$account_id = 56; // int | ID of the account to which this audience belongs.
 $create_retail_media_audience_v2_request = new \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request(); // \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request
 
 try {
@@ -120,7 +120,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| ID of the account to which this audience belongs. | |
+| **account_id** | **int**| ID of the account to which this audience belongs. | |
 | **create_retail_media_audience_v2_request** | [**\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request**](../Model/CreateRetailMediaAudienceV2Request.md)|  | |
 
 ### Return type
@@ -239,7 +239,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_01\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | External account ID which owns audience.
+$account_id = 56; // int | External account ID which owns audience.
 $limit_to_id = array(56); // int[] | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
 $page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page
 $page_index = 56; // int | Returns the specified page of results given a pageSize; pages are 0-indexed
@@ -256,7 +256,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| External account ID which owns audience. | |
+| **account_id** | **int**| External account ID which owns audience. | |
 | **limit_to_id** | [**int[]**](../Model/int.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
 | **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional] |
 | **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional] |
