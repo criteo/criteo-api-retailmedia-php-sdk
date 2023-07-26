@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**retailer_id** | **string** | ID of the retailer associated with this audience |
+**retailer_id** | **int** | ID of the retailer associated with this audience |
 **user_behavior_details** | [**\criteo\api\retailmedia\preview\Model\UserBehaviorDetailsV2**](UserBehaviorDetailsV2.md) |  |
 **name** | **string** | Name of the audience. |
 

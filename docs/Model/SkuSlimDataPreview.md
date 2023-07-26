@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **global_brand_name** | **string** | The name of the global brand. |
 **retailer_brand_id** | **string** | The retailer brand id associated to the product. | [optional]
 **retailer_brand_name** | **string** | The name of the retailer brand. | [optional]
-**price** | **float** | The price of the product on the retailer site. |
+**price** | **float** | The price of the product on the retailer site. Can be omitted in certain circumstances |
 **is_in_stock** | **bool** | An indication of if the retailer currently has the product in stock. |
 **gtin** | **string** | A GTIN identifier for the product if available. Covers variations such as EANs and UPCs. | [optional]
 **mpn** | **string** | The MPN for the product if available. | [optional]

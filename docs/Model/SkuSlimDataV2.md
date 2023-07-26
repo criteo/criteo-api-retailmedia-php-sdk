@@ -6,11 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | A short product name. | [optional]
 **description** | **string** | A short description of the product. | [optional]
-**retailer_category** | [**\criteo\api\retailmedia\preview\Model\RetailerCategory**](RetailerCategory.md) |  | [optional]
-**global_category_id** | **string** | The global category Id. | [optional]
-**global_brand** | [**\criteo\api\retailmedia\preview\Model\GlobalBrand**](GlobalBrand.md) |  | [optional]
-**retailer_brand** | [**\criteo\api\retailmedia\preview\Model\RetailerBrand**](RetailerBrand.md) |  | [optional]
-**price** | **float** | The price of the product on the retailer site. |
+**category** | [**\criteo\api\retailmedia\preview\Model\Category**](Category.md) |  | [optional]
+**brand** | [**\criteo\api\retailmedia\preview\Model\Brand**](Brand.md) |  | [optional]
+**price** | **float** | The price of the product on the retailer site. Can be omitted in certain circumstances |
 **is_in_stock** | **bool** | An indication of if the retailer currently has the product in stock. |
 **gtin** | **string** | A GTIN identifier for the product if available. Covers variations such as EANs and UPCs. | [optional]
 **mpn** | **string** | The MPN for the product if available. | [optional]

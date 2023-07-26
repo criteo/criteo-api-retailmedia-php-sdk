@@ -4,18 +4,272 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getCampaignReports()**](AnalyticsApi.md#getCampaignReports) | **POST** /preview/retail-media/reports/sync/campaigns |  |
-| [**getLineItemsReports()**](AnalyticsApi.md#getLineItemsReports) | **POST** /preview/retail-media/reports/sync/line-items |  |
-| [**getReportOutput()**](AnalyticsApi.md#getReportOutput) | **GET** /preview/retail-media/reports/{reportId}/output |  |
-| [**getReportStatus()**](AnalyticsApi.md#getReportStatus) | **GET** /preview/retail-media/reports/{reportId}/status |  |
-| [**requestCampaignReport()**](AnalyticsApi.md#requestCampaignReport) | **POST** /preview/retail-media/reports/campaigns |  |
-| [**requestLineItemReport()**](AnalyticsApi.md#requestLineItemReport) | **POST** /preview/retail-media/reports/line-items |  |
+| [**generateAsyncCampaignReport()**](AnalyticsApi.md#generateAsyncCampaignReport) | **POST** /preview/retail-media/reports/campaigns |  |
+| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items |  |
+| [**generateAsyncRevenueReport()**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /preview/retail-media/reports/revenue |  |
+| [**generateAttributedTransactionsReport()**](AnalyticsApi.md#generateAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions |  |
+| [**generateCampaignReports()**](AnalyticsApi.md#generateCampaignReports) | **POST** /preview/retail-media/reports/sync/campaigns |  |
+| [**generateLineItemsReports()**](AnalyticsApi.md#generateLineItemsReports) | **POST** /preview/retail-media/reports/sync/line-items |  |
+| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output |  |
+| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status |  |
 
 
-## `getCampaignReports()`
+## `generateAsyncCampaignReport()`
 
 ```php
-getCampaignReports($campaign_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
+generateAsyncCampaignReport($async_campaign_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+
+
+Return an async Campaign Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_campaign_report_request = new \criteo\api\retailmedia\preview\Model\AsyncCampaignReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncCampaignReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncCampaignReport($async_campaign_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_campaign_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncCampaignReportRequest**](../Model/AsyncCampaignReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncLineItemsReport()`
+
+```php
+generateAsyncLineItemsReport($async_line_item_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+
+
+Return an async Line Item Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_line_item_report_request = new \criteo\api\retailmedia\preview\Model\AsyncLineItemReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncLineItemReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncLineItemsReport($async_line_item_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_line_item_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncLineItemReportRequest**](../Model/AsyncLineItemReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncRevenueReport()`
+
+```php
+generateAsyncRevenueReport($async_revenue_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+
+
+Return an async Revenue Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_revenue_report_request = new \criteo\api\retailmedia\preview\Model\AsyncRevenueReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncRevenueReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncRevenueReport($async_revenue_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncRevenueReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_revenue_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncRevenueReportRequest**](../Model/AsyncRevenueReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAttributedTransactionsReport()`
+
+```php
+generateAttributedTransactionsReport($attributed_transaction_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
+```
+
+
+
+Return an Attributed Transactions Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$attributed_transaction_report_request = new \criteo\api\retailmedia\preview\Model\AttributedTransactionReportRequest(); // \criteo\api\retailmedia\preview\Model\AttributedTransactionReportRequest
+
+try {
+    $result = $apiInstance->generateAttributedTransactionsReport($attributed_transaction_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAttributedTransactionsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **attributed_transaction_report_request** | [**\criteo\api\retailmedia\preview\Model\AttributedTransactionReportRequest**](../Model/AttributedTransactionReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ReportResponse**](../Model/ReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateCampaignReports()`
+
+```php
+generateCampaignReports($campaign_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
 
@@ -45,10 +299,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
 $campaign_report_request = new \criteo\api\retailmedia\preview\Model\CampaignReportRequest(); // \criteo\api\retailmedia\preview\Model\CampaignReportRequest
 
 try {
-    $result = $apiInstance->getCampaignReports($campaign_report_request);
+    $result = $apiInstance->generateCampaignReports($campaign_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->getCampaignReports: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateCampaignReports: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,7 +310,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_report_request** | [**\criteo\api\retailmedia\preview\Model\CampaignReportRequest**](../Model/CampaignReportRequest.md)|  | [optional] |
+| **campaign_report_request** | [**\criteo\api\retailmedia\preview\Model\CampaignReportRequest**](../Model/CampaignReportRequest.md)|  | |
 
 ### Return type
 
@@ -68,17 +322,17 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
 - **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getLineItemsReports()`
+## `generateLineItemsReports()`
 
 ```php
-getLineItemsReports($line_item_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
+generateLineItemsReports($line_item_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
 
@@ -108,10 +362,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
 $line_item_report_request = new \criteo\api\retailmedia\preview\Model\LineItemReportRequest(); // \criteo\api\retailmedia\preview\Model\LineItemReportRequest
 
 try {
-    $result = $apiInstance->getLineItemsReports($line_item_report_request);
+    $result = $apiInstance->generateLineItemsReports($line_item_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->getLineItemsReports: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateLineItemsReports: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -119,7 +373,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_report_request** | [**\criteo\api\retailmedia\preview\Model\LineItemReportRequest**](../Model/LineItemReportRequest.md)|  | [optional] |
+| **line_item_report_request** | [**\criteo\api\retailmedia\preview\Model\LineItemReportRequest**](../Model/LineItemReportRequest.md)|  | |
 
 ### Return type
 
@@ -131,22 +385,22 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
 - **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getReportOutput()`
+## `getAsyncExportOutput()`
 
 ```php
-getReportOutput($report_id): int
+getAsyncExportOutput($report_id): string
 ```
 
 
 
-Request the report output
+Return the output of an async report
 
 ### Example
 
@@ -168,13 +422,13 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$report_id = ee439121-13e3-4734-9f67-c504dd921a41; // string | report id
+$report_id = 'report_id_example'; // string | The ID of the report to retrieve
 
 try {
-    $result = $apiInstance->getReportOutput($report_id);
+    $result = $apiInstance->getAsyncExportOutput($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->getReportOutput: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->getAsyncExportOutput: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -182,11 +436,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **report_id** | **string**| report id | |
+| **report_id** | **string**| The ID of the report to retrieve | |
 
 ### Return type
 
-**int**
+**string**
 
 ### Authorization
 
@@ -195,21 +449,21 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/octet-stream`
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getReportStatus()`
+## `getAsyncExportStatus()`
 
 ```php
-getReportStatus($report_id): \criteo\api\retailmedia\preview\Model\EnvelopeReportStatus
+getAsyncExportStatus($report_id): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
 
 
-Get the status of the report
+Return the status of an async report
 
 ### Example
 
@@ -231,13 +485,13 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$report_id = ee439121-13e3-4734-9f67-c504dd921a41; // string | report id
+$report_id = 'report_id_example'; // string | The ID of the report to retrieve
 
 try {
-    $result = $apiInstance->getReportStatus($report_id);
+    $result = $apiInstance->getAsyncExportStatus($report_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->getReportStatus: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->getAsyncExportStatus: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -245,11 +499,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **report_id** | **string**| report id | |
+| **report_id** | **string**| The ID of the report to retrieve | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EnvelopeReportStatus**](../Model/EnvelopeReportStatus.md)
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
 
 ### Authorization
 
@@ -258,133 +512,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `requestCampaignReport()`
-
-```php
-requestCampaignReport($envelope_report_request): \criteo\api\retailmedia\preview\Model\EnvelopeReportStatus
-```
-
-
-
-Request a campaign report
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$envelope_report_request = new \criteo\api\retailmedia\preview\Model\EnvelopeReportRequest(); // \criteo\api\retailmedia\preview\Model\EnvelopeReportRequest | // Body of the request {   \"data\": {     \"type\": \"RetailMediaReportRequest\",     \"attributes\": {       \"reportType\": string, // the name of the report being requested       //only one of \"id\" or \"ids\" can be provided for a request       \"id\": string, // the campaign id to select       \"ids\": Array[string], //the campaign ids to select       \"startDate\": string, // YYYY-MM-DD format       \"endDate\": string, // YYYY-MM-DD format       \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'       // both attribution windows must be specified when one is specified       \"clickAttributionWindow\": \"7D\", \"14D\", or \"30D\"  // optional. defaults to campaign's click attribution window       \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"30D\" // optional. defaults to campaign's view attribution window       \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\" or \"csv\" // output format, defaults to json-compact     }   } }
-
-try {
-    $result = $apiInstance->requestCampaignReport($envelope_report_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->requestCampaignReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **envelope_report_request** | [**\criteo\api\retailmedia\preview\Model\EnvelopeReportRequest**](../Model/EnvelopeReportRequest.md)| // Body of the request {   \&quot;data\&quot;: {     \&quot;type\&quot;: \&quot;RetailMediaReportRequest\&quot;,     \&quot;attributes\&quot;: {       \&quot;reportType\&quot;: string, // the name of the report being requested       //only one of \&quot;id\&quot; or \&quot;ids\&quot; can be provided for a request       \&quot;id\&quot;: string, // the campaign id to select       \&quot;ids\&quot;: Array[string], //the campaign ids to select       \&quot;startDate\&quot;: string, // YYYY-MM-DD format       \&quot;endDate\&quot;: string, // YYYY-MM-DD format       \&quot;timeZone\&quot;: string, // examples: &#39;Europe/London&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;       // both attribution windows must be specified when one is specified       \&quot;clickAttributionWindow\&quot;: \&quot;7D\&quot;, \&quot;14D\&quot;, or \&quot;30D\&quot;  // optional. defaults to campaign&#39;s click attribution window       \&quot;viewAttributionWindow\&quot;: \&quot;none\&quot;, \&quot;1D\&quot;, \&quot;7D\&quot;, \&quot;14D\&quot;, \&quot;30D\&quot; // optional. defaults to campaign&#39;s view attribution window       \&quot;format\&quot;: One of \&quot;json\&quot; (default),\&quot;json-compact\&quot;,\&quot;json-newline\&quot; or \&quot;csv\&quot; // output format, defaults to json-compact     }   } } | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\EnvelopeReportStatus**](../Model/EnvelopeReportStatus.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `requestLineItemReport()`
-
-```php
-requestLineItemReport($envelope_report_request): \criteo\api\retailmedia\preview\Model\EnvelopeReportStatus
-```
-
-
-
-Request a line item report
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$envelope_report_request = new \criteo\api\retailmedia\preview\Model\EnvelopeReportRequest(); // \criteo\api\retailmedia\preview\Model\EnvelopeReportRequest | // Body of the request {   \"data\": {     \"type\": \"RetailMediaReportRequest\",     \"attributes\": {       \"reportType\": string, // the name of the report being requested       //only one of \"id\" or \"ids\" can be provided for a request       \"id\": string, // the line item id to select       \"ids: Array[string] // the line item ids to select       \"startDate\": string, // YYYY-MM-DD format       \"endDate\": string, // YYYY-MM-DD format       \"timeZone\": string, // examples: 'Europe/London', 'Asia/Tokyo', 'America/New_York'       // both attribution windows must be specified when one is specified       \"clickAttributionWindow\": \"7D\", \"14D\", or \"30D\"  // optional. defaults to campaign's click attribution window       \"viewAttributionWindow\": \"none\", \"1D\", \"7D\", \"14D\", \"30D\" // optional. defaults to campaign's view attribution window       \"format\": One of \"json\" (default),\"json-compact\",\"json-newline\" or \"csv\" // output format, defaults to json-compact     }   } }
-
-try {
-    $result = $apiInstance->requestLineItemReport($envelope_report_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->requestLineItemReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **envelope_report_request** | [**\criteo\api\retailmedia\preview\Model\EnvelopeReportRequest**](../Model/EnvelopeReportRequest.md)| // Body of the request {   \&quot;data\&quot;: {     \&quot;type\&quot;: \&quot;RetailMediaReportRequest\&quot;,     \&quot;attributes\&quot;: {       \&quot;reportType\&quot;: string, // the name of the report being requested       //only one of \&quot;id\&quot; or \&quot;ids\&quot; can be provided for a request       \&quot;id\&quot;: string, // the line item id to select       \&quot;ids: Array[string] // the line item ids to select       \&quot;startDate\&quot;: string, // YYYY-MM-DD format       \&quot;endDate\&quot;: string, // YYYY-MM-DD format       \&quot;timeZone\&quot;: string, // examples: &#39;Europe/London&#39;, &#39;Asia/Tokyo&#39;, &#39;America/New_York&#39;       // both attribution windows must be specified when one is specified       \&quot;clickAttributionWindow\&quot;: \&quot;7D\&quot;, \&quot;14D\&quot;, or \&quot;30D\&quot;  // optional. defaults to campaign&#39;s click attribution window       \&quot;viewAttributionWindow\&quot;: \&quot;none\&quot;, \&quot;1D\&quot;, \&quot;7D\&quot;, \&quot;14D\&quot;, \&quot;30D\&quot; // optional. defaults to campaign&#39;s view attribution window       \&quot;format\&quot;: One of \&quot;json\&quot; (default),\&quot;json-compact\&quot;,\&quot;json-newline\&quot; or \&quot;csv\&quot; // output format, defaults to json-compact     }   } } | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\EnvelopeReportStatus**](../Model/EnvelopeReportStatus.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
