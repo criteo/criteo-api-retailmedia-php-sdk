@@ -1,10 +1,10 @@
 <?php
-namespace criteo\api\retailmedia\preview;
+namespace criteo\api\retailmedia\v2023_07;
 
-use criteo\api\retailmedia\preview\ApiException;
-use criteo\api\retailmedia\preview\Configuration;
-use criteo\api\retailmedia\preview\ObjectSerializer;
-use criteo\api\retailmedia\preview\ClientCredentialsClient\Token;
+use criteo\api\retailmedia\v2023_07\ApiException;
+use criteo\api\retailmedia\v2023_07\Configuration;
+use criteo\api\retailmedia\v2023_07\ObjectSerializer;
+use criteo\api\retailmedia\v2023_07\ClientCredentialsClient\Token;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;
@@ -260,7 +260,7 @@ class OAuthClient{
     }
 }
 
-namespace criteo\api\retailmedia\preview\ClientCredentialsClient;
+namespace criteo\api\retailmedia\v2023_07\ClientCredentialsClient;
 
 use DateTime;
 

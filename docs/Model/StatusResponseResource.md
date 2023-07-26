@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\StatusResponse**](StatusResponse.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2023_07\Model\StatusResponse**](StatusResponse.md) |  | [optional]
 **id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 
