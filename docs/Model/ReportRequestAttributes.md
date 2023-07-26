@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **id** | **string** | The id of the campaign or line item.  Either &#39;id&#39; or &#39;ids&#39; must be specified, but not both | [optional]
 **ids** | **string[]** | The ids of the campaigns or line items.  Either &#39;id&#39; or &#39;ids&#39; must be specified, but not both | [optional]
 **report_type** | **string** | One of \&quot;summary\&quot;, \&quot;keyword\&quot;, \&quot;pageType\&quot;, \&quot;productCategory\&quot;, \&quot;product\&quot;, or \&quot;attributedTransactions\&quot; |
+**revenue_type** | **string** |  | [optional]
 **start_date** | **\DateTime** | YYYY-MM-DD |
 **time_zone** | **string** |  | [optional]
 **view_attribution_window** | **string** | Defaults to value from campaign or one of \&quot;none\&quot;, \&quot;1D\&quot;, \&quot;7D\&quot;, \&quot;14D\&quot;, or \&quot;30D\&quot;. If specified, must be less than clickAttributionWindow, which must also be specified. | [optional]

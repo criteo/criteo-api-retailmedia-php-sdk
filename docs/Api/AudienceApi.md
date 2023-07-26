@@ -38,7 +38,7 @@ $apiInstance = new criteo\api\retailmedia\v2022_07\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | ID of the account to which this audience belongs.
+$account_id = 56; // int | ID of the account to which this audience belongs.
 $create_retail_media_audience_request = new \criteo\api\retailmedia\v2022_07\Model\CreateRetailMediaAudienceRequest(); // \criteo\api\retailmedia\v2022_07\Model\CreateRetailMediaAudienceRequest
 
 try {
@@ -53,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| ID of the account to which this audience belongs. | |
+| **account_id** | **int**| ID of the account to which this audience belongs. | |
 | **create_retail_media_audience_request** | [**\criteo\api\retailmedia\v2022_07\Model\CreateRetailMediaAudienceRequest**](../Model/CreateRetailMediaAudienceRequest.md)|  | |
 
 ### Return type
