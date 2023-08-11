@@ -159,8 +159,8 @@ lib/Api/CampaignApi.php
 lib/Api/GatewayApi.php
 lib/ApiException.php
 lib/ClientCredentialsClient.php
+lib/ClientCredentialsClient/Token.php
 lib/Configuration.php
-lib/ExampleApplication.php
 lib/HeaderSelector.php
 lib/Model/AddToBasketIdsUpdateModel202110Request.php
 lib/Model/AddToBasketTarget202110Request.php
@@ -307,7 +307,9 @@ lib/Model/ValueTypeResourceOfAudienceTarget202110.php
 lib/Model/ValueTypeResourceOfKeywordTarget202110.php
 lib/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfStoreTarget202110.php
+lib/OAuthClient.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/ClientCredentialsClientTest.php
-test/GatewayApiTest.php
+test/Api/GatewayApiTest.php
+test/ExampleApplication.php
