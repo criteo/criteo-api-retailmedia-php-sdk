@@ -1,6 +1,6 @@
 <?php
 /**
- * ExportReportMetaData
+ * AsyncCampaignReportResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * ExportReportMetaData Class Doc Comment
+ * AsyncCampaignReportResource Class Doc Comment
  *
  * @category Class
- * @description Metadata for an async report request: descriptions of the columns and number of rows returned
+ * @description A top-level object that encapsulates a Criteo API response for a single value
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncCampaignReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExportReportMetaData';
+    protected static $openAPIModelName = 'AsyncCampaignReportResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'columns' => '\criteo\api\retailmedia\v2023_07\Model\ExportReportColumn[]',
-        'rows' => 'int'
+        'type' => 'string',
+        'attributes' => '\criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReport'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'columns' => null,
-        'rows' => 'int32'
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'columns' => false,
-		'rows' => false
+        'type' => true,
+		'attributes' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'columns' => 'columns',
-        'rows' => 'rows'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'columns' => 'setColumns',
-        'rows' => 'setRows'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'columns' => 'getColumns',
-        'rows' => 'getRows'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -251,8 +251,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('columns', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,62 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets columns
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\ExportReportColumn[]|null
+     * @return string|null
      */
-    public function getColumns()
+    public function getType()
     {
-        return $this->container['columns'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets columns
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\ExportReportColumn[]|null $columns columns
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setColumns($columns)
+    public function setType($type)
     {
-        if (is_null($columns)) {
-            throw new \InvalidArgumentException('non-nullable columns cannot be null');
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['columns'] = $columns;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets rows
+     * Gets attributes
      *
-     * @return int|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReport|null
      */
-    public function getRows()
+    public function getAttributes()
     {
-        return $this->container['rows'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets rows
+     * Sets attributes
      *
-     * @param int|null $rows rows
+     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReport|null $attributes attributes
      *
      * @return self
      */
-    public function setRows($rows)
+    public function setAttributes($attributes)
     {
-        if (is_null($rows)) {
-            throw new \InvalidArgumentException('non-nullable rows cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['rows'] = $rows;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

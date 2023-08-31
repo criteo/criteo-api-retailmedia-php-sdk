@@ -83,8 +83,8 @@ class RetailMediaExternalv1KeywordsModelResponse implements ModelInterface, Arra
       */
     protected static array $openAPINullables = [
         'data' => false,
-		'errors' => false,
-		'warnings' => false
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -351,7 +351,14 @@ class RetailMediaExternalv1KeywordsModelResponse implements ModelInterface, Arra
     public function setErrors($errors)
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
@@ -380,7 +387,14 @@ class RetailMediaExternalv1KeywordsModelResponse implements ModelInterface, Arra
     public function setWarnings($warnings)
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

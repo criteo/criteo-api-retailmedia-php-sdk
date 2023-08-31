@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignReport
+ * AsyncLineItemReport
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * CampaignReport Class Doc Comment
+ * AsyncLineItemReport Class Doc Comment
  *
  * @category Class
- * @description Campaign report body request
+ * @description Line Item report body request
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncLineItemReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CampaignReport';
+    protected static $openAPIModelName = 'AsyncLineItemReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,18 +58,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'report_type' => 'string',
-        'campaign_ids' => 'string[]',
         'metrics' => 'string[]',
         'dimensions' => 'string[]',
-        'account_id' => 'string',
+        'click_attribution_window' => 'string',
+        'view_attribution_window' => 'string',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'timezone' => 'string',
-        'click_attribution_window' => 'string',
-        'view_attribution_window' => 'string',
         'campaign_type' => 'string',
-        'sales_channel' => 'string'
+        'sales_channel' => 'string',
+        'format' => 'string',
+        'report_type' => 'string',
+        'ids' => 'string[]',
+        'id' => 'string'
     ];
 
     /**
@@ -80,18 +81,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'report_type' => null,
-        'campaign_ids' => null,
         'metrics' => null,
         'dimensions' => null,
-        'account_id' => null,
+        'click_attribution_window' => null,
+        'view_attribution_window' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'timezone' => null,
-        'click_attribution_window' => null,
-        'view_attribution_window' => null,
         'campaign_type' => null,
-        'sales_channel' => null
+        'sales_channel' => null,
+        'format' => null,
+        'report_type' => null,
+        'ids' => null,
+        'id' => null
     ];
 
     /**
@@ -100,18 +102,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'report_type' => false,
-		'campaign_ids' => false,
-		'metrics' => false,
-		'dimensions' => false,
-		'account_id' => false,
+        'metrics' => true,
+		'dimensions' => true,
+		'click_attribution_window' => true,
+		'view_attribution_window' => true,
 		'start_date' => false,
 		'end_date' => false,
-		'timezone' => false,
-		'click_attribution_window' => false,
-		'view_attribution_window' => false,
-		'campaign_type' => false,
-		'sales_channel' => false
+		'timezone' => true,
+		'campaign_type' => true,
+		'sales_channel' => true,
+		'format' => true,
+		'report_type' => true,
+		'ids' => true,
+		'id' => true
     ];
 
     /**
@@ -200,18 +203,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'report_type' => 'reportType',
-        'campaign_ids' => 'campaignIds',
         'metrics' => 'metrics',
         'dimensions' => 'dimensions',
-        'account_id' => 'accountId',
+        'click_attribution_window' => 'clickAttributionWindow',
+        'view_attribution_window' => 'viewAttributionWindow',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'timezone' => 'timezone',
-        'click_attribution_window' => 'clickAttributionWindow',
-        'view_attribution_window' => 'viewAttributionWindow',
         'campaign_type' => 'campaignType',
-        'sales_channel' => 'salesChannel'
+        'sales_channel' => 'salesChannel',
+        'format' => 'format',
+        'report_type' => 'reportType',
+        'ids' => 'ids',
+        'id' => 'id'
     ];
 
     /**
@@ -220,18 +224,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'report_type' => 'setReportType',
-        'campaign_ids' => 'setCampaignIds',
         'metrics' => 'setMetrics',
         'dimensions' => 'setDimensions',
-        'account_id' => 'setAccountId',
+        'click_attribution_window' => 'setClickAttributionWindow',
+        'view_attribution_window' => 'setViewAttributionWindow',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'timezone' => 'setTimezone',
-        'click_attribution_window' => 'setClickAttributionWindow',
-        'view_attribution_window' => 'setViewAttributionWindow',
         'campaign_type' => 'setCampaignType',
-        'sales_channel' => 'setSalesChannel'
+        'sales_channel' => 'setSalesChannel',
+        'format' => 'setFormat',
+        'report_type' => 'setReportType',
+        'ids' => 'setIds',
+        'id' => 'setId'
     ];
 
     /**
@@ -240,18 +245,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'report_type' => 'getReportType',
-        'campaign_ids' => 'getCampaignIds',
         'metrics' => 'getMetrics',
         'dimensions' => 'getDimensions',
-        'account_id' => 'getAccountId',
+        'click_attribution_window' => 'getClickAttributionWindow',
+        'view_attribution_window' => 'getViewAttributionWindow',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'timezone' => 'getTimezone',
-        'click_attribution_window' => 'getClickAttributionWindow',
-        'view_attribution_window' => 'getViewAttributionWindow',
         'campaign_type' => 'getCampaignType',
-        'sales_channel' => 'getSalesChannel'
+        'sales_channel' => 'getSalesChannel',
+        'format' => 'getFormat',
+        'report_type' => 'getReportType',
+        'ids' => 'getIds',
+        'id' => 'getId'
     ];
 
     /**
@@ -295,11 +301,6 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const REPORT_TYPE_SUMMARY = 'summary';
-    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
-    public const REPORT_TYPE_KEYWORD = 'keyword';
-    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
-    public const REPORT_TYPE_PRODUCT = 'product';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -309,8 +310,9 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     public const METRICS_CTR = 'ctr';
     public const METRICS_CPC = 'cpc';
     public const METRICS_CPO = 'cpo';
-    public const METRICS_CPM = 'cpm';
     public const METRICS_ROAS = 'roas';
+    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
+    public const METRICS_ASSISTED_SALES = 'assistedSales';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
     public const DIMENSIONS_DATE = 'date';
@@ -322,12 +324,17 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_BRAND_ID = 'brandId';
     public const DIMENSIONS_BRAND_NAME = 'brandName';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
+    public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
+    public const DIMENSIONS_RETAILER_ID = 'retailerId';
+    public const DIMENSIONS_RETAILER_NAME = 'retailerName';
     public const DIMENSIONS_KEYWORD = 'keyword';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
@@ -337,22 +344,16 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getReportTypeAllowableValues()
-    {
-        return [
-            self::REPORT_TYPE_SUMMARY,
-            self::REPORT_TYPE_PAGE_TYPE,
-            self::REPORT_TYPE_KEYWORD,
-            self::REPORT_TYPE_PRODUCT_CATEGORY,
-            self::REPORT_TYPE_PRODUCT,
-        ];
-    }
+    public const FORMAT_JSON = 'json';
+    public const FORMAT_JSON_COMPACT = 'json-compact';
+    public const FORMAT_JSON_NEWLINE = 'json-newline';
+    public const FORMAT_CSV = 'csv';
+    public const REPORT_TYPE_SUMMARY = 'summary';
+    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
+    public const REPORT_TYPE_KEYWORD = 'keyword';
+    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
+    public const REPORT_TYPE_PRODUCT = 'product';
+    public const REPORT_TYPE_ATTRIBUTED_TRANSACTIONS = 'attributedTransactions';
 
     /**
      * Gets allowable values of the enum
@@ -371,8 +372,9 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             self::METRICS_CTR,
             self::METRICS_CPC,
             self::METRICS_CPO,
-            self::METRICS_CPM,
             self::METRICS_ROAS,
+            self::METRICS_ASSISTED_UNITS,
+            self::METRICS_ASSISTED_SALES,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];
@@ -395,8 +397,12 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_BRAND_ID,
             self::DIMENSIONS_BRAND_NAME,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_LINE_ITEM_ID,
+            self::DIMENSIONS_LINE_ITEM_NAME,
+            self::DIMENSIONS_RETAILER_ID,
+            self::DIMENSIONS_RETAILER_NAME,
             self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_SALES_CHANNEL,
         ];
     }
@@ -412,6 +418,7 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -458,6 +465,38 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_JSON,
+            self::FORMAT_JSON_COMPACT,
+            self::FORMAT_JSON_NEWLINE,
+            self::FORMAT_CSV,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReportTypeAllowableValues()
+    {
+        return [
+            self::REPORT_TYPE_SUMMARY,
+            self::REPORT_TYPE_PAGE_TYPE,
+            self::REPORT_TYPE_KEYWORD,
+            self::REPORT_TYPE_PRODUCT_CATEGORY,
+            self::REPORT_TYPE_PRODUCT,
+            self::REPORT_TYPE_ATTRIBUTED_TRANSACTIONS,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -472,18 +511,19 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('report_type', $data ?? [], null);
-        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('click_attribution_window', $data ?? [], null);
+        $this->setIfExists('view_attribution_window', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('timezone', $data ?? [], 'UTC');
-        $this->setIfExists('click_attribution_window', $data ?? [], '7D');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('timezone', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], null);
+        $this->setIfExists('report_type', $data ?? [], null);
+        $this->setIfExists('ids', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -513,24 +553,6 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'report_type', must be one of '%s'",
-                $this->container['report_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
         if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -549,6 +571,12 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
         $allowedValues = $this->getCampaignTypeAllowableValues();
         if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -563,6 +591,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'sales_channel', must be one of '%s'",
                 $this->container['sales_channel'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'report_type', must be one of '%s'",
+                $this->container['report_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -583,70 +629,6 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets report_type
-     *
-     * @return string|null
-     */
-    public function getReportType()
-    {
-        return $this->container['report_type'];
-    }
-
-    /**
-     * Sets report_type
-     *
-     * @param string|null $report_type report_type
-     *
-     * @return self
-     */
-    public function setReportType($report_type)
-    {
-        if (is_null($report_type)) {
-            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
-        }
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!in_array($report_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'report_type', must be one of '%s'",
-                    $report_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['report_type'] = $report_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_ids
-     *
-     * @return string[]|null
-     */
-    public function getCampaignIds()
-    {
-        return $this->container['campaign_ids'];
-    }
-
-    /**
-     * Sets campaign_ids
-     *
-     * @param string[]|null $campaign_ids List of campaign Ids to filter
-     *
-     * @return self
-     */
-    public function setCampaignIds($campaign_ids)
-    {
-        if (is_null($campaign_ids)) {
-            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-        $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets metrics
      *
      * @return string[]|null
@@ -659,17 +641,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metrics
      *
-     * @param string[]|null $metrics List of Metrics to report on
+     * @param string[]|null $metrics metrics
      *
      * @return self
      */
     public function setMetrics($metrics)
     {
         if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getMetricsAllowableValues();
-        if (array_diff($metrics, $allowedValues)) {
+        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'metrics', must be one of '%s'",
@@ -695,17 +684,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dimensions
      *
-     * @param string[]|null $dimensions List of dimensions to report on
+     * @param string[]|null $dimensions dimensions
      *
      * @return self
      */
     public function setDimensions($dimensions)
     {
         if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getDimensionsAllowableValues();
-        if (array_diff($dimensions, $allowedValues)) {
+        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'dimensions', must be one of '%s'",
@@ -714,114 +710,6 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['dimensions'] = $dimensions;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string $account_id Account id to report on
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Start date
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date End Date
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone
-     *
-     * @return string|null
-     */
-    public function getTimezone()
-    {
-        return $this->container['timezone'];
-    }
-
-    /**
-     * Sets timezone
-     *
-     * @param string|null $timezone Time zone : see criteo developer portal for supported time zones
-     *
-     * @return self
-     */
-    public function setTimezone($timezone)
-    {
-        if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
-        }
-        $this->container['timezone'] = $timezone;
 
         return $this;
     }
@@ -839,17 +727,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets click_attribution_window
      *
-     * @param string|null $click_attribution_window Click Attribution Window
+     * @param string|null $click_attribution_window click_attribution_window
      *
      * @return self
      */
     public function setClickAttributionWindow($click_attribution_window)
     {
         if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
+        if (!is_null($click_attribution_window) && !in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
@@ -876,17 +771,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets view_attribution_window
      *
-     * @param string|null $view_attribution_window View Attribution window
+     * @param string|null $view_attribution_window view_attribution_window
      *
      * @return self
      */
     public function setViewAttributionWindow($view_attribution_window)
     {
         if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
+        if (!is_null($view_attribution_window) && !in_array($view_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
@@ -896,6 +798,94 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['view_attribution_window'] = $view_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date start_date
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date end_date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     *
+     * @return string|null
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string|null $timezone timezone
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        if (is_null($timezone)) {
+            array_push($this->openAPINullablesSetToNull, 'timezone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timezone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }
@@ -913,17 +903,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign_type
      *
-     * @param string|null $campaign_type Filter the type of campaign to report on
+     * @param string|null $campaign_type campaign_type
      *
      * @return self
      */
     public function setCampaignType($campaign_type)
     {
         if (is_null($campaign_type)) {
-            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'campaign_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!in_array($campaign_type, $allowedValues, true)) {
+        if (!is_null($campaign_type) && !in_array($campaign_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'campaign_type', must be one of '%s'",
@@ -950,17 +947,24 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sales_channel
      *
-     * @param string|null $sales_channel Filter on the channel of sales
+     * @param string|null $sales_channel sales_channel
      *
      * @return self
      */
     public function setSalesChannel($sales_channel)
     {
         if (is_null($sales_channel)) {
-            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sales_channel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sales_channel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!in_array($sales_channel, $allowedValues, true)) {
+        if (!is_null($sales_channel) && !in_array($sales_channel, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sales_channel', must be one of '%s'",
@@ -970,6 +974,162 @@ class CampaignReport implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format format
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            array_push($this->openAPINullablesSetToNull, 'format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('format', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets report_type
+     *
+     * @return string|null
+     */
+    public function getReportType()
+    {
+        return $this->container['report_type'];
+    }
+
+    /**
+     * Sets report_type
+     *
+     * @param string|null $report_type report_type
+     *
+     * @return self
+     */
+    public function setReportType($report_type)
+    {
+        if (is_null($report_type)) {
+            array_push($this->openAPINullablesSetToNull, 'report_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!is_null($report_type) && !in_array($report_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'report_type', must be one of '%s'",
+                    $report_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['report_type'] = $report_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets ids
+     *
+     * @return string[]|null
+     */
+    public function getIds()
+    {
+        return $this->container['ids'];
+    }
+
+    /**
+     * Sets ids
+     *
+     * @param string[]|null $ids ids
+     *
+     * @return self
+     */
+    public function setIds($ids)
+    {
+        if (is_null($ids)) {
+            array_push($this->openAPINullablesSetToNull, 'ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ids'] = $ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

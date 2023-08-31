@@ -83,8 +83,8 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'file_extension' => false,
-		'file_location' => false,
-		'id' => false
+		'file_location' => true,
+		'id' => true
     ];
 
     /**
@@ -354,7 +354,14 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFileLocation($file_location)
     {
         if (is_null($file_location)) {
-            throw new \InvalidArgumentException('non-nullable file_location cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'file_location');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_location', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['file_location'] = $file_location;
 
@@ -381,7 +388,14 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 

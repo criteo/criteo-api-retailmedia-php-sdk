@@ -81,7 +81,7 @@ class RetailMediaExternalv1KeywordsModel implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'keywords' => false,
-		'rank' => false
+		'rank' => true
     ];
 
     /**
@@ -344,7 +344,14 @@ class RetailMediaExternalv1KeywordsModel implements ModelInterface, ArrayAccess,
     public function setRank($rank)
     {
         if (is_null($rank)) {
-            throw new \InvalidArgumentException('non-nullable rank cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'rank');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('rank', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

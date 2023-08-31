@@ -1,6 +1,6 @@
 <?php
 /**
- * ReportResponse
+ * AsyncLineItemReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * ReportResponse Class Doc Comment
+ * AsyncLineItemReportRequest Class Doc Comment
  *
  * @category Class
- * @description Report response format
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncLineItemReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReportResponse';
+    protected static $openAPIModelName = 'AsyncLineItemReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\criteo\api\retailmedia\v2023_07\Model\ExportReportMetaData',
-        'data' => '\criteo\api\retailmedia\v2023_07\Model\ReportDataResponseResource',
-        'warnings' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]'
+        'data' => '\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportResource'
     ];
 
     /**
@@ -72,10 +69,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'data' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-		'data' => false,
-		'warnings' => false,
-		'errors' => false
+        'data' => false
     ];
 
     /**
@@ -176,10 +167,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'data' => 'data'
     ];
 
     /**
@@ -188,10 +176,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'data' => 'setData'
     ];
 
     /**
@@ -200,10 +185,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'data' => 'getData'
     ];
 
     /**
@@ -263,10 +245,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -312,36 +291,9 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
-     *
-     * @return \criteo\api\retailmedia\v2023_07\Model\ExportReportMetaData|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \criteo\api\retailmedia\v2023_07\Model\ExportReportMetaData|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
-        }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\ReportDataResponseResource|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportResource|null
      */
     public function getData()
     {
@@ -351,7 +303,7 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\ReportDataResponseResource|null $data data
+     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportResource|null $data data
      *
      * @return self
      */
@@ -361,60 +313,6 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
 
         return $this;
     }

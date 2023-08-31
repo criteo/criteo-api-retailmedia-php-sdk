@@ -82,9 +82,9 @@ class RetailMediaExternalv1InputKeywordsModel implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'negative_broad' => false,
-		'negative_exact' => false,
-		'positive_exact' => false
+        'negative_broad' => true,
+		'negative_exact' => true,
+		'positive_exact' => true
     ];
 
     /**
@@ -324,7 +324,14 @@ class RetailMediaExternalv1InputKeywordsModel implements ModelInterface, ArrayAc
     public function setNegativeBroad($negative_broad)
     {
         if (is_null($negative_broad)) {
-            throw new \InvalidArgumentException('non-nullable negative_broad cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'negative_broad');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('negative_broad', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
@@ -353,7 +360,14 @@ class RetailMediaExternalv1InputKeywordsModel implements ModelInterface, ArrayAc
     public function setNegativeExact($negative_exact)
     {
         if (is_null($negative_exact)) {
-            throw new \InvalidArgumentException('non-nullable negative_exact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'negative_exact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('negative_exact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
@@ -382,7 +396,14 @@ class RetailMediaExternalv1InputKeywordsModel implements ModelInterface, ArrayAc
     public function setPositiveExact($positive_exact)
     {
         if (is_null($positive_exact)) {
-            throw new \InvalidArgumentException('non-nullable positive_exact cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'positive_exact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('positive_exact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 
