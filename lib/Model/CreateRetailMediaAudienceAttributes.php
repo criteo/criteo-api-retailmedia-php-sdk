@@ -90,8 +90,8 @@ class CreateRetailMediaAudienceAttributes implements ModelInterface, ArrayAccess
     protected static array $openAPINullables = [
         'user_type' => false,
 		'lookback_window' => false,
-		'brand_ids' => false,
-		'category_ids' => false,
+		'brand_ids' => true,
+		'category_ids' => true,
 		'retailer_id' => false,
 		'name' => false
     ];
@@ -493,7 +493,14 @@ class CreateRetailMediaAudienceAttributes implements ModelInterface, ArrayAccess
     public function setBrandIds($brand_ids)
     {
         if (is_null($brand_ids)) {
-            throw new \InvalidArgumentException('non-nullable brand_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_ids'] = $brand_ids;
 
@@ -520,7 +527,14 @@ class CreateRetailMediaAudienceAttributes implements ModelInterface, ArrayAccess
     public function setCategoryIds($category_ids)
     {
         if (is_null($category_ids)) {
-            throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['category_ids'] = $category_ids;
 
