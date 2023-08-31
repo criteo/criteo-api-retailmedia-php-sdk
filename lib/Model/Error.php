@@ -93,11 +93,11 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'code' => false,
-		'detail' => false,
+		'detail' => true,
 		'instance' => false,
 		'source' => false,
-		'stack_trace' => false,
-		'title' => false,
+		'stack_trace' => true,
+		'title' => true,
 		'trace_id' => false,
 		'type' => false
     ];
@@ -432,7 +432,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDetail($detail)
     {
         if (is_null($detail)) {
-            throw new \InvalidArgumentException('non-nullable detail cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('detail', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['detail'] = $detail;
 
@@ -513,7 +520,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStackTrace($stack_trace)
     {
         if (is_null($stack_trace)) {
-            throw new \InvalidArgumentException('non-nullable stack_trace cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'stack_trace');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stack_trace', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['stack_trace'] = $stack_trace;
 
@@ -540,7 +554,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTitle($title)
     {
         if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['title'] = $title;
 
