@@ -8,8 +8,6 @@ Name | Type | Description | Notes
 **line_item_ids** | **string[]** | Line item ids to report on | [optional]
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **metrics** | **string[]** | List of metrics to report on | [optional]
-**sold_by** | **string** | Filter on the type of seller | [optional]
-**campaign_sub_type** | **string** | Filter on the campaign sub type | [optional]
 **account_id** | **string** | Account id to report on |
 **start_date** | **\DateTime** | Start date |
 **end_date** | **\DateTime** | End Date |
