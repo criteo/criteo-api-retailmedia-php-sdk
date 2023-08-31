@@ -96,16 +96,16 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'click_attribution_window' => false,
+        'click_attribution_window' => true,
 		'end_date' => false,
-		'format' => false,
-		'id' => false,
-		'ids' => false,
+		'format' => true,
+		'id' => true,
+		'ids' => true,
 		'report_type' => false,
-		'revenue_type' => false,
+		'revenue_type' => true,
 		'start_date' => false,
-		'time_zone' => false,
-		'view_attribution_window' => false
+		'time_zone' => true,
+		'view_attribution_window' => true
     ];
 
     /**
@@ -498,10 +498,17 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setClickAttributionWindow($click_attribution_window)
     {
         if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
+        if (!is_null($click_attribution_window) && !in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
@@ -562,10 +569,17 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setFormat($format)
     {
         if (is_null($format)) {
-            throw new \InvalidArgumentException('non-nullable format cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'format');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('format', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getFormatAllowableValues();
-        if (!in_array($format, $allowedValues, true)) {
+        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'format', must be one of '%s'",
@@ -599,7 +613,14 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -626,7 +647,14 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setIds($ids)
     {
         if (is_null($ids)) {
-            throw new \InvalidArgumentException('non-nullable ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['ids'] = $ids;
 
@@ -690,7 +718,14 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setRevenueType($revenue_type)
     {
         if (is_null($revenue_type)) {
-            throw new \InvalidArgumentException('non-nullable revenue_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'revenue_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('revenue_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['revenue_type'] = $revenue_type;
 
@@ -744,7 +779,14 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setTimeZone($time_zone)
     {
         if (is_null($time_zone)) {
-            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['time_zone'] = $time_zone;
 
@@ -771,10 +813,17 @@ class ReportRequestAttributes implements ModelInterface, ArrayAccess, \JsonSeria
     public function setViewAttributionWindow($view_attribution_window)
     {
         if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
+        if (!is_null($view_attribution_window) && !in_array($view_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",

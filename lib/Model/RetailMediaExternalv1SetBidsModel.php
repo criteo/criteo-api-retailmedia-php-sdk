@@ -78,7 +78,7 @@ class RetailMediaExternalv1SetBidsModel implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false
+        'keywords' => true
     ];
 
     /**
@@ -310,7 +310,14 @@ class RetailMediaExternalv1SetBidsModel implements ModelInterface, ArrayAccess, 
     public function setKeywords($keywords)
     {
         if (is_null($keywords)) {
-            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'keywords');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('keywords', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
 

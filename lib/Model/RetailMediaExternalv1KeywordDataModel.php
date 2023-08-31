@@ -88,12 +88,12 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'review_state' => false,
-		'match_type' => false,
-		'bid' => false,
+        'review_state' => true,
+		'match_type' => true,
+		'bid' => true,
 		'input_keywords' => false,
-		'created_at' => false,
-		'updated_at' => false
+		'created_at' => true,
+		'updated_at' => true
     ];
 
     /**
@@ -403,10 +403,17 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
     public function setReviewState($review_state)
     {
         if (is_null($review_state)) {
-            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'review_state');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('review_state', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getReviewStateAllowableValues();
-        if (!in_array($review_state, $allowedValues, true)) {
+        if (!is_null($review_state) && !in_array($review_state, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'review_state', must be one of '%s'",
@@ -440,10 +447,17 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
     public function setMatchType($match_type)
     {
         if (is_null($match_type)) {
-            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'match_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('match_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getMatchTypeAllowableValues();
-        if (!in_array($match_type, $allowedValues, true)) {
+        if (!is_null($match_type) && !in_array($match_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'match_type', must be one of '%s'",
@@ -477,7 +491,14 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
     public function setBid($bid)
     {
         if (is_null($bid)) {
-            throw new \InvalidArgumentException('non-nullable bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bid'] = $bid;
 
@@ -531,7 +552,14 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
     public function setCreatedAt($created_at)
     {
         if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['created_at'] = $created_at;
 
@@ -558,7 +586,14 @@ class RetailMediaExternalv1KeywordDataModel implements ModelInterface, ArrayAcce
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 

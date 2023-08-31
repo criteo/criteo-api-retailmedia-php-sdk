@@ -94,8 +94,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trace_id' => false,
-		'trace_identifier' => false,
+        'trace_id' => true,
+		'trace_identifier' => true,
 		'type' => false,
 		'code' => false,
 		'instance' => false,
@@ -402,7 +402,14 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTraceId($trace_id)
     {
         if (is_null($trace_id)) {
-            throw new \InvalidArgumentException('non-nullable trace_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trace_id'] = $trace_id;
 
@@ -429,7 +436,14 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTraceIdentifier($trace_identifier)
     {
         if (is_null($trace_identifier)) {
-            throw new \InvalidArgumentException('non-nullable trace_identifier cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'trace_identifier');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_identifier', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['trace_identifier'] = $trace_identifier;
 

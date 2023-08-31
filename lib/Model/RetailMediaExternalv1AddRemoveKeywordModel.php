@@ -82,9 +82,9 @@ class RetailMediaExternalv1AddRemoveKeywordModel implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phrase' => false,
-		'match_type' => false,
-		'is_deleted' => false
+        'phrase' => true,
+		'match_type' => true,
+		'is_deleted' => true
     ];
 
     /**
@@ -358,12 +358,19 @@ class RetailMediaExternalv1AddRemoveKeywordModel implements ModelInterface, Arra
     public function setPhrase($phrase)
     {
         if (is_null($phrase)) {
-            throw new \InvalidArgumentException('non-nullable phrase cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'phrase');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('phrase', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($phrase) > 255)) {
+        if (!is_null($phrase) && (mb_strlen($phrase) > 255)) {
             throw new \InvalidArgumentException('invalid length for $phrase when calling RetailMediaExternalv1AddRemoveKeywordModel., must be smaller than or equal to 255.');
         }
-        if ((mb_strlen($phrase) < 0)) {
+        if (!is_null($phrase) && (mb_strlen($phrase) < 0)) {
             throw new \InvalidArgumentException('invalid length for $phrase when calling RetailMediaExternalv1AddRemoveKeywordModel., must be bigger than or equal to 0.');
         }
 
@@ -392,10 +399,17 @@ class RetailMediaExternalv1AddRemoveKeywordModel implements ModelInterface, Arra
     public function setMatchType($match_type)
     {
         if (is_null($match_type)) {
-            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'match_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('match_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getMatchTypeAllowableValues();
-        if (!in_array($match_type, $allowedValues, true)) {
+        if (!is_null($match_type) && !in_array($match_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'match_type', must be one of '%s'",
@@ -429,7 +443,14 @@ class RetailMediaExternalv1AddRemoveKeywordModel implements ModelInterface, Arra
     public function setIsDeleted($is_deleted)
     {
         if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_deleted');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_deleted', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_deleted'] = $is_deleted;
 
