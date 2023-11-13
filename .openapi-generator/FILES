@@ -17,6 +17,13 @@ docs/Model/ApplicationSummaryModelResponse.md
 docs/Model/Asset.md
 docs/Model/AssetResource.md
 docs/Model/AssetResponse.md
+docs/Model/AsyncCampaignsReport.md
+docs/Model/AsyncCampaignsReportRequest.md
+docs/Model/AsyncCampaignsReportResource.md
+docs/Model/AsyncLineItemsReport.md
+docs/Model/AsyncLineItemsReportRequest.md
+docs/Model/AsyncLineItemsReportResource.md
+docs/Model/AsyncReportResponse.md
 docs/Model/AuctionLineItemCreateModelRequest.md
 docs/Model/AuctionLineItemPagedListResponse.md
 docs/Model/AuctionLineItemResponse.md
@@ -24,7 +31,6 @@ docs/Model/AuctionLineItemUpdateModelRequest.md
 docs/Model/AudienceIdsUpdateModel202110Request.md
 docs/Model/AudienceTarget202110Request.md
 docs/Model/AudienceTarget202110Response.md
-docs/Model/BadRequest.md
 docs/Model/Balance202110PagedListResponse.md
 docs/Model/BalanceCampaign202110ListRequest.md
 docs/Model/BalanceCampaign202110PagedListResponse.md
@@ -60,9 +66,6 @@ docs/Model/CreativeCreateModel202207.md
 docs/Model/CreativeUpdateModel202207.md
 docs/Model/CustomerListDetails.md
 docs/Model/EditableCampaignAttributesV202301.md
-docs/Model/EnvelopeReportRequest.md
-docs/Model/EnvelopeReportStatus.md
-docs/Model/Error.md
 docs/Model/ExternalAccount.md
 docs/Model/ExternalAddToBasketIdsUpdateModel202110.md
 docs/Model/ExternalAddToBasketTarget202110.md
@@ -126,10 +129,7 @@ docs/Model/ProblemDetails.md
 docs/Model/PromotedProduct202110ListRequest.md
 docs/Model/PromotedProduct202110PagedListResponse.md
 docs/Model/PutCampaignV202301.md
-docs/Model/ReportRequest.md
-docs/Model/ReportRequestAttributes.md
-docs/Model/ReportStatus.md
-docs/Model/ReportStatusAttributes.md
+docs/Model/ReportOutcome.md
 docs/Model/ResourceOfAuctionLineItem.md
 docs/Model/ResourceOfAuctionLineItemUpdateModel.md
 docs/Model/ResourceOfBalance202110.md
@@ -150,6 +150,8 @@ docs/Model/RetailMediaAudienceV2Attributes.md
 docs/Model/RetailMediaAudienceV2ListResponse.md
 docs/Model/RetailMediaAudienceV2Response.md
 docs/Model/Section.md
+docs/Model/StatusResponse.md
+docs/Model/StatusResponseResource.md
 docs/Model/StoreIdsUpdateModel202110Request.md
 docs/Model/StoreTarget202110Request.md
 docs/Model/StoreTarget202110Response.md
@@ -188,6 +190,13 @@ lib/Model/ApplicationSummaryModelResponse.php
 lib/Model/Asset.php
 lib/Model/AssetResource.php
 lib/Model/AssetResponse.php
+lib/Model/AsyncCampaignsReport.php
+lib/Model/AsyncCampaignsReportRequest.php
+lib/Model/AsyncCampaignsReportResource.php
+lib/Model/AsyncLineItemsReport.php
+lib/Model/AsyncLineItemsReportRequest.php
+lib/Model/AsyncLineItemsReportResource.php
+lib/Model/AsyncReportResponse.php
 lib/Model/AuctionLineItemCreateModelRequest.php
 lib/Model/AuctionLineItemPagedListResponse.php
 lib/Model/AuctionLineItemResponse.php
@@ -195,7 +204,6 @@ lib/Model/AuctionLineItemUpdateModelRequest.php
 lib/Model/AudienceIdsUpdateModel202110Request.php
 lib/Model/AudienceTarget202110Request.php
 lib/Model/AudienceTarget202110Response.php
-lib/Model/BadRequest.php
 lib/Model/Balance202110PagedListResponse.php
 lib/Model/BalanceCampaign202110ListRequest.php
 lib/Model/BalanceCampaign202110PagedListResponse.php
@@ -231,9 +239,6 @@ lib/Model/CreativeCreateModel202207.php
 lib/Model/CreativeUpdateModel202207.php
 lib/Model/CustomerListDetails.php
 lib/Model/EditableCampaignAttributesV202301.php
-lib/Model/EnvelopeReportRequest.php
-lib/Model/EnvelopeReportStatus.php
-lib/Model/Error.php
 lib/Model/ExternalAccount.php
 lib/Model/ExternalAddToBasketIdsUpdateModel202110.php
 lib/Model/ExternalAddToBasketTarget202110.php
@@ -298,10 +303,7 @@ lib/Model/ProblemDetails.php
 lib/Model/PromotedProduct202110ListRequest.php
 lib/Model/PromotedProduct202110PagedListResponse.php
 lib/Model/PutCampaignV202301.php
-lib/Model/ReportRequest.php
-lib/Model/ReportRequestAttributes.php
-lib/Model/ReportStatus.php
-lib/Model/ReportStatusAttributes.php
+lib/Model/ReportOutcome.php
 lib/Model/ResourceOfAuctionLineItem.php
 lib/Model/ResourceOfAuctionLineItemUpdateModel.php
 lib/Model/ResourceOfBalance202110.php
@@ -322,6 +324,8 @@ lib/Model/RetailMediaAudienceV2Attributes.php
 lib/Model/RetailMediaAudienceV2ListResponse.php
 lib/Model/RetailMediaAudienceV2Response.php
 lib/Model/Section.php
+lib/Model/StatusResponse.php
+lib/Model/StatusResponseResource.php
 lib/Model/StoreIdsUpdateModel202110Request.php
 lib/Model/StoreTarget202110Request.php
 lib/Model/StoreTarget202110Response.php

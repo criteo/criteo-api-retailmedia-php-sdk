@@ -1,6 +1,6 @@
 <?php
 /**
- * ReportStatus
+ * AsyncReportResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_01\ObjectSerializer;
 
 /**
- * ReportStatus Class Doc Comment
+ * AsyncReportResponse Class Doc Comment
  *
  * @category Class
- * @description Report Status
+ * @description Async Report response format
  * @package  criteo\api\retailmedia\v2023_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReportStatus';
+    protected static $openAPIModelName = 'AsyncReportResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2023_01\Model\ReportStatusAttributes',
-        'id' => 'string',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\v2023_01\Model\StatusResponseResource',
+        'warnings' => '\criteo\api\retailmedia\v2023_01\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2023_01\Model\CommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => false,
-		'type' => false
+        'data' => false,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -289,15 +289,6 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
-        }
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -314,82 +305,96 @@ class ReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\v2023_01\Model\ReportStatusAttributes
+     * @return \criteo\api\retailmedia\v2023_01\Model\StatusResponseResource|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\v2023_01\Model\ReportStatusAttributes $attributes attributes
+     * @param \criteo\api\retailmedia\v2023_01\Model\StatusResponseResource|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets warnings
      *
-     * @return string
+     * @return \criteo\api\retailmedia\v2023_01\Model\CommonProblem[]|null
      */
-    public function getId()
+    public function getWarnings()
     {
-        return $this->container['id'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets id
+     * Sets warnings
      *
-     * @param string $id The reportId
+     * @param \criteo\api\retailmedia\v2023_01\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setId($id)
+    public function setWarnings($warnings)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets errors
      *
-     * @return string
+     * @return \criteo\api\retailmedia\v2023_01\Model\CommonProblem[]|null
      */
-    public function getType()
+    public function getErrors()
     {
-        return $this->container['type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets type
+     * Sets errors
      *
-     * @param string $type Always \"RetailMediaReportStatus\"
+     * @param \criteo\api\retailmedia\v2023_01\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setType($type)
+    public function setErrors($errors)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

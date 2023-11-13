@@ -105,7 +105,7 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
 		'spent' => true,
 		'remaining' => true,
 		'start_date' => false,
-		'end_date' => false,
+		'end_date' => true,
 		'status' => false,
 		'created_at' => false,
 		'updated_at' => false
@@ -385,9 +385,6 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -634,7 +631,7 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -644,14 +641,21 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
      *
      * @return self
      */
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_date'] = $end_date;
 

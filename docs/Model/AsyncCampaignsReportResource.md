@@ -1,11 +1,10 @@
-# # ReportStatus
+# # AsyncCampaignsReportResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2023_01\Model\ReportStatusAttributes**](ReportStatusAttributes.md) |  |
-**id** | **string** | The reportId |
-**type** | **string** | Always \&quot;RetailMediaReportStatus\&quot; |
+**type** | **string** |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReport**](AsyncCampaignsReport.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

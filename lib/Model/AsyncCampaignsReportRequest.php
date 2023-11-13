@@ -1,6 +1,6 @@
 <?php
 /**
- * EnvelopeReportStatus
+ * AsyncCampaignsReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_01\ObjectSerializer;
 
 /**
- * EnvelopeReportStatus Class Doc Comment
+ * AsyncCampaignsReportRequest Class Doc Comment
  *
  * @category Class
- * @description Standard response envelope
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\v2023_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncCampaignsReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EnvelopeReportStatus';
+    protected static $openAPIModelName = 'AsyncCampaignsReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_01\Model\ReportStatus'
+        'data' => '\criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportResource'
     ];
 
     /**
@@ -275,9 +275,6 @@ class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\v2023_01\Model\ReportStatus
+     * @return \criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportResource|null
      */
     public function getData()
     {
@@ -306,7 +303,7 @@ class EnvelopeReportStatus implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\v2023_01\Model\ReportStatus $data data
+     * @param \criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportResource|null $data data
      *
      * @return self
      */
