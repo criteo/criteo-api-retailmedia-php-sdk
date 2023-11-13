@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2023_01\Model\Asset**](Asset.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2023_10\Model\Asset**](Asset.md) |  | [optional]
 **id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 

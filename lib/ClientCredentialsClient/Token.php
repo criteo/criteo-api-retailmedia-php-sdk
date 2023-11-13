@@ -1,5 +1,5 @@
 <?php
-namespace criteo\api\retailmedia\v2023_01\ClientCredentialsClient;
+namespace criteo\api\retailmedia\v2023_10\ClientCredentialsClient;
 
 use DateTime;
 

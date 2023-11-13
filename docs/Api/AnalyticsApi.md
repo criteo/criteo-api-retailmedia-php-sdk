@@ -1,19 +1,20 @@
-# criteo\api\retailmedia\v2023_01\AnalyticsApi
+# criteo\api\retailmedia\v2023_10\AnalyticsApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2023-01/retail-media/reports/campaigns |  |
-| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-01/retail-media/reports/line-items |  |
-| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-01/retail-media/reports/{reportId}/output |  |
-| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-01/retail-media/reports/{reportId}/status |  |
+| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2023-10/retail-media/reports/campaigns |  |
+| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-10/retail-media/reports/line-items |  |
+| [**generateAsyncRevenueReport()**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2023-10/retail-media/reports/revenue |  |
+| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-10/retail-media/reports/{reportId}/output |  |
+| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-10/retail-media/reports/{reportId}/status |  |
 
 
 ## `generateAsyncCampaignsReport()`
 
 ```php
-generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse
+generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse
 ```
 
 
@@ -28,19 +29,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2023_01\Api\AnalyticsApi(
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$async_campaigns_report_request = new \criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportRequest
+$async_campaigns_report_request = new \criteo\api\retailmedia\v2023_10\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\v2023_10\Model\AsyncCampaignsReportRequest
 
 try {
     $result = $apiInstance->generateAsyncCampaignsReport($async_campaigns_report_request);
@@ -54,11 +55,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **async_campaigns_report_request** | [**\criteo\api\retailmedia\v2023_01\Model\AsyncCampaignsReportRequest**](../Model/AsyncCampaignsReportRequest.md)|  | |
+| **async_campaigns_report_request** | [**\criteo\api\retailmedia\v2023_10\Model\AsyncCampaignsReportRequest**](../Model/AsyncCampaignsReportRequest.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+[**\criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
 
 ### Authorization
 
@@ -76,7 +77,7 @@ try {
 ## `generateAsyncLineItemsReport()`
 
 ```php
-generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse
+generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse
 ```
 
 
@@ -91,19 +92,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2023_01\Api\AnalyticsApi(
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$async_line_items_report_request = new \criteo\api\retailmedia\v2023_01\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\v2023_01\Model\AsyncLineItemsReportRequest
+$async_line_items_report_request = new \criteo\api\retailmedia\v2023_10\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\v2023_10\Model\AsyncLineItemsReportRequest
 
 try {
     $result = $apiInstance->generateAsyncLineItemsReport($async_line_items_report_request);
@@ -117,11 +118,74 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **async_line_items_report_request** | [**\criteo\api\retailmedia\v2023_01\Model\AsyncLineItemsReportRequest**](../Model/AsyncLineItemsReportRequest.md)|  | |
+| **async_line_items_report_request** | [**\criteo\api\retailmedia\v2023_10\Model\AsyncLineItemsReportRequest**](../Model/AsyncLineItemsReportRequest.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+[**\criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncRevenueReport()`
+
+```php
+generateAsyncRevenueReport($async_revenue_report_request): \criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse
+```
+
+
+
+Returns an asynchronous Revenue Report
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_revenue_report_request = new \criteo\api\retailmedia\v2023_10\Model\AsyncRevenueReportRequest(); // \criteo\api\retailmedia\v2023_10\Model\AsyncRevenueReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncRevenueReport($async_revenue_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncRevenueReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_revenue_report_request** | [**\criteo\api\retailmedia\v2023_10\Model\AsyncRevenueReportRequest**](../Model/AsyncRevenueReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
 
 ### Authorization
 
@@ -154,13 +218,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2023_01\Api\AnalyticsApi(
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -202,7 +266,7 @@ try {
 ## `getAsyncExportStatus()`
 
 ```php
-getAsyncExportStatus($report_id): \criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse
+getAsyncExportStatus($report_id): \criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse
 ```
 
 
@@ -217,13 +281,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2023_01\Api\AnalyticsApi(
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -247,7 +311,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_01\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+[**\criteo\api\retailmedia\v2023_10\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
 
 ### Authorization
 

@@ -1,16 +1,16 @@
-# criteo\api\retailmedia\v2023_01\GatewayApi
+# criteo\api\retailmedia\v2023_10\GatewayApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getCurrentApplication()**](GatewayApi.md#getCurrentApplication) | **GET** /2023-01/retail-media/me |  |
+| [**getCurrentApplication()**](GatewayApi.md#getCurrentApplication) | **GET** /2023-10/retail-media/me |  |
 
 
 ## `getCurrentApplication()`
 
 ```php
-getCurrentApplication(): \criteo\api\retailmedia\v2023_01\Model\ApplicationSummaryModelResponse
+getCurrentApplication(): \criteo\api\retailmedia\v2023_10\Model\ApplicationSummaryModelResponse
 ```
 
 
@@ -25,13 +25,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2023_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2023_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2023_01\Api\GatewayApi(
+$apiInstance = new criteo\api\retailmedia\v2023_10\Api\GatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_01\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
+[**\criteo\api\retailmedia\v2023_10\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
 
 ### Authorization
 

@@ -1,9 +1,9 @@
 <?php
 
-use criteo\api\retailmedia\v2023_01\Configuration;
-use criteo\api\retailmedia\v2023_01\OAuthClient;
-use criteo\api\retailmedia\v2023_01\ObjectSerializer;
-use criteo\api\retailmedia\v2023_01\ClientCredentialsClient;
+use criteo\api\retailmedia\v2023_10\Configuration;
+use criteo\api\retailmedia\v2023_10\OAuthClient;
+use criteo\api\retailmedia\v2023_10\ObjectSerializer;
+use criteo\api\retailmedia\v2023_10\ClientCredentialsClient;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Uri;
