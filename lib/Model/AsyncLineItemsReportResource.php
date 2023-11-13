@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncLineItemReportResource
+ * AsyncLineItemsReportResource
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * AsyncLineItemReportResource Class Doc Comment
+ * AsyncLineItemsReportResource Class Doc Comment
  *
  * @category Class
  * @description A top-level object that encapsulates a Criteo API response for a single value
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncLineItemReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncLineItemsReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncLineItemReportResource implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncLineItemReportResource';
+    protected static $openAPIModelName = 'AsyncLineItemsReportResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class AsyncLineItemReportResource implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReport'
+        'attributes' => '\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReport'
     ];
 
     /**
@@ -334,7 +334,7 @@ class AsyncLineItemReportResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReport|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReport|null
      */
     public function getAttributes()
     {
@@ -344,7 +344,7 @@ class AsyncLineItemReportResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReport|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReport|null $attributes attributes
      *
      * @return self
      */

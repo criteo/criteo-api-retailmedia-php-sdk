@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncCampaignReportRequest
+ * AsyncLineItemsReportRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * AsyncCampaignReportRequest Class Doc Comment
+ * AsyncLineItemsReportRequest Class Doc Comment
  *
  * @category Class
  * @description A top-level object that encapsulates a Criteo API request for a single value
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncCampaignReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncLineItemsReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncCampaignReportRequest implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncCampaignReportRequest';
+    protected static $openAPIModelName = 'AsyncLineItemsReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class AsyncCampaignReportRequest implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportResource'
+        'data' => '\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportResource'
     ];
 
     /**
@@ -293,7 +293,7 @@ class AsyncCampaignReportRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportResource|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportResource|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class AsyncCampaignReportRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportResource|null $data data
+     * @param \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportResource|null $data data
      *
      * @return self
      */

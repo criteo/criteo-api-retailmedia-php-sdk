@@ -4,21 +4,21 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**generateAsyncCampaignReport()**](AnalyticsApi.md#generateAsyncCampaignReport) | **POST** /2023-07/retail-media/reports/campaigns |  |
+| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2023-07/retail-media/reports/campaigns |  |
 | [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2023-07/retail-media/reports/line-items |  |
 | [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2023-07/retail-media/reports/{reportId}/output |  |
 | [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2023-07/retail-media/reports/{reportId}/status |  |
 
 
-## `generateAsyncCampaignReport()`
+## `generateAsyncCampaignsReport()`
 
 ```php
-generateAsyncCampaignReport($async_campaign_report_request): \criteo\api\retailmedia\v2023_07\Model\AsyncReportResponse
+generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\v2023_07\Model\AsyncReportResponse
 ```
 
 
 
-Return an async Campaign Report
+Return an asynchronous Campaigns Report
 
 ### Example
 
@@ -40,13 +40,13 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$async_campaign_report_request = new \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportRequest(); // \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportRequest
+$async_campaigns_report_request = new \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\v2023_07\Model\AsyncCampaignsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncCampaignReport($async_campaign_report_request);
+    $result = $apiInstance->generateAsyncCampaignsReport($async_campaigns_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReport: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -54,7 +54,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **async_campaign_report_request** | [**\criteo\api\retailmedia\v2023_07\Model\AsyncCampaignReportRequest**](../Model/AsyncCampaignReportRequest.md)|  | |
+| **async_campaigns_report_request** | [**\criteo\api\retailmedia\v2023_07\Model\AsyncCampaignsReportRequest**](../Model/AsyncCampaignsReportRequest.md)|  | |
 
 ### Return type
 
@@ -76,12 +76,12 @@ try {
 ## `generateAsyncLineItemsReport()`
 
 ```php
-generateAsyncLineItemsReport($async_line_item_report_request): \criteo\api\retailmedia\v2023_07\Model\AsyncReportResponse
+generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\v2023_07\Model\AsyncReportResponse
 ```
 
 
 
-Return an async Line Item Report
+Returns an asynchronous Line Items Report
 
 ### Example
 
@@ -103,10 +103,10 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$async_line_item_report_request = new \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportRequest(); // \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportRequest
+$async_line_items_report_request = new \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncLineItemsReport($async_line_item_report_request);
+    $result = $apiInstance->generateAsyncLineItemsReport($async_line_items_report_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReport: ', $e->getMessage(), PHP_EOL;
@@ -117,7 +117,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **async_line_item_report_request** | [**\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemReportRequest**](../Model/AsyncLineItemReportRequest.md)|  | |
+| **async_line_items_report_request** | [**\criteo\api\retailmedia\v2023_07\Model\AsyncLineItemsReportRequest**](../Model/AsyncLineItemsReportRequest.md)|  | |
 
 ### Return type
 
@@ -144,7 +144,7 @@ getAsyncExportOutput($report_id): string
 
 
 
-Return the output of an async report
+Returns the output of an async report
 
 ### Example
 
@@ -207,7 +207,7 @@ getAsyncExportStatus($report_id): \criteo\api\retailmedia\v2023_07\Model\AsyncRe
 
 
 
-Return the status of an async report
+Returns the status of an async report
 
 ### Example
 
