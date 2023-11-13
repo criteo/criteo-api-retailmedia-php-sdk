@@ -16,9 +16,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApi202301ExternalLineItemBidMultipliersByLineItemId()**](CampaignApi.md#getApi202301ExternalLineItemBidMultipliersByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**getApiV0ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV0ExternalCatalogOutputByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/output |  |
 | [**getApiV0ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV0ExternalCatalogStatusByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/status |  |
-| [**getApiV1ExternalAccountBalancesByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/balances |  |
 | [**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/brands |  |
-| [**getApiV1ExternalAccountByAccountIdAndBalanceId()**](CampaignApi.md#getApiV1ExternalAccountByAccountIdAndBalanceId) | **GET** /preview/retail-media/accounts/{accountId}/balances/{balanceId} |  |
 | [**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/retailers |  |
 | [**getApiV1ExternalAccounts()**](CampaignApi.md#getApiV1ExternalAccounts) | **GET** /preview/retail-media/accounts |  |
 | [**getApiV1ExternalRetailerBrandsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands |  |
@@ -26,15 +24,13 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV1ExternalRetailerCategoryCpcRatesByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerCategoryCpcRatesByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/cpc-rates |  |
 | [**getApiV1ExternalRetailerPlacementsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerPlacementsByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/placements |  |
 | [**getCampaignBudgetOverrides()**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
-| [**getSuggestedKeywords()**](CampaignApi.md#getSuggestedKeywords) | **GET** /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
-| [**patchApiV1ExternalAccountByAccountIdAndBalanceId()**](CampaignApi.md#patchApiV1ExternalAccountByAccountIdAndBalanceId) | **PATCH** /preview/retail-media/accounts/{accountId}/balances/{balanceId} |  |
+| [**getLineItemBudgetOverrides()**](CampaignApi.md#getLineItemBudgetOverrides) | **GET** /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
+| [**getRecommendedKeywords()**](CampaignApi.md#getRecommendedKeywords) | **GET** /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
+| [**getSkuByProductId()**](CampaignApi.md#getSkuByProductId) | **POST** /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id |  |
 | [**postApi202210ExternalAccountCreativesByAccountId()**](CampaignApi.md#postApi202210ExternalAccountCreativesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/creatives |  |
 | [**postApi202210ExternalAccountCreativesSearchByAccountId()**](CampaignApi.md#postApi202210ExternalAccountCreativesSearchByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search |  |
 | [**postApi202210ExternalLineItemProductButtonsCreateByLineItemId()**](CampaignApi.md#postApi202210ExternalLineItemProductButtonsCreateByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**postApiV0ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV0ExternalAccountCatalogsByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/catalogs |  |
-| [**postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId()**](CampaignApi.md#postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId) | **POST** /preview/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds |  |
-| [**postApiV1ExternalAccountBalancesByAccountId()**](CampaignApi.md#postApiV1ExternalAccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/balances |  |
-| [**postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId()**](CampaignApi.md#postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId) | **POST** /preview/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates |  |
 | [**postApiV1ExternalCatalogsSkuRetrieval()**](CampaignApi.md#postApiV1ExternalCatalogsSkuRetrieval) | **POST** /preview/retail-media/catalogs/sku-retrieval |  |
 | [**postApiV1ExternalCatalogsSkuSearch()**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearch) | **POST** /preview/retail-media/catalogs/sku-search |  |
 | [**postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId()**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId) | **POST** /preview/retail-media/catalogs/sku-search/accounts/{account-id}/retailers/{retailer-id} |  |
@@ -44,6 +40,8 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**putApi202301ExternalLineItemBidMultipliersByLineItemId()**](CampaignApi.md#putApi202301ExternalLineItemBidMultipliersByLineItemId) | **PUT** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**setKeywordBids()**](CampaignApi.md#setKeywordBids) | **POST** /preview/retail-media/line-items/{id}/keywords/set-bid |  |
 | [**submitProposal()**](CampaignApi.md#submitProposal) | **POST** /preview/retail-media/preferred-deal-line-items/{id}/proposal/submit |  |
+| [**updateCampaignBudgetOverrides()**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
+| [**updateLineItemBudgetOverrides()**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
 
 
 ## `addRemoveKeywords()`
@@ -560,7 +558,7 @@ try {
 ## `getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId()`
 
 ```php
-getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id): \criteo\api\retailmedia\preview\Model\ProductButtonResponse
+getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id): \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
 ```
 
 
@@ -607,7 +605,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponse**](../Model/ProductButtonResponse.md)
+[**\criteo\api\retailmedia\preview\Model\ProductButtonListResponse**](../Model/ProductButtonListResponse.md)
 
 ### Authorization
 
@@ -810,75 +808,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getApiV1ExternalAccountBalancesByAccountId()`
-
-```php
-getApiV1ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\BalanceResponsePagedListResponse
-```
-
-
-
-Get page of balances for the given accountId.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account to get page of balances for
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 0; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 25; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApiV1ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV1ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account to get page of balances for | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
-| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponsePagedListResponse**](../Model/BalanceResponsePagedListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getApiV1ExternalAccountBrandsByAccountId()`
 
 ```php
@@ -934,71 +863,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\JsonApiPageResponseOfBrand**](../Model/JsonApiPageResponseOfBrand.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApiV1ExternalAccountByAccountIdAndBalanceId()`
-
-```php
-getApiV1ExternalAccountByAccountIdAndBalanceId($account_id, $balance_id): \criteo\api\retailmedia\preview\Model\BalanceResponse
-```
-
-
-
-Get a balance for the given account id and balance id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account of the balance
-$balance_id = 'balance_id_example'; // string | The balance id
-
-try {
-    $result = $apiInstance->getApiV1ExternalAccountByAccountIdAndBalanceId($account_id, $balance_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV1ExternalAccountByAccountIdAndBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account of the balance | |
-| **balance_id** | **string**| The balance id | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponse**](../Model/BalanceResponse.md)
 
 ### Authorization
 
@@ -1472,10 +1336,73 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getSuggestedKeywords()`
+## `getLineItemBudgetOverrides()`
 
 ```php
-getSuggestedKeywords($external_line_item_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfSuggestedKeywordsResult
+getLineItemBudgetOverrides($line_item_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
+```
+
+
+
+Gets a collection of monthly and daily budget overrides for the provided line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item id to get budget overrides for.
+
+try {
+    $result = $apiInstance->getLineItemBudgetOverrides($line_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getLineItemBudgetOverrides: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item id to get budget overrides for. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides**](../Model/ValueResourceOutcomeOfLineItemBudgetOverrides.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getRecommendedKeywords()`
+
+```php
+getRecommendedKeywords($external_line_item_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfRecommendedKeywordsResult
 ```
 
 
@@ -1505,10 +1432,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
 $external_line_item_id = 'external_line_item_id_example'; // string | The external line item identifier
 
 try {
-    $result = $apiInstance->getSuggestedKeywords($external_line_item_id);
+    $result = $apiInstance->getRecommendedKeywords($external_line_item_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getSuggestedKeywords: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getRecommendedKeywords: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1520,7 +1447,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfSuggestedKeywordsResult**](../Model/ValueResourceOutcomeOfSuggestedKeywordsResult.md)
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfRecommendedKeywordsResult**](../Model/ValueResourceOutcomeOfRecommendedKeywordsResult.md)
 
 ### Authorization
 
@@ -1535,15 +1462,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `patchApiV1ExternalAccountByAccountIdAndBalanceId()`
+## `getSkuByProductId()`
 
 ```php
-patchApiV1ExternalAccountByAccountIdAndBalanceId($account_id, $balance_id, $update_balance_model_request): \criteo\api\retailmedia\preview\Model\BalanceResponse
+getSkuByProductId($account_id, $retailer_id, $offset, $limit, $sku_search_request): \criteo\api\retailmedia\preview\Model\ResourceCollectionOutcomeOfSkuSearchResult
 ```
 
 
 
-Modify a balance for the given account id
+Gets a list of SKUs based on a privided list of Product Ids
 
 ### Example
 
@@ -1565,15 +1492,17 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The account of the balance
-$balance_id = 'balance_id_example'; // string | The balance to change the dates
-$update_balance_model_request = new \criteo\api\retailmedia\preview\Model\UpdateBalanceModelRequest(); // \criteo\api\retailmedia\preview\Model\UpdateBalanceModelRequest
+$account_id = 'account_id_example'; // string | account id
+$retailer_id = 56; // int | retailer id
+$offset = 0; // int | skip a number of matches before retrning results, used with limit
+$limit = 100; // int | max number of results to return
+$sku_search_request = new \criteo\api\retailmedia\preview\Model\SkuSearchRequest(); // \criteo\api\retailmedia\preview\Model\SkuSearchRequest | 
 
 try {
-    $result = $apiInstance->patchApiV1ExternalAccountByAccountIdAndBalanceId($account_id, $balance_id, $update_balance_model_request);
+    $result = $apiInstance->getSkuByProductId($account_id, $retailer_id, $offset, $limit, $sku_search_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->patchApiV1ExternalAccountByAccountIdAndBalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getSkuByProductId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1581,13 +1510,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account of the balance | |
-| **balance_id** | **string**| The balance to change the dates | |
-| **update_balance_model_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelRequest**](../Model/UpdateBalanceModelRequest.md)|  | [optional] |
+| **account_id** | **string**| account id | |
+| **retailer_id** | **int**| retailer id | |
+| **offset** | **int**| skip a number of matches before retrning results, used with limit | [optional] [default to 0] |
+| **limit** | **int**| max number of results to return | [optional] [default to 100] |
+| **sku_search_request** | [**\criteo\api\retailmedia\preview\Model\SkuSearchRequest**](../Model/SkuSearchRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\BalanceResponse**](../Model/BalanceResponse.md)
+[**\criteo\api\retailmedia\preview\Model\ResourceCollectionOutcomeOfSkuSearchResult**](../Model/ResourceCollectionOutcomeOfSkuSearchResult.md)
 
 ### Authorization
 
@@ -1595,7 +1526,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1848,205 +1779,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId()`
-
-```php
-postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId($account_id, $balance_id, $add_funds_to_balance_request): \criteo\api\retailmedia\preview\Model\BalanceResponse
-```
-
-
-
-Add funds to a balance for the given account id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account of the balance
-$balance_id = 'balance_id_example'; // string | The balance to add funds to
-$add_funds_to_balance_request = new \criteo\api\retailmedia\preview\Model\AddFundsToBalanceRequest(); // \criteo\api\retailmedia\preview\Model\AddFundsToBalanceRequest
-
-try {
-    $result = $apiInstance->postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId($account_id, $balance_id, $add_funds_to_balance_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApiV1ExternalAccountAddFundsByAccountIdAndBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account of the balance | |
-| **balance_id** | **string**| The balance to add funds to | |
-| **add_funds_to_balance_request** | [**\criteo\api\retailmedia\preview\Model\AddFundsToBalanceRequest**](../Model/AddFundsToBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponse**](../Model/BalanceResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApiV1ExternalAccountBalancesByAccountId()`
-
-```php
-postApiV1ExternalAccountBalancesByAccountId($account_id, $create_balance_request): \criteo\api\retailmedia\preview\Model\BalanceResponse
-```
-
-
-
-Create balance for the given account id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account to create balances for
-$create_balance_request = new \criteo\api\retailmedia\preview\Model\CreateBalanceRequest(); // \criteo\api\retailmedia\preview\Model\CreateBalanceRequest
-
-try {
-    $result = $apiInstance->postApiV1ExternalAccountBalancesByAccountId($account_id, $create_balance_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApiV1ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account to create balances for | |
-| **create_balance_request** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceRequest**](../Model/CreateBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponse**](../Model/BalanceResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId()`
-
-```php
-postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId($account_id, $balance_id, $change_dates_of_balance_request): \criteo\api\retailmedia\preview\Model\BalanceResponse
-```
-
-
-
-Change dates of a balance for the given account id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account of the balance
-$balance_id = 'balance_id_example'; // string | The balance to change the dates
-$change_dates_of_balance_request = new \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceRequest(); // \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceRequest
-
-try {
-    $result = $apiInstance->postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId($account_id, $balance_id, $change_dates_of_balance_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApiV1ExternalAccountChangeDatesByAccountIdAndBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account of the balance | |
-| **balance_id** | **string**| The balance to change the dates | |
-| **change_dates_of_balance_request** | [**\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceRequest**](../Model/ChangeDatesOfBalanceRequest.md)|  | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponse**](../Model/BalanceResponse.md)
 
 ### Authorization
 
@@ -2407,7 +2139,7 @@ try {
 ## `putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId()`
 
 ```php
-putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, $product_button_request): \criteo\api\retailmedia\preview\Model\ProductButtonResponse
+putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, $product_button_request): \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
 ```
 
 
@@ -2456,7 +2188,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponse**](../Model/ProductButtonResponse.md)
+[**\criteo\api\retailmedia\preview\Model\ProductButtonListResponse**](../Model/ProductButtonListResponse.md)
 
 ### Authorization
 
@@ -2659,6 +2391,136 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateCampaignBudgetOverrides()`
+
+```php
+updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_budget_overrides): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides
+```
+
+
+
+Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 56; // int | External campaign id.
+$value_resource_input_of_campaign_budget_overrides = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
+
+try {
+    $result = $apiInstance->updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_budget_overrides);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->updateCampaignBudgetOverrides: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **int**| External campaign id. | |
+| **value_resource_input_of_campaign_budget_overrides** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides**](../Model/ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides**](../Model/ValueResourceOutcomeOfCampaignBudgetOverrides.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateLineItemBudgetOverrides()`
+
+```php
+updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_budget_overrides): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
+```
+
+
+
+Update line item budget overrides by given external line item id and new line item budget overrides settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | Line item external id.
+$value_resource_input_of_line_item_budget_overrides = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides | New line item budget overrides settings value resource input.
+
+try {
+    $result = $apiInstance->updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_budget_overrides);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->updateLineItemBudgetOverrides: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| Line item external id. | |
+| **value_resource_input_of_line_item_budget_overrides** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides**](../Model/ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides**](../Model/ValueResourceOutcomeOfLineItemBudgetOverrides.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
