@@ -1,6 +1,6 @@
 <?php
 /**
- * Error
+ * StatusResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_04\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * StatusResponse Class Doc Comment
  *
  * @category Class
- * @description Error
+ * @description Status of an async report request
  * @package  criteo\api\retailmedia\v2023_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'StatusResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'detail' => 'string',
-        'instance' => 'string',
-        'source' => 'array<string,string>',
-        'stack_trace' => 'string[]',
-        'title' => 'string',
-        'trace_id' => 'string',
-        'type' => 'string'
+        'status' => 'string',
+        'row_count' => 'int',
+        'file_size_bytes' => 'int',
+        'md5_check_sum' => 'string',
+        'created_at' => 'string',
+        'expires_at' => 'string',
+        'message' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'detail' => null,
-        'instance' => null,
-        'source' => null,
-        'stack_trace' => null,
-        'title' => null,
-        'trace_id' => null,
-        'type' => null
+        'status' => null,
+        'row_count' => 'int32',
+        'file_size_bytes' => 'int32',
+        'md5_check_sum' => null,
+        'created_at' => null,
+        'expires_at' => null,
+        'message' => null,
+        'id' => null
     ];
 
     /**
@@ -92,14 +92,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-		'detail' => true,
-		'instance' => false,
-		'source' => false,
-		'stack_trace' => true,
-		'title' => true,
-		'trace_id' => false,
-		'type' => false
+        'status' => true,
+		'row_count' => true,
+		'file_size_bytes' => true,
+		'md5_check_sum' => true,
+		'created_at' => true,
+		'expires_at' => true,
+		'message' => true,
+		'id' => true
     ];
 
     /**
@@ -188,14 +188,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'detail' => 'detail',
-        'instance' => 'instance',
-        'source' => 'source',
-        'stack_trace' => 'stackTrace',
-        'title' => 'title',
-        'trace_id' => 'traceId',
-        'type' => 'type'
+        'status' => 'status',
+        'row_count' => 'rowCount',
+        'file_size_bytes' => 'fileSizeBytes',
+        'md5_check_sum' => 'md5CheckSum',
+        'created_at' => 'createdAt',
+        'expires_at' => 'expiresAt',
+        'message' => 'message',
+        'id' => 'id'
     ];
 
     /**
@@ -204,14 +204,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'detail' => 'setDetail',
-        'instance' => 'setInstance',
-        'source' => 'setSource',
-        'stack_trace' => 'setStackTrace',
-        'title' => 'setTitle',
-        'trace_id' => 'setTraceId',
-        'type' => 'setType'
+        'status' => 'setStatus',
+        'row_count' => 'setRowCount',
+        'file_size_bytes' => 'setFileSizeBytes',
+        'md5_check_sum' => 'setMd5CheckSum',
+        'created_at' => 'setCreatedAt',
+        'expires_at' => 'setExpiresAt',
+        'message' => 'setMessage',
+        'id' => 'setId'
     ];
 
     /**
@@ -220,14 +220,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'detail' => 'getDetail',
-        'instance' => 'getInstance',
-        'source' => 'getSource',
-        'stack_trace' => 'getStackTrace',
-        'title' => 'getTitle',
-        'trace_id' => 'getTraceId',
-        'type' => 'getType'
+        'status' => 'getStatus',
+        'row_count' => 'getRowCount',
+        'file_size_bytes' => 'getFileSizeBytes',
+        'md5_check_sum' => 'getMd5CheckSum',
+        'created_at' => 'getCreatedAt',
+        'expires_at' => 'getExpiresAt',
+        'message' => 'getMessage',
+        'id' => 'getId'
     ];
 
     /**
@@ -271,29 +271,23 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_ACCESS_CONTROL = 'access-control';
-    public const TYPE_AUTHENTICATION = 'authentication';
-    public const TYPE_AUTHORIZATION = 'authorization';
-    public const TYPE_AVAILABILITY = 'availability';
-    public const TYPE_DEPRECATION = 'deprecation';
-    public const TYPE_QUOTA = 'quota';
-    public const TYPE_VALIDATION = 'validation';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_SUCCESS = 'success';
+    public const STATUS_FAILURE = 'failure';
+    public const STATUS_EXPIRED = 'expired';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::TYPE_ACCESS_CONTROL,
-            self::TYPE_AUTHENTICATION,
-            self::TYPE_AUTHORIZATION,
-            self::TYPE_AVAILABILITY,
-            self::TYPE_DEPRECATION,
-            self::TYPE_QUOTA,
-            self::TYPE_VALIDATION,
+            self::STATUS_PENDING,
+            self::STATUS_SUCCESS,
+            self::STATUS_FAILURE,
+            self::STATUS_EXPIRED,
         ];
     }
 
@@ -312,14 +306,14 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('detail', $data ?? [], null);
-        $this->setIfExists('instance', $data ?? [], null);
-        $this->setIfExists('source', $data ?? [], null);
-        $this->setIfExists('stack_trace', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('row_count', $data ?? [], null);
+        $this->setIfExists('file_size_bytes', $data ?? [], null);
+        $this->setIfExists('md5_check_sum', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -349,23 +343,11 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['code'] === null) {
-            $invalidProperties[] = "'code' can't be null";
-        }
-        if ($this->container['instance'] === null) {
-            $invalidProperties[] = "'instance' can't be null";
-        }
-        if ($this->container['trace_id'] === null) {
-            $invalidProperties[] = "'trace_id' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -386,248 +368,283 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kabab-case.
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets detail
+     * Gets status
      *
      * @return string|null
      */
-    public function getDetail()
+    public function getStatus()
     {
-        return $this->container['detail'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets detail
+     * Sets status
      *
-     * @param string|null $detail (RECOMMENDED) A human-readable explanation specific to this occurrence of the problem.
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setDetail($detail)
+    public function setStatus($status)
     {
-        if (is_null($detail)) {
-            array_push($this->openAPINullablesSetToNull, 'detail');
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('detail', $nullablesSetToNull);
+            $index = array_search('status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets instance
-     *
-     * @return string
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string $instance (REQUIRED) A URI reference that identifies the specific occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        if (is_null($instance)) {
-            throw new \InvalidArgumentException('non-nullable instance cannot be null');
-        }
-        $this->container['instance'] = $instance;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return array<string,string>|null
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param array<string,string>|null $source (OPTIONAL) A machine-readable structure to reference to the exact location(s) causing the error(s).
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        if (is_null($source)) {
-            throw new \InvalidArgumentException('non-nullable source cannot be null');
-        }
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets stack_trace
-     *
-     * @return string[]|null
-     */
-    public function getStackTrace()
-    {
-        return $this->container['stack_trace'];
-    }
-
-    /**
-     * Sets stack_trace
-     *
-     * @param string[]|null $stack_trace (NEVER IN PRODUCTION) A human-readable stacktrace produced by the implementation technology e.g. .Net, Scala, etc
-     *
-     * @return self
-     */
-    public function setStackTrace($stack_trace)
-    {
-        if (is_null($stack_trace)) {
-            array_push($this->openAPINullablesSetToNull, 'stack_trace');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('stack_trace', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['stack_trace'] = $stack_trace;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title (RECOMMENDED) A short, human-readable summary of the problem type.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets trace_id
-     *
-     * @return string
-     */
-    public function getTraceId()
-    {
-        return $this->container['trace_id'];
-    }
-
-    /**
-     * Sets trace_id
-     *
-     * @param string $trace_id (REQUIRED) The Correlation ID provided by the Gateway. It is also a unique identifier for this particular occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setTraceId($trace_id)
-    {
-        if (is_null($trace_id)) {
-            throw new \InvalidArgumentException('non-nullable trace_id cannot be null');
-        }
-        $this->container['trace_id'] = $trace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type should be: \"validation\", \"unavailable, \"violation\", \"permission\", ...
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_count
+     *
+     * @return int|null
+     */
+    public function getRowCount()
+    {
+        return $this->container['row_count'];
+    }
+
+    /**
+     * Sets row_count
+     *
+     * @param int|null $row_count row_count
+     *
+     * @return self
+     */
+    public function setRowCount($row_count)
+    {
+        if (is_null($row_count)) {
+            array_push($this->openAPINullablesSetToNull, 'row_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('row_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['row_count'] = $row_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets file_size_bytes
+     *
+     * @return int|null
+     */
+    public function getFileSizeBytes()
+    {
+        return $this->container['file_size_bytes'];
+    }
+
+    /**
+     * Sets file_size_bytes
+     *
+     * @param int|null $file_size_bytes file_size_bytes
+     *
+     * @return self
+     */
+    public function setFileSizeBytes($file_size_bytes)
+    {
+        if (is_null($file_size_bytes)) {
+            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_size_bytes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['file_size_bytes'] = $file_size_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets md5_check_sum
+     *
+     * @return string|null
+     */
+    public function getMd5CheckSum()
+    {
+        return $this->container['md5_check_sum'];
+    }
+
+    /**
+     * Sets md5_check_sum
+     *
+     * @param string|null $md5_check_sum md5_check_sum
+     *
+     * @return self
+     */
+    public function setMd5CheckSum($md5_check_sum)
+    {
+        if (is_null($md5_check_sum)) {
+            array_push($this->openAPINullablesSetToNull, 'md5_check_sum');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('md5_check_sum', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['md5_check_sum'] = $md5_check_sum;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return string|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param string|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return string|null
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param string|null $expires_at expires_at
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        if (is_null($expires_at)) {
+            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('expires_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

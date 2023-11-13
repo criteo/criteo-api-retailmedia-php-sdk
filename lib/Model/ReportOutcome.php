@@ -1,6 +1,6 @@
 <?php
 /**
- * ReportStatusAttributes
+ * ReportOutcome
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_04\ObjectSerializer;
 
 /**
- * ReportStatusAttributes Class Doc Comment
+ * ReportOutcome Class Doc Comment
  *
  * @category Class
- * @description Report Status Attributes
+ * @description The outcome of an API call.
  * @package  criteo\api\retailmedia\v2023_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReportOutcome implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ReportStatusAttributes';
+    protected static $openAPIModelName = 'ReportOutcome';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'created_at' => '\DateTime',
-        'expires_at' => '\DateTime',
-        'file_size_bytes' => 'int',
-        'md5_checksum' => 'string',
-        'message' => 'string',
-        'row_count' => 'int',
-        'status' => 'string'
+        'warnings' => '\criteo\api\retailmedia\v2023_04\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2023_04\Model\CommonProblem[]'
     ];
 
     /**
@@ -75,13 +70,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'created_at' => 'date-time',
-        'expires_at' => 'date-time',
-        'file_size_bytes' => 'int64',
-        'md5_checksum' => null,
-        'message' => null,
-        'row_count' => 'int64',
-        'status' => null
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -90,13 +80,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'created_at' => true,
-		'expires_at' => true,
-		'file_size_bytes' => true,
-		'md5_checksum' => true,
-		'message' => true,
-		'row_count' => true,
-		'status' => false
+        'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -185,13 +170,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'created_at' => 'createdAt',
-        'expires_at' => 'expiresAt',
-        'file_size_bytes' => 'fileSizeBytes',
-        'md5_checksum' => 'md5Checksum',
-        'message' => 'message',
-        'row_count' => 'rowCount',
-        'status' => 'status'
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -200,13 +180,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'created_at' => 'setCreatedAt',
-        'expires_at' => 'setExpiresAt',
-        'file_size_bytes' => 'setFileSizeBytes',
-        'md5_checksum' => 'setMd5Checksum',
-        'message' => 'setMessage',
-        'row_count' => 'setRowCount',
-        'status' => 'setStatus'
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -215,13 +190,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'created_at' => 'getCreatedAt',
-        'expires_at' => 'getExpiresAt',
-        'file_size_bytes' => 'getFileSizeBytes',
-        'md5_checksum' => 'getMd5Checksum',
-        'message' => 'getMessage',
-        'row_count' => 'getRowCount',
-        'status' => 'getStatus'
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -265,25 +235,6 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_SUCCESS = 'success';
-    public const STATUS_FAILURE = 'failure';
-    public const STATUS_EXPIRED = 'expired';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILURE,
-            self::STATUS_EXPIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -300,13 +251,8 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('file_size_bytes', $data ?? [], null);
-        $this->setIfExists('md5_checksum', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('row_count', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -336,18 +282,6 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -364,242 +298,69 @@ class ReportStatusAttributes implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets created_at
+     * Gets warnings
      *
-     * @return \DateTime|null
+     * @return \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null
      */
-    public function getCreatedAt()
+    public function getWarnings()
     {
-        return $this->container['created_at'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets created_at
+     * Sets warnings
      *
-     * @param \DateTime|null $created_at Timestamp when the report started to execute
+     * @param \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setWarnings($warnings)
     {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
 
     /**
-     * Gets expires_at
+     * Gets errors
      *
-     * @return \DateTime|null
+     * @return \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null
      */
-    public function getExpiresAt()
+    public function getErrors()
     {
-        return $this->container['expires_at'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets expires_at
+     * Sets errors
      *
-     * @param \DateTime|null $expires_at Timestamp when the cached report will expire
+     * @param \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setExpiresAt($expires_at)
+    public function setErrors($errors)
     {
-        if (is_null($expires_at)) {
-            array_push($this->openAPINullablesSetToNull, 'expires_at');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('expires_at', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets file_size_bytes
-     *
-     * @return int|null
-     */
-    public function getFileSizeBytes()
-    {
-        return $this->container['file_size_bytes'];
-    }
-
-    /**
-     * Sets file_size_bytes
-     *
-     * @param int|null $file_size_bytes Total size of file, only populated on success
-     *
-     * @return self
-     */
-    public function setFileSizeBytes($file_size_bytes)
-    {
-        if (is_null($file_size_bytes)) {
-            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('file_size_bytes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['file_size_bytes'] = $file_size_bytes;
-
-        return $this;
-    }
-
-    /**
-     * Gets md5_checksum
-     *
-     * @return string|null
-     */
-    public function getMd5Checksum()
-    {
-        return $this->container['md5_checksum'];
-    }
-
-    /**
-     * Sets md5_checksum
-     *
-     * @param string|null $md5_checksum The MD5 checksum of the content, only populated on success
-     *
-     * @return self
-     */
-    public function setMd5Checksum($md5_checksum)
-    {
-        if (is_null($md5_checksum)) {
-            array_push($this->openAPINullablesSetToNull, 'md5_checksum');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('md5_checksum', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['md5_checksum'] = $md5_checksum;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message Failure message, only populated on failure
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            array_push($this->openAPINullablesSetToNull, 'message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_count
-     *
-     * @return int|null
-     */
-    public function getRowCount()
-    {
-        return $this->container['row_count'];
-    }
-
-    /**
-     * Sets row_count
-     *
-     * @param int|null $row_count Rows of data in report, only populated on success
-     *
-     * @return self
-     */
-    public function setRowCount($row_count)
-    {
-        if (is_null($row_count)) {
-            array_push($this->openAPINullablesSetToNull, 'row_count');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('row_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['row_count'] = $row_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status One of \"pending\", \"success\", \"failure\", or \"expired\"
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

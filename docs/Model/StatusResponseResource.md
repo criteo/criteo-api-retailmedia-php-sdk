@@ -1,10 +1,11 @@
-# # ReportRequest
+# # StatusResponseResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2023_04\Model\ReportRequestAttributes**](ReportRequestAttributes.md) |  |
-**type** | **string** | Always \&quot;RetailMediaReportRequest\&quot; |
+**attributes** | [**\criteo\api\retailmedia\v2023_04\Model\StatusResponse**](StatusResponse.md) |  | [optional]
+**id** | **string** |  | [optional]
+**type** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
