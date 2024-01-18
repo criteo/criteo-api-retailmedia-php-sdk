@@ -35,7 +35,6 @@ docs/Model/AuctionLineItemUpdateModelRequest.md
 docs/Model/AudienceIdsUpdateModel202110Request.md
 docs/Model/AudienceTarget202110Request.md
 docs/Model/AudienceTarget202110Response.md
-docs/Model/Balance202110PagedListResponse.md
 docs/Model/BalanceCampaign202110ListRequest.md
 docs/Model/BalanceCampaign202110PagedListResponse.md
 docs/Model/BalanceResponse.md
@@ -84,7 +83,6 @@ docs/Model/ExternalAuctionLineItemCreateModel.md
 docs/Model/ExternalAuctionLineItemUpdateModel.md
 docs/Model/ExternalAudienceIdsUpdateModel202110.md
 docs/Model/ExternalAudienceTarget202110.md
-docs/Model/ExternalBalance202110.md
 docs/Model/ExternalBalanceResponse.md
 docs/Model/ExternalBrand.md
 docs/Model/ExternalCatalogRequest.md
@@ -148,7 +146,6 @@ docs/Model/ReportOutcome.md
 docs/Model/ResourceOfAddFundsToBalance.md
 docs/Model/ResourceOfAuctionLineItem.md
 docs/Model/ResourceOfAuctionLineItemUpdateModel.md
-docs/Model/ResourceOfBalance202110.md
 docs/Model/ResourceOfBalanceCampaign202110.md
 docs/Model/ResourceOfBalanceResponse.md
 docs/Model/ResourceOfCategory202204.md
@@ -247,7 +244,6 @@ lib/Model/AuctionLineItemUpdateModelRequest.php
 lib/Model/AudienceIdsUpdateModel202110Request.php
 lib/Model/AudienceTarget202110Request.php
 lib/Model/AudienceTarget202110Response.php
-lib/Model/Balance202110PagedListResponse.php
 lib/Model/BalanceCampaign202110ListRequest.php
 lib/Model/BalanceCampaign202110PagedListResponse.php
 lib/Model/BalanceResponse.php
@@ -296,7 +292,6 @@ lib/Model/ExternalAuctionLineItemCreateModel.php
 lib/Model/ExternalAuctionLineItemUpdateModel.php
 lib/Model/ExternalAudienceIdsUpdateModel202110.php
 lib/Model/ExternalAudienceTarget202110.php
-lib/Model/ExternalBalance202110.php
 lib/Model/ExternalBalanceResponse.php
 lib/Model/ExternalBrand.php
 lib/Model/ExternalCatalogRequest.php
@@ -361,7 +356,6 @@ lib/Model/ReportOutcome.php
 lib/Model/ResourceOfAddFundsToBalance.php
 lib/Model/ResourceOfAuctionLineItem.php
 lib/Model/ResourceOfAuctionLineItemUpdateModel.php
-lib/Model/ResourceOfBalance202110.php
 lib/Model/ResourceOfBalanceCampaign202110.php
 lib/Model/ResourceOfBalanceResponse.php
 lib/Model/ResourceOfCategory202204.php

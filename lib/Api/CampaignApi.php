@@ -83,9 +83,6 @@ class CampaignApi
         'fetchProposal' => [
             'application/json',
         ],
-        'getApi202110ExternalAccountBalancesByAccountId' => [
-            'application/json',
-        ],
         'getApi202110ExternalAccountCreativesByAccountId' => [
             'application/json',
         ],
@@ -1413,334 +1410,6 @@ class CampaignApi
 
         $headers = $this->headerSelector->selectHeaders(
             ['text/plain', 'application/json', 'text/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApi202110ExternalAccountBalancesByAccountId
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse
-     */
-    public function getApi202110ExternalAccountBalancesByAccountId($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'][0])
-    {
-        list($response) = $this->getApi202110ExternalAccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApi202110ExternalAccountBalancesByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApi202110ExternalAccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'][0])
-    {
-        $request = $this->getApi202110ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApi202110ExternalAccountBalancesByAccountIdAsync
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApi202110ExternalAccountBalancesByAccountIdAsync($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'][0])
-    {
-        return $this->getApi202110ExternalAccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApi202110ExternalAccountBalancesByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApi202110ExternalAccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\Balance202110PagedListResponse';
-        $request = $this->getApi202110ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApi202110ExternalAccountBalancesByAccountId'
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApi202110ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApi202110ExternalAccountBalancesByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getApi202110ExternalAccountBalancesByAccountId'
-            );
-        }
-
-
-
-
-
-        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit_to_id,
-            'limitToId', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_index,
-            'pageIndex', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -6631,7 +6300,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/campaigns';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/campaigns';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6670,7 +6339,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -7525,7 +7194,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7564,7 +7233,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -8175,7 +7844,7 @@ class CampaignApi
         }
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -8187,7 +7856,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -10930,7 +10599,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -10942,7 +10611,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -16367,7 +16036,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/campaigns';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/campaigns';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -16379,7 +16048,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -16675,7 +16344,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/add-funds';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/add-funds';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -16687,7 +16356,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -16979,7 +16648,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -16991,7 +16660,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -17583,7 +17252,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-10/retail-media/accounts/{accountId}/balances/{balanceId}/change-dates';
+        $resourcePath = '/2023-10/retail-media/accounts/{account-id}/balances/{balanceId}/change-dates';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -17595,7 +17264,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
