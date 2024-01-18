@@ -6613,7 +6613,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-04/retail-media/accounts/{accountId}/campaigns';
+        $resourcePath = '/2023-04/retail-media/accounts/{account-id}/campaigns';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6652,7 +6652,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
@@ -15402,7 +15402,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/2023-04/retail-media/accounts/{accountId}/campaigns';
+        $resourcePath = '/2023-04/retail-media/accounts/{account-id}/campaigns';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -15414,7 +15414,7 @@ class CampaignApi
         // path params
         if ($account_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
+                '{' . 'account-id' . '}',
                 ObjectSerializer::toPathValue($account_id),
                 $resourcePath
             );
