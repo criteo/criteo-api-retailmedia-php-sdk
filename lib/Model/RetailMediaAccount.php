@@ -59,6 +59,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'name' => 'string',
+        'company_name' => 'string',
         'type' => 'string',
         'sub_type' => 'string',
         'country_ids' => 'int[]',
@@ -76,6 +77,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'name' => null,
+        'company_name' => null,
         'type' => null,
         'sub_type' => null,
         'country_ids' => 'int32',
@@ -91,6 +93,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'name' => true,
+		'company_name' => true,
 		'type' => true,
 		'sub_type' => true,
 		'country_ids' => true,
@@ -186,6 +189,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'company_name' => 'companyName',
         'type' => 'type',
         'sub_type' => 'subType',
         'country_ids' => 'countryIds',
@@ -201,6 +205,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'name' => 'setName',
+        'company_name' => 'setCompanyName',
         'type' => 'setType',
         'sub_type' => 'setSubType',
         'country_ids' => 'setCountryIds',
@@ -216,6 +221,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'name' => 'getName',
+        'company_name' => 'getCompanyName',
         'type' => 'getType',
         'sub_type' => 'getSubType',
         'country_ids' => 'getCountryIds',
@@ -316,6 +322,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('sub_type', $data ?? [], null);
         $this->setIfExists('country_ids', $data ?? [], null);
@@ -414,6 +421,40 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }

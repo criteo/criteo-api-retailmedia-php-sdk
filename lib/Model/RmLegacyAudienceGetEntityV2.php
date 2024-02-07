@@ -58,7 +58,7 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id' => 'int',
+        'retailer_id' => 'string',
         'user_behavior_details' => '\criteo\api\retailmedia\preview\Model\RmLegacyAudienceUserBehaviorDetailsV2',
         'customer_list_details' => '\criteo\api\retailmedia\preview\Model\RmLegacySegmentCustomerList',
         'name' => 'string'
@@ -72,7 +72,7 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id' => 'int64',
+        'retailer_id' => null,
         'user_behavior_details' => null,
         'customer_list_details' => null,
         'name' => null
@@ -320,7 +320,7 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets retailer_id
      *
-     * @return int
+     * @return string
      */
     public function getRetailerId()
     {
@@ -330,7 +330,7 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets retailer_id
      *
-     * @param int $retailer_id ID of the retailer associated with this audience
+     * @param string $retailer_id ID of the retailer associated with this audience
      *
      * @return self
      */

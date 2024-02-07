@@ -64,7 +64,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'countries' => 'string[]',
         'currency' => 'string',
         'parent_account_label' => 'string',
-        'time_zone' => 'string'
+        'time_zone' => 'string',
+        'company_name' => 'string'
     ];
 
     /**
@@ -81,7 +82,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'countries' => null,
         'currency' => null,
         'parent_account_label' => null,
-        'time_zone' => null
+        'time_zone' => null,
+        'company_name' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 		'countries' => false,
 		'currency' => false,
 		'parent_account_label' => false,
-		'time_zone' => false
+		'time_zone' => false,
+		'company_name' => true
     ];
 
     /**
@@ -191,7 +194,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'countries' => 'countries',
         'currency' => 'currency',
         'parent_account_label' => 'parentAccountLabel',
-        'time_zone' => 'timeZone'
+        'time_zone' => 'timeZone',
+        'company_name' => 'companyName'
     ];
 
     /**
@@ -206,7 +210,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'countries' => 'setCountries',
         'currency' => 'setCurrency',
         'parent_account_label' => 'setParentAccountLabel',
-        'time_zone' => 'setTimeZone'
+        'time_zone' => 'setTimeZone',
+        'company_name' => 'setCompanyName'
     ];
 
     /**
@@ -221,7 +226,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'countries' => 'getCountries',
         'currency' => 'getCurrency',
         'parent_account_label' => 'getParentAccountLabel',
-        'time_zone' => 'getTimeZone'
+        'time_zone' => 'getTimeZone',
+        'company_name' => 'getCompanyName'
     ];
 
     /**
@@ -322,6 +328,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('parent_account_label', $data ?? [], null);
         $this->setIfExists('time_zone', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
     }
 
     /**
@@ -644,6 +651,40 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
         }
         $this->container['time_zone'] = $time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name company_name
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }

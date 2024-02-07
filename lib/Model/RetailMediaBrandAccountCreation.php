@@ -59,6 +59,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'name' => 'string',
+        'company_name' => 'string',
         'brands' => 'int[]'
     ];
 
@@ -71,6 +72,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'name' => null,
+        'company_name' => null,
         'brands' => 'int32'
     ];
 
@@ -81,6 +83,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'name' => true,
+		'company_name' => true,
 		'brands' => true
     ];
 
@@ -171,6 +174,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'name' => 'name',
+        'company_name' => 'companyName',
         'brands' => 'brands'
     ];
 
@@ -181,6 +185,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'name' => 'setName',
+        'company_name' => 'setCompanyName',
         'brands' => 'setBrands'
     ];
 
@@ -191,6 +196,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'name' => 'getName',
+        'company_name' => 'getCompanyName',
         'brands' => 'getBrands'
     ];
 
@@ -252,6 +258,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('brands', $data ?? [], null);
     }
 
@@ -327,6 +334,40 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
             }
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }

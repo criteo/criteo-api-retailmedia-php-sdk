@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RmLegacyAudienceGetEntityV1Resource Class Doc Comment
  *
  * @category Class
- * @description Audience definition of people of interest for a marketer.
+ * @description Legacy resource
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
