@@ -1,24 +1,24 @@
-# criteo\api\retailmedia\preview\AudienceApi
+# criteo\api\retailmedia\v2024_01\AudienceApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getAudiencesByAccountId()**](AudienceApi.md#getAudiencesByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/audiences |  |
-| [**getRetailMediaAudienceV2ListByAccountId()**](AudienceApi.md#getRetailMediaAudienceV2ListByAccountId) | **GET** /preview/retail-media/v2/accounts/{accountId}/audiences |  |
-| [**legacyGetAudienceV1()**](AudienceApi.md#legacyGetAudienceV1) | **GET** /preview/retail-media/test/accounts/{accountId}/audiences |  |
-| [**legacyGetAudienceV2()**](AudienceApi.md#legacyGetAudienceV2) | **GET** /preview/retail-media/test/v2/accounts/{accountId}/audiences |  |
+| [**legacyCreateAudienceV1()**](AudienceApi.md#legacyCreateAudienceV1) | **POST** /2024-01/retail-media/accounts/{accountId}/audiences |  |
+| [**legacyGetAudienceV1()**](AudienceApi.md#legacyGetAudienceV1) | **GET** /2024-01/retail-media/accounts/{accountId}/audiences |  |
+| [**legacyGetAudienceV2()**](AudienceApi.md#legacyGetAudienceV2) | **GET** /2024-01/retail-media/v2/accounts/{accountId}/audiences |  |
+| [**legacyUpdateAudienceV2()**](AudienceApi.md#legacyUpdateAudienceV2) | **POST** /2024-01/retail-media/v2/accounts/{accountId}/audiences |  |
 
 
-## `getAudiencesByAccountId()`
+## `legacyCreateAudienceV1()`
 
 ```php
-getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse
+legacyCreateAudienceV1($account_id, $rm_legacy_audience_create_input_entity_v1): \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateEntityV1Response
 ```
 
 
 
-Get a page of audiences for a given account ID
+Create an Audience (deprecated Public API)
 
 ### Example
 
@@ -28,28 +28,26 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2024_01\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | External account ID which owns audience.
-$limit_to_id = array('limit_to_id_example'); // string[] | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page
-$page_index = 56; // int | Returns the specified page of results given a pageSize; pages are 0-indexed
+$account_id = 56; // int | ID of the account to which this audience belongs.
+$rm_legacy_audience_create_input_entity_v1 = new \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV1(); // \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV1 | Audience creation request.
 
 try {
-    $result = $apiInstance->getAudiencesByAccountId($account_id, $limit_to_id, $page_size, $page_index);
+    $result = $apiInstance->legacyCreateAudienceV1($account_id, $rm_legacy_audience_create_input_entity_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->getAudiencesByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AudienceApi->legacyCreateAudienceV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -57,14 +55,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| External account ID which owns audience. | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional] |
-| **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional] |
+| **account_id** | **int**| ID of the account to which this audience belongs. | |
+| **rm_legacy_audience_create_input_entity_v1** | [**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV1**](../Model/RmLegacyAudienceCreateInputEntityV1.md)| Audience creation request. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\GetPageOfAudiencesByAccountIdResponse**](../Model/GetPageOfAudiencesByAccountIdResponse.md)
+[**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateEntityV1Response**](../Model/RmLegacyAudienceCreateEntityV1Response.md)
 
 ### Authorization
 
@@ -72,77 +68,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getRetailMediaAudienceV2ListByAccountId()`
-
-```php
-getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse
-```
-
-
-
-Get a page of audiences for a given account ID
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 56; // int | External account ID which owns audience.
-$limit_to_id = array(56); // int[] | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page
-$page_index = 56; // int | Returns the specified page of results given a pageSize; pages are 0-indexed
-
-try {
-    $result = $apiInstance->getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id, $page_size, $page_index);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->getRetailMediaAudienceV2ListByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **int**| External account ID which owns audience. | |
-| **limit_to_id** | [**int[]**](../Model/int.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page | [optional] |
-| **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\RetailMediaAudienceV2ListResponse**](../Model/RetailMediaAudienceV2ListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -151,7 +78,7 @@ try {
 ## `legacyGetAudienceV1()`
 
 ```php
-legacyGetAudienceV1($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\RmLegacyAudienceGetEntityV1ListResponse
+legacyGetAudienceV1($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1ListResponse
 ```
 
 
@@ -166,13 +93,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2024_01\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -202,7 +129,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmLegacyAudienceGetEntityV1ListResponse**](../Model/RmLegacyAudienceGetEntityV1ListResponse.md)
+[**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1ListResponse**](../Model/RmLegacyAudienceGetEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -220,7 +147,7 @@ try {
 ## `legacyGetAudienceV2()`
 
 ```php
-legacyGetAudienceV2($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\preview\Model\RmLegacyAudienceGetEntityV2ListResponse
+legacyGetAudienceV2($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV2ListResponse
 ```
 
 
@@ -235,13 +162,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2024_01\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -271,7 +198,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmLegacyAudienceGetEntityV2ListResponse**](../Model/RmLegacyAudienceGetEntityV2ListResponse.md)
+[**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV2ListResponse**](../Model/RmLegacyAudienceGetEntityV2ListResponse.md)
 
 ### Authorization
 
@@ -280,6 +207,71 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `legacyUpdateAudienceV2()`
+
+```php
+legacyUpdateAudienceV2($account_id, $rm_legacy_audience_create_input_entity_v2): \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateEntityV2Response
+```
+
+
+
+Create an Audience (deprecated Public API)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2024_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2024_01\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 56; // int | ID of the account to which this audience belongs.
+$rm_legacy_audience_create_input_entity_v2 = new \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV2(); // \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV2 | Audience creation request.
+
+try {
+    $result = $apiInstance->legacyUpdateAudienceV2($account_id, $rm_legacy_audience_create_input_entity_v2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->legacyUpdateAudienceV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **int**| ID of the account to which this audience belongs. | |
+| **rm_legacy_audience_create_input_entity_v2** | [**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateInputEntityV2**](../Model/RmLegacyAudienceCreateInputEntityV2.md)| Audience creation request. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceCreateEntityV2Response**](../Model/RmLegacyAudienceCreateEntityV2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
 - **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

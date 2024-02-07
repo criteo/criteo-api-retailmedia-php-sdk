@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\RmLegacyAudienceGetEntityV1**](RmLegacyAudienceGetEntityV1.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1**](RmLegacyAudienceGetEntityV1.md) |  | [optional]
 **id** | **string** |  | [optional]
 **audience_type** | **string** |  | [optional]
 **type** | **string** |  | [optional]
