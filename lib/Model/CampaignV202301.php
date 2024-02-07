@@ -77,7 +77,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'click_attribution_scope' => 'string',
-        'view_attribution_scope' => 'string'
+        'view_attribution_scope' => 'string',
+        'company_name' => 'string'
     ];
 
     /**
@@ -107,7 +108,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'click_attribution_scope' => null,
-        'view_attribution_scope' => null
+        'view_attribution_scope' => null,
+        'company_name' => null
     ];
 
     /**
@@ -135,7 +137,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'start_date' => true,
 		'end_date' => true,
 		'click_attribution_scope' => true,
-		'view_attribution_scope' => true
+		'view_attribution_scope' => true,
+		'company_name' => true
     ];
 
     /**
@@ -243,7 +246,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'click_attribution_scope' => 'clickAttributionScope',
-        'view_attribution_scope' => 'viewAttributionScope'
+        'view_attribution_scope' => 'viewAttributionScope',
+        'company_name' => 'companyName'
     ];
 
     /**
@@ -271,7 +275,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'click_attribution_scope' => 'setClickAttributionScope',
-        'view_attribution_scope' => 'setViewAttributionScope'
+        'view_attribution_scope' => 'setViewAttributionScope',
+        'company_name' => 'setCompanyName'
     ];
 
     /**
@@ -299,7 +304,8 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'click_attribution_scope' => 'getClickAttributionScope',
-        'view_attribution_scope' => 'getViewAttributionScope'
+        'view_attribution_scope' => 'getViewAttributionScope',
+        'company_name' => 'getCompanyName'
     ];
 
     /**
@@ -497,6 +503,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('click_attribution_scope', $data ?? [], null);
         $this->setIfExists('view_attribution_scope', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
     }
 
     /**
@@ -1299,6 +1306,40 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['view_attribution_scope'] = $view_attribution_scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name company_name
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }
