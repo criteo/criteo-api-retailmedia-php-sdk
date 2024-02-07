@@ -68,7 +68,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         'click_attribution_window' => 'string',
         'view_attribution_window' => 'string',
         'click_attribution_scope' => 'string',
-        'view_attribution_scope' => 'string'
+        'view_attribution_scope' => 'string',
+        'company_name' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         'click_attribution_window' => null,
         'view_attribution_window' => null,
         'click_attribution_scope' => null,
-        'view_attribution_scope' => null
+        'view_attribution_scope' => null,
+        'company_name' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
 		'click_attribution_window' => false,
 		'view_attribution_window' => false,
 		'click_attribution_scope' => true,
-		'view_attribution_scope' => true
+		'view_attribution_scope' => true,
+		'company_name' => true
     ];
 
     /**
@@ -207,7 +210,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         'click_attribution_window' => 'clickAttributionWindow',
         'view_attribution_window' => 'viewAttributionWindow',
         'click_attribution_scope' => 'clickAttributionScope',
-        'view_attribution_scope' => 'viewAttributionScope'
+        'view_attribution_scope' => 'viewAttributionScope',
+        'company_name' => 'companyName'
     ];
 
     /**
@@ -226,7 +230,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         'click_attribution_window' => 'setClickAttributionWindow',
         'view_attribution_window' => 'setViewAttributionWindow',
         'click_attribution_scope' => 'setClickAttributionScope',
-        'view_attribution_scope' => 'setViewAttributionScope'
+        'view_attribution_scope' => 'setViewAttributionScope',
+        'company_name' => 'setCompanyName'
     ];
 
     /**
@@ -245,7 +250,8 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         'click_attribution_window' => 'getClickAttributionWindow',
         'view_attribution_window' => 'getViewAttributionWindow',
         'click_attribution_scope' => 'getClickAttributionScope',
-        'view_attribution_scope' => 'getViewAttributionScope'
+        'view_attribution_scope' => 'getViewAttributionScope',
+        'company_name' => 'getCompanyName'
     ];
 
     /**
@@ -396,6 +402,7 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         $this->setIfExists('view_attribution_window', $data ?? [], null);
         $this->setIfExists('click_attribution_scope', $data ?? [], null);
         $this->setIfExists('view_attribution_scope', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
     }
 
     /**
@@ -891,6 +898,40 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
             );
         }
         $this->container['view_attribution_scope'] = $view_attribution_scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name company_name
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }

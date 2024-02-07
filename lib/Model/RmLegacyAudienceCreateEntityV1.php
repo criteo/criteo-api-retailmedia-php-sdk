@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalAccount
+ * RmLegacyAudienceCreateEntityV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_10\ObjectSerializer;
 
 /**
- * ExternalAccount Class Doc Comment
+ * RmLegacyAudienceCreateEntityV1 Class Doc Comment
  *
  * @category Class
- * @description A Retail Media Account used to launch campaigns and line items
+ * @description Audience definition
  * @package  criteo\api\retailmedia\v2023_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalAccount';
+    protected static $openAPIModelName = 'RmLegacyAudienceCreateEntityV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'type' => 'string',
-        'subtype' => 'string',
-        'countries' => 'string[]',
-        'currency' => 'string',
-        'parent_account_label' => 'string',
-        'time_zone' => 'string',
-        'company_name' => 'string'
+        'user_type' => 'string',
+        'lookback_window' => 'string',
+        'brand_ids' => 'int[]',
+        'category_ids' => 'int[]',
+        'retailer_id' => 'int',
+        'name' => 'string'
     ];
 
     /**
@@ -76,14 +74,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'type' => null,
-        'subtype' => null,
-        'countries' => null,
-        'currency' => null,
-        'parent_account_label' => null,
-        'time_zone' => null,
-        'company_name' => null
+        'user_type' => null,
+        'lookback_window' => null,
+        'brand_ids' => 'int64',
+        'category_ids' => 'int32',
+        'retailer_id' => 'int64',
+        'name' => null
     ];
 
     /**
@@ -92,14 +88,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'type' => false,
-		'subtype' => true,
-		'countries' => false,
-		'currency' => false,
-		'parent_account_label' => false,
-		'time_zone' => false,
-		'company_name' => true
+        'user_type' => false,
+		'lookback_window' => false,
+		'brand_ids' => true,
+		'category_ids' => true,
+		'retailer_id' => false,
+		'name' => false
     ];
 
     /**
@@ -188,14 +182,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'type' => 'type',
-        'subtype' => 'subtype',
-        'countries' => 'countries',
-        'currency' => 'currency',
-        'parent_account_label' => 'parentAccountLabel',
-        'time_zone' => 'timeZone',
-        'company_name' => 'companyName'
+        'user_type' => 'userType',
+        'lookback_window' => 'lookbackWindow',
+        'brand_ids' => 'brandIds',
+        'category_ids' => 'categoryIds',
+        'retailer_id' => 'retailerId',
+        'name' => 'name'
     ];
 
     /**
@@ -204,14 +196,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'type' => 'setType',
-        'subtype' => 'setSubtype',
-        'countries' => 'setCountries',
-        'currency' => 'setCurrency',
-        'parent_account_label' => 'setParentAccountLabel',
-        'time_zone' => 'setTimeZone',
-        'company_name' => 'setCompanyName'
+        'user_type' => 'setUserType',
+        'lookback_window' => 'setLookbackWindow',
+        'brand_ids' => 'setBrandIds',
+        'category_ids' => 'setCategoryIds',
+        'retailer_id' => 'setRetailerId',
+        'name' => 'setName'
     ];
 
     /**
@@ -220,14 +210,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'type' => 'getType',
-        'subtype' => 'getSubtype',
-        'countries' => 'getCountries',
-        'currency' => 'getCurrency',
-        'parent_account_label' => 'getParentAccountLabel',
-        'time_zone' => 'getTimeZone',
-        'company_name' => 'getCompanyName'
+        'user_type' => 'getUserType',
+        'lookback_window' => 'getLookbackWindow',
+        'brand_ids' => 'getBrandIds',
+        'category_ids' => 'getCategoryIds',
+        'retailer_id' => 'getRetailerId',
+        'name' => 'getName'
     ];
 
     /**
@@ -271,24 +259,30 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_SUPPLY = 'supply';
-    public const TYPE_DEMAND = 'demand';
-    public const SUBTYPE_UNKNOWN = 'unknown';
-    public const SUBTYPE_BRAND = 'brand';
-    public const SUBTYPE_SELLER = 'seller';
+    public const USER_TYPE_VIEWER = 'viewer';
+    public const USER_TYPE_BUYER = 'buyer';
+    public const USER_TYPE_ADD_TO_CARTER = 'addToCarter';
+    public const LOOKBACK_WINDOW_P7_D = 'P7D';
+    public const LOOKBACK_WINDOW_P14_D = 'P14D';
+    public const LOOKBACK_WINDOW_P30_D = 'P30D';
+    public const LOOKBACK_WINDOW_P45_D = 'P45D';
+    public const LOOKBACK_WINDOW_P60_D = 'P60D';
+    public const LOOKBACK_WINDOW_P90_D = 'P90D';
+    public const LOOKBACK_WINDOW_P120_D = 'P120D';
+    public const LOOKBACK_WINDOW_P150_D = 'P150D';
+    public const LOOKBACK_WINDOW_P180_D = 'P180D';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getUserTypeAllowableValues()
     {
         return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_SUPPLY,
-            self::TYPE_DEMAND,
+            self::USER_TYPE_VIEWER,
+            self::USER_TYPE_BUYER,
+            self::USER_TYPE_ADD_TO_CARTER,
         ];
     }
 
@@ -297,12 +291,18 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public function getSubtypeAllowableValues()
+    public function getLookbackWindowAllowableValues()
     {
         return [
-            self::SUBTYPE_UNKNOWN,
-            self::SUBTYPE_BRAND,
-            self::SUBTYPE_SELLER,
+            self::LOOKBACK_WINDOW_P7_D,
+            self::LOOKBACK_WINDOW_P14_D,
+            self::LOOKBACK_WINDOW_P30_D,
+            self::LOOKBACK_WINDOW_P45_D,
+            self::LOOKBACK_WINDOW_P60_D,
+            self::LOOKBACK_WINDOW_P90_D,
+            self::LOOKBACK_WINDOW_P120_D,
+            self::LOOKBACK_WINDOW_P150_D,
+            self::LOOKBACK_WINDOW_P180_D,
         ];
     }
 
@@ -321,14 +321,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('user_type', $data ?? [], null);
+        $this->setIfExists('lookback_window', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('subtype', $data ?? [], null);
-        $this->setIfExists('countries', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('parent_account_label', $data ?? [], null);
-        $this->setIfExists('time_zone', $data ?? [], null);
-        $this->setIfExists('company_name', $data ?? [], null);
     }
 
     /**
@@ -358,57 +356,35 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['user_type'] === null) {
+            $invalidProperties[] = "'user_type' can't be null";
+        }
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'user_type', must be one of '%s'",
+                $this->container['user_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['lookback_window'] === null) {
+            $invalidProperties[] = "'lookback_window' can't be null";
+        }
+        $allowedValues = $this->getLookbackWindowAllowableValues();
+        if (!is_null($this->container['lookback_window']) && !in_array($this->container['lookback_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'lookback_window', must be one of '%s'",
+                $this->container['lookback_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 510)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 510.";
-        }
-
-        if ((mb_strlen($this->container['name']) < 0)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSubtypeAllowableValues();
-        if (!is_null($this->container['subtype']) && !in_array($this->container['subtype'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'subtype', must be one of '%s'",
-                $this->container['subtype'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['countries'] === null) {
-            $invalidProperties[] = "'countries' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
-        if ($this->container['parent_account_label'] === null) {
-            $invalidProperties[] = "'parent_account_label' can't be null";
-        }
-        if ((mb_strlen($this->container['parent_account_label']) > 510)) {
-            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be smaller than or equal to 510.";
-        }
-
-        if ((mb_strlen($this->container['parent_account_label']) < 0)) {
-            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['time_zone'] === null) {
-            $invalidProperties[] = "'time_zone' can't be null";
         }
         return $invalidProperties;
     }
@@ -426,6 +402,179 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets user_type
+     *
+     * @return string
+     */
+    public function getUserType()
+    {
+        return $this->container['user_type'];
+    }
+
+    /**
+     * Sets user_type
+     *
+     * @param string $user_type Type of the user
+     *
+     * @return self
+     */
+    public function setUserType($user_type)
+    {
+        if (is_null($user_type)) {
+            throw new \InvalidArgumentException('non-nullable user_type cannot be null');
+        }
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!in_array($user_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'user_type', must be one of '%s'",
+                    $user_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['user_type'] = $user_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets lookback_window
+     *
+     * @return string
+     */
+    public function getLookbackWindow()
+    {
+        return $this->container['lookback_window'];
+    }
+
+    /**
+     * Sets lookback_window
+     *
+     * @param string $lookback_window Length of lookback window
+     *
+     * @return self
+     */
+    public function setLookbackWindow($lookback_window)
+    {
+        if (is_null($lookback_window)) {
+            throw new \InvalidArgumentException('non-nullable lookback_window cannot be null');
+        }
+        $allowedValues = $this->getLookbackWindowAllowableValues();
+        if (!in_array($lookback_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_window', must be one of '%s'",
+                    $lookback_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_window'] = $lookback_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_ids
+     *
+     * @return int[]|null
+     */
+    public function getBrandIds()
+    {
+        return $this->container['brand_ids'];
+    }
+
+    /**
+     * Sets brand_ids
+     *
+     * @param int[]|null $brand_ids The brands to target
+     *
+     * @return self
+     */
+    public function setBrandIds($brand_ids)
+    {
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return int[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param int[]|null $category_ids The categories to target
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+
+        $this->container['category_ids'] = $category_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return int
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param int $retailer_id ID of the retailer associated with this audience
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -438,7 +587,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name Name of the audience
      *
      * @return self
      */
@@ -447,244 +596,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 510)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be smaller than or equal to 510.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be bigger than or equal to 0.');
-        }
-
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets subtype
-     *
-     * @return string|null
-     */
-    public function getSubtype()
-    {
-        return $this->container['subtype'];
-    }
-
-    /**
-     * Sets subtype
-     *
-     * @param string|null $subtype subtype
-     *
-     * @return self
-     */
-    public function setSubtype($subtype)
-    {
-        if (is_null($subtype)) {
-            array_push($this->openAPINullablesSetToNull, 'subtype');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('subtype', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getSubtypeAllowableValues();
-        if (!is_null($subtype) && !in_array($subtype, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'subtype', must be one of '%s'",
-                    $subtype,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['subtype'] = $subtype;
-
-        return $this;
-    }
-
-    /**
-     * Gets countries
-     *
-     * @return string[]
-     */
-    public function getCountries()
-    {
-        return $this->container['countries'];
-    }
-
-    /**
-     * Sets countries
-     *
-     * @param string[] $countries countries
-     *
-     * @return self
-     */
-    public function setCountries($countries)
-    {
-        if (is_null($countries)) {
-            throw new \InvalidArgumentException('non-nullable countries cannot be null');
-        }
-        $this->container['countries'] = $countries;
-
-        return $this;
-    }
-
-    /**
-     * Gets currency
-     *
-     * @return string
-     */
-    public function getCurrency()
-    {
-        return $this->container['currency'];
-    }
-
-    /**
-     * Sets currency
-     *
-     * @param string $currency currency
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
-        if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
-        }
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_account_label
-     *
-     * @return string
-     */
-    public function getParentAccountLabel()
-    {
-        return $this->container['parent_account_label'];
-    }
-
-    /**
-     * Sets parent_account_label
-     *
-     * @param string $parent_account_label parent_account_label
-     *
-     * @return self
-     */
-    public function setParentAccountLabel($parent_account_label)
-    {
-        if (is_null($parent_account_label)) {
-            throw new \InvalidArgumentException('non-nullable parent_account_label cannot be null');
-        }
-        if ((mb_strlen($parent_account_label) > 510)) {
-            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be smaller than or equal to 510.');
-        }
-        if ((mb_strlen($parent_account_label) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be bigger than or equal to 0.');
-        }
-
-        $this->container['parent_account_label'] = $parent_account_label;
-
-        return $this;
-    }
-
-    /**
-     * Gets time_zone
-     *
-     * @return string
-     */
-    public function getTimeZone()
-    {
-        return $this->container['time_zone'];
-    }
-
-    /**
-     * Sets time_zone
-     *
-     * @param string $time_zone time_zone
-     *
-     * @return self
-     */
-    public function setTimeZone($time_zone)
-    {
-        if (is_null($time_zone)) {
-            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
-        }
-        $this->container['time_zone'] = $time_zone;
-
-        return $this;
-    }
-
-    /**
-     * Gets company_name
-     *
-     * @return string|null
-     */
-    public function getCompanyName()
-    {
-        return $this->container['company_name'];
-    }
-
-    /**
-     * Sets company_name
-     *
-     * @param string|null $company_name company_name
-     *
-     * @return self
-     */
-    public function setCompanyName($company_name)
-    {
-        if (is_null($company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['company_name'] = $company_name;
 
         return $this;
     }
