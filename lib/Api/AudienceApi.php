@@ -71,17 +71,23 @@ class AudienceApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createAudience' => [
+        'legacyCreateAudienceV1' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'legacyGetAudienceV1' => [
             'application/json',
         ],
-        'createRetailMediaAudienceV2' => [
+        'legacyGetAudienceV2' => [
             'application/json',
         ],
-        'getAudiencesByAccountId' => [
+        'legacyUpdateAudienceV2' => [
+            'application/json-patch+json',
             'application/json',
-        ],
-        'getRetailMediaAudienceV2ListByAccountId' => [
-            'application/json',
+            'text/json',
+            'application/*+json',
         ],
     ];
 
@@ -132,36 +138,38 @@ class AudienceApi
     }
 
     /**
-     * Operation createAudience
+     * Operation legacyCreateAudienceV1
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request create_retail_media_audience_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAudience'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV1 $rm_legacy_audience_create_input_entity_v1 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyCreateAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse
+     * @return \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response
+     * @deprecated
      */
-    public function createAudience($account_id, $create_retail_media_audience_request, string $contentType = self::contentTypes['createAudience'][0])
+    public function legacyCreateAudienceV1($account_id, $rm_legacy_audience_create_input_entity_v1, string $contentType = self::contentTypes['legacyCreateAudienceV1'][0])
     {
-        list($response) = $this->createAudienceWithHttpInfo($account_id, $create_retail_media_audience_request, $contentType);
+        list($response) = $this->legacyCreateAudienceV1WithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v1, $contentType);
         return $response;
     }
 
     /**
-     * Operation createAudienceWithHttpInfo
+     * Operation legacyCreateAudienceV1WithHttpInfo
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAudience'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV1 $rm_legacy_audience_create_input_entity_v1 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyCreateAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function createAudienceWithHttpInfo($account_id, $create_retail_media_audience_request, string $contentType = self::contentTypes['createAudience'][0])
+    public function legacyCreateAudienceV1WithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v1, string $contentType = self::contentTypes['legacyCreateAudienceV1'][0])
     {
-        $request = $this->createAudienceRequest($account_id, $create_retail_media_audience_request, $contentType);
+        $request = $this->legacyCreateAudienceV1Request($account_id, $rm_legacy_audience_create_input_entity_v1, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -199,24 +207,24 @@ class AudienceApi
             }
 
             switch($statusCode) {
-                case 201:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse' === '\SplFileObject') {
+                case 200:
+                    if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -234,10 +242,10 @@ class AudienceApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse',
+                        '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -248,18 +256,19 @@ class AudienceApi
     }
 
     /**
-     * Operation createAudienceAsync
+     * Operation legacyCreateAudienceV1Async
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAudience'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV1 $rm_legacy_audience_create_input_entity_v1 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyCreateAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createAudienceAsync($account_id, $create_retail_media_audience_request, string $contentType = self::contentTypes['createAudience'][0])
+    public function legacyCreateAudienceV1Async($account_id, $rm_legacy_audience_create_input_entity_v1, string $contentType = self::contentTypes['legacyCreateAudienceV1'][0])
     {
-        return $this->createAudienceAsyncWithHttpInfo($account_id, $create_retail_media_audience_request, $contentType)
+        return $this->legacyCreateAudienceV1AsyncWithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v1, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -268,19 +277,20 @@ class AudienceApi
     }
 
     /**
-     * Operation createAudienceAsyncWithHttpInfo
+     * Operation legacyCreateAudienceV1AsyncWithHttpInfo
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAudience'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV1 $rm_legacy_audience_create_input_entity_v1 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyCreateAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function createAudienceAsyncWithHttpInfo($account_id, $create_retail_media_audience_request, string $contentType = self::contentTypes['createAudience'][0])
+    public function legacyCreateAudienceV1AsyncWithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v1, string $contentType = self::contentTypes['legacyCreateAudienceV1'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceResponse';
-        $request = $this->createAudienceRequest($account_id, $create_retail_media_audience_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV1Response';
+        $request = $this->legacyCreateAudienceV1Request($account_id, $rm_legacy_audience_create_input_entity_v1, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -319,29 +329,30 @@ class AudienceApi
     }
 
     /**
-     * Create request for operation 'createAudience'
+     * Create request for operation 'legacyCreateAudienceV1'
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceRequest $create_retail_media_audience_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAudience'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV1 $rm_legacy_audience_create_input_entity_v1 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyCreateAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function createAudienceRequest($account_id, $create_retail_media_audience_request, string $contentType = self::contentTypes['createAudience'][0])
+    public function legacyCreateAudienceV1Request($account_id, $rm_legacy_audience_create_input_entity_v1, string $contentType = self::contentTypes['legacyCreateAudienceV1'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling createAudience'
+                'Missing the required parameter $account_id when calling legacyCreateAudienceV1'
             );
         }
 
-        // verify the required parameter 'create_retail_media_audience_request' is set
-        if ($create_retail_media_audience_request === null || (is_array($create_retail_media_audience_request) && count($create_retail_media_audience_request) === 0)) {
+        // verify the required parameter 'rm_legacy_audience_create_input_entity_v1' is set
+        if ($rm_legacy_audience_create_input_entity_v1 === null || (is_array($rm_legacy_audience_create_input_entity_v1) && count($rm_legacy_audience_create_input_entity_v1) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $create_retail_media_audience_request when calling createAudience'
+                'Missing the required parameter $rm_legacy_audience_create_input_entity_v1 when calling legacyCreateAudienceV1'
             );
         }
 
@@ -366,18 +377,18 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($create_retail_media_audience_request)) {
+        if (isset($rm_legacy_audience_create_input_entity_v1)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_retail_media_audience_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_legacy_audience_create_input_entity_v1));
             } else {
-                $httpBody = $create_retail_media_audience_request;
+                $httpBody = $rm_legacy_audience_create_input_entity_v1;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -434,457 +445,40 @@ class AudienceApi
     }
 
     /**
-     * Operation createRetailMediaAudienceV2
+     * Operation legacyGetAudienceV1
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request create_retail_media_audience_v2_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRetailMediaAudienceV2'] to see the possible values for this operation
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse
+     * @return \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse
      */
-    public function createRetailMediaAudienceV2($account_id, $create_retail_media_audience_v2_request, string $contentType = self::contentTypes['createRetailMediaAudienceV2'][0])
+    public function legacyGetAudienceV1($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        list($response) = $this->createRetailMediaAudienceV2WithHttpInfo($account_id, $create_retail_media_audience_v2_request, $contentType);
+        list($response) = $this->legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
         return $response;
     }
 
     /**
-     * Operation createRetailMediaAudienceV2WithHttpInfo
+     * Operation legacyGetAudienceV1WithHttpInfo
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRetailMediaAudienceV2'] to see the possible values for this operation
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createRetailMediaAudienceV2WithHttpInfo($account_id, $create_retail_media_audience_v2_request, string $contentType = self::contentTypes['createRetailMediaAudienceV2'][0])
+    public function legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        $request = $this->createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 406:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 409:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 406:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createRetailMediaAudienceV2Async
-     *
-     * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRetailMediaAudienceV2'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createRetailMediaAudienceV2Async($account_id, $create_retail_media_audience_v2_request, string $contentType = self::contentTypes['createRetailMediaAudienceV2'][0])
-    {
-        return $this->createRetailMediaAudienceV2AsyncWithHttpInfo($account_id, $create_retail_media_audience_v2_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createRetailMediaAudienceV2AsyncWithHttpInfo
-     *
-     * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRetailMediaAudienceV2'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createRetailMediaAudienceV2AsyncWithHttpInfo($account_id, $create_retail_media_audience_v2_request, string $contentType = self::contentTypes['createRetailMediaAudienceV2'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2Response';
-        $request = $this->createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createRetailMediaAudienceV2'
-     *
-     * @param  int $account_id ID of the account to which this audience belongs. (required)
-     * @param  \criteo\api\retailmedia\v2023_01\Model\CreateRetailMediaAudienceV2Request $create_retail_media_audience_v2_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRetailMediaAudienceV2'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRetailMediaAudienceV2Request($account_id, $create_retail_media_audience_v2_request, string $contentType = self::contentTypes['createRetailMediaAudienceV2'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling createRetailMediaAudienceV2'
-            );
-        }
-
-        // verify the required parameter 'create_retail_media_audience_v2_request' is set
-        if ($create_retail_media_audience_v2_request === null || (is_array($create_retail_media_audience_v2_request) && count($create_retail_media_audience_v2_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $create_retail_media_audience_v2_request when calling createRetailMediaAudienceV2'
-            );
-        }
-
-
-        $resourcePath = '/2023-01/retail-media/v2/accounts/{accountId}/audiences';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($create_retail_media_audience_v2_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_retail_media_audience_v2_request));
-            } else {
-                $httpBody = $create_retail_media_audience_v2_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getAudiencesByAccountId
-     *
-     * @param  string $account_id External account ID which owns audience. (required)
-     * @param  string[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiencesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse
-     */
-    public function getAudiencesByAccountId($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getAudiencesByAccountId'][0])
-    {
-        list($response) = $this->getAudiencesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getAudiencesByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id External account ID which owns audience. (required)
-     * @param  string[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiencesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getAudiencesByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getAudiencesByAccountId'][0])
-    {
-        $request = $this->getAudiencesByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -923,23 +517,23 @@ class AudienceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -960,7 +554,7 @@ class AudienceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse',
+                        '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -971,20 +565,20 @@ class AudienceApi
     }
 
     /**
-     * Operation getAudiencesByAccountIdAsync
+     * Operation legacyGetAudienceV1Async
      *
-     * @param  string $account_id External account ID which owns audience. (required)
-     * @param  string[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiencesByAccountId'] to see the possible values for this operation
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudiencesByAccountIdAsync($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getAudiencesByAccountId'][0])
+    public function legacyGetAudienceV1Async($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        return $this->getAudiencesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
+        return $this->legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -993,21 +587,21 @@ class AudienceApi
     }
 
     /**
-     * Operation getAudiencesByAccountIdAsyncWithHttpInfo
+     * Operation legacyGetAudienceV1AsyncWithHttpInfo
      *
-     * @param  string $account_id External account ID which owns audience. (required)
-     * @param  string[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiencesByAccountId'] to see the possible values for this operation
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudiencesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getAudiencesByAccountId'][0])
+    public function legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_01\Model\GetPageOfAudiencesByAccountIdResponse';
-        $request = $this->getAudiencesByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV1ListResponse';
+        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1046,24 +640,24 @@ class AudienceApi
     }
 
     /**
-     * Create request for operation 'getAudiencesByAccountId'
+     * Create request for operation 'legacyGetAudienceV1'
      *
-     * @param  string $account_id External account ID which owns audience. (required)
-     * @param  string[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudiencesByAccountId'] to see the possible values for this operation
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAudiencesByAccountIdRequest($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getAudiencesByAccountId'][0])
+    public function legacyGetAudienceV1Request($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getAudiencesByAccountId'
+                'Missing the required parameter $account_id when calling legacyGetAudienceV1'
             );
         }
 
@@ -1118,7 +712,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -1179,40 +773,40 @@ class AudienceApi
     }
 
     /**
-     * Operation getRetailMediaAudienceV2ListByAccountId
+     * Operation legacyGetAudienceV2
      *
-     * @param  int $account_id External account ID which owns audience. (required)
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailMediaAudienceV2ListByAccountId'] to see the possible values for this operation
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse
+     * @return \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse
      */
-    public function getRetailMediaAudienceV2ListByAccountId($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getRetailMediaAudienceV2ListByAccountId'][0])
+    public function legacyGetAudienceV2($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        list($response) = $this->getRetailMediaAudienceV2ListByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        list($response) = $this->legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
         return $response;
     }
 
     /**
-     * Operation getRetailMediaAudienceV2ListByAccountIdWithHttpInfo
+     * Operation legacyGetAudienceV2WithHttpInfo
      *
-     * @param  int $account_id External account ID which owns audience. (required)
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailMediaAudienceV2ListByAccountId'] to see the possible values for this operation
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse|\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRetailMediaAudienceV2ListByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getRetailMediaAudienceV2ListByAccountId'][0])
+    public function legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        $request = $this->getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1251,68 +845,23 @@ class AudienceApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 406:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 415:
-                    if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1333,31 +882,7 @@ class AudienceApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 406:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 415:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_01\Model\CommonStatusCodeResponse',
+                        '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1368,20 +893,20 @@ class AudienceApi
     }
 
     /**
-     * Operation getRetailMediaAudienceV2ListByAccountIdAsync
+     * Operation legacyGetAudienceV2Async
      *
-     * @param  int $account_id External account ID which owns audience. (required)
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailMediaAudienceV2ListByAccountId'] to see the possible values for this operation
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRetailMediaAudienceV2ListByAccountIdAsync($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getRetailMediaAudienceV2ListByAccountId'][0])
+    public function legacyGetAudienceV2Async($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        return $this->getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
+        return $this->legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1390,21 +915,21 @@ class AudienceApi
     }
 
     /**
-     * Operation getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo
+     * Operation legacyGetAudienceV2AsyncWithHttpInfo
      *
-     * @param  int $account_id External account ID which owns audience. (required)
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailMediaAudienceV2ListByAccountId'] to see the possible values for this operation
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRetailMediaAudienceV2ListByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getRetailMediaAudienceV2ListByAccountId'][0])
+    public function legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RetailMediaAudienceV2ListResponse';
-        $request = $this->getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceGetEntityV2ListResponse';
+        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1443,24 +968,24 @@ class AudienceApi
     }
 
     /**
-     * Create request for operation 'getRetailMediaAudienceV2ListByAccountId'
+     * Create request for operation 'legacyGetAudienceV2'
      *
-     * @param  int $account_id External account ID which owns audience. (required)
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page (optional)
-     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailMediaAudienceV2ListByAccountId'] to see the possible values for this operation
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
+     * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRetailMediaAudienceV2ListByAccountIdRequest($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['getRetailMediaAudienceV2ListByAccountId'][0])
+    public function legacyGetAudienceV2Request($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getRetailMediaAudienceV2ListByAccountId'
+                'Missing the required parameter $account_id when calling legacyGetAudienceV2'
             );
         }
 
@@ -1515,7 +1040,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -1569,6 +1094,313 @@ class AudienceApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation legacyUpdateAudienceV2
+     *
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV2 $rm_legacy_audience_create_input_entity_v2 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyUpdateAudienceV2'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response
+     * @deprecated
+     */
+    public function legacyUpdateAudienceV2($account_id, $rm_legacy_audience_create_input_entity_v2, string $contentType = self::contentTypes['legacyUpdateAudienceV2'][0])
+    {
+        list($response) = $this->legacyUpdateAudienceV2WithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation legacyUpdateAudienceV2WithHttpInfo
+     *
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV2 $rm_legacy_audience_create_input_entity_v2 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyUpdateAudienceV2'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2023_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
+     */
+    public function legacyUpdateAudienceV2WithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v2, string $contentType = self::contentTypes['legacyUpdateAudienceV2'][0])
+    {
+        $request = $this->legacyUpdateAudienceV2Request($account_id, $rm_legacy_audience_create_input_entity_v2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation legacyUpdateAudienceV2Async
+     *
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV2 $rm_legacy_audience_create_input_entity_v2 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyUpdateAudienceV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function legacyUpdateAudienceV2Async($account_id, $rm_legacy_audience_create_input_entity_v2, string $contentType = self::contentTypes['legacyUpdateAudienceV2'][0])
+    {
+        return $this->legacyUpdateAudienceV2AsyncWithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation legacyUpdateAudienceV2AsyncWithHttpInfo
+     *
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV2 $rm_legacy_audience_create_input_entity_v2 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyUpdateAudienceV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
+     */
+    public function legacyUpdateAudienceV2AsyncWithHttpInfo($account_id, $rm_legacy_audience_create_input_entity_v2, string $contentType = self::contentTypes['legacyUpdateAudienceV2'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateEntityV2Response';
+        $request = $this->legacyUpdateAudienceV2Request($account_id, $rm_legacy_audience_create_input_entity_v2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'legacyUpdateAudienceV2'
+     *
+     * @param  int $account_id ID of the account to which this audience belongs. (required)
+     * @param  \criteo\api\retailmedia\v2023_01\Model\RmLegacyAudienceCreateInputEntityV2 $rm_legacy_audience_create_input_entity_v2 Audience creation request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyUpdateAudienceV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
+     */
+    public function legacyUpdateAudienceV2Request($account_id, $rm_legacy_audience_create_input_entity_v2, string $contentType = self::contentTypes['legacyUpdateAudienceV2'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling legacyUpdateAudienceV2'
+            );
+        }
+
+        // verify the required parameter 'rm_legacy_audience_create_input_entity_v2' is set
+        if ($rm_legacy_audience_create_input_entity_v2 === null || (is_array($rm_legacy_audience_create_input_entity_v2) && count($rm_legacy_audience_create_input_entity_v2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_legacy_audience_create_input_entity_v2 when calling legacyUpdateAudienceV2'
+            );
+        }
+
+
+        $resourcePath = '/2023-01/retail-media/v2/accounts/{accountId}/audiences';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_legacy_audience_create_input_entity_v2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_legacy_audience_create_input_entity_v2));
+            } else {
+                $httpBody = $rm_legacy_audience_create_input_entity_v2;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
