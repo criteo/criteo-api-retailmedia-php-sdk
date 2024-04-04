@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * SyncAttributedTransactionsReport Class Doc Comment
  *
  * @category Class
- * @description Attributed transactions report body request
+ * @description Attributed Transactions report body request
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,13 +60,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'campaign_ids' => 'string[]',
         'line_item_ids' => 'string[]',
-        'dimensions' => 'string[]',
-        'metrics' => 'string[]',
         'account_id' => 'string',
         'click_attribution_window' => 'string',
         'view_attribution_window' => 'string',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
+        'dimensions' => 'string[]',
+        'metrics' => 'string[]',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'timezone' => 'string'
@@ -82,13 +82,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'campaign_ids' => null,
         'line_item_ids' => null,
-        'dimensions' => null,
-        'metrics' => null,
         'account_id' => null,
         'click_attribution_window' => null,
         'view_attribution_window' => null,
         'campaign_type' => null,
         'sales_channel' => null,
+        'dimensions' => null,
+        'metrics' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'timezone' => null
@@ -102,13 +102,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'campaign_ids' => true,
 		'line_item_ids' => true,
-		'dimensions' => true,
-		'metrics' => true,
 		'account_id' => false,
 		'click_attribution_window' => true,
 		'view_attribution_window' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
+		'dimensions' => true,
+		'metrics' => true,
 		'start_date' => false,
 		'end_date' => false,
 		'timezone' => true
@@ -202,13 +202,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'campaign_ids' => 'campaignIds',
         'line_item_ids' => 'lineItemIds',
-        'dimensions' => 'dimensions',
-        'metrics' => 'metrics',
         'account_id' => 'accountId',
         'click_attribution_window' => 'clickAttributionWindow',
         'view_attribution_window' => 'viewAttributionWindow',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
+        'dimensions' => 'dimensions',
+        'metrics' => 'metrics',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'timezone' => 'timezone'
@@ -222,13 +222,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'campaign_ids' => 'setCampaignIds',
         'line_item_ids' => 'setLineItemIds',
-        'dimensions' => 'setDimensions',
-        'metrics' => 'setMetrics',
         'account_id' => 'setAccountId',
         'click_attribution_window' => 'setClickAttributionWindow',
         'view_attribution_window' => 'setViewAttributionWindow',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
+        'dimensions' => 'setDimensions',
+        'metrics' => 'setMetrics',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'timezone' => 'setTimezone'
@@ -242,13 +242,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'campaign_ids' => 'getCampaignIds',
         'line_item_ids' => 'getLineItemIds',
-        'dimensions' => 'getDimensions',
-        'metrics' => 'getMetrics',
         'account_id' => 'getAccountId',
         'click_attribution_window' => 'getClickAttributionWindow',
         'view_attribution_window' => 'getViewAttributionWindow',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
+        'dimensions' => 'getDimensions',
+        'metrics' => 'getMetrics',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'timezone' => 'getTimezone'
@@ -295,6 +295,19 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ONLINE = 'online';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
@@ -323,69 +336,6 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_ATTRIBUTION_WINDOW = 'attributionWindow';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
     public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
-    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
-    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
-    public const SALES_CHANNEL_ONLINE = 'online';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionsAllowableValues()
-    {
-        return [
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_LINE_ITEM_ID,
-            self::DIMENSIONS_PURCHASED_DATE,
-            self::DIMENSIONS_PURCHASED_HOUR,
-            self::DIMENSIONS_ADV_DATE,
-            self::DIMENSIONS_ADV_HOUR,
-            self::DIMENSIONS_DAYS_DIFFERENCE,
-            self::DIMENSIONS_LINE_ITEM_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
-            self::DIMENSIONS_ADV_PRODUCT_GTIN,
-            self::DIMENSIONS_ADV_PRODUCT_MPN,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_PURCHASED_PRODUCT_ID,
-            self::DIMENSIONS_PURCHASED_PRODUCT_GTIN,
-            self::DIMENSIONS_PURCHASED_PRODUCT_MPN,
-            self::DIMENSIONS_PURCHASED_PRODUCT_NAME,
-            self::DIMENSIONS_PURCHASED_PRODUCT_CATEGORY,
-            self::DIMENSIONS_ADV_ENGAGEMENT,
-            self::DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP,
-            self::DIMENSIONS_SALES_CHANNEL,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_ATTRIBUTION_WINDOW,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMetricsAllowableValues()
-    {
-        return [
-            self::METRICS_ATTRIBUTED_UNITS,
-            self::METRICS_ATTRIBUTED_SALES,
-        ];
-    }
 
     /**
      * Gets allowable values of the enum
@@ -445,6 +395,56 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDimensionsAllowableValues()
+    {
+        return [
+            self::DIMENSIONS_CAMPAIGN_NAME,
+            self::DIMENSIONS_CAMPAIGN_ID,
+            self::DIMENSIONS_LINE_ITEM_ID,
+            self::DIMENSIONS_PURCHASED_DATE,
+            self::DIMENSIONS_PURCHASED_HOUR,
+            self::DIMENSIONS_ADV_DATE,
+            self::DIMENSIONS_ADV_HOUR,
+            self::DIMENSIONS_DAYS_DIFFERENCE,
+            self::DIMENSIONS_LINE_ITEM_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+            self::DIMENSIONS_ADV_PRODUCT_GTIN,
+            self::DIMENSIONS_ADV_PRODUCT_MPN,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_PURCHASED_PRODUCT_ID,
+            self::DIMENSIONS_PURCHASED_PRODUCT_GTIN,
+            self::DIMENSIONS_PURCHASED_PRODUCT_MPN,
+            self::DIMENSIONS_PURCHASED_PRODUCT_NAME,
+            self::DIMENSIONS_PURCHASED_PRODUCT_CATEGORY,
+            self::DIMENSIONS_ADV_ENGAGEMENT,
+            self::DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP,
+            self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_RETAILER_NAME,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_ATTRIBUTION_WINDOW,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMetricsAllowableValues()
+    {
+        return [
+            self::METRICS_ATTRIBUTED_UNITS,
+            self::METRICS_ATTRIBUTED_SALES,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -461,13 +461,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     {
         $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('line_item_ids', $data ?? [], null);
-        $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
@@ -573,7 +573,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Campaign ids to report on
+     * @param string[]|null $campaign_ids Campaign ids to filter
      *
      * @return self
      */
@@ -607,7 +607,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     /**
      * Sets line_item_ids
      *
-     * @param string[]|null $line_item_ids Line item ids to report on
+     * @param string[]|null $line_item_ids Line item ids to filter
      *
      * @return self
      */
@@ -624,92 +624,6 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['line_item_ids'] = $line_item_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets dimensions
-     *
-     * @return string[]|null
-     */
-    public function getDimensions()
-    {
-        return $this->container['dimensions'];
-    }
-
-    /**
-     * Sets dimensions
-     *
-     * @param string[]|null $dimensions List of dimensions to report on
-     *
-     * @return self
-     */
-    public function setDimensions($dimensions)
-    {
-        if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'dimensions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dimensions'] = $dimensions;
-
-        return $this;
-    }
-
-    /**
-     * Gets metrics
-     *
-     * @return string[]|null
-     */
-    public function getMetrics()
-    {
-        return $this->container['metrics'];
-    }
-
-    /**
-     * Sets metrics
-     *
-     * @param string[]|null $metrics List of metrics to report on
-     *
-     * @return self
-     */
-    public function setMetrics($metrics)
-    {
-        if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'metrics', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['metrics'] = $metrics;
 
         return $this;
     }
@@ -913,6 +827,92 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             );
         }
         $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimensions
+     *
+     * @return string[]|null
+     */
+    public function getDimensions()
+    {
+        return $this->container['dimensions'];
+    }
+
+    /**
+     * Sets dimensions
+     *
+     * @param string[]|null $dimensions List of dimensions to report on
+     *
+     * @return self
+     */
+    public function setDimensions($dimensions)
+    {
+        if (is_null($dimensions)) {
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getDimensionsAllowableValues();
+        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'dimensions', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metrics
+     *
+     * @return string[]|null
+     */
+    public function getMetrics()
+    {
+        return $this->container['metrics'];
+    }
+
+    /**
+     * Sets metrics
+     *
+     * @param string[]|null $metrics List of metrics to report on
+     *
+     * @return self
+     */
+    public function setMetrics($metrics)
+    {
+        if (is_null($metrics)) {
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getMetricsAllowableValues();
+        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'metrics', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }

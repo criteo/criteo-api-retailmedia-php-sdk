@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **title** | **string** | Title of the exported column | [optional]
 **description** | **string** | Description of the exported column | [optional]
 **type** | **string** | Type of the column |
-**role** | **string** | Role of the colummn |
+**role** | **string** | Role of the column |
 **timezone** | **string** | Timezone of the column | [optional]
 **duration** | **string** | Duration of the column | [optional]
 **currency** | **string** | Currency of the column | [optional]

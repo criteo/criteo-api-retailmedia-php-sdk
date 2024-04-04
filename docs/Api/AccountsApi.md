@@ -4,17 +4,83 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addBrands()**](AccountsApi.md#addBrands) | **POST** /preview/retail-media/account-management/accounts/{accountId}/brands/add |  |
 | [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /preview/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
 | [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /preview/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
 | [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-consent |  |
-| [**updateBrands()**](AccountsApi.md#updateBrands) | **PUT** /preview/retail-media/account-management/accounts/{accountId}/brands |  |
+| [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /preview/retail-media/account-management/accounts/{accountId}/brands/remove |  |
 | [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /preview/retail-media/account-management/accounts/{accountId}/sellers |  |
 
+
+## `addBrands()`
+
+```php
+addBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaBrands
+```
+
+
+
+Add brands to an account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | the account id to update
+$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands | brands to associate to account
+
+try {
+    $result = $apiInstance->addBrands($account_id, $value_resource_input_of_retail_media_brands);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->addBrands: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| the account id to update | |
+| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)| brands to associate to account | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaBrands**](../Model/ValueResourceOfRetailMediaBrands.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createPrivateMarketDemandBrandAccount()`
 
 ```php
-createPrivateMarketDemandBrandAccount($account_id, $retail_media_brand_account_creation): \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount
+createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation): \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount
 ```
 
 
@@ -42,10 +108,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id for the parent private market account
-$retail_media_brand_account_creation = new \criteo\api\retailmedia\preview\Model\RetailMediaBrandAccountCreation(); // \criteo\api\retailmedia\preview\Model\RetailMediaBrandAccountCreation | Initial creation and configuration options for the new account
+$value_resource_input_of_retail_media_brand_account_creation = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreation(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreation | Initial creation and configuration options for the new account
 
 try {
-    $result = $apiInstance->createPrivateMarketDemandBrandAccount($account_id, $retail_media_brand_account_creation);
+    $result = $apiInstance->createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->createPrivateMarketDemandBrandAccount: ', $e->getMessage(), PHP_EOL;
@@ -57,7 +123,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id for the parent private market account | |
-| **retail_media_brand_account_creation** | [**\criteo\api\retailmedia\preview\Model\RetailMediaBrandAccountCreation**](../Model/RetailMediaBrandAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
+| **value_resource_input_of_retail_media_brand_account_creation** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreation**](../Model/ValueResourceInputOfRetailMediaBrandAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
 
 ### Return type
 
@@ -79,7 +145,7 @@ try {
 ## `createPrivateMarketDemandSellerAccount()`
 
 ```php
-createPrivateMarketDemandSellerAccount($account_id, $retail_media_seller_account_creation): \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount
+createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation): \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount
 ```
 
 
@@ -107,10 +173,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id for the parent private market account
-$retail_media_seller_account_creation = new \criteo\api\retailmedia\preview\Model\RetailMediaSellerAccountCreation(); // \criteo\api\retailmedia\preview\Model\RetailMediaSellerAccountCreation | Initial creation and configuration options for the new account
+$value_resource_input_of_retail_media_seller_account_creation = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation | Initial creation and configuration options for the new account
 
 try {
-    $result = $apiInstance->createPrivateMarketDemandSellerAccount($account_id, $retail_media_seller_account_creation);
+    $result = $apiInstance->createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->createPrivateMarketDemandSellerAccount: ', $e->getMessage(), PHP_EOL;
@@ -122,7 +188,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id for the parent private market account | |
-| **retail_media_seller_account_creation** | [**\criteo\api\retailmedia\preview\Model\RetailMediaSellerAccountCreation**](../Model/RetailMediaSellerAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
+| **value_resource_input_of_retail_media_seller_account_creation** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation**](../Model/ValueResourceInputOfRetailMediaSellerAccountCreation.md)| Initial creation and configuration options for the new account | [optional] |
 
 ### Return type
 
@@ -205,15 +271,15 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateBrands()`
+## `removeBrands()`
 
 ```php
-updateBrands($account_id, $request_body): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfInt64
+removeBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaBrands
 ```
 
 
 
-replace the brands for an account
+Remove a brand from an account
 
 ### Example
 
@@ -236,13 +302,13 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | the account id to update
-$request_body = array(56); // int[] | brands to associate to account
+$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands
 
 try {
-    $result = $apiInstance->updateBrands($account_id, $request_body);
+    $result = $apiInstance->removeBrands($account_id, $value_resource_input_of_retail_media_brands);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->updateBrands: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountsApi->removeBrands: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -251,11 +317,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| the account id to update | |
-| **request_body** | [**int[]**](../Model/int.md)| brands to associate to account | [optional] |
+| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfInt64**](../Model/ValueResourceCollectionOutcomeOfInt64.md)
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaBrands**](../Model/ValueResourceOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -273,7 +339,7 @@ try {
 ## `updateSellers()`
 
 ```php
-updateSellers($account_id, $retail_media_seller): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
+updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
 ```
 
 
@@ -301,10 +367,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | the account id to update
-$retail_media_seller = array(new \criteo\api\retailmedia\preview\Model\RetailMediaSeller()); // \criteo\api\retailmedia\preview\Model\RetailMediaSeller[] | sellers to associate
+$value_resource_collection_input_of_retail_media_seller = new \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller(); // \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller | sellers to associate
 
 try {
-    $result = $apiInstance->updateSellers($account_id, $retail_media_seller);
+    $result = $apiInstance->updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->updateSellers: ', $e->getMessage(), PHP_EOL;
@@ -316,7 +382,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| the account id to update | |
-| **retail_media_seller** | [**\criteo\api\retailmedia\preview\Model\RetailMediaSeller[]**](../Model/RetailMediaSeller.md)| sellers to associate | [optional] |
+| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)| sellers to associate | [optional] |
 
 ### Return type
 

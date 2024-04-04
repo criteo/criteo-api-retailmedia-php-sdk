@@ -73,7 +73,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'name' => null,
         'company_name' => null,
-        'brands' => 'int32'
+        'brands' => 'int64'
     ];
 
     /**

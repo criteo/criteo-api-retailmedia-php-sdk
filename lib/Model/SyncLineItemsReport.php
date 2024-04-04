@@ -61,13 +61,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => 'string',
         'line_item_ids' => 'string[]',
         'campaign_ids' => 'string[]',
-        'metrics' => 'string[]',
-        'dimensions' => 'string[]',
         'account_id' => 'string',
         'click_attribution_window' => 'string',
         'view_attribution_window' => 'string',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
+        'dimensions' => 'string[]',
+        'metrics' => 'string[]',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'timezone' => 'string'
@@ -84,13 +84,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => null,
         'line_item_ids' => null,
         'campaign_ids' => null,
-        'metrics' => null,
-        'dimensions' => null,
         'account_id' => null,
         'click_attribution_window' => null,
         'view_attribution_window' => null,
         'campaign_type' => null,
         'sales_channel' => null,
+        'dimensions' => null,
+        'metrics' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'timezone' => null
@@ -105,13 +105,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => true,
 		'line_item_ids' => true,
 		'campaign_ids' => true,
-		'metrics' => true,
-		'dimensions' => true,
 		'account_id' => false,
 		'click_attribution_window' => true,
 		'view_attribution_window' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
+		'dimensions' => true,
+		'metrics' => true,
 		'start_date' => false,
 		'end_date' => false,
 		'timezone' => true
@@ -206,13 +206,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => 'reportType',
         'line_item_ids' => 'lineItemIds',
         'campaign_ids' => 'campaignIds',
-        'metrics' => 'metrics',
-        'dimensions' => 'dimensions',
         'account_id' => 'accountId',
         'click_attribution_window' => 'clickAttributionWindow',
         'view_attribution_window' => 'viewAttributionWindow',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
+        'dimensions' => 'dimensions',
+        'metrics' => 'metrics',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'timezone' => 'timezone'
@@ -227,13 +227,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => 'setReportType',
         'line_item_ids' => 'setLineItemIds',
         'campaign_ids' => 'setCampaignIds',
-        'metrics' => 'setMetrics',
-        'dimensions' => 'setDimensions',
         'account_id' => 'setAccountId',
         'click_attribution_window' => 'setClickAttributionWindow',
         'view_attribution_window' => 'setViewAttributionWindow',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
+        'dimensions' => 'setDimensions',
+        'metrics' => 'setMetrics',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'timezone' => 'setTimezone'
@@ -248,13 +248,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'report_type' => 'getReportType',
         'line_item_ids' => 'getLineItemIds',
         'campaign_ids' => 'getCampaignIds',
-        'metrics' => 'getMetrics',
-        'dimensions' => 'getDimensions',
         'account_id' => 'getAccountId',
         'click_attribution_window' => 'getClickAttributionWindow',
         'view_attribution_window' => 'getViewAttributionWindow',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
+        'dimensions' => 'getDimensions',
+        'metrics' => 'getMetrics',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'timezone' => 'getTimezone'
@@ -308,22 +308,23 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const REPORT_TYPE_PRODUCT = 'product';
     public const REPORT_TYPE_ENVIRONMENT = 'environment';
     public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
-    public const METRICS_IMPRESSIONS = 'impressions';
-    public const METRICS_CLICKS = 'clicks';
-    public const METRICS_SPEND = 'spend';
-    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
-    public const METRICS_ATTRIBUTED_ORDERS = 'attributedOrders';
-    public const METRICS_CTR = 'ctr';
-    public const METRICS_CPC = 'cpc';
-    public const METRICS_CPO = 'cpo';
-    public const METRICS_ROAS = 'roas';
-    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
-    public const METRICS_ASSISTED_SALES = 'assistedSales';
-    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
-    public const METRICS_FREQUENCY = 'frequency';
+    public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ONLINE = 'online';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
+    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
+    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
@@ -340,19 +341,21 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
-    public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
-    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
-    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
-    public const SALES_CHANNEL_ONLINE = 'online';
+    public const METRICS_IMPRESSIONS = 'impressions';
+    public const METRICS_CLICKS = 'clicks';
+    public const METRICS_SPEND = 'spend';
+    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
+    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
+    public const METRICS_ATTRIBUTED_ORDERS = 'attributedOrders';
+    public const METRICS_ASSISTED_SALES = 'assistedSales';
+    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
+    public const METRICS_CTR = 'ctr';
+    public const METRICS_CPC = 'cpc';
+    public const METRICS_CPO = 'cpo';
+    public const METRICS_CPM = 'cpm';
+    public const METRICS_ROAS = 'roas';
+    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
+    public const METRICS_FREQUENCY = 'frequency';
 
     /**
      * Gets allowable values of the enum
@@ -369,60 +372,6 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::REPORT_TYPE_PRODUCT,
             self::REPORT_TYPE_ENVIRONMENT,
             self::REPORT_TYPE_SERVED_CATEGORY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMetricsAllowableValues()
-    {
-        return [
-            self::METRICS_IMPRESSIONS,
-            self::METRICS_CLICKS,
-            self::METRICS_SPEND,
-            self::METRICS_ATTRIBUTED_SALES,
-            self::METRICS_ATTRIBUTED_UNITS,
-            self::METRICS_ATTRIBUTED_ORDERS,
-            self::METRICS_CTR,
-            self::METRICS_CPC,
-            self::METRICS_CPO,
-            self::METRICS_ROAS,
-            self::METRICS_ASSISTED_UNITS,
-            self::METRICS_ASSISTED_SALES,
-            self::METRICS_UNIQUE_VISITORS,
-            self::METRICS_FREQUENCY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionsAllowableValues()
-    {
-        return [
-            self::DIMENSIONS_DATE,
-            self::DIMENSIONS_HOUR,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
-            self::DIMENSIONS_LINE_ITEM_ID,
-            self::DIMENSIONS_LINE_ITEM_NAME,
-            self::DIMENSIONS_RETAILER_ID,
-            self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_SALES_CHANNEL,
-            self::DIMENSIONS_ENVIRONMENT,
         ];
     }
 
@@ -484,6 +433,63 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDimensionsAllowableValues()
+    {
+        return [
+            self::DIMENSIONS_DATE,
+            self::DIMENSIONS_HOUR,
+            self::DIMENSIONS_ACCOUNT_ID,
+            self::DIMENSIONS_ACCOUNT_NAME,
+            self::DIMENSIONS_CAMPAIGN_ID,
+            self::DIMENSIONS_CAMPAIGN_NAME,
+            self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
+            self::DIMENSIONS_BRAND_ID,
+            self::DIMENSIONS_BRAND_NAME,
+            self::DIMENSIONS_LINE_ITEM_ID,
+            self::DIMENSIONS_LINE_ITEM_NAME,
+            self::DIMENSIONS_RETAILER_ID,
+            self::DIMENSIONS_RETAILER_NAME,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_ENVIRONMENT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMetricsAllowableValues()
+    {
+        return [
+            self::METRICS_IMPRESSIONS,
+            self::METRICS_CLICKS,
+            self::METRICS_SPEND,
+            self::METRICS_ATTRIBUTED_SALES,
+            self::METRICS_ATTRIBUTED_UNITS,
+            self::METRICS_ATTRIBUTED_ORDERS,
+            self::METRICS_ASSISTED_SALES,
+            self::METRICS_ASSISTED_UNITS,
+            self::METRICS_CTR,
+            self::METRICS_CPC,
+            self::METRICS_CPO,
+            self::METRICS_CPM,
+            self::METRICS_ROAS,
+            self::METRICS_UNIQUE_VISITORS,
+            self::METRICS_FREQUENCY,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -501,13 +507,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('report_type', $data ?? [], 'summary');
         $this->setIfExists('line_item_ids', $data ?? [], null);
         $this->setIfExists('campaign_ids', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
@@ -666,7 +672,7 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets line_item_ids
      *
-     * @param string[]|null $line_item_ids Line item ids to report on
+     * @param string[]|null $line_item_ids Line Item ids to filter
      *
      * @return self
      */
@@ -700,7 +706,7 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Campaign ids to report on
+     * @param string[]|null $campaign_ids Campaign ids to filter
      *
      * @return self
      */
@@ -717,92 +723,6 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets metrics
-     *
-     * @return string[]|null
-     */
-    public function getMetrics()
-    {
-        return $this->container['metrics'];
-    }
-
-    /**
-     * Sets metrics
-     *
-     * @param string[]|null $metrics List of metrics to report on
-     *
-     * @return self
-     */
-    public function setMetrics($metrics)
-    {
-        if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'metrics', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['metrics'] = $metrics;
-
-        return $this;
-    }
-
-    /**
-     * Gets dimensions
-     *
-     * @return string[]|null
-     */
-    public function getDimensions()
-    {
-        return $this->container['dimensions'];
-    }
-
-    /**
-     * Sets dimensions
-     *
-     * @param string[]|null $dimensions List of dimensions to report on
-     *
-     * @return self
-     */
-    public function setDimensions($dimensions)
-    {
-        if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'dimensions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dimensions'] = $dimensions;
 
         return $this;
     }
@@ -1006,6 +926,92 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimensions
+     *
+     * @return string[]|null
+     */
+    public function getDimensions()
+    {
+        return $this->container['dimensions'];
+    }
+
+    /**
+     * Sets dimensions
+     *
+     * @param string[]|null $dimensions List of dimensions to report on
+     *
+     * @return self
+     */
+    public function setDimensions($dimensions)
+    {
+        if (is_null($dimensions)) {
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getDimensionsAllowableValues();
+        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'dimensions', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metrics
+     *
+     * @return string[]|null
+     */
+    public function getMetrics()
+    {
+        return $this->container['metrics'];
+    }
+
+    /**
+     * Sets metrics
+     *
+     * @param string[]|null $metrics List of metrics to report on
+     *
+     * @return self
+     */
+    public function setMetrics($metrics)
+    {
+        if (is_null($metrics)) {
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getMetricsAllowableValues();
+        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'metrics', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }

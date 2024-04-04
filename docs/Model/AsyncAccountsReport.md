@@ -1,0 +1,21 @@
+# # AsyncAccountsReport
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**account_ids** | **string[]** | Account Ids to report on |
+**report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
+**aggregation_level** | **string** | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel | [optional] [default to 'campaign']
+**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional]
+**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional]
+**format** | **string** | Format of the output | [optional] [default to 'json-compact']
+**click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
+**view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
+**dimensions** | **string[]** | List of dimensions to report on | [optional]
+**metrics** | **string[]** | List of metrics to report on | [optional]
+**start_date** | **\DateTime** | Start date |
+**end_date** | **\DateTime** | End date |
+**timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

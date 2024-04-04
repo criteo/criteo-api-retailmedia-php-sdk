@@ -564,7 +564,7 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets role
      *
-     * @param string $role Role of the colummn
+     * @param string $role Role of the column
      *
      * @return self
      */
