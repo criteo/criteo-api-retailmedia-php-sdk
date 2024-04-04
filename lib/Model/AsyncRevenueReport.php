@@ -58,12 +58,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'report_type' => 'string',
-        'revenue_type' => 'string',
         'ids' => 'string[]',
         'id' => 'string',
-        'metrics' => 'string[]',
-        'dimensions' => 'string[]',
+        'report_type' => 'string',
+        'revenue_type' => 'string',
         'format' => 'string',
         'sold_by' => 'string',
         'campaign_sub_type' => 'string',
@@ -71,6 +69,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'view_attribution_window' => 'string',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
+        'dimensions' => 'string[]',
+        'metrics' => 'string[]',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'timezone' => 'string'
@@ -84,12 +84,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'report_type' => null,
-        'revenue_type' => null,
         'ids' => null,
         'id' => null,
-        'metrics' => null,
-        'dimensions' => null,
+        'report_type' => null,
+        'revenue_type' => null,
         'format' => null,
         'sold_by' => null,
         'campaign_sub_type' => null,
@@ -97,6 +95,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'view_attribution_window' => null,
         'campaign_type' => null,
         'sales_channel' => null,
+        'dimensions' => null,
+        'metrics' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'timezone' => null
@@ -108,12 +108,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'report_type' => true,
-		'revenue_type' => true,
-		'ids' => true,
+        'ids' => true,
 		'id' => true,
-		'metrics' => true,
-		'dimensions' => true,
+		'report_type' => true,
+		'revenue_type' => true,
 		'format' => true,
 		'sold_by' => true,
 		'campaign_sub_type' => true,
@@ -121,6 +119,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'view_attribution_window' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
+		'dimensions' => true,
+		'metrics' => true,
 		'start_date' => false,
 		'end_date' => false,
 		'timezone' => true
@@ -212,12 +212,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'report_type' => 'reportType',
-        'revenue_type' => 'revenueType',
         'ids' => 'ids',
         'id' => 'id',
-        'metrics' => 'metrics',
-        'dimensions' => 'dimensions',
+        'report_type' => 'reportType',
+        'revenue_type' => 'revenueType',
         'format' => 'format',
         'sold_by' => 'soldBy',
         'campaign_sub_type' => 'campaignSubType',
@@ -225,6 +223,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'view_attribution_window' => 'viewAttributionWindow',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
+        'dimensions' => 'dimensions',
+        'metrics' => 'metrics',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'timezone' => 'timezone'
@@ -236,12 +236,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'report_type' => 'setReportType',
-        'revenue_type' => 'setRevenueType',
         'ids' => 'setIds',
         'id' => 'setId',
-        'metrics' => 'setMetrics',
-        'dimensions' => 'setDimensions',
+        'report_type' => 'setReportType',
+        'revenue_type' => 'setRevenueType',
         'format' => 'setFormat',
         'sold_by' => 'setSoldBy',
         'campaign_sub_type' => 'setCampaignSubType',
@@ -249,6 +247,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'view_attribution_window' => 'setViewAttributionWindow',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
+        'dimensions' => 'setDimensions',
+        'metrics' => 'setMetrics',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'timezone' => 'setTimezone'
@@ -260,12 +260,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'report_type' => 'getReportType',
-        'revenue_type' => 'getRevenueType',
         'ids' => 'getIds',
         'id' => 'getId',
-        'metrics' => 'getMetrics',
-        'dimensions' => 'getDimensions',
+        'report_type' => 'getReportType',
+        'revenue_type' => 'getRevenueType',
         'format' => 'getFormat',
         'sold_by' => 'getSoldBy',
         'campaign_sub_type' => 'getCampaignSubType',
@@ -273,6 +271,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'view_attribution_window' => 'getViewAttributionWindow',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
+        'dimensions' => 'getDimensions',
+        'metrics' => 'getMetrics',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'timezone' => 'getTimezone'
@@ -326,32 +326,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const REPORT_TYPE_BRAND = 'brand';
     public const REVENUE_TYPE_AUCTION = 'auction';
     public const REVENUE_TYPE_PREFERRED = 'preferred';
-    public const METRICS_CLICKS = 'clicks';
-    public const METRICS_SPEND = 'spend';
-    public const METRICS_ATTRIBUTED_ORDERS = 'attributedOrders';
-    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
-    public const METRICS_CPC = 'cpc';
-    public const METRICS_CPO = 'cpo';
-    public const METRICS_ROAS = 'roas';
-    public const METRICS_OPEN_AUCTION_REVENUE = 'openAuctionRevenue';
-    public const METRICS_PREFERRED_DEALS_REVENUE = 'preferredDealsRevenue';
-    public const METRICS_AVG_CPC = 'avgCpc';
-    public const METRICS_AVG_CPM = 'avgCpm';
-    public const DIMENSIONS_DATE = 'date';
-    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
-    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
-    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
-    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
-    public const DIMENSIONS_ENVIRONMENT = 'environment';
-    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
-    public const DIMENSIONS_BRAND_ID = 'brandId';
-    public const DIMENSIONS_BRAND_NAME = 'brandName';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
-    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
-    public const DIMENSIONS_ADV_PRODUCT_GTIN = 'advProductGtin';
-    public const DIMENSIONS_ADV_PRODUCT_MPN = 'advProductMpn';
-    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -374,6 +348,31 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
+    public const DIMENSIONS_DATE = 'date';
+    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
+    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
+    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
+    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
+    public const DIMENSIONS_ENVIRONMENT = 'environment';
+    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
+    public const DIMENSIONS_BRAND_ID = 'brandId';
+    public const DIMENSIONS_BRAND_NAME = 'brandName';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
+    public const DIMENSIONS_ADV_PRODUCT_GTIN = 'advProductGtin';
+    public const DIMENSIONS_ADV_PRODUCT_MPN = 'advProductMpn';
+    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
+    public const METRICS_IMPRESSIONS = 'impressions';
+    public const METRICS_CLICKS = 'clicks';
+    public const METRICS_SPEND = 'spend';
+    public const METRICS_SALES = 'sales';
+    public const METRICS_UNITS = 'units';
+    public const METRICS_CPO = 'cpo';
+    public const METRICS_ROAS = 'roas';
+    public const METRICS_OPEN_AUCTION_REVENUE = 'openAuctionRevenue';
+    public const METRICS_PREFERRED_DEALS_REVENUE = 'preferredDealsRevenue';
+    public const METRICS_AVG_CPC = 'avgCpc';
+    public const METRICS_AVG_CPM = 'avgCpm';
 
     /**
      * Gets allowable values of the enum
@@ -401,54 +400,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         return [
             self::REVENUE_TYPE_AUCTION,
             self::REVENUE_TYPE_PREFERRED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMetricsAllowableValues()
-    {
-        return [
-            self::METRICS_CLICKS,
-            self::METRICS_SPEND,
-            self::METRICS_ATTRIBUTED_ORDERS,
-            self::METRICS_ATTRIBUTED_SALES,
-            self::METRICS_ATTRIBUTED_UNITS,
-            self::METRICS_CPC,
-            self::METRICS_CPO,
-            self::METRICS_ROAS,
-            self::METRICS_OPEN_AUCTION_REVENUE,
-            self::METRICS_PREFERRED_DEALS_REVENUE,
-            self::METRICS_AVG_CPC,
-            self::METRICS_AVG_CPM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionsAllowableValues()
-    {
-        return [
-            self::DIMENSIONS_DATE,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_ACCOUNT_ID,
-            self::DIMENSIONS_ACCOUNT_NAME,
-            self::DIMENSIONS_ENVIRONMENT,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_GTIN,
-            self::DIMENSIONS_ADV_PRODUCT_MPN,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
         ];
     }
 
@@ -552,6 +503,53 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDimensionsAllowableValues()
+    {
+        return [
+            self::DIMENSIONS_DATE,
+            self::DIMENSIONS_CAMPAIGN_ID,
+            self::DIMENSIONS_CAMPAIGN_NAME,
+            self::DIMENSIONS_ACCOUNT_ID,
+            self::DIMENSIONS_ACCOUNT_NAME,
+            self::DIMENSIONS_ENVIRONMENT,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_BRAND_ID,
+            self::DIMENSIONS_BRAND_NAME,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_GTIN,
+            self::DIMENSIONS_ADV_PRODUCT_MPN,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMetricsAllowableValues()
+    {
+        return [
+            self::METRICS_IMPRESSIONS,
+            self::METRICS_CLICKS,
+            self::METRICS_SPEND,
+            self::METRICS_SALES,
+            self::METRICS_UNITS,
+            self::METRICS_CPO,
+            self::METRICS_ROAS,
+            self::METRICS_OPEN_AUCTION_REVENUE,
+            self::METRICS_PREFERRED_DEALS_REVENUE,
+            self::METRICS_AVG_CPC,
+            self::METRICS_AVG_CPM,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -566,12 +564,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('report_type', $data ?? [], null);
-        $this->setIfExists('revenue_type', $data ?? [], null);
         $this->setIfExists('ids', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('report_type', $data ?? [], null);
+        $this->setIfExists('revenue_type', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], null);
         $this->setIfExists('sold_by', $data ?? [], null);
         $this->setIfExists('campaign_sub_type', $data ?? [], null);
@@ -579,6 +575,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
@@ -714,6 +712,74 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
+     * Gets ids
+     *
+     * @return string[]|null
+     */
+    public function getIds()
+    {
+        return $this->container['ids'];
+    }
+
+    /**
+     * Sets ids
+     *
+     * @param string[]|null $ids Campaign ids to report on
+     *
+     * @return self
+     */
+    public function setIds($ids)
+    {
+        if (is_null($ids)) {
+            array_push($this->openAPINullablesSetToNull, 'ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ids'] = $ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Campaign id to report on
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets report_type
      *
      * @return string|null
@@ -797,160 +863,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['revenue_type'] = $revenue_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets ids
-     *
-     * @return string[]|null
-     */
-    public function getIds()
-    {
-        return $this->container['ids'];
-    }
-
-    /**
-     * Sets ids
-     *
-     * @param string[]|null $ids List of campaign Ids to filter
-     *
-     * @return self
-     */
-    public function setIds($ids)
-    {
-        if (is_null($ids)) {
-            array_push($this->openAPINullablesSetToNull, 'ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['ids'] = $ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id List of campaign Id to filter
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets metrics
-     *
-     * @return string[]|null
-     */
-    public function getMetrics()
-    {
-        return $this->container['metrics'];
-    }
-
-    /**
-     * Sets metrics
-     *
-     * @param string[]|null $metrics List of Metrics to report on
-     *
-     * @return self
-     */
-    public function setMetrics($metrics)
-    {
-        if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'metrics', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['metrics'] = $metrics;
-
-        return $this;
-    }
-
-    /**
-     * Gets dimensions
-     *
-     * @return string[]|null
-     */
-    public function getDimensions()
-    {
-        return $this->container['dimensions'];
-    }
-
-    /**
-     * Sets dimensions
-     *
-     * @param string[]|null $dimensions List of dimensions to report on
-     *
-     * @return self
-     */
-    public function setDimensions($dimensions)
-    {
-        if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'dimensions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dimensions'] = $dimensions;
 
         return $this;
     }
@@ -1259,6 +1171,92 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimensions
+     *
+     * @return string[]|null
+     */
+    public function getDimensions()
+    {
+        return $this->container['dimensions'];
+    }
+
+    /**
+     * Sets dimensions
+     *
+     * @param string[]|null $dimensions List of dimensions to report on
+     *
+     * @return self
+     */
+    public function setDimensions($dimensions)
+    {
+        if (is_null($dimensions)) {
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dimensions', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getDimensionsAllowableValues();
+        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'dimensions', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metrics
+     *
+     * @return string[]|null
+     */
+    public function getMetrics()
+    {
+        return $this->container['metrics'];
+    }
+
+    /**
+     * Sets metrics
+     *
+     * @param string[]|null $metrics List of metrics to report on
+     *
+     * @return self
+     */
+    public function setMetrics($metrics)
+    {
+        if (is_null($metrics)) {
+            array_push($this->openAPINullablesSetToNull, 'metrics');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metrics', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getMetricsAllowableValues();
+        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'metrics', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }
