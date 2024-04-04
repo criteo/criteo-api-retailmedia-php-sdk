@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2023_01\ObjectSerializer;
  * AsyncLineItemsReport Class Doc Comment
  *
  * @category Class
- * @description Line Items report body request
+ * @description Async Line Items report body request
  * @package  criteo\api\retailmedia\v2023_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,16 +58,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metrics' => 'string[]',
-        'dimensions' => 'string[]',
+        'ids' => 'string[]',
+        'id' => 'string',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
         'format' => 'string',
         'report_type' => 'string',
         'click_attribution_window' => 'string',
         'view_attribution_window' => 'string',
-        'ids' => 'string[]',
-        'id' => 'string',
+        'dimensions' => 'string[]',
+        'metrics' => 'string[]',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'timezone' => 'string'
@@ -81,16 +81,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metrics' => null,
-        'dimensions' => null,
+        'ids' => null,
+        'id' => null,
         'campaign_type' => null,
         'sales_channel' => null,
         'format' => null,
         'report_type' => null,
         'click_attribution_window' => null,
         'view_attribution_window' => null,
-        'ids' => null,
-        'id' => null,
+        'dimensions' => null,
+        'metrics' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'timezone' => null
@@ -102,16 +102,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'metrics' => true,
-		'dimensions' => true,
+        'ids' => true,
+		'id' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
 		'format' => true,
 		'report_type' => true,
 		'click_attribution_window' => true,
 		'view_attribution_window' => true,
-		'ids' => true,
-		'id' => true,
+		'dimensions' => true,
+		'metrics' => true,
 		'start_date' => false,
 		'end_date' => false,
 		'timezone' => true
@@ -203,16 +203,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'metrics' => 'metrics',
-        'dimensions' => 'dimensions',
+        'ids' => 'ids',
+        'id' => 'id',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
         'format' => 'format',
         'report_type' => 'reportType',
         'click_attribution_window' => 'clickAttributionWindow',
         'view_attribution_window' => 'viewAttributionWindow',
-        'ids' => 'ids',
-        'id' => 'id',
+        'dimensions' => 'dimensions',
+        'metrics' => 'metrics',
         'start_date' => 'startDate',
         'end_date' => 'endDate',
         'timezone' => 'timezone'
@@ -224,16 +224,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'metrics' => 'setMetrics',
-        'dimensions' => 'setDimensions',
+        'ids' => 'setIds',
+        'id' => 'setId',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
         'format' => 'setFormat',
         'report_type' => 'setReportType',
         'click_attribution_window' => 'setClickAttributionWindow',
         'view_attribution_window' => 'setViewAttributionWindow',
-        'ids' => 'setIds',
-        'id' => 'setId',
+        'dimensions' => 'setDimensions',
+        'metrics' => 'setMetrics',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'timezone' => 'setTimezone'
@@ -245,16 +245,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'metrics' => 'getMetrics',
-        'dimensions' => 'getDimensions',
+        'ids' => 'getIds',
+        'id' => 'getId',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
         'format' => 'getFormat',
         'report_type' => 'getReportType',
         'click_attribution_window' => 'getClickAttributionWindow',
         'view_attribution_window' => 'getViewAttributionWindow',
-        'ids' => 'getIds',
-        'id' => 'getId',
+        'dimensions' => 'getDimensions',
+        'metrics' => 'getMetrics',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'timezone' => 'getTimezone'
@@ -301,38 +301,6 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    public const METRICS_IMPRESSIONS = 'impressions';
-    public const METRICS_CLICKS = 'clicks';
-    public const METRICS_SPEND = 'spend';
-    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
-    public const METRICS_ATTRIBUTED_ORDERS = 'attributedOrders';
-    public const METRICS_CTR = 'ctr';
-    public const METRICS_CPC = 'cpc';
-    public const METRICS_CPO = 'cpo';
-    public const METRICS_ROAS = 'roas';
-    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
-    public const METRICS_ASSISTED_SALES = 'assistedSales';
-    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
-    public const METRICS_FREQUENCY = 'frequency';
-    public const DIMENSIONS_DATE = 'date';
-    public const DIMENSIONS_HOUR = 'hour';
-    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
-    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
-    public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
-    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
-    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
-    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
-    public const DIMENSIONS_BRAND_ID = 'brandId';
-    public const DIMENSIONS_BRAND_NAME = 'brandName';
-    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
-    public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
-    public const DIMENSIONS_RETAILER_ID = 'retailerId';
-    public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const DIMENSIONS_KEYWORD = 'keyword';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
-    public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
-    public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const SALES_CHANNEL_OFFLINE = 'offline';
@@ -358,60 +326,41 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMetricsAllowableValues()
-    {
-        return [
-            self::METRICS_IMPRESSIONS,
-            self::METRICS_CLICKS,
-            self::METRICS_SPEND,
-            self::METRICS_ATTRIBUTED_SALES,
-            self::METRICS_ATTRIBUTED_UNITS,
-            self::METRICS_ATTRIBUTED_ORDERS,
-            self::METRICS_CTR,
-            self::METRICS_CPC,
-            self::METRICS_CPO,
-            self::METRICS_ROAS,
-            self::METRICS_ASSISTED_UNITS,
-            self::METRICS_ASSISTED_SALES,
-            self::METRICS_UNIQUE_VISITORS,
-            self::METRICS_FREQUENCY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionsAllowableValues()
-    {
-        return [
-            self::DIMENSIONS_DATE,
-            self::DIMENSIONS_HOUR,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
-            self::DIMENSIONS_LINE_ITEM_ID,
-            self::DIMENSIONS_LINE_ITEM_NAME,
-            self::DIMENSIONS_RETAILER_ID,
-            self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_SALES_CHANNEL,
-            self::DIMENSIONS_ENVIRONMENT,
-        ];
-    }
+    public const DIMENSIONS_DATE = 'date';
+    public const DIMENSIONS_HOUR = 'hour';
+    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
+    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
+    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
+    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
+    public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
+    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
+    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
+    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
+    public const DIMENSIONS_BRAND_ID = 'brandId';
+    public const DIMENSIONS_BRAND_NAME = 'brandName';
+    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
+    public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
+    public const DIMENSIONS_RETAILER_ID = 'retailerId';
+    public const DIMENSIONS_RETAILER_NAME = 'retailerName';
+    public const DIMENSIONS_KEYWORD = 'keyword';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
+    public const DIMENSIONS_ENVIRONMENT = 'environment';
+    public const METRICS_IMPRESSIONS = 'impressions';
+    public const METRICS_CLICKS = 'clicks';
+    public const METRICS_SPEND = 'spend';
+    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
+    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
+    public const METRICS_ATTRIBUTED_ORDERS = 'attributedOrders';
+    public const METRICS_ASSISTED_SALES = 'assistedSales';
+    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
+    public const METRICS_CTR = 'ctr';
+    public const METRICS_CPC = 'cpc';
+    public const METRICS_CPO = 'cpo';
+    public const METRICS_CPM = 'cpm';
+    public const METRICS_ROAS = 'roas';
+    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
+    public const METRICS_FREQUENCY = 'frequency';
 
     /**
      * Gets allowable values of the enum
@@ -505,6 +454,63 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDimensionsAllowableValues()
+    {
+        return [
+            self::DIMENSIONS_DATE,
+            self::DIMENSIONS_HOUR,
+            self::DIMENSIONS_ACCOUNT_ID,
+            self::DIMENSIONS_ACCOUNT_NAME,
+            self::DIMENSIONS_CAMPAIGN_ID,
+            self::DIMENSIONS_CAMPAIGN_NAME,
+            self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
+            self::DIMENSIONS_BRAND_ID,
+            self::DIMENSIONS_BRAND_NAME,
+            self::DIMENSIONS_LINE_ITEM_ID,
+            self::DIMENSIONS_LINE_ITEM_NAME,
+            self::DIMENSIONS_RETAILER_ID,
+            self::DIMENSIONS_RETAILER_NAME,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_ENVIRONMENT,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMetricsAllowableValues()
+    {
+        return [
+            self::METRICS_IMPRESSIONS,
+            self::METRICS_CLICKS,
+            self::METRICS_SPEND,
+            self::METRICS_ATTRIBUTED_SALES,
+            self::METRICS_ATTRIBUTED_UNITS,
+            self::METRICS_ATTRIBUTED_ORDERS,
+            self::METRICS_ASSISTED_SALES,
+            self::METRICS_ASSISTED_UNITS,
+            self::METRICS_CTR,
+            self::METRICS_CPC,
+            self::METRICS_CPO,
+            self::METRICS_CPM,
+            self::METRICS_ROAS,
+            self::METRICS_UNIQUE_VISITORS,
+            self::METRICS_FREQUENCY,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -519,16 +525,16 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('ids', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
         $this->setIfExists('report_type', $data ?? [], 'summary');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('ids', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
@@ -637,87 +643,69 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets metrics
+     * Gets ids
      *
      * @return string[]|null
      */
-    public function getMetrics()
+    public function getIds()
     {
-        return $this->container['metrics'];
+        return $this->container['ids'];
     }
 
     /**
-     * Sets metrics
+     * Sets ids
      *
-     * @param string[]|null $metrics List of metrics to report on
+     * @param string[]|null $ids Line Item ids to report on
      *
      * @return self
      */
-    public function setMetrics($metrics)
+    public function setIds($ids)
     {
-        if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
+        if (is_null($ids)) {
+            array_push($this->openAPINullablesSetToNull, 'ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
+            $index = array_search('ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'metrics', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['metrics'] = $metrics;
+        $this->container['ids'] = $ids;
 
         return $this;
     }
 
     /**
-     * Gets dimensions
+     * Gets id
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getDimensions()
+    public function getId()
     {
-        return $this->container['dimensions'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets dimensions
+     * Sets id
      *
-     * @param string[]|null $dimensions List of dimensions to report on
+     * @param string|null $id Line Item id to report on
      *
      * @return self
      */
-    public function setDimensions($dimensions)
+    public function setId($id)
     {
-        if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
+            $index = array_search('id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'dimensions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['dimensions'] = $dimensions;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -987,69 +975,87 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets ids
+     * Gets dimensions
      *
      * @return string[]|null
      */
-    public function getIds()
+    public function getDimensions()
     {
-        return $this->container['ids'];
+        return $this->container['dimensions'];
     }
 
     /**
-     * Sets ids
+     * Sets dimensions
      *
-     * @param string[]|null $ids Ids to report on
+     * @param string[]|null $dimensions List of dimensions to report on
      *
      * @return self
      */
-    public function setIds($ids)
+    public function setDimensions($dimensions)
     {
-        if (is_null($ids)) {
-            array_push($this->openAPINullablesSetToNull, 'ids');
+        if (is_null($dimensions)) {
+            array_push($this->openAPINullablesSetToNull, 'dimensions');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('ids', $nullablesSetToNull);
+            $index = array_search('dimensions', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['ids'] = $ids;
+        $allowedValues = $this->getDimensionsAllowableValues();
+        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'dimensions', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['dimensions'] = $dimensions;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets metrics
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getId()
+    public function getMetrics()
     {
-        return $this->container['id'];
+        return $this->container['metrics'];
     }
 
     /**
-     * Sets id
+     * Sets metrics
      *
-     * @param string|null $id Id to report on
+     * @param string[]|null $metrics List of metrics to report on
      *
      * @return self
      */
-    public function setId($id)
+    public function setMetrics($metrics)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($metrics)) {
+            array_push($this->openAPINullablesSetToNull, 'metrics');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('metrics', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getMetricsAllowableValues();
+        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'metrics', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }
