@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1ListResponse
+ * InputKeywordsModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_04\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1ListResponse Class Doc Comment
+ * InputKeywordsModel Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * @description The keywords to be added or removed from a line item.
  * @package  criteo\api\retailmedia\v2023_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class InputKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1ListResponse';
+    protected static $openAPIModelName = 'InputKeywordsModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_04\Model\RmLegacyAudienceGetEntityV1Resource[]',
-        'warnings' => '\criteo\api\retailmedia\v2023_04\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2023_04\Model\CommonProblem[]'
+        'negative_broad' => 'string[]',
+        'negative_exact' => 'string[]',
+        'positive_exact' => 'string[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'negative_broad' => null,
+        'negative_exact' => null,
+        'positive_exact' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'negative_broad' => true,
+		'negative_exact' => true,
+		'positive_exact' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'negative_broad' => 'negativeBroad',
+        'negative_exact' => 'negativeExact',
+        'positive_exact' => 'positiveExact'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'negative_broad' => 'setNegativeBroad',
+        'negative_exact' => 'setNegativeExact',
+        'positive_exact' => 'setPositiveExact'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'negative_broad' => 'getNegativeBroad',
+        'negative_exact' => 'getNegativeExact',
+        'positive_exact' => 'getPositiveExact'
     ];
 
     /**
@@ -257,9 +257,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('negative_broad', $data ?? [], null);
+        $this->setIfExists('negative_exact', $data ?? [], null);
+        $this->setIfExists('positive_exact', $data ?? [], null);
     }
 
     /**
@@ -305,103 +305,103 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets data
+     * Gets negative_broad
      *
-     * @return \criteo\api\retailmedia\v2023_04\Model\RmLegacyAudienceGetEntityV1Resource[]|null
+     * @return string[]|null
      */
-    public function getData()
+    public function getNegativeBroad()
     {
-        return $this->container['data'];
+        return $this->container['negative_broad'];
     }
 
     /**
-     * Sets data
+     * Sets negative_broad
      *
-     * @param \criteo\api\retailmedia\v2023_04\Model\RmLegacyAudienceGetEntityV1Resource[]|null $data data
+     * @param string[]|null $negative_broad negative_broad
      *
      * @return self
      */
-    public function setData($data)
+    public function setNegativeBroad($negative_broad)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($negative_broad)) {
+            array_push($this->openAPINullablesSetToNull, 'negative_broad');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('negative_broad', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['negative_broad'] = $negative_broad;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets negative_exact
      *
-     * @return \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null
+     * @return string[]|null
      */
-    public function getWarnings()
+    public function getNegativeExact()
     {
-        return $this->container['warnings'];
+        return $this->container['negative_exact'];
     }
 
     /**
-     * Sets warnings
+     * Sets negative_exact
      *
-     * @param \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null $warnings warnings
+     * @param string[]|null $negative_exact negative_exact
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setNegativeExact($negative_exact)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($negative_exact)) {
+            array_push($this->openAPINullablesSetToNull, 'negative_exact');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('negative_exact', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['negative_exact'] = $negative_exact;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets positive_exact
      *
-     * @return \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null
+     * @return string[]|null
      */
-    public function getErrors()
+    public function getPositiveExact()
     {
-        return $this->container['errors'];
+        return $this->container['positive_exact'];
     }
 
     /**
-     * Sets errors
+     * Sets positive_exact
      *
-     * @param \criteo\api\retailmedia\v2023_04\Model\CommonProblem[]|null $errors errors
+     * @param string[]|null $positive_exact positive_exact
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setPositiveExact($positive_exact)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($positive_exact)) {
+            array_push($this->openAPINullablesSetToNull, 'positive_exact');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('positive_exact', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['positive_exact'] = $positive_exact;
 
         return $this;
     }
