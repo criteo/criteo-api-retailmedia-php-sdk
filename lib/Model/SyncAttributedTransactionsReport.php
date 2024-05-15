@@ -295,27 +295,29 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
+    public const SALES_CHANNEL_ALL = 'all';
     public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
-    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
-    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
-    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
     public const DIMENSIONS_PURCHASED_DATE = 'purchasedDate';
     public const DIMENSIONS_PURCHASED_HOUR = 'purchasedHour';
     public const DIMENSIONS_ADV_DATE = 'advDate';
     public const DIMENSIONS_ADV_HOUR = 'advHour';
     public const DIMENSIONS_DAYS_DIFFERENCE = 'daysDifference';
+    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
+    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
+    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
     public const DIMENSIONS_ADV_PRODUCT_GTIN = 'advProductGtin';
@@ -330,8 +332,8 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_ADV_ENGAGEMENT = 'advEngagement';
     public const DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP = 'advToPurchasedProductRelationship';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_KEYWORD = 'keyword';
     public const DIMENSIONS_ATTRIBUTION_WINDOW = 'attributionWindow';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
@@ -345,10 +347,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getClickAttributionWindowAllowableValues()
     {
         return [
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
-            self::CLICK_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -360,11 +362,11 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getViewAttributionWindowAllowableValues()
     {
         return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
             self::VIEW_ATTRIBUTION_WINDOW__1_D,
             self::VIEW_ATTRIBUTION_WINDOW__7_D,
             self::VIEW_ATTRIBUTION_WINDOW__14_D,
             self::VIEW_ATTRIBUTION_WINDOW__30_D,
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -376,6 +378,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getCampaignTypeAllowableValues()
     {
         return [
+            self::CAMPAIGN_TYPE_ALL,
             self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPE_ON_SITE_DISPLAYS,
         ];
@@ -389,6 +392,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getSalesChannelAllowableValues()
     {
         return [
+            self::SALES_CHANNEL_ALL,
             self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
         ];
@@ -402,14 +406,14 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getDimensionsAllowableValues()
     {
         return [
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_LINE_ITEM_ID,
             self::DIMENSIONS_PURCHASED_DATE,
             self::DIMENSIONS_PURCHASED_HOUR,
             self::DIMENSIONS_ADV_DATE,
             self::DIMENSIONS_ADV_HOUR,
             self::DIMENSIONS_DAYS_DIFFERENCE,
+            self::DIMENSIONS_CAMPAIGN_ID,
+            self::DIMENSIONS_CAMPAIGN_NAME,
+            self::DIMENSIONS_LINE_ITEM_ID,
             self::DIMENSIONS_LINE_ITEM_NAME,
             self::DIMENSIONS_ADV_PRODUCT_ID,
             self::DIMENSIONS_ADV_PRODUCT_GTIN,
@@ -424,8 +428,8 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             self::DIMENSIONS_ADV_ENGAGEMENT,
             self::DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP,
             self::DIMENSIONS_SALES_CHANNEL,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_RETAILER_NAME,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_KEYWORD,
             self::DIMENSIONS_ATTRIBUTION_WINDOW,
         ];
@@ -464,8 +468,8 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('campaign_type', $data ?? [], null);
-        $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], 'all');
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);

@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **account_id** | **string** | Account id to report on |
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
-**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional]
-**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional]
+**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
+**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **metrics** | **string[]** | List of metrics to report on | [optional]
 **start_date** | **\DateTime** | Start date |

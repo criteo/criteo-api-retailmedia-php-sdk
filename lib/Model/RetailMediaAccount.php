@@ -62,8 +62,8 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
         'company_name' => 'string',
         'type' => 'string',
         'sub_type' => 'string',
-        'country_ids' => 'int[]',
-        'currency_id' => 'int',
+        'country_ids' => 'string[]',
+        'currency_id' => 'string',
         'parent_account_label' => 'string',
         'time_zone' => 'string'
     ];
@@ -80,8 +80,8 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
         'company_name' => null,
         'type' => null,
         'sub_type' => null,
-        'country_ids' => 'int32',
-        'currency_id' => 'int32',
+        'country_ids' => null,
+        'currency_id' => null,
         'parent_account_label' => null,
         'time_zone' => null
     ];
@@ -550,7 +550,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets country_ids
      *
-     * @return int[]|null
+     * @return string[]|null
      */
     public function getCountryIds()
     {
@@ -560,7 +560,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets country_ids
      *
-     * @param int[]|null $country_ids list of countries associated with the account
+     * @param string[]|null $country_ids list of countries associated with the account
      *
      * @return self
      */
@@ -584,7 +584,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets currency_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getCurrencyId()
     {
@@ -594,7 +594,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets currency_id
      *
-     * @param int|null $currency_id the currency for the account
+     * @param string|null $currency_id the currency for the account
      *
      * @return self
      */

@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_ids** | **string[]** | Account Ids to report on |
-**report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **aggregation_level** | **string** | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel | [optional] [default to 'campaign']
-**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional]
-**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional]
+**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
+**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
+**report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
 **dimensions** | **string[]** | List of dimensions to report on | [optional]

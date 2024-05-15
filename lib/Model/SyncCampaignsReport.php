@@ -302,17 +302,19 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const REPORT_TYPE_PRODUCT = 'product';
     public const REPORT_TYPE_ENVIRONMENT = 'environment';
     public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
+    public const SALES_CHANNEL_ALL = 'all';
     public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
     public const DIMENSIONS_DATE = 'date';
@@ -322,19 +324,20 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
-    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
-    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
-    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
-    public const DIMENSIONS_BRAND_ID = 'brandId';
-    public const DIMENSIONS_BRAND_NAME = 'brandName';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const DIMENSIONS_KEYWORD = 'keyword';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_BRAND_ID = 'brandId';
+    public const DIMENSIONS_BRAND_NAME = 'brandName';
+    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
+    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
+    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_KEYWORD = 'keyword';
+    public const DIMENSIONS_SEARCH_TERM = 'searchTerm';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -348,6 +351,14 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_CPO = 'cpo';
     public const METRICS_CPM = 'cpm';
     public const METRICS_ROAS = 'roas';
+    public const METRICS_VIDEO_VIEWS = 'videoViews';
+    public const METRICS_VIDEOS_STARTED = 'videosStarted';
+    public const METRICS_VIDEOS_PLAYED_TO25 = 'videosPlayedTo25';
+    public const METRICS_VIDEOS_PLAYED_TO50 = 'videosPlayedTo50';
+    public const METRICS_VIDEOS_PLAYED_TO75 = 'videosPlayedTo75';
+    public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
+    public const METRICS_VIDEO_PLAYING_RATE = 'videoPlayingRate';
+    public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
 
@@ -377,10 +388,10 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getClickAttributionWindowAllowableValues()
     {
         return [
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
-            self::CLICK_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -392,11 +403,11 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getViewAttributionWindowAllowableValues()
     {
         return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
             self::VIEW_ATTRIBUTION_WINDOW__1_D,
             self::VIEW_ATTRIBUTION_WINDOW__7_D,
             self::VIEW_ATTRIBUTION_WINDOW__14_D,
             self::VIEW_ATTRIBUTION_WINDOW__30_D,
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -408,6 +419,7 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getCampaignTypeAllowableValues()
     {
         return [
+            self::CAMPAIGN_TYPE_ALL,
             self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPE_ON_SITE_DISPLAYS,
         ];
@@ -421,6 +433,7 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getSalesChannelAllowableValues()
     {
         return [
+            self::SALES_CHANNEL_ALL,
             self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
         ];
@@ -441,19 +454,20 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
             self::DIMENSIONS_LINE_ITEM_ID,
             self::DIMENSIONS_LINE_ITEM_NAME,
             self::DIMENSIONS_RETAILER_ID,
             self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_BRAND_ID,
+            self::DIMENSIONS_BRAND_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_SALES_CHANNEL,
             self::DIMENSIONS_ENVIRONMENT,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_SEARCH_TERM,
         ];
     }
 
@@ -478,6 +492,14 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_CPO,
             self::METRICS_CPM,
             self::METRICS_ROAS,
+            self::METRICS_VIDEO_VIEWS,
+            self::METRICS_VIDEOS_STARTED,
+            self::METRICS_VIDEOS_PLAYED_TO25,
+            self::METRICS_VIDEOS_PLAYED_TO50,
+            self::METRICS_VIDEOS_PLAYED_TO75,
+            self::METRICS_VIDEOS_PLAYED_TO100,
+            self::METRICS_VIDEO_PLAYING_RATE,
+            self::METRICS_VIDEO_COMPLETION_RATE,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];
@@ -503,8 +525,8 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('campaign_type', $data ?? [], null);
-        $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], 'all');
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);

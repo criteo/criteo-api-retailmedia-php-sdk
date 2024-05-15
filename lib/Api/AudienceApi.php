@@ -71,10 +71,16 @@ class AudienceApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'deleteContactListIdentifiers' => [
+            'application/json',
+        ],
         'legacyGetAudienceV1' => [
             'application/json',
         ],
         'legacyGetAudienceV2' => [
+            'application/json',
+        ],
+        'updateContactListIdentifiers' => [
             'application/json',
         ],
     ];
@@ -123,6 +129,243 @@ class AudienceApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation deleteContactListIdentifiers
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteContactListIdentifiers($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    {
+        $this->deleteContactListIdentifiersWithHttpInfo($audience_segment_id, $contentType);
+    }
+
+    /**
+     * Operation deleteContactListIdentifiersWithHttpInfo
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteContactListIdentifiersWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    {
+        $request = $this->deleteContactListIdentifiersRequest($audience_segment_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ErrorCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteContactListIdentifiersAsync
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactListIdentifiersAsync($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    {
+        return $this->deleteContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteContactListIdentifiersAsyncWithHttpInfo
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteContactListIdentifiersRequest($audience_segment_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteContactListIdentifiers'
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteContactListIdentifiersRequest($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    {
+
+        // verify the required parameter 'audience_segment_id' is set
+        if ($audience_segment_id === null || (is_array($audience_segment_id) && count($audience_segment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $audience_segment_id when calling deleteContactListIdentifiers'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($audience_segment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'audience-segment-id' . '}',
+                ObjectSerializer::toPathValue($audience_segment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -775,6 +1018,331 @@ class AudienceApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateContactListIdentifiers
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request retail_media_contactlist_amendment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation|\criteo\api\retailmedia\preview\Model\ErrorCodeResponse
+     */
+    public function updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    {
+        list($response) = $this->updateContactListIdentifiersWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateContactListIdentifiersWithHttpInfo
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation|\criteo\api\retailmedia\preview\Model\ErrorCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateContactListIdentifiersWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    {
+        $request = $this->updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\preview\Model\ErrorCodeResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ErrorCodeResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ErrorCodeResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ErrorCodeResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateContactListIdentifiersAsync
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContactListIdentifiersAsync($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    {
+        return $this->updateContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateContactListIdentifiersAsyncWithHttpInfo
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation';
+        $request = $this->updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateContactListIdentifiers'
+     *
+     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    {
+
+        // verify the required parameter 'audience_segment_id' is set
+        if ($audience_segment_id === null || (is_array($audience_segment_id) && count($audience_segment_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $audience_segment_id when calling updateContactListIdentifiers'
+            );
+        }
+
+        // verify the required parameter 'retail_media_contactlist_amendment_request' is set
+        if ($retail_media_contactlist_amendment_request === null || (is_array($retail_media_contactlist_amendment_request) && count($retail_media_contactlist_amendment_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $retail_media_contactlist_amendment_request when calling updateContactListIdentifiers'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($audience_segment_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'audience-segment-id' . '}',
+                ObjectSerializer::toPathValue($audience_segment_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($retail_media_contactlist_amendment_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($retail_media_contactlist_amendment_request));
+            } else {
+                $httpBody = $retail_media_contactlist_amendment_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

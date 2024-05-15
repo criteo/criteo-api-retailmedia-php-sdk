@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RmLegacyAudienceGetEntityV1Resource Class Doc Comment
  *
  * @category Class
- * @description Legacy resource
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

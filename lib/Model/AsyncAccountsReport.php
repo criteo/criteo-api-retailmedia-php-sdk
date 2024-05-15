@@ -59,11 +59,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
-        'report_type' => 'string',
         'aggregation_level' => 'string',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
         'format' => 'string',
+        'report_type' => 'string',
         'click_attribution_window' => 'string',
         'view_attribution_window' => 'string',
         'dimensions' => 'string[]',
@@ -82,11 +82,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'account_ids' => null,
-        'report_type' => null,
         'aggregation_level' => null,
         'campaign_type' => null,
         'sales_channel' => null,
         'format' => null,
+        'report_type' => null,
         'click_attribution_window' => null,
         'view_attribution_window' => null,
         'dimensions' => null,
@@ -103,11 +103,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_ids' => false,
-		'report_type' => true,
 		'aggregation_level' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
 		'format' => true,
+		'report_type' => true,
 		'click_attribution_window' => true,
 		'view_attribution_window' => true,
 		'dimensions' => true,
@@ -204,11 +204,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
-        'report_type' => 'reportType',
         'aggregation_level' => 'aggregationLevel',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
         'format' => 'format',
+        'report_type' => 'reportType',
         'click_attribution_window' => 'clickAttributionWindow',
         'view_attribution_window' => 'viewAttributionWindow',
         'dimensions' => 'dimensions',
@@ -225,11 +225,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'account_ids' => 'setAccountIds',
-        'report_type' => 'setReportType',
         'aggregation_level' => 'setAggregationLevel',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
         'format' => 'setFormat',
+        'report_type' => 'setReportType',
         'click_attribution_window' => 'setClickAttributionWindow',
         'view_attribution_window' => 'setViewAttributionWindow',
         'dimensions' => 'setDimensions',
@@ -246,11 +246,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'account_ids' => 'getAccountIds',
-        'report_type' => 'getReportType',
         'aggregation_level' => 'getAggregationLevel',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
         'format' => 'getFormat',
+        'report_type' => 'getReportType',
         'click_attribution_window' => 'getClickAttributionWindow',
         'view_attribution_window' => 'getViewAttributionWindow',
         'dimensions' => 'getDimensions',
@@ -301,32 +301,35 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const REPORT_TYPE_SUMMARY = 'summary';
-    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
-    public const REPORT_TYPE_KEYWORD = 'keyword';
-    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
-    public const REPORT_TYPE_PRODUCT = 'product';
-    public const REPORT_TYPE_ENVIRONMENT = 'environment';
-    public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
     public const AGGREGATION_LEVEL_CAMPAIGN = 'campaign';
     public const AGGREGATION_LEVEL_LINE_ITEM = 'lineItem';
+    public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
+    public const SALES_CHANNEL_ALL = 'all';
     public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
+    public const REPORT_TYPE_SUMMARY = 'summary';
+    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
+    public const REPORT_TYPE_KEYWORD = 'keyword';
+    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
+    public const REPORT_TYPE_PRODUCT = 'product';
+    public const REPORT_TYPE_ATTRIBUTED_TRANSACTIONS = 'attributedTransactions';
+    public const REPORT_TYPE_ENVIRONMENT = 'environment';
+    public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
+    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
@@ -334,19 +337,20 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
-    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
-    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
-    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
-    public const DIMENSIONS_BRAND_ID = 'brandId';
-    public const DIMENSIONS_BRAND_NAME = 'brandName';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const DIMENSIONS_KEYWORD = 'keyword';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_BRAND_ID = 'brandId';
+    public const DIMENSIONS_BRAND_NAME = 'brandName';
+    public const DIMENSIONS_ADV_PRODUCT_CATEGORY = 'advProductCategory';
+    public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
+    public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
+    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_KEYWORD = 'keyword';
+    public const DIMENSIONS_SEARCH_TERM = 'searchTerm';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -360,26 +364,16 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_CPO = 'cpo';
     public const METRICS_CPM = 'cpm';
     public const METRICS_ROAS = 'roas';
+    public const METRICS_VIDEO_VIEWS = 'videoViews';
+    public const METRICS_VIDEOS_STARTED = 'videosStarted';
+    public const METRICS_VIDEOS_PLAYED_TO25 = 'videosPlayedTo25';
+    public const METRICS_VIDEOS_PLAYED_TO50 = 'videosPlayedTo50';
+    public const METRICS_VIDEOS_PLAYED_TO75 = 'videosPlayedTo75';
+    public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
+    public const METRICS_VIDEO_PLAYING_RATE = 'videoPlayingRate';
+    public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getReportTypeAllowableValues()
-    {
-        return [
-            self::REPORT_TYPE_SUMMARY,
-            self::REPORT_TYPE_PAGE_TYPE,
-            self::REPORT_TYPE_KEYWORD,
-            self::REPORT_TYPE_PRODUCT_CATEGORY,
-            self::REPORT_TYPE_PRODUCT,
-            self::REPORT_TYPE_ENVIRONMENT,
-            self::REPORT_TYPE_SERVED_CATEGORY,
-        ];
-    }
 
     /**
      * Gets allowable values of the enum
@@ -402,6 +396,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getCampaignTypeAllowableValues()
     {
         return [
+            self::CAMPAIGN_TYPE_ALL,
             self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPE_ON_SITE_DISPLAYS,
         ];
@@ -415,6 +410,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getSalesChannelAllowableValues()
     {
         return [
+            self::SALES_CHANNEL_ALL,
             self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
         ];
@@ -440,13 +436,32 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getReportTypeAllowableValues()
+    {
+        return [
+            self::REPORT_TYPE_SUMMARY,
+            self::REPORT_TYPE_PAGE_TYPE,
+            self::REPORT_TYPE_KEYWORD,
+            self::REPORT_TYPE_PRODUCT_CATEGORY,
+            self::REPORT_TYPE_PRODUCT,
+            self::REPORT_TYPE_ATTRIBUTED_TRANSACTIONS,
+            self::REPORT_TYPE_ENVIRONMENT,
+            self::REPORT_TYPE_SERVED_CATEGORY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getClickAttributionWindowAllowableValues()
     {
         return [
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
-            self::CLICK_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -458,11 +473,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getViewAttributionWindowAllowableValues()
     {
         return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
             self::VIEW_ATTRIBUTION_WINDOW__1_D,
             self::VIEW_ATTRIBUTION_WINDOW__7_D,
             self::VIEW_ATTRIBUTION_WINDOW__14_D,
             self::VIEW_ATTRIBUTION_WINDOW__30_D,
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
         ];
     }
 
@@ -481,19 +496,20 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
-            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
-            self::DIMENSIONS_ADV_PRODUCT_ID,
-            self::DIMENSIONS_ADV_PRODUCT_NAME,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
             self::DIMENSIONS_LINE_ITEM_ID,
             self::DIMENSIONS_LINE_ITEM_NAME,
             self::DIMENSIONS_RETAILER_ID,
             self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_BRAND_ID,
+            self::DIMENSIONS_BRAND_NAME,
+            self::DIMENSIONS_ADV_PRODUCT_CATEGORY,
+            self::DIMENSIONS_ADV_PRODUCT_ID,
+            self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_SALES_CHANNEL,
             self::DIMENSIONS_ENVIRONMENT,
+            self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_SEARCH_TERM,
         ];
     }
 
@@ -518,6 +534,14 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_CPO,
             self::METRICS_CPM,
             self::METRICS_ROAS,
+            self::METRICS_VIDEO_VIEWS,
+            self::METRICS_VIDEOS_STARTED,
+            self::METRICS_VIDEOS_PLAYED_TO25,
+            self::METRICS_VIDEOS_PLAYED_TO50,
+            self::METRICS_VIDEOS_PLAYED_TO75,
+            self::METRICS_VIDEOS_PLAYED_TO100,
+            self::METRICS_VIDEO_PLAYING_RATE,
+            self::METRICS_VIDEO_COMPLETION_RATE,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];
@@ -539,11 +563,11 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_ids', $data ?? [], null);
-        $this->setIfExists('report_type', $data ?? [], 'summary');
         $this->setIfExists('aggregation_level', $data ?? [], 'campaign');
-        $this->setIfExists('campaign_type', $data ?? [], null);
-        $this->setIfExists('sales_channel', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], 'all');
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('format', $data ?? [], 'json-compact');
+        $this->setIfExists('report_type', $data ?? [], 'summary');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('dimensions', $data ?? [], null);
@@ -583,15 +607,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['account_ids'] === null) {
             $invalidProperties[] = "'account_ids' can't be null";
         }
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'report_type', must be one of '%s'",
-                $this->container['report_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getAggregationLevelAllowableValues();
         if (!is_null($this->container['aggregation_level']) && !in_array($this->container['aggregation_level'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -624,6 +639,15 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'format', must be one of '%s'",
                 $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'report_type', must be one of '%s'",
+                $this->container['report_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -690,50 +714,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
         }
         $this->container['account_ids'] = $account_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets report_type
-     *
-     * @return string|null
-     */
-    public function getReportType()
-    {
-        return $this->container['report_type'];
-    }
-
-    /**
-     * Sets report_type
-     *
-     * @param string|null $report_type Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-     *
-     * @return self
-     */
-    public function setReportType($report_type)
-    {
-        if (is_null($report_type)) {
-            array_push($this->openAPINullablesSetToNull, 'report_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('report_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($report_type) && !in_array($report_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'report_type', must be one of '%s'",
-                    $report_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['report_type'] = $report_type;
 
         return $this;
     }
@@ -910,6 +890,50 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets report_type
+     *
+     * @return string|null
+     */
+    public function getReportType()
+    {
+        return $this->container['report_type'];
+    }
+
+    /**
+     * Sets report_type
+     *
+     * @param string|null $report_type Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+     *
+     * @return self
+     */
+    public function setReportType($report_type)
+    {
+        if (is_null($report_type)) {
+            array_push($this->openAPINullablesSetToNull, 'report_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!is_null($report_type) && !in_array($report_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'report_type', must be one of '%s'",
+                    $report_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['report_type'] = $report_type;
 
         return $this;
     }

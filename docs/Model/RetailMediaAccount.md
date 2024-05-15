@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **company_name** | **string** | Display name for reporting the owning entity of ads for the Digital Services Act in the European Union | [optional]
 **type** | **string** | Type for the account | [optional]
 **sub_type** | **string** | subtype for the account | [optional]
-**country_ids** | **int[]** | list of countries associated with the account | [optional]
-**currency_id** | **int** | the currency for the account | [optional]
+**country_ids** | **string[]** | list of countries associated with the account | [optional]
+**currency_id** | **string** | the currency for the account | [optional]
 **parent_account_label** | **string** | parent account label for the account | [optional]
 **time_zone** | **string** | the timezone for the account | [optional]
 
