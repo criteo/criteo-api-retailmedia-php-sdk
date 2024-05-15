@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1Resource
+ * ResourceOutcome
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_10\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1Resource Class Doc Comment
+ * ResourceOutcome Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description Outcome object containing errors and warnings.
  * @package  criteo\api\retailmedia\v2023_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceOutcome implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1Resource';
+    protected static $openAPIModelName = 'ResourceOutcome';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1',
-        'id' => 'string',
-        'audience_type' => 'string',
-        'type' => 'string'
+        'errors' => '\criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]'
     ];
 
     /**
@@ -72,10 +70,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'audience_type' => null,
-        'type' => null
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => true,
-		'audience_type' => true,
-		'type' => true
+        'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'audience_type' => 'audienceType',
-        'type' => 'type'
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +180,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'audience_type' => 'setAudienceType',
-        'type' => 'setType'
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +190,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'audience_type' => 'getAudienceType',
-        'type' => 'getType'
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -247,21 +235,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const AUDIENCE_TYPE_CUSTOMER_LIST = 'customerList';
-    public const AUDIENCE_TYPE_USER_BEHAVIOR = 'userBehavior';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAudienceTypeAllowableValues()
-    {
-        return [
-            self::AUDIENCE_TYPE_CUSTOMER_LIST,
-            self::AUDIENCE_TYPE_USER_BEHAVIOR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,10 +251,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('audience_type', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -311,15 +282,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($this->container['audience_type']) && !in_array($this->container['audience_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'audience_type', must be one of '%s'",
-                $this->container['audience_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -336,140 +298,69 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets attributes
+     * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null
+     * @return \criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]|null
      */
-    public function getAttributes()
+    public function getErrors()
     {
-        return $this->container['attributes'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets attributes
+     * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setErrors($errors)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets audience_type
+     * Gets warnings
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]|null
      */
-    public function getAudienceType()
+    public function getWarnings()
     {
-        return $this->container['audience_type'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets audience_type
+     * Sets warnings
      *
-     * @param string|null $audience_type audience_type
+     * @param \criteo\api\retailmedia\v2023_10\Model\RmcaCommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setAudienceType($audience_type)
+    public function setWarnings($warnings)
     {
-        if (is_null($audience_type)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_type');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_type', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($audience_type) && !in_array($audience_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'audience_type', must be one of '%s'",
-                    $audience_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['audience_type'] = $audience_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

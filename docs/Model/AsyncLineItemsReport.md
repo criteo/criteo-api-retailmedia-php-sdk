@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ids** | **string[]** | Line Item ids to report on | [optional]
 **id** | **string** | Line Item id to report on | [optional]
-**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional]
-**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional]
+**campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
+**sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
 **report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']

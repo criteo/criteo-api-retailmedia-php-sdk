@@ -323,34 +323,34 @@ class CampaignApi
     /**
      * Operation addRemoveKeywords
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest $retail_media_externalv1_add_remove_keywords_model_request Object containing keywords to be added or removed (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome
+     * @return \criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome
      */
-    public function addRemoveKeywords($id, $retail_media_externalv1_add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
+    public function addRemoveKeywords($id, $add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
     {
-        list($response) = $this->addRemoveKeywordsWithHttpInfo($id, $retail_media_externalv1_add_remove_keywords_model_request, $contentType);
+        list($response) = $this->addRemoveKeywordsWithHttpInfo($id, $add_remove_keywords_model_request, $contentType);
         return $response;
     }
 
     /**
      * Operation addRemoveKeywordsWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest $retail_media_externalv1_add_remove_keywords_model_request Object containing keywords to be added or removed (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addRemoveKeywordsWithHttpInfo($id, $retail_media_externalv1_add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
+    public function addRemoveKeywordsWithHttpInfo($id, $add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
     {
-        $request = $this->addRemoveKeywordsRequest($id, $retail_media_externalv1_add_remove_keywords_model_request, $contentType);
+        $request = $this->addRemoveKeywordsRequest($id, $add_remove_keywords_model_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -389,23 +389,38 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome';
+            $returnType = '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -426,7 +441,15 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome',
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -439,16 +462,16 @@ class CampaignApi
     /**
      * Operation addRemoveKeywordsAsync
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest $retail_media_externalv1_add_remove_keywords_model_request Object containing keywords to be added or removed (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addRemoveKeywordsAsync($id, $retail_media_externalv1_add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
+    public function addRemoveKeywordsAsync($id, $add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
     {
-        return $this->addRemoveKeywordsAsyncWithHttpInfo($id, $retail_media_externalv1_add_remove_keywords_model_request, $contentType)
+        return $this->addRemoveKeywordsAsyncWithHttpInfo($id, $add_remove_keywords_model_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -459,17 +482,17 @@ class CampaignApi
     /**
      * Operation addRemoveKeywordsAsyncWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest $retail_media_externalv1_add_remove_keywords_model_request Object containing keywords to be added or removed (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addRemoveKeywordsAsyncWithHttpInfo($id, $retail_media_externalv1_add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
+    public function addRemoveKeywordsAsyncWithHttpInfo($id, $add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome';
-        $request = $this->addRemoveKeywordsRequest($id, $retail_media_externalv1_add_remove_keywords_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome';
+        $request = $this->addRemoveKeywordsRequest($id, $add_remove_keywords_model_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -510,14 +533,14 @@ class CampaignApi
     /**
      * Create request for operation 'addRemoveKeywords'
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest $retail_media_externalv1_add_remove_keywords_model_request Object containing keywords to be added or removed (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addRemoveKeywordsRequest($id, $retail_media_externalv1_add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
+    public function addRemoveKeywordsRequest($id, $add_remove_keywords_model_request = null, string $contentType = self::contentTypes['addRemoveKeywords'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -549,18 +572,18 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($retail_media_externalv1_add_remove_keywords_model_request)) {
+        if (isset($add_remove_keywords_model_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($retail_media_externalv1_add_remove_keywords_model_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_remove_keywords_model_request));
             } else {
-                $httpBody = $retail_media_externalv1_add_remove_keywords_model_request;
+                $httpBody = $add_remove_keywords_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -906,12 +929,12 @@ class CampaignApi
     /**
      * Operation fetchKeywords
      *
-     * @param  string $id Long external id of the associated line item (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse
+     * @return \criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome
      */
     public function fetchKeywords($id, string $contentType = self::contentTypes['fetchKeywords'][0])
     {
@@ -922,12 +945,12 @@ class CampaignApi
     /**
      * Operation fetchKeywordsWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchKeywordsWithHttpInfo($id, string $contentType = self::contentTypes['fetchKeywords'][0])
     {
@@ -970,23 +993,38 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1007,7 +1045,15 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse',
+                        '\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1020,7 +1066,7 @@ class CampaignApi
     /**
      * Operation fetchKeywordsAsync
      *
-     * @param  string $id Long external id of the associated line item (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1039,7 +1085,7 @@ class CampaignApi
     /**
      * Operation fetchKeywordsAsyncWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1047,7 +1093,7 @@ class CampaignApi
      */
     public function fetchKeywordsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['fetchKeywords'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1KeywordsModelResponse';
+        $returnType = '\criteo\api\retailmedia\v2023_10\Model\KeywordsModelResponse';
         $request = $this->fetchKeywordsRequest($id, $contentType);
 
         return $this->client
@@ -1089,7 +1135,7 @@ class CampaignApi
     /**
      * Create request for operation 'fetchKeywords'
      *
-     * @param  string $id Long external id of the associated line item (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1126,7 +1172,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1189,12 +1235,12 @@ class CampaignApi
     /**
      * Operation fetchProposal
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse
+     * @return \criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome
      */
     public function fetchProposal($id, string $contentType = self::contentTypes['fetchProposal'][0])
     {
@@ -1205,12 +1251,12 @@ class CampaignApi
     /**
      * Operation fetchProposalWithHttpInfo
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function fetchProposalWithHttpInfo($id, string $contentType = self::contentTypes['fetchProposal'][0])
     {
@@ -1253,23 +1299,53 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1290,7 +1366,23 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse',
+                        '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1303,7 +1395,7 @@ class CampaignApi
     /**
      * Operation fetchProposalAsync
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1322,7 +1414,7 @@ class CampaignApi
     /**
      * Operation fetchProposalAsyncWithHttpInfo
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1330,7 +1422,7 @@ class CampaignApi
      */
     public function fetchProposalAsyncWithHttpInfo($id, string $contentType = self::contentTypes['fetchProposal'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse';
+        $returnType = '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse';
         $request = $this->fetchProposalRequest($id, $contentType);
 
         return $this->client
@@ -1372,7 +1464,7 @@ class CampaignApi
     /**
      * Create request for operation 'fetchProposal'
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1409,7 +1501,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -20172,34 +20264,34 @@ class CampaignApi
     /**
      * Operation setKeywordBids
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1SetBidsModelRequest $retail_media_externalv1_set_bids_model_request Object containing a list of bid overrides for associated keywords (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\SetBidsModelRequest $set_bids_model_request set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome
+     * @return \criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome
      */
-    public function setKeywordBids($id, $retail_media_externalv1_set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
+    public function setKeywordBids($id, $set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
     {
-        list($response) = $this->setKeywordBidsWithHttpInfo($id, $retail_media_externalv1_set_bids_model_request, $contentType);
+        list($response) = $this->setKeywordBidsWithHttpInfo($id, $set_bids_model_request, $contentType);
         return $response;
     }
 
     /**
      * Operation setKeywordBidsWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1SetBidsModelRequest $retail_media_externalv1_set_bids_model_request Object containing a list of bid overrides for associated keywords (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\SetBidsModelRequest $set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setKeywordBidsWithHttpInfo($id, $retail_media_externalv1_set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
+    public function setKeywordBidsWithHttpInfo($id, $set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
     {
-        $request = $this->setKeywordBidsRequest($id, $retail_media_externalv1_set_bids_model_request, $contentType);
+        $request = $this->setKeywordBidsRequest($id, $set_bids_model_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -20238,23 +20330,38 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome';
+            $returnType = '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -20275,7 +20382,15 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome',
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -20288,16 +20403,16 @@ class CampaignApi
     /**
      * Operation setKeywordBidsAsync
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1SetBidsModelRequest $retail_media_externalv1_set_bids_model_request Object containing a list of bid overrides for associated keywords (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\SetBidsModelRequest $set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setKeywordBidsAsync($id, $retail_media_externalv1_set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
+    public function setKeywordBidsAsync($id, $set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
     {
-        return $this->setKeywordBidsAsyncWithHttpInfo($id, $retail_media_externalv1_set_bids_model_request, $contentType)
+        return $this->setKeywordBidsAsyncWithHttpInfo($id, $set_bids_model_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -20308,17 +20423,17 @@ class CampaignApi
     /**
      * Operation setKeywordBidsAsyncWithHttpInfo
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1SetBidsModelRequest $retail_media_externalv1_set_bids_model_request Object containing a list of bid overrides for associated keywords (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\SetBidsModelRequest $set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setKeywordBidsAsyncWithHttpInfo($id, $retail_media_externalv1_set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
+    public function setKeywordBidsAsyncWithHttpInfo($id, $set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ResourceOutcome';
-        $request = $this->setKeywordBidsRequest($id, $retail_media_externalv1_set_bids_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome';
+        $request = $this->setKeywordBidsRequest($id, $set_bids_model_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -20359,14 +20474,14 @@ class CampaignApi
     /**
      * Create request for operation 'setKeywordBids'
      *
-     * @param  string $id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1SetBidsModelRequest $retail_media_externalv1_set_bids_model_request Object containing a list of bid overrides for associated keywords (optional)
+     * @param  string $id ID of the line item (required)
+     * @param  \criteo\api\retailmedia\v2023_10\Model\SetBidsModelRequest $set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setKeywordBidsRequest($id, $retail_media_externalv1_set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
+    public function setKeywordBidsRequest($id, $set_bids_model_request = null, string $contentType = self::contentTypes['setKeywordBids'][0])
     {
 
         // verify the required parameter 'id' is set
@@ -20398,18 +20513,18 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($retail_media_externalv1_set_bids_model_request)) {
+        if (isset($set_bids_model_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($retail_media_externalv1_set_bids_model_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($set_bids_model_request));
             } else {
-                $httpBody = $retail_media_externalv1_set_bids_model_request;
+                $httpBody = $set_bids_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -20468,12 +20583,12 @@ class CampaignApi
     /**
      * Operation submitProposal
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse
+     * @return \criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome
      */
     public function submitProposal($id, string $contentType = self::contentTypes['submitProposal'][0])
     {
@@ -20484,12 +20599,12 @@ class CampaignApi
     /**
      * Operation submitProposalWithHttpInfo
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2023_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome|\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function submitProposalWithHttpInfo($id, string $contentType = self::contentTypes['submitProposal'][0])
     {
@@ -20532,23 +20647,53 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse';
+            $returnType = '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -20569,7 +20714,23 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse',
+                        '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2023_10\Model\ResourceOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -20582,7 +20743,7 @@ class CampaignApi
     /**
      * Operation submitProposalAsync
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -20601,7 +20762,7 @@ class CampaignApi
     /**
      * Operation submitProposalAsyncWithHttpInfo
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -20609,7 +20770,7 @@ class CampaignApi
      */
     public function submitProposalAsyncWithHttpInfo($id, string $contentType = self::contentTypes['submitProposal'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2023_10\Model\RetailMediaExternalv1ProposalStatusModelResponse';
+        $returnType = '\criteo\api\retailmedia\v2023_10\Model\ProposalStatusModelResponse';
         $request = $this->submitProposalRequest($id, $contentType);
 
         return $this->client
@@ -20651,7 +20812,7 @@ class CampaignApi
     /**
      * Create request for operation 'submitProposal'
      *
-     * @param  string $id The external id of a line item. (required)
+     * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -20688,7 +20849,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

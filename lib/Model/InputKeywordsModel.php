@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1Resource
+ * InputKeywordsModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_10\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1Resource Class Doc Comment
+ * InputKeywordsModel Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description The keywords to be added or removed from a line item.
  * @package  criteo\api\retailmedia\v2023_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess, \JsonSerializable
+class InputKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1Resource';
+    protected static $openAPIModelName = 'InputKeywordsModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1',
-        'id' => 'string',
-        'audience_type' => 'string',
-        'type' => 'string'
+        'negative_broad' => 'string[]',
+        'negative_exact' => 'string[]',
+        'positive_exact' => 'string[]'
     ];
 
     /**
@@ -72,10 +71,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'audience_type' => null,
-        'type' => null
+        'negative_broad' => null,
+        'negative_exact' => null,
+        'positive_exact' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => true,
-		'audience_type' => true,
-		'type' => true
+        'negative_broad' => true,
+		'negative_exact' => true,
+		'positive_exact' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'audience_type' => 'audienceType',
-        'type' => 'type'
+        'negative_broad' => 'negativeBroad',
+        'negative_exact' => 'negativeExact',
+        'positive_exact' => 'positiveExact'
     ];
 
     /**
@@ -188,10 +184,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'audience_type' => 'setAudienceType',
-        'type' => 'setType'
+        'negative_broad' => 'setNegativeBroad',
+        'negative_exact' => 'setNegativeExact',
+        'positive_exact' => 'setPositiveExact'
     ];
 
     /**
@@ -200,10 +195,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'audience_type' => 'getAudienceType',
-        'type' => 'getType'
+        'negative_broad' => 'getNegativeBroad',
+        'negative_exact' => 'getNegativeExact',
+        'positive_exact' => 'getPositiveExact'
     ];
 
     /**
@@ -247,21 +241,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const AUDIENCE_TYPE_CUSTOMER_LIST = 'customerList';
-    public const AUDIENCE_TYPE_USER_BEHAVIOR = 'userBehavior';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAudienceTypeAllowableValues()
-    {
-        return [
-            self::AUDIENCE_TYPE_CUSTOMER_LIST,
-            self::AUDIENCE_TYPE_USER_BEHAVIOR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,10 +257,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('audience_type', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('negative_broad', $data ?? [], null);
+        $this->setIfExists('negative_exact', $data ?? [], null);
+        $this->setIfExists('positive_exact', $data ?? [], null);
     }
 
     /**
@@ -311,15 +289,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($this->container['audience_type']) && !in_array($this->container['audience_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'audience_type', must be one of '%s'",
-                $this->container['audience_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -336,140 +305,103 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets attributes
+     * Gets negative_broad
      *
-     * @return \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null
+     * @return string[]|null
      */
-    public function getAttributes()
+    public function getNegativeBroad()
     {
-        return $this->container['attributes'];
+        return $this->container['negative_broad'];
     }
 
     /**
-     * Sets attributes
+     * Sets negative_broad
      *
-     * @param \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null $attributes attributes
+     * @param string[]|null $negative_broad negative_broad
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setNegativeBroad($negative_broad)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($negative_broad)) {
+            array_push($this->openAPINullablesSetToNull, 'negative_broad');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('negative_broad', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['negative_broad'] = $negative_broad;
 
         return $this;
     }
 
     /**
-     * Gets audience_type
+     * Gets negative_exact
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getAudienceType()
+    public function getNegativeExact()
     {
-        return $this->container['audience_type'];
+        return $this->container['negative_exact'];
     }
 
     /**
-     * Sets audience_type
+     * Sets negative_exact
      *
-     * @param string|null $audience_type audience_type
+     * @param string[]|null $negative_exact negative_exact
      *
      * @return self
      */
-    public function setAudienceType($audience_type)
+    public function setNegativeExact($negative_exact)
     {
-        if (is_null($audience_type)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_type');
+        if (is_null($negative_exact)) {
+            array_push($this->openAPINullablesSetToNull, 'negative_exact');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_type', $nullablesSetToNull);
+            $index = array_search('negative_exact', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($audience_type) && !in_array($audience_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'audience_type', must be one of '%s'",
-                    $audience_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['audience_type'] = $audience_type;
+        $this->container['negative_exact'] = $negative_exact;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets positive_exact
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getType()
+    public function getPositiveExact()
     {
-        return $this->container['type'];
+        return $this->container['positive_exact'];
     }
 
     /**
-     * Sets type
+     * Sets positive_exact
      *
-     * @param string|null $type type
+     * @param string[]|null $positive_exact positive_exact
      *
      * @return self
      */
-    public function setType($type)
+    public function setPositiveExact($positive_exact)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($positive_exact)) {
+            array_push($this->openAPINullablesSetToNull, 'positive_exact');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('positive_exact', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
+        $this->container['positive_exact'] = $positive_exact;
 
         return $this;
     }

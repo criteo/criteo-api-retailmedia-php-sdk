@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1Resource
+ * AddRemoveKeywordModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_10\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1Resource Class Doc Comment
+ * AddRemoveKeywordModel Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description A single keyword to be added or removed
  * @package  criteo\api\retailmedia\v2023_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1Resource';
+    protected static $openAPIModelName = 'AddRemoveKeywordModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1',
-        'id' => 'string',
-        'audience_type' => 'string',
-        'type' => 'string'
+        'phrase' => 'string',
+        'match_type' => '\criteo\api\retailmedia\v2023_10\Model\MatchTypeModel',
+        'is_deleted' => 'bool'
     ];
 
     /**
@@ -72,10 +71,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'audience_type' => null,
-        'type' => null
+        'phrase' => null,
+        'match_type' => null,
+        'is_deleted' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => true,
-		'audience_type' => true,
-		'type' => true
+        'phrase' => true,
+		'match_type' => false,
+		'is_deleted' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'audience_type' => 'audienceType',
-        'type' => 'type'
+        'phrase' => 'phrase',
+        'match_type' => 'matchType',
+        'is_deleted' => 'isDeleted'
     ];
 
     /**
@@ -188,10 +184,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'audience_type' => 'setAudienceType',
-        'type' => 'setType'
+        'phrase' => 'setPhrase',
+        'match_type' => 'setMatchType',
+        'is_deleted' => 'setIsDeleted'
     ];
 
     /**
@@ -200,10 +195,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'audience_type' => 'getAudienceType',
-        'type' => 'getType'
+        'phrase' => 'getPhrase',
+        'match_type' => 'getMatchType',
+        'is_deleted' => 'getIsDeleted'
     ];
 
     /**
@@ -247,21 +241,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const AUDIENCE_TYPE_CUSTOMER_LIST = 'customerList';
-    public const AUDIENCE_TYPE_USER_BEHAVIOR = 'userBehavior';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAudienceTypeAllowableValues()
-    {
-        return [
-            self::AUDIENCE_TYPE_CUSTOMER_LIST,
-            self::AUDIENCE_TYPE_USER_BEHAVIOR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -278,10 +257,9 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('audience_type', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('phrase', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
     }
 
     /**
@@ -311,13 +289,12 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($this->container['audience_type']) && !in_array($this->container['audience_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'audience_type', must be one of '%s'",
-                $this->container['audience_type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['phrase']) && (mb_strlen($this->container['phrase']) > 255)) {
+            $invalidProperties[] = "invalid value for 'phrase', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['phrase']) && (mb_strlen($this->container['phrase']) < 0)) {
+            $invalidProperties[] = "invalid value for 'phrase', the character length must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -336,140 +313,103 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2023_10\Model\RmLegacyAudienceGetEntityV1|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
+     * Gets phrase
      *
      * @return string|null
      */
-    public function getId()
+    public function getPhrase()
     {
-        return $this->container['id'];
+        return $this->container['phrase'];
     }
 
     /**
-     * Sets id
+     * Sets phrase
      *
-     * @param string|null $id id
+     * @param string|null $phrase phrase
      *
      * @return self
      */
-    public function setId($id)
+    public function setPhrase($phrase)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($phrase)) {
+            array_push($this->openAPINullablesSetToNull, 'phrase');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('phrase', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        if (!is_null($phrase) && (mb_strlen($phrase) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $phrase when calling AddRemoveKeywordModel., must be smaller than or equal to 255.');
+        }
+        if (!is_null($phrase) && (mb_strlen($phrase) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $phrase when calling AddRemoveKeywordModel., must be bigger than or equal to 0.');
+        }
+
+        $this->container['phrase'] = $phrase;
 
         return $this;
     }
 
     /**
-     * Gets audience_type
+     * Gets match_type
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2023_10\Model\MatchTypeModel|null
      */
-    public function getAudienceType()
+    public function getMatchType()
     {
-        return $this->container['audience_type'];
+        return $this->container['match_type'];
     }
 
     /**
-     * Sets audience_type
+     * Sets match_type
      *
-     * @param string|null $audience_type audience_type
+     * @param \criteo\api\retailmedia\v2023_10\Model\MatchTypeModel|null $match_type match_type
      *
      * @return self
      */
-    public function setAudienceType($audience_type)
+    public function setMatchType($match_type)
     {
-        if (is_null($audience_type)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($match_type)) {
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
         }
-        $allowedValues = $this->getAudienceTypeAllowableValues();
-        if (!is_null($audience_type) && !in_array($audience_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'audience_type', must be one of '%s'",
-                    $audience_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['audience_type'] = $audience_type;
+        $this->container['match_type'] = $match_type;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets is_deleted
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getType()
+    public function getIsDeleted()
     {
-        return $this->container['type'];
+        return $this->container['is_deleted'];
     }
 
     /**
-     * Sets type
+     * Sets is_deleted
      *
-     * @param string|null $type type
+     * @param bool|null $is_deleted is_deleted
      *
      * @return self
      */
-    public function setType($type)
+    public function setIsDeleted($is_deleted)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($is_deleted)) {
+            array_push($this->openAPINullablesSetToNull, 'is_deleted');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('is_deleted', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
+        $this->container['is_deleted'] = $is_deleted;
 
         return $this;
     }
