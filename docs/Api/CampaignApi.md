@@ -71,12 +71,12 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 ## `addRemoveKeywords()`
 
 ```php
-addRemoveKeywords($id, $retail_media_externalv1_add_remove_keywords_model_request): \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ResourceOutcome
+addRemoveKeywords($id, $add_remove_keywords_model_request): \criteo\api\retailmedia\v2023_07\Model\ResourceOutcome
 ```
 
 
 
-Add or Remove keywords from the associated line item in bulk
+Add or Remove keywords from the line item in bulk
 
 ### Example
 
@@ -98,11 +98,11 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Long external id of the associated line item
-$retail_media_externalv1_add_remove_keywords_model_request = new \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest(); // \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest | Object containing keywords to be added or removed
+$id = 'id_example'; // string | ID of the line item
+$add_remove_keywords_model_request = new \criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordsModelRequest(); // \criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordsModelRequest
 
 try {
-    $result = $apiInstance->addRemoveKeywords($id, $retail_media_externalv1_add_remove_keywords_model_request);
+    $result = $apiInstance->addRemoveKeywords($id, $add_remove_keywords_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->addRemoveKeywords: ', $e->getMessage(), PHP_EOL;
@@ -113,12 +113,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Long external id of the associated line item | |
-| **retail_media_externalv1_add_remove_keywords_model_request** | [**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1AddRemoveKeywordsModelRequest**](../Model/RetailMediaExternalv1AddRemoveKeywordsModelRequest.md)| Object containing keywords to be added or removed | [optional] |
+| **id** | **string**| ID of the line item | |
+| **add_remove_keywords_model_request** | [**\criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordsModelRequest**](../Model/AddRemoveKeywordsModelRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ResourceOutcome**](../Model/RetailMediaExternalv1ResourceOutcome.md)
+[**\criteo\api\retailmedia\v2023_07\Model\ResourceOutcome**](../Model/ResourceOutcome.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -199,7 +199,7 @@ try {
 ## `fetchKeywords()`
 
 ```php
-fetchKeywords($id): \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1KeywordsModelResponse
+fetchKeywords($id): \criteo\api\retailmedia\v2023_07\Model\KeywordsModelResponse
 ```
 
 
@@ -226,7 +226,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Long external id of the associated line item
+$id = 'id_example'; // string | ID of the line item
 
 try {
     $result = $apiInstance->fetchKeywords($id);
@@ -240,11 +240,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Long external id of the associated line item | |
+| **id** | **string**| ID of the line item | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1KeywordsModelResponse**](../Model/RetailMediaExternalv1KeywordsModelResponse.md)
+[**\criteo\api\retailmedia\v2023_07\Model\KeywordsModelResponse**](../Model/KeywordsModelResponse.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -262,12 +262,12 @@ try {
 ## `fetchProposal()`
 
 ```php
-fetchProposal($id): \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ProposalStatusModelResponse
+fetchProposal($id): \criteo\api\retailmedia\v2023_07\Model\ProposalStatusModelResponse
 ```
 
 
 
-Fetch the status of a proposal to modify a Preferred Deal Line Item.
+Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
 
 ### Example
 
@@ -289,7 +289,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | The external id of a line item.
+$id = 'id_example'; // string | ID of the line item
 
 try {
     $result = $apiInstance->fetchProposal($id);
@@ -303,11 +303,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The external id of a line item. | |
+| **id** | **string**| ID of the line item | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ProposalStatusModelResponse**](../Model/RetailMediaExternalv1ProposalStatusModelResponse.md)
+[**\criteo\api\retailmedia\v2023_07\Model\ProposalStatusModelResponse**](../Model/ProposalStatusModelResponse.md)
 
 ### Authorization
 
@@ -316,7 +316,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -3980,7 +3980,7 @@ try {
 ## `setKeywordBids()`
 
 ```php
-setKeywordBids($id, $retail_media_externalv1_set_bids_model_request): \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ResourceOutcome
+setKeywordBids($id, $set_bids_model_request): \criteo\api\retailmedia\v2023_07\Model\ResourceOutcome
 ```
 
 
@@ -4007,11 +4007,11 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | Long external id of the associated line item
-$retail_media_externalv1_set_bids_model_request = new \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1SetBidsModelRequest(); // \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1SetBidsModelRequest | Object containing a list of bid overrides for associated keywords
+$id = 'id_example'; // string | ID of the line item
+$set_bids_model_request = new \criteo\api\retailmedia\v2023_07\Model\SetBidsModelRequest(); // \criteo\api\retailmedia\v2023_07\Model\SetBidsModelRequest
 
 try {
-    $result = $apiInstance->setKeywordBids($id, $retail_media_externalv1_set_bids_model_request);
+    $result = $apiInstance->setKeywordBids($id, $set_bids_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->setKeywordBids: ', $e->getMessage(), PHP_EOL;
@@ -4022,12 +4022,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| Long external id of the associated line item | |
-| **retail_media_externalv1_set_bids_model_request** | [**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1SetBidsModelRequest**](../Model/RetailMediaExternalv1SetBidsModelRequest.md)| Object containing a list of bid overrides for associated keywords | [optional] |
+| **id** | **string**| ID of the line item | |
+| **set_bids_model_request** | [**\criteo\api\retailmedia\v2023_07\Model\SetBidsModelRequest**](../Model/SetBidsModelRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ResourceOutcome**](../Model/RetailMediaExternalv1ResourceOutcome.md)
+[**\criteo\api\retailmedia\v2023_07\Model\ResourceOutcome**](../Model/ResourceOutcome.md)
 
 ### Authorization
 
@@ -4036,7 +4036,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -4045,12 +4045,12 @@ try {
 ## `submitProposal()`
 
 ```php
-submitProposal($id): \criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ProposalStatusModelResponse
+submitProposal($id): \criteo\api\retailmedia\v2023_07\Model\ProposalStatusModelResponse
 ```
 
 
 
-Submit a proposal to modify a Preferred Deal Line Item for review.
+Only the components of the Line Item that are in a valid state will be reviewed.
 
 ### Example
 
@@ -4072,7 +4072,7 @@ $apiInstance = new criteo\api\retailmedia\v2023_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 'id_example'; // string | The external id of a line item.
+$id = 'id_example'; // string | ID of the line item
 
 try {
     $result = $apiInstance->submitProposal($id);
@@ -4086,11 +4086,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| The external id of a line item. | |
+| **id** | **string**| ID of the line item | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2023_07\Model\RetailMediaExternalv1ProposalStatusModelResponse**](../Model/RetailMediaExternalv1ProposalStatusModelResponse.md)
+[**\criteo\api\retailmedia\v2023_07\Model\ProposalStatusModelResponse**](../Model/ProposalStatusModelResponse.md)
 
 ### Authorization
 
@@ -4099,7 +4099,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

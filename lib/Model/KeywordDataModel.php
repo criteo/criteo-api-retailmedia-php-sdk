@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1ListResponse
+ * KeywordDataModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1ListResponse Class Doc Comment
+ * KeywordDataModel Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * @description A single keyword and associated bid override
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1ListResponse';
+    protected static $openAPIModelName = 'KeywordDataModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]',
-        'warnings' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]'
+        'review_state' => '\criteo\api\retailmedia\v2023_07\Model\ReviewStateModel',
+        'match_type' => '\criteo\api\retailmedia\v2023_07\Model\MatchTypeModel',
+        'bid' => 'float',
+        'input_keywords' => '\criteo\api\retailmedia\v2023_07\Model\InputKeywordsModel',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -71,9 +74,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'review_state' => null,
+        'match_type' => null,
+        'bid' => 'double',
+        'input_keywords' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -82,9 +88,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'review_state' => false,
+		'match_type' => false,
+		'bid' => true,
+		'input_keywords' => false,
+		'created_at' => true,
+		'updated_at' => true
     ];
 
     /**
@@ -173,9 +182,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'review_state' => 'reviewState',
+        'match_type' => 'matchType',
+        'bid' => 'bid',
+        'input_keywords' => 'inputKeywords',
+        'created_at' => 'createdAt',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -184,9 +196,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'review_state' => 'setReviewState',
+        'match_type' => 'setMatchType',
+        'bid' => 'setBid',
+        'input_keywords' => 'setInputKeywords',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -195,9 +210,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'review_state' => 'getReviewState',
+        'match_type' => 'getMatchType',
+        'bid' => 'getBid',
+        'input_keywords' => 'getInputKeywords',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -257,9 +275,12 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('review_state', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
+        $this->setIfExists('bid', $data ?? [], null);
+        $this->setIfExists('input_keywords', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -305,103 +326,184 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets data
+     * Gets review_state
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\ReviewStateModel|null
      */
-    public function getData()
+    public function getReviewState()
     {
-        return $this->container['data'];
+        return $this->container['review_state'];
     }
 
     /**
-     * Sets data
+     * Sets review_state
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null $data data
+     * @param \criteo\api\retailmedia\v2023_07\Model\ReviewStateModel|null $review_state review_state
      *
      * @return self
      */
-    public function setData($data)
+    public function setReviewState($review_state)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($review_state)) {
+            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['review_state'] = $review_state;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets match_type
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\MatchTypeModel|null
      */
-    public function getWarnings()
+    public function getMatchType()
     {
-        return $this->container['warnings'];
+        return $this->container['match_type'];
     }
 
     /**
-     * Sets warnings
+     * Sets match_type
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2023_07\Model\MatchTypeModel|null $match_type match_type
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setMatchType($match_type)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($match_type)) {
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['match_type'] = $match_type;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets bid
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
+     * @return float|null
      */
-    public function getErrors()
+    public function getBid()
     {
-        return $this->container['errors'];
+        return $this->container['bid'];
     }
 
     /**
-     * Sets errors
+     * Sets bid
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $errors errors
+     * @param float|null $bid bid
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setBid($bid)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($bid)) {
+            array_push($this->openAPINullablesSetToNull, 'bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['bid'] = $bid;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_keywords
+     *
+     * @return \criteo\api\retailmedia\v2023_07\Model\InputKeywordsModel|null
+     */
+    public function getInputKeywords()
+    {
+        return $this->container['input_keywords'];
+    }
+
+    /**
+     * Sets input_keywords
+     *
+     * @param \criteo\api\retailmedia\v2023_07\Model\InputKeywordsModel|null $input_keywords input_keywords
+     *
+     * @return self
+     */
+    public function setInputKeywords($input_keywords)
+    {
+        if (is_null($input_keywords)) {
+            throw new \InvalidArgumentException('non-nullable input_keywords cannot be null');
+        }
+        $this->container['input_keywords'] = $input_keywords;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

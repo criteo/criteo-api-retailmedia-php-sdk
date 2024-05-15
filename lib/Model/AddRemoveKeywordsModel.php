@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1ListResponse
+ * AddRemoveKeywordsModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1ListResponse Class Doc Comment
+ * AddRemoveKeywordsModel Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * @description Data model containing keywords to be added or removed from a line item
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddRemoveKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1ListResponse';
+    protected static $openAPIModelName = 'AddRemoveKeywordsModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]',
-        'warnings' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]'
+        'keywords' => '\criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordModel[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'keywords' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'keywords' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'keywords' => 'keywords'
     ];
 
     /**
@@ -184,9 +176,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'keywords' => 'setKeywords'
     ];
 
     /**
@@ -195,9 +185,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'keywords' => 'getKeywords'
     ];
 
     /**
@@ -257,9 +245,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('keywords', $data ?? [], null);
     }
 
     /**
@@ -305,103 +291,35 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets data
+     * Gets keywords
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordModel[]|null
      */
-    public function getData()
+    public function getKeywords()
     {
-        return $this->container['data'];
+        return $this->container['keywords'];
     }
 
     /**
-     * Sets data
+     * Sets keywords
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null $data data
+     * @param \criteo\api\retailmedia\v2023_07\Model\AddRemoveKeywordModel[]|null $keywords keywords
      *
      * @return self
      */
-    public function setData($data)
+    public function setKeywords($keywords)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($keywords)) {
+            array_push($this->openAPINullablesSetToNull, 'keywords');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('keywords', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
+        $this->container['keywords'] = $keywords;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * RmLegacyAudienceGetEntityV1ListResponse
+ * KeywordsModelResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2023_07\ObjectSerializer;
 
 /**
- * RmLegacyAudienceGetEntityV1ListResponse Class Doc Comment
+ * KeywordsModelResponse Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * @description Response object containing keywords associated with a line item.
  * @package  criteo\api\retailmedia\v2023_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmLegacyAudienceGetEntityV1ListResponse';
+    protected static $openAPIModelName = 'KeywordsModelResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]',
-        'warnings' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2023_07\Model\CommonProblem[]'
+        'errors' => '\criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]',
+        'data' => '\criteo\api\retailmedia\v2023_07\Model\KeywordsModelResource'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
+        'errors' => null,
         'warnings' => null,
-        'errors' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
+        'errors' => true,
 		'warnings' => true,
-		'errors' => true
+		'data' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
+        'errors' => 'errors',
         'warnings' => 'warnings',
-        'errors' => 'errors'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
+        'errors' => 'setErrors',
         'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
+        'errors' => 'getErrors',
         'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'data' => 'getData'
     ];
 
     /**
@@ -257,9 +257,9 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -305,35 +305,35 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets data
+     * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]|null
      */
-    public function getData()
+    public function getErrors()
     {
-        return $this->container['data'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets data
+     * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\RmLegacyAudienceGetEntityV1Resource[]|null $data data
+     * @param \criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setData($data)
+    public function setErrors($errors)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
@@ -341,7 +341,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -351,7 +351,7 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2023_07\Model\RmcaCommonProblem[]|null $warnings warnings
      *
      * @return self
      */
@@ -373,35 +373,28 @@ class RmLegacyAudienceGetEntityV1ListResponse implements ModelInterface, ArrayAc
     }
 
     /**
-     * Gets errors
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2023_07\Model\KeywordsModelResource|null
      */
-    public function getErrors()
+    public function getData()
     {
-        return $this->container['errors'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets errors
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\v2023_07\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2023_07\Model\KeywordsModelResource|null $data data
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setData($data)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['data'] = $data;
 
         return $this;
     }
