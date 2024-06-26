@@ -1767,7 +1767,7 @@ try {
 ## `getApiV1ExternalCatalogOutputByCatalogId()`
 
 ```php
-getApiV1ExternalCatalogOutputByCatalogId($catalog_id)
+getApiV1ExternalCatalogOutputByCatalogId($catalog_id): \SplFileObject
 ```
 
 
@@ -1797,7 +1797,8 @@ $apiInstance = new criteo\api\retailmedia\v2023_04\Api\CampaignApi(
 $catalog_id = 'catalog_id_example'; // string | A catalog ID returned from an account catalog request.
 
 try {
-    $apiInstance->getApiV1ExternalCatalogOutputByCatalogId($catalog_id);
+    $result = $apiInstance->getApiV1ExternalCatalogOutputByCatalogId($catalog_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getApiV1ExternalCatalogOutputByCatalogId: ', $e->getMessage(), PHP_EOL;
 }
@@ -1811,7 +1812,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+**\SplFileObject**
 
 ### Authorization
 
