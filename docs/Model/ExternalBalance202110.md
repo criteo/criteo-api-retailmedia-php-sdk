@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **status** | **string** |  |
 **created_at** | **\DateTime** |  |
 **updated_at** | **\DateTime** |  |
+**private_market_billing_type** | **string** | Billing type for Private Market. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

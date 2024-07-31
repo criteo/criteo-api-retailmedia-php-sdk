@@ -68,7 +68,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'end_date' => '\DateTime',
         'status' => 'string',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'private_market_billing_type' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'end_date' => 'date',
         'status' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'private_market_billing_type' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
 		'end_date' => true,
 		'status' => false,
 		'created_at' => false,
-		'updated_at' => false
+		'updated_at' => false,
+		'private_market_billing_type' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'end_date' => 'endDate',
         'status' => 'status',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'private_market_billing_type' => 'privateMarketBillingType'
     ];
 
     /**
@@ -226,7 +230,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'end_date' => 'setEndDate',
         'status' => 'setStatus',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'private_market_billing_type' => 'setPrivateMarketBillingType'
     ];
 
     /**
@@ -245,7 +250,8 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         'end_date' => 'getEndDate',
         'status' => 'getStatus',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'private_market_billing_type' => 'getPrivateMarketBillingType'
     ];
 
     /**
@@ -293,6 +299,10 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
     public const STATUS_SCHEDULED = 'scheduled';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_ENDED = 'ended';
+    public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'NotApplicable';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'BillByRetailer';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'BillByCriteo';
+    public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'Unknown';
 
     /**
      * Gets allowable values of the enum
@@ -306,6 +316,21 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
             self::STATUS_SCHEDULED,
             self::STATUS_ACTIVE,
             self::STATUS_ENDED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPrivateMarketBillingTypeAllowableValues()
+    {
+        return [
+            self::PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE,
+            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER,
+            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO,
+            self::PRIVATE_MARKET_BILLING_TYPE_UNKNOWN,
         ];
     }
 
@@ -335,6 +360,7 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('private_market_billing_type', $data ?? [], null);
     }
 
     /**
@@ -403,6 +429,18 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
+        if ($this->container['private_market_billing_type'] === null) {
+            $invalidProperties[] = "'private_market_billing_type' can't be null";
+        }
+        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
+        if (!is_null($this->container['private_market_billing_type']) && !in_array($this->container['private_market_billing_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
+                $this->container['private_market_billing_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -749,6 +787,43 @@ class ExternalBalance202110 implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets private_market_billing_type
+     *
+     * @return string
+     */
+    public function getPrivateMarketBillingType()
+    {
+        return $this->container['private_market_billing_type'];
+    }
+
+    /**
+     * Sets private_market_billing_type
+     *
+     * @param string $private_market_billing_type Billing type for Private Market.
+     *
+     * @return self
+     */
+    public function setPrivateMarketBillingType($private_market_billing_type)
+    {
+        if (is_null($private_market_billing_type)) {
+            throw new \InvalidArgumentException('non-nullable private_market_billing_type cannot be null');
+        }
+        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
+        if (!in_array($private_market_billing_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
+                    $private_market_billing_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['private_market_billing_type'] = $private_market_billing_type;
 
         return $this;
     }
