@@ -296,6 +296,9 @@ class JsonApiPageResponseOfRetailer implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
+        }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
         }
@@ -371,7 +374,7 @@ class JsonApiPageResponseOfRetailer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets metadata
      *
-     * @return \criteo\api\retailmedia\v2024_04\Model\PageMetadata|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\PageMetadata
      */
     public function getMetadata()
     {
@@ -381,7 +384,7 @@ class JsonApiPageResponseOfRetailer implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metadata
      *
-     * @param \criteo\api\retailmedia\v2024_04\Model\PageMetadata|null $metadata metadata
+     * @param \criteo\api\retailmedia\v2024_04\Model\PageMetadata $metadata metadata
      *
      * @return self
      */
