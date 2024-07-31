@@ -336,6 +336,8 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
+    public const DIMENSIONS_PAGE_CATEGORY = 'pageCategory';
+    public const DIMENSIONS_TAXONOMY_BREADCRUMB = 'taxonomyBreadcrumb';
     public const DIMENSIONS_KEYWORD = 'keyword';
     public const DIMENSIONS_SEARCH_TERM = 'searchTerm';
     public const METRICS_IMPRESSIONS = 'impressions';
@@ -466,6 +468,8 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_SALES_CHANNEL,
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_PAGE_TYPE_NAME,
+            self::DIMENSIONS_PAGE_CATEGORY,
+            self::DIMENSIONS_TAXONOMY_BREADCRUMB,
             self::DIMENSIONS_KEYWORD,
             self::DIMENSIONS_SEARCH_TERM,
         ];

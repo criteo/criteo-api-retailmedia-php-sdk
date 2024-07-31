@@ -243,12 +243,12 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
 
     public const OPERATION_ADD = 'add';
     public const OPERATION_REMOVE = 'remove';
-    public const IDENTIFIER_TYPE_EMAIL = 'email';
-    public const IDENTIFIER_TYPE_MADID = 'madid';
-    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'identityLink';
-    public const IDENTIFIER_TYPE_GUM = 'gum';
-    public const IDENTIFIER_TYPE_CUSTOMERID = 'customerid';
-    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'phoneNumber';
+    public const IDENTIFIER_TYPE_EMAIL = 'Email';
+    public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
+    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
+    public const IDENTIFIER_TYPE_GUM = 'Gum';
+    public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
 
     /**
      * Gets allowable values of the enum
@@ -272,10 +272,10 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
     {
         return [
             self::IDENTIFIER_TYPE_EMAIL,
-            self::IDENTIFIER_TYPE_MADID,
+            self::IDENTIFIER_TYPE_USER_IDENTIFIER,
             self::IDENTIFIER_TYPE_IDENTITY_LINK,
             self::IDENTIFIER_TYPE_GUM,
-            self::IDENTIFIER_TYPE_CUSTOMERID,
+            self::IDENTIFIER_TYPE_CUSTOMER_ID,
             self::IDENTIFIER_TYPE_PHONE_NUMBER,
         ];
     }

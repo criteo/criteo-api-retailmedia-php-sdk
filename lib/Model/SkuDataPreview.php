@@ -433,6 +433,9 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
+        if ($this->container['category_id'] === null) {
+            $invalidProperties[] = "'category_id' can't be null";
+        }
         if (!is_null($this->container['category']) && (mb_strlen($this->container['category']) > 1000)) {
             $invalidProperties[] = "invalid value for 'category', the character length must be smaller than or equal to 1000.";
         }
@@ -584,7 +587,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category_id
      *
-     * @return string|null
+     * @return string
      */
     public function getCategoryId()
     {
@@ -594,7 +597,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_id
      *
-     * @param string|null $category_id The category Id.
+     * @param string $category_id The category Id.
      *
      * @return self
      */

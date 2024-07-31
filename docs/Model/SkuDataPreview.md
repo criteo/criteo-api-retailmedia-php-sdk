@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **sku_key** | **string** | The product SKU Key. |
 **name** | **string** | A short product name. | [optional]
 **description** | **string** | A product description. | [optional]
-**category_id** | **string** | The category Id. | [optional]
+**category_id** | **string** | The category Id. |
 **category** | **string** | The full category breadcrumb in the retailers catalog. | [optional]
 **is_seller_sku** | **bool** | An indication of if the sku is seller sku. | [optional]
 **is_buybox** | **bool** | Whether the Sku is a Buybox Winner. | [optional]

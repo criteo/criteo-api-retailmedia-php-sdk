@@ -296,6 +296,9 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
+        }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
         }
@@ -371,7 +374,7 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets metadata
      *
-     * @return \criteo\api\retailmedia\preview\Model\PageMetadata|null
+     * @return \criteo\api\retailmedia\preview\Model\PageMetadata
      */
     public function getMetadata()
     {
@@ -381,7 +384,7 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets metadata
      *
-     * @param \criteo\api\retailmedia\preview\Model\PageMetadata|null $metadata metadata
+     * @param \criteo\api\retailmedia\preview\Model\PageMetadata $metadata metadata
      *
      * @return self
      */

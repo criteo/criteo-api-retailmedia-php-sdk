@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | A short product name. | [optional]
-**category_id** | **string** | The category Id. | [optional]
+**category_id** | **string** | The category Id. |
 **global_category_id** | **string** | The global category Id. | [optional]
 **category** | **string** | The full category breadcrumb in the retailers catalog. | [optional]
 **global_brand_id** | **string** | The global brand id associated to the product. |
