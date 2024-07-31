@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **balance_type** | **string** | Type of the balance |
 **sales_force_id** | **string** | SalesForceId the balance is linked to. |
 **spend_type** | **string** | Spend Type of the balance. |
+**private_market_billing_type** | **string** | Billing type for Private Market. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

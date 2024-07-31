@@ -4,8 +4,10 @@
 .travis.yml
 README.md
 composer.json
+docs/Api/AccountsApi.md
 docs/Api/AnalyticsApi.md
 docs/Api/AudienceApi.md
+docs/Api/BalanceApi.md
 docs/Api/CampaignApi.md
 docs/Api/GatewayApi.md
 docs/Model/AddFundsToBalanceRequest.md
@@ -211,8 +213,10 @@ docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
 git_push.sh
+lib/Api/AccountsApi.php
 lib/Api/AnalyticsApi.php
 lib/Api/AudienceApi.php
+lib/Api/BalanceApi.php
 lib/Api/CampaignApi.php
 lib/Api/GatewayApi.php
 lib/ApiException.php
