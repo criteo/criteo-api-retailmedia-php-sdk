@@ -4,12 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ids** | **string[]** | Campaign ids to report on | [optional]
-**id** | **string** | Campaign id to report on | [optional]
+**ids** | **string[]** | Supply account ids to report on | [optional]
+**id** | **string** | Supply account id to report on | [optional]
 **report_type** | **string** | Type of report | [optional]
 **revenue_type** | **string** | Type of revenue | [optional]
 **sold_by** | **string** | Filter on the seller: Indirect Sold, Direct Sold or Private Market | [optional]
 **buy_type** | **string** | Filter on buy type: Auction, Preferred Deals or Sponsorship | [optional]
+**advertiser_types** | **string[]** | Filter on the type of advertiser: retailer, brand, seller | [optional]
 **sku_relations** | **string[]** | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller | [optional]
 **format** | **string** | Format of the output | [optional]
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']

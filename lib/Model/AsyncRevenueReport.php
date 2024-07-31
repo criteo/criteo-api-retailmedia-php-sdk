@@ -64,6 +64,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'revenue_type' => 'string',
         'sold_by' => 'string',
         'buy_type' => 'string',
+        'advertiser_types' => 'string[]',
         'sku_relations' => 'string[]',
         'format' => 'string',
         'campaign_type' => 'string',
@@ -91,6 +92,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'revenue_type' => null,
         'sold_by' => null,
         'buy_type' => null,
+        'advertiser_types' => null,
         'sku_relations' => null,
         'format' => null,
         'campaign_type' => null,
@@ -116,6 +118,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'revenue_type' => true,
 		'sold_by' => true,
 		'buy_type' => true,
+		'advertiser_types' => true,
 		'sku_relations' => true,
 		'format' => true,
 		'campaign_type' => true,
@@ -221,6 +224,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'revenue_type' => 'revenueType',
         'sold_by' => 'soldBy',
         'buy_type' => 'buyType',
+        'advertiser_types' => 'advertiserTypes',
         'sku_relations' => 'skuRelations',
         'format' => 'format',
         'campaign_type' => 'campaignType',
@@ -246,6 +250,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'revenue_type' => 'setRevenueType',
         'sold_by' => 'setSoldBy',
         'buy_type' => 'setBuyType',
+        'advertiser_types' => 'setAdvertiserTypes',
         'sku_relations' => 'setSkuRelations',
         'format' => 'setFormat',
         'campaign_type' => 'setCampaignType',
@@ -271,6 +276,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'revenue_type' => 'getRevenueType',
         'sold_by' => 'getSoldBy',
         'buy_type' => 'getBuyType',
+        'advertiser_types' => 'getAdvertiserTypes',
         'sku_relations' => 'getSkuRelations',
         'format' => 'getFormat',
         'campaign_type' => 'getCampaignType',
@@ -338,6 +344,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const BUY_TYPE_AUCTION = 'auction';
     public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
     public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
+    public const ADVERTISER_TYPES_RETAILER = 'retailer';
+    public const ADVERTISER_TYPES_BRAND = 'brand';
+    public const ADVERTISER_TYPES_SELLER = 'seller';
     public const SKU_RELATIONS_SAME_SKU = 'sameSku';
     public const SKU_RELATIONS_SAME_PARENT_SKU = 'sameParentSku';
     public const SKU_RELATIONS_SAME_CATEGORY = 'sameCategory';
@@ -368,6 +377,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
     public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_ACCOUNT_TYPE_NAME = 'accountTypeName';
+    public const DIMENSIONS_ADVERTISER_TYPE = 'advertiserType';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_CAMPAIGN_TYPE_NAME = 'campaignTypeName';
@@ -391,6 +401,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_ADV_PRODUCT_GTIN = 'advProductGtin';
     public const DIMENSIONS_ADV_PRODUCT_MPN = 'advProductMpn';
+    public const DIMENSIONS_BUY_TYPE = 'buyType';
     public const DIMENSIONS_SOLD_BY = 'soldBy';
     public const DIMENSIONS_SALE_CHANNEL = 'saleChannel';
     public const DIMENSIONS_ATTRIBUTION_SETTINGS = 'attributionSettings';
@@ -428,6 +439,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METRICS_TRANSACTIONS = 'transactions';
     public const METRICS_ASSISTED_SALES = 'assistedSales';
     public const METRICS_ASSISTED_UNITS = 'assistedUnits';
+    public const METRICS_REVENUE = 'revenue';
     public const METRICS_OPEN_AUCTION_REVENUE = 'openAuctionRevenue';
     public const METRICS_PREFERRED_DEALS_REVENUE = 'preferredDealsRevenue';
     public const METRICS_CTR = 'ctr';
@@ -502,6 +514,20 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::BUY_TYPE_AUCTION,
             self::BUY_TYPE_PREFERRED_DEALS,
             self::BUY_TYPE_SPONSORSHIP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdvertiserTypesAllowableValues()
+    {
+        return [
+            self::ADVERTISER_TYPES_RETAILER,
+            self::ADVERTISER_TYPES_BRAND,
+            self::ADVERTISER_TYPES_SELLER,
         ];
     }
 
@@ -609,6 +635,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_ACCOUNT_ID,
             self::DIMENSIONS_ACCOUNT_NAME,
             self::DIMENSIONS_ACCOUNT_TYPE_NAME,
+            self::DIMENSIONS_ADVERTISER_TYPE,
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_CAMPAIGN_TYPE_NAME,
@@ -632,6 +659,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_ADV_PRODUCT_GTIN,
             self::DIMENSIONS_ADV_PRODUCT_MPN,
+            self::DIMENSIONS_BUY_TYPE,
             self::DIMENSIONS_SOLD_BY,
             self::DIMENSIONS_SALE_CHANNEL,
             self::DIMENSIONS_ATTRIBUTION_SETTINGS,
@@ -680,6 +708,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METRICS_TRANSACTIONS,
             self::METRICS_ASSISTED_SALES,
             self::METRICS_ASSISTED_UNITS,
+            self::METRICS_REVENUE,
             self::METRICS_OPEN_AUCTION_REVENUE,
             self::METRICS_PREFERRED_DEALS_REVENUE,
             self::METRICS_CTR,
@@ -723,6 +752,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('revenue_type', $data ?? [], null);
         $this->setIfExists('sold_by', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
+        $this->setIfExists('advertiser_types', $data ?? [], null);
         $this->setIfExists('sku_relations', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
@@ -878,7 +908,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets ids
      *
-     * @param string[]|null $ids Campaign ids to report on
+     * @param string[]|null $ids Supply account ids to report on
      *
      * @return self
      */
@@ -912,7 +942,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string|null $id Campaign id to report on
+     * @param string|null $id Supply account id to report on
      *
      * @return self
      */
@@ -1105,6 +1135,49 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['buy_type'] = $buy_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertiser_types
+     *
+     * @return string[]|null
+     */
+    public function getAdvertiserTypes()
+    {
+        return $this->container['advertiser_types'];
+    }
+
+    /**
+     * Sets advertiser_types
+     *
+     * @param string[]|null $advertiser_types Filter on the type of advertiser: retailer, brand, seller
+     *
+     * @return self
+     */
+    public function setAdvertiserTypes($advertiser_types)
+    {
+        if (is_null($advertiser_types)) {
+            array_push($this->openAPINullablesSetToNull, 'advertiser_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('advertiser_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getAdvertiserTypesAllowableValues();
+        if (!is_null($advertiser_types) && array_diff($advertiser_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'advertiser_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['advertiser_types'] = $advertiser_types;
 
         return $this;
     }
