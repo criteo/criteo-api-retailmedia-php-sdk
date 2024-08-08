@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceSegmentSearchEntityV1
+ * RmUserBehaviorV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RmAudienceSegmentSearchEntityV1 Class Doc Comment
+ * RmUserBehaviorV1 Class Doc Comment
  *
  * @category Class
- * @description Available filters to perform a search on audience segments. If present, the filters are AND&#39;ed together when applied.
+ * @description Settings to target users based on their behavior
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RmUserBehaviorV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceSegmentSearchEntityV1';
+    protected static $openAPIModelName = 'RmUserBehaviorV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'audience_segment_ids' => 'string[]',
-        'retailer_ids' => 'string[]',
-        'audience_segment_types' => 'string[]'
+        'shopper_activity' => 'string',
+        'lookback_days' => 'string',
+        'category_ids' => 'string[]',
+        'brand_ids' => 'string[]',
+        'min_price' => 'float',
+        'max_price' => 'float'
     ];
 
     /**
@@ -71,9 +74,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'audience_segment_ids' => null,
-        'retailer_ids' => null,
-        'audience_segment_types' => null
+        'shopper_activity' => null,
+        'lookback_days' => null,
+        'category_ids' => null,
+        'brand_ids' => null,
+        'min_price' => 'double',
+        'max_price' => 'double'
     ];
 
     /**
@@ -82,9 +88,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'audience_segment_ids' => true,
-		'retailer_ids' => true,
-		'audience_segment_types' => true
+        'shopper_activity' => true,
+		'lookback_days' => true,
+		'category_ids' => true,
+		'brand_ids' => true,
+		'min_price' => true,
+		'max_price' => true
     ];
 
     /**
@@ -173,9 +182,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'audience_segment_ids' => 'audienceSegmentIds',
-        'retailer_ids' => 'retailerIds',
-        'audience_segment_types' => 'audienceSegmentTypes'
+        'shopper_activity' => 'shopperActivity',
+        'lookback_days' => 'lookbackDays',
+        'category_ids' => 'categoryIds',
+        'brand_ids' => 'brandIds',
+        'min_price' => 'minPrice',
+        'max_price' => 'maxPrice'
     ];
 
     /**
@@ -184,9 +196,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'audience_segment_ids' => 'setAudienceSegmentIds',
-        'retailer_ids' => 'setRetailerIds',
-        'audience_segment_types' => 'setAudienceSegmentTypes'
+        'shopper_activity' => 'setShopperActivity',
+        'lookback_days' => 'setLookbackDays',
+        'category_ids' => 'setCategoryIds',
+        'brand_ids' => 'setBrandIds',
+        'min_price' => 'setMinPrice',
+        'max_price' => 'setMaxPrice'
     ];
 
     /**
@@ -195,9 +210,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'audience_segment_ids' => 'getAudienceSegmentIds',
-        'retailer_ids' => 'getRetailerIds',
-        'audience_segment_types' => 'getAudienceSegmentTypes'
+        'shopper_activity' => 'getShopperActivity',
+        'lookback_days' => 'getLookbackDays',
+        'category_ids' => 'getCategoryIds',
+        'brand_ids' => 'getBrandIds',
+        'min_price' => 'getMinPrice',
+        'max_price' => 'getMaxPrice'
     ];
 
     /**
@@ -241,21 +259,54 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    public const AUDIENCE_SEGMENT_TYPES_UNKNOWN = 'Unknown';
-    public const AUDIENCE_SEGMENT_TYPES_CONTACT_LIST = 'ContactList';
-    public const AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR = 'UserBehavior';
+    public const SHOPPER_ACTIVITY_UNKNOWN = 'Unknown';
+    public const SHOPPER_ACTIVITY_VIEW = 'View';
+    public const SHOPPER_ACTIVITY_BUY = 'Buy';
+    public const SHOPPER_ACTIVITY_ADD_TO_CART = 'AddToCart';
+    public const LOOKBACK_DAYS_UNKNOWN = 'Unknown';
+    public const LOOKBACK_DAYS_LAST7_DAYS = 'Last7Days';
+    public const LOOKBACK_DAYS_LAST14_DAYS = 'Last14Days';
+    public const LOOKBACK_DAYS_LAST30_DAYS = 'Last30Days';
+    public const LOOKBACK_DAYS_LAST45_DAYS = 'Last45Days';
+    public const LOOKBACK_DAYS_LAST60_DAYS = 'Last60Days';
+    public const LOOKBACK_DAYS_LAST90_DAYS = 'Last90Days';
+    public const LOOKBACK_DAYS_LAST120_DAYS = 'Last120Days';
+    public const LOOKBACK_DAYS_LAST150_DAYS = 'Last150Days';
+    public const LOOKBACK_DAYS_LAST180_DAYS = 'Last180Days';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getAudienceSegmentTypesAllowableValues()
+    public function getShopperActivityAllowableValues()
     {
         return [
-            self::AUDIENCE_SEGMENT_TYPES_UNKNOWN,
-            self::AUDIENCE_SEGMENT_TYPES_CONTACT_LIST,
-            self::AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR,
+            self::SHOPPER_ACTIVITY_UNKNOWN,
+            self::SHOPPER_ACTIVITY_VIEW,
+            self::SHOPPER_ACTIVITY_BUY,
+            self::SHOPPER_ACTIVITY_ADD_TO_CART,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLookbackDaysAllowableValues()
+    {
+        return [
+            self::LOOKBACK_DAYS_UNKNOWN,
+            self::LOOKBACK_DAYS_LAST7_DAYS,
+            self::LOOKBACK_DAYS_LAST14_DAYS,
+            self::LOOKBACK_DAYS_LAST30_DAYS,
+            self::LOOKBACK_DAYS_LAST45_DAYS,
+            self::LOOKBACK_DAYS_LAST60_DAYS,
+            self::LOOKBACK_DAYS_LAST90_DAYS,
+            self::LOOKBACK_DAYS_LAST120_DAYS,
+            self::LOOKBACK_DAYS_LAST150_DAYS,
+            self::LOOKBACK_DAYS_LAST180_DAYS,
         ];
     }
 
@@ -274,9 +325,12 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('audience_segment_ids', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('audience_segment_types', $data ?? [], null);
+        $this->setIfExists('shopper_activity', $data ?? [], null);
+        $this->setIfExists('lookback_days', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('max_price', $data ?? [], null);
     }
 
     /**
@@ -306,6 +360,24 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                $this->container['shopper_activity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'lookback_days', must be one of '%s'",
+                $this->container['lookback_days'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -322,112 +394,225 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets audience_segment_ids
+     * Gets shopper_activity
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getAudienceSegmentIds()
+    public function getShopperActivity()
     {
-        return $this->container['audience_segment_ids'];
+        return $this->container['shopper_activity'];
     }
 
     /**
-     * Sets audience_segment_ids
+     * Sets shopper_activity
      *
-     * @param string[]|null $audience_segment_ids List of segment ids
+     * @param string|null $shopper_activity Reach people who performed specific action
      *
      * @return self
      */
-    public function setAudienceSegmentIds($audience_segment_ids)
+    public function setShopperActivity($shopper_activity)
     {
-        if (is_null($audience_segment_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_segment_ids');
+        if (is_null($shopper_activity)) {
+            array_push($this->openAPINullablesSetToNull, 'shopper_activity');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_segment_ids', $nullablesSetToNull);
+            $index = array_search('shopper_activity', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['audience_segment_ids'] = $audience_segment_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_ids
-     *
-     * @return string[]|null
-     */
-    public function getRetailerIds()
-    {
-        return $this->container['retailer_ids'];
-    }
-
-    /**
-     * Sets retailer_ids
-     *
-     * @param string[]|null $retailer_ids List of retailer ids
-     *
-     * @return self
-     */
-    public function setRetailerIds($retailer_ids)
-    {
-        if (is_null($retailer_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets audience_segment_types
-     *
-     * @return string[]|null
-     */
-    public function getAudienceSegmentTypes()
-    {
-        return $this->container['audience_segment_types'];
-    }
-
-    /**
-     * Sets audience_segment_types
-     *
-     * @param string[]|null $audience_segment_types List of segment types
-     *
-     * @return self
-     */
-    public function setAudienceSegmentTypes($audience_segment_types)
-    {
-        if (is_null($audience_segment_types)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_segment_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_segment_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getAudienceSegmentTypesAllowableValues();
-        if (!is_null($audience_segment_types) && array_diff($audience_segment_types, $allowedValues)) {
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!is_null($shopper_activity) && !in_array($shopper_activity, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'audience_segment_types', must be one of '%s'",
+                    "Invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                    $shopper_activity,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['audience_segment_types'] = $audience_segment_types;
+        $this->container['shopper_activity'] = $shopper_activity;
+
+        return $this;
+    }
+
+    /**
+     * Gets lookback_days
+     *
+     * @return string|null
+     */
+    public function getLookbackDays()
+    {
+        return $this->container['lookback_days'];
+    }
+
+    /**
+     * Sets lookback_days
+     *
+     * @param string|null $lookback_days The number of days to look back
+     *
+     * @return self
+     */
+    public function setLookbackDays($lookback_days)
+    {
+        if (is_null($lookback_days)) {
+            array_push($this->openAPINullablesSetToNull, 'lookback_days');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lookback_days', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!is_null($lookback_days) && !in_array($lookback_days, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_days', must be one of '%s'",
+                    $lookback_days,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_days'] = $lookback_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return string[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param string[]|null $category_ids The list of category ids
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['category_ids'] = $category_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_ids
+     *
+     * @return string[]|null
+     */
+    public function getBrandIds()
+    {
+        return $this->container['brand_ids'];
+    }
+
+    /**
+     * Sets brand_ids
+     *
+     * @param string[]|null $brand_ids The list of brand ids
+     *
+     * @return self
+     */
+    public function setBrandIds($brand_ids)
+    {
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_price
+     *
+     * @return float|null
+     */
+    public function getMinPrice()
+    {
+        return $this->container['min_price'];
+    }
+
+    /**
+     * Sets min_price
+     *
+     * @param float|null $min_price Minimum price of the products
+     *
+     * @return self
+     */
+    public function setMinPrice($min_price)
+    {
+        if (is_null($min_price)) {
+            array_push($this->openAPINullablesSetToNull, 'min_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('min_price', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['min_price'] = $min_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_price
+     *
+     * @return float|null
+     */
+    public function getMaxPrice()
+    {
+        return $this->container['max_price'];
+    }
+
+    /**
+     * Sets max_price
+     *
+     * @param float|null $max_price Maximum price of the products
+     *
+     * @return self
+     */
+    public function setMaxPrice($max_price)
+    {
+        if (is_null($max_price)) {
+            array_push($this->openAPINullablesSetToNull, 'max_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_price', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['max_price'] = $max_price;
 
         return $this;
     }

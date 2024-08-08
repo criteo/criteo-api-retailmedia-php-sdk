@@ -2264,7 +2264,7 @@ class AudienceApi
      * Operation searchV1
      *
      * @param  string $account_id Account Id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment creation parameter (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchV1'] to see the possible values for this operation
@@ -2283,7 +2283,7 @@ class AudienceApi
      * Operation searchV1WithHttpInfo
      *
      * @param  string $account_id Account Id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment creation parameter (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchV1'] to see the possible values for this operation
@@ -2384,7 +2384,7 @@ class AudienceApi
      * Operation searchV1Async
      *
      * @param  string $account_id Account Id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment creation parameter (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchV1'] to see the possible values for this operation
@@ -2406,7 +2406,7 @@ class AudienceApi
      * Operation searchV1AsyncWithHttpInfo
      *
      * @param  string $account_id Account Id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment creation parameter (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchV1'] to see the possible values for this operation
@@ -2459,7 +2459,7 @@ class AudienceApi
      * Create request for operation 'searchV1'
      *
      * @param  string $account_id Account Id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment creation parameter (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchV1'] to see the possible values for this operation

@@ -483,7 +483,7 @@ searchV1($account_id, $rm_audience_segment_search_input_v1, $limit, $offset): \c
 
 
 
-Search segments based on the provided filters.( by ids or retailer ids)
+Returns a list of segments that match the provided filters. If present, the filters are AND'ed together when applied.
 
 ### Example
 
@@ -506,7 +506,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id
-$rm_audience_segment_search_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 | Segment creation parameter
+$rm_audience_segment_search_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 | Segment search filters.
 $limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 100.
 $offset = 0; // int | The (zero-based) offset into the collection. The default is 0.
 
@@ -523,7 +523,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
-| **rm_audience_segment_search_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1**](../Model/RmAudienceSegmentSearchInputV1.md)| Segment creation parameter | |
+| **rm_audience_segment_search_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1**](../Model/RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
 | **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
 | **offset** | **int**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 

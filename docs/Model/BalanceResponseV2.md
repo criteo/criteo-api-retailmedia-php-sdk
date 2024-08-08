@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **deposited** | **float** | Amount of billable funds allotted to the balance. | [optional]
 **spent** | **float** | Amount of spent funds of the balance. | [optional]
 **remaining** | **float** | Amount of remaining funds of the balance. | [optional]
-**start_date** | **string** | Start date of the balance in the format YYYY-MM-DD. |
-**end_date** | **string** | End date of the balance in the format YYYY-MM-DD. | [optional]
+**start_date** | **\DateTime** | Start date of the balance in the format YYYY-MM-DD. |
+**end_date** | **\DateTime** | End date of the balance in the format YYYY-MM-DD. | [optional]
 **status** | **string** | Status of the balance. | [optional]
 **created_at** | **\DateTime** | Creation time of the balance. | [optional]
 **updated_at** | **\DateTime** | Update time of the balance. | [optional]

@@ -64,8 +64,8 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'deposited' => 'float',
         'spent' => 'float',
         'remaining' => 'float',
-        'start_date' => 'string',
-        'end_date' => 'string',
+        'start_date' => '\DateTime',
+        'end_date' => '\DateTime',
         'status' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
@@ -88,8 +88,8 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'deposited' => 'decimal',
         'spent' => 'decimal',
         'remaining' => 'decimal',
-        'start_date' => null,
-        'end_date' => null,
+        'start_date' => 'date',
+        'end_date' => 'date',
         'status' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
@@ -317,10 +317,10 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const SPEND_TYPE_ONSITE = 'Onsite';
     public const SPEND_TYPE_OFFSITE = 'Offsite';
     public const SPEND_TYPE_OFFSITE_AWARENESS = 'OffsiteAwareness';
-    public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'notApplicable';
-    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'billByRetailer';
-    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'billByCriteo';
-    public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'unknown';
+    public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'NotApplicable';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'BillByRetailer';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'BillByCriteo';
+    public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'Unknown';
 
     /**
      * Gets allowable values of the enum
@@ -704,7 +704,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets start_date
      *
-     * @return string
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -714,7 +714,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets start_date
      *
-     * @param string $start_date Start date of the balance in the format YYYY-MM-DD.
+     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
@@ -731,7 +731,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets end_date
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -741,7 +741,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets end_date
      *
-     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
+     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */

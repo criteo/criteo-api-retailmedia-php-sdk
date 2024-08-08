@@ -11,7 +11,9 @@ Name | Type | Description | Notes
 **type** | **string** | Type of segment (read-only) | [optional]
 **created_at** | **\DateTime** | ISO-8601 timestamp in UTC of segment creation (read-only) | [optional]
 **updated_at** | **\DateTime** | ISO-8601 timestamp in UTC of segment update (read-only) | [optional]
+**created_by_id** | **string** | User that created the segment | [optional]
 **contact_list** | [**\criteo\api\retailmedia\preview\Model\RmContactListV1**](RmContactListV1.md) |  | [optional]
+**user_behavior** | [**\criteo\api\retailmedia\preview\Model\RmUserBehaviorV1**](RmUserBehaviorV1.md) |  | [optional]
 **channels** | **string[]** | Channels associated to the segment (read-only) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

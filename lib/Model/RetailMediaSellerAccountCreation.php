@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceSegmentSearchEntityV1
+ * RetailMediaSellerAccountCreation
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RmAudienceSegmentSearchEntityV1 Class Doc Comment
+ * RetailMediaSellerAccountCreation Class Doc Comment
  *
  * @category Class
- * @description Available filters to perform a search on audience segments. If present, the filters are AND&#39;ed together when applied.
+ * @description the initial set up and configuration options for a new private market demand brand account
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceSegmentSearchEntityV1';
+    protected static $openAPIModelName = 'RetailMediaSellerAccountCreation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'audience_segment_ids' => 'string[]',
-        'retailer_ids' => 'string[]',
-        'audience_segment_types' => 'string[]'
+        'name' => 'string',
+        'company_name' => 'string',
+        'sellers' => '\criteo\api\retailmedia\preview\Model\RetailMediaSeller[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'audience_segment_ids' => null,
-        'retailer_ids' => null,
-        'audience_segment_types' => null
+        'name' => null,
+        'company_name' => null,
+        'sellers' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'audience_segment_ids' => true,
-		'retailer_ids' => true,
-		'audience_segment_types' => true
+        'name' => true,
+		'company_name' => true,
+		'sellers' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'audience_segment_ids' => 'audienceSegmentIds',
-        'retailer_ids' => 'retailerIds',
-        'audience_segment_types' => 'audienceSegmentTypes'
+        'name' => 'name',
+        'company_name' => 'companyName',
+        'sellers' => 'sellers'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'audience_segment_ids' => 'setAudienceSegmentIds',
-        'retailer_ids' => 'setRetailerIds',
-        'audience_segment_types' => 'setAudienceSegmentTypes'
+        'name' => 'setName',
+        'company_name' => 'setCompanyName',
+        'sellers' => 'setSellers'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'audience_segment_ids' => 'getAudienceSegmentIds',
-        'retailer_ids' => 'getRetailerIds',
-        'audience_segment_types' => 'getAudienceSegmentTypes'
+        'name' => 'getName',
+        'company_name' => 'getCompanyName',
+        'sellers' => 'getSellers'
     ];
 
     /**
@@ -241,23 +241,6 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    public const AUDIENCE_SEGMENT_TYPES_UNKNOWN = 'Unknown';
-    public const AUDIENCE_SEGMENT_TYPES_CONTACT_LIST = 'ContactList';
-    public const AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR = 'UserBehavior';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAudienceSegmentTypesAllowableValues()
-    {
-        return [
-            self::AUDIENCE_SEGMENT_TYPES_UNKNOWN,
-            self::AUDIENCE_SEGMENT_TYPES_CONTACT_LIST,
-            self::AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -274,9 +257,9 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('audience_segment_ids', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('audience_segment_types', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('sellers', $data ?? [], null);
     }
 
     /**
@@ -322,112 +305,103 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets audience_segment_ids
+     * Gets name
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getAudienceSegmentIds()
+    public function getName()
     {
-        return $this->container['audience_segment_ids'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets audience_segment_ids
+     * Sets name
      *
-     * @param string[]|null $audience_segment_ids List of segment ids
+     * @param string|null $name the name of the account, must be unique across all accounts
      *
      * @return self
      */
-    public function setAudienceSegmentIds($audience_segment_ids)
+    public function setName($name)
     {
-        if (is_null($audience_segment_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_segment_ids');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_segment_ids', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['audience_segment_ids'] = $audience_segment_ids;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets retailer_ids
+     * Gets company_name
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getRetailerIds()
+    public function getCompanyName()
     {
-        return $this->container['retailer_ids'];
+        return $this->container['company_name'];
     }
 
     /**
-     * Sets retailer_ids
+     * Sets company_name
      *
-     * @param string[]|null $retailer_ids List of retailer ids
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
      *
      * @return self
      */
-    public function setRetailerIds($retailer_ids)
+    public function setCompanyName($company_name)
     {
-        if (is_null($retailer_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_ids', $nullablesSetToNull);
+            $index = array_search('company_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['retailer_ids'] = $retailer_ids;
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }
 
     /**
-     * Gets audience_segment_types
+     * Gets sellers
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\RetailMediaSeller[]|null
      */
-    public function getAudienceSegmentTypes()
+    public function getSellers()
     {
-        return $this->container['audience_segment_types'];
+        return $this->container['sellers'];
     }
 
     /**
-     * Sets audience_segment_types
+     * Sets sellers
      *
-     * @param string[]|null $audience_segment_types List of segment types
+     * @param \criteo\api\retailmedia\preview\Model\RetailMediaSeller[]|null $sellers list of sellers to associate to the new account
      *
      * @return self
      */
-    public function setAudienceSegmentTypes($audience_segment_types)
+    public function setSellers($sellers)
     {
-        if (is_null($audience_segment_types)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_segment_types');
+        if (is_null($sellers)) {
+            array_push($this->openAPINullablesSetToNull, 'sellers');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_segment_types', $nullablesSetToNull);
+            $index = array_search('sellers', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getAudienceSegmentTypesAllowableValues();
-        if (!is_null($audience_segment_types) && array_diff($audience_segment_types, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'audience_segment_types', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['audience_segment_types'] = $audience_segment_types;
+        $this->container['sellers'] = $sellers;
 
         return $this;
     }

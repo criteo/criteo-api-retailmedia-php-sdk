@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceSegmentEntityV1
+ * RetailMediaAccount
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RmAudienceSegmentEntityV1 Class Doc Comment
+ * RetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description Set of rules that defines specific people to target.
+ * @description The details for a newly created account
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceSegmentEntityV1';
+    protected static $openAPIModelName = 'RetailMediaAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,17 +58,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
         'name' => 'string',
-        'description' => 'string',
-        'retailer_id' => 'string',
+        'company_name' => 'string',
         'type' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'created_by_id' => 'string',
-        'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListV1',
-        'user_behavior' => '\criteo\api\retailmedia\preview\Model\RmUserBehaviorV1',
-        'channels' => 'string[]'
+        'sub_type' => 'string',
+        'country_ids' => 'string[]',
+        'currency_id' => 'string',
+        'parent_account_label' => 'string',
+        'time_zone' => 'string'
     ];
 
     /**
@@ -79,17 +76,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
         'name' => null,
-        'description' => null,
-        'retailer_id' => null,
+        'company_name' => null,
         'type' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'created_by_id' => null,
-        'contact_list' => null,
-        'user_behavior' => null,
-        'channels' => null
+        'sub_type' => null,
+        'country_ids' => null,
+        'currency_id' => null,
+        'parent_account_label' => null,
+        'time_zone' => null
     ];
 
     /**
@@ -98,17 +92,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => true,
-		'name' => true,
-		'description' => true,
-		'retailer_id' => true,
+        'name' => true,
+		'company_name' => true,
 		'type' => true,
-		'created_at' => true,
-		'updated_at' => true,
-		'created_by_id' => true,
-		'contact_list' => false,
-		'user_behavior' => false,
-		'channels' => true
+		'sub_type' => true,
+		'country_ids' => true,
+		'currency_id' => true,
+		'parent_account_label' => true,
+		'time_zone' => true
     ];
 
     /**
@@ -197,17 +188,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
         'name' => 'name',
-        'description' => 'description',
-        'retailer_id' => 'retailerId',
+        'company_name' => 'companyName',
         'type' => 'type',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'created_by_id' => 'createdById',
-        'contact_list' => 'contactList',
-        'user_behavior' => 'userBehavior',
-        'channels' => 'channels'
+        'sub_type' => 'subType',
+        'country_ids' => 'countryIds',
+        'currency_id' => 'currencyId',
+        'parent_account_label' => 'parentAccountLabel',
+        'time_zone' => 'timeZone'
     ];
 
     /**
@@ -216,17 +204,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
         'name' => 'setName',
-        'description' => 'setDescription',
-        'retailer_id' => 'setRetailerId',
+        'company_name' => 'setCompanyName',
         'type' => 'setType',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'created_by_id' => 'setCreatedById',
-        'contact_list' => 'setContactList',
-        'user_behavior' => 'setUserBehavior',
-        'channels' => 'setChannels'
+        'sub_type' => 'setSubType',
+        'country_ids' => 'setCountryIds',
+        'currency_id' => 'setCurrencyId',
+        'parent_account_label' => 'setParentAccountLabel',
+        'time_zone' => 'setTimeZone'
     ];
 
     /**
@@ -235,17 +220,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
         'name' => 'getName',
-        'description' => 'getDescription',
-        'retailer_id' => 'getRetailerId',
+        'company_name' => 'getCompanyName',
         'type' => 'getType',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'created_by_id' => 'getCreatedById',
-        'contact_list' => 'getContactList',
-        'user_behavior' => 'getUserBehavior',
-        'channels' => 'getChannels'
+        'sub_type' => 'getSubType',
+        'country_ids' => 'getCountryIds',
+        'currency_id' => 'getCurrencyId',
+        'parent_account_label' => 'getParentAccountLabel',
+        'time_zone' => 'getTimeZone'
     ];
 
     /**
@@ -290,11 +272,11 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     public const TYPE_UNKNOWN = 'Unknown';
-    public const TYPE_CONTACT_LIST = 'ContactList';
-    public const TYPE_USER_BEHAVIOR = 'UserBehavior';
-    public const CHANNELS_UNKNOWN = 'Unknown';
-    public const CHANNELS_ONSITE = 'Onsite';
-    public const CHANNELS_OFFSITE = 'Offsite';
+    public const TYPE_SUPPLY = 'Supply';
+    public const TYPE_DEMAND = 'Demand';
+    public const SUB_TYPE_UNKNOWN = 'Unknown';
+    public const SUB_TYPE_BRAND = 'Brand';
+    public const SUB_TYPE_SELLER = 'Seller';
 
     /**
      * Gets allowable values of the enum
@@ -305,8 +287,8 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     {
         return [
             self::TYPE_UNKNOWN,
-            self::TYPE_CONTACT_LIST,
-            self::TYPE_USER_BEHAVIOR,
+            self::TYPE_SUPPLY,
+            self::TYPE_DEMAND,
         ];
     }
 
@@ -315,12 +297,12 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return string[]
      */
-    public function getChannelsAllowableValues()
+    public function getSubTypeAllowableValues()
     {
         return [
-            self::CHANNELS_UNKNOWN,
-            self::CHANNELS_ONSITE,
-            self::CHANNELS_OFFSITE,
+            self::SUB_TYPE_UNKNOWN,
+            self::SUB_TYPE_BRAND,
+            self::SUB_TYPE_SELLER,
         ];
     }
 
@@ -339,17 +321,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('created_by_id', $data ?? [], null);
-        $this->setIfExists('contact_list', $data ?? [], null);
-        $this->setIfExists('user_behavior', $data ?? [], null);
-        $this->setIfExists('channels', $data ?? [], null);
+        $this->setIfExists('sub_type', $data ?? [], null);
+        $this->setIfExists('country_ids', $data ?? [], null);
+        $this->setIfExists('currency_id', $data ?? [], null);
+        $this->setIfExists('parent_account_label', $data ?? [], null);
+        $this->setIfExists('time_zone', $data ?? [], null);
     }
 
     /**
@@ -388,6 +367,15 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
+        $allowedValues = $this->getSubTypeAllowableValues();
+        if (!is_null($this->container['sub_type']) && !in_array($this->container['sub_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sub_type', must be one of '%s'",
+                $this->container['sub_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -404,40 +392,6 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets account_id
-     *
-     * @return string|null
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string|null $account_id Account associated to the segment
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            array_push($this->openAPINullablesSetToNull, 'account_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('account_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string|null
@@ -450,7 +404,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets name
      *
-     * @param string|null $name Name of the segment
+     * @param string|null $name account name
      *
      * @return self
      */
@@ -472,69 +426,35 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets description
+     * Gets company_name
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getCompanyName()
     {
-        return $this->container['description'];
+        return $this->container['company_name'];
     }
 
     /**
-     * Sets description
+     * Sets company_name
      *
-     * @param string|null $description Description of the segment
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setCompanyName($company_name)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('company_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_id
-     *
-     * @return string|null
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string|null $retailer_id Retailer  associated to the segment
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['retailer_id'] = $retailer_id;
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }
@@ -552,7 +472,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets type
      *
-     * @param string|null $type Type of segment (read-only)
+     * @param string|null $type Type for the account
      *
      * @return self
      */
@@ -584,200 +504,181 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at ISO-8601 timestamp in UTC of segment creation (read-only)
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at ISO-8601 timestamp in UTC of segment update (read-only)
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by_id
+     * Gets sub_type
      *
      * @return string|null
      */
-    public function getCreatedById()
+    public function getSubType()
     {
-        return $this->container['created_by_id'];
+        return $this->container['sub_type'];
     }
 
     /**
-     * Sets created_by_id
+     * Sets sub_type
      *
-     * @param string|null $created_by_id User that created the segment
+     * @param string|null $sub_type subtype for the account
      *
      * @return self
      */
-    public function setCreatedById($created_by_id)
+    public function setSubType($sub_type)
     {
-        if (is_null($created_by_id)) {
-            array_push($this->openAPINullablesSetToNull, 'created_by_id');
+        if (is_null($sub_type)) {
+            array_push($this->openAPINullablesSetToNull, 'sub_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_by_id', $nullablesSetToNull);
+            $index = array_search('sub_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['created_by_id'] = $created_by_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contact_list
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RmContactListV1|null
-     */
-    public function getContactList()
-    {
-        return $this->container['contact_list'];
-    }
-
-    /**
-     * Sets contact_list
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RmContactListV1|null $contact_list contact_list
-     *
-     * @return self
-     */
-    public function setContactList($contact_list)
-    {
-        if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
-        }
-        $this->container['contact_list'] = $contact_list;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_behavior
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RmUserBehaviorV1|null
-     */
-    public function getUserBehavior()
-    {
-        return $this->container['user_behavior'];
-    }
-
-    /**
-     * Sets user_behavior
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RmUserBehaviorV1|null $user_behavior user_behavior
-     *
-     * @return self
-     */
-    public function setUserBehavior($user_behavior)
-    {
-        if (is_null($user_behavior)) {
-            throw new \InvalidArgumentException('non-nullable user_behavior cannot be null');
-        }
-        $this->container['user_behavior'] = $user_behavior;
-
-        return $this;
-    }
-
-    /**
-     * Gets channels
-     *
-     * @return string[]|null
-     */
-    public function getChannels()
-    {
-        return $this->container['channels'];
-    }
-
-    /**
-     * Sets channels
-     *
-     * @param string[]|null $channels Channels associated to the segment (read-only)
-     *
-     * @return self
-     */
-    public function setChannels($channels)
-    {
-        if (is_null($channels)) {
-            array_push($this->openAPINullablesSetToNull, 'channels');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('channels', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getChannelsAllowableValues();
-        if (!is_null($channels) && array_diff($channels, $allowedValues)) {
+        $allowedValues = $this->getSubTypeAllowableValues();
+        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'channels', must be one of '%s'",
+                    "Invalid value '%s' for 'sub_type', must be one of '%s'",
+                    $sub_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['channels'] = $channels;
+        $this->container['sub_type'] = $sub_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets country_ids
+     *
+     * @return string[]|null
+     */
+    public function getCountryIds()
+    {
+        return $this->container['country_ids'];
+    }
+
+    /**
+     * Sets country_ids
+     *
+     * @param string[]|null $country_ids list of countries associated with the account
+     *
+     * @return self
+     */
+    public function setCountryIds($country_ids)
+    {
+        if (is_null($country_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'country_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('country_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['country_ids'] = $country_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency_id
+     *
+     * @return string|null
+     */
+    public function getCurrencyId()
+    {
+        return $this->container['currency_id'];
+    }
+
+    /**
+     * Sets currency_id
+     *
+     * @param string|null $currency_id the currency for the account
+     *
+     * @return self
+     */
+    public function setCurrencyId($currency_id)
+    {
+        if (is_null($currency_id)) {
+            array_push($this->openAPINullablesSetToNull, 'currency_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['currency_id'] = $currency_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_account_label
+     *
+     * @return string|null
+     */
+    public function getParentAccountLabel()
+    {
+        return $this->container['parent_account_label'];
+    }
+
+    /**
+     * Sets parent_account_label
+     *
+     * @param string|null $parent_account_label parent account label for the account
+     *
+     * @return self
+     */
+    public function setParentAccountLabel($parent_account_label)
+    {
+        if (is_null($parent_account_label)) {
+            array_push($this->openAPINullablesSetToNull, 'parent_account_label');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_account_label', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['parent_account_label'] = $parent_account_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_zone
+     *
+     * @return string|null
+     */
+    public function getTimeZone()
+    {
+        return $this->container['time_zone'];
+    }
+
+    /**
+     * Sets time_zone
+     *
+     * @param string|null $time_zone the timezone for the account
+     *
+     * @return self
+     */
+    public function setTimeZone($time_zone)
+    {
+        if (is_null($time_zone)) {
+            array_push($this->openAPINullablesSetToNull, 'time_zone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('time_zone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['time_zone'] = $time_zone;
 
         return $this;
     }

@@ -59,7 +59,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'is_read_only' => 'bool',
-        'type' => 'string'
+        'type' => 'string',
+        'sharing_status' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'is_read_only' => null,
-        'type' => null
+        'type' => null,
+        'sharing_status' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'is_read_only' => true,
-		'type' => true
+		'type' => true,
+		'sharing_status' => true
     ];
 
     /**
@@ -171,7 +174,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'is_read_only' => 'isReadOnly',
-        'type' => 'type'
+        'type' => 'type',
+        'sharing_status' => 'sharingStatus'
     ];
 
     /**
@@ -181,7 +185,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'is_read_only' => 'setIsReadOnly',
-        'type' => 'setType'
+        'type' => 'setType',
+        'sharing_status' => 'setSharingStatus'
     ];
 
     /**
@@ -191,7 +196,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'is_read_only' => 'getIsReadOnly',
-        'type' => 'getType'
+        'type' => 'getType',
+        'sharing_status' => 'getSharingStatus'
     ];
 
     /**
@@ -240,6 +246,10 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_USER_IDENTIFIER = 'UserIdentifier';
     public const TYPE_IDENTITY_LINK = 'IdentityLink';
     public const TYPE_CUSTOMER_ID = 'CustomerId';
+    public const SHARING_STATUS_UNKNOWN = 'Unknown';
+    public const SHARING_STATUS_NOT_SHARED = 'NotShared';
+    public const SHARING_STATUS_SHARED_WITH_ALL = 'SharedWithAll';
+    public const SHARING_STATUS_SHARED_WITH_DEMAND_ACCOUNTS = 'SharedWithDemandAccounts';
 
     /**
      * Gets allowable values of the enum
@@ -254,6 +264,21 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_USER_IDENTIFIER,
             self::TYPE_IDENTITY_LINK,
             self::TYPE_CUSTOMER_ID,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSharingStatusAllowableValues()
+    {
+        return [
+            self::SHARING_STATUS_UNKNOWN,
+            self::SHARING_STATUS_NOT_SHARED,
+            self::SHARING_STATUS_SHARED_WITH_ALL,
+            self::SHARING_STATUS_SHARED_WITH_DEMAND_ACCOUNTS,
         ];
     }
 
@@ -274,6 +299,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('is_read_only', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('sharing_status', $data ?? [], null);
     }
 
     /**
@@ -308,6 +334,15 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'type', must be one of '%s'",
                 $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSharingStatusAllowableValues();
+        if (!is_null($this->container['sharing_status']) && !in_array($this->container['sharing_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sharing_status', must be one of '%s'",
+                $this->container['sharing_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -401,6 +436,50 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets sharing_status
+     *
+     * @return string|null
+     */
+    public function getSharingStatus()
+    {
+        return $this->container['sharing_status'];
+    }
+
+    /**
+     * Sets sharing_status
+     *
+     * @param string|null $sharing_status Indicates if the contact list is shared with other accounts
+     *
+     * @return self
+     */
+    public function setSharingStatus($sharing_status)
+    {
+        if (is_null($sharing_status)) {
+            array_push($this->openAPINullablesSetToNull, 'sharing_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sharing_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSharingStatusAllowableValues();
+        if (!is_null($sharing_status) && !in_array($sharing_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sharing_status', must be one of '%s'",
+                    $sharing_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sharing_status'] = $sharing_status;
 
         return $this;
     }

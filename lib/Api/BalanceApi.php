@@ -144,16 +144,16 @@ class BalanceApi
      * Operation getApiV2ExternalAccountBalancesByAccountId
      *
      * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (required)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (required)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2
      */
-    public function getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
+    public function getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
     {
         list($response) = $this->getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
         return $response;
@@ -163,16 +163,16 @@ class BalanceApi
      * Operation getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo
      *
      * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (required)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (required)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
+    public function getApiV2ExternalAccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
     {
         $request = $this->getApiV2ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
 
@@ -264,15 +264,15 @@ class BalanceApi
      * Operation getApiV2ExternalAccountBalancesByAccountIdAsync
      *
      * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (required)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (required)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV2ExternalAccountBalancesByAccountIdAsync($account_id, $limit_to_id, $page_index, $page_size, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
+    public function getApiV2ExternalAccountBalancesByAccountIdAsync($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
     {
         return $this->getApiV2ExternalAccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
             ->then(
@@ -286,15 +286,15 @@ class BalanceApi
      * Operation getApiV2ExternalAccountBalancesByAccountIdAsyncWithHttpInfo
      *
      * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (required)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (required)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV2ExternalAccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
+    public function getApiV2ExternalAccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2';
         $request = $this->getApiV2ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
@@ -339,15 +339,15 @@ class BalanceApi
      * Create request for operation 'getApiV2ExternalAccountBalancesByAccountId'
      *
      * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (required)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (required)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV2ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
+    public function getApiV2ExternalAccountBalancesByAccountIdRequest($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV2ExternalAccountBalancesByAccountId'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -357,26 +357,8 @@ class BalanceApi
             );
         }
 
-        // verify the required parameter 'limit_to_id' is set
-        if ($limit_to_id === null || (is_array($limit_to_id) && count($limit_to_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $limit_to_id when calling getApiV2ExternalAccountBalancesByAccountId'
-            );
-        }
 
-        // verify the required parameter 'page_index' is set
-        if ($page_index === null || (is_array($page_index) && count($page_index) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $page_index when calling getApiV2ExternalAccountBalancesByAccountId'
-            );
-        }
 
-        // verify the required parameter 'page_size' is set
-        if ($page_size === null || (is_array($page_size) && count($page_size) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $page_size when calling getApiV2ExternalAccountBalancesByAccountId'
-            );
-        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
@@ -393,7 +375,7 @@ class BalanceApi
             'array', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -402,7 +384,7 @@ class BalanceApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -411,7 +393,7 @@ class BalanceApi
             'integer', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

@@ -747,7 +747,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/preview/retail-media/line-items/{lineItemId}/products/append';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/products/append';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -759,7 +759,7 @@ class CampaignApi
         // path params
         if ($line_item_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'lineItemId' . '}',
+                '{' . 'line-item-id' . '}',
                 ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );
@@ -1254,7 +1254,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/preview/retail-media/line-items/{lineItemId}/products/delete';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/products/delete';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1266,7 +1266,7 @@ class CampaignApi
         // path params
         if ($line_item_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'lineItemId' . '}',
+                '{' . 'line-item-id' . '}',
                 ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );
@@ -1891,7 +1891,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/preview/retail-media/line-items/{lineItemId}/products';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/products';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1930,7 +1930,7 @@ class CampaignApi
         // path params
         if ($line_item_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'lineItemId' . '}',
+                '{' . 'line-item-id' . '}',
                 ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );
@@ -7736,7 +7736,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/preview/retail-media/line-items/{lineItemId}/products/pause';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/products/pause';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7748,7 +7748,7 @@ class CampaignApi
         // path params
         if ($line_item_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'lineItemId' . '}',
+                '{' . 'line-item-id' . '}',
                 ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );
@@ -12759,7 +12759,7 @@ class CampaignApi
 
 
 
-        $resourcePath = '/preview/retail-media/line-items/{lineItemId}/products/unpause';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/products/unpause';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -12771,7 +12771,7 @@ class CampaignApi
         // path params
         if ($line_item_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'lineItemId' . '}',
+                '{' . 'line-item-id' . '}',
                 ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );

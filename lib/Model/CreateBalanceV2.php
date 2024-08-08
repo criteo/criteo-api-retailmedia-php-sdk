@@ -61,8 +61,8 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'po_number' => 'string',
         'deposited' => 'float',
-        'start_date' => 'string',
-        'end_date' => 'string',
+        'start_date' => '\DateTime',
+        'end_date' => '\DateTime',
         'spend_type' => 'string',
         'memo' => 'string'
     ];
@@ -78,8 +78,8 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'po_number' => null,
         'deposited' => 'decimal',
-        'start_date' => null,
-        'end_date' => null,
+        'start_date' => 'date',
+        'end_date' => 'date',
         'spend_type' => null,
         'memo' => null
     ];
@@ -465,7 +465,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_date
      *
-     * @return string
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -475,7 +475,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_date
      *
-     * @param string $start_date Start date of the balance in the format YYYY-MM-DD.
+     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
@@ -492,7 +492,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_date
      *
-     * @return string|null
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -502,7 +502,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_date
      *
-     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
+     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */

@@ -71,10 +71,22 @@ class AccountsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'createPrivateMarketDemandSellerAccount' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
         'getApiV1ExternalAccounts' => [
             'application/json',
         ],
         'grantConsent' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'updateSellers' => [
             'application/json-patch+json',
             'application/json',
             'text/json',
@@ -126,6 +138,302 @@ class AccountsApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation createPrivateMarketDemandSellerAccount
+     *
+     * @param  string $account_id Account Id for the parent private market account (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount
+     */
+    public function createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
+    {
+        list($response) = $this->createPrivateMarketDemandSellerAccountWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createPrivateMarketDemandSellerAccountWithHttpInfo
+     *
+     * @param  string $account_id Account Id for the parent private market account (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createPrivateMarketDemandSellerAccountWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
+    {
+        $request = $this->createPrivateMarketDemandSellerAccountRequest($account_id, $value_resource_input_of_retail_media_seller_account_creation, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createPrivateMarketDemandSellerAccountAsync
+     *
+     * @param  string $account_id Account Id for the parent private market account (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createPrivateMarketDemandSellerAccountAsync($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
+    {
+        return $this->createPrivateMarketDemandSellerAccountAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createPrivateMarketDemandSellerAccountAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id for the parent private market account (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createPrivateMarketDemandSellerAccountAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ResourceOutcomeOfRetailMediaAccount';
+        $request = $this->createPrivateMarketDemandSellerAccountRequest($account_id, $value_resource_input_of_retail_media_seller_account_creation, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createPrivateMarketDemandSellerAccount'
+     *
+     * @param  string $account_id Account Id for the parent private market account (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createPrivateMarketDemandSellerAccountRequest($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createPrivateMarketDemandSellerAccount'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/account-management/accounts/{accountId}/create-seller-account';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_of_retail_media_seller_account_creation)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_retail_media_seller_account_creation));
+            } else {
+                $httpBody = $value_resource_input_of_retail_media_seller_account_creation;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -680,6 +988,302 @@ class AccountsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSellers
+     *
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
+     */
+    public function updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    {
+        list($response) = $this->updateSellersWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSellersWithHttpInfo
+     *
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSellersWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    {
+        $request = $this->updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSellersAsync
+     *
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSellersAsync($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    {
+        return $this->updateSellersAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSellersAsyncWithHttpInfo
+     *
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSellersAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
+        $request = $this->updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSellers'
+     *
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateSellers'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/account-management/accounts/{accountId}/sellers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_collection_input_of_retail_media_seller)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_collection_input_of_retail_media_seller));
+            } else {
+                $httpBody = $value_resource_collection_input_of_retail_media_seller;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

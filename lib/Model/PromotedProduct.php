@@ -72,7 +72,7 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'bid_override' => 'double',
+        'bid_override' => 'decimal',
         'status' => null
     ];
 
