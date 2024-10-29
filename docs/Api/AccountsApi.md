@@ -5,6 +5,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /preview/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
+| [**getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
 | [**getApiV1ExternalAccounts()**](AccountsApi.md#getApiV1ExternalAccounts) | **GET** /preview/retail-media/accounts |  |
 | [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-consent |  |
 | [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /preview/retail-media/account-management/accounts/{accountId}/sellers |  |
@@ -69,6 +70,73 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()`
+
+```php
+getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $offset, $limit): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaAccount
+```
+
+
+
+Gets page of private market child accounts that are associated with the given account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$offset = 0; // int | The (zero-based) offset into the collection of accounts. The default is 0.
+$limit = 25; // int | The number of accounts to be returned. The default is 25.
+
+try {
+    $result = $apiInstance->getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $offset, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getApiExternalV1AccountPrivateMarketChildAccountsByAccountId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **offset** | **int**| The (zero-based) offset into the collection of accounts. The default is 0. | [optional] [default to 0] |
+| **limit** | **int**| The number of accounts to be returned. The default is 25. | [optional] [default to 25] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaAccount**](../Model/EntityResourceCollectionOutcomeOfRetailMediaAccount.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

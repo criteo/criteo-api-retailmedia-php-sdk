@@ -59,7 +59,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'is_read_only' => 'bool',
-        'type' => 'string',
+        'identifier_type' => 'string',
         'sharing_status' => 'string'
     ];
 
@@ -72,7 +72,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'is_read_only' => null,
-        'type' => null,
+        'identifier_type' => null,
         'sharing_status' => null
     ];
 
@@ -83,7 +83,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'is_read_only' => true,
-		'type' => true,
+		'identifier_type' => true,
 		'sharing_status' => true
     ];
 
@@ -174,7 +174,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'is_read_only' => 'isReadOnly',
-        'type' => 'type',
+        'identifier_type' => 'identifierType',
         'sharing_status' => 'sharingStatus'
     ];
 
@@ -185,7 +185,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'is_read_only' => 'setIsReadOnly',
-        'type' => 'setType',
+        'identifier_type' => 'setIdentifierType',
         'sharing_status' => 'setSharingStatus'
     ];
 
@@ -196,7 +196,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'is_read_only' => 'getIsReadOnly',
-        'type' => 'getType',
+        'identifier_type' => 'getIdentifierType',
         'sharing_status' => 'getSharingStatus'
     ];
 
@@ -241,11 +241,11 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'Unknown';
-    public const TYPE_EMAIL = 'Email';
-    public const TYPE_USER_IDENTIFIER = 'UserIdentifier';
-    public const TYPE_IDENTITY_LINK = 'IdentityLink';
-    public const TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_UNKNOWN = 'Unknown';
+    public const IDENTIFIER_TYPE_EMAIL = 'Email';
+    public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
+    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
+    public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
     public const SHARING_STATUS_UNKNOWN = 'Unknown';
     public const SHARING_STATUS_NOT_SHARED = 'NotShared';
     public const SHARING_STATUS_SHARED_WITH_ALL = 'SharedWithAll';
@@ -256,14 +256,14 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getIdentifierTypeAllowableValues()
     {
         return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_EMAIL,
-            self::TYPE_USER_IDENTIFIER,
-            self::TYPE_IDENTITY_LINK,
-            self::TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_UNKNOWN,
+            self::IDENTIFIER_TYPE_EMAIL,
+            self::IDENTIFIER_TYPE_USER_IDENTIFIER,
+            self::IDENTIFIER_TYPE_IDENTITY_LINK,
+            self::IDENTIFIER_TYPE_CUSTOMER_ID,
         ];
     }
 
@@ -298,7 +298,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('is_read_only', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('identifier_type', $data ?? [], null);
         $this->setIfExists('sharing_status', $data ?? [], null);
     }
 
@@ -329,11 +329,11 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'identifier_type', must be one of '%s'",
+                $this->container['identifier_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -397,45 +397,45 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
+     * Gets identifier_type
      *
      * @return string|null
      */
-    public function getType()
+    public function getIdentifierType()
     {
-        return $this->container['type'];
+        return $this->container['identifier_type'];
     }
 
     /**
-     * Sets type
+     * Sets identifier_type
      *
-     * @param string|null $type Indicates contact list type
+     * @param string|null $identifier_type Indicates contact list identifier's type
      *
      * @return self
      */
-    public function setType($type)
+    public function setIdentifierType($identifier_type)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($identifier_type)) {
+            array_push($this->openAPINullablesSetToNull, 'identifier_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('identifier_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($identifier_type) && !in_array($identifier_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'identifier_type', must be one of '%s'",
+                    $identifier_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['identifier_type'] = $identifier_type;
 
         return $this;
     }

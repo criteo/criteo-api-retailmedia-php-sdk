@@ -60,6 +60,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'name' => 'string',
         'company_name' => 'string',
+        'on_behalf_company_name' => 'string',
         'sellers' => '\criteo\api\retailmedia\preview\Model\RetailMediaSeller[]'
     ];
 
@@ -73,6 +74,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'name' => null,
         'company_name' => null,
+        'on_behalf_company_name' => null,
         'sellers' => null
     ];
 
@@ -84,6 +86,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'name' => true,
 		'company_name' => true,
+		'on_behalf_company_name' => true,
 		'sellers' => true
     ];
 
@@ -175,6 +178,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'name' => 'name',
         'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
         'sellers' => 'sellers'
     ];
 
@@ -186,6 +190,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'name' => 'setName',
         'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'sellers' => 'setSellers'
     ];
 
@@ -197,6 +202,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'name' => 'getName',
         'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'sellers' => 'getSellers'
     ];
 
@@ -259,6 +265,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('sellers', $data ?? [], null);
     }
 
@@ -351,7 +358,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     /**
      * Sets company_name
      *
-     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -368,6 +375,40 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
 
         return $this;
     }

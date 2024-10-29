@@ -22,7 +22,7 @@ generateAsyncAccountsReport($async_accounts_report_request): \criteo\api\retailm
 
 
 
-Returns an asynchronous Accounts Report
+Returns an asynchronous Accounts Report This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -85,7 +85,7 @@ generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retai
 
 
 
-Return an asynchronous Campaigns Report
+Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -148,7 +148,7 @@ generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\reta
 
 
 
-Returns an asynchronous Line Items Report
+Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
 
 ### Example
 

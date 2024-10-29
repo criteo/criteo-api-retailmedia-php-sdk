@@ -23,9 +23,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV2ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**getApiV2ExternalLineItemBidMultipliersByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemBidMultipliersByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**getApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
-| [**getCampaignBudgetOverrides()**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
 | [**getInsertionOrderHistoryChangeDataCaptureV2()**](CampaignApi.md#getInsertionOrderHistoryChangeDataCaptureV2) | **GET** /preview/retail-media/insertion-order-history/{insertionOrderId}/change-data-capture |  |
-| [**getLineItemBudgetOverrides()**](CampaignApi.md#getLineItemBudgetOverrides) | **GET** /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
 | [**getRecommendedKeywords()**](CampaignApi.md#getRecommendedKeywords) | **GET** /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
 | [**getSkuByProductId()**](CampaignApi.md#getSkuByProductId) | **POST** /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id |  |
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
@@ -45,8 +43,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**setKeywordBids()**](CampaignApi.md#setKeywordBids) | **POST** /preview/retail-media/line-items/{id}/keywords/set-bid |  |
 | [**submitProposal()**](CampaignApi.md#submitProposal) | **POST** /preview/retail-media/preferred-deal-line-items/{id}/proposal/submit |  |
 | [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
-| [**updateCampaignBudgetOverrides()**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /preview/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
-| [**updateLineItemBudgetOverrides()**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /preview/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
 
 
 ## `addRemoveKeywords()`
@@ -1287,69 +1283,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getCampaignBudgetOverrides()`
-
-```php
-getCampaignBudgetOverrides($campaign_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides
-```
-
-
-
-Get current campaign budget overrides by given external campaign id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$campaign_id = 56; // int | External campaign id.
-
-try {
-    $result = $apiInstance->getCampaignBudgetOverrides($campaign_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getCampaignBudgetOverrides: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| External campaign id. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides**](../Model/ValueResourceOutcomeOfCampaignBudgetOverrides.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getInsertionOrderHistoryChangeDataCaptureV2()`
 
 ```php
@@ -1405,69 +1338,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\PageOfInsertionOrderHistoryChangeDataCaptureV2**](../Model/PageOfInsertionOrderHistoryChangeDataCaptureV2.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getLineItemBudgetOverrides()`
-
-```php
-getLineItemBudgetOverrides($line_item_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
-```
-
-
-
-Gets a collection of monthly and daily budget overrides for the provided line item.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | The line item id to get budget overrides for.
-
-try {
-    $result = $apiInstance->getLineItemBudgetOverrides($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getLineItemBudgetOverrides: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| The line item id to get budget overrides for. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides**](../Model/ValueResourceOutcomeOfLineItemBudgetOverrides.md)
 
 ### Authorization
 
@@ -2731,136 +2601,6 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateCampaignBudgetOverrides()`
-
-```php
-updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_budget_overrides): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides
-```
-
-
-
-Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$campaign_id = 56; // int | External campaign id.
-$value_resource_input_of_campaign_budget_overrides = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
-
-try {
-    $result = $apiInstance->updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_budget_overrides);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->updateCampaignBudgetOverrides: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| External campaign id. | |
-| **value_resource_input_of_campaign_budget_overrides** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfCampaignBudgetOverrides**](../Model/ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfCampaignBudgetOverrides**](../Model/ValueResourceOutcomeOfCampaignBudgetOverrides.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateLineItemBudgetOverrides()`
-
-```php
-updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_budget_overrides): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
-```
-
-
-
-Update line item budget overrides by given external line item id and new line item budget overrides settings.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | Line item external id.
-$value_resource_input_of_line_item_budget_overrides = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides | New line item budget overrides settings value resource input.
-
-try {
-    $result = $apiInstance->updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_budget_overrides);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->updateLineItemBudgetOverrides: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| Line item external id. | |
-| **value_resource_input_of_line_item_budget_overrides** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfLineItemBudgetOverrides**](../Model/ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfLineItemBudgetOverrides**](../Model/ValueResourceOutcomeOfLineItemBudgetOverrides.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

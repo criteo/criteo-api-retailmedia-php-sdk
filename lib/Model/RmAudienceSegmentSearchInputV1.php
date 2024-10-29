@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RmAudienceSegmentSearchInputV1 Class Doc Comment
  *
  * @category Class
- * @description Audience segment search parameter
+ * @description A top-level object that encapsulates a Criteo API request for a single value.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

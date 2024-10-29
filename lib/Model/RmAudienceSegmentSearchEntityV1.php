@@ -243,7 +243,7 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
 
     public const AUDIENCE_SEGMENT_TYPES_UNKNOWN = 'Unknown';
     public const AUDIENCE_SEGMENT_TYPES_CONTACT_LIST = 'ContactList';
-    public const AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR = 'UserBehavior';
+    public const AUDIENCE_SEGMENT_TYPES_EVENTS = 'Events';
 
     /**
      * Gets allowable values of the enum
@@ -255,7 +255,7 @@ class RmAudienceSegmentSearchEntityV1 implements ModelInterface, ArrayAccess, \J
         return [
             self::AUDIENCE_SEGMENT_TYPES_UNKNOWN,
             self::AUDIENCE_SEGMENT_TYPES_CONTACT_LIST,
-            self::AUDIENCE_SEGMENT_TYPES_USER_BEHAVIOR,
+            self::AUDIENCE_SEGMENT_TYPES_EVENTS,
         ];
     }
 

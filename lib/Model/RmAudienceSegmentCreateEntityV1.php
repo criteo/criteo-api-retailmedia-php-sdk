@@ -84,9 +84,9 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
+        'name' => false,
 		'description' => true,
-		'retailer_id' => true,
+		'retailer_id' => false,
 		'contact_list' => false
     ];
 
@@ -296,6 +296,12 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -314,7 +320,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -324,21 +330,14 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     /**
      * Sets name
      *
-     * @param string|null $name Name of the segment
+     * @param string $name Name of the segment
      *
      * @return self
      */
     public function setName($name)
     {
         if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
 
@@ -382,7 +381,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     /**
      * Gets retailer_id
      *
-     * @return string|null
+     * @return string
      */
     public function getRetailerId()
     {
@@ -392,21 +391,14 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     /**
      * Sets retailer_id
      *
-     * @param string|null $retailer_id Retailer  associated to the segment
+     * @param string $retailer_id Retailer  associated to the segment
      *
      * @return self
      */
     public function setRetailerId($retailer_id)
     {
         if (is_null($retailer_id)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
         $this->container['retailer_id'] = $retailer_id;
 

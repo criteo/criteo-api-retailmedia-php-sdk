@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RmAudienceSegmentBulkCreateInputV1 Class Doc Comment
  *
  * @category Class
- * @description Input to create one or more audience segments.
+ * @description A top-level object that encapsulates a Criteo API request for several values.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

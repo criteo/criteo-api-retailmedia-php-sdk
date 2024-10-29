@@ -67,7 +67,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         'updated_at' => '\DateTime',
         'created_by_id' => 'string',
         'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListV1',
-        'user_behavior' => '\criteo\api\retailmedia\preview\Model\RmUserBehaviorV1',
+        'events' => '\criteo\api\retailmedia\preview\Model\RmEventsV1',
         'channels' => 'string[]'
     ];
 
@@ -88,7 +88,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         'updated_at' => 'date-time',
         'created_by_id' => null,
         'contact_list' => null,
-        'user_behavior' => null,
+        'events' => null,
         'channels' => null
     ];
 
@@ -107,7 +107,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
 		'updated_at' => true,
 		'created_by_id' => true,
 		'contact_list' => false,
-		'user_behavior' => false,
+		'events' => false,
 		'channels' => true
     ];
 
@@ -206,7 +206,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         'updated_at' => 'updatedAt',
         'created_by_id' => 'createdById',
         'contact_list' => 'contactList',
-        'user_behavior' => 'userBehavior',
+        'events' => 'events',
         'channels' => 'channels'
     ];
 
@@ -225,7 +225,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         'updated_at' => 'setUpdatedAt',
         'created_by_id' => 'setCreatedById',
         'contact_list' => 'setContactList',
-        'user_behavior' => 'setUserBehavior',
+        'events' => 'setEvents',
         'channels' => 'setChannels'
     ];
 
@@ -244,7 +244,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         'updated_at' => 'getUpdatedAt',
         'created_by_id' => 'getCreatedById',
         'contact_list' => 'getContactList',
-        'user_behavior' => 'getUserBehavior',
+        'events' => 'getEvents',
         'channels' => 'getChannels'
     ];
 
@@ -291,7 +291,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
 
     public const TYPE_UNKNOWN = 'Unknown';
     public const TYPE_CONTACT_LIST = 'ContactList';
-    public const TYPE_USER_BEHAVIOR = 'UserBehavior';
+    public const TYPE_EVENTS = 'Events';
     public const CHANNELS_UNKNOWN = 'Unknown';
     public const CHANNELS_ONSITE = 'Onsite';
     public const CHANNELS_OFFSITE = 'Offsite';
@@ -306,7 +306,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::TYPE_UNKNOWN,
             self::TYPE_CONTACT_LIST,
-            self::TYPE_USER_BEHAVIOR,
+            self::TYPE_EVENTS,
         ];
     }
 
@@ -348,7 +348,7 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('created_by_id', $data ?? [], null);
         $this->setIfExists('contact_list', $data ?? [], null);
-        $this->setIfExists('user_behavior', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
         $this->setIfExists('channels', $data ?? [], null);
     }
 
@@ -713,28 +713,28 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets user_behavior
+     * Gets events
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmUserBehaviorV1|null
+     * @return \criteo\api\retailmedia\preview\Model\RmEventsV1|null
      */
-    public function getUserBehavior()
+    public function getEvents()
     {
-        return $this->container['user_behavior'];
+        return $this->container['events'];
     }
 
     /**
-     * Sets user_behavior
+     * Sets events
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmUserBehaviorV1|null $user_behavior user_behavior
+     * @param \criteo\api\retailmedia\preview\Model\RmEventsV1|null $events events
      *
      * @return self
      */
-    public function setUserBehavior($user_behavior)
+    public function setEvents($events)
     {
-        if (is_null($user_behavior)) {
-            throw new \InvalidArgumentException('non-nullable user_behavior cannot be null');
+        if (is_null($events)) {
+            throw new \InvalidArgumentException('non-nullable events cannot be null');
         }
-        $this->container['user_behavior'] = $user_behavior;
+        $this->container['events'] = $events;
 
         return $this;
     }

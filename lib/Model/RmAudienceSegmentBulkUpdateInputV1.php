@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * RmAudienceSegmentBulkUpdateInputV1 Class Doc Comment
  *
  * @category Class
- * @description Input to update one or more segments.
+ * @description A top-level object that encapsulates a Criteo API request for several entities.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
