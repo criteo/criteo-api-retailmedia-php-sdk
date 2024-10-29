@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * RmLegacyAudienceCreateInputEntityV2 Class Doc Comment
  *
  * @category Class
- * @description Input to create audience.
+ * @description A top-level object that encapsulates a Criteo API request for a single entity.
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
