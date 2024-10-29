@@ -71,7 +71,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => '\DateTime',
         'click_attribution_scope' => 'string',
         'view_attribution_scope' => 'string',
-        'company_name' => 'string'
+        'company_name' => 'string',
+        'on_behalf_company_name' => 'string'
     ];
 
     /**
@@ -95,7 +96,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'date-time',
         'click_attribution_scope' => null,
         'view_attribution_scope' => null,
-        'company_name' => null
+        'company_name' => null,
+        'on_behalf_company_name' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
 		'end_date' => true,
 		'click_attribution_scope' => true,
 		'view_attribution_scope' => true,
-		'company_name' => true
+		'company_name' => true,
+		'on_behalf_company_name' => true
     ];
 
     /**
@@ -219,7 +222,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'endDate',
         'click_attribution_scope' => 'clickAttributionScope',
         'view_attribution_scope' => 'viewAttributionScope',
-        'company_name' => 'companyName'
+        'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName'
     ];
 
     /**
@@ -241,7 +245,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'setEndDate',
         'click_attribution_scope' => 'setClickAttributionScope',
         'view_attribution_scope' => 'setViewAttributionScope',
-        'company_name' => 'setCompanyName'
+        'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName'
     ];
 
     /**
@@ -263,7 +268,8 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'getEndDate',
         'click_attribution_scope' => 'getClickAttributionScope',
         'view_attribution_scope' => 'getViewAttributionScope',
-        'company_name' => 'getCompanyName'
+        'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName'
     ];
 
     /**
@@ -434,6 +440,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('click_attribution_scope', $data ?? [], null);
         $this->setIfExists('view_attribution_scope', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
     }
 
     /**
@@ -1030,6 +1037,40 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name on_behalf_company_name
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
 
         return $this;
     }

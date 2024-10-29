@@ -375,7 +375,7 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Unique identifier of this resource.
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     /**
      * Sets audience_type
      *
-     * @param string|null $audience_type audience_type
+     * @param string|null $audience_type Type of the audience.
      *
      * @return self
      */
