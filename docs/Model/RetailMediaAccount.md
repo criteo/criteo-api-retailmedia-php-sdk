@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | account name | [optional]
-**company_name** | **string** | Display name for reporting the owning entity of ads for the Digital Services Act in the European Union | [optional]
+**company_name** | **string** | Paying entity name of ads for the Digital Services Act | [optional]
+**on_behalf_company_name** | **string** | On behalf entity name of ads for the Digital Services Act | [optional]
 **type** | **string** | Type for the account | [optional]
 **sub_type** | **string** | subtype for the account | [optional]
 **country_ids** | **string[]** | list of countries associated with the account | [optional]

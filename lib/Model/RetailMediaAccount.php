@@ -60,6 +60,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'name' => 'string',
         'company_name' => 'string',
+        'on_behalf_company_name' => 'string',
         'type' => 'string',
         'sub_type' => 'string',
         'country_ids' => 'string[]',
@@ -78,6 +79,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'name' => null,
         'company_name' => null,
+        'on_behalf_company_name' => null,
         'type' => null,
         'sub_type' => null,
         'country_ids' => null,
@@ -94,6 +96,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'name' => true,
 		'company_name' => true,
+		'on_behalf_company_name' => true,
 		'type' => true,
 		'sub_type' => true,
 		'country_ids' => true,
@@ -190,6 +193,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'name' => 'name',
         'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
         'type' => 'type',
         'sub_type' => 'subType',
         'country_ids' => 'countryIds',
@@ -206,6 +210,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'name' => 'setName',
         'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'type' => 'setType',
         'sub_type' => 'setSubType',
         'country_ids' => 'setCountryIds',
@@ -222,6 +227,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'name' => 'getName',
         'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'type' => 'getType',
         'sub_type' => 'getSubType',
         'country_ids' => 'getCountryIds',
@@ -323,6 +329,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('sub_type', $data ?? [], null);
         $this->setIfExists('country_ids', $data ?? [], null);
@@ -438,7 +445,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets company_name
      *
-     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
+     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -455,6 +462,40 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
 
         return $this;
     }
