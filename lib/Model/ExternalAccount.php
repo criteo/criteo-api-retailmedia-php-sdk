@@ -65,7 +65,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'parent_account_label' => 'string',
         'time_zone' => 'string',
-        'company_name' => 'string'
+        'company_name' => 'string',
+        'on_behalf_company_name' => 'string'
     ];
 
     /**
@@ -83,7 +84,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'parent_account_label' => null,
         'time_zone' => null,
-        'company_name' => null
+        'company_name' => null,
+        'on_behalf_company_name' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 		'currency' => false,
 		'parent_account_label' => false,
 		'time_zone' => false,
-		'company_name' => true
+		'company_name' => true,
+		'on_behalf_company_name' => true
     ];
 
     /**
@@ -195,7 +198,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'parent_account_label' => 'parentAccountLabel',
         'time_zone' => 'timeZone',
-        'company_name' => 'companyName'
+        'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName'
     ];
 
     /**
@@ -211,7 +215,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'parent_account_label' => 'setParentAccountLabel',
         'time_zone' => 'setTimeZone',
-        'company_name' => 'setCompanyName'
+        'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName'
     ];
 
     /**
@@ -227,7 +232,8 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'parent_account_label' => 'getParentAccountLabel',
         'time_zone' => 'getTimeZone',
-        'company_name' => 'getCompanyName'
+        'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName'
     ];
 
     /**
@@ -329,6 +335,7 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('parent_account_label', $data ?? [], null);
         $this->setIfExists('time_zone', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
     }
 
     /**
@@ -685,6 +692,40 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name on_behalf_company_name
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
 
         return $this;
     }

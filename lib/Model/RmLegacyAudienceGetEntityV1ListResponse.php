@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_01\ObjectSerializer;
  * RmLegacyAudienceGetEntityV1ListResponse Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata
+ * @description The outcome of an API call.
  * @package  criteo\api\retailmedia\v2024_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
