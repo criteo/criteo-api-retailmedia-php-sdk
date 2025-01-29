@@ -75,7 +75,7 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'status' => null,
+        'status' => 'string',
         'brand_id' => 'int64',
         'retailer_id' => 'int32',
         'associated_line_item_ids' => null,
@@ -92,8 +92,8 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'status' => false,
 		'brand_id' => true,
 		'retailer_id' => false,
-		'associated_line_item_ids' => false,
-		'updated_at' => false
+		'associated_line_item_ids' => true,
+		'updated_at' => true
     ];
 
     /**
@@ -507,7 +507,14 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssociatedLineItemIds($associated_line_item_ids)
     {
         if (is_null($associated_line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable associated_line_item_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['associated_line_item_ids'] = $associated_line_item_ids;
 
@@ -534,7 +541,14 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 

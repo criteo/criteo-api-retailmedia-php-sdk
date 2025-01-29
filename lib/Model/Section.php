@@ -59,6 +59,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'title' => 'string',
+        'description' => 'string',
         'template_variables' => '\criteo\api\retailmedia\v2024_10\Model\TemplateVariable[]'
     ];
 
@@ -71,6 +72,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'title' => null,
+        'description' => null,
         'template_variables' => null
     ];
 
@@ -81,6 +83,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'title' => true,
+		'description' => true,
 		'template_variables' => false
     ];
 
@@ -171,6 +174,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'title' => 'title',
+        'description' => 'description',
         'template_variables' => 'templateVariables'
     ];
 
@@ -181,6 +185,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'title' => 'setTitle',
+        'description' => 'setDescription',
         'template_variables' => 'setTemplateVariables'
     ];
 
@@ -191,6 +196,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'title' => 'getTitle',
+        'description' => 'getDescription',
         'template_variables' => 'getTemplateVariables'
     ];
 
@@ -252,6 +258,7 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('template_variables', $data ?? [], null);
     }
 
@@ -330,6 +337,40 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
 
         return $this;
     }

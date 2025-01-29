@@ -289,15 +289,6 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['previous_value'] === null) {
-            $invalidProperties[] = "'previous_value' can't be null";
-        }
-        if ($this->container['current_value'] === null) {
-            $invalidProperties[] = "'current_value' can't be null";
-        }
-        if ($this->container['change_value'] === null) {
-            $invalidProperties[] = "'change_value' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -316,7 +307,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets previous_value
      *
-     * @return string
+     * @return string|null
      */
     public function getPreviousValue()
     {
@@ -326,7 +317,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets previous_value
      *
-     * @param string $previous_value Previous value of a property of the insertion order.
+     * @param string|null $previous_value Previous value of a property of the insertion order.
      *
      * @return self
      */
@@ -350,7 +341,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets current_value
      *
-     * @return string
+     * @return string|null
      */
     public function getCurrentValue()
     {
@@ -360,7 +351,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets current_value
      *
-     * @param string $current_value Current value of a property of the insertion order.
+     * @param string|null $current_value Current value of a property of the insertion order.
      *
      * @return self
      */
@@ -384,7 +375,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets change_value
      *
-     * @return string
+     * @return string|null
      */
     public function getChangeValue()
     {
@@ -394,7 +385,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets change_value
      *
-     * @param string $change_value Change detail of a property of the insertion order.
+     * @param string|null $change_value Change detail of a property of the insertion order.
      *
      * @return self
      */

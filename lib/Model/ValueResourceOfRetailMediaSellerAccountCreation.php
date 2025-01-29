@@ -59,7 +59,7 @@ class ValueResourceOfRetailMediaSellerAccountCreation implements ModelInterface,
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\RetailMediaSellerAccountCreation'
+        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaSellerAccountCreation'
     ];
 
     /**
@@ -81,7 +81,7 @@ class ValueResourceOfRetailMediaSellerAccountCreation implements ModelInterface,
       */
     protected static array $openAPINullables = [
         'type' => true,
-		'attributes' => false
+		'attributes' => true
     ];
 
     /**
@@ -334,7 +334,7 @@ class ValueResourceOfRetailMediaSellerAccountCreation implements ModelInterface,
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\RetailMediaSellerAccountCreation|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaSellerAccountCreation|null
      */
     public function getAttributes()
     {
@@ -344,14 +344,21 @@ class ValueResourceOfRetailMediaSellerAccountCreation implements ModelInterface,
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\RetailMediaSellerAccountCreation|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaSellerAccountCreation|null $attributes attributes
      *
      * @return self
      */
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 

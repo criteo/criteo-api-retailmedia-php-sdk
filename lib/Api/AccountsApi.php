@@ -72,37 +72,22 @@ class AccountsApi
     /** @var string[] $contentTypes **/
     public const contentTypes = [
         'addBrands' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'createPrivateMarketDemandBrandAccount' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'createPrivateMarketDemandSellerAccount' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'getApiV1ExternalAccounts' => [
             'application/json',
         ],
         'removeBrands' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'updateSellers' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
     ];
 
@@ -156,12 +141,12 @@ class AccountsApi
      * Operation addBrands
      *
      * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands brands to associate to account (optional)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands
+     * @return \criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands
      */
     public function addBrands($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['addBrands'][0])
     {
@@ -173,12 +158,12 @@ class AccountsApi
      * Operation addBrandsWithHttpInfo
      *
      * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands brands to associate to account (optional)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands, HTTP status code, HTTP response headers (array of strings)
      */
     public function addBrandsWithHttpInfo($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['addBrands'][0])
     {
@@ -221,23 +206,23 @@ class AccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands';
+            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -258,7 +243,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands',
+                        '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +257,7 @@ class AccountsApi
      * Operation addBrandsAsync
      *
      * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands brands to associate to account (optional)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -292,7 +277,7 @@ class AccountsApi
      * Operation addBrandsAsyncWithHttpInfo
      *
      * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands brands to associate to account (optional)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -300,7 +285,7 @@ class AccountsApi
      */
     public function addBrandsAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['addBrands'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands';
+        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands';
         $request = $this->addBrandsRequest($account_id, $value_resource_input_of_retail_media_brands, $contentType);
 
         return $this->client
@@ -343,7 +328,7 @@ class AccountsApi
      * Create request for operation 'addBrands'
      *
      * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands brands to associate to account (optional)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -451,13 +436,13 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccount
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount
+     * @return \criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount
      */
     public function createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandBrandAccount'][0])
     {
@@ -468,13 +453,13 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccountWithHttpInfo
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPrivateMarketDemandBrandAccountWithHttpInfo($account_id, $value_resource_input_of_retail_media_brand_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandBrandAccount'][0])
     {
@@ -517,23 +502,23 @@ class AccountsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount';
+            $returnType = '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -554,7 +539,7 @@ class AccountsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount',
+                        '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -567,8 +552,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccountAsync
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -587,8 +572,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccountAsyncWithHttpInfo
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -596,7 +581,7 @@ class AccountsApi
      */
     public function createPrivateMarketDemandBrandAccountAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_brand_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandBrandAccount'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount';
+        $returnType = '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount';
         $request = $this->createPrivateMarketDemandBrandAccountRequest($account_id, $value_resource_input_of_retail_media_brand_account_creation, $contentType);
 
         return $this->client
@@ -638,8 +623,8 @@ class AccountsApi
     /**
      * Create request for operation 'createPrivateMarketDemandBrandAccount'
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -747,13 +732,13 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccount
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount
+     * @return \criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount
      */
     public function createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
     {
@@ -764,13 +749,13 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccountWithHttpInfo
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount, HTTP status code, HTTP response headers (array of strings)
      */
     public function createPrivateMarketDemandSellerAccountWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
     {
@@ -813,23 +798,23 @@ class AccountsApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount';
+            $returnType = '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -850,7 +835,7 @@ class AccountsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount',
+                        '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -863,8 +848,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccountAsync
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -883,8 +868,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccountAsyncWithHttpInfo
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -892,7 +877,7 @@ class AccountsApi
      */
     public function createPrivateMarketDemandSellerAccountAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_seller_account_creation = null, string $contentType = self::contentTypes['createPrivateMarketDemandSellerAccount'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ResourceOutcomeOfRetailMediaAccount';
+        $returnType = '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOutcomeOfRetailMediaAccount';
         $request = $this->createPrivateMarketDemandSellerAccountRequest($account_id, $value_resource_input_of_retail_media_seller_account_creation, $contentType);
 
         return $this->client
@@ -934,8 +919,8 @@ class AccountsApi
     /**
      * Create request for operation 'createPrivateMarketDemandSellerAccount'
      *
-     * @param  string $account_id Account Id for the parent private market account (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation Initial creation and configuration options for the new account (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1351,13 +1336,13 @@ class AccountsApi
     /**
      * Operation removeBrands
      *
-     * @param  string $account_id The account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands Brands to remove from account (optional)
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands
+     * @return \criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands
      */
     public function removeBrands($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['removeBrands'][0])
     {
@@ -1368,13 +1353,13 @@ class AccountsApi
     /**
      * Operation removeBrandsWithHttpInfo
      *
-     * @param  string $account_id The account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands Brands to remove from account (optional)
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeBrandsWithHttpInfo($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['removeBrands'][0])
     {
@@ -1417,23 +1402,23 @@ class AccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands' !== 'string') {
+                        if ('\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands';
+            $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1454,7 +1439,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands',
+                        '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1467,8 +1452,8 @@ class AccountsApi
     /**
      * Operation removeBrandsAsync
      *
-     * @param  string $account_id The account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands Brands to remove from account (optional)
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1487,8 +1472,8 @@ class AccountsApi
     /**
      * Operation removeBrandsAsyncWithHttpInfo
      *
-     * @param  string $account_id The account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands Brands to remove from account (optional)
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1496,7 +1481,7 @@ class AccountsApi
      */
     public function removeBrandsAsyncWithHttpInfo($account_id, $value_resource_input_of_retail_media_brands = null, string $contentType = self::contentTypes['removeBrands'][0])
     {
-        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOfRetailMediaBrands';
+        $returnType = '\criteo\api\retailmedia\v2024_10\Model\ValueResourceOutcomeOfRetailMediaBrands';
         $request = $this->removeBrandsRequest($account_id, $value_resource_input_of_retail_media_brands, $contentType);
 
         return $this->client
@@ -1538,8 +1523,8 @@ class AccountsApi
     /**
      * Create request for operation 'removeBrands'
      *
-     * @param  string $account_id The account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands Brands to remove from account (optional)
+     * @param  string $account_id the account id to update (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1647,8 +1632,8 @@ class AccountsApi
     /**
      * Operation updateSellers
      *
-     * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller value_resource_collection_input_of_retail_media_seller (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
@@ -1664,8 +1649,8 @@ class AccountsApi
     /**
      * Operation updateSellersWithHttpInfo
      *
-     * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
@@ -1763,8 +1748,8 @@ class AccountsApi
     /**
      * Operation updateSellersAsync
      *
-     * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1783,8 +1768,8 @@ class AccountsApi
     /**
      * Operation updateSellersAsyncWithHttpInfo
      *
-     * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1834,8 +1819,8 @@ class AccountsApi
     /**
      * Create request for operation 'updateSellers'
      *
-     * @param  string $account_id the account id to update (required)
-     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller sellers to associate (optional)
+     * @param  string $account_id The given account id (required)
+     * @param  \criteo\api\retailmedia\v2024_10\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

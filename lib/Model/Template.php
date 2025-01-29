@@ -60,7 +60,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'creative_format' => 'string',
         'name' => 'string',
-        'retailer_id' => 'int',
         'sku_collection_min' => 'int',
         'sku_collection_max' => 'int',
         'sku_per_collection_min' => 'int',
@@ -80,9 +79,8 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'creative_format' => null,
+        'creative_format' => 'string',
         'name' => null,
-        'retailer_id' => 'int32',
         'sku_collection_min' => 'int32',
         'sku_collection_max' => 'int32',
         'sku_per_collection_min' => 'int32',
@@ -102,7 +100,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'creative_format' => false,
 		'name' => false,
-		'retailer_id' => false,
 		'sku_collection_min' => false,
 		'sku_collection_max' => true,
 		'sku_per_collection_min' => false,
@@ -202,7 +199,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'creative_format' => 'creativeFormat',
         'name' => 'name',
-        'retailer_id' => 'retailerId',
         'sku_collection_min' => 'skuCollectionMin',
         'sku_collection_max' => 'skuCollectionMax',
         'sku_per_collection_min' => 'skuPerCollectionMin',
@@ -222,7 +218,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'creative_format' => 'setCreativeFormat',
         'name' => 'setName',
-        'retailer_id' => 'setRetailerId',
         'sku_collection_min' => 'setSkuCollectionMin',
         'sku_collection_max' => 'setSkuCollectionMax',
         'sku_per_collection_min' => 'setSkuPerCollectionMin',
@@ -242,7 +237,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'creative_format' => 'getCreativeFormat',
         'name' => 'getName',
-        'retailer_id' => 'getRetailerId',
         'sku_collection_min' => 'getSkuCollectionMin',
         'sku_collection_max' => 'getSkuCollectionMax',
         'sku_per_collection_min' => 'getSkuPerCollectionMin',
@@ -344,7 +338,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('creative_format', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('sku_collection_min', $data ?? [], null);
         $this->setIfExists('sku_collection_max', $data ?? [], null);
         $this->setIfExists('sku_per_collection_min', $data ?? [], null);
@@ -496,33 +489,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets retailer_id
-     *
-     * @return int|null
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param int|null $retailer_id The retailer associated to the template
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
-        }
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
      * Gets sku_collection_min
      *
      * @return int
@@ -535,7 +501,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sku_collection_min
      *
-     * @param int $sku_collection_min TODO: what is it ?
+     * @param int $sku_collection_min Minimum number of skus in the collection
      *
      * @return self
      */
@@ -562,7 +528,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sku_collection_max
      *
-     * @param int|null $sku_collection_max TODO: what is it ?
+     * @param int|null $sku_collection_max Maximum number of skus in the collection
      *
      * @return self
      */
@@ -596,7 +562,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sku_per_collection_min
      *
-     * @param int $sku_per_collection_min TODO: what is it ?
+     * @param int $sku_per_collection_min Minimum number of skus per collection
      *
      * @return self
      */
@@ -623,7 +589,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sku_per_collection_max
      *
-     * @param int|null $sku_per_collection_max TODO: what is it ?
+     * @param int|null $sku_per_collection_max Maximum number of skus per collection
      *
      * @return self
      */
@@ -657,7 +623,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets displayable_skus_max
      *
-     * @param int|null $displayable_skus_max TODO: what is it ?
+     * @param int|null $displayable_skus_max Maximum number of displayable skus
      *
      * @return self
      */
@@ -691,7 +657,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets all_collections_mandatory
      *
-     * @param bool $all_collections_mandatory TODO: what is it ?
+     * @param bool $all_collections_mandatory Marks whether or not all collections are mandatory
      *
      * @return self
      */

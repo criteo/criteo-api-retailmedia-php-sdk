@@ -68,7 +68,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
         'associated_line_item_ids' => 'string[]',
         'updated_at' => '\DateTime',
         'creative_format_type' => 'string',
-        'environments' => '\criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment[]',
+        'environments' => '\criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment202210[]',
         'template_variable_values' => '\criteo\api\retailmedia\v2024_10\Model\TemplateVariableValue[]'
     ];
 
@@ -81,7 +81,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'status' => null,
+        'status' => 'string',
         'brand_id' => 'int64',
         'retailer_id' => 'int32',
         'template_id' => 'int32',
@@ -89,7 +89,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
         'format_id' => 'int32',
         'associated_line_item_ids' => null,
         'updated_at' => 'date-time',
-        'creative_format_type' => null,
+        'creative_format_type' => 'string',
         'environments' => null,
         'template_variable_values' => null
     ];
@@ -107,8 +107,8 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'template_id' => false,
 		'template_name' => false,
 		'format_id' => false,
-		'associated_line_item_ids' => false,
-		'updated_at' => false,
+		'associated_line_item_ids' => true,
+		'updated_at' => true,
 		'creative_format_type' => false,
 		'environments' => false,
 		'template_variable_values' => false
@@ -688,7 +688,14 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAssociatedLineItemIds($associated_line_item_ids)
     {
         if (is_null($associated_line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable associated_line_item_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['associated_line_item_ids'] = $associated_line_item_ids;
 
@@ -715,7 +722,14 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 
@@ -762,7 +776,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets environments
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment[]
+     * @return \criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment202210[]
      */
     public function getEnvironments()
     {
@@ -772,7 +786,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets environments
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment[] $environments Environment type (e.g. mobile, web, app)
+     * @param \criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment202210[] $environments Environment type (e.g. mobile, web, app)
      *
      * @return self
      */

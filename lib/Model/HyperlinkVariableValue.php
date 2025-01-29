@@ -78,7 +78,7 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false
+        'url' => true
     ];
 
     /**
@@ -275,9 +275,6 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets url
      *
-     * @return string
+     * @return string|null
      */
     public function getUrl()
     {
@@ -306,14 +303,21 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets url
      *
-     * @param string $url The url to redirect to
+     * @param string|null $url The url to redirect to
      *
      * @return self
      */
     public function setUrl($url)
     {
         if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['url'] = $url;
 

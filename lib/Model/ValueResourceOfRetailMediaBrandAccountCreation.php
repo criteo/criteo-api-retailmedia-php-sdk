@@ -59,7 +59,7 @@ class ValueResourceOfRetailMediaBrandAccountCreation implements ModelInterface, 
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\RetailMediaBrandAccountCreation'
+        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaBrandAccountCreation'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ValueResourceOfRetailMediaBrandAccountCreation implements ModelInterface, 
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\RetailMediaBrandAccountCreation|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaBrandAccountCreation|null
      */
     public function getAttributes()
     {
@@ -344,7 +344,7 @@ class ValueResourceOfRetailMediaBrandAccountCreation implements ModelInterface, 
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\RetailMediaBrandAccountCreation|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaBrandAccountCreation|null $attributes attributes
      *
      * @return self
      */

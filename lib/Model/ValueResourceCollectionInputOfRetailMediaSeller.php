@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
  * ValueResourceCollectionInputOfRetailMediaSeller Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for several values.
+ * @description A top-level object that encapsulates a Criteo API response for a collection of values.
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -78,7 +78,7 @@ class ValueResourceCollectionInputOfRetailMediaSeller implements ModelInterface,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true
+        'data' => false
     ];
 
     /**
@@ -310,14 +310,7 @@ class ValueResourceCollectionInputOfRetailMediaSeller implements ModelInterface,
     public function setData($data)
     {
         if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
 
