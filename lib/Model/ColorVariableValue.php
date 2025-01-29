@@ -78,7 +78,7 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'color' => false
+        'color' => true
     ];
 
     /**
@@ -275,10 +275,7 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['color'] === null) {
-            $invalidProperties[] = "'color' can't be null";
-        }
-        if (!preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $this->container['color'])) {
+        if (!is_null($this->container['color']) && !preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $this->container['color'])) {
             $invalidProperties[] = "invalid value for 'color', must be conform to the pattern /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/.";
         }
 
@@ -300,7 +297,7 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets color
      *
-     * @return string
+     * @return string|null
      */
     public function getColor()
     {
@@ -310,17 +307,24 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets color
      *
-     * @param string $color The displayed color (HEX format)
+     * @param string|null $color The displayed color (HEX format)
      *
      * @return self
      */
     public function setColor($color)
     {
         if (is_null($color)) {
-            throw new \InvalidArgumentException('non-nullable color cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'color');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('color', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((!preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $color))) {
+        if (!is_null($color) && (!preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $color))) {
             throw new \InvalidArgumentException("invalid value for \$color when calling ColorVariableValue., must conform to the pattern /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/.");
         }
 

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
  * ValueResourceCollectionOutcomeOfRetailMediaSeller Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several values.
+ * @description A top-level object that encapsulates a Criteo API response for a collection of values.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

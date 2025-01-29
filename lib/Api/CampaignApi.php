@@ -89,9 +89,6 @@ class CampaignApi
         'fetchPromotedProducts' => [
             'application/json',
         ],
-        'fetchProposal' => [
-            'application/json',
-        ],
         'getApi202110ExternalAccountCreativesByAccountId' => [
             'application/json',
         ],
@@ -246,9 +243,6 @@ class CampaignApi
             'application/json',
         ],
         'setKeywordBids' => [
-            'application/json',
-        ],
-        'submitProposal' => [
             'application/json',
         ],
         'unpausePromotedProducts' => [
@@ -2094,335 +2088,6 @@ class CampaignApi
     }
 
     /**
-     * Operation fetchProposal
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2024_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome
-     */
-    public function fetchProposal($id, string $contentType = self::contentTypes['fetchProposal'][0])
-    {
-        list($response) = $this->fetchProposalWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation fetchProposalWithHttpInfo
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2024_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function fetchProposalWithHttpInfo($id, string $contentType = self::contentTypes['fetchProposal'][0])
-    {
-        $request = $this->fetchProposalRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation fetchProposalAsync
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function fetchProposalAsync($id, string $contentType = self::contentTypes['fetchProposal'][0])
-    {
-        return $this->fetchProposalAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation fetchProposalAsyncWithHttpInfo
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function fetchProposalAsyncWithHttpInfo($id, string $contentType = self::contentTypes['fetchProposal'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse';
-        $request = $this->fetchProposalRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'fetchProposal'
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function fetchProposalRequest($id, string $contentType = self::contentTypes['fetchProposal'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling fetchProposal'
-            );
-        }
-
-
-        $resourcePath = '/2024-07/retail-media/preferred-deal-line-items/{id}/proposal';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getApi202110ExternalAccountCreativesByAccountId
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
@@ -2645,7 +2310,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -5730,7 +5395,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -6013,7 +5678,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -6316,7 +5981,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -14329,7 +13994,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -14634,7 +14299,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -16951,7 +16616,7 @@ class CampaignApi
             }
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\criteo\api\retailmedia\v2024_07\Model\Creative202210Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -16986,7 +16651,7 @@ class CampaignApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2024_07\Model\Creative202210Response',
@@ -17130,7 +16795,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -18374,335 +18039,6 @@ class CampaignApi
                 $httpBody = $set_bids_model_request;
             }
         } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation submitProposal
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2024_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome
-     */
-    public function submitProposal($id, string $contentType = self::contentTypes['submitProposal'][0])
-    {
-        list($response) = $this->submitProposalWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation submitProposalWithHttpInfo
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2024_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome|\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function submitProposalWithHttpInfo($id, string $contentType = self::contentTypes['submitProposal'][0])
-    {
-        $request = $this->submitProposalRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2024_07\Model\ResourceOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation submitProposalAsync
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submitProposalAsync($id, string $contentType = self::contentTypes['submitProposal'][0])
-    {
-        return $this->submitProposalAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation submitProposalAsyncWithHttpInfo
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function submitProposalAsyncWithHttpInfo($id, string $contentType = self::contentTypes['submitProposal'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResponse';
-        $request = $this->submitProposalRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'submitProposal'
-     *
-     * @param  string $id ID of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitProposal'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function submitProposalRequest($id, string $contentType = self::contentTypes['submitProposal'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling submitProposal'
-            );
-        }
-
-
-        $resourcePath = '/2024-07/retail-media/preferred-deal-line-items/{id}/proposal/submit';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

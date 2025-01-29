@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaSeller
+ * EntityResourceOutcomeOfRetailMediaAccount
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * RetailMediaSeller Class Doc Comment
+ * EntityResourceOutcomeOfRetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description used to define the exact seller linked with an account
+ * @description A top-level object that encapsulates a Criteo API response for a single value.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaSeller';
+    protected static $openAPIModelName = 'EntityResourceOutcomeOfRetailMediaAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'seller_id' => 'string',
-        'retailer_id' => 'int'
+        'data' => '\criteo\api\retailmedia\v2024_07\Model\EntityResourceOfRetailMediaAccount',
+        'warnings' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'seller_id' => null,
-        'retailer_id' => 'int32'
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_id' => true,
-		'retailer_id' => true
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'seller_id' => 'sellerId',
-        'retailer_id' => 'retailerId'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -180,8 +184,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'seller_id' => 'setSellerId',
-        'retailer_id' => 'setRetailerId'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -190,8 +195,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'seller_id' => 'getSellerId',
-        'retailer_id' => 'getRetailerId'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -251,8 +257,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('seller_id', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -298,69 +305,103 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets seller_id
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\EntityResourceOfRetailMediaAccount|null
      */
-    public function getSellerId()
+    public function getData()
     {
-        return $this->container['seller_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets seller_id
+     * Sets data
      *
-     * @param string|null $seller_id the seller id
+     * @param \criteo\api\retailmedia\v2024_07\Model\EntityResourceOfRetailMediaAccount|null $data data
      *
      * @return self
      */
-    public function setSellerId($seller_id)
+    public function setData($data)
     {
-        if (is_null($seller_id)) {
-            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('seller_id', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['seller_id'] = $seller_id;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets retailer_id
+     * Gets warnings
      *
-     * @return int|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
      */
-    public function getRetailerId()
+    public function getWarnings()
     {
-        return $this->container['retailer_id'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets warnings
      *
-     * @param int|null $retailer_id the retailer id
+     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setWarnings($warnings)
     {
-        if (is_null($retailer_id)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['retailer_id'] = $retailer_id;
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

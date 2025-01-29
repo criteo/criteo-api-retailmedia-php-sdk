@@ -1,6 +1,6 @@
 <?php
 /**
- * PageTypeEnvironment
+ * ExternalRetailMediaSellerAccountCreation
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * PageTypeEnvironment Class Doc Comment
+ * ExternalRetailMediaSellerAccountCreation Class Doc Comment
  *
  * @category Class
- * @description The PageType-Environment Tuples for creatives
+ * @description The details for a newly created seller account
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PageTypeEnvironment';
+    protected static $openAPIModelName = 'ExternalRetailMediaSellerAccountCreation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_type' => 'string',
-        'environments' => 'string[]'
+        'name' => 'string',
+        'company_name' => 'string',
+        'on_behalf_company_name' => 'string',
+        'sellers' => '\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_type' => null,
-        'environments' => null
+        'name' => null,
+        'company_name' => null,
+        'on_behalf_company_name' => null,
+        'sellers' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'page_type' => false,
-		'environments' => false
+        'name' => true,
+		'company_name' => true,
+		'on_behalf_company_name' => true,
+		'sellers' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_type' => 'pageType',
-        'environments' => 'environments'
+        'name' => 'name',
+        'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
+        'sellers' => 'sellers'
     ];
 
     /**
@@ -180,8 +188,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'page_type' => 'setPageType',
-        'environments' => 'setEnvironments'
+        'name' => 'setName',
+        'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
+        'sellers' => 'setSellers'
     ];
 
     /**
@@ -190,8 +200,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'page_type' => 'getPageType',
-        'environments' => 'getEnvironments'
+        'name' => 'getName',
+        'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
+        'sellers' => 'getSellers'
     ];
 
     /**
@@ -235,60 +247,6 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const PAGE_TYPE_SEARCH = 'Search';
-    public const PAGE_TYPE_HOME = 'Home';
-    public const PAGE_TYPE_BROWSE = 'Browse';
-    public const PAGE_TYPE_CHECKOUT = 'Checkout';
-    public const PAGE_TYPE_CATEGORY = 'Category';
-    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
-    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
-    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
-    public const PAGE_TYPE_DEALS = 'Deals';
-    public const ENVIRONMENTS_WEB = 'Web';
-    public const ENVIRONMENTS_MOBILE = 'Mobile';
-    public const ENVIRONMENTS_APP = 'App';
-    public const ENVIRONMENTS_LOCKOUT = 'Lockout';
-    public const ENVIRONMENTS_MIXED = 'Mixed';
-    public const ENVIRONMENTS_I_OS = 'iOS';
-    public const ENVIRONMENTS_ANDROID = 'Android';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageTypeAllowableValues()
-    {
-        return [
-            self::PAGE_TYPE_SEARCH,
-            self::PAGE_TYPE_HOME,
-            self::PAGE_TYPE_BROWSE,
-            self::PAGE_TYPE_CHECKOUT,
-            self::PAGE_TYPE_CATEGORY,
-            self::PAGE_TYPE_PRODUCT_DETAIL,
-            self::PAGE_TYPE_CONFIRMATION,
-            self::PAGE_TYPE_MERCHANDISING,
-            self::PAGE_TYPE_DEALS,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_WEB,
-            self::ENVIRONMENTS_MOBILE,
-            self::ENVIRONMENTS_APP,
-            self::ENVIRONMENTS_LOCKOUT,
-            self::ENVIRONMENTS_MIXED,
-            self::ENVIRONMENTS_I_OS,
-            self::ENVIRONMENTS_ANDROID,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -305,8 +263,10 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('page_type', $data ?? [], null);
-        $this->setIfExists('environments', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('sellers', $data ?? [], null);
     }
 
     /**
@@ -336,15 +296,6 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -361,74 +312,130 @@ class PageTypeEnvironment implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets page_type
+     * Gets name
      *
      * @return string|null
      */
-    public function getPageType()
+    public function getName()
     {
-        return $this->container['page_type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets page_type
+     * Sets name
      *
-     * @param string|null $page_type Creative PageType
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setPageType($page_type)
+    public function setName($name)
     {
-        if (is_null($page_type)) {
-            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!in_array($page_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_type', must be one of '%s'",
-                    $page_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_type'] = $page_type;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets environments
+     * Gets company_name
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getEnvironments()
+    public function getCompanyName()
     {
-        return $this->container['environments'];
+        return $this->container['company_name'];
     }
 
     /**
-     * Sets environments
+     * Sets company_name
      *
-     * @param string[]|null $environments List of environments per PageType
+     * @param string|null $company_name company_name
      *
      * @return self
      */
-    public function setEnvironments($environments)
+    public function setCompanyName($company_name)
     {
-        if (is_null($environments)) {
-            throw new \InvalidArgumentException('non-nullable environments cannot be null');
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name on_behalf_company_name
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['environments'] = $environments;
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets sellers
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller[]|null
+     */
+    public function getSellers()
+    {
+        return $this->container['sellers'];
+    }
+
+    /**
+     * Sets sellers
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller[]|null $sellers sellers
+     *
+     * @return self
+     */
+    public function setSellers($sellers)
+    {
+        if (is_null($sellers)) {
+            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
+        }
+        $this->container['sellers'] = $sellers;
 
         return $this;
     }

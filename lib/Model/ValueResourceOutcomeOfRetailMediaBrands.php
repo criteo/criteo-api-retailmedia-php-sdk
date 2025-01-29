@@ -1,6 +1,6 @@
 <?php
 /**
- * ProposalStatusModelResponse
+ * ValueResourceOutcomeOfRetailMediaBrands
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * ProposalStatusModelResponse Class Doc Comment
+ * ValueResourceOutcomeOfRetailMediaBrands Class Doc Comment
  *
  * @category Class
- * @description Response object containing the state of a proposal in the context of a line item.
+ * @description A top-level object that encapsulates a Criteo API response for a single value.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProposalStatusModelResponse';
+    protected static $openAPIModelName = 'ValueResourceOutcomeOfRetailMediaBrands';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'errors' => '\criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]',
-        'data' => '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResource'
+        'data' => '\criteo\api\retailmedia\v2024_07\Model\ValueResourceOfRetailMediaBrands',
+        'warnings' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'errors' => null,
+        'data' => null,
         'warnings' => null,
-        'data' => null
+        'errors' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => true,
+        'data' => true,
 		'warnings' => true,
-		'data' => false
+		'errors' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'errors' => 'errors',
+        'data' => 'data',
         'warnings' => 'warnings',
-        'data' => 'data'
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'errors' => 'setErrors',
+        'data' => 'setData',
         'warnings' => 'setWarnings',
-        'data' => 'setData'
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'errors' => 'getErrors',
+        'data' => 'getData',
         'warnings' => 'getWarnings',
-        'data' => 'getData'
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -305,35 +305,35 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets errors
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\ValueResourceOfRetailMediaBrands|null
      */
-    public function getErrors()
+    public function getData()
     {
-        return $this->container['errors'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets errors
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2024_07\Model\ValueResourceOfRetailMediaBrands|null $data data
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setData($data)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['data'] = $data;
 
         return $this;
     }
@@ -341,7 +341,7 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -351,7 +351,7 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
@@ -373,28 +373,35 @@ class ProposalStatusModelResponse implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets data
+     * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResource|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
      */
-    public function getData()
+    public function getErrors()
     {
-        return $this->container['data'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets data
+     * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModelResource|null $data data
+     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setData($data)
+    public function setErrors($errors)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

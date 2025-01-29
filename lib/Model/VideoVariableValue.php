@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfRetailMediaAccount
+ * VideoVariableValue
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * ResourceOfRetailMediaAccount Class Doc Comment
+ * VideoVariableValue Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API.
+ * @description A value of a template video variable
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfRetailMediaAccount';
+    protected static $openAPIModelName = 'VideoVariableValue';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\RetailMediaAccount',
-        'id' => 'string',
-        'type' => 'string'
+        'url' => 'string',
+        'width' => 'int',
+        'height' => 'int',
+        'duration' => 'string'
     ];
 
     /**
@@ -71,9 +72,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'url' => null,
+        'width' => 'int32',
+        'height' => 'int32',
+        'duration' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => true,
-		'type' => true
+        'url' => false,
+		'width' => false,
+		'height' => false,
+		'duration' => false
     ];
 
     /**
@@ -173,9 +176,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'url' => 'url',
+        'width' => 'width',
+        'height' => 'height',
+        'duration' => 'duration'
     ];
 
     /**
@@ -184,9 +188,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'url' => 'setUrl',
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'duration' => 'setDuration'
     ];
 
     /**
@@ -195,9 +200,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'url' => 'getUrl',
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'duration' => 'getDuration'
     ];
 
     /**
@@ -257,9 +263,10 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
+        $this->setIfExists('duration', $data ?? [], null);
     }
 
     /**
@@ -289,6 +296,26 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ((mb_strlen($this->container['url']) < 1)) {
+            $invalidProperties[] = "invalid value for 'url', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['duration'] === null) {
+            $invalidProperties[] = "'duration' can't be null";
+        }
+        if ((mb_strlen($this->container['duration']) < 1)) {
+            $invalidProperties[] = "invalid value for 'duration', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,96 +332,119 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets attributes
+     * Gets url
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RetailMediaAccount|null
+     * @return string
      */
-    public function getAttributes()
+    public function getUrl()
     {
-        return $this->container['attributes'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets attributes
+     * Sets url
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RetailMediaAccount|null $attributes attributes
+     * @param string $url The vast video url
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setUrl($url)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['attributes'] = $attributes;
+
+        if ((mb_strlen($url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling VideoVariableValue., must be bigger than or equal to 1.');
+        }
+
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets width
      *
-     * @return string|null
+     * @return int
      */
-    public function getId()
+    public function getWidth()
     {
-        return $this->container['id'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets id
+     * Sets width
      *
-     * @param string|null $id Unique identifier of this resource.
+     * @param int $width The video's width
      *
      * @return self
      */
-    public function setId($id)
+    public function setWidth($width)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets height
      *
-     * @return string|null
+     * @return int
      */
-    public function getType()
+    public function getHeight()
     {
-        return $this->container['type'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets type
+     * Sets height
      *
-     * @param string|null $type type
+     * @param int $height The video's height
      *
      * @return self
      */
-    public function setType($type)
+    public function setHeight($height)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        return $this->container['duration'];
+    }
+
+    /**
+     * Sets duration
+     *
+     * @param string $duration The video's duration
+     *
+     * @return self
+     */
+    public function setDuration($duration)
+    {
+        if (is_null($duration)) {
+            throw new \InvalidArgumentException('non-nullable duration cannot be null');
+        }
+
+        if ((mb_strlen($duration) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $duration when calling VideoVariableValue., must be bigger than or equal to 1.');
+        }
+
+        $this->container['duration'] = $duration;
 
         return $this;
     }

@@ -76,7 +76,7 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'id' => null,
         'required' => null,
-        'type' => null,
+        'type' => 'string',
         'choice_variable_specification' => null,
         'text_variable_specification' => null,
         'files_variables_specification' => null
@@ -92,7 +92,7 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
 		'required' => false,
 		'type' => false,
 		'choice_variable_specification' => false,
-		'text_variable_specification' => false,
+		'text_variable_specification' => true,
 		'files_variables_specification' => false
     ];
 
@@ -502,7 +502,14 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTextVariableSpecification($text_variable_specification)
     {
         if (is_null($text_variable_specification)) {
-            throw new \InvalidArgumentException('non-nullable text_variable_specification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text_variable_specification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_variable_specification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text_variable_specification'] = $text_variable_specification;
 

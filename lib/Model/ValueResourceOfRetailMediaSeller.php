@@ -59,7 +59,7 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller'
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller'
     ];
 
     /**
@@ -81,7 +81,7 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'type' => true,
-		'attributes' => false
+		'attributes' => true
     ];
 
     /**
@@ -334,7 +334,7 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller|null
      */
     public function getAttributes()
     {
@@ -344,14 +344,21 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller|null $attributes attributes
      *
      * @return self
      */
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 

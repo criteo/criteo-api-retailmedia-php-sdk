@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaSellerAccountCreation
+ * PageTypeEnvironment202210
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * RetailMediaSellerAccountCreation Class Doc Comment
+ * PageTypeEnvironment202210 Class Doc Comment
  *
  * @category Class
- * @description the initial set up and configuration options for a new private market demand brand account
+ * @description The PageType-Environment Tuples for creatives
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \JsonSerializable
+class PageTypeEnvironment202210 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaSellerAccountCreation';
+    protected static $openAPIModelName = 'PageTypeEnvironment202210';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'company_name' => 'string',
-        'on_behalf_company_name' => 'string',
-        'sellers' => '\criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller[]'
+        'page_type' => 'string',
+        'environments' => 'string[]'
     ];
 
     /**
@@ -72,10 +70,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'company_name' => null,
-        'on_behalf_company_name' => null,
-        'sellers' => null
+        'page_type' => 'string',
+        'environments' => 'string'
     ];
 
     /**
@@ -84,10 +80,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
-		'company_name' => true,
-		'on_behalf_company_name' => true,
-		'sellers' => true
+        'page_type' => true,
+		'environments' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName',
-        'sellers' => 'sellers'
+        'page_type' => 'pageType',
+        'environments' => 'environments'
     ];
 
     /**
@@ -188,10 +180,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'sellers' => 'setSellers'
+        'page_type' => 'setPageType',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -200,10 +190,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'sellers' => 'getSellers'
+        'page_type' => 'getPageType',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -247,6 +235,60 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const PAGE_TYPE_SEARCH = 'Search';
+    public const PAGE_TYPE_HOME = 'Home';
+    public const PAGE_TYPE_BROWSE = 'Browse';
+    public const PAGE_TYPE_CHECKOUT = 'Checkout';
+    public const PAGE_TYPE_CATEGORY = 'Category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
+    public const PAGE_TYPE_DEALS = 'Deals';
+    public const ENVIRONMENTS_WEB = 'Web';
+    public const ENVIRONMENTS_MOBILE = 'Mobile';
+    public const ENVIRONMENTS_APP = 'App';
+    public const ENVIRONMENTS_LOCKOUT = 'Lockout';
+    public const ENVIRONMENTS_MIXED = 'Mixed';
+    public const ENVIRONMENTS_I_OS = 'iOS';
+    public const ENVIRONMENTS_ANDROID = 'Android';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_BROWSE,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEnvironmentsAllowableValues()
+    {
+        return [
+            self::ENVIRONMENTS_WEB,
+            self::ENVIRONMENTS_MOBILE,
+            self::ENVIRONMENTS_APP,
+            self::ENVIRONMENTS_LOCKOUT,
+            self::ENVIRONMENTS_MIXED,
+            self::ENVIRONMENTS_I_OS,
+            self::ENVIRONMENTS_ANDROID,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +305,8 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('company_name', $data ?? [], null);
-        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
-        $this->setIfExists('sellers', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('environments', $data ?? [], null);
     }
 
     /**
@@ -296,6 +336,15 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +361,88 @@ class RetailMediaSellerAccountCreation implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets name
+     * Gets page_type
      *
      * @return string|null
      */
-    public function getName()
+    public function getPageType()
     {
-        return $this->container['name'];
+        return $this->container['page_type'];
     }
 
     /**
-     * Sets name
+     * Sets page_type
      *
-     * @param string|null $name the name of the account, must be unique across all accounts
+     * @param string|null $page_type Creative PageType
      *
      * @return self
      */
-    public function setName($name)
+    public function setPageType($page_type)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($page_type)) {
+            array_push($this->openAPINullablesSetToNull, 'page_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('page_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($page_type) && !in_array($page_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_type', must be one of '%s'",
+                    $page_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_type'] = $page_type;
 
         return $this;
     }
 
     /**
-     * Gets company_name
+     * Gets environments
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getCompanyName()
+    public function getEnvironments()
     {
-        return $this->container['company_name'];
+        return $this->container['environments'];
     }
 
     /**
-     * Sets company_name
+     * Sets environments
      *
-     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
+     * @param string[]|null $environments List of environments per PageType
      *
      * @return self
      */
-    public function setCompanyName($company_name)
+    public function setEnvironments($environments)
     {
-        if (is_null($company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'company_name');
+        if (is_null($environments)) {
+            array_push($this->openAPINullablesSetToNull, 'environments');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('company_name', $nullablesSetToNull);
+            $index = array_search('environments', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['company_name'] = $company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets on_behalf_company_name
-     *
-     * @return string|null
-     */
-    public function getOnBehalfCompanyName()
-    {
-        return $this->container['on_behalf_company_name'];
-    }
-
-    /**
-     * Sets on_behalf_company_name
-     *
-     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
-     *
-     * @return self
-     */
-    public function setOnBehalfCompanyName($on_behalf_company_name)
-    {
-        if (is_null($on_behalf_company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getEnvironmentsAllowableValues();
+        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'environments', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets sellers
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller[]|null
-     */
-    public function getSellers()
-    {
-        return $this->container['sellers'];
-    }
-
-    /**
-     * Sets sellers
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RetailMediaSeller[]|null $sellers list of sellers to associate to the new account
-     *
-     * @return self
-     */
-    public function setSellers($sellers)
-    {
-        if (is_null($sellers)) {
-            array_push($this->openAPINullablesSetToNull, 'sellers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sellers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sellers'] = $sellers;
+        $this->container['environments'] = $environments;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\RetailMediaBrands'
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaBrands'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RetailMediaBrands|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaBrands|null
      */
     public function getAttributes()
     {
@@ -344,7 +344,7 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RetailMediaBrands|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaBrands|null $attributes attributes
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOutcomeOfRetailMediaAccount
+ * ExternalRetailMediaBrands
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * ResourceOutcomeOfRetailMediaAccount Class Doc Comment
+ * ExternalRetailMediaBrands Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single entity.
+ * @description A collection of brand ids
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOutcomeOfRetailMediaAccount';
+    protected static $openAPIModelName = 'ExternalRetailMediaBrands';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2024_07\Model\ResourceOfRetailMediaAccount',
-        'warnings' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2024_07\Model\CommonProblem[]'
+        'brand_ids' => 'int[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'brand_ids' => 'int64'
     ];
 
     /**
@@ -82,9 +78,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'warnings' => true,
-		'errors' => true
+        'brand_ids' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'brand_ids' => 'brandIds'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'brand_ids' => 'setBrandIds'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'brand_ids' => 'getBrandIds'
     ];
 
     /**
@@ -257,9 +245,7 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
     }
 
     /**
@@ -305,96 +291,28 @@ class ResourceOutcomeOfRetailMediaAccount implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets data
+     * Gets brand_ids
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ResourceOfRetailMediaAccount|null
+     * @return int[]|null
      */
-    public function getData()
+    public function getBrandIds()
     {
-        return $this->container['data'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets data
+     * Sets brand_ids
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ResourceOfRetailMediaAccount|null $data data
+     * @param int[]|null $brand_ids brand_ids
      *
      * @return self
      */
-    public function setData($data)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($brand_ids)) {
+            throw new \InvalidArgumentException('non-nullable brand_ids cannot be null');
         }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
+        $this->container['brand_ids'] = $brand_ids;
 
         return $this;
     }

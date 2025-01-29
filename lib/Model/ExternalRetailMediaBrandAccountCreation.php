@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaBrands
+ * ExternalRetailMediaBrandAccountCreation
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * RetailMediaBrands Class Doc Comment
+ * ExternalRetailMediaBrandAccountCreation Class Doc Comment
  *
  * @category Class
- * @description A collection of brand ids
+ * @description The details for a newly created brand account
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaBrands';
+    protected static $openAPIModelName = 'ExternalRetailMediaBrandAccountCreation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'brand_ids' => 'int[]'
+        'name' => 'string',
+        'company_name' => 'string',
+        'on_behalf_company_name' => 'string',
+        'brands' => 'int[]'
     ];
 
     /**
@@ -69,7 +72,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'brand_ids' => 'int64'
+        'name' => null,
+        'company_name' => null,
+        'on_behalf_company_name' => null,
+        'brands' => 'int64'
     ];
 
     /**
@@ -78,7 +84,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'brand_ids' => true
+        'name' => true,
+		'company_name' => true,
+		'on_behalf_company_name' => true,
+		'brands' => true
     ];
 
     /**
@@ -167,7 +176,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'brand_ids' => 'brandIds'
+        'name' => 'name',
+        'company_name' => 'companyName',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
+        'brands' => 'brands'
     ];
 
     /**
@@ -176,7 +188,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'brand_ids' => 'setBrandIds'
+        'name' => 'setName',
+        'company_name' => 'setCompanyName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
+        'brands' => 'setBrands'
     ];
 
     /**
@@ -185,7 +200,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'brand_ids' => 'getBrandIds'
+        'name' => 'getName',
+        'company_name' => 'getCompanyName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
+        'brands' => 'getBrands'
     ];
 
     /**
@@ -245,7 +263,10 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('brands', $data ?? [], null);
     }
 
     /**
@@ -291,35 +312,137 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets brand_ids
+     * Gets name
      *
-     * @return int[]|null
+     * @return string|null
      */
-    public function getBrandIds()
+    public function getName()
     {
-        return $this->container['brand_ids'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets brand_ids
+     * Sets name
      *
-     * @param int[]|null $brand_ids brand_ids
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setBrandIds($brand_ids)
+    public function setName($name)
     {
-        if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['brand_ids'] = $brand_ids;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name company_name
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name on_behalf_company_name
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets brands
+     *
+     * @return int[]|null
+     */
+    public function getBrands()
+    {
+        return $this->container['brands'];
+    }
+
+    /**
+     * Sets brands
+     *
+     * @param int[]|null $brands brands
+     *
+     * @return self
+     */
+    public function setBrands($brands)
+    {
+        if (is_null($brands)) {
+            array_push($this->openAPINullablesSetToNull, 'brands');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brands', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brands'] = $brands;
 
         return $this;
     }

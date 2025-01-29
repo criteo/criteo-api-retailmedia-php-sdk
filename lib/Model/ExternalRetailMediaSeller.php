@@ -1,6 +1,6 @@
 <?php
 /**
- * ProposalStatusModel
+ * ExternalRetailMediaSeller
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * ProposalStatusModel Class Doc Comment
+ * ExternalRetailMediaSeller Class Doc Comment
  *
  * @category Class
- * @description The state of a proposal in the context of a line item.
+ * @description A seller-retailer mapping
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProposalStatusModel';
+    protected static $openAPIModelName = 'ExternalRetailMediaSeller';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'negotiation_state' => '\criteo\api\retailmedia\v2024_07\Model\NegotiationStateModel',
-        'booking_status' => '\criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel',
-        'runnable_status' => '\criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel',
-        'comment' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'seller_id' => 'string',
+        'retailer_id' => 'int'
     ];
 
     /**
@@ -74,12 +70,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'negotiation_state' => null,
-        'booking_status' => null,
-        'runnable_status' => null,
-        'comment' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'seller_id' => null,
+        'retailer_id' => 'int32'
     ];
 
     /**
@@ -88,12 +80,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'negotiation_state' => false,
-		'booking_status' => false,
-		'runnable_status' => false,
-		'comment' => true,
-		'created_at' => true,
-		'updated_at' => true
+        'seller_id' => false,
+		'retailer_id' => false
     ];
 
     /**
@@ -182,12 +170,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'negotiation_state' => 'negotiationState',
-        'booking_status' => 'bookingStatus',
-        'runnable_status' => 'runnableStatus',
-        'comment' => 'comment',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'seller_id' => 'sellerId',
+        'retailer_id' => 'retailerId'
     ];
 
     /**
@@ -196,12 +180,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'negotiation_state' => 'setNegotiationState',
-        'booking_status' => 'setBookingStatus',
-        'runnable_status' => 'setRunnableStatus',
-        'comment' => 'setComment',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'seller_id' => 'setSellerId',
+        'retailer_id' => 'setRetailerId'
     ];
 
     /**
@@ -210,12 +190,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'negotiation_state' => 'getNegotiationState',
-        'booking_status' => 'getBookingStatus',
-        'runnable_status' => 'getRunnableStatus',
-        'comment' => 'getComment',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'seller_id' => 'getSellerId',
+        'retailer_id' => 'getRetailerId'
     ];
 
     /**
@@ -275,12 +251,8 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('negotiation_state', $data ?? [], null);
-        $this->setIfExists('booking_status', $data ?? [], null);
-        $this->setIfExists('runnable_status', $data ?? [], null);
-        $this->setIfExists('comment', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('seller_id', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
     }
 
     /**
@@ -326,184 +298,55 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets negotiation_state
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\NegotiationStateModel|null
-     */
-    public function getNegotiationState()
-    {
-        return $this->container['negotiation_state'];
-    }
-
-    /**
-     * Sets negotiation_state
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\NegotiationStateModel|null $negotiation_state negotiation_state
-     *
-     * @return self
-     */
-    public function setNegotiationState($negotiation_state)
-    {
-        if (is_null($negotiation_state)) {
-            throw new \InvalidArgumentException('non-nullable negotiation_state cannot be null');
-        }
-        $this->container['negotiation_state'] = $negotiation_state;
-
-        return $this;
-    }
-
-    /**
-     * Gets booking_status
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel|null
-     */
-    public function getBookingStatus()
-    {
-        return $this->container['booking_status'];
-    }
-
-    /**
-     * Sets booking_status
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel|null $booking_status booking_status
-     *
-     * @return self
-     */
-    public function setBookingStatus($booking_status)
-    {
-        if (is_null($booking_status)) {
-            throw new \InvalidArgumentException('non-nullable booking_status cannot be null');
-        }
-        $this->container['booking_status'] = $booking_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets runnable_status
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel|null
-     */
-    public function getRunnableStatus()
-    {
-        return $this->container['runnable_status'];
-    }
-
-    /**
-     * Sets runnable_status
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ApprovalStatusModel|null $runnable_status runnable_status
-     *
-     * @return self
-     */
-    public function setRunnableStatus($runnable_status)
-    {
-        if (is_null($runnable_status)) {
-            throw new \InvalidArgumentException('non-nullable runnable_status cannot be null');
-        }
-        $this->container['runnable_status'] = $runnable_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment
+     * Gets seller_id
      *
      * @return string|null
      */
-    public function getComment()
+    public function getSellerId()
     {
-        return $this->container['comment'];
+        return $this->container['seller_id'];
     }
 
     /**
-     * Sets comment
+     * Sets seller_id
      *
-     * @param string|null $comment comment
+     * @param string|null $seller_id seller_id
      *
      * @return self
      */
-    public function setComment($comment)
+    public function setSellerId($seller_id)
     {
-        if (is_null($comment)) {
-            array_push($this->openAPINullablesSetToNull, 'comment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('comment', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($seller_id)) {
+            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
         }
-        $this->container['comment'] = $comment;
+        $this->container['seller_id'] = $seller_id;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets retailer_id
      *
-     * @return \DateTime|null
+     * @return int|null
      */
-    public function getCreatedAt()
+    public function getRetailerId()
     {
-        return $this->container['created_at'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets created_at
+     * Sets retailer_id
      *
-     * @param \DateTime|null $created_at created_at
+     * @param int|null $retailer_id retailer_id
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setRetailerId($retailer_id)
     {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }

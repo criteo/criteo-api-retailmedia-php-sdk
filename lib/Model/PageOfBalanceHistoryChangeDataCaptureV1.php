@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
  * PageOfBalanceHistoryChangeDataCaptureV1 Class Doc Comment
  *
  * @category Class
- * @description A wrapper class to return a single page of items with metadata.
+ * @description A wrapper class to return a single page of items with metadata for offset and limit based paging.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -1,6 +1,6 @@
 <?php
 /**
- * ProposalStatusModelResource
+ * EntityResourceOfRetailMediaAccount
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
 
 /**
- * ProposalStatusModelResource Class Doc Comment
+ * EntityResourceOfRetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description Resource object containing the state of a proposal in the context of a line item.
+ * @description A top-level object that encapsulates a Criteo API response for a single value.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProposalStatusModelResource';
+    protected static $openAPIModelName = 'EntityResourceOfRetailMediaAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,7 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'id' => 'string',
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ProposalStatusModel'
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaAccount'
     ];
 
     /**
@@ -84,7 +84,7 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'id' => true,
 		'type' => true,
-		'attributes' => false
+		'attributes' => true
     ];
 
     /**
@@ -375,7 +375,7 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModel|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaAccount|null
      */
     public function getAttributes()
     {
@@ -385,14 +385,21 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ProposalStatusModel|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaAccount|null $attributes attributes
      *
      * @return self
      */
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 

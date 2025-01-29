@@ -1,11 +1,11 @@
-# # ResourceOfRetailMediaAccount
+# # EntityResourceOfRetailMediaAccount
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2024_07\Model\RetailMediaAccount**](RetailMediaAccount.md) |  | [optional]
-**id** | **string** | Unique identifier of this resource. | [optional]
+**id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaAccount**](ExternalRetailMediaAccount.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
