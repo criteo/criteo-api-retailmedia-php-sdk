@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * ResourceOfTemplate Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API.
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

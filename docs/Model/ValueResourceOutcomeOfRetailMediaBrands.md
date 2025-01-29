@@ -1,10 +1,10 @@
-# # TemplateListResponse
+# # ValueResourceOutcomeOfRetailMediaBrands
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\v2024_04\Model\ResourceOfTemplate[]**](ResourceOfTemplate.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\v2024_04\Model\ValueResourceOfRetailMediaBrands**](ValueResourceOfRetailMediaBrands.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
 **errors** | [**\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
 

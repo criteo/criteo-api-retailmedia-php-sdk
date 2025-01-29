@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaAccount
+ * ExternalRetailMediaAccount
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
 
 /**
- * RetailMediaAccount Class Doc Comment
+ * ExternalRetailMediaAccount Class Doc Comment
  *
  * @category Class
  * @description The details for a newly created account
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaAccount';
+    protected static $openAPIModelName = 'ExternalRetailMediaAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -411,7 +411,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets name
      *
-     * @param string|null $name account name
+     * @param string|null $name name
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets company_name
      *
-     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
+     * @param string|null $company_name company_name
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets on_behalf_company_name
      *
-     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
+     * @param string|null $on_behalf_company_name on_behalf_company_name
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets type
      *
-     * @param string|null $type Type for the account
+     * @param string|null $type type
      *
      * @return self
      */
@@ -557,7 +557,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets sub_type
      *
-     * @param string|null $sub_type subtype for the account
+     * @param string|null $sub_type sub_type
      *
      * @return self
      */
@@ -601,7 +601,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets country_ids
      *
-     * @param string[]|null $country_ids list of countries associated with the account
+     * @param string[]|null $country_ids country_ids
      *
      * @return self
      */
@@ -635,7 +635,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets currency_id
      *
-     * @param string|null $currency_id the currency for the account
+     * @param string|null $currency_id currency_id
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets parent_account_label
      *
-     * @param string|null $parent_account_label parent account label for the account
+     * @param string|null $parent_account_label parent_account_label
      *
      * @return self
      */
@@ -703,7 +703,7 @@ class RetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets time_zone
      *
-     * @param string|null $time_zone the timezone for the account
+     * @param string|null $time_zone time_zone
      *
      * @return self
      */

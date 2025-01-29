@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfRetailMediaAccount
+ * EntityResourceOfRetailMediaAccount
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
 
 /**
- * ResourceOfRetailMediaAccount Class Doc Comment
+ * EntityResourceOfRetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API.
+ * @description A top-level object that encapsulates a Criteo API response for a single value.
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfRetailMediaAccount';
+    protected static $openAPIModelName = 'EntityResourceOfRetailMediaAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_04\Model\RetailMediaAccount',
         'id' => 'string',
-        'type' => 'string'
+        'type' => 'string',
+        'attributes' => '\criteo\api\retailmedia\v2024_04\Model\ExternalRetailMediaAccount'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
         'id' => null,
-        'type' => null
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => true,
-		'type' => true
+        'id' => true,
+		'type' => true,
+		'attributes' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
         'id' => 'id',
-        'type' => 'type'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
         'id' => 'setId',
-        'type' => 'setType'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
         'id' => 'getId',
-        'type' => 'getType'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -305,33 +305,6 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\RetailMediaAccount|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\RetailMediaAccount|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return string|null
@@ -344,7 +317,7 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Unique identifier of this resource.
+     * @param string|null $id id
      *
      * @return self
      */
@@ -395,6 +368,40 @@ class ResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \Json
             }
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\ExternalRetailMediaAccount|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\ExternalRetailMediaAccount|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

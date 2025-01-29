@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaBrands
+ * ExternalRetailMediaBrands
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
 
 /**
- * RetailMediaBrands Class Doc Comment
+ * ExternalRetailMediaBrands Class Doc Comment
  *
  * @category Class
  * @description A collection of brand ids
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaBrands';
+    protected static $openAPIModelName = 'ExternalRetailMediaBrands';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,7 +78,7 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'brand_ids' => true
+        'brand_ids' => false
     ];
 
     /**
@@ -310,14 +310,7 @@ class RetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setBrandIds($brand_ids)
     {
         if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable brand_ids cannot be null');
         }
         $this->container['brand_ids'] = $brand_ids;
 

@@ -21,7 +21,6 @@ docs/Model/AddToBasketTarget202110Response.md
 docs/Model/ApplicationSummaryModel.md
 docs/Model/ApplicationSummaryModelResource.md
 docs/Model/ApplicationSummaryModelResponse.md
-docs/Model/ApprovalStatusModel.md
 docs/Model/Asset.md
 docs/Model/AssetResource.md
 docs/Model/AssetResponse.md
@@ -74,6 +73,8 @@ docs/Model/CreativeCreateModel202207.md
 docs/Model/CreativeUpdateModel202207.md
 docs/Model/DailyLineItemBudgetOverride.md
 docs/Model/EditableCampaignAttributesV202301.md
+docs/Model/EntityResourceOfRetailMediaAccount.md
+docs/Model/EntityResourceOutcomeOfRetailMediaAccount.md
 docs/Model/ExternalAccount.md
 docs/Model/ExternalAddFundsToBalance.md
 docs/Model/ExternalAddToBasketIdsUpdateModel202110.md
@@ -98,6 +99,9 @@ docs/Model/ExternalPreferredLineItem202110.md
 docs/Model/ExternalPreferredLineItemCreateModel202110.md
 docs/Model/ExternalPreferredLineItemUpdateModel202110.md
 docs/Model/ExternalPromotedProduct202110.md
+docs/Model/ExternalRetailMediaAccount.md
+docs/Model/ExternalRetailMediaBrandAccountCreation.md
+docs/Model/ExternalRetailMediaBrands.md
 docs/Model/ExternalRetailer.md
 docs/Model/ExternalRetailerPages202110.md
 docs/Model/ExternalStoreIdsUpdateModel202110.md
@@ -140,10 +144,9 @@ docs/Model/LineItemBudgetOverrides.md
 docs/Model/MatchTypeModel.md
 docs/Model/Metadata.md
 docs/Model/MonthlyLineItemBudegetOverride.md
-docs/Model/NegotiationStateModel.md
 docs/Model/PageMetadata.md
 docs/Model/PageOfInsertionOrderHistoryChangeDataCapture.md
-docs/Model/PageTypeEnvironment.md
+docs/Model/PageTypeEnvironment202210.md
 docs/Model/PostCampaignV202301.md
 docs/Model/PreferredLineItem202110PagedListResponse.md
 docs/Model/PreferredLineItem202110Response.md
@@ -152,9 +155,6 @@ docs/Model/PreferredLineItemUpdateModel202110Request.md
 docs/Model/ProblemDetails.md
 docs/Model/PromotedProduct202110ListRequest.md
 docs/Model/PromotedProduct202110PagedListResponse.md
-docs/Model/ProposalStatusModel.md
-docs/Model/ProposalStatusModelResource.md
-docs/Model/ProposalStatusModelResponse.md
 docs/Model/PutCampaignV202301.md
 docs/Model/ReportOutcome.md
 docs/Model/ResourceOfAddFundsToBalance.md
@@ -172,14 +172,9 @@ docs/Model/ResourceOfLineItemBidMultipliers.md
 docs/Model/ResourceOfPreferredLineItem202110.md
 docs/Model/ResourceOfPreferredLineItemUpdateModel202110.md
 docs/Model/ResourceOfPromotedProduct202110.md
-docs/Model/ResourceOfRetailMediaAccount.md
 docs/Model/ResourceOfTemplate.md
 docs/Model/ResourceOfUpdateBalanceModel.md
 docs/Model/ResourceOutcome.md
-docs/Model/ResourceOutcomeOfRetailMediaAccount.md
-docs/Model/RetailMediaAccount.md
-docs/Model/RetailMediaBrandAccountCreation.md
-docs/Model/RetailMediaBrands.md
 docs/Model/ReviewStateModel.md
 docs/Model/RmLegacyAudienceCreateEntityV1.md
 docs/Model/RmLegacyAudienceCreateEntityV1Resource.md
@@ -230,6 +225,7 @@ docs/Model/ValueResourceOfRetailMediaBrandAccountCreation.md
 docs/Model/ValueResourceOfRetailMediaBrands.md
 docs/Model/ValueResourceOutcomeOfCampaignBudgetOverrides.md
 docs/Model/ValueResourceOutcomeOfLineItemBudgetOverrides.md
+docs/Model/ValueResourceOutcomeOfRetailMediaBrands.md
 docs/Model/ValueTypeResourceOfAddToBasketIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfAddToBasketTarget202110.md
 docs/Model/ValueTypeResourceOfAudienceIdsUpdateModel202110.md
@@ -237,6 +233,7 @@ docs/Model/ValueTypeResourceOfAudienceTarget202110.md
 docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
+docs/Model/VideoVariableValue.md
 git_push.sh
 lib/Api/AccountsApi.php
 lib/Api/AnalyticsApi.php
@@ -260,7 +257,6 @@ lib/Model/AddToBasketTarget202110Response.php
 lib/Model/ApplicationSummaryModel.php
 lib/Model/ApplicationSummaryModelResource.php
 lib/Model/ApplicationSummaryModelResponse.php
-lib/Model/ApprovalStatusModel.php
 lib/Model/Asset.php
 lib/Model/AssetResource.php
 lib/Model/AssetResponse.php
@@ -313,6 +309,8 @@ lib/Model/CreativeCreateModel202207.php
 lib/Model/CreativeUpdateModel202207.php
 lib/Model/DailyLineItemBudgetOverride.php
 lib/Model/EditableCampaignAttributesV202301.php
+lib/Model/EntityResourceOfRetailMediaAccount.php
+lib/Model/EntityResourceOutcomeOfRetailMediaAccount.php
 lib/Model/ExternalAccount.php
 lib/Model/ExternalAddFundsToBalance.php
 lib/Model/ExternalAddToBasketIdsUpdateModel202110.php
@@ -337,6 +335,9 @@ lib/Model/ExternalPreferredLineItem202110.php
 lib/Model/ExternalPreferredLineItemCreateModel202110.php
 lib/Model/ExternalPreferredLineItemUpdateModel202110.php
 lib/Model/ExternalPromotedProduct202110.php
+lib/Model/ExternalRetailMediaAccount.php
+lib/Model/ExternalRetailMediaBrandAccountCreation.php
+lib/Model/ExternalRetailMediaBrands.php
 lib/Model/ExternalRetailer.php
 lib/Model/ExternalRetailerPages202110.php
 lib/Model/ExternalStoreIdsUpdateModel202110.php
@@ -380,10 +381,9 @@ lib/Model/MatchTypeModel.php
 lib/Model/Metadata.php
 lib/Model/ModelInterface.php
 lib/Model/MonthlyLineItemBudegetOverride.php
-lib/Model/NegotiationStateModel.php
 lib/Model/PageMetadata.php
 lib/Model/PageOfInsertionOrderHistoryChangeDataCapture.php
-lib/Model/PageTypeEnvironment.php
+lib/Model/PageTypeEnvironment202210.php
 lib/Model/PostCampaignV202301.php
 lib/Model/PreferredLineItem202110PagedListResponse.php
 lib/Model/PreferredLineItem202110Response.php
@@ -392,9 +392,6 @@ lib/Model/PreferredLineItemUpdateModel202110Request.php
 lib/Model/ProblemDetails.php
 lib/Model/PromotedProduct202110ListRequest.php
 lib/Model/PromotedProduct202110PagedListResponse.php
-lib/Model/ProposalStatusModel.php
-lib/Model/ProposalStatusModelResource.php
-lib/Model/ProposalStatusModelResponse.php
 lib/Model/PutCampaignV202301.php
 lib/Model/ReportOutcome.php
 lib/Model/ResourceOfAddFundsToBalance.php
@@ -412,14 +409,9 @@ lib/Model/ResourceOfLineItemBidMultipliers.php
 lib/Model/ResourceOfPreferredLineItem202110.php
 lib/Model/ResourceOfPreferredLineItemUpdateModel202110.php
 lib/Model/ResourceOfPromotedProduct202110.php
-lib/Model/ResourceOfRetailMediaAccount.php
 lib/Model/ResourceOfTemplate.php
 lib/Model/ResourceOfUpdateBalanceModel.php
 lib/Model/ResourceOutcome.php
-lib/Model/ResourceOutcomeOfRetailMediaAccount.php
-lib/Model/RetailMediaAccount.php
-lib/Model/RetailMediaBrandAccountCreation.php
-lib/Model/RetailMediaBrands.php
 lib/Model/ReviewStateModel.php
 lib/Model/RmLegacyAudienceCreateEntityV1.php
 lib/Model/RmLegacyAudienceCreateEntityV1Resource.php
@@ -470,6 +462,7 @@ lib/Model/ValueResourceOfRetailMediaBrandAccountCreation.php
 lib/Model/ValueResourceOfRetailMediaBrands.php
 lib/Model/ValueResourceOutcomeOfCampaignBudgetOverrides.php
 lib/Model/ValueResourceOutcomeOfLineItemBudgetOverrides.php
+lib/Model/ValueResourceOutcomeOfRetailMediaBrands.php
 lib/Model/ValueTypeResourceOfAddToBasketIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfAddToBasketTarget202110.php
 lib/Model/ValueTypeResourceOfAudienceIdsUpdateModel202110.php
@@ -477,6 +470,7 @@ lib/Model/ValueTypeResourceOfAudienceTarget202110.php
 lib/Model/ValueTypeResourceOfKeywordTarget202110.php
 lib/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfStoreTarget202110.php
+lib/Model/VideoVariableValue.php
 lib/OAuthClient.php
 lib/ObjectSerializer.php
 phpunit.xml.dist

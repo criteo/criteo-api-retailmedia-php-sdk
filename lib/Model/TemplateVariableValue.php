@@ -63,7 +63,8 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         'choice_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\ChoiceVariableValue',
         'color_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\ColorVariableValue',
         'files_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\FilesVariableValue',
-        'hyperlink_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\HyperlinkVariableValue'
+        'hyperlink_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\HyperlinkVariableValue',
+        'video_variable_value' => '\criteo\api\retailmedia\v2024_04\Model\VideoVariableValue'
     ];
 
     /**
@@ -79,7 +80,8 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         'choice_variable_value' => null,
         'color_variable_value' => null,
         'files_variable_value' => null,
-        'hyperlink_variable_value' => null
+        'hyperlink_variable_value' => null,
+        'video_variable_value' => null
     ];
 
     /**
@@ -89,11 +91,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'id' => false,
-		'text_variable_value' => false,
+		'text_variable_value' => true,
 		'choice_variable_value' => false,
-		'color_variable_value' => false,
+		'color_variable_value' => true,
 		'files_variable_value' => false,
-		'hyperlink_variable_value' => false
+		'hyperlink_variable_value' => true,
+		'video_variable_value' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         'choice_variable_value' => 'choiceVariableValue',
         'color_variable_value' => 'colorVariableValue',
         'files_variable_value' => 'filesVariableValue',
-        'hyperlink_variable_value' => 'hyperlinkVariableValue'
+        'hyperlink_variable_value' => 'hyperlinkVariableValue',
+        'video_variable_value' => 'videoVariableValue'
     ];
 
     /**
@@ -201,7 +205,8 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         'choice_variable_value' => 'setChoiceVariableValue',
         'color_variable_value' => 'setColorVariableValue',
         'files_variable_value' => 'setFilesVariableValue',
-        'hyperlink_variable_value' => 'setHyperlinkVariableValue'
+        'hyperlink_variable_value' => 'setHyperlinkVariableValue',
+        'video_variable_value' => 'setVideoVariableValue'
     ];
 
     /**
@@ -215,7 +220,8 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         'choice_variable_value' => 'getChoiceVariableValue',
         'color_variable_value' => 'getColorVariableValue',
         'files_variable_value' => 'getFilesVariableValue',
-        'hyperlink_variable_value' => 'getHyperlinkVariableValue'
+        'hyperlink_variable_value' => 'getHyperlinkVariableValue',
+        'video_variable_value' => 'getVideoVariableValue'
     ];
 
     /**
@@ -281,6 +287,7 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('color_variable_value', $data ?? [], null);
         $this->setIfExists('files_variable_value', $data ?? [], null);
         $this->setIfExists('hyperlink_variable_value', $data ?? [], null);
+        $this->setIfExists('video_variable_value', $data ?? [], null);
     }
 
     /**
@@ -375,7 +382,14 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setTextVariableValue($text_variable_value)
     {
         if (is_null($text_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable text_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text_variable_value'] = $text_variable_value;
 
@@ -429,7 +443,14 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setColorVariableValue($color_variable_value)
     {
         if (is_null($color_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable color_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'color_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('color_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['color_variable_value'] = $color_variable_value;
 
@@ -483,9 +504,43 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setHyperlinkVariableValue($hyperlink_variable_value)
     {
         if (is_null($hyperlink_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable hyperlink_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'hyperlink_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('hyperlink_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['hyperlink_variable_value'] = $hyperlink_variable_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_variable_value
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\VideoVariableValue|null
+     */
+    public function getVideoVariableValue()
+    {
+        return $this->container['video_variable_value'];
+    }
+
+    /**
+     * Sets video_variable_value
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\VideoVariableValue|null $video_variable_value video_variable_value
+     *
+     * @return self
+     */
+    public function setVideoVariableValue($video_variable_value)
+    {
+        if (is_null($video_variable_value)) {
+            throw new \InvalidArgumentException('non-nullable video_variable_value cannot be null');
+        }
+        $this->container['video_variable_value'] = $video_variable_value;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaBrandAccountCreation
+ * ValueResourceOutcomeOfRetailMediaBrands
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
 
 /**
- * RetailMediaBrandAccountCreation Class Doc Comment
+ * ValueResourceOutcomeOfRetailMediaBrands Class Doc Comment
  *
  * @category Class
- * @description the initial set up and configuration options for a new private market demand brand account
+ * @description A top-level object that encapsulates a Criteo API response for a single value.
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaBrandAccountCreation';
+    protected static $openAPIModelName = 'ValueResourceOutcomeOfRetailMediaBrands';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'company_name' => 'string',
-        'on_behalf_company_name' => 'string',
-        'brands' => 'int[]'
+        'data' => '\criteo\api\retailmedia\v2024_04\Model\ValueResourceOfRetailMediaBrands',
+        'warnings' => '\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]'
     ];
 
     /**
@@ -72,10 +71,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'company_name' => null,
-        'on_behalf_company_name' => null,
-        'brands' => 'int64'
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
-		'company_name' => true,
-		'on_behalf_company_name' => true,
-		'brands' => true
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName',
-        'brands' => 'brands'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -188,10 +184,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'brands' => 'setBrands'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -200,10 +195,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'brands' => 'getBrands'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -263,10 +257,9 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('company_name', $data ?? [], null);
-        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
-        $this->setIfExists('brands', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -312,137 +305,103 @@ class RetailMediaBrandAccountCreation implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets name
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\ValueResourceOfRetailMediaBrands|null
      */
-    public function getName()
+    public function getData()
     {
-        return $this->container['name'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets name
+     * Sets data
      *
-     * @param string|null $name the name of the account, must be unique across all accounts
+     * @param \criteo\api\retailmedia\v2024_04\Model\ValueResourceOfRetailMediaBrands|null $data data
      *
      * @return self
      */
-    public function setName($name)
+    public function setData($data)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets company_name
+     * Gets warnings
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null
      */
-    public function getCompanyName()
+    public function getWarnings()
     {
-        return $this->container['company_name'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets company_name
+     * Sets warnings
      *
-     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
+     * @param \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setCompanyName($company_name)
+    public function setWarnings($warnings)
     {
-        if (is_null($company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'company_name');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('company_name', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['company_name'] = $company_name;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
 
     /**
-     * Gets on_behalf_company_name
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null
      */
-    public function getOnBehalfCompanyName()
+    public function getErrors()
     {
-        return $this->container['on_behalf_company_name'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets on_behalf_company_name
+     * Sets errors
      *
-     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
+     * @param \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setOnBehalfCompanyName($on_behalf_company_name)
+    public function setErrors($errors)
     {
-        if (is_null($on_behalf_company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets brands
-     *
-     * @return int[]|null
-     */
-    public function getBrands()
-    {
-        return $this->container['brands'];
-    }
-
-    /**
-     * Sets brands
-     *
-     * @param int[]|null $brands list of brands to link to the new account
-     *
-     * @return self
-     */
-    public function setBrands($brands)
-    {
-        if (is_null($brands)) {
-            array_push($this->openAPINullablesSetToNull, 'brands');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brands', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['brands'] = $brands;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

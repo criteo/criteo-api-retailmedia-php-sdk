@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * TemplateResponse Class Doc Comment
  *
  * @category Class
- * @description Data model for response resource
+ * @description A top-level object that encapsulates a Criteo API response for a single entity.
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2024_04\Model\ResourceOfTemplate',
-        'warnings' => '\criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]',
-        'errors' => '\criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]'
+        'warnings' => '\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2024_04\Model\CommonProblem[]'
     ];
 
     /**
@@ -82,9 +82,9 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'warnings' => false,
-		'errors' => false
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -324,7 +324,14 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -334,7 +341,7 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -344,14 +351,21 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
     public function setWarnings($warnings)
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warnings'] = $warnings;
 
@@ -361,7 +375,7 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null
      */
     public function getErrors()
     {
@@ -371,14 +385,21 @@ class TemplateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2024_04\Model\ProblemDetails[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2024_04\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
     public function setErrors($errors)
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 

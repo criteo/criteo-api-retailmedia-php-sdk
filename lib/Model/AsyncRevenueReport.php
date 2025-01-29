@@ -60,6 +60,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'ids' => 'string[]',
         'id' => 'string',
+        'retailer_ids' => 'string[]',
+        'account_ids' => 'string[]',
+        'campaign_ids' => 'string[]',
+        'line_item_ids' => 'string[]',
         'report_type' => 'string',
         'revenue_type' => 'string',
         'sold_by' => 'string',
@@ -88,6 +92,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'ids' => null,
         'id' => null,
+        'retailer_ids' => null,
+        'account_ids' => null,
+        'campaign_ids' => null,
+        'line_item_ids' => null,
         'report_type' => null,
         'revenue_type' => null,
         'sold_by' => null,
@@ -114,6 +122,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'ids' => true,
 		'id' => true,
+		'retailer_ids' => true,
+		'account_ids' => true,
+		'campaign_ids' => true,
+		'line_item_ids' => true,
 		'report_type' => true,
 		'revenue_type' => true,
 		'sold_by' => true,
@@ -220,6 +232,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'ids' => 'ids',
         'id' => 'id',
+        'retailer_ids' => 'retailerIds',
+        'account_ids' => 'accountIds',
+        'campaign_ids' => 'campaignIds',
+        'line_item_ids' => 'lineItemIds',
         'report_type' => 'reportType',
         'revenue_type' => 'revenueType',
         'sold_by' => 'soldBy',
@@ -246,6 +262,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'ids' => 'setIds',
         'id' => 'setId',
+        'retailer_ids' => 'setRetailerIds',
+        'account_ids' => 'setAccountIds',
+        'campaign_ids' => 'setCampaignIds',
+        'line_item_ids' => 'setLineItemIds',
         'report_type' => 'setReportType',
         'revenue_type' => 'setRevenueType',
         'sold_by' => 'setSoldBy',
@@ -272,6 +292,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'ids' => 'getIds',
         'id' => 'getId',
+        'retailer_ids' => 'getRetailerIds',
+        'account_ids' => 'getAccountIds',
+        'campaign_ids' => 'getCampaignIds',
+        'line_item_ids' => 'getLineItemIds',
         'report_type' => 'getReportType',
         'revenue_type' => 'getRevenueType',
         'sold_by' => 'getSoldBy',
@@ -404,6 +428,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_BUY_TYPE = 'buyType';
     public const DIMENSIONS_SOLD_BY = 'soldBy';
     public const DIMENSIONS_SALE_CHANNEL = 'saleChannel';
+    public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_ATTRIBUTION_SETTINGS = 'attributionSettings';
     public const DIMENSIONS_ACTIVITY_TYPE = 'activityType';
     public const DIMENSIONS_KEYWORD = 'keyword';
@@ -457,6 +482,16 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
     public const METRICS_VIDEO_PLAYING_RATE = 'videoPlayingRate';
     public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
+    public const METRICS_VIDEO_IMPRESSIONS = 'videoImpressions';
+    public const METRICS_VIDEO_MUTED = 'videoMuted';
+    public const METRICS_VIDEO_UNMUTED = 'videoUnmuted';
+    public const METRICS_VIDEO_RESUMED = 'videoResumed';
+    public const METRICS_VIDEO_PAUSED = 'videoPaused';
+    public const METRICS_VIDEO_AVG_INTERACTION_RATE = 'videoAvgInteractionRate';
+    public const METRICS_VIDEO_VIEWABILITY = 'videoViewability';
+    public const METRICS_VIDEO_STARTING_RATE = 'videoStartingRate';
+    public const METRICS_VIDEO_CPC = 'videoCPC';
+    public const METRICS_VIDEO_CPCV = 'videoCPCV';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
 
@@ -662,6 +697,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_BUY_TYPE,
             self::DIMENSIONS_SOLD_BY,
             self::DIMENSIONS_SALE_CHANNEL,
+            self::DIMENSIONS_SALES_CHANNEL,
             self::DIMENSIONS_ATTRIBUTION_SETTINGS,
             self::DIMENSIONS_ACTIVITY_TYPE,
             self::DIMENSIONS_KEYWORD,
@@ -726,6 +762,16 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METRICS_VIDEOS_PLAYED_TO100,
             self::METRICS_VIDEO_PLAYING_RATE,
             self::METRICS_VIDEO_COMPLETION_RATE,
+            self::METRICS_VIDEO_IMPRESSIONS,
+            self::METRICS_VIDEO_MUTED,
+            self::METRICS_VIDEO_UNMUTED,
+            self::METRICS_VIDEO_RESUMED,
+            self::METRICS_VIDEO_PAUSED,
+            self::METRICS_VIDEO_AVG_INTERACTION_RATE,
+            self::METRICS_VIDEO_VIEWABILITY,
+            self::METRICS_VIDEO_STARTING_RATE,
+            self::METRICS_VIDEO_CPC,
+            self::METRICS_VIDEO_CPCV,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];
@@ -748,13 +794,17 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $this->setIfExists('ids', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
         $this->setIfExists('report_type', $data ?? [], null);
         $this->setIfExists('revenue_type', $data ?? [], null);
         $this->setIfExists('sold_by', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('advertiser_types', $data ?? [], null);
         $this->setIfExists('sku_relations', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json');
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
@@ -959,6 +1009,142 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_ids
+     *
+     * @return string[]|null
+     */
+    public function getRetailerIds()
+    {
+        return $this->container['retailer_ids'];
+    }
+
+    /**
+     * Sets retailer_ids
+     *
+     * @param string[]|null $retailer_ids Retailer ids to filter
+     *
+     * @return self
+     */
+    public function setRetailerIds($retailer_ids)
+    {
+        if (is_null($retailer_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['retailer_ids'] = $retailer_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_ids
+     *
+     * @return string[]|null
+     */
+    public function getAccountIds()
+    {
+        return $this->container['account_ids'];
+    }
+
+    /**
+     * Sets account_ids
+     *
+     * @param string[]|null $account_ids Account ids to filter
+     *
+     * @return self
+     */
+    public function setAccountIds($account_ids)
+    {
+        if (is_null($account_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'account_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['account_ids'] = $account_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_ids
+     *
+     * @return string[]|null
+     */
+    public function getCampaignIds()
+    {
+        return $this->container['campaign_ids'];
+    }
+
+    /**
+     * Sets campaign_ids
+     *
+     * @param string[]|null $campaign_ids Campaign ids to filter
+     *
+     * @return self
+     */
+    public function setCampaignIds($campaign_ids)
+    {
+        if (is_null($campaign_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['campaign_ids'] = $campaign_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Line item ids to filter
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
 
         return $this;
     }
