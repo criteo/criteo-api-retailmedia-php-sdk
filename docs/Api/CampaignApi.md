@@ -10,11 +10,8 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/delete |  |
 | [**fetchKeywords()**](CampaignApi.md#fetchKeywords) | **GET** /preview/retail-media/line-items/{id}/keywords |  |
 | [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products |  |
-| [**fetchProposal()**](CampaignApi.md#fetchProposal) | **GET** /preview/retail-media/preferred-deal-line-items/{id}/proposal |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemId()**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId()**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
-| [**getApiV1ExternalAccountBrandsByAccountId()**](CampaignApi.md#getApiV1ExternalAccountBrandsByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/brands |  |
-| [**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /preview/retail-media/accounts/{accountId}/retailers |  |
 | [**getApiV1ExternalRetailerBrandsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV1ExternalRetailerByRetailerIdSellerBySeller()**](CampaignApi.md#getApiV1ExternalRetailerByRetailerIdSellerBySeller) | **GET** /preview/retail-media/retailers/{retailerId}/sellers/{seller} |  |
 | [**getApiV1ExternalRetailerCategoryCpcRatesByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerCategoryCpcRatesByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/cpc-rates |  |
@@ -23,9 +20,8 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV2ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#getApiV2ExternalCampaignPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**getApiV2ExternalLineItemBidMultipliersByLineItemId()**](CampaignApi.md#getApiV2ExternalLineItemBidMultipliersByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**getApiV2ExternalPreferredLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalPreferredLineItemByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
-| [**getInsertionOrderHistoryChangeDataCaptureV2()**](CampaignApi.md#getInsertionOrderHistoryChangeDataCaptureV2) | **GET** /preview/retail-media/insertion-order-history/{insertionOrderId}/change-data-capture |  |
+| [**getCpcMinBidsBySkuIdsV1()**](CampaignApi.md#getCpcMinBidsBySkuIdsV1) | **POST** /preview/retail-media/retailers/{retailerId}/cpc-min-bids |  |
 | [**getRecommendedKeywords()**](CampaignApi.md#getRecommendedKeywords) | **GET** /preview/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
-| [**getSkuByProductId()**](CampaignApi.md#getSkuByProductId) | **POST** /preview/retail-media/catalogs/sku/search/accounts/{accountId}/retailers/{retailerId}/by-id |  |
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
 | [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**postApi202210ExternalLineItemProductButtonsCreateByLineItemId()**](CampaignApi.md#postApi202210ExternalLineItemProductButtonsCreateByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
@@ -41,7 +37,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**putApiV2ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#putApiV2ExternalAccountByAccountIdCreativescreativeId) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**putApiV2ExternalLineItemBidMultipliersByLineItemId()**](CampaignApi.md#putApiV2ExternalLineItemBidMultipliersByLineItemId) | **PUT** /preview/retail-media/line-items/{line-item-id}/bid-multipliers |  |
 | [**setKeywordBids()**](CampaignApi.md#setKeywordBids) | **POST** /preview/retail-media/line-items/{id}/keywords/set-bid |  |
-| [**submitProposal()**](CampaignApi.md#submitProposal) | **POST** /preview/retail-media/preferred-deal-line-items/{id}/proposal/submit |  |
 | [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
 
 
@@ -434,69 +429,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `fetchProposal()`
-
-```php
-fetchProposal($id): \criteo\api\retailmedia\preview\Model\ProposalStatusModelResponse
-```
-
-
-
-Includes the state of the proposal, the status of the booking and approval, as well as any comments explaining why it might have been rejected.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID of the line item
-
-try {
-    $result = $apiInstance->fetchProposal($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->fetchProposal: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID of the line item | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProposalStatusModelResponse**](../Model/ProposalStatusModelResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `getApi202210ExternalLineItemProductButtonsByLineItemId()`
 
 ```php
@@ -620,144 +552,6 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApiV1ExternalAccountBrandsByAccountId()`
-
-```php
-getApiV1ExternalAccountBrandsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\JsonApiPageResponseOfBrand
-```
-
-
-
-Gets page of retailer objects that are associated with the given account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The given account id
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 0; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 25; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApiV1ExternalAccountBrandsByAccountId($account_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV1ExternalAccountBrandsByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The given account id | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
-| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\JsonApiPageResponseOfBrand**](../Model/JsonApiPageResponseOfBrand.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApiV1ExternalAccountRetailersByAccountId()`
-
-```php
-getApiV1ExternalAccountRetailersByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\JsonApiPageResponseOfRetailer
-```
-
-
-
-Gets page of retailer objects that are associated with the given account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The given account id
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 0; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 25; // int | The maximum number of items you would like to receive in this request
-
-try {
-    $result = $apiInstance->getApiV1ExternalAccountRetailersByAccountId($account_id, $limit_to_id, $page_index, $page_size);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV1ExternalAccountRetailersByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The given account id | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
-| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\JsonApiPageResponseOfRetailer**](../Model/JsonApiPageResponseOfRetailer.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -1026,7 +820,7 @@ try {
 ## `getApiV2ExternalAccountByAccountIdCreativescreativeId()`
 
 ```php
-getApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id): \criteo\api\retailmedia\preview\Model\CreativeV2Response
+getApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id): \criteo\api\retailmedia\preview\Model\Creative2Response
 ```
 
 
@@ -1073,7 +867,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreativeV2Response**](../Model/CreativeV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\Creative2Response**](../Model/Creative2Response.md)
 
 ### Authorization
 
@@ -1283,15 +1077,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getInsertionOrderHistoryChangeDataCaptureV2()`
+## `getCpcMinBidsBySkuIdsV1()`
 
 ```php
-getInsertionOrderHistoryChangeDataCaptureV2($insertion_order_id, $offset, $limit, $limit_to_change_types): \criteo\api\retailmedia\preview\Model\PageOfInsertionOrderHistoryChangeDataCaptureV2
+getCpcMinBidsBySkuIdsV1($retailer_id, $value_resource_input_cpc_min_bids_request): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeCpcMinBidsResponse
 ```
 
 
 
-Gets the balance's historical data change capture.
+Get overall and individual minimum bid amount for given retailer id and sku id list.
 
 ### Example
 
@@ -1313,16 +1107,14 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$insertion_order_id = 'insertion_order_id_example'; // string | External insertion order id.
-$offset = 0; // int | The (zero-based) starting offset in the collection.
-$limit = 25; // int | The number of elements to be returned.
-$limit_to_change_types = 'limit_to_change_types_example'; // string | Comma separated change types string that will be queried.
+$retailer_id = 56; // int | Retailer Id.
+$value_resource_input_cpc_min_bids_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputCpcMinBidsRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputCpcMinBidsRequest | Cpc minimum bid amount request object.
 
 try {
-    $result = $apiInstance->getInsertionOrderHistoryChangeDataCaptureV2($insertion_order_id, $offset, $limit, $limit_to_change_types);
+    $result = $apiInstance->getCpcMinBidsBySkuIdsV1($retailer_id, $value_resource_input_cpc_min_bids_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getInsertionOrderHistoryChangeDataCaptureV2: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getCpcMinBidsBySkuIdsV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1330,14 +1122,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **insertion_order_id** | **string**| External insertion order id. | |
-| **offset** | **int**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
-| **limit** | **int**| The number of elements to be returned. | [optional] [default to 25] |
-| **limit_to_change_types** | **string**| Comma separated change types string that will be queried. | [optional] |
+| **retailer_id** | **int**| Retailer Id. | |
+| **value_resource_input_cpc_min_bids_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputCpcMinBidsRequest**](../Model/ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\PageOfInsertionOrderHistoryChangeDataCaptureV2**](../Model/PageOfInsertionOrderHistoryChangeDataCaptureV2.md)
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeCpcMinBidsResponse**](../Model/ValueResourceOutcomeCpcMinBidsResponse.md)
 
 ### Authorization
 
@@ -1345,8 +1135,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -1409,77 +1199,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getSkuByProductId()`
-
-```php
-getSkuByProductId($account_id, $retailer_id, $offset, $limit, $sku_search_request): \criteo\api\retailmedia\preview\Model\ResourceCollectionOutcomeOfSkuSearchResult
-```
-
-
-
-Gets a list of SKUs based on a privided list of Product Ids
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | account id
-$retailer_id = 56; // int | retailer id
-$offset = 0; // int | skip a number of matches before retrning results, used with limit
-$limit = 100; // int | max number of results to return
-$sku_search_request = new \criteo\api\retailmedia\preview\Model\SkuSearchRequest(); // \criteo\api\retailmedia\preview\Model\SkuSearchRequest | 
-
-try {
-    $result = $apiInstance->getSkuByProductId($account_id, $retailer_id, $offset, $limit, $sku_search_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getSkuByProductId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| account id | |
-| **retailer_id** | **int**| retailer id | |
-| **offset** | **int**| skip a number of matches before retrning results, used with limit | [optional] [default to 0] |
-| **limit** | **int**| max number of results to return | [optional] [default to 100] |
-| **sku_search_request** | [**\criteo\api\retailmedia\preview\Model\SkuSearchRequest**](../Model/SkuSearchRequest.md)|  | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ResourceCollectionOutcomeOfSkuSearchResult**](../Model/ResourceCollectionOutcomeOfSkuSearchResult.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -2024,7 +1743,7 @@ try {
 ## `postApiV2ExternalAccountCreativesByAccountId()`
 
 ```php
-postApiV2ExternalAccountCreativesByAccountId($account_id, $external_creative_create_model_v2): \criteo\api\retailmedia\preview\Model\CreativeV2Response
+postApiV2ExternalAccountCreativesByAccountId($account_id, $creative_create_model2): \criteo\api\retailmedia\preview\Model\Creative2Response
 ```
 
 
@@ -2052,10 +1771,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | External account id to create a creative for
-$external_creative_create_model_v2 = new \criteo\api\retailmedia\preview\Model\ExternalCreativeCreateModelV2(); // \criteo\api\retailmedia\preview\Model\ExternalCreativeCreateModelV2 | The creative to create
+$creative_create_model2 = new \criteo\api\retailmedia\preview\Model\CreativeCreateModel2(); // \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 | The creative to create
 
 try {
-    $result = $apiInstance->postApiV2ExternalAccountCreativesByAccountId($account_id, $external_creative_create_model_v2);
+    $result = $apiInstance->postApiV2ExternalAccountCreativesByAccountId($account_id, $creative_create_model2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiV2ExternalAccountCreativesByAccountId: ', $e->getMessage(), PHP_EOL;
@@ -2067,11 +1786,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| External account id to create a creative for | |
-| **external_creative_create_model_v2** | [**\criteo\api\retailmedia\preview\Model\ExternalCreativeCreateModelV2**](../Model/ExternalCreativeCreateModelV2.md)| The creative to create | [optional] |
+| **creative_create_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeCreateModel2**](../Model/CreativeCreateModel2.md)| The creative to create | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreativeV2Response**](../Model/CreativeV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\Creative2Response**](../Model/Creative2Response.md)
 
 ### Authorization
 
@@ -2089,7 +1808,7 @@ try {
 ## `postApiV2ExternalAccountCreativesSearchByAccountId()`
 
 ```php
-postApiV2ExternalAccountCreativesSearchByAccountId($account_id, $creative_ids): \criteo\api\retailmedia\preview\Model\CreativeV2ListResponse
+postApiV2ExternalAccountCreativesSearchByAccountId($account_id, $creative_ids): \criteo\api\retailmedia\preview\Model\Creative2ListResponse
 ```
 
 
@@ -2136,7 +1855,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreativeV2ListResponse**](../Model/CreativeV2ListResponse.md)
+[**\criteo\api\retailmedia\preview\Model\Creative2ListResponse**](../Model/Creative2ListResponse.md)
 
 ### Authorization
 
@@ -2286,7 +2005,7 @@ try {
 ## `putApiV2ExternalAccountByAccountIdCreativescreativeId()`
 
 ```php
-putApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, $external_creative_update_model_v2): \criteo\api\retailmedia\preview\Model\CreativeV2Response
+putApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, $creative_update_model2): \criteo\api\retailmedia\preview\Model\Creative2Response
 ```
 
 
@@ -2315,10 +2034,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
 );
 $account_id = 'account_id_example'; // string | External account id containing the creative
 $creative_id = 'creative_id_example'; // string | Creative to update
-$external_creative_update_model_v2 = new \criteo\api\retailmedia\preview\Model\ExternalCreativeUpdateModelV2(); // \criteo\api\retailmedia\preview\Model\ExternalCreativeUpdateModelV2 | The creative to create
+$creative_update_model2 = new \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2(); // \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 | The creative to create
 
 try {
-    $result = $apiInstance->putApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, $external_creative_update_model_v2);
+    $result = $apiInstance->putApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, $creative_update_model2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->putApiV2ExternalAccountByAccountIdCreativescreativeId: ', $e->getMessage(), PHP_EOL;
@@ -2331,11 +2050,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| External account id containing the creative | |
 | **creative_id** | **string**| Creative to update | |
-| **external_creative_update_model_v2** | [**\criteo\api\retailmedia\preview\Model\ExternalCreativeUpdateModelV2**](../Model/ExternalCreativeUpdateModelV2.md)| The creative to create | [optional] |
+| **creative_update_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeUpdateModel2**](../Model/CreativeUpdateModel2.md)| The creative to create | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CreativeV2Response**](../Model/CreativeV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\Creative2Response**](../Model/Creative2Response.md)
 
 ### Authorization
 
@@ -2474,69 +2193,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `submitProposal()`
-
-```php
-submitProposal($id): \criteo\api\retailmedia\preview\Model\ProposalStatusModelResponse
-```
-
-
-
-Only the components of the Line Item that are in a valid state will be reviewed.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$id = 'id_example'; // string | ID of the line item
-
-try {
-    $result = $apiInstance->submitProposal($id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->submitProposal: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **id** | **string**| ID of the line item | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProposalStatusModelResponse**](../Model/ProposalStatusModelResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

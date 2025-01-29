@@ -97,13 +97,13 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'description' => false,
+		'description' => true,
 		'category' => false,
 		'brand' => false,
 		'price' => true,
 		'is_in_stock' => false,
-		'gtin' => false,
-		'mpn' => false,
+		'gtin' => true,
+		'mpn' => true,
 		'image_url' => false,
 		'updated_at' => false
     ];
@@ -346,14 +346,6 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 1000.";
-        }
-
-        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) < 0)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 0.";
-        }
-
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
         }
@@ -432,15 +424,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($description) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling SkuSlimDataV2., must be smaller than or equal to 1000.');
-        }
-        if ((mb_strlen($description) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling SkuSlimDataV2., must be bigger than or equal to 0.');
-        }
-
         $this->container['description'] = $description;
 
         return $this;
@@ -581,7 +573,14 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGtin($gtin)
     {
         if (is_null($gtin)) {
-            throw new \InvalidArgumentException('non-nullable gtin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gtin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gtin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gtin'] = $gtin;
 
@@ -608,7 +607,14 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMpn($mpn)
     {
         if (is_null($mpn)) {
-            throw new \InvalidArgumentException('non-nullable mpn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mpn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mpn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mpn'] = $mpn;
 

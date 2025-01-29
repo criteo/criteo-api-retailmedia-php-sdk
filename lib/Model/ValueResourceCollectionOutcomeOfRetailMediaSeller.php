@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * ValueResourceCollectionOutcomeOfRetailMediaSeller Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several values.
+ * @description A top-level object that encapsulates a Criteo API response for several value objects.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaSeller[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -351,7 +351,7 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -385,7 +385,7 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */

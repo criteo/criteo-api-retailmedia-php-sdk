@@ -60,6 +60,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
         'aggregation_level' => 'string',
+        'search_term_types' => 'string[]',
+        'search_term_targetings' => 'string[]',
         'campaign_type' => 'string',
         'sales_channel' => 'string',
         'format' => 'string',
@@ -83,6 +85,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'account_ids' => null,
         'aggregation_level' => null,
+        'search_term_types' => null,
+        'search_term_targetings' => null,
         'campaign_type' => null,
         'sales_channel' => null,
         'format' => null,
@@ -104,6 +108,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'account_ids' => false,
 		'aggregation_level' => true,
+		'search_term_types' => true,
+		'search_term_targetings' => true,
 		'campaign_type' => true,
 		'sales_channel' => true,
 		'format' => true,
@@ -205,6 +211,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
         'aggregation_level' => 'aggregationLevel',
+        'search_term_types' => 'searchTermTypes',
+        'search_term_targetings' => 'searchTermTargetings',
         'campaign_type' => 'campaignType',
         'sales_channel' => 'salesChannel',
         'format' => 'format',
@@ -226,6 +234,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'account_ids' => 'setAccountIds',
         'aggregation_level' => 'setAggregationLevel',
+        'search_term_types' => 'setSearchTermTypes',
+        'search_term_targetings' => 'setSearchTermTargetings',
         'campaign_type' => 'setCampaignType',
         'sales_channel' => 'setSalesChannel',
         'format' => 'setFormat',
@@ -247,6 +257,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'account_ids' => 'getAccountIds',
         'aggregation_level' => 'getAggregationLevel',
+        'search_term_types' => 'getSearchTermTypes',
+        'search_term_targetings' => 'getSearchTermTargetings',
         'campaign_type' => 'getCampaignType',
         'sales_channel' => 'getSalesChannel',
         'format' => 'getFormat',
@@ -303,6 +315,12 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 
     public const AGGREGATION_LEVEL_CAMPAIGN = 'campaign';
     public const AGGREGATION_LEVEL_LINE_ITEM = 'lineItem';
+    public const SEARCH_TERM_TYPES_UNKNOWN = 'unknown';
+    public const SEARCH_TERM_TYPES_SEARCHED = 'searched';
+    public const SEARCH_TERM_TYPES_ENTERED = 'entered';
+    public const SEARCH_TERM_TARGETINGS_UNKNOWN = 'unknown';
+    public const SEARCH_TERM_TARGETINGS_AUTOMATIC = 'automatic';
+    public const SEARCH_TERM_TARGETINGS_MANUAL = 'manual';
     public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
@@ -321,6 +339,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const REPORT_TYPE_ATTRIBUTED_TRANSACTIONS = 'attributedTransactions';
     public const REPORT_TYPE_ENVIRONMENT = 'environment';
     public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
+    public const REPORT_TYPE_CAPOUT = 'capout';
     public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
@@ -350,9 +369,18 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_PAGE_CATEGORY = 'pageCategory';
+    public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
     public const DIMENSIONS_TAXONOMY_BREADCRUMB = 'taxonomyBreadcrumb';
     public const DIMENSIONS_KEYWORD = 'keyword';
     public const DIMENSIONS_SEARCH_TERM = 'searchTerm';
+    public const DIMENSIONS_SEARCH_TERM_TYPE = 'searchTermType';
+    public const DIMENSIONS_SEARCH_TERM_TARGETING = 'searchTermTargeting';
+    public const DIMENSIONS_CREATIVE_ID = 'creativeId';
+    public const DIMENSIONS_CREATIVE_NAME = 'creativeName';
+    public const DIMENSIONS_CREATIVE_TYPE_ID = 'creativeTypeId';
+    public const DIMENSIONS_CREATIVE_TYPE_NAME = 'creativeTypeName';
+    public const DIMENSIONS_CREATIVE_TEMPLATE_ID = 'creativeTemplateId';
+    public const DIMENSIONS_CREATIVE_TEMPLATE_NAME = 'creativeTemplateName';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -374,6 +402,16 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
     public const METRICS_VIDEO_PLAYING_RATE = 'videoPlayingRate';
     public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
+    public const METRICS_VIDEO_IMPRESSIONS = 'videoImpressions';
+    public const METRICS_VIDEO_MUTED = 'videoMuted';
+    public const METRICS_VIDEO_UNMUTED = 'videoUnmuted';
+    public const METRICS_VIDEO_PAUSED = 'videoPaused';
+    public const METRICS_VIDEO_RESUMED = 'videoResumed';
+    public const METRICS_VIDEO_AVG_INTERACTION_RATE = 'videoAvgInteractionRate';
+    public const METRICS_VIDEO_VIEWABILITY = 'videoViewability';
+    public const METRICS_VIDEO_STARTING_RATE = 'videoStartingRate';
+    public const METRICS_VIDEO_CPC = 'videoCPC';
+    public const METRICS_VIDEO_CPCV = 'videoCPCV';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
 
@@ -387,6 +425,34 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return [
             self::AGGREGATION_LEVEL_CAMPAIGN,
             self::AGGREGATION_LEVEL_LINE_ITEM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSearchTermTypesAllowableValues()
+    {
+        return [
+            self::SEARCH_TERM_TYPES_UNKNOWN,
+            self::SEARCH_TERM_TYPES_SEARCHED,
+            self::SEARCH_TERM_TYPES_ENTERED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSearchTermTargetingsAllowableValues()
+    {
+        return [
+            self::SEARCH_TERM_TARGETINGS_UNKNOWN,
+            self::SEARCH_TERM_TARGETINGS_AUTOMATIC,
+            self::SEARCH_TERM_TARGETINGS_MANUAL,
         ];
     }
 
@@ -449,6 +515,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::REPORT_TYPE_ATTRIBUTED_TRANSACTIONS,
             self::REPORT_TYPE_ENVIRONMENT,
             self::REPORT_TYPE_SERVED_CATEGORY,
+            self::REPORT_TYPE_CAPOUT,
         ];
     }
 
@@ -511,9 +578,18 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_PAGE_CATEGORY,
+            self::DIMENSIONS_SERVED_CATEGORY,
             self::DIMENSIONS_TAXONOMY_BREADCRUMB,
             self::DIMENSIONS_KEYWORD,
             self::DIMENSIONS_SEARCH_TERM,
+            self::DIMENSIONS_SEARCH_TERM_TYPE,
+            self::DIMENSIONS_SEARCH_TERM_TARGETING,
+            self::DIMENSIONS_CREATIVE_ID,
+            self::DIMENSIONS_CREATIVE_NAME,
+            self::DIMENSIONS_CREATIVE_TYPE_ID,
+            self::DIMENSIONS_CREATIVE_TYPE_NAME,
+            self::DIMENSIONS_CREATIVE_TEMPLATE_ID,
+            self::DIMENSIONS_CREATIVE_TEMPLATE_NAME,
         ];
     }
 
@@ -546,6 +622,16 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_VIDEOS_PLAYED_TO100,
             self::METRICS_VIDEO_PLAYING_RATE,
             self::METRICS_VIDEO_COMPLETION_RATE,
+            self::METRICS_VIDEO_IMPRESSIONS,
+            self::METRICS_VIDEO_MUTED,
+            self::METRICS_VIDEO_UNMUTED,
+            self::METRICS_VIDEO_PAUSED,
+            self::METRICS_VIDEO_RESUMED,
+            self::METRICS_VIDEO_AVG_INTERACTION_RATE,
+            self::METRICS_VIDEO_VIEWABILITY,
+            self::METRICS_VIDEO_STARTING_RATE,
+            self::METRICS_VIDEO_CPC,
+            self::METRICS_VIDEO_CPCV,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];
@@ -568,6 +654,8 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('account_ids', $data ?? [], null);
         $this->setIfExists('aggregation_level', $data ?? [], 'campaign');
+        $this->setIfExists('search_term_types', $data ?? [], null);
+        $this->setIfExists('search_term_targetings', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('format', $data ?? [], 'json-compact');
@@ -762,6 +850,92 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['aggregation_level'] = $aggregation_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_term_types
+     *
+     * @return string[]|null
+     */
+    public function getSearchTermTypes()
+    {
+        return $this->container['search_term_types'];
+    }
+
+    /**
+     * Sets search_term_types
+     *
+     * @param string[]|null $search_term_types Filter on the type of search term type: unknown, searched, entered
+     *
+     * @return self
+     */
+    public function setSearchTermTypes($search_term_types)
+    {
+        if (is_null($search_term_types)) {
+            array_push($this->openAPINullablesSetToNull, 'search_term_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search_term_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSearchTermTypesAllowableValues();
+        if (!is_null($search_term_types) && array_diff($search_term_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'search_term_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['search_term_types'] = $search_term_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_term_targetings
+     *
+     * @return string[]|null
+     */
+    public function getSearchTermTargetings()
+    {
+        return $this->container['search_term_targetings'];
+    }
+
+    /**
+     * Sets search_term_targetings
+     *
+     * @param string[]|null $search_term_targetings Filter on the type of search term targeting: unknown, automatic, manual
+     *
+     * @return self
+     */
+    public function setSearchTermTargetings($search_term_targetings)
+    {
+        if (is_null($search_term_targetings)) {
+            array_push($this->openAPINullablesSetToNull, 'search_term_targetings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search_term_targetings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSearchTermTargetingsAllowableValues();
+        if (!is_null($search_term_targetings) && array_diff($search_term_targetings, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'search_term_targetings', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['search_term_targetings'] = $search_term_targetings;
 
         return $this;
     }

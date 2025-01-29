@@ -59,7 +59,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPITypes = [
         'seller_id' => 'string',
-        'retailer_id' => 'int'
+        'retailer_id' => 'int',
+        'name' => 'string'
     ];
 
     /**
@@ -71,7 +72,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static $openAPIFormats = [
         'seller_id' => null,
-        'retailer_id' => 'int32'
+        'retailer_id' => 'int32',
+        'name' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       */
     protected static array $openAPINullables = [
         'seller_id' => true,
-		'retailer_id' => true
+		'retailer_id' => true,
+		'name' => true
     ];
 
     /**
@@ -171,7 +174,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $attributeMap = [
         'seller_id' => 'sellerId',
-        'retailer_id' => 'retailerId'
+        'retailer_id' => 'retailerId',
+        'name' => 'name'
     ];
 
     /**
@@ -181,7 +185,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $setters = [
         'seller_id' => 'setSellerId',
-        'retailer_id' => 'setRetailerId'
+        'retailer_id' => 'setRetailerId',
+        'name' => 'setName'
     ];
 
     /**
@@ -191,7 +196,8 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     protected static $getters = [
         'seller_id' => 'getSellerId',
-        'retailer_id' => 'getRetailerId'
+        'retailer_id' => 'getRetailerId',
+        'name' => 'getName'
     ];
 
     /**
@@ -253,6 +259,7 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $this->setIfExists('seller_id', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -361,6 +368,40 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name seller name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

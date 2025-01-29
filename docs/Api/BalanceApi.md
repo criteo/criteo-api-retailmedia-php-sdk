@@ -8,7 +8,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 | [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
 | [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |  |
 | [**postApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
 | [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
 
@@ -265,73 +264,6 @@ try {
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
 | **update_balance_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId()`
-
-```php
-postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
-```
-
-
-
-Add funds to a balance for the given account id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account of the balance
-$balance_id = 'balance_id_example'; // string | The balance to add funds to
-$add_funds_to_balance_v2_request = new \criteo\api\retailmedia\preview\Model\AddFundsToBalanceV2Request(); // \criteo\api\retailmedia\preview\Model\AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
-
-try {
-    $result = $apiInstance->postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account of the balance | |
-| **balance_id** | **string**| The balance to add funds to | |
-| **add_funds_to_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\AddFundsToBalanceV2Request**](../Model/AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
 
 ### Return type
 

@@ -78,7 +78,7 @@ class Category implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false
+        'text' => true
     ];
 
     /**
@@ -318,12 +318,19 @@ class Category implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($text) > 1000)) {
+        if (!is_null($text) && (mb_strlen($text) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $text when calling Category., must be smaller than or equal to 1000.');
         }
-        if ((mb_strlen($text) < 0)) {
+        if (!is_null($text) && (mb_strlen($text) < 0)) {
             throw new \InvalidArgumentException('invalid length for $text when calling Category., must be bigger than or equal to 0.');
         }
 

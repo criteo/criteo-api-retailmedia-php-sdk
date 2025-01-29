@@ -78,7 +78,7 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'status' => null,
         'row_count' => 'int32',
-        'file_size_bytes' => 'int32',
+        'file_size_bytes' => 'int64',
         'md5_check_sum' => null,
         'created_at' => null,
         'expires_at' => null,

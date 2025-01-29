@@ -297,7 +297,6 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 
     public const REPORT_TYPE_SUMMARY = 'summary';
     public const REPORT_TYPE_PAGE_TYPE = 'pageType';
-    public const REPORT_TYPE_KEYWORD = 'keyword';
     public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
     public const REPORT_TYPE_PRODUCT = 'product';
     public const REPORT_TYPE_ENVIRONMENT = 'environment';
@@ -337,9 +336,8 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_PAGE_CATEGORY = 'pageCategory';
+    public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
     public const DIMENSIONS_TAXONOMY_BREADCRUMB = 'taxonomyBreadcrumb';
-    public const DIMENSIONS_KEYWORD = 'keyword';
-    public const DIMENSIONS_SEARCH_TERM = 'searchTerm';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -353,14 +351,6 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_CPO = 'cpo';
     public const METRICS_CPM = 'cpm';
     public const METRICS_ROAS = 'roas';
-    public const METRICS_VIDEO_VIEWS = 'videoViews';
-    public const METRICS_VIDEOS_STARTED = 'videosStarted';
-    public const METRICS_VIDEOS_PLAYED_TO25 = 'videosPlayedTo25';
-    public const METRICS_VIDEOS_PLAYED_TO50 = 'videosPlayedTo50';
-    public const METRICS_VIDEOS_PLAYED_TO75 = 'videosPlayedTo75';
-    public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
-    public const METRICS_VIDEO_PLAYING_RATE = 'videoPlayingRate';
-    public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
 
@@ -374,7 +364,6 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return [
             self::REPORT_TYPE_SUMMARY,
             self::REPORT_TYPE_PAGE_TYPE,
-            self::REPORT_TYPE_KEYWORD,
             self::REPORT_TYPE_PRODUCT_CATEGORY,
             self::REPORT_TYPE_PRODUCT,
             self::REPORT_TYPE_ENVIRONMENT,
@@ -469,9 +458,8 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_PAGE_CATEGORY,
+            self::DIMENSIONS_SERVED_CATEGORY,
             self::DIMENSIONS_TAXONOMY_BREADCRUMB,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_SEARCH_TERM,
         ];
     }
 
@@ -496,14 +484,6 @@ class SyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_CPO,
             self::METRICS_CPM,
             self::METRICS_ROAS,
-            self::METRICS_VIDEO_VIEWS,
-            self::METRICS_VIDEOS_STARTED,
-            self::METRICS_VIDEOS_PLAYED_TO25,
-            self::METRICS_VIDEOS_PLAYED_TO50,
-            self::METRICS_VIDEOS_PLAYED_TO75,
-            self::METRICS_VIDEOS_PLAYED_TO100,
-            self::METRICS_VIDEO_PLAYING_RATE,
-            self::METRICS_VIDEO_COMPLETION_RATE,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];

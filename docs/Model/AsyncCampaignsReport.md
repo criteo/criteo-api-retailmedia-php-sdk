@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ids** | **string[]** | Campaign ids to report on | [optional]
 **id** | **string** | Campaign id to report on | [optional]
+**search_term_types** | **string[]** | Filter on the type of search term type: unknown, searched, entered | [optional]
+**search_term_targetings** | **string[]** | Filter on the type of search term targeting: unknown, automatic, manual | [optional]
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']

@@ -336,6 +336,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_KEYWORD = 'keyword';
     public const DIMENSIONS_ATTRIBUTION_WINDOW = 'attributionWindow';
+    public const DIMENSIONS_SALE_SELLER_ID = 'saleSellerId';
+    public const DIMENSIONS_SALE_SELLER_NAME = 'saleSellerName';
+    public const DIMENSIONS_ACTIVITY_SELLER_ID = 'activitySellerId';
+    public const DIMENSIONS_ACTIVITY_SELLER_NAME = 'activitySellerName';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
     public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
 
@@ -432,6 +436,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_KEYWORD,
             self::DIMENSIONS_ATTRIBUTION_WINDOW,
+            self::DIMENSIONS_SALE_SELLER_ID,
+            self::DIMENSIONS_SALE_SELLER_NAME,
+            self::DIMENSIONS_ACTIVITY_SELLER_ID,
+            self::DIMENSIONS_ACTIVITY_SELLER_NAME,
         ];
     }
 

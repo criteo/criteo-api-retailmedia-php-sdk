@@ -122,25 +122,25 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'sku_key' => false,
 		'name' => false,
-		'description' => false,
+		'description' => true,
 		'category_id' => false,
-		'category' => false,
+		'category' => true,
 		'is_seller_sku' => false,
 		'is_buybox' => false,
-		'seller_id' => false,
-		'seller_name' => false,
+		'seller_id' => true,
+		'seller_name' => true,
 		'brand_id' => false,
 		'brand_name' => false,
 		'retailer_id' => false,
 		'retailer_name' => false,
 		'price' => false,
 		'is_in_stock' => false,
-		'gtin' => false,
-		'mpn' => false,
-		'model_number' => false,
-		'parent_id' => false,
+		'gtin' => true,
+		'mpn' => true,
+		'model_number' => true,
+		'parent_id' => true,
 		'image_url' => false,
-		'product_page' => false,
+		'product_page' => true,
 		'updated_at' => false
     ];
 
@@ -577,7 +577,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['description'] = $description;
 
@@ -631,12 +638,19 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCategory($category)
     {
         if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($category) > 1000)) {
+        if (!is_null($category) && (mb_strlen($category) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $category when calling SkuDataPreview., must be smaller than or equal to 1000.');
         }
-        if ((mb_strlen($category) < 0)) {
+        if (!is_null($category) && (mb_strlen($category) < 0)) {
             throw new \InvalidArgumentException('invalid length for $category when calling SkuDataPreview., must be bigger than or equal to 0.');
         }
 
@@ -719,7 +733,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerId($seller_id)
     {
         if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_id'] = $seller_id;
 
@@ -746,7 +767,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSellerName($seller_name)
     {
         if (is_null($seller_name)) {
-            throw new \InvalidArgumentException('non-nullable seller_name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'seller_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('seller_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['seller_name'] = $seller_name;
 
@@ -949,7 +977,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setGtin($gtin)
     {
         if (is_null($gtin)) {
-            throw new \InvalidArgumentException('non-nullable gtin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gtin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gtin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gtin'] = $gtin;
 
@@ -976,7 +1011,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMpn($mpn)
     {
         if (is_null($mpn)) {
-            throw new \InvalidArgumentException('non-nullable mpn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mpn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mpn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mpn'] = $mpn;
 
@@ -1003,7 +1045,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setModelNumber($model_number)
     {
         if (is_null($model_number)) {
-            throw new \InvalidArgumentException('non-nullable model_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'model_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('model_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['model_number'] = $model_number;
 
@@ -1030,7 +1079,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setParentId($parent_id)
     {
         if (is_null($parent_id)) {
-            throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'parent_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['parent_id'] = $parent_id;
 
@@ -1077,14 +1133,21 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_page
      *
-     * @param string|null $product_page An The product page URL
+     * @param string|null $product_page The product page URL
      *
      * @return self
      */
     public function setProductPage($product_page)
     {
         if (is_null($product_page)) {
-            throw new \InvalidArgumentException('non-nullable product_page cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_page');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_page', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['product_page'] = $product_page;
 

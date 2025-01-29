@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_ids** | **string[]** | Account Ids to report on |
 **aggregation_level** | **string** | Level of aggregation, if no dimensions/metrics are provided, falls back to campaign aggregationLevel | [optional] [default to 'campaign']
+**search_term_types** | **string[]** | Filter on the type of search term type: unknown, searched, entered | [optional]
+**search_term_targetings** | **string[]** | Filter on the type of search term targeting: unknown, automatic, manual | [optional]
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']

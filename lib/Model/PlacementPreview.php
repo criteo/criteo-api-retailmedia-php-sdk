@@ -261,6 +261,10 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAGE_ENVIRONMENT_TYPE_WEB = 'Web';
     public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'Mobile';
     public const PAGE_ENVIRONMENT_TYPE_APP = 'App';
+    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'Lockout';
+    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'Mixed';
+    public const PAGE_ENVIRONMENT_TYPE_I_OS = 'iOS';
+    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'Android';
 
     /**
      * Gets allowable values of the enum
@@ -295,6 +299,10 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PAGE_ENVIRONMENT_TYPE_WEB,
             self::PAGE_ENVIRONMENT_TYPE_MOBILE,
             self::PAGE_ENVIRONMENT_TYPE_APP,
+            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
+            self::PAGE_ENVIRONMENT_TYPE_MIXED,
+            self::PAGE_ENVIRONMENT_TYPE_I_OS,
+            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
         ];
     }
 

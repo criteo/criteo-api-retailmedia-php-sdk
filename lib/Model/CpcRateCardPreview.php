@@ -83,8 +83,8 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'retailer_minimum_cpc_bid' => false,
-		'category_minimum_cpc_bids' => false,
-		'categories' => false
+		'category_minimum_cpc_bids' => true,
+		'categories' => true
     ];
 
     /**
@@ -354,7 +354,14 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCategoryMinimumCpcBids($category_minimum_cpc_bids)
     {
         if (is_null($category_minimum_cpc_bids)) {
-            throw new \InvalidArgumentException('non-nullable category_minimum_cpc_bids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category_minimum_cpc_bids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_minimum_cpc_bids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['category_minimum_cpc_bids'] = $category_minimum_cpc_bids;
 
@@ -381,7 +388,14 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCategories($categories)
     {
         if (is_null($categories)) {
-            throw new \InvalidArgumentException('non-nullable categories cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['categories'] = $categories;
 
