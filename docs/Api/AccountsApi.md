@@ -1,21 +1,22 @@
-# criteo\api\retailmedia\v2024_07\AccountsApi
+# criteo\api\retailmedia\v2025_01\AccountsApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addBrands()**](AccountsApi.md#addBrands) | **POST** /2024-07/retail-media/account-management/accounts/{accountId}/brands/add |  |
-| [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2024-07/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
-| [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2024-07/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
-| [**getApiV1ExternalAccounts()**](AccountsApi.md#getApiV1ExternalAccounts) | **GET** /2024-07/retail-media/accounts |  |
-| [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /2024-07/retail-media/account-management/accounts/{accountId}/brands/remove |  |
-| [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /2024-07/retail-media/account-management/accounts/{accountId}/sellers |  |
+| [**addBrands()**](AccountsApi.md#addBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/add |  |
+| [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
+| [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
+| [**getApiV1ExternalAccounts()**](AccountsApi.md#getApiV1ExternalAccounts) | **GET** /2025-01/retail-media/accounts |  |
+| [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /2025-01/retail-media/accounts/{accountId}/grant-consent |  |
+| [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/remove |  |
+| [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /2025-01/retail-media/account-management/accounts/{accountId}/sellers |  |
 
 
 ## `addBrands()`
 
 ```php
-addBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2024_07\Model\ValueResourceOutcomeOfRetailMediaBrands
+addBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2025_01\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
 
@@ -30,20 +31,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | the account id to update
-$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands
+$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands
 
 try {
     $result = $apiInstance->addBrands($account_id, $value_resource_input_of_retail_media_brands);
@@ -58,11 +59,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| the account id to update | |
-| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
+| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\ValueResourceOutcomeOfRetailMediaBrands**](../Model/ValueResourceOutcomeOfRetailMediaBrands.md)
+[**\criteo\api\retailmedia\v2025_01\Model\ValueResourceOutcomeOfRetailMediaBrands**](../Model/ValueResourceOutcomeOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -80,7 +81,7 @@ try {
 ## `createPrivateMarketDemandBrandAccount()`
 
 ```php
-createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation): \criteo\api\retailmedia\v2024_07\Model\EntityResourceOutcomeOfRetailMediaAccount
+createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation): \criteo\api\retailmedia\v2025_01\Model\EntityResourceOutcomeOfRetailMediaAccount
 ```
 
 
@@ -95,20 +96,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The given account id
-$value_resource_input_of_retail_media_brand_account_creation = new \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrandAccountCreation(); // \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrandAccountCreation
+$value_resource_input_of_retail_media_brand_account_creation = new \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation(); // \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation
 
 try {
     $result = $apiInstance->createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation);
@@ -123,11 +124,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
-| **value_resource_input_of_retail_media_brand_account_creation** | [**\criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrandAccountCreation**](../Model/ValueResourceInputOfRetailMediaBrandAccountCreation.md)|  | [optional] |
+| **value_resource_input_of_retail_media_brand_account_creation** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation**](../Model/ValueResourceInputOfRetailMediaBrandAccountCreation.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\EntityResourceOutcomeOfRetailMediaAccount**](../Model/EntityResourceOutcomeOfRetailMediaAccount.md)
+[**\criteo\api\retailmedia\v2025_01\Model\EntityResourceOutcomeOfRetailMediaAccount**](../Model/EntityResourceOutcomeOfRetailMediaAccount.md)
 
 ### Authorization
 
@@ -145,7 +146,7 @@ try {
 ## `createPrivateMarketDemandSellerAccount()`
 
 ```php
-createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation): \criteo\api\retailmedia\v2024_07\Model\EntityResourceOutcomeOfRetailMediaAccount
+createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation): \criteo\api\retailmedia\v2025_01\Model\EntityResourceOutcomeOfRetailMediaAccount
 ```
 
 
@@ -160,20 +161,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The given account id
-$value_resource_input_of_retail_media_seller_account_creation = new \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaSellerAccountCreation(); // \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaSellerAccountCreation
+$value_resource_input_of_retail_media_seller_account_creation = new \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation(); // \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation
 
 try {
     $result = $apiInstance->createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation);
@@ -188,11 +189,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
-| **value_resource_input_of_retail_media_seller_account_creation** | [**\criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaSellerAccountCreation**](../Model/ValueResourceInputOfRetailMediaSellerAccountCreation.md)|  | [optional] |
+| **value_resource_input_of_retail_media_seller_account_creation** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation**](../Model/ValueResourceInputOfRetailMediaSellerAccountCreation.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\EntityResourceOutcomeOfRetailMediaAccount**](../Model/EntityResourceOutcomeOfRetailMediaAccount.md)
+[**\criteo\api\retailmedia\v2025_01\Model\EntityResourceOutcomeOfRetailMediaAccount**](../Model/EntityResourceOutcomeOfRetailMediaAccount.md)
 
 ### Authorization
 
@@ -210,7 +211,7 @@ try {
 ## `getApiV1ExternalAccounts()`
 
 ```php
-getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\JsonApiPageResponseOfAccount
+getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_01\Model\JsonApiPageResponseOfAccount
 ```
 
 
@@ -225,13 +226,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -259,7 +260,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\JsonApiPageResponseOfAccount**](../Model/JsonApiPageResponseOfAccount.md)
+[**\criteo\api\retailmedia\v2025_01\Model\JsonApiPageResponseOfAccount**](../Model/JsonApiPageResponseOfAccount.md)
 
 ### Authorization
 
@@ -274,10 +275,74 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `grantConsent()`
+
+```php
+grantConsent($account_id, $grant_consent_input)
+```
+
+
+
+Grant consent to a business application on behalf of a Private Market demand account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The demand account ID on which to grant consent
+$grant_consent_input = new \criteo\api\retailmedia\v2025_01\Model\GrantConsentInput(); // \criteo\api\retailmedia\v2025_01\Model\GrantConsentInput
+
+try {
+    $apiInstance->grantConsent($account_id, $grant_consent_input);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->grantConsent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The demand account ID on which to grant consent | |
+| **grant_consent_input** | [**\criteo\api\retailmedia\v2025_01\Model\GrantConsentInput**](../Model/GrantConsentInput.md)|  | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeBrands()`
 
 ```php
-removeBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2024_07\Model\ValueResourceOutcomeOfRetailMediaBrands
+removeBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2025_01\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
 
@@ -292,20 +357,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | the account id to update
-$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands
+$value_resource_input_of_retail_media_brands = new \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands(); // \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands
 
 try {
     $result = $apiInstance->removeBrands($account_id, $value_resource_input_of_retail_media_brands);
@@ -320,11 +385,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| the account id to update | |
-| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\v2024_07\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
+| **value_resource_input_of_retail_media_brands** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfRetailMediaBrands**](../Model/ValueResourceInputOfRetailMediaBrands.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\ValueResourceOutcomeOfRetailMediaBrands**](../Model/ValueResourceOutcomeOfRetailMediaBrands.md)
+[**\criteo\api\retailmedia\v2025_01\Model\ValueResourceOutcomeOfRetailMediaBrands**](../Model/ValueResourceOutcomeOfRetailMediaBrands.md)
 
 ### Authorization
 
@@ -342,7 +407,7 @@ try {
 ## `updateSellers()`
 
 ```php
-updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller): \criteo\api\retailmedia\v2024_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
+updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller): \criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
 ```
 
 
@@ -357,20 +422,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The given account id
-$value_resource_collection_input_of_retail_media_seller = new \criteo\api\retailmedia\v2024_07\Model\ValueResourceCollectionInputOfRetailMediaSeller(); // \criteo\api\retailmedia\v2024_07\Model\ValueResourceCollectionInputOfRetailMediaSeller
+$value_resource_collection_input_of_retail_media_seller = new \criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionInputOfRetailMediaSeller(); // \criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionInputOfRetailMediaSeller
 
 try {
     $result = $apiInstance->updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller);
@@ -385,11 +450,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
-| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2024_07\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
+| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller**](../Model/ValueResourceCollectionOutcomeOfRetailMediaSeller.md)
+[**\criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller**](../Model/ValueResourceCollectionOutcomeOfRetailMediaSeller.md)
 
 ### Authorization
 

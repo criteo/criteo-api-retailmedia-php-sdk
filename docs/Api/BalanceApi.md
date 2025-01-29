@@ -1,23 +1,23 @@
-# criteo\api\retailmedia\v2024_07\BalanceApi
+# criteo\api\retailmedia\v2025_01\BalanceApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getApi202110ExternalBalanceCampaignsByBalanceId()**](BalanceApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2024-07/retail-media/balances/{balance-id}/campaigns |  |
-| [**getApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#getApiV2ExternalAccountBalancesByAccountId) | **GET** /2024-07/retail-media/accounts/{account-id}/balances |  |
-| [**getApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /2024-07/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /2024-07/retail-media/balances/{balanceId}/history |  |
-| [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /2024-07/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId) | **POST** /2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |  |
-| [**postApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /2024-07/retail-media/accounts/{account-id}/balances |  |
-| [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /2024-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
+| [**getApi202110ExternalBalanceCampaignsByBalanceId()**](BalanceApi.md#getApi202110ExternalBalanceCampaignsByBalanceId) | **GET** /2025-01/retail-media/balances/{balance-id}/campaigns |  |
+| [**getApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#getApiV2ExternalAccountBalancesByAccountId) | **GET** /2025-01/retail-media/accounts/{account-id}/balances |  |
+| [**getApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /2025-01/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /2025-01/retail-media/balances/{balanceId}/history |  |
+| [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /2025-01/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId) | **POST** /2025-01/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds |  |
+| [**postApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /2025-01/retail-media/accounts/{account-id}/balances |  |
+| [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /2025-01/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
 
 
 ## `getApi202110ExternalBalanceCampaignsByBalanceId()`
 
 ```php
-getApi202110ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\BalanceCampaign202110PagedListResponse
+getApi202110ExternalBalanceCampaignsByBalanceId($balance_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_01\Model\BalanceCampaign202110PagedListResponse
 ```
 
 
@@ -32,13 +32,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -68,7 +68,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ try {
 ## `getApiV2ExternalAccountBalancesByAccountId()`
 
 ```php
-getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2
+getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_01\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2
 ```
 
 
@@ -101,13 +101,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -137,7 +137,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2**](../Model/PagedResourceCollectionOutcomeOfBalanceResponseV2.md)
+[**\criteo\api\retailmedia\v2025_01\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2**](../Model/PagedResourceCollectionOutcomeOfBalanceResponseV2.md)
 
 ### Authorization
 
@@ -155,7 +155,7 @@ try {
 ## `getApiV2ExternalAccountByAccountIdBalancesbalanceId()`
 
 ```php
-getApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id): \criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response
+getApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id): \criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response
 ```
 
 
@@ -170,13 +170,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -202,7 +202,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ try {
 ## `getBalanceHistory()`
 
 ```php
-getBalanceHistory($balance_id, $offset, $limit, $limit_to_change_types): \criteo\api\retailmedia\v2024_07\Model\PageOfBalanceHistoryChangeDataCaptureV1
+getBalanceHistory($balance_id, $offset, $limit, $limit_to_change_types): \criteo\api\retailmedia\v2025_01\Model\PageOfBalanceHistoryChangeDataCaptureV1
 ```
 
 
@@ -235,13 +235,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -271,7 +271,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\PageOfBalanceHistoryChangeDataCaptureV1**](../Model/PageOfBalanceHistoryChangeDataCaptureV1.md)
+[**\criteo\api\retailmedia\v2025_01\Model\PageOfBalanceHistoryChangeDataCaptureV1**](../Model/PageOfBalanceHistoryChangeDataCaptureV1.md)
 
 ### Authorization
 
@@ -289,7 +289,7 @@ try {
 ## `patchApiV2ExternalAccountByAccountIdBalancesbalanceId()`
 
 ```php
-patchApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request): \criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response
+patchApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request): \criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response
 ```
 
 
@@ -304,13 +304,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -318,7 +318,7 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to change the dates
-$update_balance_model_v2_request = new \criteo\api\retailmedia\v2024_07\Model\UpdateBalanceModelV2Request(); // \criteo\api\retailmedia\v2024_07\Model\UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
+$update_balance_model_v2_request = new \criteo\api\retailmedia\v2025_01\Model\UpdateBalanceModelV2Request(); // \criteo\api\retailmedia\v2025_01\Model\UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
 
 try {
     $result = $apiInstance->patchApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request);
@@ -334,11 +334,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\v2024_07\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
+| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\v2025_01\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 
@@ -356,7 +356,7 @@ try {
 ## `postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId()`
 
 ```php
-postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request): \criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response
+postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request): \criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response
 ```
 
 
@@ -371,13 +371,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -385,7 +385,7 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to add funds to
-$add_funds_to_balance_v2_request = new \criteo\api\retailmedia\v2024_07\Model\AddFundsToBalanceV2Request(); // \criteo\api\retailmedia\v2024_07\Model\AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
+$add_funds_to_balance_v2_request = new \criteo\api\retailmedia\v2025_01\Model\AddFundsToBalanceV2Request(); // \criteo\api\retailmedia\v2025_01\Model\AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
 
 try {
     $result = $apiInstance->postApiV2ExternalAccountAddFundsByAccountIdBalancesbalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request);
@@ -401,11 +401,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to add funds to | |
-| **add_funds_to_balance_v2_request** | [**\criteo\api\retailmedia\v2024_07\Model\AddFundsToBalanceV2Request**](../Model/AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
+| **add_funds_to_balance_v2_request** | [**\criteo\api\retailmedia\v2025_01\Model\AddFundsToBalanceV2Request**](../Model/AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 
@@ -423,7 +423,7 @@ try {
 ## `postApiV2ExternalAccountBalancesByAccountId()`
 
 ```php
-postApiV2ExternalAccountBalancesByAccountId($account_id, $create_balance_v2_request): \criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response
+postApiV2ExternalAccountBalancesByAccountId($account_id, $create_balance_v2_request): \criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response
 ```
 
 
@@ -438,20 +438,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The account to create balances for
-$create_balance_v2_request = new \criteo\api\retailmedia\v2024_07\Model\CreateBalanceV2Request(); // \criteo\api\retailmedia\v2024_07\Model\CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
+$create_balance_v2_request = new \criteo\api\retailmedia\v2025_01\Model\CreateBalanceV2Request(); // \criteo\api\retailmedia\v2025_01\Model\CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
 
 try {
     $result = $apiInstance->postApiV2ExternalAccountBalancesByAccountId($account_id, $create_balance_v2_request);
@@ -466,11 +466,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to create balances for | |
-| **create_balance_v2_request** | [**\criteo\api\retailmedia\v2024_07\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
+| **create_balance_v2_request** | [**\criteo\api\retailmedia\v2025_01\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 
@@ -488,7 +488,7 @@ try {
 ## `postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()`
 
 ```php
-postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request): \criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response
+postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request): \criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response
 ```
 
 
@@ -503,13 +503,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_01\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -517,7 +517,7 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to change the dates
-$change_dates_of_balance_v2_request = new \criteo\api\retailmedia\v2024_07\Model\ChangeDatesOfBalanceV2Request(); // \criteo\api\retailmedia\v2024_07\Model\ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
+$change_dates_of_balance_v2_request = new \criteo\api\retailmedia\v2025_01\Model\ChangeDatesOfBalanceV2Request(); // \criteo\api\retailmedia\v2025_01\Model\ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
 
 try {
     $result = $apiInstance->postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request);
@@ -533,11 +533,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\v2024_07\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | |
+| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\v2025_01\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2024_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2025_01\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 

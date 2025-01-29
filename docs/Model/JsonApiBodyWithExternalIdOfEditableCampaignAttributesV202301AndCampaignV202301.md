@@ -6,6 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  |
 **type** | **string** |  |
-**attributes** | [**\criteo\api\retailmedia\v2024_07\Model\EditableCampaignAttributesV202301**](EditableCampaignAttributesV202301.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\EditableCampaignAttributesV202301**](EditableCampaignAttributesV202301.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

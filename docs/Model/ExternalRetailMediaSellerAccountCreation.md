@@ -7,6 +7,6 @@ Name | Type | Description | Notes
 **name** | **string** |  | [optional]
 **company_name** | **string** |  | [optional]
 **on_behalf_company_name** | **string** |  | [optional]
-**sellers** | [**\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller[]**](ExternalRetailMediaSeller.md) |  | [optional]
+**sellers** | [**\criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaSeller[]**](ExternalRetailMediaSeller.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

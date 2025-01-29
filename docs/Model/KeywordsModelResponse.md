@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**errors** | [**\criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
-**warnings** | [**\criteo\api\retailmedia\v2024_07\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
-**data** | [**\criteo\api\retailmedia\v2024_07\Model\KeywordsModelResource**](KeywordsModelResource.md) |  | [optional]
+**errors** | [**\criteo\api\retailmedia\v2025_01\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
+**warnings** | [**\criteo\api\retailmedia\v2025_01\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
+**data** | [**\criteo\api\retailmedia\v2025_01\Model\KeywordsModelResource**](KeywordsModelResource.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
