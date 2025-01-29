@@ -278,6 +278,10 @@ class FilesVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['asset_ids'] === null) {
             $invalidProperties[] = "'asset_ids' can't be null";
         }
+        if ((count($this->container['asset_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'asset_ids', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -317,6 +321,9 @@ class FilesVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
         }
 
 
+        if ((count($asset_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $asset_ids when calling FilesVariableValue., number of items must be greater than or equal to 1.');
+        }
         $this->container['asset_ids'] = $asset_ids;
 
         return $this;

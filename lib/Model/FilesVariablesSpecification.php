@@ -72,7 +72,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'extensions' => null,
+        'extensions' => 'string',
         'max_bytes' => 'int32',
         'min_files' => 'int32',
         'max_file' => 'int32'
@@ -320,9 +320,6 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['extensions'] === null) {
             $invalidProperties[] = "'extensions' can't be null";
         }
-        if ($this->container['min_files'] === null) {
-            $invalidProperties[] = "'min_files' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -411,7 +408,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets min_files
      *
-     * @return int
+     * @return int|null
      */
     public function getMinFiles()
     {
@@ -421,7 +418,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets min_files
      *
-     * @param int $min_files The minimum amount of files requires
+     * @param int|null $min_files The minimum amount of files requires
      *
      * @return self
      */

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** |  | [optional]
+**description** | **string** |  | [optional]
 **template_variables** | [**\criteo\api\retailmedia\v2024_01\Model\TemplateVariable[]**](TemplateVariable.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

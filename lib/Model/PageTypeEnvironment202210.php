@@ -1,6 +1,6 @@
 <?php
 /**
- * ProposalStatusModelResource
+ * PageTypeEnvironment202210
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_01\ObjectSerializer;
 
 /**
- * ProposalStatusModelResource Class Doc Comment
+ * PageTypeEnvironment202210 Class Doc Comment
  *
  * @category Class
- * @description Resource object containing the state of a proposal in the context of a line item.
+ * @description The PageType-Environment Tuples for creatives
  * @package  criteo\api\retailmedia\v2024_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class PageTypeEnvironment202210 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProposalStatusModelResource';
+    protected static $openAPIModelName = 'PageTypeEnvironment202210';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_01\Model\ProposalStatusModel'
+        'page_type' => 'string',
+        'environments' => 'string[]'
     ];
 
     /**
@@ -71,9 +70,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'type' => null,
-        'attributes' => null
+        'page_type' => 'string',
+        'environments' => 'string'
     ];
 
     /**
@@ -82,9 +80,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-		'type' => true,
-		'attributes' => false
+        'page_type' => true,
+		'environments' => true
     ];
 
     /**
@@ -173,9 +170,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'page_type' => 'pageType',
+        'environments' => 'environments'
     ];
 
     /**
@@ -184,9 +180,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'page_type' => 'setPageType',
+        'environments' => 'setEnvironments'
     ];
 
     /**
@@ -195,9 +190,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'page_type' => 'getPageType',
+        'environments' => 'getEnvironments'
     ];
 
     /**
@@ -241,6 +235,60 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const PAGE_TYPE_SEARCH = 'Search';
+    public const PAGE_TYPE_HOME = 'Home';
+    public const PAGE_TYPE_BROWSE = 'Browse';
+    public const PAGE_TYPE_CHECKOUT = 'Checkout';
+    public const PAGE_TYPE_CATEGORY = 'Category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
+    public const PAGE_TYPE_DEALS = 'Deals';
+    public const ENVIRONMENTS_WEB = 'Web';
+    public const ENVIRONMENTS_MOBILE = 'Mobile';
+    public const ENVIRONMENTS_APP = 'App';
+    public const ENVIRONMENTS_LOCKOUT = 'Lockout';
+    public const ENVIRONMENTS_MIXED = 'Mixed';
+    public const ENVIRONMENTS_I_OS = 'iOS';
+    public const ENVIRONMENTS_ANDROID = 'Android';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_BROWSE,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEnvironmentsAllowableValues()
+    {
+        return [
+            self::ENVIRONMENTS_WEB,
+            self::ENVIRONMENTS_MOBILE,
+            self::ENVIRONMENTS_APP,
+            self::ENVIRONMENTS_LOCKOUT,
+            self::ENVIRONMENTS_MIXED,
+            self::ENVIRONMENTS_I_OS,
+            self::ENVIRONMENTS_ANDROID,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +305,8 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('environments', $data ?? [], null);
     }
 
     /**
@@ -289,6 +336,15 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,96 +361,88 @@ class ProposalStatusModelResource implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets id
+     * Gets page_type
      *
      * @return string|null
      */
-    public function getId()
+    public function getPageType()
     {
-        return $this->container['id'];
+        return $this->container['page_type'];
     }
 
     /**
-     * Sets id
+     * Sets page_type
      *
-     * @param string|null $id id
+     * @param string|null $page_type Creative PageType
      *
      * @return self
      */
-    public function setId($id)
+    public function setPageType($page_type)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($page_type)) {
+            array_push($this->openAPINullablesSetToNull, 'page_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('page_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($page_type) && !in_array($page_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_type', must be one of '%s'",
+                    $page_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_type'] = $page_type;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets environments
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getType()
+    public function getEnvironments()
     {
-        return $this->container['type'];
+        return $this->container['environments'];
     }
 
     /**
-     * Sets type
+     * Sets environments
      *
-     * @param string|null $type type
+     * @param string[]|null $environments List of environments per PageType
      *
      * @return self
      */
-    public function setType($type)
+    public function setEnvironments($environments)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($environments)) {
+            array_push($this->openAPINullablesSetToNull, 'environments');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('environments', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\ProposalStatusModel|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\ProposalStatusModel|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        $allowedValues = $this->getEnvironmentsAllowableValues();
+        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'environments', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['environments'] = $environments;
 
         return $this;
     }

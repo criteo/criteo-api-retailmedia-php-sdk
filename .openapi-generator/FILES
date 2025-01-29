@@ -21,7 +21,6 @@ docs/Model/AddToBasketTarget202110Response.md
 docs/Model/ApplicationSummaryModel.md
 docs/Model/ApplicationSummaryModelResource.md
 docs/Model/ApplicationSummaryModelResponse.md
-docs/Model/ApprovalStatusModel.md
 docs/Model/Asset.md
 docs/Model/AssetResource.md
 docs/Model/AssetResponse.md
@@ -137,9 +136,8 @@ docs/Model/LineItemBidMultipliersResponse.md
 docs/Model/LineItemBudgetOverrides.md
 docs/Model/MatchTypeModel.md
 docs/Model/MonthlyLineItemBudegetOverride.md
-docs/Model/NegotiationStateModel.md
 docs/Model/PageMetadata.md
-docs/Model/PageTypeEnvironment.md
+docs/Model/PageTypeEnvironment202210.md
 docs/Model/PostCampaignV202301.md
 docs/Model/PreferredLineItem202110PagedListResponse.md
 docs/Model/PreferredLineItem202110Response.md
@@ -148,9 +146,6 @@ docs/Model/PreferredLineItemUpdateModel202110Request.md
 docs/Model/ProblemDetails.md
 docs/Model/PromotedProduct202110ListRequest.md
 docs/Model/PromotedProduct202110PagedListResponse.md
-docs/Model/ProposalStatusModel.md
-docs/Model/ProposalStatusModelResource.md
-docs/Model/ProposalStatusModelResponse.md
 docs/Model/PutCampaignV202301.md
 docs/Model/ReportOutcome.md
 docs/Model/ResourceOfAddFundsToBalance.md
@@ -224,6 +219,7 @@ docs/Model/ValueTypeResourceOfAudienceTarget202110.md
 docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
+docs/Model/VideoVariableValue.md
 git_push.sh
 lib/Api/AccountsApi.php
 lib/Api/AnalyticsApi.php
@@ -247,7 +243,6 @@ lib/Model/AddToBasketTarget202110Response.php
 lib/Model/ApplicationSummaryModel.php
 lib/Model/ApplicationSummaryModelResource.php
 lib/Model/ApplicationSummaryModelResponse.php
-lib/Model/ApprovalStatusModel.php
 lib/Model/Asset.php
 lib/Model/AssetResource.php
 lib/Model/AssetResponse.php
@@ -364,9 +359,8 @@ lib/Model/LineItemBudgetOverrides.php
 lib/Model/MatchTypeModel.php
 lib/Model/ModelInterface.php
 lib/Model/MonthlyLineItemBudegetOverride.php
-lib/Model/NegotiationStateModel.php
 lib/Model/PageMetadata.php
-lib/Model/PageTypeEnvironment.php
+lib/Model/PageTypeEnvironment202210.php
 lib/Model/PostCampaignV202301.php
 lib/Model/PreferredLineItem202110PagedListResponse.php
 lib/Model/PreferredLineItem202110Response.php
@@ -375,9 +369,6 @@ lib/Model/PreferredLineItemUpdateModel202110Request.php
 lib/Model/ProblemDetails.php
 lib/Model/PromotedProduct202110ListRequest.php
 lib/Model/PromotedProduct202110PagedListResponse.php
-lib/Model/ProposalStatusModel.php
-lib/Model/ProposalStatusModelResource.php
-lib/Model/ProposalStatusModelResponse.php
 lib/Model/PutCampaignV202301.php
 lib/Model/ReportOutcome.php
 lib/Model/ResourceOfAddFundsToBalance.php
@@ -451,6 +442,7 @@ lib/Model/ValueTypeResourceOfAudienceTarget202110.php
 lib/Model/ValueTypeResourceOfKeywordTarget202110.php
 lib/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfStoreTarget202110.php
+lib/Model/VideoVariableValue.php
 lib/OAuthClient.php
 lib/ObjectSerializer.php
 phpunit.xml.dist

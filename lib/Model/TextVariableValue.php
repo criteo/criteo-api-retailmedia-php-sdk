@@ -78,7 +78,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false
+        'text' => true
     ];
 
     /**
@@ -275,9 +275,6 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -306,14 +303,21 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets text
      *
-     * @param string $text The displayed text
+     * @param string|null $text The displayed text
      *
      * @return self
      */
     public function setText($text)
     {
         if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'text');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['text'] = $text;
 

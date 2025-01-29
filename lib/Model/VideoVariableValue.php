@@ -1,6 +1,6 @@
 <?php
 /**
- * ProposalStatusModel
+ * VideoVariableValue
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_01\ObjectSerializer;
 
 /**
- * ProposalStatusModel Class Doc Comment
+ * VideoVariableValue Class Doc Comment
  *
  * @category Class
- * @description The state of a proposal in the context of a line item.
+ * @description A value of a template video variable
  * @package  criteo\api\retailmedia\v2024_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProposalStatusModel';
+    protected static $openAPIModelName = 'VideoVariableValue';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'negotiation_state' => '\criteo\api\retailmedia\v2024_01\Model\NegotiationStateModel',
-        'booking_status' => '\criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel',
-        'runnable_status' => '\criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel',
-        'comment' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'url' => 'string',
+        'width' => 'int',
+        'height' => 'int',
+        'duration' => 'string'
     ];
 
     /**
@@ -74,12 +72,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'negotiation_state' => null,
-        'booking_status' => null,
-        'runnable_status' => null,
-        'comment' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'url' => null,
+        'width' => 'int32',
+        'height' => 'int32',
+        'duration' => null
     ];
 
     /**
@@ -88,12 +84,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'negotiation_state' => false,
-		'booking_status' => false,
-		'runnable_status' => false,
-		'comment' => true,
-		'created_at' => true,
-		'updated_at' => true
+        'url' => false,
+		'width' => false,
+		'height' => false,
+		'duration' => false
     ];
 
     /**
@@ -182,12 +176,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'negotiation_state' => 'negotiationState',
-        'booking_status' => 'bookingStatus',
-        'runnable_status' => 'runnableStatus',
-        'comment' => 'comment',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'url' => 'url',
+        'width' => 'width',
+        'height' => 'height',
+        'duration' => 'duration'
     ];
 
     /**
@@ -196,12 +188,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'negotiation_state' => 'setNegotiationState',
-        'booking_status' => 'setBookingStatus',
-        'runnable_status' => 'setRunnableStatus',
-        'comment' => 'setComment',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'url' => 'setUrl',
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'duration' => 'setDuration'
     ];
 
     /**
@@ -210,12 +200,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'negotiation_state' => 'getNegotiationState',
-        'booking_status' => 'getBookingStatus',
-        'runnable_status' => 'getRunnableStatus',
-        'comment' => 'getComment',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'url' => 'getUrl',
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'duration' => 'getDuration'
     ];
 
     /**
@@ -275,12 +263,10 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('negotiation_state', $data ?? [], null);
-        $this->setIfExists('booking_status', $data ?? [], null);
-        $this->setIfExists('runnable_status', $data ?? [], null);
-        $this->setIfExists('comment', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
+        $this->setIfExists('duration', $data ?? [], null);
     }
 
     /**
@@ -310,6 +296,26 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ((mb_strlen($this->container['url']) < 1)) {
+            $invalidProperties[] = "invalid value for 'url', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
+        }
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if ($this->container['duration'] === null) {
+            $invalidProperties[] = "'duration' can't be null";
+        }
+        if ((mb_strlen($this->container['duration']) < 1)) {
+            $invalidProperties[] = "invalid value for 'duration', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -326,184 +332,119 @@ class ProposalStatusModel implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets negotiation_state
+     * Gets url
      *
-     * @return \criteo\api\retailmedia\v2024_01\Model\NegotiationStateModel|null
+     * @return string
      */
-    public function getNegotiationState()
+    public function getUrl()
     {
-        return $this->container['negotiation_state'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets negotiation_state
+     * Sets url
      *
-     * @param \criteo\api\retailmedia\v2024_01\Model\NegotiationStateModel|null $negotiation_state negotiation_state
+     * @param string $url The vast video url
      *
      * @return self
      */
-    public function setNegotiationState($negotiation_state)
+    public function setUrl($url)
     {
-        if (is_null($negotiation_state)) {
-            throw new \InvalidArgumentException('non-nullable negotiation_state cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['negotiation_state'] = $negotiation_state;
+
+        if ((mb_strlen($url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling VideoVariableValue., must be bigger than or equal to 1.');
+        }
+
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets booking_status
+     * Gets width
      *
-     * @return \criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel|null
+     * @return int
      */
-    public function getBookingStatus()
+    public function getWidth()
     {
-        return $this->container['booking_status'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets booking_status
+     * Sets width
      *
-     * @param \criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel|null $booking_status booking_status
+     * @param int $width The video's width
      *
      * @return self
      */
-    public function setBookingStatus($booking_status)
+    public function setWidth($width)
     {
-        if (is_null($booking_status)) {
-            throw new \InvalidArgumentException('non-nullable booking_status cannot be null');
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
-        $this->container['booking_status'] = $booking_status;
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /**
-     * Gets runnable_status
+     * Gets height
      *
-     * @return \criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel|null
+     * @return int
      */
-    public function getRunnableStatus()
+    public function getHeight()
     {
-        return $this->container['runnable_status'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets runnable_status
+     * Sets height
      *
-     * @param \criteo\api\retailmedia\v2024_01\Model\ApprovalStatusModel|null $runnable_status runnable_status
+     * @param int $height The video's height
      *
      * @return self
      */
-    public function setRunnableStatus($runnable_status)
+    public function setHeight($height)
     {
-        if (is_null($runnable_status)) {
-            throw new \InvalidArgumentException('non-nullable runnable_status cannot be null');
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
         }
-        $this->container['runnable_status'] = $runnable_status;
+        $this->container['height'] = $height;
 
         return $this;
     }
 
     /**
-     * Gets comment
+     * Gets duration
      *
-     * @return string|null
+     * @return string
      */
-    public function getComment()
+    public function getDuration()
     {
-        return $this->container['comment'];
+        return $this->container['duration'];
     }
 
     /**
-     * Sets comment
+     * Sets duration
      *
-     * @param string|null $comment comment
+     * @param string $duration The video's duration
      *
      * @return self
      */
-    public function setComment($comment)
+    public function setDuration($duration)
     {
-        if (is_null($comment)) {
-            array_push($this->openAPINullablesSetToNull, 'comment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('comment', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($duration)) {
+            throw new \InvalidArgumentException('non-nullable duration cannot be null');
         }
-        $this->container['comment'] = $comment;
 
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if ((mb_strlen($duration) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $duration when calling VideoVariableValue., must be bigger than or equal to 1.');
         }
-        $this->container['created_at'] = $created_at;
 
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['duration'] = $duration;
 
         return $this;
     }
