@@ -188,7 +188,6 @@ docs/Model/ResourceOfTemplate.md
 docs/Model/ResourceOfUpdateBalanceModelV2.md
 docs/Model/ResourceOutcome.md
 docs/Model/RetailMediaContactlistAmendment.md
-docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
@@ -461,7 +460,6 @@ lib/Model/ResourceOfTemplate.php
 lib/Model/ResourceOfUpdateBalanceModelV2.php
 lib/Model/ResourceOutcome.php
 lib/Model/RetailMediaContactlistAmendment.php
-lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php

@@ -238,6 +238,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CAMPAIGN_ELIGIBILITIES_UNKNOWN = 'unknown';
     public const CAMPAIGN_ELIGIBILITIES_AUCTION = 'auction';
     public const CAMPAIGN_ELIGIBILITIES_PREFERRED = 'preferred';
+    public const CAMPAIGN_ELIGIBILITIES_OFFSITE = 'offsite';
+    public const CAMPAIGN_ELIGIBILITIES_OFFSITE_CPC = 'offsiteCpc';
 
     /**
      * Gets allowable values of the enum
@@ -250,6 +252,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CAMPAIGN_ELIGIBILITIES_UNKNOWN,
             self::CAMPAIGN_ELIGIBILITIES_AUCTION,
             self::CAMPAIGN_ELIGIBILITIES_PREFERRED,
+            self::CAMPAIGN_ELIGIBILITIES_OFFSITE,
+            self::CAMPAIGN_ELIGIBILITIES_OFFSITE_CPC,
         ];
     }
 
