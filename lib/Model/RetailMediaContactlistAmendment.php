@@ -58,8 +58,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\RetailMediaContactlistAmendmentAttributes'
+        'operation' => 'string',
+        'identifier_type' => 'string',
+        'identifiers' => 'string[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'operation' => null,
+        'identifier_type' => null,
+        'identifiers' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => true,
-		'attributes' => false
+        'operation' => false,
+		'identifier_type' => true,
+		'identifiers' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'operation' => 'operation',
+        'identifier_type' => 'identifierType',
+        'identifiers' => 'identifiers'
     ];
 
     /**
@@ -180,8 +184,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'operation' => 'setOperation',
+        'identifier_type' => 'setIdentifierType',
+        'identifiers' => 'setIdentifiers'
     ];
 
     /**
@@ -190,8 +195,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'operation' => 'getOperation',
+        'identifier_type' => 'getIdentifierType',
+        'identifiers' => 'getIdentifiers'
     ];
 
     /**
@@ -235,6 +241,44 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const OPERATION_ADD = 'add';
+    public const OPERATION_REMOVE = 'remove';
+    public const IDENTIFIER_TYPE_EMAIL = 'Email';
+    public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
+    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
+    public const IDENTIFIER_TYPE_GUM = 'Gum';
+    public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOperationAllowableValues()
+    {
+        return [
+            self::OPERATION_ADD,
+            self::OPERATION_REMOVE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIdentifierTypeAllowableValues()
+    {
+        return [
+            self::IDENTIFIER_TYPE_EMAIL,
+            self::IDENTIFIER_TYPE_USER_IDENTIFIER,
+            self::IDENTIFIER_TYPE_IDENTITY_LINK,
+            self::IDENTIFIER_TYPE_GUM,
+            self::IDENTIFIER_TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_PHONE_NUMBER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +295,9 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
+        $this->setIfExists('identifier_type', $data ?? [], null);
+        $this->setIfExists('identifiers', $data ?? [], null);
     }
 
     /**
@@ -282,8 +327,29 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
+        if ($this->container['operation'] === null) {
+            $invalidProperties[] = "'operation' can't be null";
+        }
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!is_null($this->container['operation']) && !in_array($this->container['operation'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'operation', must be one of '%s'",
+                $this->container['operation'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identifier_type', must be one of '%s'",
+                $this->container['identifier_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['identifiers'] === null) {
+            $invalidProperties[] = "'identifiers' can't be null";
         }
         return $invalidProperties;
     }
@@ -301,62 +367,109 @@ class RetailMediaContactlistAmendment implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets type
+     * Gets operation
      *
-     * @return string|null
+     * @return string
      */
-    public function getType()
+    public function getOperation()
     {
-        return $this->container['type'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets type
+     * Sets operation
      *
-     * @param string|null $type User List
+     * @param string $operation Whether to add or remove users
      *
      * @return self
      */
-    public function setType($type)
+    public function setOperation($operation)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $this->container['type'] = $type;
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!in_array($operation, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'operation', must be one of '%s'",
+                    $operation,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['operation'] = $operation;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets identifier_type
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\RetailMediaContactlistAmendmentAttributes
+     * @return string|null
      */
-    public function getAttributes()
+    public function getIdentifierType()
     {
-        return $this->container['attributes'];
+        return $this->container['identifier_type'];
     }
 
     /**
-     * Sets attributes
+     * Sets identifier_type
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\RetailMediaContactlistAmendmentAttributes $attributes attributes
+     * @param string|null $identifier_type What type of identifiers are used
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setIdentifierType($identifier_type)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($identifier_type)) {
+            array_push($this->openAPINullablesSetToNull, 'identifier_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('identifier_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($identifier_type) && !in_array($identifier_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'identifier_type', must be one of '%s'",
+                    $identifier_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['identifier_type'] = $identifier_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets identifiers
+     *
+     * @return string[]
+     */
+    public function getIdentifiers()
+    {
+        return $this->container['identifiers'];
+    }
+
+    /**
+     * Sets identifiers
+     *
+     * @param string[] $identifiers The users to add or remove, each in the schema specified
+     *
+     * @return self
+     */
+    public function setIdentifiers($identifiers)
+    {
+        if (is_null($identifiers)) {
+            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
+        }
+        $this->container['identifiers'] = $identifiers;
 
         return $this;
     }

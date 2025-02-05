@@ -26,7 +26,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV1ExternalAccountRetailersByAccountId()**](CampaignApi.md#getApiV1ExternalAccountRetailersByAccountId) | **GET** /2025-01/retail-media/accounts/{accountId}/retailers |  |
 | [**getApiV1ExternalCatalogOutputByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogOutputByCatalogId) | **GET** /2025-01/retail-media/catalogs/{catalogId}/output |  |
 | [**getApiV1ExternalCatalogStatusByCatalogId()**](CampaignApi.md#getApiV1ExternalCatalogStatusByCatalogId) | **GET** /2025-01/retail-media/catalogs/{catalogId}/status |  |
-| [**getApiV1ExternalRetailerBrandsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /2025-01/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV2ExternalAccountByAccountIdCreativescreativeId()**](CampaignApi.md#getApiV2ExternalAccountByAccountIdCreativescreativeId) | **GET** /2025-01/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getApiV2ExternalAccountLineItemsByAccountId()**](CampaignApi.md#getApiV2ExternalAccountLineItemsByAccountId) | **GET** /2025-01/retail-media/accounts/{account-id}/line-items |  |
 | [**getApiV2ExternalAuctionLineItemByLineItemId()**](CampaignApi.md#getApiV2ExternalAuctionLineItemByLineItemId) | **GET** /2025-01/retail-media/auction-line-items/{line-item-id} |  |
@@ -1478,73 +1477,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\v2025_01\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getApiV1ExternalRetailerBrandsByRetailerId()`
-
-```php
-getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter, $brand_type): \criteo\api\retailmedia\v2025_01\Model\BrandPreviewListResponse
-```
-
-
-
-Gets the brands for the given retailer
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2025_01\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2025_01\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$retailer_id = 56; // int | The retailer id for which brands should be fetched.
-$sku_stock_type_filter = 'sku_stock_type_filter_example'; // string | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
-$brand_type = 'brand_type_example'; // string | Filter to narrow down brands [all|uc|retailer]. Defaults to uc
-
-try {
-    $result = $apiInstance->getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter, $brand_type);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getApiV1ExternalRetailerBrandsByRetailerId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailer id for which brands should be fetched. | |
-| **sku_stock_type_filter** | **string**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] |
-| **brand_type** | **string**| Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2025_01\Model\BrandPreviewListResponse**](../Model/BrandPreviewListResponse.md)
 
 ### Authorization
 
