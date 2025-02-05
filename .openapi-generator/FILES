@@ -25,6 +25,9 @@ docs/Model/AsyncAccountsReportResource.md
 docs/Model/AsyncCampaignsReport.md
 docs/Model/AsyncCampaignsReportRequest.md
 docs/Model/AsyncCampaignsReportResource.md
+docs/Model/AsyncFillRateReport.md
+docs/Model/AsyncFillRateReportRequest.md
+docs/Model/AsyncFillRateReportResource.md
 docs/Model/AsyncLineItemsReport.md
 docs/Model/AsyncLineItemsReportRequest.md
 docs/Model/AsyncLineItemsReportResource.md
@@ -36,7 +39,6 @@ docs/Model/BalanceResponseV2.md
 docs/Model/BalanceResponseV2Response.md
 docs/Model/BatchAcceptedResponse.md
 docs/Model/BotMessage.md
-docs/Model/Botmessage.md
 docs/Model/Brand.md
 docs/Model/BrandIdSearchRequest.md
 docs/Model/BrandIdSearchResult.md
@@ -87,7 +89,6 @@ docs/Model/FilesVariableValue.md
 docs/Model/GrantConsentInput.md
 docs/Model/GrantConsentModel.md
 docs/Model/GrantConsentModelValueResource.md
-docs/Model/HttpValidationError.md
 docs/Model/HyperlinkVariableValue.md
 docs/Model/InbotDiscussion.md
 docs/Model/InbotDiscussionBodyModel.md
@@ -110,7 +111,6 @@ docs/Model/KeywordsModelResponse.md
 docs/Model/LineItemBidMultipliersV2Request.md
 docs/Model/LineItemBidMultipliersV2Response.md
 docs/Model/LineItemProductStatus.md
-docs/Model/LocationInner.md
 docs/Model/LoyaltyPoints.md
 docs/Model/MatchTypeModel.md
 docs/Model/Message.md
@@ -185,7 +185,6 @@ docs/Model/ResourceOfSkuSlimDataV2.md
 docs/Model/ResourceOfUpdateBalanceModelV2.md
 docs/Model/ResourceOutcome.md
 docs/Model/RetailMediaContactlistAmendment.md
-docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
@@ -263,7 +262,6 @@ docs/Model/TemplateVariableValue.md
 docs/Model/TextVariableValue.md
 docs/Model/UpdateBalanceModelV2.md
 docs/Model/UpdateBalanceModelV2Request.md
-docs/Model/ValidationError.md
 docs/Model/ValueResourceBrandIdSearchRequest.md
 docs/Model/ValueResourceCollectionOutcomeOfRetailMediaSeller.md
 docs/Model/ValueResourceCpcMinBidsRequest.md
@@ -304,6 +302,9 @@ lib/Model/AsyncAccountsReportResource.php
 lib/Model/AsyncCampaignsReport.php
 lib/Model/AsyncCampaignsReportRequest.php
 lib/Model/AsyncCampaignsReportResource.php
+lib/Model/AsyncFillRateReport.php
+lib/Model/AsyncFillRateReportRequest.php
+lib/Model/AsyncFillRateReportResource.php
 lib/Model/AsyncLineItemsReport.php
 lib/Model/AsyncLineItemsReportRequest.php
 lib/Model/AsyncLineItemsReportResource.php
@@ -315,7 +316,6 @@ lib/Model/BalanceResponseV2.php
 lib/Model/BalanceResponseV2Response.php
 lib/Model/BatchAcceptedResponse.php
 lib/Model/BotMessage.php
-lib/Model/Botmessage.php
 lib/Model/Brand.php
 lib/Model/BrandIdSearchRequest.php
 lib/Model/BrandIdSearchResult.php
@@ -366,7 +366,6 @@ lib/Model/FilesVariableValue.php
 lib/Model/GrantConsentInput.php
 lib/Model/GrantConsentModel.php
 lib/Model/GrantConsentModelValueResource.php
-lib/Model/HttpValidationError.php
 lib/Model/HyperlinkVariableValue.php
 lib/Model/InbotDiscussion.php
 lib/Model/InbotDiscussionBodyModel.php
@@ -389,7 +388,6 @@ lib/Model/KeywordsModelResponse.php
 lib/Model/LineItemBidMultipliersV2Request.php
 lib/Model/LineItemBidMultipliersV2Response.php
 lib/Model/LineItemProductStatus.php
-lib/Model/LocationInner.php
 lib/Model/LoyaltyPoints.php
 lib/Model/MatchTypeModel.php
 lib/Model/Message.php
@@ -465,7 +463,6 @@ lib/Model/ResourceOfSkuSlimDataV2.php
 lib/Model/ResourceOfUpdateBalanceModelV2.php
 lib/Model/ResourceOutcome.php
 lib/Model/RetailMediaContactlistAmendment.php
-lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
@@ -543,7 +540,6 @@ lib/Model/TemplateVariableValue.php
 lib/Model/TextVariableValue.php
 lib/Model/UpdateBalanceModelV2.php
 lib/Model/UpdateBalanceModelV2Request.php
-lib/Model/ValidationError.php
 lib/Model/ValueResourceBrandIdSearchRequest.php
 lib/Model/ValueResourceCollectionOutcomeOfRetailMediaSeller.php
 lib/Model/ValueResourceCpcMinBidsRequest.php

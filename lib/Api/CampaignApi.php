@@ -170,6 +170,12 @@ class CampaignApi
         'putApiV2ExternalLineItemBidMultipliersByLineItemId' => [
             'application/json',
         ],
+        'searchBrandsByNameAsyncV1' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
         'setKeywordBids' => [
             'application/json',
         ],
@@ -9939,6 +9945,324 @@ class CampaignApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchBrandsByNameAsyncV1
+     *
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrandsByNameAsyncV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult
+     */
+    public function searchBrandsByNameAsyncV1($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
+    {
+        list($response) = $this->searchBrandsByNameAsyncV1WithHttpInfo($offset, $limit, $value_resource_input_brand_id_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchBrandsByNameAsyncV1WithHttpInfo
+     *
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrandsByNameAsyncV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchBrandsByNameAsyncV1WithHttpInfo($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
+    {
+        $request = $this->searchBrandsByNameAsyncV1Request($offset, $limit, $value_resource_input_brand_id_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchBrandsByNameAsyncV1Async
+     *
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrandsByNameAsyncV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchBrandsByNameAsyncV1Async($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
+    {
+        return $this->searchBrandsByNameAsyncV1AsyncWithHttpInfo($offset, $limit, $value_resource_input_brand_id_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchBrandsByNameAsyncV1AsyncWithHttpInfo
+     *
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrandsByNameAsyncV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchBrandsByNameAsyncV1AsyncWithHttpInfo($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult';
+        $request = $this->searchBrandsByNameAsyncV1Request($offset, $limit, $value_resource_input_brand_id_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchBrandsByNameAsyncV1'
+     *
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrandsByNameAsyncV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchBrandsByNameAsyncV1Request($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
+    {
+
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchBrandsByNameAsyncV1, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchBrandsByNameAsyncV1, must be bigger than or equal to 0.');
+        }
+        
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchBrandsByNameAsyncV1, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchBrandsByNameAsyncV1, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/preview/retail-media/brands/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_brand_id_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_brand_id_search_request));
+            } else {
+                $httpBody = $value_resource_input_brand_id_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

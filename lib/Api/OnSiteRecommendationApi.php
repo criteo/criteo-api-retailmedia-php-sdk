@@ -131,7 +131,7 @@ class OnSiteRecommendationApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\MessageBodyModel|\criteo\api\retailmedia\preview\Model\HttpValidationError
+     * @return \criteo\api\retailmedia\preview\Model\MessageBodyModel
      */
     public function chatbotProductRecommendations($catalogid, $inbot_discussion_body_model, string $contentType = self::contentTypes['chatbotProductRecommendations'][0])
     {
@@ -148,7 +148,7 @@ class OnSiteRecommendationApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\MessageBodyModel|\criteo\api\retailmedia\preview\Model\HttpValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\MessageBodyModel, HTTP status code, HTTP response headers (array of strings)
      */
     public function chatbotProductRecommendationsWithHttpInfo($catalogid, $inbot_discussion_body_model, string $contentType = self::contentTypes['chatbotProductRecommendations'][0])
     {
@@ -205,21 +205,6 @@ class OnSiteRecommendationApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 422:
-                    if ('\criteo\api\retailmedia\preview\Model\HttpValidationError' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\HttpValidationError' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\HttpValidationError', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\preview\Model\MessageBodyModel';
@@ -244,14 +229,6 @@ class OnSiteRecommendationApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\MessageBodyModel',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\HttpValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -1,6 +1,6 @@
 <?php
 /**
- * ValidationError
+ * AsyncFillRateReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValidationError Class Doc Comment
+ * AsyncFillRateReportRequest Class Doc Comment
  *
  * @category Class
- * @description validation error
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncFillRateReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValidationError';
+    protected static $openAPIModelName = 'AsyncFillRateReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'loc' => '\criteo\api\retailmedia\preview\Model\LocationInner[]',
-        'msg' => 'string',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\AsyncFillRateReportResource'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'loc' => null,
-        'msg' => null,
-        'type' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'loc' => false,
-		'msg' => false,
-		'type' => false
+        'data' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'loc' => 'loc',
-        'msg' => 'msg',
-        'type' => 'type'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'loc' => 'setLoc',
-        'msg' => 'setMsg',
-        'type' => 'setType'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'loc' => 'getLoc',
-        'msg' => 'getMsg',
-        'type' => 'getType'
+        'data' => 'getData'
     ];
 
     /**
@@ -257,9 +245,7 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('loc', $data ?? [], null);
-        $this->setIfExists('msg', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -289,15 +275,6 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['loc'] === null) {
-            $invalidProperties[] = "'loc' can't be null";
-        }
-        if ($this->container['msg'] === null) {
-            $invalidProperties[] = "'msg' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -314,82 +291,28 @@ class ValidationError implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets loc
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\LocationInner[]
+     * @return \criteo\api\retailmedia\preview\Model\AsyncFillRateReportResource|null
      */
-    public function getLoc()
+    public function getData()
     {
-        return $this->container['loc'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets loc
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\LocationInner[] $loc loc
+     * @param \criteo\api\retailmedia\preview\Model\AsyncFillRateReportResource|null $data data
      *
      * @return self
      */
-    public function setLoc($loc)
+    public function setData($data)
     {
-        if (is_null($loc)) {
-            throw new \InvalidArgumentException('non-nullable loc cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['loc'] = $loc;
-
-        return $this;
-    }
-
-    /**
-     * Gets msg
-     *
-     * @return string
-     */
-    public function getMsg()
-    {
-        return $this->container['msg'];
-    }
-
-    /**
-     * Sets msg
-     *
-     * @param string $msg msg
-     *
-     * @return self
-     */
-    public function setMsg($msg)
-    {
-        if (is_null($msg)) {
-            throw new \InvalidArgumentException('non-nullable msg cannot be null');
-        }
-        $this->container['msg'] = $msg;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'user_message' => 'string',
-        'bot_message' => '\criteo\api\retailmedia\preview\Model\Botmessage'
+        'bot_message' => '\criteo\api\retailmedia\preview\Model\BotMessage'
     ];
 
     /**
@@ -81,7 +81,7 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'user_message' => true,
-		'bot_message' => true
+		'bot_message' => false
     ];
 
     /**
@@ -334,7 +334,7 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bot_message
      *
-     * @return \criteo\api\retailmedia\preview\Model\Botmessage|null
+     * @return \criteo\api\retailmedia\preview\Model\BotMessage|null
      */
     public function getBotMessage()
     {
@@ -344,21 +344,14 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bot_message
      *
-     * @param \criteo\api\retailmedia\preview\Model\Botmessage|null $bot_message bot_message
+     * @param \criteo\api\retailmedia\preview\Model\BotMessage|null $bot_message bot_message
      *
      * @return self
      */
     public function setBotMessage($bot_message)
     {
         if (is_null($bot_message)) {
-            array_push($this->openAPINullablesSetToNull, 'bot_message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('bot_message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable bot_message cannot be null');
         }
         $this->container['bot_message'] = $bot_message;
 

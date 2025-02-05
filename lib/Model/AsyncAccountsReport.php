@@ -412,6 +412,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_VIDEO_STARTING_RATE = 'videoStartingRate';
     public const METRICS_VIDEO_CPC = 'videoCPC';
     public const METRICS_VIDEO_CPCV = 'videoCPCV';
+    public const METRICS_NEW_TO_BRAND_ATTRIBUTED_SALES = 'newToBrandAttributedSales';
+    public const METRICS_NEW_TO_BRAND_ATTRIBUTED_SALES_RATE = 'newToBrandAttributedSalesRate';
+    public const METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS = 'newToBrandAttributedUnits';
+    public const METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS_RATE = 'newToBrandAttributedUnitsRate';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
 
@@ -632,6 +636,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_VIDEO_STARTING_RATE,
             self::METRICS_VIDEO_CPC,
             self::METRICS_VIDEO_CPCV,
+            self::METRICS_NEW_TO_BRAND_ATTRIBUTED_SALES,
+            self::METRICS_NEW_TO_BRAND_ATTRIBUTED_SALES_RATE,
+            self::METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS,
+            self::METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS_RATE,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
         ];

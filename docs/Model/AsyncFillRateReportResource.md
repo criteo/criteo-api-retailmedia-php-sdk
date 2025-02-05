@@ -1,11 +1,10 @@
-# # ValidationError
+# # AsyncFillRateReportResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**loc** | [**\criteo\api\retailmedia\preview\Model\LocationInner[]**](LocationInner.md) |  |
-**msg** | **string** |  |
-**type** | **string** |  |
+**type** | **string** |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\preview\Model\AsyncFillRateReport**](AsyncFillRateReport.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
