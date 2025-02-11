@@ -320,12 +320,12 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
     public const CLICK_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'None';
-    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'Unknown';
-    public const VIEW_ATTRIBUTION_WINDOW_ONE_DAY = 'OneDay';
-    public const VIEW_ATTRIBUTION_WINDOW_SEVEN_DAYS = 'SevenDays';
-    public const VIEW_ATTRIBUTION_WINDOW_FOURTEEN_DAYS = 'FourteenDays';
-    public const VIEW_ATTRIBUTION_WINDOW_THIRTY_DAYS = 'ThirtyDays';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
     public const CLICK_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
     public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
     public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
@@ -374,10 +374,10 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::VIEW_ATTRIBUTION_WINDOW_NONE,
             self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
-            self::VIEW_ATTRIBUTION_WINDOW_ONE_DAY,
-            self::VIEW_ATTRIBUTION_WINDOW_SEVEN_DAYS,
-            self::VIEW_ATTRIBUTION_WINDOW_FOURTEEN_DAYS,
-            self::VIEW_ATTRIBUTION_WINDOW_THIRTY_DAYS,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
         ];
     }
 
@@ -429,7 +429,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('type', $data ?? [], 'auction');
         $this->setIfExists('drawable_balance_ids', $data ?? [], null);
         $this->setIfExists('click_attribution_window', $data ?? [], '30D');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'None');
+        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **type** | **string** |  | [optional] [default to 'auction']
 **drawable_balance_ids** | **string[]** |  | [optional]
 **click_attribution_window** | **string** |  | [optional] [default to '30D']
-**view_attribution_window** | **string** |  | [optional] [default to 'None']
+**view_attribution_window** | **string** |  | [optional] [default to 'none']
 **name** | **string** |  |
 **budget** | **float** |  | [optional]
 **monthly_pacing** | **float** |  | [optional]

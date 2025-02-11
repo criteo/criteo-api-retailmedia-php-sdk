@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**\criteo\api\retailmedia\v2025_01\Model\RetailMediaContactlistOperationResponseAttributes**](RetailMediaContactlistOperationResponseAttributes.md) |  |
+**type** | **string** | the name of the entity type | [optional]
 **errors** | [**\criteo\api\retailmedia\v2025_01\Model\AudienceError[]**](AudienceError.md) |  |
 **warnings** | [**\criteo\api\retailmedia\v2025_01\Model\AudienceWarning[]**](AudienceWarning.md) |  |
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaContactlistOperationResponseAttributesAttributes
+ * RetailMediaContactlistAmendmentAttributes
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
 
 /**
- * RetailMediaContactlistOperationResponseAttributesAttributes Class Doc Comment
+ * RetailMediaContactlistAmendmentAttributes Class Doc Comment
  *
  * @category Class
- * @description The attributes of Retaile Media contact list operation
+ * @description Attributes of retail media contact list amendment
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaContactlistOperationResponseAttributesAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailMediaContactlistAmendmentAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaContactlistOperationResponseAttributes_attributes';
+    protected static $openAPIModelName = 'RetailMediaContactlistAmendment_attributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contact_list_id' => 'int',
         'operation' => 'string',
-        'request_date' => '\DateTime',
         'identifier_type' => 'string',
-        'nb_invalid_identifiers' => 'int',
-        'nb_valid_identifiers' => 'int',
-        'sample_invalid_identifiers' => 'string[]'
+        'identifiers' => 'string[]'
     ];
 
     /**
@@ -75,13 +71,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contact_list_id' => 'int64',
         'operation' => null,
-        'request_date' => 'date-time',
         'identifier_type' => null,
-        'nb_invalid_identifiers' => 'int32',
-        'nb_valid_identifiers' => 'int32',
-        'sample_invalid_identifiers' => null
+        'identifiers' => null
     ];
 
     /**
@@ -90,13 +82,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_list_id' => false,
-		'operation' => false,
-		'request_date' => false,
+        'operation' => false,
 		'identifier_type' => true,
-		'nb_invalid_identifiers' => true,
-		'nb_valid_identifiers' => true,
-		'sample_invalid_identifiers' => true
+		'identifiers' => false
     ];
 
     /**
@@ -185,13 +173,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $attributeMap = [
-        'contact_list_id' => 'contactListId',
         'operation' => 'operation',
-        'request_date' => 'requestDate',
         'identifier_type' => 'identifierType',
-        'nb_invalid_identifiers' => 'nbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'nbValidIdentifiers',
-        'sample_invalid_identifiers' => 'sampleInvalidIdentifiers'
+        'identifiers' => 'identifiers'
     ];
 
     /**
@@ -200,13 +184,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $setters = [
-        'contact_list_id' => 'setContactListId',
         'operation' => 'setOperation',
-        'request_date' => 'setRequestDate',
         'identifier_type' => 'setIdentifierType',
-        'nb_invalid_identifiers' => 'setNbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'setNbValidIdentifiers',
-        'sample_invalid_identifiers' => 'setSampleInvalidIdentifiers'
+        'identifiers' => 'setIdentifiers'
     ];
 
     /**
@@ -215,13 +195,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $getters = [
-        'contact_list_id' => 'getContactListId',
         'operation' => 'getOperation',
-        'request_date' => 'getRequestDate',
         'identifier_type' => 'getIdentifierType',
-        'nb_invalid_identifiers' => 'getNbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'getNbValidIdentifiers',
-        'sample_invalid_identifiers' => 'getSampleInvalidIdentifiers'
+        'identifiers' => 'getIdentifiers'
     ];
 
     /**
@@ -265,6 +241,44 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
         return self::$openAPIModelName;
     }
 
+    public const OPERATION_ADD = 'add';
+    public const OPERATION_REMOVE = 'remove';
+    public const IDENTIFIER_TYPE_EMAIL = 'Email';
+    public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
+    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
+    public const IDENTIFIER_TYPE_GUM = 'Gum';
+    public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOperationAllowableValues()
+    {
+        return [
+            self::OPERATION_ADD,
+            self::OPERATION_REMOVE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIdentifierTypeAllowableValues()
+    {
+        return [
+            self::IDENTIFIER_TYPE_EMAIL,
+            self::IDENTIFIER_TYPE_USER_IDENTIFIER,
+            self::IDENTIFIER_TYPE_IDENTITY_LINK,
+            self::IDENTIFIER_TYPE_GUM,
+            self::IDENTIFIER_TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_PHONE_NUMBER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,13 +295,9 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('contact_list_id', $data ?? [], null);
         $this->setIfExists('operation', $data ?? [], null);
-        $this->setIfExists('request_date', $data ?? [], null);
         $this->setIfExists('identifier_type', $data ?? [], null);
-        $this->setIfExists('nb_invalid_identifiers', $data ?? [], null);
-        $this->setIfExists('nb_valid_identifiers', $data ?? [], null);
-        $this->setIfExists('sample_invalid_identifiers', $data ?? [], null);
+        $this->setIfExists('identifiers', $data ?? [], null);
     }
 
     /**
@@ -317,14 +327,29 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
     {
         $invalidProperties = [];
 
-        if ($this->container['contact_list_id'] === null) {
-            $invalidProperties[] = "'contact_list_id' can't be null";
-        }
         if ($this->container['operation'] === null) {
             $invalidProperties[] = "'operation' can't be null";
         }
-        if ($this->container['request_date'] === null) {
-            $invalidProperties[] = "'request_date' can't be null";
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!is_null($this->container['operation']) && !in_array($this->container['operation'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'operation', must be one of '%s'",
+                $this->container['operation'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identifier_type', must be one of '%s'",
+                $this->container['identifier_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['identifiers'] === null) {
+            $invalidProperties[] = "'identifiers' can't be null";
         }
         return $invalidProperties;
     }
@@ -342,33 +367,6 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
 
 
     /**
-     * Gets contact_list_id
-     *
-     * @return int
-     */
-    public function getContactListId()
-    {
-        return $this->container['contact_list_id'];
-    }
-
-    /**
-     * Sets contact_list_id
-     *
-     * @param int $contact_list_id The affected user list id
-     *
-     * @return self
-     */
-    public function setContactListId($contact_list_id)
-    {
-        if (is_null($contact_list_id)) {
-            throw new \InvalidArgumentException('non-nullable contact_list_id cannot be null');
-        }
-        $this->container['contact_list_id'] = $contact_list_id;
-
-        return $this;
-    }
-
-    /**
      * Gets operation
      *
      * @return string
@@ -381,7 +379,7 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
     /**
      * Sets operation
      *
-     * @param string $operation The action recorded
+     * @param string $operation Whether to add or remove users
      *
      * @return self
      */
@@ -390,34 +388,17 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
         if (is_null($operation)) {
             throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $this->container['operation'] = $operation;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_date
-     *
-     * @return \DateTime
-     */
-    public function getRequestDate()
-    {
-        return $this->container['request_date'];
-    }
-
-    /**
-     * Sets request_date
-     *
-     * @param \DateTime $request_date When the action was recorded
-     *
-     * @return self
-     */
-    public function setRequestDate($request_date)
-    {
-        if (is_null($request_date)) {
-            throw new \InvalidArgumentException('non-nullable request_date cannot be null');
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!in_array($operation, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'operation', must be one of '%s'",
+                    $operation,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['request_date'] = $request_date;
+        $this->container['operation'] = $operation;
 
         return $this;
     }
@@ -435,7 +416,7 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
     /**
      * Sets identifier_type
      *
-     * @param string|null $identifier_type The schema specified for of the identifiers
+     * @param string|null $identifier_type What type of identifiers are used
      *
      * @return self
      */
@@ -451,109 +432,44 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($identifier_type) && !in_array($identifier_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'identifier_type', must be one of '%s'",
+                    $identifier_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['identifier_type'] = $identifier_type;
 
         return $this;
     }
 
     /**
-     * Gets nb_invalid_identifiers
+     * Gets identifiers
      *
-     * @return int|null
+     * @return string[]
      */
-    public function getNbInvalidIdentifiers()
+    public function getIdentifiers()
     {
-        return $this->container['nb_invalid_identifiers'];
+        return $this->container['identifiers'];
     }
 
     /**
-     * Sets nb_invalid_identifiers
+     * Sets identifiers
      *
-     * @param int|null $nb_invalid_identifiers How many identifiers were invalid for the specified schema
+     * @param string[] $identifiers The users to add or remove, each in the schema specified
      *
      * @return self
      */
-    public function setNbInvalidIdentifiers($nb_invalid_identifiers)
+    public function setIdentifiers($identifiers)
     {
-        if (is_null($nb_invalid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'nb_invalid_identifiers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nb_invalid_identifiers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($identifiers)) {
+            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
         }
-        $this->container['nb_invalid_identifiers'] = $nb_invalid_identifiers;
-
-        return $this;
-    }
-
-    /**
-     * Gets nb_valid_identifiers
-     *
-     * @return int|null
-     */
-    public function getNbValidIdentifiers()
-    {
-        return $this->container['nb_valid_identifiers'];
-    }
-
-    /**
-     * Sets nb_valid_identifiers
-     *
-     * @param int|null $nb_valid_identifiers How many identifiers were valid for the specified schema
-     *
-     * @return self
-     */
-    public function setNbValidIdentifiers($nb_valid_identifiers)
-    {
-        if (is_null($nb_valid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'nb_valid_identifiers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nb_valid_identifiers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['nb_valid_identifiers'] = $nb_valid_identifiers;
-
-        return $this;
-    }
-
-    /**
-     * Gets sample_invalid_identifiers
-     *
-     * @return string[]|null
-     */
-    public function getSampleInvalidIdentifiers()
-    {
-        return $this->container['sample_invalid_identifiers'];
-    }
-
-    /**
-     * Sets sample_invalid_identifiers
-     *
-     * @param string[]|null $sample_invalid_identifiers A sample of invalid identifiers if there is some
-     *
-     * @return self
-     */
-    public function setSampleInvalidIdentifiers($sample_invalid_identifiers)
-    {
-        if (is_null($sample_invalid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'sample_invalid_identifiers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sample_invalid_identifiers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sample_invalid_identifiers'] = $sample_invalid_identifiers;
+        $this->container['identifiers'] = $identifiers;
 
         return $this;
     }

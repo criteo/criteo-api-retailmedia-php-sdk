@@ -91,7 +91,7 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'status' => false,
-		'currency' => false,
+		'currency' => true,
 		'row_count' => true,
 		'file_size_bytes' => true,
 		'md5_checksum' => true,
@@ -440,7 +440,14 @@ class ExternalCatalogStatus implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setCurrency($currency)
     {
         if (is_null($currency)) {
-            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['currency'] = $currency;
 
