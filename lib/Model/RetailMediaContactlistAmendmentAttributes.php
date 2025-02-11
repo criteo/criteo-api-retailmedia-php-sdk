@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceCollectionOutcomeOfRetailMediaSeller
+ * RetailMediaContactlistAmendmentAttributes
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceCollectionOutcomeOfRetailMediaSeller Class Doc Comment
+ * RetailMediaContactlistAmendmentAttributes Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several value objects.
+ * @description Attributes of retail media contact list amendment
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailMediaContactlistAmendmentAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceCollectionOutcomeOfRetailMediaSeller';
+    protected static $openAPIModelName = 'RetailMediaContactlistAmendment_attributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaSeller[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
+        'operation' => 'string',
+        'identifier_type' => 'string',
+        'identifiers' => 'string[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'operation' => null,
+        'identifier_type' => null,
+        'identifiers' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'operation' => false,
+		'identifier_type' => true,
+		'identifiers' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'operation' => 'operation',
+        'identifier_type' => 'identifierType',
+        'identifiers' => 'identifiers'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'operation' => 'setOperation',
+        'identifier_type' => 'setIdentifierType',
+        'identifiers' => 'setIdentifiers'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'operation' => 'getOperation',
+        'identifier_type' => 'getIdentifierType',
+        'identifiers' => 'getIdentifiers'
     ];
 
     /**
@@ -241,6 +241,44 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
         return self::$openAPIModelName;
     }
 
+    public const OPERATION_ADD = 'add';
+    public const OPERATION_REMOVE = 'remove';
+    public const IDENTIFIER_TYPE_EMAIL = 'Email';
+    public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
+    public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
+    public const IDENTIFIER_TYPE_GUM = 'Gum';
+    public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOperationAllowableValues()
+    {
+        return [
+            self::OPERATION_ADD,
+            self::OPERATION_REMOVE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIdentifierTypeAllowableValues()
+    {
+        return [
+            self::IDENTIFIER_TYPE_EMAIL,
+            self::IDENTIFIER_TYPE_USER_IDENTIFIER,
+            self::IDENTIFIER_TYPE_IDENTITY_LINK,
+            self::IDENTIFIER_TYPE_GUM,
+            self::IDENTIFIER_TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_PHONE_NUMBER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +295,9 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
+        $this->setIfExists('identifier_type', $data ?? [], null);
+        $this->setIfExists('identifiers', $data ?? [], null);
     }
 
     /**
@@ -289,6 +327,30 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
     {
         $invalidProperties = [];
 
+        if ($this->container['operation'] === null) {
+            $invalidProperties[] = "'operation' can't be null";
+        }
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!is_null($this->container['operation']) && !in_array($this->container['operation'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'operation', must be one of '%s'",
+                $this->container['operation'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identifier_type', must be one of '%s'",
+                $this->container['identifier_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['identifiers'] === null) {
+            $invalidProperties[] = "'identifiers' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,103 +367,109 @@ class ValueResourceCollectionOutcomeOfRetailMediaSeller implements ModelInterfac
 
 
     /**
-     * Gets data
+     * Gets operation
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaSeller[]|null
+     * @return string
      */
-    public function getData()
+    public function getOperation()
     {
-        return $this->container['data'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets data
+     * Sets operation
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaSeller[]|null $data data
+     * @param string $operation Whether to add or remove users
      *
      * @return self
      */
-    public function setData($data)
+    public function setOperation($operation)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!in_array($operation, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'operation', must be one of '%s'",
+                    $operation,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['operation'] = $operation;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets identifier_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return string|null
      */
-    public function getWarnings()
+    public function getIdentifierType()
     {
-        return $this->container['warnings'];
+        return $this->container['identifier_type'];
     }
 
     /**
-     * Sets warnings
+     * Sets identifier_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param string|null $identifier_type What type of identifiers are used
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setIdentifierType($identifier_type)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($identifier_type)) {
+            array_push($this->openAPINullablesSetToNull, 'identifier_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('identifier_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($identifier_type) && !in_array($identifier_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'identifier_type', must be one of '%s'",
+                    $identifier_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['identifier_type'] = $identifier_type;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets identifiers
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return string[]
      */
-    public function getErrors()
+    public function getIdentifiers()
     {
-        return $this->container['errors'];
+        return $this->container['identifiers'];
     }
 
     /**
-     * Sets errors
+     * Sets identifiers
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     * @param string[] $identifiers The users to add or remove, each in the schema specified
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setIdentifiers($identifiers)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($identifiers)) {
+            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['identifiers'] = $identifiers;
 
         return $this;
     }

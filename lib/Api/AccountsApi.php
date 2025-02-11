@@ -705,7 +705,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome
      */
     public function searchSellers($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
     {
@@ -721,7 +721,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchSellersWithHttpInfo($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
     {
@@ -764,17 +764,17 @@ class AccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -810,7 +810,7 @@ class AccountsApi
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -831,7 +831,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller',
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -887,7 +887,7 @@ class AccountsApi
      */
     public function searchSellersAsyncWithHttpInfo($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult';
         $request = $this->searchSellersRequest($value_resource_input_of_seller_search, $contentType);
 
         return $this->client

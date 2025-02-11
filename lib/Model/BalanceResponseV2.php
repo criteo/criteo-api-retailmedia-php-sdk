@@ -317,10 +317,10 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const SPEND_TYPE_ONSITE = 'Onsite';
     public const SPEND_TYPE_OFFSITE = 'Offsite';
     public const SPEND_TYPE_OFFSITE_AWARENESS = 'OffsiteAwareness';
-    public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'NotApplicable';
-    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'BillByRetailer';
-    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'BillByCriteo';
-    public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'Unknown';
+    public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'notApplicable';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'billByRetailer';
+    public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'billByCriteo';
+    public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'unknown';
 
     /**
      * Gets allowable values of the enum

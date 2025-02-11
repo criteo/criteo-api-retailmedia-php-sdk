@@ -1,10 +1,10 @@
-# # ValueResourceCollectionOutcomeOfRetailMediaSeller
+# # ValueResourceCollectionOutcomeOfSellerSearchResult
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\preview\Model\ValueResourceOfRetailMediaSeller[]**](ValueResourceOfRetailMediaSeller.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\preview\Model\ValueResourceOfSellerSearchResult[]**](ValueResourceOfSellerSearchResult.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Warnings that occured during this call. | [optional] [readonly]
 **errors** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Errors that occured during this call. | [optional] [readonly]
 

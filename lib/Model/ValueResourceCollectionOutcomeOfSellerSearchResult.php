@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceOfRetailMediaSeller
+ * ValueResourceCollectionOutcomeOfSellerSearchResult
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceOfRetailMediaSeller Class Doc Comment
+ * ValueResourceCollectionOutcomeOfSellerSearchResult Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description A top-level object that encapsulates a Criteo API response for several value objects.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceCollectionOutcomeOfSellerSearchResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceOfRetailMediaSeller';
+    protected static $openAPIModelName = 'ValueResourceCollectionOutcomeOfSellerSearchResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailMediaSeller'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSellerSearchResult[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => true,
-		'attributes' => false
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -180,8 +184,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -190,8 +195,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -251,8 +257,9 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -298,62 +305,103 @@ class ValueResourceOfRetailMediaSeller implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets type
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSellerSearchResult[]|null
      */
-    public function getType()
+    public function getData()
     {
-        return $this->container['type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets type
+     * Sets data
      *
-     * @param string|null $type Type of the resource.
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSellerSearchResult[]|null $data data
      *
      * @return self
      */
-    public function setType($type)
+    public function setData($data)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets warnings
      *
-     * @return \criteo\api\retailmedia\preview\Model\RetailMediaSeller|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getAttributes()
+    public function getWarnings()
     {
-        return $this->container['attributes'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets attributes
+     * Sets warnings
      *
-     * @param \criteo\api\retailmedia\preview\Model\RetailMediaSeller|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setWarnings($warnings)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

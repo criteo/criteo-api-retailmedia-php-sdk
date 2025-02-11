@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaContactlistOperation
+ * ValueResourceOfSellerSearchResult
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailMediaContactlistOperation Class Doc Comment
+ * ValueResourceOfSellerSearchResult Class Doc Comment
  *
  * @category Class
- * @description Operation on Retail Media contact list
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOfSellerSearchResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaContactlistOperation';
+    protected static $openAPIModelName = 'ValueResourceOfSellerSearchResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperationResponseAttributes',
         'type' => 'string',
-        'errors' => '\criteo\api\retailmedia\preview\Model\AudienceError[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\AudienceWarning[]'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\SellerSearchResult'
     ];
 
     /**
@@ -72,10 +70,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
         'type' => null,
-        'errors' => null,
-        'warnings' => null
+        'attributes' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'type' => true,
-		'errors' => false,
-		'warnings' => false
+        'type' => true,
+		'attributes' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
         'type' => 'type',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -188,10 +180,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
         'type' => 'setType',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -200,10 +190,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
         'type' => 'getType',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -263,10 +251,8 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -296,15 +282,6 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['errors'] === null) {
-            $invalidProperties[] = "'errors' can't be null";
-        }
-        if ($this->container['warnings'] === null) {
-            $invalidProperties[] = "'warnings' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -321,33 +298,6 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets data
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperationResponseAttributes
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperationResponseAttributes $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
      * @return string|null
@@ -360,7 +310,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param string|null $type the name of the entity type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
@@ -382,55 +332,28 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets errors
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\AudienceError[]
+     * @return \criteo\api\retailmedia\preview\Model\SellerSearchResult|null
      */
-    public function getErrors()
+    public function getAttributes()
     {
-        return $this->container['errors'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets errors
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\AudienceError[] $errors errors
+     * @param \criteo\api\retailmedia\preview\Model\SellerSearchResult|null $attributes attributes
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setAttributes($attributes)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\AudienceWarning[]
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\AudienceWarning[] $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

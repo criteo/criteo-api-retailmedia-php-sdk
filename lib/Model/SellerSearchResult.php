@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailMediaContactlistOperationResponseAttributesAttributes
+ * SellerSearchResult
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailMediaContactlistOperationResponseAttributesAttributes Class Doc Comment
+ * SellerSearchResult Class Doc Comment
  *
  * @category Class
- * @description The attributes of Retaile Media contact list operation
+ * @description holds an AccountId and the mapped seller information for that account
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailMediaContactlistOperationResponseAttributesAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
+class SellerSearchResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailMediaContactlistOperationResponseAttributes_attributes';
+    protected static $openAPIModelName = 'SellerSearchResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +58,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contact_list_id' => 'int',
-        'operation' => 'string',
-        'request_date' => '\DateTime',
-        'identifier_type' => 'string',
-        'nb_invalid_identifiers' => 'int',
-        'nb_valid_identifiers' => 'int',
-        'sample_invalid_identifiers' => 'string[]'
+        'account_id' => 'string',
+        'sellers' => '\criteo\api\retailmedia\preview\Model\RetailMediaSeller[]'
     ];
 
     /**
@@ -75,13 +70,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contact_list_id' => 'int64',
-        'operation' => null,
-        'request_date' => 'date-time',
-        'identifier_type' => null,
-        'nb_invalid_identifiers' => 'int32',
-        'nb_valid_identifiers' => 'int32',
-        'sample_invalid_identifiers' => null
+        'account_id' => null,
+        'sellers' => null
     ];
 
     /**
@@ -90,13 +80,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_list_id' => false,
-		'operation' => false,
-		'request_date' => false,
-		'identifier_type' => true,
-		'nb_invalid_identifiers' => true,
-		'nb_valid_identifiers' => true,
-		'sample_invalid_identifiers' => true
+        'account_id' => true,
+		'sellers' => true
     ];
 
     /**
@@ -185,13 +170,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $attributeMap = [
-        'contact_list_id' => 'contactListId',
-        'operation' => 'operation',
-        'request_date' => 'requestDate',
-        'identifier_type' => 'identifierType',
-        'nb_invalid_identifiers' => 'nbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'nbValidIdentifiers',
-        'sample_invalid_identifiers' => 'sampleInvalidIdentifiers'
+        'account_id' => 'accountId',
+        'sellers' => 'sellers'
     ];
 
     /**
@@ -200,13 +180,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $setters = [
-        'contact_list_id' => 'setContactListId',
-        'operation' => 'setOperation',
-        'request_date' => 'setRequestDate',
-        'identifier_type' => 'setIdentifierType',
-        'nb_invalid_identifiers' => 'setNbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'setNbValidIdentifiers',
-        'sample_invalid_identifiers' => 'setSampleInvalidIdentifiers'
+        'account_id' => 'setAccountId',
+        'sellers' => 'setSellers'
     ];
 
     /**
@@ -215,13 +190,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      * @var string[]
      */
     protected static $getters = [
-        'contact_list_id' => 'getContactListId',
-        'operation' => 'getOperation',
-        'request_date' => 'getRequestDate',
-        'identifier_type' => 'getIdentifierType',
-        'nb_invalid_identifiers' => 'getNbInvalidIdentifiers',
-        'nb_valid_identifiers' => 'getNbValidIdentifiers',
-        'sample_invalid_identifiers' => 'getSampleInvalidIdentifiers'
+        'account_id' => 'getAccountId',
+        'sellers' => 'getSellers'
     ];
 
     /**
@@ -281,13 +251,8 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('contact_list_id', $data ?? [], null);
-        $this->setIfExists('operation', $data ?? [], null);
-        $this->setIfExists('request_date', $data ?? [], null);
-        $this->setIfExists('identifier_type', $data ?? [], null);
-        $this->setIfExists('nb_invalid_identifiers', $data ?? [], null);
-        $this->setIfExists('nb_valid_identifiers', $data ?? [], null);
-        $this->setIfExists('sample_invalid_identifiers', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('sellers', $data ?? [], null);
     }
 
     /**
@@ -317,15 +282,6 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
     {
         $invalidProperties = [];
 
-        if ($this->container['contact_list_id'] === null) {
-            $invalidProperties[] = "'contact_list_id' can't be null";
-        }
-        if ($this->container['operation'] === null) {
-            $invalidProperties[] = "'operation' can't be null";
-        }
-        if ($this->container['request_date'] === null) {
-            $invalidProperties[] = "'request_date' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -342,218 +298,69 @@ class RetailMediaContactlistOperationResponseAttributesAttributes implements Mod
 
 
     /**
-     * Gets contact_list_id
-     *
-     * @return int
-     */
-    public function getContactListId()
-    {
-        return $this->container['contact_list_id'];
-    }
-
-    /**
-     * Sets contact_list_id
-     *
-     * @param int $contact_list_id The affected user list id
-     *
-     * @return self
-     */
-    public function setContactListId($contact_list_id)
-    {
-        if (is_null($contact_list_id)) {
-            throw new \InvalidArgumentException('non-nullable contact_list_id cannot be null');
-        }
-        $this->container['contact_list_id'] = $contact_list_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets operation
-     *
-     * @return string
-     */
-    public function getOperation()
-    {
-        return $this->container['operation'];
-    }
-
-    /**
-     * Sets operation
-     *
-     * @param string $operation The action recorded
-     *
-     * @return self
-     */
-    public function setOperation($operation)
-    {
-        if (is_null($operation)) {
-            throw new \InvalidArgumentException('non-nullable operation cannot be null');
-        }
-        $this->container['operation'] = $operation;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_date
-     *
-     * @return \DateTime
-     */
-    public function getRequestDate()
-    {
-        return $this->container['request_date'];
-    }
-
-    /**
-     * Sets request_date
-     *
-     * @param \DateTime $request_date When the action was recorded
-     *
-     * @return self
-     */
-    public function setRequestDate($request_date)
-    {
-        if (is_null($request_date)) {
-            throw new \InvalidArgumentException('non-nullable request_date cannot be null');
-        }
-        $this->container['request_date'] = $request_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets identifier_type
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getIdentifierType()
+    public function getAccountId()
     {
-        return $this->container['identifier_type'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets identifier_type
+     * Sets account_id
      *
-     * @param string|null $identifier_type The schema specified for of the identifiers
+     * @param string|null $account_id the id for the account
      *
      * @return self
      */
-    public function setIdentifierType($identifier_type)
+    public function setAccountId($account_id)
     {
-        if (is_null($identifier_type)) {
-            array_push($this->openAPINullablesSetToNull, 'identifier_type');
+        if (is_null($account_id)) {
+            array_push($this->openAPINullablesSetToNull, 'account_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('identifier_type', $nullablesSetToNull);
+            $index = array_search('account_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['identifier_type'] = $identifier_type;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets nb_invalid_identifiers
+     * Gets sellers
      *
-     * @return int|null
+     * @return \criteo\api\retailmedia\preview\Model\RetailMediaSeller[]|null
      */
-    public function getNbInvalidIdentifiers()
+    public function getSellers()
     {
-        return $this->container['nb_invalid_identifiers'];
+        return $this->container['sellers'];
     }
 
     /**
-     * Sets nb_invalid_identifiers
+     * Sets sellers
      *
-     * @param int|null $nb_invalid_identifiers How many identifiers were invalid for the specified schema
+     * @param \criteo\api\retailmedia\preview\Model\RetailMediaSeller[]|null $sellers the details for mapped sellers for the account
      *
      * @return self
      */
-    public function setNbInvalidIdentifiers($nb_invalid_identifiers)
+    public function setSellers($sellers)
     {
-        if (is_null($nb_invalid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'nb_invalid_identifiers');
+        if (is_null($sellers)) {
+            array_push($this->openAPINullablesSetToNull, 'sellers');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nb_invalid_identifiers', $nullablesSetToNull);
+            $index = array_search('sellers', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['nb_invalid_identifiers'] = $nb_invalid_identifiers;
-
-        return $this;
-    }
-
-    /**
-     * Gets nb_valid_identifiers
-     *
-     * @return int|null
-     */
-    public function getNbValidIdentifiers()
-    {
-        return $this->container['nb_valid_identifiers'];
-    }
-
-    /**
-     * Sets nb_valid_identifiers
-     *
-     * @param int|null $nb_valid_identifiers How many identifiers were valid for the specified schema
-     *
-     * @return self
-     */
-    public function setNbValidIdentifiers($nb_valid_identifiers)
-    {
-        if (is_null($nb_valid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'nb_valid_identifiers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nb_valid_identifiers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['nb_valid_identifiers'] = $nb_valid_identifiers;
-
-        return $this;
-    }
-
-    /**
-     * Gets sample_invalid_identifiers
-     *
-     * @return string[]|null
-     */
-    public function getSampleInvalidIdentifiers()
-    {
-        return $this->container['sample_invalid_identifiers'];
-    }
-
-    /**
-     * Sets sample_invalid_identifiers
-     *
-     * @param string[]|null $sample_invalid_identifiers A sample of invalid identifiers if there is some
-     *
-     * @return self
-     */
-    public function setSampleInvalidIdentifiers($sample_invalid_identifiers)
-    {
-        if (is_null($sample_invalid_identifiers)) {
-            array_push($this->openAPINullablesSetToNull, 'sample_invalid_identifiers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sample_invalid_identifiers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sample_invalid_identifiers'] = $sample_invalid_identifiers;
+        $this->container['sellers'] = $sellers;
 
         return $this;
     }

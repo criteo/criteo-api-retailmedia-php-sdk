@@ -143,7 +143,7 @@ void (empty response body)
 ## `searchSellers()`
 
 ```php
-searchSellers($value_resource_input_of_seller_search): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
+searchSellers($value_resource_input_of_seller_search): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult
 ```
 
 
@@ -188,7 +188,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller**](../Model/ValueResourceCollectionOutcomeOfRetailMediaSeller.md)
+[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult**](../Model/ValueResourceCollectionOutcomeOfSellerSearchResult.md)
 
 ### Authorization
 

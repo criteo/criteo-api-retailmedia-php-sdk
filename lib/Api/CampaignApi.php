@@ -558,11 +558,12 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return |\criteo\api\retailmedia\preview\Model\ProductResourceOutcome|\criteo\api\retailmedia\preview\Model\ProductResourceOutcome|\criteo\api\retailmedia\preview\Model\ProductResourceOutcome
      */
     public function appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['appendPromotedProducts'][0])
     {
-        $this->appendPromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input, $contentType);
+        list($response) = $this->appendPromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input, $contentType);
+        return $response;
     }
 
     /**
@@ -574,7 +575,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of |\criteo\api\retailmedia\preview\Model\ProductResourceOutcome|\criteo\api\retailmedia\preview\Model\ProductResourceOutcome|\criteo\api\retailmedia\preview\Model\ProductResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function appendPromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['appendPromotedProducts'][0])
     {
@@ -615,10 +616,80 @@ class CampaignApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ProductResourceOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -672,14 +743,27 @@ class CampaignApi
      */
     public function appendPromotedProductsAsyncWithHttpInfo($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['appendPromotedProducts'][0])
     {
-        $returnType = '';
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductResourceOutcome';
         $request = $this->appendPromotedProductsRequest($line_item_id, $promoted_product_resource_collection_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
