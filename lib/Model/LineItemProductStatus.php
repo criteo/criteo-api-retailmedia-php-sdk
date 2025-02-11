@@ -43,11 +43,11 @@ class LineItemProductStatus
     /**
      * Possible values of this enum
      */
-    public const UNKNOWN = 'Unknown';
+    public const UNKNOWN = 'unknown';
 
-    public const ACTIVE = 'Active';
+    public const ACTIVE = 'active';
 
-    public const PAUSED = 'Paused';
+    public const PAUSED = 'paused';
 
     /**
      * Gets allowable values of the enum

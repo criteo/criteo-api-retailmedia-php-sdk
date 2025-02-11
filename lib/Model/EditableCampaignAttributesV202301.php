@@ -305,12 +305,12 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
     public const CLICK_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'None';
-    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'Unknown';
-    public const VIEW_ATTRIBUTION_WINDOW_ONE_DAY = 'OneDay';
-    public const VIEW_ATTRIBUTION_WINDOW_SEVEN_DAYS = 'SevenDays';
-    public const VIEW_ATTRIBUTION_WINDOW_FOURTEEN_DAYS = 'FourteenDays';
-    public const VIEW_ATTRIBUTION_WINDOW_THIRTY_DAYS = 'ThirtyDays';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
     public const CLICK_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
     public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
     public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
@@ -345,10 +345,10 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
         return [
             self::VIEW_ATTRIBUTION_WINDOW_NONE,
             self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
-            self::VIEW_ATTRIBUTION_WINDOW_ONE_DAY,
-            self::VIEW_ATTRIBUTION_WINDOW_SEVEN_DAYS,
-            self::VIEW_ATTRIBUTION_WINDOW_FOURTEEN_DAYS,
-            self::VIEW_ATTRIBUTION_WINDOW_THIRTY_DAYS,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
         ];
     }
 
