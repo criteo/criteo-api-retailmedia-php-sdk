@@ -4,7 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** | the name of the entity type |
-**attributes** | [**\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperationResponseAttributesAttributes**](RetailMediaContactlistOperationResponseAttributesAttributes.md) |  |
+**contact_list_id** | **int** | The affected user list id |
+**operation** | **string** | The action recorded |
+**request_date** | **\DateTime** | When the action was recorded |
+**identifier_type** | **string** | The schema specified for of the identifiers | [optional]
+**nb_invalid_identifiers** | **int** | How many identifiers were invalid for the specified schema | [optional]
+**nb_valid_identifiers** | **int** | How many identifiers were valid for the specified schema | [optional]
+**sample_invalid_identifiers** | **string[]** | A sample of invalid identifiers if there is some | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

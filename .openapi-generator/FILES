@@ -188,10 +188,10 @@ docs/Model/ResourceOfTemplate.md
 docs/Model/ResourceOfUpdateBalanceModelV2.md
 docs/Model/ResourceOutcome.md
 docs/Model/RetailMediaContactlistAmendment.md
+docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
-docs/Model/RetailMediaContactlistOperationResponseAttributesAttributes.md
 docs/Model/ReviewStateModel.md
 docs/Model/RmAlgebraNodeV1.md
 docs/Model/RmAudienceEntityV1.md
@@ -460,10 +460,10 @@ lib/Model/ResourceOfTemplate.php
 lib/Model/ResourceOfUpdateBalanceModelV2.php
 lib/Model/ResourceOutcome.php
 lib/Model/RetailMediaContactlistAmendment.php
+lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
-lib/Model/RetailMediaContactlistOperationResponseAttributesAttributes.php
 lib/Model/ReviewStateModel.php
 lib/Model/RmAlgebraNodeV1.php
 lib/Model/RmAudienceEntityV1.php

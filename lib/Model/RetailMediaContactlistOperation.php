@@ -59,6 +59,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperationResponseAttributes',
+        'type' => 'string',
         'errors' => '\criteo\api\retailmedia\v2024_10\Model\AudienceError[]',
         'warnings' => '\criteo\api\retailmedia\v2024_10\Model\AudienceWarning[]'
     ];
@@ -72,6 +73,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'data' => null,
+        'type' => null,
         'errors' => null,
         'warnings' => null
     ];
@@ -83,6 +85,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'data' => false,
+		'type' => true,
 		'errors' => false,
 		'warnings' => false
     ];
@@ -174,6 +177,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'data' => 'data',
+        'type' => 'type',
         'errors' => 'errors',
         'warnings' => 'warnings'
     ];
@@ -185,6 +189,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'data' => 'setData',
+        'type' => 'setType',
         'errors' => 'setErrors',
         'warnings' => 'setWarnings'
     ];
@@ -196,6 +201,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'data' => 'getData',
+        'type' => 'getType',
         'errors' => 'getErrors',
         'warnings' => 'getWarnings'
     ];
@@ -258,6 +264,7 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
     }
@@ -336,6 +343,40 @@ class RetailMediaContactlistOperation implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type the name of the entity type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

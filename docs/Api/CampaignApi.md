@@ -135,7 +135,7 @@ try {
 ## `appendPromotedProducts()`
 
 ```php
-appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input)
+appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input): \criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome
 ```
 
 
@@ -166,7 +166,8 @@ $line_item_id = 'line_item_id_example'; // string | ID of the line item
 $promoted_product_resource_collection_input = new \criteo\api\retailmedia\v2024_10\Model\PromotedProductResourceCollectionInput(); // \criteo\api\retailmedia\v2024_10\Model\PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
 
 try {
-    $apiInstance->appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input);
+    $result = $apiInstance->appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->appendPromotedProducts: ', $e->getMessage(), PHP_EOL;
 }
@@ -181,7 +182,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome**](../Model/ProductResourceOutcome.md)
 
 ### Authorization
 
