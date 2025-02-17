@@ -1,9 +1,10 @@
-# # EntityResourceCollectionOutcomeBrandIdSearchResult
+# # EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**metadata** | [**\criteo\api\retailmedia\preview\Model\PagingOffsetLimitMetadata**](PagingOffsetLimitMetadata.md) |  | [optional]
 **data** | [**\criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]**](EntityResourceBrandIdSearchResult.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Warnings that occured during this call. | [optional] [readonly]
 **errors** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Errors that occured during this call. | [optional] [readonly]

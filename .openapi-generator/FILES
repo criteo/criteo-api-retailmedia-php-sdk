@@ -67,7 +67,7 @@ docs/Model/CreativeCreateModel2.md
 docs/Model/CreativeUpdateModel2.md
 docs/Model/CustomAttribute.md
 docs/Model/EntityResourceBrandIdSearchResult.md
-docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResult.md
+docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccount.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
 docs/Model/ErrorCodeResponse.md
@@ -125,6 +125,7 @@ docs/Model/PageMetadata.md
 docs/Model/PageOfBalanceHistoryChangeDataCaptureV1.md
 docs/Model/PageTypeEnvironment2.md
 docs/Model/PagedResourceCollectionOutcomeOfBalanceResponseV2.md
+docs/Model/PagingOffsetLimitMetadata.md
 docs/Model/PlacementPreview.md
 docs/Model/PlacementPreviewListResponse.md
 docs/Model/PreferredLineItemCreateModelV2Request.md
@@ -345,7 +346,7 @@ lib/Model/CreativeCreateModel2.php
 lib/Model/CreativeUpdateModel2.php
 lib/Model/CustomAttribute.php
 lib/Model/EntityResourceBrandIdSearchResult.php
-lib/Model/EntityResourceCollectionOutcomeBrandIdSearchResult.php
+lib/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccount.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
 lib/Model/ErrorCodeResponse.php
@@ -404,6 +405,7 @@ lib/Model/PageMetadata.php
 lib/Model/PageOfBalanceHistoryChangeDataCaptureV1.php
 lib/Model/PageTypeEnvironment2.php
 lib/Model/PagedResourceCollectionOutcomeOfBalanceResponseV2.php
+lib/Model/PagingOffsetLimitMetadata.php
 lib/Model/PlacementPreview.php
 lib/Model/PlacementPreviewListResponse.php
 lib/Model/PreferredLineItemCreateModelV2Request.php

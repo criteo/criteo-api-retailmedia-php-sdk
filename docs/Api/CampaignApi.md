@@ -2139,7 +2139,7 @@ try {
 ## `searchBrandsByNameAsyncV1()`
 
 ```php
-searchBrandsByNameAsyncV1($offset, $limit, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult
+searchBrandsByNameAsyncV1($offset, $limit, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
 ```
 
 
@@ -2188,7 +2188,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResult.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
 
 ### Authorization
 

@@ -10045,7 +10045,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
      */
     public function searchBrandsByNameAsyncV1($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
     {
@@ -10063,7 +10063,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchBrandsByNameAsyncV1WithHttpInfo($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
     {
@@ -10106,23 +10106,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult';
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10143,7 +10143,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult',
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10187,7 +10187,7 @@ class CampaignApi
      */
     public function searchBrandsByNameAsyncV1AsyncWithHttpInfo($offset = 0, $limit = 25, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrandsByNameAsyncV1'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResult';
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
         $request = $this->searchBrandsByNameAsyncV1Request($offset, $limit, $value_resource_input_brand_id_search_request, $contentType);
 
         return $this->client

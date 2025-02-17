@@ -1,6 +1,6 @@
 <?php
 /**
- * BrandIdSearchRequest
+ * EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * BrandIdSearchRequest Class Doc Comment
+ * EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata Class Doc Comment
  *
  * @category Class
- * @description An object that represents the request of BrandIdSearch endpoint.
+ * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BrandIdSearchRequest';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_ids' => 'int[]',
-        'name' => 'string',
-        'brand_type' => 'string'
+        'metadata' => '\criteo\api\retailmedia\preview\Model\PagingOffsetLimitMetadata',
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -71,9 +72,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_ids' => 'int32',
-        'name' => null,
-        'brand_type' => null
+        'metadata' => null,
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_ids' => false,
-		'name' => true,
-		'brand_type' => true
+        'metadata' => false,
+		'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_ids' => 'retailerIds',
-        'name' => 'name',
-        'brand_type' => 'brandType'
+        'metadata' => 'metadata',
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +188,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'retailer_ids' => 'setRetailerIds',
-        'name' => 'setName',
-        'brand_type' => 'setBrandType'
+        'metadata' => 'setMetadata',
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +200,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'retailer_ids' => 'getRetailerIds',
-        'name' => 'getName',
-        'brand_type' => 'getBrandType'
+        'metadata' => 'getMetadata',
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -241,23 +247,6 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
-    public const BRAND_TYPE_UC = 'uc';
-    public const BRAND_TYPE_RETAILER = 'retailer';
-    public const BRAND_TYPE_ALL = 'all';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBrandTypeAllowableValues()
-    {
-        return [
-            self::BRAND_TYPE_UC,
-            self::BRAND_TYPE_RETAILER,
-            self::BRAND_TYPE_ALL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -274,9 +263,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('brand_type', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -306,22 +296,6 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_ids'] === null) {
-            $invalidProperties[] = "'retailer_ids' can't be null";
-        }
-        if ((count($this->container['retailer_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be greater than or equal to 1.";
-        }
-
-        $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!is_null($this->container['brand_type']) && !in_array($this->container['brand_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'brand_type', must be one of '%s'",
-                $this->container['brand_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -338,111 +312,130 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets retailer_ids
+     * Gets metadata
      *
-     * @return int[]
+     * @return \criteo\api\retailmedia\preview\Model\PagingOffsetLimitMetadata|null
      */
-    public function getRetailerIds()
+    public function getMetadata()
     {
-        return $this->container['retailer_ids'];
+        return $this->container['metadata'];
     }
 
     /**
-     * Sets retailer_ids
+     * Sets metadata
      *
-     * @param int[] $retailer_ids IDs of the retailers we want to limit the search to
+     * @param \criteo\api\retailmedia\preview\Model\PagingOffsetLimitMetadata|null $metadata metadata
      *
      * @return self
      */
-    public function setRetailerIds($retailer_ids)
+    public function setMetadata($metadata)
     {
-        if (is_null($retailer_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
-
-
-        if ((count($retailer_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $retailer_ids when calling BrandIdSearchRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]|null
      */
-    public function getName()
+    public function getData()
     {
-        return $this->container['name'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets name
+     * Sets data
      *
-     * @param string|null $name The name of the brand(s) to be searched
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]|null $data data
      *
      * @return self
      */
-    public function setName($name)
+    public function setData($data)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets brand_type
+     * Gets warnings
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getBrandType()
+    public function getWarnings()
     {
-        return $this->container['brand_type'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets brand_type
+     * Sets warnings
      *
-     * @param string|null $brand_type The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setBrandType($brand_type)
+    public function setWarnings($warnings)
     {
-        if (is_null($brand_type)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_type');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_type', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!is_null($brand_type) && !in_array($brand_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'brand_type', must be one of '%s'",
-                    $brand_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['brand_type'] = $brand_type;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeBrandIdSearchResult
+ * PagingOffsetLimitMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeBrandIdSearchResult Class Doc Comment
+ * PagingOffsetLimitMetadata Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities.
+ * @description Metadata for paging data.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class PagingOffsetLimitMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeBrandIdSearchResult';
+    protected static $openAPIModelName = 'PagingOffsetLimitMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
+        'count' => 'int',
+        'offset' => 'int',
+        'limit' => 'int'
     ];
 
     /**
@@ -71,9 +71,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'count' => 'int64',
+        'offset' => 'int32',
+        'limit' => 'int32'
     ];
 
     /**
@@ -82,9 +82,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'count' => true,
+		'offset' => false,
+		'limit' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'count' => 'count',
+        'offset' => 'offset',
+        'limit' => 'limit'
     ];
 
     /**
@@ -184,9 +184,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'count' => 'setCount',
+        'offset' => 'setOffset',
+        'limit' => 'setLimit'
     ];
 
     /**
@@ -195,9 +195,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'count' => 'getCount',
+        'offset' => 'getOffset',
+        'limit' => 'getLimit'
     ];
 
     /**
@@ -257,9 +257,9 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
     }
 
     /**
@@ -289,6 +289,12 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
     {
         $invalidProperties = [];
 
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
+        }
+        if ($this->container['limit'] === null) {
+            $invalidProperties[] = "'limit' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,103 +311,89 @@ class EntityResourceCollectionOutcomeBrandIdSearchResult implements ModelInterfa
 
 
     /**
-     * Gets data
+     * Gets count
      *
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]|null
+     * @return int|null
      */
-    public function getData()
+    public function getCount()
     {
-        return $this->container['data'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets data
+     * Sets count
      *
-     * @param \criteo\api\retailmedia\preview\Model\EntityResourceBrandIdSearchResult[]|null $data data
+     * @param int|null $count count
      *
      * @return self
      */
-    public function setData($data)
+    public function setCount($count)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($count)) {
+            array_push($this->openAPINullablesSetToNull, 'count');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('count', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets offset
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return int
      */
-    public function getWarnings()
+    public function getOffset()
     {
-        return $this->container['warnings'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets warnings
+     * Sets offset
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param int $offset The (zero-based) starting offset in the collection.
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setOffset($offset)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($offset)) {
+            throw new \InvalidArgumentException('non-nullable offset cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['offset'] = $offset;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets limit
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return int
      */
-    public function getErrors()
+    public function getLimit()
     {
-        return $this->container['errors'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets errors
+     * Sets limit
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     * @param int $limit The number of elements to be returned.
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setLimit($limit)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $this->container['limit'] = $limit;
 
         return $this;
     }
