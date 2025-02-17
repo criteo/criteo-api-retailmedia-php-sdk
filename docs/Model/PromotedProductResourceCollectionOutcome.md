@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**\criteo\api\retailmedia\v2025_01\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
 **warnings** | [**\criteo\api\retailmedia\v2025_01\Model\RmcaCommonProblem[]**](RmcaCommonProblem.md) |  | [optional] [readonly]
-**metadata** | [**\criteo\api\retailmedia\v2025_01\Model\ProductMetadata**](ProductMetadata.md) |  | [optional]
+**meta** | [**\criteo\api\retailmedia\v2025_01\Model\ProductMetadata**](ProductMetadata.md) |  | [optional]
 **data** | [**\criteo\api\retailmedia\v2025_01\Model\PromotedProductResource[]**](PromotedProductResource.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
