@@ -60,7 +60,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'errors' => '\criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]',
         'warnings' => '\criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]',
-        'metadata' => '\criteo\api\retailmedia\v2024_10\Model\ProductMetadata',
+        'meta' => '\criteo\api\retailmedia\v2024_10\Model\ProductMetadata',
         'data' => '\criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]'
     ];
 
@@ -74,7 +74,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static $openAPIFormats = [
         'errors' => null,
         'warnings' => null,
-        'metadata' => null,
+        'meta' => null,
         'data' => null
     ];
 
@@ -86,7 +86,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'errors' => true,
 		'warnings' => true,
-		'metadata' => false,
+		'meta' => false,
 		'data' => true
     ];
 
@@ -178,7 +178,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static $attributeMap = [
         'errors' => 'errors',
         'warnings' => 'warnings',
-        'metadata' => 'metadata',
+        'meta' => 'meta',
         'data' => 'data'
     ];
 
@@ -190,7 +190,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static $setters = [
         'errors' => 'setErrors',
         'warnings' => 'setWarnings',
-        'metadata' => 'setMetadata',
+        'meta' => 'setMeta',
         'data' => 'setData'
     ];
 
@@ -202,7 +202,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static $getters = [
         'errors' => 'getErrors',
         'warnings' => 'getWarnings',
-        'metadata' => 'getMetadata',
+        'meta' => 'getMeta',
         'data' => 'getData'
     ];
 
@@ -265,7 +265,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     {
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
     }
 
@@ -380,28 +380,28 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets metadata
+     * Gets meta
      *
      * @return \criteo\api\retailmedia\v2024_10\Model\ProductMetadata|null
      */
-    public function getMetadata()
+    public function getMeta()
     {
-        return $this->container['metadata'];
+        return $this->container['meta'];
     }
 
     /**
-     * Sets metadata
+     * Sets meta
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\ProductMetadata|null $metadata metadata
+     * @param \criteo\api\retailmedia\v2024_10\Model\ProductMetadata|null $meta meta
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setMeta($meta)
     {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
         }
-        $this->container['metadata'] = $metadata;
+        $this->container['meta'] = $meta;
 
         return $this;
     }
