@@ -80,8 +80,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inclusive_segment' => false,
-		'exclusive_segment' => false
+        'inclusive_segment' => true,
+		'exclusive_segment' => true
     ];
 
     /**
@@ -320,7 +320,14 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
     public function setInclusiveSegment($inclusive_segment)
     {
         if (is_null($inclusive_segment)) {
-            throw new \InvalidArgumentException('non-nullable inclusive_segment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'inclusive_segment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inclusive_segment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['inclusive_segment'] = $inclusive_segment;
 
@@ -347,7 +354,14 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
     public function setExclusiveSegment($exclusive_segment)
     {
         if (is_null($exclusive_segment)) {
-            throw new \InvalidArgumentException('non-nullable exclusive_segment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'exclusive_segment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('exclusive_segment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['exclusive_segment'] = $exclusive_segment;
 

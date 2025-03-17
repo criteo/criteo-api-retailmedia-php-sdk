@@ -86,8 +86,8 @@ class RmLegacyAudienceGetEntityV1 implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'name' => false,
 		'retailer_id' => false,
-		'user_behavior_details' => false,
-		'customer_list_details' => false
+		'user_behavior_details' => true,
+		'customer_list_details' => true
     ];
 
     /**
@@ -391,7 +391,14 @@ class RmLegacyAudienceGetEntityV1 implements ModelInterface, ArrayAccess, \JsonS
     public function setUserBehaviorDetails($user_behavior_details)
     {
         if (is_null($user_behavior_details)) {
-            throw new \InvalidArgumentException('non-nullable user_behavior_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'user_behavior_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user_behavior_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['user_behavior_details'] = $user_behavior_details;
 
@@ -418,7 +425,14 @@ class RmLegacyAudienceGetEntityV1 implements ModelInterface, ArrayAccess, \JsonS
     public function setCustomerListDetails($customer_list_details)
     {
         if (is_null($customer_list_details)) {
-            throw new \InvalidArgumentException('non-nullable customer_list_details cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'customer_list_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('customer_list_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['customer_list_details'] = $customer_list_details;
 
