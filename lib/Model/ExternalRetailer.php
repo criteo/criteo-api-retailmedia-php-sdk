@@ -81,7 +81,7 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'campaign_eligibilities' => false
+		'campaign_eligibilities' => true
     ];
 
     /**
@@ -376,10 +376,17 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCampaignEligibilities($campaign_eligibilities)
     {
         if (is_null($campaign_eligibilities)) {
-            throw new \InvalidArgumentException('non-nullable campaign_eligibilities cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'campaign_eligibilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_eligibilities', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getCampaignEligibilitiesAllowableValues();
-        if (array_diff($campaign_eligibilities, $allowedValues)) {
+        if (!is_null($campaign_eligibilities) && array_diff($campaign_eligibilities, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'campaign_eligibilities', must be one of '%s'",

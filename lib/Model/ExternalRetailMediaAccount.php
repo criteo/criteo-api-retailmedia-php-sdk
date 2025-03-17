@@ -411,7 +411,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name account name
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets company_name
      *
-     * @param string|null $company_name company_name
+     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets on_behalf_company_name
      *
-     * @param string|null $on_behalf_company_name on_behalf_company_name
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type for the account
      *
      * @return self
      */
@@ -557,7 +557,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets sub_type
      *
-     * @param string|null $sub_type sub_type
+     * @param string|null $sub_type subtype for the account
      *
      * @return self
      */
@@ -601,7 +601,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets country_ids
      *
-     * @param string[]|null $country_ids country_ids
+     * @param string[]|null $country_ids list of countries associated with the account
      *
      * @return self
      */
@@ -635,7 +635,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets currency_id
      *
-     * @param string|null $currency_id currency_id
+     * @param string|null $currency_id the currency for the account
      *
      * @return self
      */
@@ -669,7 +669,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets parent_account_label
      *
-     * @param string|null $parent_account_label parent_account_label
+     * @param string|null $parent_account_label parent account label for the account
      *
      * @return self
      */
@@ -703,7 +703,7 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets time_zone
      *
-     * @param string|null $time_zone time_zone
+     * @param string|null $time_zone the timezone for the account
      *
      * @return self
      */

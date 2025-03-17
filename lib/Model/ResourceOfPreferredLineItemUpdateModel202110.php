@@ -82,8 +82,8 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-		'type' => true,
+        'id' => false,
+		'type' => false,
 		'attributes' => false
     ];
 
@@ -324,14 +324,7 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
     public function setId($id)
     {
         if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
 
@@ -358,14 +351,7 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
     public function setType($type)
     {
         if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
 

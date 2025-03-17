@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_04\ObjectSerializer;
  * ExternalRetailMediaBrandAccountCreation Class Doc Comment
  *
  * @category Class
- * @description The details for a newly created brand account
+ * @description the initial set up and configuration options for a new private market demand brand account
  * @package  criteo\api\retailmedia\v2024_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -324,7 +324,7 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name the name of the account, must be unique across all accounts
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
     /**
      * Sets company_name
      *
-     * @param string|null $company_name company_name
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
      *
      * @return self
      */
@@ -392,7 +392,7 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
     /**
      * Sets on_behalf_company_name
      *
-     * @param string|null $on_behalf_company_name on_behalf_company_name
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
     /**
      * Sets brands
      *
-     * @param int[]|null $brands brands
+     * @param int[]|null $brands list of brands to link to the new account
      *
      * @return self
      */

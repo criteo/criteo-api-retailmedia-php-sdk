@@ -92,11 +92,11 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'id' => false,
 		'text_variable_value' => true,
-		'choice_variable_value' => false,
+		'choice_variable_value' => true,
 		'color_variable_value' => true,
-		'files_variable_value' => false,
+		'files_variable_value' => true,
 		'hyperlink_variable_value' => true,
-		'video_variable_value' => false
+		'video_variable_value' => true
     ];
 
     /**
@@ -416,7 +416,14 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setChoiceVariableValue($choice_variable_value)
     {
         if (is_null($choice_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable choice_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'choice_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('choice_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['choice_variable_value'] = $choice_variable_value;
 
@@ -477,7 +484,14 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setFilesVariableValue($files_variable_value)
     {
         if (is_null($files_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable files_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'files_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('files_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['files_variable_value'] = $files_variable_value;
 
@@ -538,7 +552,14 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setVideoVariableValue($video_variable_value)
     {
         if (is_null($video_variable_value)) {
-            throw new \InvalidArgumentException('non-nullable video_variable_value cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'video_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('video_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['video_variable_value'] = $video_variable_value;
 
