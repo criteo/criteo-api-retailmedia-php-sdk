@@ -92,8 +92,8 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'match_type' => false,
 		'bid' => true,
 		'input_keywords' => false,
-		'created_at' => true,
-		'updated_at' => true
+		'created_at' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -460,14 +460,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt($created_at)
     {
         if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
 
@@ -494,14 +487,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
 

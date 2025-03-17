@@ -100,18 +100,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'campaign_ids' => true,
-		'line_item_ids' => true,
+        'campaign_ids' => false,
+		'line_item_ids' => false,
 		'account_id' => false,
-		'click_attribution_window' => true,
-		'view_attribution_window' => true,
-		'campaign_type' => true,
-		'sales_channel' => true,
-		'dimensions' => true,
-		'metrics' => true,
+		'click_attribution_window' => false,
+		'view_attribution_window' => false,
+		'campaign_type' => false,
+		'sales_channel' => false,
+		'dimensions' => false,
+		'metrics' => false,
 		'start_date' => false,
 		'end_date' => false,
-		'timezone' => true
+		'timezone' => false
     ];
 
     /**
@@ -592,14 +592,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setCampaignIds($campaign_ids)
     {
         if (is_null($campaign_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'campaign_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('campaign_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
         $this->container['campaign_ids'] = $campaign_ids;
 
@@ -626,14 +619,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setLineItemIds($line_item_ids)
     {
         if (is_null($line_item_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'line_item_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('line_item_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
         }
         $this->container['line_item_ids'] = $line_item_ids;
 
@@ -687,17 +673,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setClickAttributionWindow($click_attribution_window)
     {
         if (is_null($click_attribution_window)) {
-            array_push($this->openAPINullablesSetToNull, 'click_attribution_window');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('click_attribution_window', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
         }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!is_null($click_attribution_window) && !in_array($click_attribution_window, $allowedValues, true)) {
+        if (!in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
@@ -731,17 +710,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setViewAttributionWindow($view_attribution_window)
     {
         if (is_null($view_attribution_window)) {
-            array_push($this->openAPINullablesSetToNull, 'view_attribution_window');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('view_attribution_window', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
         }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!is_null($view_attribution_window) && !in_array($view_attribution_window, $allowedValues, true)) {
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
@@ -775,17 +747,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setCampaignType($campaign_type)
     {
         if (is_null($campaign_type)) {
-            array_push($this->openAPINullablesSetToNull, 'campaign_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('campaign_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
         }
         $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!is_null($campaign_type) && !in_array($campaign_type, $allowedValues, true)) {
+        if (!in_array($campaign_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'campaign_type', must be one of '%s'",
@@ -819,17 +784,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setSalesChannel($sales_channel)
     {
         if (is_null($sales_channel)) {
-            array_push($this->openAPINullablesSetToNull, 'sales_channel');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sales_channel', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
         }
         $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!is_null($sales_channel) && !in_array($sales_channel, $allowedValues, true)) {
+        if (!in_array($sales_channel, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sales_channel', must be one of '%s'",
@@ -863,17 +821,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setDimensions($dimensions)
     {
         if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
         }
         $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+        if (array_diff($dimensions, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'dimensions', must be one of '%s'",
@@ -906,17 +857,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setMetrics($metrics)
     {
         if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
         }
         $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+        if (array_diff($metrics, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'metrics', must be one of '%s'",
@@ -1003,14 +947,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function setTimezone($timezone)
     {
         if (is_null($timezone)) {
-            array_push($this->openAPINullablesSetToNull, 'timezone');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('timezone', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
 

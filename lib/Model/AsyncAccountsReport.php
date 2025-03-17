@@ -107,20 +107,20 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_ids' => false,
-		'aggregation_level' => true,
-		'search_term_types' => true,
-		'search_term_targetings' => true,
-		'campaign_type' => true,
-		'sales_channel' => true,
-		'format' => true,
-		'report_type' => true,
-		'click_attribution_window' => true,
-		'view_attribution_window' => true,
-		'dimensions' => true,
-		'metrics' => true,
+		'aggregation_level' => false,
+		'search_term_types' => false,
+		'search_term_targetings' => false,
+		'campaign_type' => false,
+		'sales_channel' => false,
+		'format' => false,
+		'report_type' => false,
+		'click_attribution_window' => false,
+		'view_attribution_window' => false,
+		'dimensions' => false,
+		'metrics' => false,
 		'start_date' => false,
 		'end_date' => false,
-		'timezone' => true
+		'timezone' => false
     ];
 
     /**
@@ -838,17 +838,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setAggregationLevel($aggregation_level)
     {
         if (is_null($aggregation_level)) {
-            array_push($this->openAPINullablesSetToNull, 'aggregation_level');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('aggregation_level', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable aggregation_level cannot be null');
         }
         $allowedValues = $this->getAggregationLevelAllowableValues();
-        if (!is_null($aggregation_level) && !in_array($aggregation_level, $allowedValues, true)) {
+        if (!in_array($aggregation_level, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'aggregation_level', must be one of '%s'",
@@ -882,17 +875,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSearchTermTypes($search_term_types)
     {
         if (is_null($search_term_types)) {
-            array_push($this->openAPINullablesSetToNull, 'search_term_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('search_term_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable search_term_types cannot be null');
         }
         $allowedValues = $this->getSearchTermTypesAllowableValues();
-        if (!is_null($search_term_types) && array_diff($search_term_types, $allowedValues)) {
+        if (array_diff($search_term_types, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'search_term_types', must be one of '%s'",
@@ -925,17 +911,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSearchTermTargetings($search_term_targetings)
     {
         if (is_null($search_term_targetings)) {
-            array_push($this->openAPINullablesSetToNull, 'search_term_targetings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('search_term_targetings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable search_term_targetings cannot be null');
         }
         $allowedValues = $this->getSearchTermTargetingsAllowableValues();
-        if (!is_null($search_term_targetings) && array_diff($search_term_targetings, $allowedValues)) {
+        if (array_diff($search_term_targetings, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'search_term_targetings', must be one of '%s'",
@@ -968,17 +947,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCampaignType($campaign_type)
     {
         if (is_null($campaign_type)) {
-            array_push($this->openAPINullablesSetToNull, 'campaign_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('campaign_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
         }
         $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!is_null($campaign_type) && !in_array($campaign_type, $allowedValues, true)) {
+        if (!in_array($campaign_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'campaign_type', must be one of '%s'",
@@ -1012,17 +984,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setSalesChannel($sales_channel)
     {
         if (is_null($sales_channel)) {
-            array_push($this->openAPINullablesSetToNull, 'sales_channel');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sales_channel', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
         }
         $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!is_null($sales_channel) && !in_array($sales_channel, $allowedValues, true)) {
+        if (!in_array($sales_channel, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sales_channel', must be one of '%s'",
@@ -1056,17 +1021,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFormat($format)
     {
         if (is_null($format)) {
-            array_push($this->openAPINullablesSetToNull, 'format');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('format', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
         }
         $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+        if (!in_array($format, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'format', must be one of '%s'",
@@ -1100,17 +1058,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setReportType($report_type)
     {
         if (is_null($report_type)) {
-            array_push($this->openAPINullablesSetToNull, 'report_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('report_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
         }
         $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($report_type) && !in_array($report_type, $allowedValues, true)) {
+        if (!in_array($report_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'report_type', must be one of '%s'",
@@ -1144,17 +1095,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setClickAttributionWindow($click_attribution_window)
     {
         if (is_null($click_attribution_window)) {
-            array_push($this->openAPINullablesSetToNull, 'click_attribution_window');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('click_attribution_window', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
         }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!is_null($click_attribution_window) && !in_array($click_attribution_window, $allowedValues, true)) {
+        if (!in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
@@ -1188,17 +1132,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setViewAttributionWindow($view_attribution_window)
     {
         if (is_null($view_attribution_window)) {
-            array_push($this->openAPINullablesSetToNull, 'view_attribution_window');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('view_attribution_window', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
         }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!is_null($view_attribution_window) && !in_array($view_attribution_window, $allowedValues, true)) {
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
@@ -1232,17 +1169,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setDimensions($dimensions)
     {
         if (is_null($dimensions)) {
-            array_push($this->openAPINullablesSetToNull, 'dimensions');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('dimensions', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
         }
         $allowedValues = $this->getDimensionsAllowableValues();
-        if (!is_null($dimensions) && array_diff($dimensions, $allowedValues)) {
+        if (array_diff($dimensions, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'dimensions', must be one of '%s'",
@@ -1275,17 +1205,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setMetrics($metrics)
     {
         if (is_null($metrics)) {
-            array_push($this->openAPINullablesSetToNull, 'metrics');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metrics', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
         }
         $allowedValues = $this->getMetricsAllowableValues();
-        if (!is_null($metrics) && array_diff($metrics, $allowedValues)) {
+        if (array_diff($metrics, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'metrics', must be one of '%s'",
@@ -1372,14 +1295,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTimezone($timezone)
     {
         if (is_null($timezone)) {
-            array_push($this->openAPINullablesSetToNull, 'timezone');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('timezone', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
 

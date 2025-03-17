@@ -83,7 +83,7 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'operation' => false,
-		'identifier_type' => true,
+		'identifier_type' => false,
 		'identifiers' => false
     ];
 
@@ -423,17 +423,10 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
     public function setIdentifierType($identifier_type)
     {
         if (is_null($identifier_type)) {
-            array_push($this->openAPINullablesSetToNull, 'identifier_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('identifier_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable identifier_type cannot be null');
         }
         $allowedValues = $this->getIdentifierTypeAllowableValues();
-        if (!is_null($identifier_type) && !in_array($identifier_type, $allowedValues, true)) {
+        if (!in_array($identifier_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'identifier_type', must be one of '%s'",

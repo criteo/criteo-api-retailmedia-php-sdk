@@ -81,7 +81,7 @@ class SellerSearch implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'account_ids' => false,
-		'include_details' => true
+		'include_details' => false
     ];
 
     /**
@@ -355,14 +355,7 @@ class SellerSearch implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIncludeDetails($include_details)
     {
         if (is_null($include_details)) {
-            array_push($this->openAPINullablesSetToNull, 'include_details');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('include_details', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable include_details cannot be null');
         }
         $this->container['include_details'] = $include_details;
 

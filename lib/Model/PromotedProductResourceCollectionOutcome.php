@@ -86,7 +86,7 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'errors' => true,
 		'warnings' => true,
-		'meta' => false,
+		'meta' => true,
 		'data' => true
     ];
 
@@ -399,7 +399,14 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     public function setMeta($meta)
     {
         if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta'] = $meta;
 

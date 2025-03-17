@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * ExternalRetailMediaChildAccount Class Doc Comment
  *
  * @category Class
- * @description A Retail Media account entity
+ * @description The details for a newly created account
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -79,8 +79,8 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
         'name' => null,
         'company_name' => null,
         'on_behalf_company_name' => null,
-        'type' => 'string',
-        'sub_type' => 'string',
+        'type' => null,
+        'sub_type' => null,
         'country_ids' => null,
         'currency_id' => null,
         'time_zone' => null
@@ -95,8 +95,8 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
         'name' => true,
 		'company_name' => true,
 		'on_behalf_company_name' => true,
-		'type' => false,
-		'sub_type' => false,
+		'type' => true,
+		'sub_type' => true,
 		'country_ids' => true,
 		'currency_id' => true,
 		'time_zone' => true
@@ -358,9 +358,6 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         $allowedValues = $this->getTypeAllowableValues();
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -370,9 +367,6 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
             );
         }
 
-        if ($this->container['sub_type'] === null) {
-            $invalidProperties[] = "'sub_type' can't be null";
-        }
         $allowedValues = $this->getSubTypeAllowableValues();
         if (!is_null($this->container['sub_type']) && !in_array($this->container['sub_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -410,7 +404,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name account name
      *
      * @return self
      */
@@ -444,7 +438,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets company_name
      *
-     * @param string|null $company_name company_name
+     * @param string|null $company_name Paying entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -478,7 +472,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets on_behalf_company_name
      *
-     * @param string|null $on_behalf_company_name on_behalf_company_name
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -502,7 +496,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Gets type
      *
-     * @return string
+     * @return string|null
      */
     public function getType()
     {
@@ -512,17 +506,24 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string|null $type Type for the account
      *
      * @return self
      */
     public function setType($type)
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'type', must be one of '%s'",
@@ -539,7 +540,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Gets sub_type
      *
-     * @return string
+     * @return string|null
      */
     public function getSubType()
     {
@@ -549,17 +550,24 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets sub_type
      *
-     * @param string $sub_type sub_type
+     * @param string|null $sub_type subtype for the account
      *
      * @return self
      */
     public function setSubType($sub_type)
     {
         if (is_null($sub_type)) {
-            throw new \InvalidArgumentException('non-nullable sub_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sub_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sub_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getSubTypeAllowableValues();
-        if (!in_array($sub_type, $allowedValues, true)) {
+        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'sub_type', must be one of '%s'",
@@ -586,7 +594,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets country_ids
      *
-     * @param string[]|null $country_ids country_ids
+     * @param string[]|null $country_ids list of countries associated with the account
      *
      * @return self
      */
@@ -620,7 +628,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets currency_id
      *
-     * @param string|null $currency_id currency_id
+     * @param string|null $currency_id the currency for the account
      *
      * @return self
      */
@@ -654,7 +662,7 @@ class ExternalRetailMediaChildAccount implements ModelInterface, ArrayAccess, \J
     /**
      * Sets time_zone
      *
-     * @param string|null $time_zone time_zone
+     * @param string|null $time_zone the timezone for the account
      *
      * @return self
      */

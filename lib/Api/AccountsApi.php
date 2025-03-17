@@ -144,7 +144,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
      */
     public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
     {
@@ -162,7 +162,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
     {
@@ -205,23 +205,23 @@ class AccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount';
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -242,7 +242,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount',
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -286,7 +286,7 @@ class AccountsApi
      */
     public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount';
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
         $request = $this->getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdRequest($account_id, $offset, $limit, $contentType);
 
         return $this->client

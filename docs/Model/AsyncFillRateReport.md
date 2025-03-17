@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**supply_account_ids** | **string[]** | Supply account ids to report on | [optional]
+**supply_account_ids** | **string[]** | Supply account ids to report on |
 **dimensions** | **string[]** | List of dimensions to report on |
 **metrics** | **string[]** | List of metrics to report on |
 **format** | **string** | Format of the output | [optional] [default to 'json']

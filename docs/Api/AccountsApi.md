@@ -12,7 +12,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 ## `getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()`
 
 ```php
-getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $offset, $limit): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount
+getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $offset, $limit): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 ```
 
 
@@ -61,7 +61,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccount**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccount.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
 
 ### Authorization
 

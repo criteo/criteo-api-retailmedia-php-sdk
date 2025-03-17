@@ -84,7 +84,7 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static array $openAPINullables = [
         'retailer_ids' => false,
 		'name' => true,
-		'brand_type' => true
+		'brand_type' => false
     ];
 
     /**
@@ -423,17 +423,10 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setBrandType($brand_type)
     {
         if (is_null($brand_type)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
         }
         $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!is_null($brand_type) && !in_array($brand_type, $allowedValues, true)) {
+        if (!in_array($brand_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'brand_type', must be one of '%s'",

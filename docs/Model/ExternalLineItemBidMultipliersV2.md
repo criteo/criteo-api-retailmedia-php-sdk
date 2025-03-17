@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **favorites** | **float** | Favorites Page Type Bid Multiplier | [optional]
 **search_bar** | **float** | SearchBar Page Type Bid Multiplier | [optional]
 **category_menu** | **float** | CategoryMenu Page Type Bid Multiplier | [optional]
+**id** | **string** | Id of the entity | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

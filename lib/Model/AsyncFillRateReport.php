@@ -90,13 +90,13 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supply_account_ids' => true,
+        'supply_account_ids' => false,
 		'dimensions' => false,
 		'metrics' => false,
-		'format' => true,
+		'format' => false,
 		'start_date' => false,
 		'end_date' => false,
-		'timezone' => true
+		'timezone' => false
     ];
 
     /**
@@ -291,7 +291,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_CPC = 'cpc';
     public const METRICS_PLACEMENT_IMPRESSIONS_REVENUE = 'placementImpressionsRevenue';
     public const METRICS_PRODUCT_CLICKS_REVENUE = 'productClicksRevenue';
-    public const METRICS_TOTAL_REVENUE = 'totalRevenue';
+    public const METRICS_REVENUE = 'revenue';
     public const METRICS_WORKING_MEDIA = 'workingMedia';
     public const METRICS_NET_REVENUE = 'netRevenue';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
@@ -346,7 +346,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_CPC,
             self::METRICS_PLACEMENT_IMPRESSIONS_REVENUE,
             self::METRICS_PRODUCT_CLICKS_REVENUE,
-            self::METRICS_TOTAL_REVENUE,
+            self::METRICS_REVENUE,
             self::METRICS_WORKING_MEDIA,
             self::METRICS_NET_REVENUE,
             self::METRICS_UNIQUE_VISITORS,
@@ -420,12 +420,23 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['supply_account_ids'] === null) {
+            $invalidProperties[] = "'supply_account_ids' can't be null";
+        }
         if ($this->container['dimensions'] === null) {
             $invalidProperties[] = "'dimensions' can't be null";
         }
+        if ((count($this->container['dimensions']) < 1)) {
+            $invalidProperties[] = "invalid value for 'dimensions', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['metrics'] === null) {
             $invalidProperties[] = "'metrics' can't be null";
         }
+        if ((count($this->container['metrics']) < 1)) {
+            $invalidProperties[] = "invalid value for 'metrics', number of items must be greater than or equal to 1.";
+        }
+
         $allowedValues = $this->getFormatAllowableValues();
         if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -459,7 +470,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets supply_account_ids
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getSupplyAccountIds()
     {
@@ -469,21 +480,14 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets supply_account_ids
      *
-     * @param string[]|null $supply_account_ids Supply account ids to report on
+     * @param string[] $supply_account_ids Supply account ids to report on
      *
      * @return self
      */
     public function setSupplyAccountIds($supply_account_ids)
     {
         if (is_null($supply_account_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'supply_account_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('supply_account_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable supply_account_ids cannot be null');
         }
         $this->container['supply_account_ids'] = $supply_account_ids;
 
@@ -521,6 +525,11 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
                 )
             );
         }
+
+
+        if ((count($dimensions) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $dimensions when calling AsyncFillRateReport., number of items must be greater than or equal to 1.');
+        }
         $this->container['dimensions'] = $dimensions;
 
         return $this;
@@ -557,6 +566,11 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
                 )
             );
         }
+
+
+        if ((count($metrics) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $metrics when calling AsyncFillRateReport., number of items must be greater than or equal to 1.');
+        }
         $this->container['metrics'] = $metrics;
 
         return $this;
@@ -582,17 +596,10 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setFormat($format)
     {
         if (is_null($format)) {
-            array_push($this->openAPINullablesSetToNull, 'format');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('format', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
         }
         $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($format) && !in_array($format, $allowedValues, true)) {
+        if (!in_array($format, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'format', must be one of '%s'",
@@ -680,14 +687,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setTimezone($timezone)
     {
         if (is_null($timezone)) {
-            array_push($this->openAPINullablesSetToNull, 'timezone');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('timezone', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
 

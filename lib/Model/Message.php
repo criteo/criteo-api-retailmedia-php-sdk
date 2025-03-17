@@ -81,7 +81,7 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'user_message' => true,
-		'bot_message' => false
+		'bot_message' => true
     ];
 
     /**
@@ -351,7 +351,14 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setBotMessage($bot_message)
     {
         if (is_null($bot_message)) {
-            throw new \InvalidArgumentException('non-nullable bot_message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'bot_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bot_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['bot_message'] = $bot_message;
 

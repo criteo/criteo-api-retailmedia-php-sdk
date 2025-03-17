@@ -78,7 +78,7 @@ class InbotDiscussion implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'messages' => true
+        'messages' => false
     ];
 
     /**
@@ -314,18 +314,11 @@ class InbotDiscussion implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMessages($messages)
     {
         if (is_null($messages)) {
-            array_push($this->openAPINullablesSetToNull, 'messages');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('messages', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable messages cannot be null');
         }
 
 
-        if (!is_null($messages) && (count($messages) < 1)) {
+        if ((count($messages) < 1)) {
             throw new \InvalidArgumentException('invalid length for $messages when calling InbotDiscussion., number of items must be greater than or equal to 1.');
         }
         $this->container['messages'] = $messages;

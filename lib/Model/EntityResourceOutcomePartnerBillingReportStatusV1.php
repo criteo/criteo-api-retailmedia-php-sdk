@@ -1,6 +1,6 @@
 <?php
 /**
- * OffsetPageMetadata
+ * EntityResourceOutcomePartnerBillingReportStatusV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * OffsetPageMetadata Class Doc Comment
+ * EntityResourceOutcomePartnerBillingReportStatusV1 Class Doc Comment
  *
  * @category Class
- * @description Metadata related to the current request
+ * @description A top-level object that encapsulates a Criteo API response for a single entity.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOutcomePartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'OffsetPageMetadata';
+    protected static $openAPIModelName = 'EntityResourceOutcomePartnerBillingReportStatusV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'offset' => 'int',
-        'limit' => 'int'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourcePartnerBillingReportStatusV1',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => 'int64',
-        'offset' => 'int32',
-        'limit' => 'int32'
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => true,
-		'offset' => false,
-		'limit' => false
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'offset' => 'offset',
-        'limit' => 'limit'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -184,9 +184,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'offset' => 'setOffset',
-        'limit' => 'setLimit'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -195,9 +195,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'offset' => 'getOffset',
-        'limit' => 'getLimit'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -257,9 +257,9 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('offset', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -289,12 +289,6 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['offset'] === null) {
-            $invalidProperties[] = "'offset' can't be null";
-        }
-        if ($this->container['limit'] === null) {
-            $invalidProperties[] = "'limit' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -311,89 +305,103 @@ class OffsetPageMetadata implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets count
+     * Gets data
      *
-     * @return int|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourcePartnerBillingReportStatusV1|null
      */
-    public function getCount()
+    public function getData()
     {
-        return $this->container['count'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets count
+     * Sets data
      *
-     * @param int|null $count count
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourcePartnerBillingReportStatusV1|null $data data
      *
      * @return self
      */
-    public function setCount($count)
+    public function setData($data)
     {
-        if (is_null($count)) {
-            array_push($this->openAPINullablesSetToNull, 'count');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('count', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['count'] = $count;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets offset
+     * Gets warnings
      *
-     * @return int
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getOffset()
+    public function getWarnings()
     {
-        return $this->container['offset'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets offset
+     * Sets warnings
      *
-     * @param int $offset offset
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setOffset($offset)
+    public function setWarnings($warnings)
     {
-        if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['offset'] = $offset;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
 
     /**
-     * Gets limit
+     * Gets errors
      *
-     * @return int
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getLimit()
+    public function getErrors()
     {
-        return $this->container['limit'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets limit
+     * Sets errors
      *
-     * @param int $limit limit
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setLimit($limit)
+    public function setErrors($errors)
     {
-        if (is_null($limit)) {
-            throw new \InvalidArgumentException('non-nullable limit cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['limit'] = $limit;
+        $this->container['errors'] = $errors;
 
         return $this;
     }

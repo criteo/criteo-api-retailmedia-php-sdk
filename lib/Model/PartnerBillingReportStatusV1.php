@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeOfRetailMediaChildAccount
+ * PartnerBillingReportStatusV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeOfRetailMediaChildAccount Class Doc Comment
+ * PartnerBillingReportStatusV1 Class Doc Comment
  *
  * @category Class
- * @description A resource that represents collection of Retail Media child account entities
+ * @description Status info of a Partner Billing Report.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfRetailMediaChildAccount';
+    protected static $openAPIModelName = 'PartnerBillingReportStatusV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metadata' => '\criteo\api\retailmedia\preview\Model\OffsetPageMetadata',
-        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfRetailMediaChildAccount[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'status' => 'string',
+        'error_message' => 'string',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -72,10 +71,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metadata' => null,
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'status' => null,
+        'error_message' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -84,10 +82,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'metadata' => false,
-		'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'status' => false,
+		'error_message' => true,
+		'created_at' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata' => 'metadata',
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'status' => 'status',
+        'error_message' => 'errorMessage',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -188,10 +184,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
      * @var string[]
      */
     protected static $setters = [
-        'metadata' => 'setMetadata',
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'status' => 'setStatus',
+        'error_message' => 'setErrorMessage',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -200,10 +195,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
      * @var string[]
      */
     protected static $getters = [
-        'metadata' => 'getMetadata',
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'status' => 'getStatus',
+        'error_message' => 'getErrorMessage',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -247,6 +241,25 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PENDING = 'Pending';
+    public const STATUS_SUCCESS = 'Success';
+    public const STATUS_FAILED = 'Failed';
+    public const STATUS_EXPIRED = 'Expired';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_SUCCESS,
+            self::STATUS_FAILED,
+            self::STATUS_EXPIRED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +276,9 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('error_message', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -296,6 +308,21 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
     {
         $invalidProperties = [];
 
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -312,130 +339,99 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccount implements ModelI
 
 
     /**
-     * Gets metadata
+     * Gets status
      *
-     * @return \criteo\api\retailmedia\preview\Model\OffsetPageMetadata|null
+     * @return string
      */
-    public function getMetadata()
+    public function getStatus()
     {
-        return $this->container['metadata'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets metadata
+     * Sets status
      *
-     * @param \criteo\api\retailmedia\preview\Model\OffsetPageMetadata|null $metadata metadata
+     * @param string $status Status of the report.
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setStatus($status)
     {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['metadata'] = $metadata;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets data
+     * Gets error_message
      *
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailMediaChildAccount[]|null
+     * @return string|null
      */
-    public function getData()
+    public function getErrorMessage()
     {
-        return $this->container['data'];
+        return $this->container['error_message'];
     }
 
     /**
-     * Sets data
+     * Sets error_message
      *
-     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailMediaChildAccount[]|null $data data
+     * @param string|null $error_message Possible error message along with the status.
      *
      * @return self
      */
-    public function setData($data)
+    public function setErrorMessage($error_message)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($error_message)) {
+            array_push($this->openAPINullablesSetToNull, 'error_message');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('error_message', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['error_message'] = $error_message;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets created_at
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \DateTime
      */
-    public function getWarnings()
+    public function getCreatedAt()
     {
-        return $this->container['warnings'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets warnings
+     * Sets created_at
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     * @param \DateTime $created_at The date when the report request is created.
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

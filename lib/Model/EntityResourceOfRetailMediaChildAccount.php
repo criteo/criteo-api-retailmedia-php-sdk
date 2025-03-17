@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * EntityResourceOfRetailMediaChildAccount Class Doc Comment
  *
  * @category Class
- * @description A resource object that represents a single Retail Media child account entity
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class EntityResourceOfRetailMediaChildAccount implements ModelInterface, ArrayAc
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Unique id of the entity.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class EntityResourceOfRetailMediaChildAccount implements ModelInterface, ArrayAc
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */

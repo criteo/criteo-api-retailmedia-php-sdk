@@ -78,7 +78,7 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sellers' => true
+        'sellers' => false
     ];
 
     /**
@@ -310,14 +310,7 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setSellers($sellers)
     {
         if (is_null($sellers)) {
-            array_push($this->openAPINullablesSetToNull, 'sellers');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sellers', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
         }
         $this->container['sellers'] = $sellers;
 
