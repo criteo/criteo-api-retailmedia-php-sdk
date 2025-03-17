@@ -91,9 +91,9 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
 		'required' => false,
 		'type' => false,
-		'choice_variable_specification' => false,
+		'choice_variable_specification' => true,
 		'text_variable_specification' => true,
-		'files_variables_specification' => false
+		'files_variables_specification' => true
     ];
 
     /**
@@ -475,7 +475,14 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setChoiceVariableSpecification($choice_variable_specification)
     {
         if (is_null($choice_variable_specification)) {
-            throw new \InvalidArgumentException('non-nullable choice_variable_specification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'choice_variable_specification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('choice_variable_specification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['choice_variable_specification'] = $choice_variable_specification;
 
@@ -536,7 +543,14 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setFilesVariablesSpecification($files_variables_specification)
     {
         if (is_null($files_variables_specification)) {
-            throw new \InvalidArgumentException('non-nullable files_variables_specification cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'files_variables_specification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('files_variables_specification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['files_variables_specification'] = $files_variables_specification;
 

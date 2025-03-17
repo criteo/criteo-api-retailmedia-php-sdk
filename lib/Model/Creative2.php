@@ -69,7 +69,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'updated_at' => '\DateTime',
         'creative_format_v2_type' => 'string',
         'environments' => '\criteo\api\retailmedia\v2024_10\Model\PageTypeEnvironment2[]',
-        'template_variable_values' => '\criteo\api\retailmedia\v2024_10\Model\TemplateVariableValue[]'
+        'template_variable_values' => '\criteo\api\retailmedia\v2024_10\Model\TemplateVariableValue[]',
+        'id' => 'string'
     ];
 
     /**
@@ -91,7 +92,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'updated_at' => 'date-time',
         'creative_format_v2_type' => 'string',
         'environments' => null,
-        'template_variable_values' => null
+        'template_variable_values' => null,
+        'id' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'updated_at' => false,
 		'creative_format_v2_type' => false,
 		'environments' => false,
-		'template_variable_values' => false
+		'template_variable_values' => false,
+		'id' => true
     ];
 
     /**
@@ -211,7 +214,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'updated_at' => 'updatedAt',
         'creative_format_v2_type' => 'creativeFormatV2Type',
         'environments' => 'environments',
-        'template_variable_values' => 'templateVariableValues'
+        'template_variable_values' => 'templateVariableValues',
+        'id' => 'id'
     ];
 
     /**
@@ -231,7 +235,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'creative_format_v2_type' => 'setCreativeFormatV2Type',
         'environments' => 'setEnvironments',
-        'template_variable_values' => 'setTemplateVariableValues'
+        'template_variable_values' => 'setTemplateVariableValues',
+        'id' => 'setId'
     ];
 
     /**
@@ -251,7 +256,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'creative_format_v2_type' => 'getCreativeFormatV2Type',
         'environments' => 'getEnvironments',
-        'template_variable_values' => 'getTemplateVariableValues'
+        'template_variable_values' => 'getTemplateVariableValues',
+        'id' => 'getId'
     ];
 
     /**
@@ -373,6 +379,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('creative_format_v2_type', $data ?? [], null);
         $this->setIfExists('environments', $data ?? [], null);
         $this->setIfExists('template_variable_values', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -811,6 +818,40 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable template_variable_values cannot be null');
         }
         $this->container['template_variable_values'] = $template_variable_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

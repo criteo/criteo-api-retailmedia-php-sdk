@@ -275,6 +275,9 @@ class ExternalRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['brand_ids'] === null) {
+            $invalidProperties[] = "'brand_ids' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class ExternalRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets brand_ids
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getBrandIds()
     {
@@ -303,7 +306,7 @@ class ExternalRetailMediaBrands implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets brand_ids
      *
-     * @param int[]|null $brand_ids brand_ids
+     * @param int[] $brand_ids brand_ids
      *
      * @return self
      */

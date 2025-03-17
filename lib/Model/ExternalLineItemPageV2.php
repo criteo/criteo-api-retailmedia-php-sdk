@@ -83,7 +83,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'page_type' => false,
-		'categories' => false,
+		'categories' => true,
 		'search_keywords' => false
     ];
 
@@ -410,7 +410,14 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setCategories($categories)
     {
         if (is_null($categories)) {
-            throw new \InvalidArgumentException('non-nullable categories cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['categories'] = $categories;
 

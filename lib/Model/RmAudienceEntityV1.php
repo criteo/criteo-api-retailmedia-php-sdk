@@ -102,7 +102,7 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
 		'created_at' => true,
 		'updated_at' => true,
 		'channels' => true,
-		'algebra' => false
+		'algebra' => true
     ];
 
     /**
@@ -664,7 +664,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setAlgebra($algebra)
     {
         if (is_null($algebra)) {
-            throw new \InvalidArgumentException('non-nullable algebra cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'algebra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('algebra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['algebra'] = $algebra;
 

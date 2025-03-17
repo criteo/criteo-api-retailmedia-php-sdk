@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
  * ExternalRetailMediaSeller Class Doc Comment
  *
  * @category Class
- * @description A seller-retailer mapping
+ * @description used to define the exact seller linked with an account
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -282,6 +282,12 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['seller_id'] === null) {
+            $invalidProperties[] = "'seller_id' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +306,7 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets seller_id
      *
-     * @return string|null
+     * @return string
      */
     public function getSellerId()
     {
@@ -310,7 +316,7 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets seller_id
      *
-     * @param string|null $seller_id seller_id
+     * @param string $seller_id the seller id
      *
      * @return self
      */
@@ -327,7 +333,7 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets retailer_id
      *
-     * @return int|null
+     * @return int
      */
     public function getRetailerId()
     {
@@ -337,7 +343,7 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets retailer_id
      *
-     * @param int|null $retailer_id retailer_id
+     * @param int $retailer_id the retailer id
      *
      * @return self
      */

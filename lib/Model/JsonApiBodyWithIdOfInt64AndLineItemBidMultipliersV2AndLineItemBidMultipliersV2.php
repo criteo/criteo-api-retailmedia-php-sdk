@@ -58,7 +58,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'type' => 'string',
         'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2'
     ];
@@ -71,7 +70,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'long-id',
         'type' => null,
         'attributes' => null
     ];
@@ -82,8 +80,7 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'type' => false,
+        'type' => false,
 		'attributes' => true
     ];
 
@@ -173,7 +170,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'type' => 'type',
         'attributes' => 'attributes'
     ];
@@ -184,7 +180,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'type' => 'setType',
         'attributes' => 'setAttributes'
     ];
@@ -195,7 +190,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'type' => 'getType',
         'attributes' => 'getAttributes'
     ];
@@ -257,7 +251,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
     }
@@ -289,9 +282,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -309,33 +299,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
 
     /**
      * Gets type

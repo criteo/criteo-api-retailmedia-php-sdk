@@ -68,7 +68,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         'checkout' => 'float',
         'favorites' => 'float',
         'search_bar' => 'float',
-        'category_menu' => 'float'
+        'category_menu' => 'float',
+        'id' => 'string'
     ];
 
     /**
@@ -89,7 +90,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         'checkout' => 'decimal',
         'favorites' => 'decimal',
         'search_bar' => 'decimal',
-        'category_menu' => 'decimal'
+        'category_menu' => 'decimal',
+        'id' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
 		'checkout' => true,
 		'favorites' => true,
 		'search_bar' => true,
-		'category_menu' => true
+		'category_menu' => true,
+		'id' => true
     ];
 
     /**
@@ -207,7 +210,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         'checkout' => 'checkout',
         'favorites' => 'favorites',
         'search_bar' => 'searchBar',
-        'category_menu' => 'categoryMenu'
+        'category_menu' => 'categoryMenu',
+        'id' => 'id'
     ];
 
     /**
@@ -226,7 +230,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         'checkout' => 'setCheckout',
         'favorites' => 'setFavorites',
         'search_bar' => 'setSearchBar',
-        'category_menu' => 'setCategoryMenu'
+        'category_menu' => 'setCategoryMenu',
+        'id' => 'setId'
     ];
 
     /**
@@ -245,7 +250,8 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         'checkout' => 'getCheckout',
         'favorites' => 'getFavorites',
         'search_bar' => 'getSearchBar',
-        'category_menu' => 'getCategoryMenu'
+        'category_menu' => 'getCategoryMenu',
+        'id' => 'getId'
     ];
 
     /**
@@ -316,6 +322,7 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
         $this->setIfExists('favorites', $data ?? [], null);
         $this->setIfExists('search_bar', $data ?? [], null);
         $this->setIfExists('category_menu', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -730,6 +737,40 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['category_menu'] = $category_menu;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

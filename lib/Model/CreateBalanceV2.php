@@ -92,7 +92,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'name' => false,
 		'po_number' => true,
-		'deposited' => true,
+		'deposited' => false,
 		'start_date' => false,
 		'end_date' => true,
 		'spend_type' => false,
@@ -448,14 +448,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDeposited($deposited)
     {
         if (is_null($deposited)) {
-            array_push($this->openAPINullablesSetToNull, 'deposited');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deposited', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable deposited cannot be null');
         }
         $this->container['deposited'] = $deposited;
 

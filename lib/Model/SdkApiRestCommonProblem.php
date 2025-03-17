@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceOfRetailMediaAccount
+ * SdkApiRestCommonProblem
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
 
 /**
- * EntityResourceOfRetailMediaAccount Class Doc Comment
+ * SdkApiRestCommonProblem Class Doc Comment
  *
  * @category Class
- * @description A domain entity exposed by the API, identified by a unique id.
+ * @description Common problem object.
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSerializable
+class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceOfRetailMediaAccount';
+    protected static $openAPIModelName = 'SdkApiRestCommonProblem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        'trace_id' => 'string',
         'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaAccount'
+        'code' => 'string',
+        'instance' => 'string',
+        'title' => 'string',
+        'detail' => 'string',
+        'source' => 'array<string,string>',
+        'stack_trace' => 'string'
     ];
 
     /**
@@ -71,9 +76,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        'trace_id' => null,
         'type' => null,
-        'attributes' => null
+        'code' => null,
+        'instance' => null,
+        'title' => null,
+        'detail' => null,
+        'source' => null,
+        'stack_trace' => null
     ];
 
     /**
@@ -82,9 +92,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
+        'trace_id' => true,
 		'type' => true,
-		'attributes' => true
+		'code' => true,
+		'instance' => true,
+		'title' => true,
+		'detail' => true,
+		'source' => true,
+		'stack_trace' => true
     ];
 
     /**
@@ -173,9 +188,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'trace_id' => 'traceId',
         'type' => 'type',
-        'attributes' => 'attributes'
+        'code' => 'code',
+        'instance' => 'instance',
+        'title' => 'title',
+        'detail' => 'detail',
+        'source' => 'source',
+        'stack_trace' => 'stackTrace'
     ];
 
     /**
@@ -184,9 +204,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'trace_id' => 'setTraceId',
         'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'code' => 'setCode',
+        'instance' => 'setInstance',
+        'title' => 'setTitle',
+        'detail' => 'setDetail',
+        'source' => 'setSource',
+        'stack_trace' => 'setStackTrace'
     ];
 
     /**
@@ -195,9 +220,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'trace_id' => 'getTraceId',
         'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'code' => 'getCode',
+        'instance' => 'getInstance',
+        'title' => 'getTitle',
+        'detail' => 'getDetail',
+        'source' => 'getSource',
+        'stack_trace' => 'getStackTrace'
     ];
 
     /**
@@ -241,6 +271,33 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_ACCESS_CONTROL = 'access-control';
+    public const TYPE_AUTHENTICATION = 'authentication';
+    public const TYPE_AUTHORIZATION = 'authorization';
+    public const TYPE_AVAILABILITY = 'availability';
+    public const TYPE_DEPRECATION = 'deprecation';
+    public const TYPE_QUOTA = 'quota';
+    public const TYPE_VALIDATION = 'validation';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_ACCESS_CONTROL,
+            self::TYPE_AUTHENTICATION,
+            self::TYPE_AUTHORIZATION,
+            self::TYPE_AVAILABILITY,
+            self::TYPE_DEPRECATION,
+            self::TYPE_QUOTA,
+            self::TYPE_VALIDATION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +314,14 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('instance', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('detail', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
+        $this->setIfExists('stack_trace', $data ?? [], null);
     }
 
     /**
@@ -289,6 +351,15 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,35 +376,35 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets id
+     * Gets trace_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getTraceId()
     {
-        return $this->container['id'];
+        return $this->container['trace_id'];
     }
 
     /**
-     * Sets id
+     * Sets trace_id
      *
-     * @param string|null $id Unique id of the entity.
+     * @param string|null $trace_id The request correlation ID this problem comes from.
      *
      * @return self
      */
-    public function setId($id)
+    public function setTraceId($trace_id)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($trace_id)) {
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('trace_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['trace_id'] = $trace_id;
 
         return $this;
     }
@@ -351,7 +422,7 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
     /**
      * Sets type
      *
-     * @param string|null $type Type of the resource.
+     * @param string|null $type The problem's category.
      *
      * @return self
      */
@@ -367,41 +438,221 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets code
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaAccount|null
+     * @return string|null
      */
-    public function getAttributes()
+    public function getCode()
     {
-        return $this->container['attributes'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets attributes
+     * Sets code
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\ExternalRetailMediaAccount|null $attributes attributes
+     * @param string|null $code A machine-readable error code, expressed as a string value.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setCode($code)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($code)) {
+            array_push($this->openAPINullablesSetToNull, 'code');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('code', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets instance
+     *
+     * @return string|null
+     */
+    public function getInstance()
+    {
+        return $this->container['instance'];
+    }
+
+    /**
+     * Sets instance
+     *
+     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setInstance($instance)
+    {
+        if (is_null($instance)) {
+            array_push($this->openAPINullablesSetToNull, 'instance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('instance', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['instance'] = $instance;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A short human-readable description of the problem type.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets detail
+     *
+     * @return string|null
+     */
+    public function getDetail()
+    {
+        return $this->container['detail'];
+    }
+
+    /**
+     * Sets detail
+     *
+     * @param string|null $detail A human-readable explanation specific to this occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setDetail($detail)
+    {
+        if (is_null($detail)) {
+            array_push($this->openAPINullablesSetToNull, 'detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('detail', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['detail'] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return array<string,string>|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param array<string,string>|null $source A machine-readable structure to reference to the exact location(s) causing the error(s).
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            array_push($this->openAPINullablesSetToNull, 'source');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets stack_trace
+     *
+     * @return string|null
+     */
+    public function getStackTrace()
+    {
+        return $this->container['stack_trace'];
+    }
+
+    /**
+     * Sets stack_trace
+     *
+     * @param string|null $stack_trace 
+     *
+     * @return self
+     */
+    public function setStackTrace($stack_trace)
+    {
+        if (is_null($stack_trace)) {
+            array_push($this->openAPINullablesSetToNull, 'stack_trace');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stack_trace', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stack_trace'] = $stack_trace;
 
         return $this;
     }

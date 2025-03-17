@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
  * EntityResourceOutcomeOfRetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A top-level object that encapsulates a Criteo API response for a single entity.
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2024_10\Model\EntityResourceOfRetailMediaAccount',
-        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2024_10\Model\CommonProblem[]'
+        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -351,7 +351,7 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -385,7 +385,7 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2024_10\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */

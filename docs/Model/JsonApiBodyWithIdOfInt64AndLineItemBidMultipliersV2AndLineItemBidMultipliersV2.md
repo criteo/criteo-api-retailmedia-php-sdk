@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  |
 **type** | **string** |  |
 **attributes** | [**\criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2**](ExternalLineItemBidMultipliersV2.md) |  | [optional]
 
