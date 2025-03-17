@@ -106,8 +106,8 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
 		'created_at' => true,
 		'updated_at' => true,
 		'created_by_id' => true,
-		'contact_list' => false,
-		'events' => false,
+		'contact_list' => true,
+		'events' => true,
 		'channels' => true
     ];
 
@@ -705,7 +705,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     public function setContactList($contact_list)
     {
         if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'contact_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['contact_list'] = $contact_list;
 
@@ -732,7 +739,14 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     public function setEvents($events)
     {
         if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'events');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('events', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['events'] = $events;
 

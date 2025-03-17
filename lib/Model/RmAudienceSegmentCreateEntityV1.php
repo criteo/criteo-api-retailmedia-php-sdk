@@ -85,7 +85,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'description' => true,
+		'description' => false,
 		'retailer_id' => false,
 		'contact_list' => false
     ];
@@ -364,14 +364,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     public function setDescription($description)
     {
         if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
 

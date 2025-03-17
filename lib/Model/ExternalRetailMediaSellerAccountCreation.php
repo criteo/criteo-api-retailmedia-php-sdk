@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * ExternalRetailMediaSellerAccountCreation Class Doc Comment
  *
  * @category Class
- * @description The details for a newly created seller account
+ * @description the initial set up and configuration options for a new private market demand brand account
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -296,6 +296,9 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
+        if ($this->container['sellers'] === null) {
+            $invalidProperties[] = "'sellers' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -324,7 +327,7 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name the name of the account, must be unique across all accounts
      *
      * @return self
      */
@@ -358,7 +361,7 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     /**
      * Sets company_name
      *
-     * @param string|null $company_name company_name
+     * @param string|null $company_name Display name for reporting the owning entity of ads for the Digital Services Act in the European Union
      *
      * @return self
      */
@@ -392,7 +395,7 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     /**
      * Sets on_behalf_company_name
      *
-     * @param string|null $on_behalf_company_name on_behalf_company_name
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
      *
      * @return self
      */
@@ -416,7 +419,7 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     /**
      * Gets sellers
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaSeller[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaSeller[]
      */
     public function getSellers()
     {
@@ -426,7 +429,7 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
     /**
      * Sets sellers
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaSeller[]|null $sellers sellers
+     * @param \criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaSeller[] $sellers list of sellers to associate to the new account
      *
      * @return self
      */

@@ -234,6 +234,7 @@ docs/Model/RmContactListStatisticsEntityV1Response.md
 docs/Model/RmContactListV1.md
 docs/Model/RmEventsV1.md
 docs/Model/RmcaCommonProblem.md
+docs/Model/SdkApiRestCommonProblem.md
 docs/Model/Section.md
 docs/Model/SellerCatalogRequest.md
 docs/Model/SellerIdentifier.md
@@ -518,6 +519,7 @@ lib/Model/RmContactListStatisticsEntityV1Response.php
 lib/Model/RmContactListV1.php
 lib/Model/RmEventsV1.php
 lib/Model/RmcaCommonProblem.php
+lib/Model/SdkApiRestCommonProblem.php
 lib/Model/Section.php
 lib/Model/SellerCatalogRequest.php
 lib/Model/SellerIdentifier.php

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * ValueResourceOfRetailMediaBrandAccountCreation Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class ValueResourceOfRetailMediaBrandAccountCreation implements ModelInterface, 
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */

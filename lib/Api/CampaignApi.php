@@ -6446,7 +6446,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\SplFileObject
+     * @return \SplFileObject|\SplFileObject|\SplFileObject
      */
     public function getApiV1ExternalCatalogOutputByCatalogId($catalog_id, string $contentType = self::contentTypes['getApiV1ExternalCatalogOutputByCatalogId'][0])
     {
@@ -6462,7 +6462,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\SplFileObject|\SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApiV1ExternalCatalogOutputByCatalogIdWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getApiV1ExternalCatalogOutputByCatalogId'][0])
     {
@@ -6519,6 +6519,21 @@ class CampaignApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 204:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 case 400:
                     if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
@@ -6555,6 +6570,14 @@ class CampaignApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 204:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SplFileObject',

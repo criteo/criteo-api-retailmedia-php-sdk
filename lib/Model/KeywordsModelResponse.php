@@ -84,7 +84,7 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'errors' => true,
 		'warnings' => true,
-		'data' => false
+		'data' => true
     ];
 
     /**
@@ -392,7 +392,14 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 

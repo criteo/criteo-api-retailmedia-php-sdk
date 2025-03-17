@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * ValueResourceOfRetailMediaBrands Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -81,7 +81,7 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
       */
     protected static array $openAPINullables = [
         'type' => true,
-		'attributes' => false
+		'attributes' => true
     ];
 
     /**
@@ -310,7 +310,7 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
@@ -351,7 +351,14 @@ class ValueResourceOfRetailMediaBrands implements ModelInterface, ArrayAccess, \
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 

@@ -84,7 +84,7 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static array $openAPINullables = [
         'client_id' => false,
 		'callback_url' => false,
-		'callback_state' => true
+		'callback_state' => false
     ];
 
     /**
@@ -384,14 +384,7 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function setCallbackState($callback_state)
     {
         if (is_null($callback_state)) {
-            array_push($this->openAPINullablesSetToNull, 'callback_state');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('callback_state', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable callback_state cannot be null');
         }
         $this->container['callback_state'] = $callback_state;
 

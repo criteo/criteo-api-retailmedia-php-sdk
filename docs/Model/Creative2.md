@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **creative_format_v2_type** | **string** | Creative format type |
 **environments** | [**\criteo\api\retailmedia\v2025_01\Model\PageTypeEnvironment2[]**](PageTypeEnvironment2.md) | Environment type (e.g. mobile, web, app) |
 **template_variable_values** | [**\criteo\api\retailmedia\v2025_01\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |
+**id** | **string** | Id of the entity | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

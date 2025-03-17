@@ -72,7 +72,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         'budget_remaining' => 'float',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'creative_id' => 'string'
+        'creative_id' => 'string',
+        'id' => 'string'
     ];
 
     /**
@@ -97,7 +98,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         'budget_remaining' => 'decimal',
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'creative_id' => 'long-id'
+        'creative_id' => 'long-id',
+        'id' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
 		'budget_remaining' => true,
 		'created_at' => false,
 		'updated_at' => false,
-		'creative_id' => true
+		'creative_id' => true,
+		'id' => true
     ];
 
     /**
@@ -223,7 +226,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         'budget_remaining' => 'budgetRemaining',
         'created_at' => 'createdAt',
         'updated_at' => 'updatedAt',
-        'creative_id' => 'creativeId'
+        'creative_id' => 'creativeId',
+        'id' => 'id'
     ];
 
     /**
@@ -246,7 +250,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         'budget_remaining' => 'setBudgetRemaining',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'creative_id' => 'setCreativeId'
+        'creative_id' => 'setCreativeId',
+        'id' => 'setId'
     ];
 
     /**
@@ -269,7 +274,8 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         'budget_remaining' => 'getBudgetRemaining',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'creative_id' => 'getCreativeId'
+        'creative_id' => 'getCreativeId',
+        'id' => 'getId'
     ];
 
     /**
@@ -390,6 +396,7 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -947,6 +954,40 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['creative_id'] = $creative_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

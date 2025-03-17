@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * ValueResourceOutcomeOfRetailMediaBrands Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A top-level object that encapsulates a Criteo API response for a single value object.
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_01\Model\ValueResourceOfRetailMediaBrands',
-        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]'
+        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAc
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -351,7 +351,7 @@ class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAc
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAc
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -385,7 +385,7 @@ class ValueResourceOutcomeOfRetailMediaBrands implements ModelInterface, ArrayAc
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */

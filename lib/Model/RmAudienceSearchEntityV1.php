@@ -82,9 +82,9 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'audience_ids' => true,
-		'retailer_ids' => true,
-		'audience_segment_ids' => true
+        'audience_ids' => false,
+		'retailer_ids' => false,
+		'audience_segment_ids' => false
     ];
 
     /**
@@ -324,14 +324,7 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAudienceIds($audience_ids)
     {
         if (is_null($audience_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable audience_ids cannot be null');
         }
         $this->container['audience_ids'] = $audience_ids;
 
@@ -358,14 +351,7 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
     public function setRetailerIds($retailer_ids)
     {
         if (is_null($retailer_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
         }
         $this->container['retailer_ids'] = $retailer_ids;
 
@@ -392,14 +378,7 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAudienceSegmentIds($audience_segment_ids)
     {
         if (is_null($audience_segment_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'audience_segment_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('audience_segment_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable audience_segment_ids cannot be null');
         }
         $this->container['audience_segment_ids'] = $audience_segment_ids;
 

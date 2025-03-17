@@ -88,12 +88,12 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'review_state' => true,
-		'match_type' => true,
+        'review_state' => false,
+		'match_type' => false,
 		'bid' => true,
 		'input_keywords' => false,
-		'created_at' => true,
-		'updated_at' => true
+		'created_at' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -407,17 +407,10 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReviewState($review_state)
     {
         if (is_null($review_state)) {
-            array_push($this->openAPINullablesSetToNull, 'review_state');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('review_state', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
         }
         $allowedValues = $this->getReviewStateAllowableValues();
-        if (!is_null($review_state) && !in_array($review_state, $allowedValues, true)) {
+        if (!in_array($review_state, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'review_state', must be one of '%s'",
@@ -451,17 +444,10 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMatchType($match_type)
     {
         if (is_null($match_type)) {
-            array_push($this->openAPINullablesSetToNull, 'match_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('match_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
         }
         $allowedValues = $this->getMatchTypeAllowableValues();
-        if (!is_null($match_type) && !in_array($match_type, $allowedValues, true)) {
+        if (!in_array($match_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'match_type', must be one of '%s'",
@@ -556,14 +542,7 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCreatedAt($created_at)
     {
         if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
         $this->container['created_at'] = $created_at;
 
@@ -590,14 +569,7 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
 
