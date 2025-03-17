@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
  * ValueResourceInputOfRetailMediaSellerAccountCreation Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value.
+ * @description A top-level object that encapsulates a Criteo API request for a single value objects.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -78,7 +78,7 @@ class ValueResourceInputOfRetailMediaSellerAccountCreation implements ModelInter
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true
+        'data' => false
     ];
 
     /**
@@ -310,14 +310,7 @@ class ValueResourceInputOfRetailMediaSellerAccountCreation implements ModelInter
     public function setData($data)
     {
         if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
 

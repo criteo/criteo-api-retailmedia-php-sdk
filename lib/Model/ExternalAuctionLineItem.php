@@ -74,7 +74,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'budget_spent' => 'float',
         'budget_remaining' => 'float',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime'
+        'updated_at' => '\DateTime',
+        'id' => 'string'
     ];
 
     /**
@@ -101,7 +102,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'budget_spent' => 'double',
         'budget_remaining' => 'decimal',
         'created_at' => 'date-time',
-        'updated_at' => 'date-time'
+        'updated_at' => 'date-time',
+        'id' => null
     ];
 
     /**
@@ -126,7 +128,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
 		'budget_spent' => false,
 		'budget_remaining' => true,
 		'created_at' => false,
-		'updated_at' => false
+		'updated_at' => false,
+		'id' => true
     ];
 
     /**
@@ -231,7 +234,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'budget_spent' => 'budgetSpent',
         'budget_remaining' => 'budgetRemaining',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'id' => 'id'
     ];
 
     /**
@@ -256,7 +260,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'budget_spent' => 'setBudgetSpent',
         'budget_remaining' => 'setBudgetRemaining',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'id' => 'setId'
     ];
 
     /**
@@ -281,7 +286,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         'budget_spent' => 'getBudgetSpent',
         'budget_remaining' => 'getBudgetRemaining',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'id' => 'getId'
     ];
 
     /**
@@ -406,6 +412,7 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('budget_remaining', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -1028,6 +1035,40 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

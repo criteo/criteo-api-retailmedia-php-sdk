@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
  * EntityResourceOfRetailMediaAccount Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -317,7 +317,7 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string|null $id Unique id of the entity.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class EntityResourceOfRetailMediaAccount implements ModelInterface, ArrayAccess,
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */

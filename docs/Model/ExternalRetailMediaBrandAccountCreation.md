@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  | [optional]
-**company_name** | **string** |  | [optional]
-**on_behalf_company_name** | **string** |  | [optional]
-**brands** | **int[]** |  | [optional]
+**name** | **string** | the name of the account, must be unique across all accounts | [optional]
+**company_name** | **string** | Display name for reporting the owning entity of ads for the Digital Services Act in the European Union | [optional]
+**on_behalf_company_name** | **string** | On behalf entity name of ads for the Digital Services Act | [optional]
+**brands** | **int[]** | list of brands to link to the new account | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

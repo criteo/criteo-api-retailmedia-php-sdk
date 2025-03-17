@@ -201,6 +201,7 @@ docs/Model/RmLegacySegmentUserBehaviorCreateV2.md
 docs/Model/RmLegacySegmentUserBehaviorV1.md
 docs/Model/RmLegacySegmentUserBehaviorV2.md
 docs/Model/RmcaCommonProblem.md
+docs/Model/SdkApiRestCommonProblem.md
 docs/Model/Section.md
 docs/Model/SetBidModel.md
 docs/Model/SetBidsModel.md
@@ -448,6 +449,7 @@ lib/Model/RmLegacySegmentUserBehaviorCreateV2.php
 lib/Model/RmLegacySegmentUserBehaviorV1.php
 lib/Model/RmLegacySegmentUserBehaviorV2.php
 lib/Model/RmcaCommonProblem.php
+lib/Model/SdkApiRestCommonProblem.php
 lib/Model/Section.php
 lib/Model/SetBidModel.php
 lib/Model/SetBidsModel.php

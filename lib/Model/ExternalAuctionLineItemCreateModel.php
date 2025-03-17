@@ -102,7 +102,7 @@ class ExternalAuctionLineItemCreateModel implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'name' => false,
 		'start_date' => false,
-		'end_date' => true,
+		'end_date' => false,
 		'status' => false,
 		'target_retailer_id' => false,
 		'budget' => true,
@@ -531,14 +531,7 @@ class ExternalAuctionLineItemCreateModel implements ModelInterface, ArrayAccess,
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
         $this->container['end_date'] = $end_date;
 

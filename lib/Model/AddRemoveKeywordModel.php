@@ -84,7 +84,7 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'phrase' => true,
 		'match_type' => false,
-		'is_deleted' => true
+		'is_deleted' => false
     ];
 
     /**
@@ -400,14 +400,7 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setIsDeleted($is_deleted)
     {
         if (is_null($is_deleted)) {
-            array_push($this->openAPINullablesSetToNull, 'is_deleted');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_deleted', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
         }
         $this->container['is_deleted'] = $is_deleted;
 
