@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest
+ * BrandCatalogRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest Class Doc Comment
+ * BrandCatalogRequestV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and  Attributes properties
+ * @description A request for a catalog under the specified format.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest';
+    protected static $openAPIModelName = 'BrandCatalogRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\SellerCatalogRequest'
+        'brand_id_filter' => 'string[]',
+        'retailer_id_filter' => 'int[]',
+        'modified_after' => '\DateTime',
+        'include_fields' => 'string[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'brand_id_filter' => 'long-id',
+        'retailer_id_filter' => 'int32',
+        'modified_after' => 'date-time',
+        'include_fields' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'attributes' => true
+        'brand_id_filter' => false,
+		'retailer_id_filter' => false,
+		'modified_after' => false,
+		'include_fields' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'brand_id_filter' => 'brandIdFilter',
+        'retailer_id_filter' => 'retailerIdFilter',
+        'modified_after' => 'modifiedAfter',
+        'include_fields' => 'includeFields'
     ];
 
     /**
@@ -180,8 +188,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'brand_id_filter' => 'setBrandIdFilter',
+        'retailer_id_filter' => 'setRetailerIdFilter',
+        'modified_after' => 'setModifiedAfter',
+        'include_fields' => 'setIncludeFields'
     ];
 
     /**
@@ -190,8 +200,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'brand_id_filter' => 'getBrandIdFilter',
+        'retailer_id_filter' => 'getRetailerIdFilter',
+        'modified_after' => 'getModifiedAfter',
+        'include_fields' => 'getIncludeFields'
     ];
 
     /**
@@ -235,6 +247,31 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
         return self::$openAPIModelName;
     }
 
+    public const INCLUDE_FIELDS_UNKNOWN = 'Unknown';
+    public const INCLUDE_FIELDS_DESCRIPTION = 'Description';
+    public const INCLUDE_FIELDS_IMAGE_URL = 'ImageUrl';
+    public const INCLUDE_FIELDS_GLOBAL_CATEGORY_ID = 'GlobalCategoryId';
+    public const INCLUDE_FIELDS_RETAILER_NAME = 'RetailerName';
+    public const INCLUDE_FIELDS_CATEGORY = 'Category';
+    public const INCLUDE_FIELDS_BRAND_NAME = 'BrandName';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIncludeFieldsAllowableValues()
+    {
+        return [
+            self::INCLUDE_FIELDS_UNKNOWN,
+            self::INCLUDE_FIELDS_DESCRIPTION,
+            self::INCLUDE_FIELDS_IMAGE_URL,
+            self::INCLUDE_FIELDS_GLOBAL_CATEGORY_ID,
+            self::INCLUDE_FIELDS_RETAILER_NAME,
+            self::INCLUDE_FIELDS_CATEGORY,
+            self::INCLUDE_FIELDS_BRAND_NAME,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +288,10 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('brand_id_filter', $data ?? [], null);
+        $this->setIfExists('retailer_id_filter', $data ?? [], null);
+        $this->setIfExists('modified_after', $data ?? [], null);
+        $this->setIfExists('include_fields', $data ?? [], null);
     }
 
     /**
@@ -282,9 +321,6 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,62 +337,118 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
 
 
     /**
-     * Gets type
+     * Gets brand_id_filter
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getType()
+    public function getBrandIdFilter()
     {
-        return $this->container['type'];
+        return $this->container['brand_id_filter'];
     }
 
     /**
-     * Sets type
+     * Sets brand_id_filter
      *
-     * @param string $type type
+     * @param string[]|null $brand_id_filter The brand ids to filter the catalog by.
      *
      * @return self
      */
-    public function setType($type)
+    public function setBrandIdFilter($brand_id_filter)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($brand_id_filter)) {
+            throw new \InvalidArgumentException('non-nullable brand_id_filter cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['brand_id_filter'] = $brand_id_filter;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets retailer_id_filter
      *
-     * @return \criteo\api\retailmedia\preview\Model\SellerCatalogRequest|null
+     * @return int[]|null
      */
-    public function getAttributes()
+    public function getRetailerIdFilter()
     {
-        return $this->container['attributes'];
+        return $this->container['retailer_id_filter'];
     }
 
     /**
-     * Sets attributes
+     * Sets retailer_id_filter
      *
-     * @param \criteo\api\retailmedia\preview\Model\SellerCatalogRequest|null $attributes attributes
+     * @param int[]|null $retailer_id_filter The retailer ids to filter the catalog by.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setRetailerIdFilter($retailer_id_filter)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($retailer_id_filter)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id_filter cannot be null');
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['retailer_id_filter'] = $retailer_id_filter;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified_after
+     *
+     * @return \DateTime|null
+     */
+    public function getModifiedAfter()
+    {
+        return $this->container['modified_after'];
+    }
+
+    /**
+     * Sets modified_after
+     *
+     * @param \DateTime|null $modified_after Only products modified after this time will be returned.
+     *
+     * @return self
+     */
+    public function setModifiedAfter($modified_after)
+    {
+        if (is_null($modified_after)) {
+            throw new \InvalidArgumentException('non-nullable modified_after cannot be null');
+        }
+        $this->container['modified_after'] = $modified_after;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_fields
+     *
+     * @return string[]|null
+     */
+    public function getIncludeFields()
+    {
+        return $this->container['include_fields'];
+    }
+
+    /**
+     * Sets include_fields
+     *
+     * @param string[]|null $include_fields Out of the optional fields, only the ones specified will be included in the catalog generated.
+     *
+     * @return self
+     */
+    public function setIncludeFields($include_fields)
+    {
+        if (is_null($include_fields)) {
+            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
+        }
+        $allowedValues = $this->getIncludeFieldsAllowableValues();
+        if (array_diff($include_fields, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'include_fields', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['include_fields'] = $include_fields;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SellerCatalogRequest
+ * ResourceOfCatalogStatusV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SellerCatalogRequest Class Doc Comment
+ * ResourceOfCatalogStatusV2 Class Doc Comment
  *
  * @category Class
- * @description Used to requst a catalog of seller SKUs
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ResourceOfCatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SellerCatalogRequest';
+    protected static $openAPIModelName = 'ResourceOfCatalogStatusV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sellers' => '\criteo\api\retailmedia\preview\Model\SellerIdentifier[]'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\CatalogStatusV2',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sellers' => null
+        'attributes' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sellers' => false
+        'attributes' => false,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -167,7 +173,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'sellers' => 'sellers'
+        'attributes' => 'attributes',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +184,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'sellers' => 'setSellers'
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +195,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'sellers' => 'getSellers'
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -245,7 +257,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sellers', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -291,28 +305,96 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets sellers
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\SellerIdentifier[]|null
+     * @return \criteo\api\retailmedia\preview\Model\CatalogStatusV2|null
      */
-    public function getSellers()
+    public function getAttributes()
     {
-        return $this->container['sellers'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets sellers
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\SellerIdentifier[]|null $sellers A list of sellers to restict the catalog to.
+     * @param \criteo\api\retailmedia\preview\Model\CatalogStatusV2|null $attributes attributes
      *
      * @return self
      */
-    public function setSellers($sellers)
+    public function setAttributes($attributes)
     {
-        if (is_null($sellers)) {
-            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['sellers'] = $sellers;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Canonical type name of the entity
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

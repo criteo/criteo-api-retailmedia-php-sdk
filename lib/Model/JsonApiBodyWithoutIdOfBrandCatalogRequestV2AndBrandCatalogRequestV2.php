@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiRequestOfSellerCatalogRequest
+ * JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiRequestOfSellerCatalogRequest Class Doc Comment
+ * JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and Attributes properties
+ * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and  Attributes properties
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiRequestOfSellerCatalogRequest';
+    protected static $openAPIModelName = 'JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest'
+        'type' => 'string',
+        'attributes' => '\criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2'
     ];
 
     /**
@@ -69,7 +70,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'type' => null,
+        'attributes' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'type' => false,
+		'attributes' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'type' => 'type',
+        'attributes' => 'attributes'
     ];
 
     /**
@@ -176,7 +180,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'type' => 'setType',
+        'attributes' => 'setAttributes'
     ];
 
     /**
@@ -185,7 +190,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'type' => 'getType',
+        'attributes' => 'getAttributes'
     ];
 
     /**
@@ -245,7 +251,8 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -275,6 +282,9 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -291,28 +301,62 @@ class JsonApiRequestOfSellerCatalogRequest implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets data
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest|null
+     * @return string
      */
-    public function getData()
+    public function getType()
     {
-        return $this->container['data'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets data
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest|null $data data
+     * @param string $type type
      *
      * @return self
      */
-    public function setData($data)
+    public function setType($type)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus
+ * CatalogStatusV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus Class Doc Comment
+ * CatalogStatusV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with external Id, Type, and  Attributes properties
+ * @description The status of an asynchronous request to generate a catalog
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus';
+    protected static $openAPIModelName = 'CatalogStatusV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\ExternalCatalogStatus'
+        'status' => 'string',
+        'row_count' => 'int',
+        'file_size_bytes' => 'int',
+        'md5_checksum' => 'string',
+        'created_at' => '\DateTime',
+        'message' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => 'long-id',
-        'type' => null,
-        'attributes' => null
+        'status' => null,
+        'row_count' => 'int32',
+        'file_size_bytes' => 'int32',
+        'md5_checksum' => null,
+        'created_at' => 'date-time',
+        'message' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'type' => false,
-		'attributes' => false
+        'status' => false,
+		'row_count' => true,
+		'file_size_bytes' => true,
+		'md5_checksum' => true,
+		'created_at' => false,
+		'message' => true
     ];
 
     /**
@@ -173,9 +182,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'status' => 'status',
+        'row_count' => 'rowCount',
+        'file_size_bytes' => 'fileSizeBytes',
+        'md5_checksum' => 'md5Checksum',
+        'created_at' => 'createdAt',
+        'message' => 'message'
     ];
 
     /**
@@ -184,9 +196,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'status' => 'setStatus',
+        'row_count' => 'setRowCount',
+        'file_size_bytes' => 'setFileSizeBytes',
+        'md5_checksum' => 'setMd5Checksum',
+        'created_at' => 'setCreatedAt',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -195,9 +210,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'status' => 'getStatus',
+        'row_count' => 'getRowCount',
+        'file_size_bytes' => 'getFileSizeBytes',
+        'md5_checksum' => 'getMd5Checksum',
+        'created_at' => 'getCreatedAt',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -241,6 +259,27 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
         return self::$openAPIModelName;
     }
 
+    public const STATUS_UNKNOWN = 'unknown';
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_SUCCESS = 'success';
+    public const STATUS_FAILURE = 'failure';
+    public const STATUS_EXPIRED = 'expired';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_UNKNOWN,
+            self::STATUS_PENDING,
+            self::STATUS_SUCCESS,
+            self::STATUS_FAILURE,
+            self::STATUS_EXPIRED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +296,12 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('row_count', $data ?? [], null);
+        $this->setIfExists('file_size_bytes', $data ?? [], null);
+        $this->setIfExists('md5_checksum', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -289,11 +331,20 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,82 +362,201 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
 
 
     /**
-     * Gets id
+     * Gets status
      *
      * @return string
      */
-    public function getId()
+    public function getStatus()
     {
-        return $this->container['id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets id
+     * Sets status
      *
-     * @param string $id id
+     * @param string $status An enumeration of the status of the catalog.
      *
      * @return self
      */
-    public function setId($id)
+    public function setStatus($status)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets row_count
      *
-     * @return string
+     * @return int|null
      */
-    public function getType()
+    public function getRowCount()
     {
-        return $this->container['type'];
+        return $this->container['row_count'];
     }
 
     /**
-     * Sets type
+     * Sets row_count
      *
-     * @param string $type type
+     * @param int|null $row_count An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
      *
      * @return self
      */
-    public function setType($type)
+    public function setRowCount($row_count)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($row_count)) {
+            array_push($this->openAPINullablesSetToNull, 'row_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('row_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['row_count'] = $row_count;
 
         return $this;
     }
 
     /**
-     * Gets attributes
+     * Gets file_size_bytes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalCatalogStatus|null
+     * @return int|null
      */
-    public function getAttributes()
+    public function getFileSizeBytes()
     {
-        return $this->container['attributes'];
+        return $this->container['file_size_bytes'];
     }
 
     /**
-     * Sets attributes
+     * Sets file_size_bytes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalCatalogStatus|null $attributes attributes
+     * @param int|null $file_size_bytes The size of this catalog in bytes. Available when this catalog reaches a success status.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setFileSizeBytes($file_size_bytes)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($file_size_bytes)) {
+            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('file_size_bytes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['file_size_bytes'] = $file_size_bytes;
+
+        return $this;
+    }
+
+    /**
+     * Gets md5_checksum
+     *
+     * @return string|null
+     */
+    public function getMd5Checksum()
+    {
+        return $this->container['md5_checksum'];
+    }
+
+    /**
+     * Sets md5_checksum
+     *
+     * @param string|null $md5_checksum An MD5 checksum of the catalog for use in confirming complete and uncorrupted retrieval.  Available when this catalog reaches a success status.
+     *
+     * @return self
+     */
+    public function setMd5Checksum($md5_checksum)
+    {
+        if (is_null($md5_checksum)) {
+            array_push($this->openAPINullablesSetToNull, 'md5_checksum');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('md5_checksum', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['md5_checksum'] = $md5_checksum;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at The time this catalog was created. Represented as a UTC ISO8601 string.
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message An optional information message intended for developer consumption.
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

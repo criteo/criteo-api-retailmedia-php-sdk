@@ -95,6 +95,9 @@ class CampaignApi
         'getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId' => [
             'application/json',
         ],
+        'getApiExternalV2CatalogStatusByCatalogId' => [
+            'application/json',
+        ],
         'getApiV1ExternalRetailerBrandsByRetailerId' => [
             'application/json',
         ],
@@ -137,7 +140,10 @@ class CampaignApi
         'postApi202210ExternalLineItemProductButtonsCreateByLineItemId' => [
             'application/json',
         ],
-        'postApiV1ExternalAccountCatalogsSellersByAccountId' => [
+        'postApiExternalV2AccountBrandCatalogExportByAccountId' => [
+            'application/json',
+        ],
+        'postApiExternalV2AccountSellerCatalogExportByAccountId' => [
             'application/json',
         ],
         'postApiV1ExternalCatalogsSkuRetrieval' => [
@@ -2582,6 +2588,289 @@ class CampaignApi
 
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApiExternalV2CatalogStatusByCatalogId
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+     */
+    public function getApiExternalV2CatalogStatusByCatalogId($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
+    {
+        list($response) = $this->getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo($catalog_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
+    {
+        $request = $this->getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApiExternalV2CatalogStatusByCatalogIdAsync
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2CatalogStatusByCatalogIdAsync($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
+    {
+        return $this->getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo($catalog_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
+        $request = $this->getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApiExternalV2CatalogStatusByCatalogId'
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
+    {
+
+        // verify the required parameter 'catalog_id' is set
+        if ($catalog_id === null || (is_array($catalog_id) && count($catalog_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $catalog_id when calling getApiExternalV2CatalogStatusByCatalogId'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/catalogs/{catalogId}/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($catalog_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'catalogId' . '}',
+                ObjectSerializer::toPathValue($catalog_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -6540,36 +6829,36 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalAccountCatalogsSellersByAccountId
+     * Operation postApiExternalV2AccountBrandCatalogExportByAccountId
      *
      * @param  string $account_id The account to request the catalog for. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request json_api_request_of_seller_catalog_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2 $json_api_request_of_brand_catalog_request_v2 json_api_request_of_brand_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus|\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus
+     * @return \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
      */
-    public function postApiV1ExternalAccountCatalogsSellersByAccountId($account_id, $json_api_request_of_seller_catalog_request = null, string $contentType = self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'][0])
+    public function postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $json_api_request_of_brand_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'][0])
     {
-        list($response) = $this->postApiV1ExternalAccountCatalogsSellersByAccountIdWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request, $contentType);
+        list($response) = $this->postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo($account_id, $json_api_request_of_brand_catalog_request_v2, $contentType);
         return $response;
     }
 
     /**
-     * Operation postApiV1ExternalAccountCatalogsSellersByAccountIdWithHttpInfo
+     * Operation postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo
      *
      * @param  string $account_id The account to request the catalog for. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2 $json_api_request_of_brand_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus|\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiV1ExternalAccountCatalogsSellersByAccountIdWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request = null, string $contentType = self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'][0])
+    public function postApiExternalV2AccountBrandCatalogExportByAccountIdWithHttpInfo($account_id, $json_api_request_of_brand_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'][0])
     {
-        $request = $this->postApiV1ExternalAccountCatalogsSellersByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request, $contentType);
+        $request = $this->postApiExternalV2AccountBrandCatalogExportByAccountIdRequest($account_id, $json_api_request_of_brand_catalog_request_v2, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6608,38 +6897,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus';
+            $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6660,15 +6934,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus',
+                        '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6679,18 +6945,18 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalAccountCatalogsSellersByAccountIdAsync
+     * Operation postApiExternalV2AccountBrandCatalogExportByAccountIdAsync
      *
      * @param  string $account_id The account to request the catalog for. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2 $json_api_request_of_brand_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalAccountCatalogsSellersByAccountIdAsync($account_id, $json_api_request_of_seller_catalog_request = null, string $contentType = self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'][0])
+    public function postApiExternalV2AccountBrandCatalogExportByAccountIdAsync($account_id, $json_api_request_of_brand_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'][0])
     {
-        return $this->postApiV1ExternalAccountCatalogsSellersByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request, $contentType)
+        return $this->postApiExternalV2AccountBrandCatalogExportByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_brand_catalog_request_v2, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6699,19 +6965,19 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalAccountCatalogsSellersByAccountIdAsyncWithHttpInfo
+     * Operation postApiExternalV2AccountBrandCatalogExportByAccountIdAsyncWithHttpInfo
      *
      * @param  string $account_id The account to request the catalog for. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2 $json_api_request_of_brand_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalAccountCatalogsSellersByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request = null, string $contentType = self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'][0])
+    public function postApiExternalV2AccountBrandCatalogExportByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_brand_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus';
-        $request = $this->postApiV1ExternalAccountCatalogsSellersByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
+        $request = $this->postApiExternalV2AccountBrandCatalogExportByAccountIdRequest($account_id, $json_api_request_of_brand_catalog_request_v2, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6750,28 +7016,28 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'postApiV1ExternalAccountCatalogsSellersByAccountId'
+     * Create request for operation 'postApiExternalV2AccountBrandCatalogExportByAccountId'
      *
      * @param  string $account_id The account to request the catalog for. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2 $json_api_request_of_brand_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiV1ExternalAccountCatalogsSellersByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request = null, string $contentType = self::contentTypes['postApiV1ExternalAccountCatalogsSellersByAccountId'][0])
+    public function postApiExternalV2AccountBrandCatalogExportByAccountIdRequest($account_id, $json_api_request_of_brand_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountBrandCatalogExportByAccountId'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling postApiV1ExternalAccountCatalogsSellersByAccountId'
+                'Missing the required parameter $account_id when calling postApiExternalV2AccountBrandCatalogExportByAccountId'
             );
         }
 
 
 
-        $resourcePath = '/preview/retail-media/accounts/{accountId}/catalogs/sellers';
+        $resourcePath = '/preview/retail-media/accounts/{accountId}/brand-catalog-export';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6797,12 +7063,331 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (isset($json_api_request_of_seller_catalog_request)) {
+        if (isset($json_api_request_of_brand_catalog_request_v2)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($json_api_request_of_seller_catalog_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($json_api_request_of_brand_catalog_request_v2));
             } else {
-                $httpBody = $json_api_request_of_seller_catalog_request;
+                $httpBody = $json_api_request_of_brand_catalog_request_v2;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postApiExternalV2AccountSellerCatalogExportByAccountId
+     *
+     * @param  string $account_id The account to request the catalog for. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2 $json_api_request_of_seller_catalog_request_v2 json_api_request_of_seller_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response|\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+     */
+    public function postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $json_api_request_of_seller_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'][0])
+    {
+        list($response) = $this->postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request_v2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo
+     *
+     * @param  string $account_id The account to request the catalog for. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2 $json_api_request_of_seller_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response|\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postApiExternalV2AccountSellerCatalogExportByAccountIdWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'][0])
+    {
+        $request = $this->postApiExternalV2AccountSellerCatalogExportByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request_v2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postApiExternalV2AccountSellerCatalogExportByAccountIdAsync
+     *
+     * @param  string $account_id The account to request the catalog for. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2 $json_api_request_of_seller_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApiExternalV2AccountSellerCatalogExportByAccountIdAsync($account_id, $json_api_request_of_seller_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'][0])
+    {
+        return $this->postApiExternalV2AccountSellerCatalogExportByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request_v2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postApiExternalV2AccountSellerCatalogExportByAccountIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id The account to request the catalog for. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2 $json_api_request_of_seller_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApiExternalV2AccountSellerCatalogExportByAccountIdAsyncWithHttpInfo($account_id, $json_api_request_of_seller_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response';
+        $request = $this->postApiExternalV2AccountSellerCatalogExportByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request_v2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postApiExternalV2AccountSellerCatalogExportByAccountId'
+     *
+     * @param  string $account_id The account to request the catalog for. (required)
+     * @param  \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2 $json_api_request_of_seller_catalog_request_v2 (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postApiExternalV2AccountSellerCatalogExportByAccountIdRequest($account_id, $json_api_request_of_seller_catalog_request_v2 = null, string $contentType = self::contentTypes['postApiExternalV2AccountSellerCatalogExportByAccountId'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling postApiExternalV2AccountSellerCatalogExportByAccountId'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{accountId}/seller-catalog-export';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($json_api_request_of_seller_catalog_request_v2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($json_api_request_of_seller_catalog_request_v2));
+            } else {
+                $httpBody = $json_api_request_of_seller_catalog_request_v2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

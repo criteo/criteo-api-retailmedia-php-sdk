@@ -12,6 +12,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemId()**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
 | [**getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId()**](CampaignApi.md#getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
+| [**getApiExternalV2CatalogStatusByCatalogId()**](CampaignApi.md#getApiExternalV2CatalogStatusByCatalogId) | **GET** /preview/retail-media/catalogs/{catalogId}/status |  |
 | [**getApiV1ExternalRetailerBrandsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerBrandsByRetailerId) | **GET** /preview/retail-media/retailers/{retailerId}/brands |  |
 | [**getApiV1ExternalRetailerByRetailerIdSellerBySeller()**](CampaignApi.md#getApiV1ExternalRetailerByRetailerIdSellerBySeller) | **GET** /preview/retail-media/retailers/{retailerId}/sellers/{seller} |  |
 | [**getApiV1ExternalRetailerCategoryCpcRatesByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerCategoryCpcRatesByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/cpc-rates |  |
@@ -25,7 +26,8 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
 | [**postApi202110ExternalCampaignPreferredLineItemsByCampaignId()**](CampaignApi.md#postApi202110ExternalCampaignPreferredLineItemsByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**postApi202210ExternalLineItemProductButtonsCreateByLineItemId()**](CampaignApi.md#postApi202210ExternalLineItemProductButtonsCreateByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
-| [**postApiV1ExternalAccountCatalogsSellersByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsSellersByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/catalogs/sellers |  |
+| [**postApiExternalV2AccountBrandCatalogExportByAccountId()**](CampaignApi.md#postApiExternalV2AccountBrandCatalogExportByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/brand-catalog-export |  |
+| [**postApiExternalV2AccountSellerCatalogExportByAccountId()**](CampaignApi.md#postApiExternalV2AccountSellerCatalogExportByAccountId) | **POST** /preview/retail-media/accounts/{accountId}/seller-catalog-export |  |
 | [**postApiV1ExternalCatalogsSkuRetrieval()**](CampaignApi.md#postApiV1ExternalCatalogsSkuRetrieval) | **POST** /preview/retail-media/catalogs/sku-retrieval |  |
 | [**postApiV1ExternalCatalogsSkuSearch()**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearch) | **POST** /preview/retail-media/catalogs/sku-search |  |
 | [**postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId()**](CampaignApi.md#postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId) | **POST** /preview/retail-media/catalogs/sku-search/accounts/{account-id}/retailers/{retailer-id} |  |
@@ -554,6 +556,69 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getApiExternalV2CatalogStatusByCatalogId()`
+
+```php
+getApiExternalV2CatalogStatusByCatalogId($catalog_id): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+```
+
+
+
+Check the status of a catalog request.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$catalog_id = 'catalog_id_example'; // string | A catalog ID returned from an account catalog request.
+
+try {
+    $result = $apiInstance->getApiExternalV2CatalogStatusByCatalogId($catalog_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getApiExternalV2CatalogStatusByCatalogId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **catalog_id** | **string**| A catalog ID returned from an account catalog request. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -1401,10 +1466,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApiV1ExternalAccountCatalogsSellersByAccountId()`
+## `postApiExternalV2AccountBrandCatalogExportByAccountId()`
 
 ```php
-postApiV1ExternalAccountCatalogsSellersByAccountId($account_id, $json_api_request_of_seller_catalog_request): \criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus
+postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $json_api_request_of_brand_catalog_request_v2): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
 ```
 
 
@@ -1432,13 +1497,13 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The account to request the catalog for.
-$json_api_request_of_seller_catalog_request = new \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest(); // \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest
+$json_api_request_of_brand_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2
 
 try {
-    $result = $apiInstance->postApiV1ExternalAccountCatalogsSellersByAccountId($account_id, $json_api_request_of_seller_catalog_request);
+    $result = $apiInstance->postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $json_api_request_of_brand_catalog_request_v2);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->postApiV1ExternalAccountCatalogsSellersByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->postApiExternalV2AccountBrandCatalogExportByAccountId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1447,11 +1512,76 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to request the catalog for. | |
-| **json_api_request_of_seller_catalog_request** | [**\criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequest**](../Model/JsonApiRequestOfSellerCatalogRequest.md)|  | [optional] |
+| **json_api_request_of_brand_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2**](../Model/JsonApiRequestOfBrandCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\JsonApiSingleResponseOfCatalogStatus**](../Model/JsonApiSingleResponseOfCatalogStatus.md)
+[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postApiExternalV2AccountSellerCatalogExportByAccountId()`
+
+```php
+postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $json_api_request_of_seller_catalog_request_v2): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+```
+
+
+
+Create a request for a Catalog available to the indicated account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The account to request the catalog for.
+$json_api_request_of_seller_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2
+
+try {
+    $result = $apiInstance->postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $json_api_request_of_seller_catalog_request_v2);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->postApiExternalV2AccountSellerCatalogExportByAccountId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The account to request the catalog for. | |
+| **json_api_request_of_seller_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2**](../Model/JsonApiRequestOfSellerCatalogRequestV2.md)|  | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SellerIdentifier
+ * CatalogStatusV2Response
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SellerIdentifier Class Doc Comment
+ * CatalogStatusV2Response Class Doc Comment
  *
  * @category Class
- * @description Identifies a Unique Seller
+ * @description A top-level object that encapsulates a Criteo API response for a single entity
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
+class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SellerIdentifier';
+    protected static $openAPIModelName = 'CatalogStatusV2Response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id' => 'string',
-        'seller_id' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id' => null,
-        'seller_id' => null
+        'data' => null,
+        'warnings' => null,
+        'errors' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id' => false,
-		'seller_id' => false
+        'data' => true,
+		'warnings' => true,
+		'errors' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id' => 'retailerId',
-        'seller_id' => 'sellerId'
+        'data' => 'data',
+        'warnings' => 'warnings',
+        'errors' => 'errors'
     ];
 
     /**
@@ -180,8 +184,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id' => 'setRetailerId',
-        'seller_id' => 'setSellerId'
+        'data' => 'setData',
+        'warnings' => 'setWarnings',
+        'errors' => 'setErrors'
     ];
 
     /**
@@ -190,8 +195,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id' => 'getRetailerId',
-        'seller_id' => 'getSellerId'
+        'data' => 'getData',
+        'warnings' => 'getWarnings',
+        'errors' => 'getErrors'
     ];
 
     /**
@@ -251,8 +257,9 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('seller_id', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
     }
 
     /**
@@ -282,12 +289,6 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        if ($this->container['seller_id'] === null) {
-            $invalidProperties[] = "'seller_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -304,55 +305,103 @@ class SellerIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets retailer_id
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2|null
      */
-    public function getRetailerId()
+    public function getData()
     {
-        return $this->container['retailer_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets data
      *
-     * @param string $retailer_id The retailer Id that the seller operates under
+     * @param \criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2|null $data data
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setData($data)
     {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['retailer_id'] = $retailer_id;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets seller_id
+     * Gets warnings
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
      */
-    public function getSellerId()
+    public function getWarnings()
     {
-        return $this->container['seller_id'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets seller_id
+     * Sets warnings
      *
-     * @param string $seller_id The id for the seller based on the corresponding retailer
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setSellerId($seller_id)
+    public function setWarnings($warnings)
     {
-        if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['seller_id'] = $seller_id;
+        $this->container['warnings'] = $warnings;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errors'] = $errors;
 
         return $this;
     }

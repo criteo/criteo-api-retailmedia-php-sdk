@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiSingleResponseOfCatalogStatus
+ * SellerIdentifierV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiSingleResponseOfCatalogStatus Class Doc Comment
+ * SellerIdentifierV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to add one JSON:API &lt;typeparamref name&#x3D;\&quot;T\&quot; /&gt; within a data property
+ * @description Identifies a Unique Seller
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class SellerIdentifierV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiSingleResponseOfCatalogStatus';
+    protected static $openAPIModelName = 'SellerIdentifierV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonError[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonWarning[]'
+        'retailer_id' => 'string',
+        'seller_id' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'retailer_id' => null,
+        'seller_id' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'errors' => false,
-		'warnings' => false
+        'retailer_id' => false,
+		'seller_id' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'retailer_id' => 'retailerId',
+        'seller_id' => 'sellerId'
     ];
 
     /**
@@ -184,9 +180,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'retailer_id' => 'setRetailerId',
+        'seller_id' => 'setSellerId'
     ];
 
     /**
@@ -195,9 +190,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'retailer_id' => 'getRetailerId',
+        'seller_id' => 'getSellerId'
     ];
 
     /**
@@ -257,9 +251,8 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('seller_id', $data ?? [], null);
     }
 
     /**
@@ -289,8 +282,11 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['seller_id'] === null) {
+            $invalidProperties[] = "'seller_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -308,82 +304,55 @@ class JsonApiSingleResponseOfCatalogStatus implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets data
+     * Gets retailer_id
      *
-     * @return \criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus
+     * @return string
      */
-    public function getData()
+    public function getRetailerId()
     {
-        return $this->container['data'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets data
+     * Sets retailer_id
      *
-     * @param \criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus $data data
+     * @param string $retailer_id The retailer Id that the seller operates under
      *
      * @return self
      */
-    public function setData($data)
+    public function setRetailerId($retailer_id)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets seller_id
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonError[]|null
+     * @return string
      */
-    public function getErrors()
+    public function getSellerId()
     {
-        return $this->container['errors'];
+        return $this->container['seller_id'];
     }
 
     /**
-     * Sets errors
+     * Sets seller_id
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonError[]|null $errors errors
+     * @param string $seller_id The id for the seller based on the corresponding retailer
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setSellerId($seller_id)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($seller_id)) {
+            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
         }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonWarning[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonWarning[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['seller_id'] = $seller_id;
 
         return $this;
     }
