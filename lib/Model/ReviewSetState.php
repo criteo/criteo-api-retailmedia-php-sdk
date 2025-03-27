@@ -1,6 +1,6 @@
 <?php
 /**
- * PartnerBillingReportStatusV1
+ * ReviewSetState
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PartnerBillingReportStatusV1 Class Doc Comment
+ * ReviewSetState Class Doc Comment
  *
  * @category Class
- * @description Status info of a Partner Billing Report.
+ * @description A Phrase-ReviewState pair describing an update to a keyword review
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ReviewSetState implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PartnerBillingReportStatusV1';
+    protected static $openAPIModelName = 'ReviewSetState';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'error_message' => 'string',
-        'created_at' => '\DateTime'
+        'phrase' => 'string',
+        'review_state' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'error_message' => null,
-        'created_at' => 'date-time'
+        'phrase' => null,
+        'review_state' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-		'error_message' => true,
-		'created_at' => false
+        'phrase' => false,
+		'review_state' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'error_message' => 'errorMessage',
-        'created_at' => 'createdAt'
+        'phrase' => 'phrase',
+        'review_state' => 'reviewState'
     ];
 
     /**
@@ -184,9 +180,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'error_message' => 'setErrorMessage',
-        'created_at' => 'setCreatedAt'
+        'phrase' => 'setPhrase',
+        'review_state' => 'setReviewState'
     ];
 
     /**
@@ -195,9 +190,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'error_message' => 'getErrorMessage',
-        'created_at' => 'getCreatedAt'
+        'phrase' => 'getPhrase',
+        'review_state' => 'getReviewState'
     ];
 
     /**
@@ -241,23 +235,29 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_SUCCESS = 'success';
-    public const STATUS_FAILED = 'failed';
-    public const STATUS_EXPIRED = 'expired';
+    public const REVIEW_STATE_UNKNOWN = 'Unknown';
+    public const REVIEW_STATE_IN_REVIEW = 'InReview';
+    public const REVIEW_STATE_RECOMMENDED = 'Recommended';
+    public const REVIEW_STATE_APPROVED = 'Approved';
+    public const REVIEW_STATE_AUTO_APPROVED = 'AutoApproved';
+    public const REVIEW_STATE_REJECTED = 'Rejected';
+    public const REVIEW_STATE_AUTO_REJECTED = 'AutoRejected';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getStatusAllowableValues()
+    public function getReviewStateAllowableValues()
     {
         return [
-            self::STATUS_PENDING,
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILED,
-            self::STATUS_EXPIRED,
+            self::REVIEW_STATE_UNKNOWN,
+            self::REVIEW_STATE_IN_REVIEW,
+            self::REVIEW_STATE_RECOMMENDED,
+            self::REVIEW_STATE_APPROVED,
+            self::REVIEW_STATE_AUTO_APPROVED,
+            self::REVIEW_STATE_REJECTED,
+            self::REVIEW_STATE_AUTO_REJECTED,
         ];
     }
 
@@ -276,9 +276,8 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('phrase', $data ?? [], null);
+        $this->setIfExists('review_state', $data ?? [], null);
     }
 
     /**
@@ -308,21 +307,21 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['phrase'] === null) {
+            $invalidProperties[] = "'phrase' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        if ($this->container['review_state'] === null) {
+            $invalidProperties[] = "'review_state' can't be null";
+        }
+        $allowedValues = $this->getReviewStateAllowableValues();
+        if (!is_null($this->container['review_state']) && !in_array($this->container['review_state'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
+                "invalid value '%s' for 'review_state', must be one of '%s'",
+                $this->container['review_state'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -339,99 +338,65 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets status
+     * Gets phrase
      *
      * @return string
      */
-    public function getStatus()
+    public function getPhrase()
     {
-        return $this->container['status'];
+        return $this->container['phrase'];
     }
 
     /**
-     * Sets status
+     * Sets phrase
      *
-     * @param string $status Status of the report.
+     * @param string $phrase Normalized key phrase for keyword review to update
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setPhrase($phrase)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($phrase)) {
+            throw new \InvalidArgumentException('non-nullable phrase cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        $this->container['phrase'] = $phrase;
+
+        return $this;
+    }
+
+    /**
+     * Gets review_state
+     *
+     * @return string
+     */
+    public function getReviewState()
+    {
+        return $this->container['review_state'];
+    }
+
+    /**
+     * Sets review_state
+     *
+     * @param string $review_state Keyword review state to set for a phrase
+     *
+     * @return self
+     */
+    public function setReviewState($review_state)
+    {
+        if (is_null($review_state)) {
+            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
+        }
+        $allowedValues = $this->getReviewStateAllowableValues();
+        if (!in_array($review_state, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
+                    "Invalid value '%s' for 'review_state', must be one of '%s'",
+                    $review_state,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string|null
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string|null $error_message Possible error message along with the status.
-     *
-     * @return self
-     */
-    public function setErrorMessage($error_message)
-    {
-        if (is_null($error_message)) {
-            array_push($this->openAPINullablesSetToNull, 'error_message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('error_message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['error_message'] = $error_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at The date when the report request is created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['review_state'] = $review_state;
 
         return $this;
     }

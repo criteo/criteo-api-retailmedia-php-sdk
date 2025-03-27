@@ -131,6 +131,9 @@ class CampaignApi
         'getRecommendedKeywords' => [
             'application/json',
         ],
+        'inReviewReportV1' => [
+            'application/json',
+        ],
         'pausePromotedProducts' => [
             'application/json',
         ],
@@ -187,6 +190,12 @@ class CampaignApi
         ],
         'unpausePromotedProducts' => [
             'application/json',
+        ],
+        'updateKeywordReviewsV1' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
         ],
     ];
 
@@ -5950,6 +5959,331 @@ class CampaignApi
     }
 
     /**
+     * Operation inReviewReportV1
+     *
+     * @param  int $account_id The account to generate a report for (required)
+     * @param  int $offset Offset for pagination (optional, default to 0)
+     * @param  int $limit Number of items per page (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inReviewReportV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
+     */
+    public function inReviewReportV1($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['inReviewReportV1'][0])
+    {
+        list($response) = $this->inReviewReportV1WithHttpInfo($account_id, $offset, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation inReviewReportV1WithHttpInfo
+     *
+     * @param  int $account_id The account to generate a report for (required)
+     * @param  int $offset Offset for pagination (optional, default to 0)
+     * @param  int $limit Number of items per page (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inReviewReportV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function inReviewReportV1WithHttpInfo($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['inReviewReportV1'][0])
+    {
+        $request = $this->inReviewReportV1Request($account_id, $offset, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation inReviewReportV1Async
+     *
+     * @param  int $account_id The account to generate a report for (required)
+     * @param  int $offset Offset for pagination (optional, default to 0)
+     * @param  int $limit Number of items per page (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inReviewReportV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inReviewReportV1Async($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['inReviewReportV1'][0])
+    {
+        return $this->inReviewReportV1AsyncWithHttpInfo($account_id, $offset, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation inReviewReportV1AsyncWithHttpInfo
+     *
+     * @param  int $account_id The account to generate a report for (required)
+     * @param  int $offset Offset for pagination (optional, default to 0)
+     * @param  int $limit Number of items per page (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inReviewReportV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function inReviewReportV1AsyncWithHttpInfo($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['inReviewReportV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata';
+        $request = $this->inReviewReportV1Request($account_id, $offset, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'inReviewReportV1'
+     *
+     * @param  int $account_id The account to generate a report for (required)
+     * @param  int $offset Offset for pagination (optional, default to 0)
+     * @param  int $limit Number of items per page (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['inReviewReportV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function inReviewReportV1Request($account_id, $offset = 0, $limit = 25, string $contentType = self::contentTypes['inReviewReportV1'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling inReviewReportV1'
+            );
+        }
+
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.inReviewReportV1, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.inReviewReportV1, must be bigger than or equal to 0.');
+        }
+        
+        if ($limit !== null && $limit > 50) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.inReviewReportV1, must be smaller than or equal to 50.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.inReviewReportV1, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/keywords/in-review-report';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation pausePromotedProducts
      *
      * @param  string $line_item_id ID of the line item (required)
@@ -11460,6 +11794,302 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($promoted_product_resource_collection_input));
             } else {
                 $httpBody = $promoted_product_resource_collection_input;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateKeywordReviewsV1
+     *
+     * @param  int $line_item_id The line item to update keyword review statuses for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviewsV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult
+     */
+    public function updateKeywordReviewsV1($line_item_id, $value_resource_input_retail_media_keywords_review = null, string $contentType = self::contentTypes['updateKeywordReviewsV1'][0])
+    {
+        list($response) = $this->updateKeywordReviewsV1WithHttpInfo($line_item_id, $value_resource_input_retail_media_keywords_review, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateKeywordReviewsV1WithHttpInfo
+     *
+     * @param  int $line_item_id The line item to update keyword review statuses for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviewsV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateKeywordReviewsV1WithHttpInfo($line_item_id, $value_resource_input_retail_media_keywords_review = null, string $contentType = self::contentTypes['updateKeywordReviewsV1'][0])
+    {
+        $request = $this->updateKeywordReviewsV1Request($line_item_id, $value_resource_input_retail_media_keywords_review, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateKeywordReviewsV1Async
+     *
+     * @param  int $line_item_id The line item to update keyword review statuses for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviewsV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateKeywordReviewsV1Async($line_item_id, $value_resource_input_retail_media_keywords_review = null, string $contentType = self::contentTypes['updateKeywordReviewsV1'][0])
+    {
+        return $this->updateKeywordReviewsV1AsyncWithHttpInfo($line_item_id, $value_resource_input_retail_media_keywords_review, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateKeywordReviewsV1AsyncWithHttpInfo
+     *
+     * @param  int $line_item_id The line item to update keyword review statuses for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviewsV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateKeywordReviewsV1AsyncWithHttpInfo($line_item_id, $value_resource_input_retail_media_keywords_review = null, string $contentType = self::contentTypes['updateKeywordReviewsV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult';
+        $request = $this->updateKeywordReviewsV1Request($line_item_id, $value_resource_input_retail_media_keywords_review, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateKeywordReviewsV1'
+     *
+     * @param  int $line_item_id The line item to update keyword review statuses for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviewsV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateKeywordReviewsV1Request($line_item_id, $value_resource_input_retail_media_keywords_review = null, string $contentType = self::contentTypes['updateKeywordReviewsV1'][0])
+    {
+
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling updateKeywordReviewsV1'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/keywords/review';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_retail_media_keywords_review)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_retail_media_keywords_review));
+            } else {
+                $httpBody = $value_resource_input_retail_media_keywords_review;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

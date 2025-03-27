@@ -1,6 +1,6 @@
 <?php
 /**
- * PartnerBillingReportStatusV1
+ * RetailMediaKeywordsReview
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PartnerBillingReportStatusV1 Class Doc Comment
+ * RetailMediaKeywordsReview Class Doc Comment
  *
  * @category Class
- * @description Status info of a Partner Billing Report.
+ * @description Request object for approval of keyword reviews, containing a list of Phrase-ReviewState pairs
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailMediaKeywordsReview implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PartnerBillingReportStatusV1';
+    protected static $openAPIModelName = 'RetailMediaKeywordsReview';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'error_message' => 'string',
-        'created_at' => '\DateTime'
+        'keywords' => '\criteo\api\retailmedia\preview\Model\ReviewSetState[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'error_message' => null,
-        'created_at' => 'date-time'
+        'keywords' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-		'error_message' => true,
-		'created_at' => false
+        'keywords' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'error_message' => 'errorMessage',
-        'created_at' => 'createdAt'
+        'keywords' => 'keywords'
     ];
 
     /**
@@ -184,9 +176,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'error_message' => 'setErrorMessage',
-        'created_at' => 'setCreatedAt'
+        'keywords' => 'setKeywords'
     ];
 
     /**
@@ -195,9 +185,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'error_message' => 'getErrorMessage',
-        'created_at' => 'getCreatedAt'
+        'keywords' => 'getKeywords'
     ];
 
     /**
@@ -241,25 +229,6 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PENDING = 'pending';
-    public const STATUS_SUCCESS = 'success';
-    public const STATUS_FAILED = 'failed';
-    public const STATUS_EXPIRED = 'expired';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PENDING,
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILED,
-            self::STATUS_EXPIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,9 +245,7 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('keywords', $data ?? [], null);
     }
 
     /**
@@ -308,21 +275,13 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
+        if ($this->container['keywords'] === null) {
+            $invalidProperties[] = "'keywords' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ((count($this->container['keywords']) < 1)) {
+            $invalidProperties[] = "invalid value for 'keywords', number of items must be greater than or equal to 1.";
         }
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -339,99 +298,33 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets status
+     * Gets keywords
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\ReviewSetState[]
      */
-    public function getStatus()
+    public function getKeywords()
     {
-        return $this->container['status'];
+        return $this->container['keywords'];
     }
 
     /**
-     * Sets status
+     * Sets keywords
      *
-     * @param string $status Status of the report.
+     * @param \criteo\api\retailmedia\preview\Model\ReviewSetState[] $keywords List of Phrase-ReviewState pairs describing keyword review updates to perform
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setKeywords($keywords)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($keywords)) {
+            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+
+        if ((count($keywords) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $keywords when calling RetailMediaKeywordsReview., number of items must be greater than or equal to 1.');
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string|null
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string|null $error_message Possible error message along with the status.
-     *
-     * @return self
-     */
-    public function setErrorMessage($error_message)
-    {
-        if (is_null($error_message)) {
-            array_push($this->openAPINullablesSetToNull, 'error_message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('error_message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['error_message'] = $error_message;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at The date when the report request is created.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['keywords'] = $keywords;
 
         return $this;
     }
