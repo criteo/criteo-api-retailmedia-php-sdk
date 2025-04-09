@@ -58,21 +58,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'drawable_balance_ids' => 'string[]',
-        'click_attribution_window' => 'string',
-        'view_attribution_window' => 'string',
-        'name' => 'string',
         'budget' => 'float',
-        'monthly_pacing' => 'float',
-        'daily_pacing' => 'float',
-        'is_auto_daily_pacing' => 'bool',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
         'click_attribution_scope' => 'string',
-        'view_attribution_scope' => 'string',
+        'click_attribution_window' => 'string',
         'company_name' => 'string',
-        'on_behalf_company_name' => 'string'
+        'daily_pacing' => 'float',
+        'drawable_balance_ids' => 'string[]',
+        'end_date' => '\DateTime',
+        'is_auto_daily_pacing' => 'bool',
+        'monthly_pacing' => 'float',
+        'name' => 'string',
+        'on_behalf_company_name' => 'string',
+        'start_date' => '\DateTime',
+        'type' => 'string',
+        'view_attribution_scope' => 'string',
+        'view_attribution_window' => 'string'
     ];
 
     /**
@@ -83,21 +83,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'drawable_balance_ids' => 'long-id',
-        'click_attribution_window' => null,
-        'view_attribution_window' => null,
-        'name' => null,
         'budget' => 'decimal',
-        'monthly_pacing' => 'decimal',
-        'daily_pacing' => 'decimal',
-        'is_auto_daily_pacing' => null,
-        'start_date' => 'date-time',
-        'end_date' => 'date-time',
         'click_attribution_scope' => null,
-        'view_attribution_scope' => null,
+        'click_attribution_window' => null,
         'company_name' => null,
-        'on_behalf_company_name' => null
+        'daily_pacing' => 'decimal',
+        'drawable_balance_ids' => 'long-id',
+        'end_date' => 'date-time',
+        'is_auto_daily_pacing' => null,
+        'monthly_pacing' => 'decimal',
+        'name' => null,
+        'on_behalf_company_name' => null,
+        'start_date' => 'date-time',
+        'type' => null,
+        'view_attribution_scope' => null,
+        'view_attribution_window' => null
     ];
 
     /**
@@ -106,21 +106,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'drawable_balance_ids' => false,
-		'click_attribution_window' => false,
-		'view_attribution_window' => false,
-		'name' => false,
-		'budget' => true,
-		'monthly_pacing' => true,
-		'daily_pacing' => true,
-		'is_auto_daily_pacing' => false,
-		'start_date' => true,
-		'end_date' => true,
+        'budget' => true,
 		'click_attribution_scope' => true,
-		'view_attribution_scope' => true,
+		'click_attribution_window' => false,
 		'company_name' => true,
-		'on_behalf_company_name' => true
+		'daily_pacing' => true,
+		'drawable_balance_ids' => false,
+		'end_date' => true,
+		'is_auto_daily_pacing' => false,
+		'monthly_pacing' => true,
+		'name' => false,
+		'on_behalf_company_name' => true,
+		'start_date' => true,
+		'type' => false,
+		'view_attribution_scope' => true,
+		'view_attribution_window' => false
     ];
 
     /**
@@ -209,21 +209,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'drawable_balance_ids' => 'drawableBalanceIds',
-        'click_attribution_window' => 'clickAttributionWindow',
-        'view_attribution_window' => 'viewAttributionWindow',
-        'name' => 'name',
         'budget' => 'budget',
-        'monthly_pacing' => 'monthlyPacing',
-        'daily_pacing' => 'dailyPacing',
-        'is_auto_daily_pacing' => 'isAutoDailyPacing',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
         'click_attribution_scope' => 'clickAttributionScope',
-        'view_attribution_scope' => 'viewAttributionScope',
+        'click_attribution_window' => 'clickAttributionWindow',
         'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName'
+        'daily_pacing' => 'dailyPacing',
+        'drawable_balance_ids' => 'drawableBalanceIds',
+        'end_date' => 'endDate',
+        'is_auto_daily_pacing' => 'isAutoDailyPacing',
+        'monthly_pacing' => 'monthlyPacing',
+        'name' => 'name',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
+        'start_date' => 'startDate',
+        'type' => 'type',
+        'view_attribution_scope' => 'viewAttributionScope',
+        'view_attribution_window' => 'viewAttributionWindow'
     ];
 
     /**
@@ -232,21 +232,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'drawable_balance_ids' => 'setDrawableBalanceIds',
-        'click_attribution_window' => 'setClickAttributionWindow',
-        'view_attribution_window' => 'setViewAttributionWindow',
-        'name' => 'setName',
         'budget' => 'setBudget',
-        'monthly_pacing' => 'setMonthlyPacing',
-        'daily_pacing' => 'setDailyPacing',
-        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
         'click_attribution_scope' => 'setClickAttributionScope',
-        'view_attribution_scope' => 'setViewAttributionScope',
+        'click_attribution_window' => 'setClickAttributionWindow',
         'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName'
+        'daily_pacing' => 'setDailyPacing',
+        'drawable_balance_ids' => 'setDrawableBalanceIds',
+        'end_date' => 'setEndDate',
+        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
+        'monthly_pacing' => 'setMonthlyPacing',
+        'name' => 'setName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
+        'start_date' => 'setStartDate',
+        'type' => 'setType',
+        'view_attribution_scope' => 'setViewAttributionScope',
+        'view_attribution_window' => 'setViewAttributionWindow'
     ];
 
     /**
@@ -255,21 +255,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'drawable_balance_ids' => 'getDrawableBalanceIds',
-        'click_attribution_window' => 'getClickAttributionWindow',
-        'view_attribution_window' => 'getViewAttributionWindow',
-        'name' => 'getName',
         'budget' => 'getBudget',
-        'monthly_pacing' => 'getMonthlyPacing',
-        'daily_pacing' => 'getDailyPacing',
-        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
         'click_attribution_scope' => 'getClickAttributionScope',
-        'view_attribution_scope' => 'getViewAttributionScope',
+        'click_attribution_window' => 'getClickAttributionWindow',
         'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName'
+        'daily_pacing' => 'getDailyPacing',
+        'drawable_balance_ids' => 'getDrawableBalanceIds',
+        'end_date' => 'getEndDate',
+        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
+        'monthly_pacing' => 'getMonthlyPacing',
+        'name' => 'getName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
+        'start_date' => 'getStartDate',
+        'type' => 'getType',
+        'view_attribution_scope' => 'getViewAttributionScope',
+        'view_attribution_window' => 'getViewAttributionWindow'
     ];
 
     /**
@@ -313,39 +313,40 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_AUCTION = 'auction';
-    public const TYPE_PREFERRED = 'preferred';
+    public const CLICK_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
+    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
+    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
+    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
     public const CLICK_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
+    public const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_AUCTION = 'auction';
+    public const TYPE_PREFERRED = 'preferred';
+    public const VIEW_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
+    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
+    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
+    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CLICK_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
-    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
-    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
-    public const CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
-    public const VIEW_ATTRIBUTION_SCOPE_UNKNOWN = 'unknown';
-    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU = 'sameSku';
-    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
-    public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getClickAttributionScopeAllowableValues()
     {
         return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_AUCTION,
-            self::TYPE_PREFERRED,
+            self::CLICK_ATTRIBUTION_SCOPE_UNKNOWN,
+            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU,
+            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY,
+            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND,
         ];
     }
 
@@ -369,30 +370,12 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return string[]
      */
-    public function getViewAttributionWindowAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
-            self::VIEW_ATTRIBUTION_WINDOW__1_D,
-            self::VIEW_ATTRIBUTION_WINDOW__7_D,
-            self::VIEW_ATTRIBUTION_WINDOW__14_D,
-            self::VIEW_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getClickAttributionScopeAllowableValues()
-    {
-        return [
-            self::CLICK_ATTRIBUTION_SCOPE_UNKNOWN,
-            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU,
-            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY,
-            self::CLICK_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND,
+            self::TYPE_UNKNOWN,
+            self::TYPE_AUCTION,
+            self::TYPE_PREFERRED,
         ];
     }
 
@@ -412,6 +395,23 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewAttributionWindowAllowableValues()
+    {
+        return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
+            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -426,21 +426,21 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'auction');
-        $this->setIfExists('drawable_balance_ids', $data ?? [], null);
-        $this->setIfExists('click_attribution_window', $data ?? [], '30D');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('monthly_pacing', $data ?? [], null);
-        $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('click_attribution_scope', $data ?? [], null);
-        $this->setIfExists('view_attribution_scope', $data ?? [], null);
+        $this->setIfExists('click_attribution_window', $data ?? [], '30D');
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('daily_pacing', $data ?? [], null);
+        $this->setIfExists('drawable_balance_ids', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
+        $this->setIfExists('monthly_pacing', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'auction');
+        $this->setIfExists('view_attribution_scope', $data ?? [], null);
+        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
 
     /**
@@ -470,11 +470,11 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getClickAttributionScopeAllowableValues();
+        if (!is_null($this->container['click_attribution_scope']) && !in_array($this->container['click_attribution_scope'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'click_attribution_scope', must be one of '%s'",
+                $this->container['click_attribution_scope'],
                 implode("', '", $allowedValues)
             );
         }
@@ -488,15 +488,12 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                $this->container['view_attribution_window'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
         }
-
+        if ($this->container['is_auto_daily_pacing'] === null) {
+            $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -508,20 +505,14 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
-        if ($this->container['is_auto_daily_pacing'] === null) {
-            $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
-        }
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
-        $allowedValues = $this->getClickAttributionScopeAllowableValues();
-        if (!is_null($this->container['click_attribution_scope']) && !in_array($this->container['click_attribution_scope'], $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'click_attribution_scope', must be one of '%s'",
-                $this->container['click_attribution_scope'],
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -531,6 +522,15 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'view_attribution_scope', must be one of '%s'",
                 $this->container['view_attribution_scope'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                $this->container['view_attribution_window'],
                 implode("', '", $allowedValues)
             );
         }
@@ -549,178 +549,6 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets drawable_balance_ids
-     *
-     * @return string[]|null
-     */
-    public function getDrawableBalanceIds()
-    {
-        return $this->container['drawable_balance_ids'];
-    }
-
-    /**
-     * Sets drawable_balance_ids
-     *
-     * @param string[]|null $drawable_balance_ids drawable_balance_ids
-     *
-     * @return self
-     */
-    public function setDrawableBalanceIds($drawable_balance_ids)
-    {
-        if (is_null($drawable_balance_ids)) {
-            throw new \InvalidArgumentException('non-nullable drawable_balance_ids cannot be null');
-        }
-        $this->container['drawable_balance_ids'] = $drawable_balance_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets click_attribution_window
-     *
-     * @return string|null
-     */
-    public function getClickAttributionWindow()
-    {
-        return $this->container['click_attribution_window'];
-    }
-
-    /**
-     * Sets click_attribution_window
-     *
-     * @param string|null $click_attribution_window click_attribution_window
-     *
-     * @return self
-     */
-    public function setClickAttributionWindow($click_attribution_window)
-    {
-        if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
-        }
-        $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
-                    $click_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['click_attribution_window'] = $click_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_attribution_window
-     *
-     * @return string|null
-     */
-    public function getViewAttributionWindow()
-    {
-        return $this->container['view_attribution_window'];
-    }
-
-    /**
-     * Sets view_attribution_window
-     *
-     * @param string|null $view_attribution_window view_attribution_window
-     *
-     * @return self
-     */
-    public function setViewAttributionWindow($view_attribution_window)
-    {
-        if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
-        }
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                    $view_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['view_attribution_window'] = $view_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CampaignAttributesV202301., must be smaller than or equal to 255.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CampaignAttributesV202301., must be bigger than or equal to 0.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets budget
@@ -752,169 +580,6 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly_pacing
-     *
-     * @return float|null
-     */
-    public function getMonthlyPacing()
-    {
-        return $this->container['monthly_pacing'];
-    }
-
-    /**
-     * Sets monthly_pacing
-     *
-     * @param float|null $monthly_pacing monthly_pacing
-     *
-     * @return self
-     */
-    public function setMonthlyPacing($monthly_pacing)
-    {
-        if (is_null($monthly_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly_pacing'] = $monthly_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets daily_pacing
-     *
-     * @return float|null
-     */
-    public function getDailyPacing()
-    {
-        return $this->container['daily_pacing'];
-    }
-
-    /**
-     * Sets daily_pacing
-     *
-     * @param float|null $daily_pacing daily_pacing
-     *
-     * @return self
-     */
-    public function setDailyPacing($daily_pacing)
-    {
-        if (is_null($daily_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['daily_pacing'] = $daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_auto_daily_pacing
-     *
-     * @return bool
-     */
-    public function getIsAutoDailyPacing()
-    {
-        return $this->container['is_auto_daily_pacing'];
-    }
-
-    /**
-     * Sets is_auto_daily_pacing
-     *
-     * @param bool $is_auto_daily_pacing is_auto_daily_pacing
-     *
-     * @return self
-     */
-    public function setIsAutoDailyPacing($is_auto_daily_pacing)
-    {
-        if (is_null($is_auto_daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
-        }
-        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date start_date
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            array_push($this->openAPINullablesSetToNull, 'start_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date end_date
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['end_date'] = $end_date;
 
         return $this;
     }
@@ -964,6 +629,372 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets click_attribution_window
+     *
+     * @return string|null
+     */
+    public function getClickAttributionWindow()
+    {
+        return $this->container['click_attribution_window'];
+    }
+
+    /**
+     * Sets click_attribution_window
+     *
+     * @param string|null $click_attribution_window click_attribution_window
+     *
+     * @return self
+     */
+    public function setClickAttributionWindow($click_attribution_window)
+    {
+        if (is_null($click_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+        }
+        $allowedValues = $this->getClickAttributionWindowAllowableValues();
+        if (!in_array($click_attribution_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
+                    $click_attribution_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['click_attribution_window'] = $click_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_name
+     *
+     * @return string|null
+     */
+    public function getCompanyName()
+    {
+        return $this->container['company_name'];
+    }
+
+    /**
+     * Sets company_name
+     *
+     * @param string|null $company_name company_name
+     *
+     * @return self
+     */
+    public function setCompanyName($company_name)
+    {
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets daily_pacing
+     *
+     * @return float|null
+     */
+    public function getDailyPacing()
+    {
+        return $this->container['daily_pacing'];
+    }
+
+    /**
+     * Sets daily_pacing
+     *
+     * @param float|null $daily_pacing daily_pacing
+     *
+     * @return self
+     */
+    public function setDailyPacing($daily_pacing)
+    {
+        if (is_null($daily_pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['daily_pacing'] = $daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets drawable_balance_ids
+     *
+     * @return string[]|null
+     */
+    public function getDrawableBalanceIds()
+    {
+        return $this->container['drawable_balance_ids'];
+    }
+
+    /**
+     * Sets drawable_balance_ids
+     *
+     * @param string[]|null $drawable_balance_ids drawable_balance_ids
+     *
+     * @return self
+     */
+    public function setDrawableBalanceIds($drawable_balance_ids)
+    {
+        if (is_null($drawable_balance_ids)) {
+            throw new \InvalidArgumentException('non-nullable drawable_balance_ids cannot be null');
+        }
+        $this->container['drawable_balance_ids'] = $drawable_balance_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date end_date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_auto_daily_pacing
+     *
+     * @return bool
+     */
+    public function getIsAutoDailyPacing()
+    {
+        return $this->container['is_auto_daily_pacing'];
+    }
+
+    /**
+     * Sets is_auto_daily_pacing
+     *
+     * @param bool $is_auto_daily_pacing is_auto_daily_pacing
+     *
+     * @return self
+     */
+    public function setIsAutoDailyPacing($is_auto_daily_pacing)
+    {
+        if (is_null($is_auto_daily_pacing)) {
+            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
+        }
+        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_pacing
+     *
+     * @return float|null
+     */
+    public function getMonthlyPacing()
+    {
+        return $this->container['monthly_pacing'];
+    }
+
+    /**
+     * Sets monthly_pacing
+     *
+     * @param float|null $monthly_pacing monthly_pacing
+     *
+     * @return self
+     */
+    public function setMonthlyPacing($monthly_pacing)
+    {
+        if (is_null($monthly_pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['monthly_pacing'] = $monthly_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CampaignAttributesV202301., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CampaignAttributesV202301., must be bigger than or equal to 0.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name on_behalf_company_name
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date start_date
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            array_push($this->openAPINullablesSetToNull, 'start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
      * Gets view_attribution_scope
      *
      * @return string|null
@@ -1008,69 +1039,38 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets company_name
+     * Gets view_attribution_window
      *
      * @return string|null
      */
-    public function getCompanyName()
+    public function getViewAttributionWindow()
     {
-        return $this->container['company_name'];
+        return $this->container['view_attribution_window'];
     }
 
     /**
-     * Sets company_name
+     * Sets view_attribution_window
      *
-     * @param string|null $company_name company_name
+     * @param string|null $view_attribution_window view_attribution_window
      *
      * @return self
      */
-    public function setCompanyName($company_name)
+    public function setViewAttributionWindow($view_attribution_window)
     {
-        if (is_null($company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($view_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
         }
-        $this->container['company_name'] = $company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets on_behalf_company_name
-     *
-     * @return string|null
-     */
-    public function getOnBehalfCompanyName()
-    {
-        return $this->container['on_behalf_company_name'];
-    }
-
-    /**
-     * Sets on_behalf_company_name
-     *
-     * @param string|null $on_behalf_company_name on_behalf_company_name
-     *
-     * @return self
-     */
-    public function setOnBehalfCompanyName($on_behalf_company_name)
-    {
-        if (is_null($on_behalf_company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                    $view_attribution_window,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+        $this->container['view_attribution_window'] = $view_attribution_window;
 
         return $this;
     }

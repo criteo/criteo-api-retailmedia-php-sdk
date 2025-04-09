@@ -58,8 +58,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2'
+        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'attributes' => true
+        'attributes' => true,
+		'type' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -301,33 +301,6 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
 
 
     /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets attributes
      *
      * @return \criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2|null
@@ -357,6 +330,33 @@ class JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultiplie
             }
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

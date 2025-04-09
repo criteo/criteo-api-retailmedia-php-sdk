@@ -58,9 +58,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_month' => '\DateTime',
         'duration' => 'string',
         'max_monthly_spend' => 'float',
+        'start_month' => '\DateTime',
         'status' => 'string'
     ];
 
@@ -72,9 +72,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'start_month' => 'date-time',
         'duration' => null,
         'max_monthly_spend' => 'double',
+        'start_month' => 'date-time',
         'status' => null
     ];
 
@@ -84,9 +84,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_month' => true,
-		'duration' => false,
+        'duration' => false,
 		'max_monthly_spend' => false,
+		'start_month' => true,
 		'status' => true
     ];
 
@@ -176,9 +176,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'start_month' => 'startMonth',
         'duration' => 'duration',
         'max_monthly_spend' => 'maxMonthlySpend',
+        'start_month' => 'startMonth',
         'status' => 'status'
     ];
 
@@ -188,9 +188,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'start_month' => 'setStartMonth',
         'duration' => 'setDuration',
         'max_monthly_spend' => 'setMaxMonthlySpend',
+        'start_month' => 'setStartMonth',
         'status' => 'setStatus'
     ];
 
@@ -200,9 +200,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'start_month' => 'getStartMonth',
         'duration' => 'getDuration',
         'max_monthly_spend' => 'getMaxMonthlySpend',
+        'start_month' => 'getStartMonth',
         'status' => 'getStatus'
     ];
 
@@ -280,9 +280,9 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('start_month', $data ?? [], null);
         $this->setIfExists('duration', $data ?? [], null);
         $this->setIfExists('max_monthly_spend', $data ?? [], null);
+        $this->setIfExists('start_month', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -344,40 +344,6 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets start_month
-     *
-     * @return \DateTime|null
-     */
-    public function getStartMonth()
-    {
-        return $this->container['start_month'];
-    }
-
-    /**
-     * Sets start_month
-     *
-     * @param \DateTime|null $start_month Monthly budget override start month, format \"yyyy-MM\". If it is null, the StartMonth would be the following month of the last item in the override sequence.
-     *
-     * @return self
-     */
-    public function setStartMonth($start_month)
-    {
-        if (is_null($start_month)) {
-            array_push($this->openAPINullablesSetToNull, 'start_month');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_month', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['start_month'] = $start_month;
-
-        return $this;
-    }
-
-    /**
      * Gets duration
      *
      * @return string
@@ -427,6 +393,40 @@ class CampaignMonthlyBudgetOverride implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable max_monthly_spend cannot be null');
         }
         $this->container['max_monthly_spend'] = $max_monthly_spend;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_month
+     *
+     * @return \DateTime|null
+     */
+    public function getStartMonth()
+    {
+        return $this->container['start_month'];
+    }
+
+    /**
+     * Sets start_month
+     *
+     * @param \DateTime|null $start_month Monthly budget override start month, format \"yyyy-MM\". If it is null, the StartMonth would be the following month of the last item in the override sequence.
+     *
+     * @return self
+     */
+    public function setStartMonth($start_month)
+    {
+        if (is_null($start_month)) {
+            array_push($this->openAPINullablesSetToNull, 'start_month');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_month', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start_month'] = $start_month;
 
         return $this;
     }

@@ -636,7 +636,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return |\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome
+     * @return \criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome
      */
     public function appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['appendPromotedProducts'][0])
     {
@@ -653,7 +653,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of |\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function appendPromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['appendPromotedProducts'][0])
     {
@@ -1824,18 +1824,18 @@ class CampaignApi
      * Operation fetchPromotedProducts
      *
      * @param  string $line_item_id ID of the line item. (required)
-     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchPromotedProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_10\Model\PromotedProductResourceCollectionOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome
      */
-    public function fetchPromotedProducts($line_item_id, $offset = null, $limit = null, $fields = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
+    public function fetchPromotedProducts($line_item_id, $fields = null, $limit = null, $offset = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
     {
-        list($response) = $this->fetchPromotedProductsWithHttpInfo($line_item_id, $offset, $limit, $fields, $contentType);
+        list($response) = $this->fetchPromotedProductsWithHttpInfo($line_item_id, $fields, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -1843,18 +1843,18 @@ class CampaignApi
      * Operation fetchPromotedProductsWithHttpInfo
      *
      * @param  string $line_item_id ID of the line item. (required)
-     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchPromotedProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_10\Model\PromotedProductResourceCollectionOutcome|\criteo\api\retailmedia\v2024_10\Model\ProductResourceOutcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function fetchPromotedProductsWithHttpInfo($line_item_id, $offset = null, $limit = null, $fields = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
+    public function fetchPromotedProductsWithHttpInfo($line_item_id, $fields = null, $limit = null, $offset = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
     {
-        $request = $this->fetchPromotedProductsRequest($line_item_id, $offset, $limit, $fields, $contentType);
+        $request = $this->fetchPromotedProductsRequest($line_item_id, $fields, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1967,17 +1967,17 @@ class CampaignApi
      * Operation fetchPromotedProductsAsync
      *
      * @param  string $line_item_id ID of the line item. (required)
-     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchPromotedProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fetchPromotedProductsAsync($line_item_id, $offset = null, $limit = null, $fields = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
+    public function fetchPromotedProductsAsync($line_item_id, $fields = null, $limit = null, $offset = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
     {
-        return $this->fetchPromotedProductsAsyncWithHttpInfo($line_item_id, $offset, $limit, $fields, $contentType)
+        return $this->fetchPromotedProductsAsyncWithHttpInfo($line_item_id, $fields, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1989,18 +1989,18 @@ class CampaignApi
      * Operation fetchPromotedProductsAsyncWithHttpInfo
      *
      * @param  string $line_item_id ID of the line item. (required)
-     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchPromotedProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function fetchPromotedProductsAsyncWithHttpInfo($line_item_id, $offset = null, $limit = null, $fields = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
+    public function fetchPromotedProductsAsyncWithHttpInfo($line_item_id, $fields = null, $limit = null, $offset = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_10\Model\PromotedProductResourceCollectionOutcome';
-        $request = $this->fetchPromotedProductsRequest($line_item_id, $offset, $limit, $fields, $contentType);
+        $request = $this->fetchPromotedProductsRequest($line_item_id, $fields, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2042,15 +2042,15 @@ class CampaignApi
      * Create request for operation 'fetchPromotedProducts'
      *
      * @param  string $line_item_id ID of the line item. (required)
-     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
-     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
+     * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
+     * @param  int $offset Offset of the first item to fetch. Defaults to zero. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchPromotedProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function fetchPromotedProductsRequest($line_item_id, $offset = null, $limit = null, $fields = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
+    public function fetchPromotedProductsRequest($line_item_id, $fields = null, $limit = null, $offset = null, string $contentType = self::contentTypes['fetchPromotedProducts'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -2073,9 +2073,9 @@ class CampaignApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
+            $fields,
+            'fields', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -2091,9 +2091,9 @@ class CampaignApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $fields,
-            'fields', // param base name
-            'string', // openApiType
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -4247,38 +4247,38 @@ class CampaignApi
     /**
      * Operation getApi202204ExternalCategories
      *
-     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
-     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
+     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202204ExternalCategories'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_10\Model\Category202204ListResponse
      */
-    public function getApi202204ExternalCategories($retailer_id = null, $text_substring = null, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
+    public function getApi202204ExternalCategories($page_index = 0, $page_size = 100, $retailer_id = null, $text_substring = null, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
     {
-        list($response) = $this->getApi202204ExternalCategoriesWithHttpInfo($retailer_id, $text_substring, $page_index, $page_size, $contentType);
+        list($response) = $this->getApi202204ExternalCategoriesWithHttpInfo($page_index, $page_size, $retailer_id, $text_substring, $contentType);
         return $response;
     }
 
     /**
      * Operation getApi202204ExternalCategoriesWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
-     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
+     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202204ExternalCategories'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_10\Model\Category202204ListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApi202204ExternalCategoriesWithHttpInfo($retailer_id = null, $text_substring = null, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
+    public function getApi202204ExternalCategoriesWithHttpInfo($page_index = 0, $page_size = 100, $retailer_id = null, $text_substring = null, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
     {
-        $request = $this->getApi202204ExternalCategoriesRequest($retailer_id, $text_substring, $page_index, $page_size, $contentType);
+        $request = $this->getApi202204ExternalCategoriesRequest($page_index, $page_size, $retailer_id, $text_substring, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4367,18 +4367,18 @@ class CampaignApi
     /**
      * Operation getApi202204ExternalCategoriesAsync
      *
-     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
-     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
+     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202204ExternalCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202204ExternalCategoriesAsync($retailer_id = null, $text_substring = null, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
+    public function getApi202204ExternalCategoriesAsync($page_index = 0, $page_size = 100, $retailer_id = null, $text_substring = null, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
     {
-        return $this->getApi202204ExternalCategoriesAsyncWithHttpInfo($retailer_id, $text_substring, $page_index, $page_size, $contentType)
+        return $this->getApi202204ExternalCategoriesAsyncWithHttpInfo($page_index, $page_size, $retailer_id, $text_substring, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4389,19 +4389,19 @@ class CampaignApi
     /**
      * Operation getApi202204ExternalCategoriesAsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
-     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
+     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202204ExternalCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202204ExternalCategoriesAsyncWithHttpInfo($retailer_id = null, $text_substring = null, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
+    public function getApi202204ExternalCategoriesAsyncWithHttpInfo($page_index = 0, $page_size = 100, $retailer_id = null, $text_substring = null, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_10\Model\Category202204ListResponse';
-        $request = $this->getApi202204ExternalCategoriesRequest($retailer_id, $text_substring, $page_index, $page_size, $contentType);
+        $request = $this->getApi202204ExternalCategoriesRequest($page_index, $page_size, $retailer_id, $text_substring, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4442,19 +4442,17 @@ class CampaignApi
     /**
      * Create request for operation 'getApi202204ExternalCategories'
      *
-     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
-     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
+     * @param  int $retailer_id The retailer id for which Categories fetched (optional)
+     * @param  string $text_substring Query string to search across Categories (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202204ExternalCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApi202204ExternalCategoriesRequest($retailer_id = null, $text_substring = null, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
+    public function getApi202204ExternalCategoriesRequest($page_index = 0, $page_size = 100, $retailer_id = null, $text_substring = null, string $contentType = self::contentTypes['getApi202204ExternalCategories'][0])
     {
-
-
 
         if ($page_index !== null && $page_index > 500) {
             throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.getApi202204ExternalCategories, must be smaller than or equal to 500.');
@@ -4471,6 +4469,8 @@ class CampaignApi
         }
         
 
+
+
         $resourcePath = '/2024-10/retail-media/categories';
         $formParams = [];
         $queryParams = [];
@@ -4478,24 +4478,6 @@ class CampaignApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $retailer_id,
-            'retailerId', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $text_substring,
-            'textSubstring', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_index,
@@ -4510,6 +4492,24 @@ class CampaignApi
             $page_size,
             'pageSize', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $retailer_id,
+            'retailerId', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $text_substring,
+            'textSubstring', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -7352,8 +7352,8 @@ class CampaignApi
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
-     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'] to see the possible values for this operation
@@ -7362,9 +7362,9 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_10\Model\CommonLineItemPagedListResponse
      */
-    public function getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id = null, $limit_to_type = null, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
+    public function getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id = null, $limit_to_id = null, $limit_to_type = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
     {
-        list($response) = $this->getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size, $contentType);
+        list($response) = $this->getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size, $contentType);
         return $response;
     }
 
@@ -7373,8 +7373,8 @@ class CampaignApi
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
-     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'] to see the possible values for this operation
@@ -7383,9 +7383,9 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_10\Model\CommonLineItemPagedListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo($account_id, $limit_to_campaign_id = null, $limit_to_type = null, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
+    public function getApiV2ExternalAccountLineItemsByAccountIdWithHttpInfo($account_id, $limit_to_campaign_id = null, $limit_to_id = null, $limit_to_type = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
     {
-        $request = $this->getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7476,8 +7476,8 @@ class CampaignApi
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
-     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'] to see the possible values for this operation
@@ -7485,9 +7485,9 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV2ExternalAccountLineItemsByAccountIdAsync($account_id, $limit_to_campaign_id = null, $limit_to_type = null, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
+    public function getApiV2ExternalAccountLineItemsByAccountIdAsync($account_id, $limit_to_campaign_id = null, $limit_to_id = null, $limit_to_type = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
     {
-        return $this->getApiV2ExternalAccountLineItemsByAccountIdAsyncWithHttpInfo($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size, $contentType)
+        return $this->getApiV2ExternalAccountLineItemsByAccountIdAsyncWithHttpInfo($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7500,8 +7500,8 @@ class CampaignApi
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
-     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'] to see the possible values for this operation
@@ -7509,10 +7509,10 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV2ExternalAccountLineItemsByAccountIdAsyncWithHttpInfo($account_id, $limit_to_campaign_id = null, $limit_to_type = null, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
+    public function getApiV2ExternalAccountLineItemsByAccountIdAsyncWithHttpInfo($account_id, $limit_to_campaign_id = null, $limit_to_id = null, $limit_to_type = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_10\Model\CommonLineItemPagedListResponse';
-        $request = $this->getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7555,8 +7555,8 @@ class CampaignApi
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
-     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  string $limit_to_type The campaign types that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'] to see the possible values for this operation
@@ -7564,7 +7564,7 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id = null, $limit_to_type = null, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
+    public function getApiV2ExternalAccountLineItemsByAccountIdRequest($account_id, $limit_to_campaign_id = null, $limit_to_id = null, $limit_to_type = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalAccountLineItemsByAccountId'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -7598,18 +7598,18 @@ class CampaignApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit_to_type,
-            'limitToType', // param base name
-            'string', // openApiType
+            $limit_to_id,
+            'limitToId', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit_to_id,
-            'limitToId', // param base name
-            'array', // openApiType
+            $limit_to_type,
+            'limitToType', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

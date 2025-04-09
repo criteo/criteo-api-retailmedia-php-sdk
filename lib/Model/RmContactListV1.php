@@ -58,8 +58,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'is_read_only' => 'bool',
         'identifier_type' => 'string',
+        'is_read_only' => 'bool',
         'sharing_status' => 'string'
     ];
 
@@ -71,8 +71,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'is_read_only' => null,
         'identifier_type' => null,
+        'is_read_only' => null,
         'sharing_status' => null
     ];
 
@@ -82,8 +82,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'is_read_only' => true,
-		'identifier_type' => true,
+        'identifier_type' => true,
+		'is_read_only' => true,
 		'sharing_status' => true
     ];
 
@@ -173,8 +173,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'is_read_only' => 'isReadOnly',
         'identifier_type' => 'identifierType',
+        'is_read_only' => 'isReadOnly',
         'sharing_status' => 'sharingStatus'
     ];
 
@@ -184,8 +184,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'is_read_only' => 'setIsReadOnly',
         'identifier_type' => 'setIdentifierType',
+        'is_read_only' => 'setIsReadOnly',
         'sharing_status' => 'setSharingStatus'
     ];
 
@@ -195,8 +195,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'is_read_only' => 'getIsReadOnly',
         'identifier_type' => 'getIdentifierType',
+        'is_read_only' => 'getIsReadOnly',
         'sharing_status' => 'getSharingStatus'
     ];
 
@@ -297,8 +297,8 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('is_read_only', $data ?? [], null);
         $this->setIfExists('identifier_type', $data ?? [], null);
+        $this->setIfExists('is_read_only', $data ?? [], null);
         $this->setIfExists('sharing_status', $data ?? [], null);
     }
 
@@ -363,40 +363,6 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets is_read_only
-     *
-     * @return bool|null
-     */
-    public function getIsReadOnly()
-    {
-        return $this->container['is_read_only'];
-    }
-
-    /**
-     * Sets is_read_only
-     *
-     * @param bool|null $is_read_only Is the segment read-only
-     *
-     * @return self
-     */
-    public function setIsReadOnly($is_read_only)
-    {
-        if (is_null($is_read_only)) {
-            array_push($this->openAPINullablesSetToNull, 'is_read_only');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_read_only', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_read_only'] = $is_read_only;
-
-        return $this;
-    }
-
-    /**
      * Gets identifier_type
      *
      * @return string|null
@@ -436,6 +402,40 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['identifier_type'] = $identifier_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_read_only
+     *
+     * @return bool|null
+     */
+    public function getIsReadOnly()
+    {
+        return $this->container['is_read_only'];
+    }
+
+    /**
+     * Sets is_read_only
+     *
+     * @param bool|null $is_read_only Is the segment read-only
+     *
+     * @return self
+     */
+    public function setIsReadOnly($is_read_only)
+    {
+        if (is_null($is_read_only)) {
+            array_push($this->openAPINullablesSetToNull, 'is_read_only');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_read_only', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_read_only'] = $is_read_only;
 
         return $this;
     }

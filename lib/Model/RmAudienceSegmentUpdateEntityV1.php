@@ -58,9 +58,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'contact_list' => 'object',
         'description' => '\criteo\api\retailmedia\v2024_10\Model\NillableString',
-        'contact_list' => 'object'
+        'name' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'contact_list' => null,
         'description' => null,
-        'contact_list' => null
+        'name' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
+        'contact_list' => false,
 		'description' => true,
-		'contact_list' => false
+		'name' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'contact_list' => 'contactList',
         'description' => 'description',
-        'contact_list' => 'contactList'
+        'name' => 'name'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'contact_list' => 'setContactList',
         'description' => 'setDescription',
-        'contact_list' => 'setContactList'
+        'name' => 'setName'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'contact_list' => 'getContactList',
         'description' => 'getDescription',
-        'contact_list' => 'getContactList'
+        'name' => 'getName'
     ];
 
     /**
@@ -257,9 +257,9 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('contact_list', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -305,28 +305,28 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets name
+     * Gets contact_list
      *
-     * @return string|null
+     * @return object|null
      */
-    public function getName()
+    public function getContactList()
     {
-        return $this->container['name'];
+        return $this->container['contact_list'];
     }
 
     /**
-     * Sets name
+     * Sets contact_list
      *
-     * @param string|null $name Name of the segment
+     * @param object|null $contact_list Settings to update the contact list of the segment
      *
      * @return self
      */
-    public function setName($name)
+    public function setContactList($contact_list)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($contact_list)) {
+            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['contact_list'] = $contact_list;
 
         return $this;
     }
@@ -366,28 +366,28 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets contact_list
+     * Gets name
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getContactList()
+    public function getName()
     {
-        return $this->container['contact_list'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets contact_list
+     * Sets name
      *
-     * @param object|null $contact_list Settings to update the contact list of the segment
+     * @param string|null $name Name of the segment
      *
      * @return self
      */
-    public function setContactList($contact_list)
+    public function setName($name)
     {
-        if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['contact_list'] = $contact_list;
+        $this->container['name'] = $name;
 
         return $this;
     }

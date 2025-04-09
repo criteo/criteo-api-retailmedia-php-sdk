@@ -59,8 +59,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2024_10\Model\ResourceOfAuctionLineItem',
-        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]',
-        'errors' => '\criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]'
+        'errors' => '\criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]',
+        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'data' => false,
-		'warnings' => false,
-		'errors' => false
+		'errors' => false,
+		'warnings' => false
     ];
 
     /**
@@ -174,8 +174,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -185,8 +185,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -196,8 +196,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -258,8 +258,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -332,33 +332,6 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
      * Gets errors
      *
      * @return \criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]|null
@@ -381,6 +354,33 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
         $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\v2024_10\Model\ProblemDetails[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

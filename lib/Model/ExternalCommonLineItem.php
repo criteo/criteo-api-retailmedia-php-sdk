@@ -58,17 +58,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'type' => 'string',
-        'start_date' => '\DateTime',
+        'budget' => 'float',
+        'budget_remaining' => 'float',
+        'budget_spent' => 'float',
+        'campaign_id' => 'string',
+        'created_at' => '\DateTime',
         'end_date' => '\DateTime',
+        'name' => 'string',
+        'start_date' => '\DateTime',
         'status' => 'string',
         'target_retailer_id' => 'string',
-        'budget' => 'float',
-        'campaign_id' => 'string',
-        'budget_spent' => 'float',
-        'budget_remaining' => 'float',
-        'created_at' => '\DateTime',
+        'type' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -80,17 +80,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'type' => null,
-        'start_date' => 'date',
+        'budget' => 'decimal',
+        'budget_remaining' => 'decimal',
+        'budget_spent' => 'double',
+        'campaign_id' => 'long-id',
+        'created_at' => 'date-time',
         'end_date' => 'date',
+        'name' => null,
+        'start_date' => 'date',
         'status' => null,
         'target_retailer_id' => 'long-id',
-        'budget' => 'decimal',
-        'campaign_id' => 'long-id',
-        'budget_spent' => 'double',
-        'budget_remaining' => 'decimal',
-        'created_at' => 'date-time',
+        'type' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -100,17 +100,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'type' => false,
-		'start_date' => false,
+        'budget' => true,
+		'budget_remaining' => true,
+		'budget_spent' => false,
+		'campaign_id' => false,
+		'created_at' => false,
 		'end_date' => true,
+		'name' => false,
+		'start_date' => false,
 		'status' => false,
 		'target_retailer_id' => false,
-		'budget' => true,
-		'campaign_id' => false,
-		'budget_spent' => false,
-		'budget_remaining' => true,
-		'created_at' => false,
+		'type' => false,
 		'updated_at' => false
     ];
 
@@ -200,17 +200,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'type' => 'type',
-        'start_date' => 'startDate',
+        'budget' => 'budget',
+        'budget_remaining' => 'budgetRemaining',
+        'budget_spent' => 'budgetSpent',
+        'campaign_id' => 'campaignId',
+        'created_at' => 'createdAt',
         'end_date' => 'endDate',
+        'name' => 'name',
+        'start_date' => 'startDate',
         'status' => 'status',
         'target_retailer_id' => 'targetRetailerId',
-        'budget' => 'budget',
-        'campaign_id' => 'campaignId',
-        'budget_spent' => 'budgetSpent',
-        'budget_remaining' => 'budgetRemaining',
-        'created_at' => 'createdAt',
+        'type' => 'type',
         'updated_at' => 'updatedAt'
     ];
 
@@ -220,17 +220,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'type' => 'setType',
-        'start_date' => 'setStartDate',
+        'budget' => 'setBudget',
+        'budget_remaining' => 'setBudgetRemaining',
+        'budget_spent' => 'setBudgetSpent',
+        'campaign_id' => 'setCampaignId',
+        'created_at' => 'setCreatedAt',
         'end_date' => 'setEndDate',
+        'name' => 'setName',
+        'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'target_retailer_id' => 'setTargetRetailerId',
-        'budget' => 'setBudget',
-        'campaign_id' => 'setCampaignId',
-        'budget_spent' => 'setBudgetSpent',
-        'budget_remaining' => 'setBudgetRemaining',
-        'created_at' => 'setCreatedAt',
+        'type' => 'setType',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -240,17 +240,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'type' => 'getType',
-        'start_date' => 'getStartDate',
+        'budget' => 'getBudget',
+        'budget_remaining' => 'getBudgetRemaining',
+        'budget_spent' => 'getBudgetSpent',
+        'campaign_id' => 'getCampaignId',
+        'created_at' => 'getCreatedAt',
         'end_date' => 'getEndDate',
+        'name' => 'getName',
+        'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'target_retailer_id' => 'getTargetRetailerId',
-        'budget' => 'getBudget',
-        'campaign_id' => 'getCampaignId',
-        'budget_spent' => 'getBudgetSpent',
-        'budget_remaining' => 'getBudgetRemaining',
-        'created_at' => 'getCreatedAt',
+        'type' => 'getType',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -295,9 +295,6 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_AUCTION = 'auction';
-    public const TYPE_PREFERRED = 'preferred';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -307,20 +304,9 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     public const STATUS_ENDED = 'ended';
     public const STATUS_ARCHIVED = 'archived';
     public const STATUS_NO_FUNDS = 'noFunds';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_AUCTION,
-            self::TYPE_PREFERRED,
-        ];
-    }
+    public const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_AUCTION = 'auction';
+    public const TYPE_PREFERRED = 'preferred';
 
     /**
      * Gets allowable values of the enum
@@ -343,6 +329,20 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_AUCTION,
+            self::TYPE_PREFERRED,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -357,17 +357,17 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('budget_remaining', $data ?? [], null);
+        $this->setIfExists('budget_spent', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_retailer_id', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('budget_spent', $data ?? [], null);
-        $this->setIfExists('budget_remaining', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -398,6 +398,15 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['budget_remaining'] === null) {
+            $invalidProperties[] = "'budget_remaining' can't be null";
+        }
+        if ($this->container['campaign_id'] === null) {
+            $invalidProperties[] = "'campaign_id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -407,18 +416,6 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
 
         if ((mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if ($this->container['start_date'] === null) {
@@ -436,15 +433,18 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['target_retailer_id'] === null) {
             $invalidProperties[] = "'target_retailer_id' can't be null";
         }
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['budget_remaining'] === null) {
-            $invalidProperties[] = "'budget_remaining' can't be null";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
+
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
         }
@@ -462,6 +462,189 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets budget
+     *
+     * @return float|null
+     */
+    public function getBudget()
+    {
+        return $this->container['budget'];
+    }
+
+    /**
+     * Sets budget
+     *
+     * @param float|null $budget budget
+     *
+     * @return self
+     */
+    public function setBudget($budget)
+    {
+        if (is_null($budget)) {
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_remaining
+     *
+     * @return float
+     */
+    public function getBudgetRemaining()
+    {
+        return $this->container['budget_remaining'];
+    }
+
+    /**
+     * Sets budget_remaining
+     *
+     * @param float $budget_remaining budget_remaining
+     *
+     * @return self
+     */
+    public function setBudgetRemaining($budget_remaining)
+    {
+        if (is_null($budget_remaining)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget_remaining'] = $budget_remaining;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_spent
+     *
+     * @return float|null
+     */
+    public function getBudgetSpent()
+    {
+        return $this->container['budget_spent'];
+    }
+
+    /**
+     * Sets budget_spent
+     *
+     * @param float|null $budget_spent budget_spent
+     *
+     * @return self
+     */
+    public function setBudgetSpent($budget_spent)
+    {
+        if (is_null($budget_spent)) {
+            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
+        }
+        $this->container['budget_spent'] = $budget_spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_id
+     *
+     * @return string
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaign_id'];
+    }
+
+    /**
+     * Sets campaign_id
+     *
+     * @param string $campaign_id campaign_id
+     *
+     * @return self
+     */
+    public function setCampaignId($campaign_id)
+    {
+        if (is_null($campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        }
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -498,43 +681,6 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -557,40 +703,6 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['end_date'] = $end_date;
 
         return $this;
     }
@@ -660,150 +772,38 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets budget
-     *
-     * @return float|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param float|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            array_push($this->openAPINullablesSetToNull, 'budget');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_id
+     * Gets type
      *
      * @return string
      */
-    public function getCampaignId()
+    public function getType()
     {
-        return $this->container['campaign_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets campaign_id
+     * Sets type
      *
-     * @param string $campaign_id campaign_id
+     * @param string $type type
      *
      * @return self
      */
-    public function setCampaignId($campaign_id)
+    public function setType($type)
     {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return float|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param float|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        if (is_null($budget_spent)) {
-            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['budget_spent'] = $budget_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_remaining
-     *
-     * @return float
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        if (is_null($budget_remaining)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_remaining', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['type'] = $type;
 
         return $this;
     }

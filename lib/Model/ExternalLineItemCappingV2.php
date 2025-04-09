@@ -58,8 +58,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'count' => 'int'
+        'count' => 'int',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'count' => 'int32'
+        'count' => 'int32',
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'count' => false
+        'count' => false,
+		'type' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'count' => 'count'
+        'count' => 'count',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'count' => 'setCount'
+        'count' => 'setCount',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'count' => 'getCount'
+        'count' => 'getCount',
+        'type' => 'getType'
     ];
 
     /**
@@ -268,8 +268,8 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -299,6 +299,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['count'] === null) {
+            $invalidProperties[] = "'count' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -311,9 +314,6 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -328,6 +328,33 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets count
+     *
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->container['count'];
+    }
+
+    /**
+     * Sets count
+     *
+     * @param int $count count
+     *
+     * @return self
+     */
+    public function setCount($count)
+    {
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        }
+        $this->container['count'] = $count;
+
+        return $this;
+    }
 
     /**
      * Gets type
@@ -362,33 +389,6 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets count
-     *
-     * @return int
-     */
-    public function getCount()
-    {
-        return $this->container['count'];
-    }
-
-    /**
-     * Sets count
-     *
-     * @param int $count count
-     *
-     * @return self
-     */
-    public function setCount($count)
-    {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
-        }
-        $this->container['count'] = $count;
 
         return $this;
     }

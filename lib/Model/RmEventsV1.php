@@ -58,12 +58,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'shopper_activity' => 'string',
-        'lookback_days' => 'string',
-        'category_ids' => 'string[]',
         'brand_ids' => 'string[]',
+        'category_ids' => 'string[]',
+        'lookback_days' => 'string',
+        'max_price' => 'float',
         'min_price' => 'float',
-        'max_price' => 'float'
+        'shopper_activity' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'shopper_activity' => null,
-        'lookback_days' => null,
-        'category_ids' => null,
         'brand_ids' => null,
+        'category_ids' => null,
+        'lookback_days' => null,
+        'max_price' => 'double',
         'min_price' => 'double',
-        'max_price' => 'double'
+        'shopper_activity' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'shopper_activity' => true,
-		'lookback_days' => true,
+        'brand_ids' => true,
 		'category_ids' => true,
-		'brand_ids' => true,
+		'lookback_days' => true,
+		'max_price' => true,
 		'min_price' => true,
-		'max_price' => true
+		'shopper_activity' => true
     ];
 
     /**
@@ -182,12 +182,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'shopper_activity' => 'shopperActivity',
-        'lookback_days' => 'lookbackDays',
-        'category_ids' => 'categoryIds',
         'brand_ids' => 'brandIds',
+        'category_ids' => 'categoryIds',
+        'lookback_days' => 'lookbackDays',
+        'max_price' => 'maxPrice',
         'min_price' => 'minPrice',
-        'max_price' => 'maxPrice'
+        'shopper_activity' => 'shopperActivity'
     ];
 
     /**
@@ -196,12 +196,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'shopper_activity' => 'setShopperActivity',
-        'lookback_days' => 'setLookbackDays',
-        'category_ids' => 'setCategoryIds',
         'brand_ids' => 'setBrandIds',
+        'category_ids' => 'setCategoryIds',
+        'lookback_days' => 'setLookbackDays',
+        'max_price' => 'setMaxPrice',
         'min_price' => 'setMinPrice',
-        'max_price' => 'setMaxPrice'
+        'shopper_activity' => 'setShopperActivity'
     ];
 
     /**
@@ -210,12 +210,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'shopper_activity' => 'getShopperActivity',
-        'lookback_days' => 'getLookbackDays',
-        'category_ids' => 'getCategoryIds',
         'brand_ids' => 'getBrandIds',
+        'category_ids' => 'getCategoryIds',
+        'lookback_days' => 'getLookbackDays',
+        'max_price' => 'getMaxPrice',
         'min_price' => 'getMinPrice',
-        'max_price' => 'getMaxPrice'
+        'shopper_activity' => 'getShopperActivity'
     ];
 
     /**
@@ -259,10 +259,6 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const SHOPPER_ACTIVITY_UNKNOWN = 'Unknown';
-    public const SHOPPER_ACTIVITY_VIEW = 'View';
-    public const SHOPPER_ACTIVITY_BUY = 'Buy';
-    public const SHOPPER_ACTIVITY_ADD_TO_CART = 'AddToCart';
     public const LOOKBACK_DAYS_UNKNOWN = 'Unknown';
     public const LOOKBACK_DAYS_LAST7_DAYS = 'Last7Days';
     public const LOOKBACK_DAYS_LAST14_DAYS = 'Last14Days';
@@ -273,21 +269,10 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOOKBACK_DAYS_LAST120_DAYS = 'Last120Days';
     public const LOOKBACK_DAYS_LAST150_DAYS = 'Last150Days';
     public const LOOKBACK_DAYS_LAST180_DAYS = 'Last180Days';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getShopperActivityAllowableValues()
-    {
-        return [
-            self::SHOPPER_ACTIVITY_UNKNOWN,
-            self::SHOPPER_ACTIVITY_VIEW,
-            self::SHOPPER_ACTIVITY_BUY,
-            self::SHOPPER_ACTIVITY_ADD_TO_CART,
-        ];
-    }
+    public const SHOPPER_ACTIVITY_UNKNOWN = 'Unknown';
+    public const SHOPPER_ACTIVITY_VIEW = 'View';
+    public const SHOPPER_ACTIVITY_BUY = 'Buy';
+    public const SHOPPER_ACTIVITY_ADD_TO_CART = 'AddToCart';
 
     /**
      * Gets allowable values of the enum
@@ -311,6 +296,21 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getShopperActivityAllowableValues()
+    {
+        return [
+            self::SHOPPER_ACTIVITY_UNKNOWN,
+            self::SHOPPER_ACTIVITY_VIEW,
+            self::SHOPPER_ACTIVITY_BUY,
+            self::SHOPPER_ACTIVITY_ADD_TO_CART,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -325,12 +325,12 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('shopper_activity', $data ?? [], null);
-        $this->setIfExists('lookback_days', $data ?? [], null);
-        $this->setIfExists('category_ids', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
-        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('lookback_days', $data ?? [], null);
         $this->setIfExists('max_price', $data ?? [], null);
+        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('shopper_activity', $data ?? [], null);
     }
 
     /**
@@ -360,20 +360,20 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getShopperActivityAllowableValues();
-        if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'shopper_activity', must be one of '%s'",
-                $this->container['shopper_activity'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getLookbackDaysAllowableValues();
         if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'lookback_days', must be one of '%s'",
                 $this->container['lookback_days'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                $this->container['shopper_activity'],
                 implode("', '", $allowedValues)
             );
         }
@@ -394,45 +394,69 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets shopper_activity
+     * Gets brand_ids
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getShopperActivity()
+    public function getBrandIds()
     {
-        return $this->container['shopper_activity'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets shopper_activity
+     * Sets brand_ids
      *
-     * @param string|null $shopper_activity Reach people who performed specific action
+     * @param string[]|null $brand_ids The list of brand ids
      *
      * @return self
      */
-    public function setShopperActivity($shopper_activity)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($shopper_activity)) {
-            array_push($this->openAPINullablesSetToNull, 'shopper_activity');
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('shopper_activity', $nullablesSetToNull);
+            $index = array_search('brand_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getShopperActivityAllowableValues();
-        if (!is_null($shopper_activity) && !in_array($shopper_activity, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'shopper_activity', must be one of '%s'",
-                    $shopper_activity,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return string[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param string[]|null $category_ids The list of category ids
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['shopper_activity'] = $shopper_activity;
+        $this->container['category_ids'] = $category_ids;
 
         return $this;
     }
@@ -482,69 +506,35 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets category_ids
+     * Gets max_price
      *
-     * @return string[]|null
+     * @return float|null
      */
-    public function getCategoryIds()
+    public function getMaxPrice()
     {
-        return $this->container['category_ids'];
+        return $this->container['max_price'];
     }
 
     /**
-     * Sets category_ids
+     * Sets max_price
      *
-     * @param string[]|null $category_ids The list of category ids
+     * @param float|null $max_price Maximum price of the products
      *
      * @return self
      */
-    public function setCategoryIds($category_ids)
+    public function setMaxPrice($max_price)
     {
-        if (is_null($category_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        if (is_null($max_price)) {
+            array_push($this->openAPINullablesSetToNull, 'max_price');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('category_ids', $nullablesSetToNull);
+            $index = array_search('max_price', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['category_ids'] = $category_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_ids
-     *
-     * @return string[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param string[]|null $brand_ids The list of brand ids
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['brand_ids'] = $brand_ids;
+        $this->container['max_price'] = $max_price;
 
         return $this;
     }
@@ -584,35 +574,45 @@ class RmEventsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets max_price
+     * Gets shopper_activity
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getMaxPrice()
+    public function getShopperActivity()
     {
-        return $this->container['max_price'];
+        return $this->container['shopper_activity'];
     }
 
     /**
-     * Sets max_price
+     * Sets shopper_activity
      *
-     * @param float|null $max_price Maximum price of the products
+     * @param string|null $shopper_activity Reach people who performed specific action
      *
      * @return self
      */
-    public function setMaxPrice($max_price)
+    public function setShopperActivity($shopper_activity)
     {
-        if (is_null($max_price)) {
-            array_push($this->openAPINullablesSetToNull, 'max_price');
+        if (is_null($shopper_activity)) {
+            array_push($this->openAPINullablesSetToNull, 'shopper_activity');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_price', $nullablesSetToNull);
+            $index = array_search('shopper_activity', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['max_price'] = $max_price;
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!is_null($shopper_activity) && !in_array($shopper_activity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                    $shopper_activity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['shopper_activity'] = $shopper_activity;
 
         return $this;
     }

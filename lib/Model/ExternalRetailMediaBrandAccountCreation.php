@@ -58,10 +58,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'brands' => 'int[]',
         'company_name' => 'string',
-        'on_behalf_company_name' => 'string',
-        'brands' => 'int[]'
+        'name' => 'string',
+        'on_behalf_company_name' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'brands' => 'int64',
         'company_name' => null,
-        'on_behalf_company_name' => null,
-        'brands' => 'int64'
+        'name' => null,
+        'on_behalf_company_name' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
+        'brands' => true,
 		'company_name' => true,
-		'on_behalf_company_name' => true,
-		'brands' => true
+		'name' => true,
+		'on_behalf_company_name' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'brands' => 'brands',
         'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName',
-        'brands' => 'brands'
+        'name' => 'name',
+        'on_behalf_company_name' => 'onBehalfCompanyName'
     ];
 
     /**
@@ -188,10 +188,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'brands' => 'setBrands',
         'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'brands' => 'setBrands'
+        'name' => 'setName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName'
     ];
 
     /**
@@ -200,10 +200,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'brands' => 'getBrands',
         'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'brands' => 'getBrands'
+        'name' => 'getName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName'
     ];
 
     /**
@@ -263,10 +263,10 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('company_name', $data ?? [], null);
-        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('brands', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
     }
 
     /**
@@ -312,35 +312,35 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets name
+     * Gets brands
      *
-     * @return string|null
+     * @return int[]|null
      */
-    public function getName()
+    public function getBrands()
     {
-        return $this->container['name'];
+        return $this->container['brands'];
     }
 
     /**
-     * Sets name
+     * Sets brands
      *
-     * @param string|null $name the name of the account, must be unique across all accounts
+     * @param int[]|null $brands list of brands to link to the new account
      *
      * @return self
      */
-    public function setName($name)
+    public function setBrands($brands)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($brands)) {
+            array_push($this->openAPINullablesSetToNull, 'brands');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('brands', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['brands'] = $brands;
 
         return $this;
     }
@@ -380,6 +380,40 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
     }
 
     /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name the name of the account, must be unique across all accounts
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets on_behalf_company_name
      *
      * @return string|null
@@ -409,40 +443,6 @@ class ExternalRetailMediaBrandAccountCreation implements ModelInterface, ArrayAc
             }
         }
         $this->container['on_behalf_company_name'] = $on_behalf_company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets brands
-     *
-     * @return int[]|null
-     */
-    public function getBrands()
-    {
-        return $this->container['brands'];
-    }
-
-    /**
-     * Sets brands
-     *
-     * @param int[]|null $brands list of brands to link to the new account
-     *
-     * @return self
-     */
-    public function setBrands($brands)
-    {
-        if (is_null($brands)) {
-            array_push($this->openAPINullablesSetToNull, 'brands');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brands', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['brands'] = $brands;
 
         return $this;
     }

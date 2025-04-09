@@ -59,8 +59,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'count' => 'int',
-        'offset' => 'int',
-        'limit' => 'int'
+        'limit' => 'int',
+        'offset' => 'int'
     ];
 
     /**
@@ -72,8 +72,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'count' => 'int64',
-        'offset' => 'int32',
-        'limit' => 'int32'
+        'limit' => 'int32',
+        'offset' => 'int32'
     ];
 
     /**
@@ -83,8 +83,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'count' => true,
-		'offset' => false,
-		'limit' => false
+		'limit' => false,
+		'offset' => false
     ];
 
     /**
@@ -174,8 +174,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'count' => 'count',
-        'offset' => 'offset',
-        'limit' => 'limit'
+        'limit' => 'limit',
+        'offset' => 'offset'
     ];
 
     /**
@@ -185,8 +185,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'count' => 'setCount',
-        'offset' => 'setOffset',
-        'limit' => 'setLimit'
+        'limit' => 'setLimit',
+        'offset' => 'setOffset'
     ];
 
     /**
@@ -196,8 +196,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'count' => 'getCount',
-        'offset' => 'getOffset',
-        'limit' => 'getLimit'
+        'limit' => 'getLimit',
+        'offset' => 'getOffset'
     ];
 
     /**
@@ -258,8 +258,8 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('offset', $data ?? [], null);
         $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
     }
 
     /**
@@ -289,11 +289,11 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['offset'] === null) {
-            $invalidProperties[] = "'offset' can't be null";
-        }
         if ($this->container['limit'] === null) {
             $invalidProperties[] = "'limit' can't be null";
+        }
+        if ($this->container['offset'] === null) {
+            $invalidProperties[] = "'offset' can't be null";
         }
         return $invalidProperties;
     }
@@ -345,33 +345,6 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets offset
-     *
-     * @return int
-     */
-    public function getOffset()
-    {
-        return $this->container['offset'];
-    }
-
-    /**
-     * Sets offset
-     *
-     * @param int $offset The (zero-based) starting offset in the collection.
-     *
-     * @return self
-     */
-    public function setOffset($offset)
-    {
-        if (is_null($offset)) {
-            throw new \InvalidArgumentException('non-nullable offset cannot be null');
-        }
-        $this->container['offset'] = $offset;
-
-        return $this;
-    }
-
-    /**
      * Gets limit
      *
      * @return int
@@ -394,6 +367,33 @@ class Metadata implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
         $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return int
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int $offset The (zero-based) starting offset in the collection.
+     *
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+        if (is_null($offset)) {
+            throw new \InvalidArgumentException('non-nullable offset cannot be null');
+        }
+        $this->container['offset'] = $offset;
 
         return $this;
     }

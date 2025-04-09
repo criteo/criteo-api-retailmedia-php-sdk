@@ -58,9 +58,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string',
         'name' => 'string',
-        'parent_id' => 'string'
+        'parent_id' => 'string',
+        'text' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null,
         'name' => null,
-        'parent_id' => null
+        'parent_id' => null,
+        'text' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => false,
-		'name' => false,
-		'parent_id' => false
+        'name' => false,
+		'parent_id' => false,
+		'text' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text',
         'name' => 'name',
-        'parent_id' => 'parentId'
+        'parent_id' => 'parentId',
+        'text' => 'text'
     ];
 
     /**
@@ -184,9 +184,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText',
         'name' => 'setName',
-        'parent_id' => 'setParentId'
+        'parent_id' => 'setParentId',
+        'text' => 'setText'
     ];
 
     /**
@@ -195,9 +195,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText',
         'name' => 'getName',
-        'parent_id' => 'getParentId'
+        'parent_id' => 'getParentId',
+        'text' => 'getText'
     ];
 
     /**
@@ -257,9 +257,9 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
     }
 
     /**
@@ -289,14 +289,14 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['parent_id'] === null) {
             $invalidProperties[] = "'parent_id' can't be null";
+        }
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,33 +312,6 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets text
-     *
-     * @return string
-     */
-    public function getText()
-    {
-        return $this->container['text'];
-    }
-
-    /**
-     * Sets text
-     *
-     * @param string $text Category Text
-     *
-     * @return self
-     */
-    public function setText($text)
-    {
-        if (is_null($text)) {
-            throw new \InvalidArgumentException('non-nullable text cannot be null');
-        }
-        $this->container['text'] = $text;
-
-        return $this;
-    }
 
     /**
      * Gets name
@@ -390,6 +363,33 @@ class Category202204 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable parent_id cannot be null');
         }
         $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string $text Category Text
+     *
+     * @return self
+     */
+    public function setText($text)
+    {
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        }
+        $this->container['text'] = $text;
 
         return $this;
     }

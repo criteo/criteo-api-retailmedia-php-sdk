@@ -59,8 +59,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'audience_ids' => 'string[]',
-        'retailer_ids' => 'string[]',
-        'audience_segment_ids' => 'string[]'
+        'audience_segment_ids' => 'string[]',
+        'retailer_ids' => 'string[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'audience_ids' => null,
-        'retailer_ids' => null,
-        'audience_segment_ids' => null
+        'audience_segment_ids' => null,
+        'retailer_ids' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'audience_ids' => false,
-		'retailer_ids' => false,
-		'audience_segment_ids' => false
+		'audience_segment_ids' => false,
+		'retailer_ids' => false
     ];
 
     /**
@@ -174,8 +174,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'audience_ids' => 'audienceIds',
-        'retailer_ids' => 'retailerIds',
-        'audience_segment_ids' => 'audienceSegmentIds'
+        'audience_segment_ids' => 'audienceSegmentIds',
+        'retailer_ids' => 'retailerIds'
     ];
 
     /**
@@ -185,8 +185,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'audience_ids' => 'setAudienceIds',
-        'retailer_ids' => 'setRetailerIds',
-        'audience_segment_ids' => 'setAudienceSegmentIds'
+        'audience_segment_ids' => 'setAudienceSegmentIds',
+        'retailer_ids' => 'setRetailerIds'
     ];
 
     /**
@@ -196,8 +196,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'audience_ids' => 'getAudienceIds',
-        'retailer_ids' => 'getRetailerIds',
-        'audience_segment_ids' => 'getAudienceSegmentIds'
+        'audience_segment_ids' => 'getAudienceSegmentIds',
+        'retailer_ids' => 'getRetailerIds'
     ];
 
     /**
@@ -258,8 +258,8 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->setIfExists('audience_ids', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('audience_segment_ids', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
     }
 
     /**
@@ -332,33 +332,6 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets retailer_ids
-     *
-     * @return string[]|null
-     */
-    public function getRetailerIds()
-    {
-        return $this->container['retailer_ids'];
-    }
-
-    /**
-     * Sets retailer_ids
-     *
-     * @param string[]|null $retailer_ids List of retailer ids
-     *
-     * @return self
-     */
-    public function setRetailerIds($retailer_ids)
-    {
-        if (is_null($retailer_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets audience_segment_ids
      *
      * @return string[]|null
@@ -381,6 +354,33 @@ class RmAudienceSearchEntityV1 implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable audience_segment_ids cannot be null');
         }
         $this->container['audience_segment_ids'] = $audience_segment_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_ids
+     *
+     * @return string[]|null
+     */
+    public function getRetailerIds()
+    {
+        return $this->container['retailer_ids'];
+    }
+
+    /**
+     * Sets retailer_ids
+     *
+     * @param string[]|null $retailer_ids List of retailer ids
+     *
+     * @return self
+     */
+    public function setRetailerIds($retailer_ids)
+    {
+        if (is_null($retailer_ids)) {
+            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
+        }
+        $this->container['retailer_ids'] = $retailer_ids;
 
         return $this;
     }

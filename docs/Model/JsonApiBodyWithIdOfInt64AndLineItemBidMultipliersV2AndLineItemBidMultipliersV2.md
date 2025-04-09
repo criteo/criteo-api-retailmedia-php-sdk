@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  |
 **attributes** | [**\criteo\api\retailmedia\v2024_10\Model\ExternalLineItemBidMultipliersV2**](ExternalLineItemBidMultipliersV2.md) |  | [optional]
+**type** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

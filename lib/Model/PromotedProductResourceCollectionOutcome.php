@@ -58,10 +58,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
+        'data' => '\criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]',
         'errors' => '\criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]',
         'meta' => '\criteo\api\retailmedia\v2024_10\Model\ProductMetadata',
-        'data' => '\criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]'
+        'warnings' => '\criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'data' => null,
         'errors' => null,
-        'warnings' => null,
         'meta' => null,
-        'data' => null
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => true,
-		'warnings' => true,
+        'data' => true,
+		'errors' => true,
 		'meta' => true,
-		'data' => true
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
+        'data' => 'data',
         'errors' => 'errors',
-        'warnings' => 'warnings',
         'meta' => 'meta',
-        'data' => 'data'
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +188,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
+        'data' => 'setData',
         'errors' => 'setErrors',
-        'warnings' => 'setWarnings',
         'meta' => 'setMeta',
-        'data' => 'setData'
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +200,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
+        'data' => 'getData',
         'errors' => 'getErrors',
-        'warnings' => 'getWarnings',
         'meta' => 'getMeta',
-        'data' => 'getData'
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +263,10 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -312,6 +312,40 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
 
 
     /**
+     * Gets data
+     *
+     * @return \criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
      * Gets errors
      *
      * @return \criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]|null
@@ -341,40 +375,6 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
             }
         }
         $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
 
         return $this;
     }
@@ -414,35 +414,35 @@ class PromotedProductResourceCollectionOutcome implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets data
+     * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]|null
      */
-    public function getData()
+    public function getWarnings()
     {
-        return $this->container['data'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets data
+     * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\PromotedProductResource[]|null $data data
+     * @param \criteo\api\retailmedia\v2024_10\Model\RmcaCommonProblem[]|null $warnings warnings
      *
      * @return self
      */
-    public function setData($data)
+    public function setWarnings($warnings)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

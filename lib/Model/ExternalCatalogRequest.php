@@ -58,8 +58,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'format' => 'string',
-        'brand_id_filter' => 'string[]'
+        'brand_id_filter' => 'string[]',
+        'format' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'format' => null,
-        'brand_id_filter' => 'long-id'
+        'brand_id_filter' => 'long-id',
+        'format' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'format' => false,
-		'brand_id_filter' => false
+        'brand_id_filter' => false,
+		'format' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'format' => 'format',
-        'brand_id_filter' => 'brandIdFilter'
+        'brand_id_filter' => 'brandIdFilter',
+        'format' => 'format'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'format' => 'setFormat',
-        'brand_id_filter' => 'setBrandIdFilter'
+        'brand_id_filter' => 'setBrandIdFilter',
+        'format' => 'setFormat'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'format' => 'getFormat',
-        'brand_id_filter' => 'getBrandIdFilter'
+        'brand_id_filter' => 'getBrandIdFilter',
+        'format' => 'getFormat'
     ];
 
     /**
@@ -264,8 +264,8 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('format', $data ?? [], 'json-newline');
         $this->setIfExists('brand_id_filter', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json-newline');
     }
 
     /**
@@ -320,6 +320,33 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
+     * Gets brand_id_filter
+     *
+     * @return string[]|null
+     */
+    public function getBrandIdFilter()
+    {
+        return $this->container['brand_id_filter'];
+    }
+
+    /**
+     * Sets brand_id_filter
+     *
+     * @param string[]|null $brand_id_filter brand_id_filter
+     *
+     * @return self
+     */
+    public function setBrandIdFilter($brand_id_filter)
+    {
+        if (is_null($brand_id_filter)) {
+            throw new \InvalidArgumentException('non-nullable brand_id_filter cannot be null');
+        }
+        $this->container['brand_id_filter'] = $brand_id_filter;
+
+        return $this;
+    }
+
+    /**
      * Gets format
      *
      * @return string|null
@@ -352,33 +379,6 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
         $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_id_filter
-     *
-     * @return string[]|null
-     */
-    public function getBrandIdFilter()
-    {
-        return $this->container['brand_id_filter'];
-    }
-
-    /**
-     * Sets brand_id_filter
-     *
-     * @param string[]|null $brand_id_filter brand_id_filter
-     *
-     * @return self
-     */
-    public function setBrandIdFilter($brand_id_filter)
-    {
-        if (is_null($brand_id_filter)) {
-            throw new \InvalidArgumentException('non-nullable brand_id_filter cannot be null');
-        }
-        $this->container['brand_id_filter'] = $brand_id_filter;
 
         return $this;
     }

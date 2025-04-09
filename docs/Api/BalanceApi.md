@@ -220,7 +220,7 @@ try {
 ## `getBalanceHistory()`
 
 ```php
-getBalanceHistory($balance_id, $offset, $limit, $limit_to_change_types): \criteo\api\retailmedia\v2024_10\Model\PageOfBalanceHistoryChangeDataCaptureV1
+getBalanceHistory($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\v2024_10\Model\PageOfBalanceHistoryChangeDataCaptureV1
 ```
 
 
@@ -248,12 +248,12 @@ $apiInstance = new criteo\api\retailmedia\v2024_10\Api\BalanceApi(
     $config
 );
 $balance_id = 'balance_id_example'; // string | Balance id.
-$offset = 0; // int | The (zero-based) starting offset in the collection.
 $limit = 25; // int | The number of elements to be returned.
 $limit_to_change_types = 'limit_to_change_types_example'; // string | Comma separated change types string that will be queried.
+$offset = 0; // int | The (zero-based) starting offset in the collection.
 
 try {
-    $result = $apiInstance->getBalanceHistory($balance_id, $offset, $limit, $limit_to_change_types);
+    $result = $apiInstance->getBalanceHistory($balance_id, $limit, $limit_to_change_types, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BalanceApi->getBalanceHistory: ', $e->getMessage(), PHP_EOL;
@@ -265,9 +265,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **balance_id** | **string**| Balance id. | |
-| **offset** | **int**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
 | **limit** | **int**| The number of elements to be returned. | [optional] [default to 25] |
 | **limit_to_change_types** | **string**| Comma separated change types string that will be queried. | [optional] |
+| **offset** | **int**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
 
 ### Return type
 
