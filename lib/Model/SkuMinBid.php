@@ -58,8 +58,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sku_id' => 'string',
-        'min_bid' => 'float'
+        'min_bid' => 'float',
+        'sku_id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sku_id' => null,
-        'min_bid' => 'double'
+        'min_bid' => 'double',
+        'sku_id' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sku_id' => false,
-		'min_bid' => false
+        'min_bid' => false,
+		'sku_id' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sku_id' => 'skuId',
-        'min_bid' => 'minBid'
+        'min_bid' => 'minBid',
+        'sku_id' => 'skuId'
     ];
 
     /**
@@ -180,8 +180,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sku_id' => 'setSkuId',
-        'min_bid' => 'setMinBid'
+        'min_bid' => 'setMinBid',
+        'sku_id' => 'setSkuId'
     ];
 
     /**
@@ -190,8 +190,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sku_id' => 'getSkuId',
-        'min_bid' => 'getMinBid'
+        'min_bid' => 'getMinBid',
+        'sku_id' => 'getSkuId'
     ];
 
     /**
@@ -251,8 +251,8 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sku_id', $data ?? [], null);
         $this->setIfExists('min_bid', $data ?? [], null);
+        $this->setIfExists('sku_id', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['sku_id'] === null) {
-            $invalidProperties[] = "'sku_id' can't be null";
-        }
         if ($this->container['min_bid'] === null) {
             $invalidProperties[] = "'min_bid' can't be null";
+        }
+        if ($this->container['sku_id'] === null) {
+            $invalidProperties[] = "'sku_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets sku_id
-     *
-     * @return string
-     */
-    public function getSkuId()
-    {
-        return $this->container['sku_id'];
-    }
-
-    /**
-     * Sets sku_id
-     *
-     * @param string $sku_id Sku id.
-     *
-     * @return self
-     */
-    public function setSkuId($sku_id)
-    {
-        if (is_null($sku_id)) {
-            throw new \InvalidArgumentException('non-nullable sku_id cannot be null');
-        }
-        $this->container['sku_id'] = $sku_id;
-
-        return $this;
-    }
 
     /**
      * Gets min_bid
@@ -353,6 +326,33 @@ class SkuMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable min_bid cannot be null');
         }
         $this->container['min_bid'] = $min_bid;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_id
+     *
+     * @return string
+     */
+    public function getSkuId()
+    {
+        return $this->container['sku_id'];
+    }
+
+    /**
+     * Sets sku_id
+     *
+     * @param string $sku_id Sku id.
+     *
+     * @return self
+     */
+    public function setSkuId($sku_id)
+    {
+        if (is_null($sku_id)) {
+            throw new \InvalidArgumentException('non-nullable sku_id cannot be null');
+        }
+        $this->container['sku_id'] = $sku_id;
 
         return $this;
     }

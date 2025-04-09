@@ -58,15 +58,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'description' => 'string',
-        'category' => '\criteo\api\retailmedia\preview\Model\Category',
         'brand' => '\criteo\api\retailmedia\preview\Model\Brand',
-        'price' => 'float',
-        'is_in_stock' => 'bool',
+        'category' => '\criteo\api\retailmedia\preview\Model\Category',
+        'description' => 'string',
         'gtin' => 'string',
-        'mpn' => 'string',
         'image_url' => 'string',
+        'is_in_stock' => 'bool',
+        'mpn' => 'string',
+        'name' => 'string',
+        'price' => 'float',
         'updated_at' => '\DateTime'
     ];
 
@@ -78,15 +78,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'description' => null,
-        'category' => null,
         'brand' => null,
-        'price' => 'double',
-        'is_in_stock' => null,
+        'category' => null,
+        'description' => null,
         'gtin' => null,
-        'mpn' => null,
         'image_url' => null,
+        'is_in_stock' => null,
+        'mpn' => null,
+        'name' => null,
+        'price' => 'double',
         'updated_at' => 'date-time'
     ];
 
@@ -96,15 +96,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'description' => true,
+        'brand' => false,
 		'category' => false,
-		'brand' => false,
-		'price' => true,
-		'is_in_stock' => false,
+		'description' => true,
 		'gtin' => true,
-		'mpn' => true,
 		'image_url' => false,
+		'is_in_stock' => false,
+		'mpn' => true,
+		'name' => false,
+		'price' => true,
 		'updated_at' => false
     ];
 
@@ -194,15 +194,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'description' => 'description',
-        'category' => 'category',
         'brand' => 'brand',
-        'price' => 'price',
-        'is_in_stock' => 'isInStock',
+        'category' => 'category',
+        'description' => 'description',
         'gtin' => 'gtin',
-        'mpn' => 'mpn',
         'image_url' => 'imageUrl',
+        'is_in_stock' => 'isInStock',
+        'mpn' => 'mpn',
+        'name' => 'name',
+        'price' => 'price',
         'updated_at' => 'updatedAt'
     ];
 
@@ -212,15 +212,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'category' => 'setCategory',
         'brand' => 'setBrand',
-        'price' => 'setPrice',
-        'is_in_stock' => 'setIsInStock',
+        'category' => 'setCategory',
+        'description' => 'setDescription',
         'gtin' => 'setGtin',
-        'mpn' => 'setMpn',
         'image_url' => 'setImageUrl',
+        'is_in_stock' => 'setIsInStock',
+        'mpn' => 'setMpn',
+        'name' => 'setName',
+        'price' => 'setPrice',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -230,15 +230,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'category' => 'getCategory',
         'brand' => 'getBrand',
-        'price' => 'getPrice',
-        'is_in_stock' => 'getIsInStock',
+        'category' => 'getCategory',
+        'description' => 'getDescription',
         'gtin' => 'getGtin',
-        'mpn' => 'getMpn',
         'image_url' => 'getImageUrl',
+        'is_in_stock' => 'getIsInStock',
+        'mpn' => 'getMpn',
+        'name' => 'getName',
+        'price' => 'getPrice',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -299,15 +299,15 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('brand', $data ?? [], null);
-        $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('is_in_stock', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('gtin', $data ?? [], null);
-        $this->setIfExists('mpn', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('is_in_stock', $data ?? [], null);
+        $this->setIfExists('mpn', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -338,6 +338,9 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['is_in_stock'] === null) {
+            $invalidProperties[] = "'is_in_stock' can't be null";
+        }
         if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
         }
@@ -348,9 +351,6 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['is_in_stock'] === null) {
-            $invalidProperties[] = "'is_in_stock' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -371,35 +371,55 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets brand
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\Brand|null
      */
-    public function getName()
+    public function getBrand()
     {
-        return $this->container['name'];
+        return $this->container['brand'];
     }
 
     /**
-     * Sets name
+     * Sets brand
      *
-     * @param string|null $name A short product name.
+     * @param \criteo\api\retailmedia\preview\Model\Brand|null $brand brand
      *
      * @return self
      */
-    public function setName($name)
+    public function setBrand($brand)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($brand)) {
+            throw new \InvalidArgumentException('non-nullable brand cannot be null');
         }
-        if ((mb_strlen($name) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SkuSlimDataV2., must be smaller than or equal to 1000.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SkuSlimDataV2., must be bigger than or equal to 0.');
-        }
+        $this->container['brand'] = $brand;
 
-        $this->container['name'] = $name;
+        return $this;
+    }
+
+    /**
+     * Gets category
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Category|null
+     */
+    public function getCategory()
+    {
+        return $this->container['category'];
+    }
+
+    /**
+     * Sets category
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Category|null $category category
+     *
+     * @return self
+     */
+    public function setCategory($category)
+    {
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        }
+        $this->container['category'] = $category;
 
         return $this;
     }
@@ -439,121 +459,6 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets category
-     *
-     * @return \criteo\api\retailmedia\preview\Model\Category|null
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param \criteo\api\retailmedia\preview\Model\Category|null $category category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand
-     *
-     * @return \criteo\api\retailmedia\preview\Model\Brand|null
-     */
-    public function getBrand()
-    {
-        return $this->container['brand'];
-    }
-
-    /**
-     * Sets brand
-     *
-     * @param \criteo\api\retailmedia\preview\Model\Brand|null $brand brand
-     *
-     * @return self
-     */
-    public function setBrand($brand)
-    {
-        if (is_null($brand)) {
-            throw new \InvalidArgumentException('non-nullable brand cannot be null');
-        }
-        $this->container['brand'] = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param float $price The price of the product on the retailer site. Can be omitted in certain circumstances
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        if (is_null($price)) {
-            array_push($this->openAPINullablesSetToNull, 'price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_in_stock
-     *
-     * @return bool
-     */
-    public function getIsInStock()
-    {
-        return $this->container['is_in_stock'];
-    }
-
-    /**
-     * Sets is_in_stock
-     *
-     * @param bool $is_in_stock An indication of if the retailer currently has the product in stock.
-     *
-     * @return self
-     */
-    public function setIsInStock($is_in_stock)
-    {
-        if (is_null($is_in_stock)) {
-            throw new \InvalidArgumentException('non-nullable is_in_stock cannot be null');
-        }
-        $this->container['is_in_stock'] = $is_in_stock;
-
-        return $this;
-    }
-
-    /**
      * Gets gtin
      *
      * @return string|null
@@ -583,6 +488,60 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['gtin'] = $gtin;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url An http image resource provided by the retailer.
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_in_stock
+     *
+     * @return bool
+     */
+    public function getIsInStock()
+    {
+        return $this->container['is_in_stock'];
+    }
+
+    /**
+     * Sets is_in_stock
+     *
+     * @param bool $is_in_stock An indication of if the retailer currently has the product in stock.
+     *
+     * @return self
+     */
+    public function setIsInStock($is_in_stock)
+    {
+        if (is_null($is_in_stock)) {
+            throw new \InvalidArgumentException('non-nullable is_in_stock cannot be null');
+        }
+        $this->container['is_in_stock'] = $is_in_stock;
 
         return $this;
     }
@@ -622,28 +581,69 @@ class SkuSlimDataV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets image_url
+     * Gets name
      *
      * @return string|null
      */
-    public function getImageUrl()
+    public function getName()
     {
-        return $this->container['image_url'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets image_url
+     * Sets name
      *
-     * @param string|null $image_url An http image resource provided by the retailer.
+     * @param string|null $name A short product name.
      *
      * @return self
      */
-    public function setImageUrl($image_url)
+    public function setName($name)
     {
-        if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['image_url'] = $image_url;
+        if ((mb_strlen($name) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SkuSlimDataV2., must be smaller than or equal to 1000.');
+        }
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SkuSlimDataV2., must be bigger than or equal to 0.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param float $price The price of the product on the retailer site. Can be omitted in certain circumstances
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        if (is_null($price)) {
+            array_push($this->openAPINullablesSetToNull, 'price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('price', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['price'] = $price;
 
         return $this;
     }

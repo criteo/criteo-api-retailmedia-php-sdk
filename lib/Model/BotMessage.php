@@ -58,9 +58,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'closing' => 'string',
         'opening' => 'string',
-        'product_recos' => '\criteo\api\retailmedia\preview\Model\ProductRecommendation[]',
-        'closing' => 'string'
+        'product_recos' => '\criteo\api\retailmedia\preview\Model\ProductRecommendation[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'closing' => null,
         'opening' => null,
-        'product_recos' => null,
-        'closing' => null
+        'product_recos' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'opening' => true,
-		'product_recos' => true,
-		'closing' => true
+        'closing' => true,
+		'opening' => true,
+		'product_recos' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'closing' => 'closing',
         'opening' => 'opening',
-        'product_recos' => 'productRecos',
-        'closing' => 'closing'
+        'product_recos' => 'productRecos'
     ];
 
     /**
@@ -184,9 +184,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'closing' => 'setClosing',
         'opening' => 'setOpening',
-        'product_recos' => 'setProductRecos',
-        'closing' => 'setClosing'
+        'product_recos' => 'setProductRecos'
     ];
 
     /**
@@ -195,9 +195,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'closing' => 'getClosing',
         'opening' => 'getOpening',
-        'product_recos' => 'getProductRecos',
-        'closing' => 'getClosing'
+        'product_recos' => 'getProductRecos'
     ];
 
     /**
@@ -257,9 +257,9 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('closing', $data ?? [], null);
         $this->setIfExists('opening', $data ?? [], null);
         $this->setIfExists('product_recos', $data ?? [], null);
-        $this->setIfExists('closing', $data ?? [], null);
     }
 
     /**
@@ -303,6 +303,40 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets closing
+     *
+     * @return string|null
+     */
+    public function getClosing()
+    {
+        return $this->container['closing'];
+    }
+
+    /**
+     * Sets closing
+     *
+     * @param string|null $closing closing remark from the bot
+     *
+     * @return self
+     */
+    public function setClosing($closing)
+    {
+        if (is_null($closing)) {
+            array_push($this->openAPINullablesSetToNull, 'closing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('closing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['closing'] = $closing;
+
+        return $this;
+    }
 
     /**
      * Gets opening
@@ -368,40 +402,6 @@ class BotMessage implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['product_recos'] = $product_recos;
-
-        return $this;
-    }
-
-    /**
-     * Gets closing
-     *
-     * @return string|null
-     */
-    public function getClosing()
-    {
-        return $this->container['closing'];
-    }
-
-    /**
-     * Sets closing
-     *
-     * @param string|null $closing closing remark from the bot
-     *
-     * @return self
-     */
-    public function setClosing($closing)
-    {
-        if (is_null($closing)) {
-            array_push($this->openAPINullablesSetToNull, 'closing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('closing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['closing'] = $closing;
 
         return $this;
     }

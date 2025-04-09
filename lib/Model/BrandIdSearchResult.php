@@ -58,9 +58,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'brand_type' => 'string',
         'id' => 'string',
         'name' => 'string',
-        'brand_type' => 'string',
         'retailer_ids' => 'int[]'
     ];
 
@@ -72,9 +72,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'brand_type' => null,
         'id' => null,
         'name' => null,
-        'brand_type' => null,
         'retailer_ids' => 'int32'
     ];
 
@@ -84,9 +84,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'brand_type' => false,
+		'id' => false,
 		'name' => false,
-		'brand_type' => false,
 		'retailer_ids' => false
     ];
 
@@ -176,9 +176,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'brand_type' => 'brandType',
         'id' => 'id',
         'name' => 'name',
-        'brand_type' => 'brandType',
         'retailer_ids' => 'retailerIds'
     ];
 
@@ -188,9 +188,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'brand_type' => 'setBrandType',
         'id' => 'setId',
         'name' => 'setName',
-        'brand_type' => 'setBrandType',
         'retailer_ids' => 'setRetailerIds'
     ];
 
@@ -200,9 +200,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'brand_type' => 'getBrandType',
         'id' => 'getId',
         'name' => 'getName',
-        'brand_type' => 'getBrandType',
         'retailer_ids' => 'getRetailerIds'
     ];
 
@@ -263,9 +263,9 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('brand_type', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('brand_type', $data ?? [], null);
         $this->setIfExists('retailer_ids', $data ?? [], null);
     }
 
@@ -296,14 +296,14 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['brand_type'] === null) {
+            $invalidProperties[] = "'brand_type' can't be null";
+        }
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['brand_type'] === null) {
-            $invalidProperties[] = "'brand_type' can't be null";
         }
         if ($this->container['retailer_ids'] === null) {
             $invalidProperties[] = "'retailer_ids' can't be null";
@@ -322,6 +322,33 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets brand_type
+     *
+     * @return string
+     */
+    public function getBrandType()
+    {
+        return $this->container['brand_type'];
+    }
+
+    /**
+     * Sets brand_type
+     *
+     * @param string $brand_type The type of the brand
+     *
+     * @return self
+     */
+    public function setBrandType($brand_type)
+    {
+        if (is_null($brand_type)) {
+            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
+        }
+        $this->container['brand_type'] = $brand_type;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -373,33 +400,6 @@ class BrandIdSearchResult implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_type
-     *
-     * @return string
-     */
-    public function getBrandType()
-    {
-        return $this->container['brand_type'];
-    }
-
-    /**
-     * Sets brand_type
-     *
-     * @param string $brand_type The type of the brand
-     *
-     * @return self
-     */
-    public function setBrandType($brand_type)
-    {
-        if (is_null($brand_type)) {
-            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
-        }
-        $this->container['brand_type'] = $brand_type;
 
         return $this;
     }

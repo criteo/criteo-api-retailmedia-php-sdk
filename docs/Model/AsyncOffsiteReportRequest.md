@@ -1,10 +1,9 @@
-# # JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2
+# # AsyncOffsiteReportRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  |
-**attributes** | [**\criteo\api\retailmedia\preview\Model\SellerCatalogRequestV2**](SellerCatalogRequestV2.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource**](AsyncOffsiteReportResource.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

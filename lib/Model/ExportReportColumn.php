@@ -58,15 +58,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'title' => 'string',
+        'currency' => 'string',
+        'deprecated' => 'bool',
         'description' => 'string',
-        'type' => 'string',
+        'duration' => 'string',
+        'name' => 'string',
         'role' => 'string',
         'timezone' => 'string',
-        'duration' => 'string',
-        'currency' => 'string',
-        'deprecated' => 'bool'
+        'title' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'title' => null,
+        'currency' => null,
+        'deprecated' => null,
         'description' => null,
-        'type' => null,
+        'duration' => null,
+        'name' => null,
         'role' => null,
         'timezone' => null,
-        'duration' => null,
-        'currency' => null,
-        'deprecated' => null
+        'title' => null,
+        'type' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'title' => true,
+        'currency' => true,
+		'deprecated' => true,
 		'description' => true,
-		'type' => false,
+		'duration' => true,
+		'name' => false,
 		'role' => false,
 		'timezone' => true,
-		'duration' => true,
-		'currency' => true,
-		'deprecated' => true
+		'title' => true,
+		'type' => false
     ];
 
     /**
@@ -191,15 +191,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'title' => 'title',
+        'currency' => 'currency',
+        'deprecated' => 'deprecated',
         'description' => 'description',
-        'type' => 'type',
+        'duration' => 'duration',
+        'name' => 'name',
         'role' => 'role',
         'timezone' => 'timezone',
-        'duration' => 'duration',
-        'currency' => 'currency',
-        'deprecated' => 'deprecated'
+        'title' => 'title',
+        'type' => 'type'
     ];
 
     /**
@@ -208,15 +208,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'title' => 'setTitle',
+        'currency' => 'setCurrency',
+        'deprecated' => 'setDeprecated',
         'description' => 'setDescription',
-        'type' => 'setType',
+        'duration' => 'setDuration',
+        'name' => 'setName',
         'role' => 'setRole',
         'timezone' => 'setTimezone',
-        'duration' => 'setDuration',
-        'currency' => 'setCurrency',
-        'deprecated' => 'setDeprecated'
+        'title' => 'setTitle',
+        'type' => 'setType'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'title' => 'getTitle',
+        'currency' => 'getCurrency',
+        'deprecated' => 'getDeprecated',
         'description' => 'getDescription',
-        'type' => 'getType',
+        'duration' => 'getDuration',
+        'name' => 'getName',
         'role' => 'getRole',
         'timezone' => 'getTimezone',
-        'duration' => 'getDuration',
-        'currency' => 'getCurrency',
-        'deprecated' => 'getDeprecated'
+        'title' => 'getTitle',
+        'type' => 'getType'
     ];
 
     /**
@@ -277,6 +277,10 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const ROLE_DIMENSION = 'Dimension';
+    public const ROLE_PROPERTY = 'Property';
+    public const ROLE_INTERVAL = 'Interval';
+    public const ROLE_METRIC = 'Metric';
     public const TYPE_BOOLEAN = 'Boolean';
     public const TYPE_NUMBER = 'Number';
     public const TYPE_MONEY = 'Money';
@@ -285,10 +289,21 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
     public const TYPE_DATE_TIME = 'DateTime';
     public const TYPE_INTERVAL = 'Interval';
     public const TYPE_DURATION = 'Duration';
-    public const ROLE_DIMENSION = 'Dimension';
-    public const ROLE_PROPERTY = 'Property';
-    public const ROLE_INTERVAL = 'Interval';
-    public const ROLE_METRIC = 'Metric';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_DIMENSION,
+            self::ROLE_PROPERTY,
+            self::ROLE_INTERVAL,
+            self::ROLE_METRIC,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -310,21 +325,6 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRoleAllowableValues()
-    {
-        return [
-            self::ROLE_DIMENSION,
-            self::ROLE_PROPERTY,
-            self::ROLE_INTERVAL,
-            self::ROLE_METRIC,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -339,15 +339,15 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('role', $data ?? [], null);
-        $this->setIfExists('timezone', $data ?? [], null);
-        $this->setIfExists('duration', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('deprecated', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('duration', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], null);
+        $this->setIfExists('timezone', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -380,18 +380,6 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['role'] === null) {
             $invalidProperties[] = "'role' can't be null";
         }
@@ -400,6 +388,18 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'role', must be one of '%s'",
                 $this->container['role'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -420,62 +420,69 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the exported column
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
+     * Gets currency
      *
      * @return string|null
      */
-    public function getTitle()
+    public function getCurrency()
     {
-        return $this->container['title'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets title
+     * Sets currency
      *
-     * @param string|null $title Title of the exported column
+     * @param string|null $currency Currency of the column
      *
      * @return self
      */
-    public function setTitle($title)
+    public function setCurrency($currency)
     {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
+        if (is_null($currency)) {
+            array_push($this->openAPINullablesSetToNull, 'currency');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
+            $index = array_search('currency', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['title'] = $title;
+        $this->container['currency'] = $currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets deprecated
+     *
+     * @return bool|null
+     */
+    public function getDeprecated()
+    {
+        return $this->container['deprecated'];
+    }
+
+    /**
+     * Sets deprecated
+     *
+     * @param bool|null $deprecated Flag for deprecated column
+     *
+     * @return self
+     */
+    public function setDeprecated($deprecated)
+    {
+        if (is_null($deprecated)) {
+            array_push($this->openAPINullablesSetToNull, 'deprecated');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deprecated', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deprecated'] = $deprecated;
 
         return $this;
     }
@@ -515,38 +522,62 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets type
+     * Gets duration
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getDuration()
     {
-        return $this->container['type'];
+        return $this->container['duration'];
     }
 
     /**
-     * Sets type
+     * Sets duration
      *
-     * @param string $type Type of the column
+     * @param string|null $duration Duration of the column
      *
      * @return self
      */
-    public function setType($type)
+    public function setDuration($duration)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($duration)) {
+            array_push($this->openAPINullablesSetToNull, 'duration');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duration', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the exported column
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -623,103 +654,72 @@ class ExportReportColumn implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets duration
+     * Gets title
      *
      * @return string|null
      */
-    public function getDuration()
+    public function getTitle()
     {
-        return $this->container['duration'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets duration
+     * Sets title
      *
-     * @param string|null $duration Duration of the column
+     * @param string|null $title Title of the exported column
      *
      * @return self
      */
-    public function setDuration($duration)
+    public function setTitle($title)
     {
-        if (is_null($duration)) {
-            array_push($this->openAPINullablesSetToNull, 'duration');
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('duration', $nullablesSetToNull);
+            $index = array_search('title', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['duration'] = $duration;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets currency
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getCurrency()
+    public function getType()
     {
-        return $this->container['currency'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets currency
+     * Sets type
      *
-     * @param string|null $currency Currency of the column
+     * @param string $type Type of the column
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setType($type)
     {
-        if (is_null($currency)) {
-            array_push($this->openAPINullablesSetToNull, 'currency');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('currency', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['currency'] = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Gets deprecated
-     *
-     * @return bool|null
-     */
-    public function getDeprecated()
-    {
-        return $this->container['deprecated'];
-    }
-
-    /**
-     * Sets deprecated
-     *
-     * @param bool|null $deprecated Flag for deprecated column
-     *
-     * @return self
-     */
-    public function setDeprecated($deprecated)
-    {
-        if (is_null($deprecated)) {
-            array_push($this->openAPINullablesSetToNull, 'deprecated');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deprecated', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['deprecated'] = $deprecated;
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -58,8 +58,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'search_string' => 'string',
-        'limit_results_to_skus_with_brand_ids' => 'string[]'
+        'limit_results_to_skus_with_brand_ids' => 'string[]',
+        'search_string' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'search_string' => null,
-        'limit_results_to_skus_with_brand_ids' => 'long-id'
+        'limit_results_to_skus_with_brand_ids' => 'long-id',
+        'search_string' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'search_string' => false,
-		'limit_results_to_skus_with_brand_ids' => false
+        'limit_results_to_skus_with_brand_ids' => false,
+		'search_string' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'search_string' => 'searchString',
-        'limit_results_to_skus_with_brand_ids' => 'limitResultsToSkusWithBrandIds'
+        'limit_results_to_skus_with_brand_ids' => 'limitResultsToSkusWithBrandIds',
+        'search_string' => 'searchString'
     ];
 
     /**
@@ -180,8 +180,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'search_string' => 'setSearchString',
-        'limit_results_to_skus_with_brand_ids' => 'setLimitResultsToSkusWithBrandIds'
+        'limit_results_to_skus_with_brand_ids' => 'setLimitResultsToSkusWithBrandIds',
+        'search_string' => 'setSearchString'
     ];
 
     /**
@@ -190,8 +190,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'search_string' => 'getSearchString',
-        'limit_results_to_skus_with_brand_ids' => 'getLimitResultsToSkusWithBrandIds'
+        'limit_results_to_skus_with_brand_ids' => 'getLimitResultsToSkusWithBrandIds',
+        'search_string' => 'getSearchString'
     ];
 
     /**
@@ -251,8 +251,8 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('search_string', $data ?? [], null);
         $this->setIfExists('limit_results_to_skus_with_brand_ids', $data ?? [], null);
+        $this->setIfExists('search_string', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['search_string'] === null) {
-            $invalidProperties[] = "'search_string' can't be null";
-        }
         if ($this->container['limit_results_to_skus_with_brand_ids'] === null) {
             $invalidProperties[] = "'limit_results_to_skus_with_brand_ids' can't be null";
+        }
+        if ($this->container['search_string'] === null) {
+            $invalidProperties[] = "'search_string' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets search_string
-     *
-     * @return string
-     */
-    public function getSearchString()
-    {
-        return $this->container['search_string'];
-    }
-
-    /**
-     * Sets search_string
-     *
-     * @param string $search_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
-     *
-     * @return self
-     */
-    public function setSearchString($search_string)
-    {
-        if (is_null($search_string)) {
-            throw new \InvalidArgumentException('non-nullable search_string cannot be null');
-        }
-        $this->container['search_string'] = $search_string;
-
-        return $this;
-    }
 
     /**
      * Gets limit_results_to_skus_with_brand_ids
@@ -353,6 +326,33 @@ class SkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable limit_results_to_skus_with_brand_ids cannot be null');
         }
         $this->container['limit_results_to_skus_with_brand_ids'] = $limit_results_to_skus_with_brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_string
+     *
+     * @return string
+     */
+    public function getSearchString()
+    {
+        return $this->container['search_string'];
+    }
+
+    /**
+     * Sets search_string
+     *
+     * @param string $search_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
+     *
+     * @return self
+     */
+    public function setSearchString($search_string)
+    {
+        if (is_null($search_string)) {
+            throw new \InvalidArgumentException('non-nullable search_string cannot be null');
+        }
+        $this->container['search_string'] = $search_string;
 
         return $this;
     }

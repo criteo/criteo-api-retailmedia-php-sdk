@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiRequestOfSellerCatalogRequestV2
+ * AsyncOffsiteReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiRequestOfSellerCatalogRequestV2 Class Doc Comment
+ * AsyncOffsiteReportRequest Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and Attributes properties
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiRequestOfSellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncOffsiteReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiRequestOfSellerCatalogRequestV2 implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiRequestOfSellerCatalogRequestV2';
+    protected static $openAPIModelName = 'AsyncOffsiteReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class JsonApiRequestOfSellerCatalogRequestV2 implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2'
+        'data' => '\criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource'
     ];
 
     /**
@@ -293,7 +293,7 @@ class JsonApiRequestOfSellerCatalogRequestV2 implements ModelInterface, ArrayAcc
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class JsonApiRequestOfSellerCatalogRequestV2 implements ModelInterface, ArrayAcc
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource|null $data data
      *
      * @return self
      */

@@ -58,8 +58,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\Message'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\Message',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => true,
-		'attributes' => false
+        'attributes' => false,
+		'type' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], 'Message');
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], 'Message');
     }
 
     /**
@@ -301,6 +301,33 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Message
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Message $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
      * Gets type
      *
      * @return string|null
@@ -330,33 +357,6 @@ class MessageDataInstanceModel implements ModelInterface, ArrayAccess, \JsonSeri
             }
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\preview\Model\Message
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\preview\Model\Message $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
 
         return $this;
     }

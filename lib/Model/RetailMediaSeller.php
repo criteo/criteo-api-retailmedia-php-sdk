@@ -58,9 +58,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'seller_id' => 'string',
+        'name' => 'string',
         'retailer_id' => 'int',
-        'name' => 'string'
+        'seller_id' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'seller_id' => null,
+        'name' => null,
         'retailer_id' => 'int32',
-        'name' => null
+        'seller_id' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_id' => true,
+        'name' => true,
 		'retailer_id' => true,
-		'name' => true
+		'seller_id' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'seller_id' => 'sellerId',
+        'name' => 'name',
         'retailer_id' => 'retailerId',
-        'name' => 'name'
+        'seller_id' => 'sellerId'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'seller_id' => 'setSellerId',
+        'name' => 'setName',
         'retailer_id' => 'setRetailerId',
-        'name' => 'setName'
+        'seller_id' => 'setSellerId'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'seller_id' => 'getSellerId',
+        'name' => 'getName',
         'retailer_id' => 'getRetailerId',
-        'name' => 'getName'
+        'seller_id' => 'getSellerId'
     ];
 
     /**
@@ -257,9 +257,9 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('seller_id', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('seller_id', $data ?? [], null);
     }
 
     /**
@@ -305,35 +305,35 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets seller_id
+     * Gets name
      *
      * @return string|null
      */
-    public function getSellerId()
+    public function getName()
     {
-        return $this->container['seller_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets seller_id
+     * Sets name
      *
-     * @param string|null $seller_id the seller id
+     * @param string|null $name seller name
      *
      * @return self
      */
-    public function setSellerId($seller_id)
+    public function setName($name)
     {
-        if (is_null($seller_id)) {
-            array_push($this->openAPINullablesSetToNull, 'seller_id');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('seller_id', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['seller_id'] = $seller_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -373,35 +373,35 @@ class RetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets name
+     * Gets seller_id
      *
      * @return string|null
      */
-    public function getName()
+    public function getSellerId()
     {
-        return $this->container['name'];
+        return $this->container['seller_id'];
     }
 
     /**
-     * Sets name
+     * Sets seller_id
      *
-     * @param string|null $name seller name
+     * @param string|null $seller_id the seller id
      *
      * @return self
      */
-    public function setName($name)
+    public function setSellerId($seller_id)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($seller_id)) {
+            array_push($this->openAPINullablesSetToNull, 'seller_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('seller_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['seller_id'] = $seller_id;
 
         return $this;
     }

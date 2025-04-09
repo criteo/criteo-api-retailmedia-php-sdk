@@ -58,27 +58,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sku_key' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'category_id' => 'string',
-        'category' => 'string',
-        'is_seller_sku' => 'bool',
-        'is_buybox' => 'bool',
-        'seller_id' => 'string',
-        'seller_name' => 'string',
         'brand_id' => 'string',
         'brand_name' => 'string',
+        'category' => 'string',
+        'category_id' => 'string',
+        'description' => 'string',
+        'gtin' => 'string',
+        'image_url' => 'string',
+        'is_buybox' => 'bool',
+        'is_in_stock' => 'bool',
+        'is_seller_sku' => 'bool',
+        'model_number' => 'string',
+        'mpn' => 'string',
+        'name' => 'string',
+        'parent_id' => 'string',
+        'price' => 'float',
+        'product_page' => 'string',
         'retailer_id' => 'string',
         'retailer_name' => 'string',
-        'price' => 'float',
-        'is_in_stock' => 'bool',
-        'gtin' => 'string',
-        'mpn' => 'string',
-        'model_number' => 'string',
-        'parent_id' => 'string',
-        'image_url' => 'string',
-        'product_page' => 'string',
+        'seller_id' => 'string',
+        'seller_name' => 'string',
+        'sku_key' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -90,27 +90,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sku_key' => null,
-        'name' => null,
-        'description' => null,
-        'category_id' => null,
-        'category' => null,
-        'is_seller_sku' => null,
-        'is_buybox' => null,
-        'seller_id' => null,
-        'seller_name' => null,
         'brand_id' => null,
         'brand_name' => null,
+        'category' => null,
+        'category_id' => null,
+        'description' => null,
+        'gtin' => null,
+        'image_url' => null,
+        'is_buybox' => null,
+        'is_in_stock' => null,
+        'is_seller_sku' => null,
+        'model_number' => null,
+        'mpn' => null,
+        'name' => null,
+        'parent_id' => null,
+        'price' => 'double',
+        'product_page' => null,
         'retailer_id' => null,
         'retailer_name' => null,
-        'price' => 'double',
-        'is_in_stock' => null,
-        'gtin' => null,
-        'mpn' => null,
-        'model_number' => null,
-        'parent_id' => null,
-        'image_url' => null,
-        'product_page' => null,
+        'seller_id' => null,
+        'seller_name' => null,
+        'sku_key' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -120,27 +120,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sku_key' => false,
-		'name' => false,
-		'description' => true,
-		'category_id' => false,
-		'category' => true,
-		'is_seller_sku' => false,
-		'is_buybox' => false,
-		'seller_id' => true,
-		'seller_name' => true,
-		'brand_id' => false,
+        'brand_id' => false,
 		'brand_name' => false,
+		'category' => true,
+		'category_id' => false,
+		'description' => true,
+		'gtin' => true,
+		'image_url' => false,
+		'is_buybox' => false,
+		'is_in_stock' => false,
+		'is_seller_sku' => false,
+		'model_number' => true,
+		'mpn' => true,
+		'name' => false,
+		'parent_id' => true,
+		'price' => false,
+		'product_page' => true,
 		'retailer_id' => false,
 		'retailer_name' => false,
-		'price' => false,
-		'is_in_stock' => false,
-		'gtin' => true,
-		'mpn' => true,
-		'model_number' => true,
-		'parent_id' => true,
-		'image_url' => false,
-		'product_page' => true,
+		'seller_id' => true,
+		'seller_name' => true,
+		'sku_key' => false,
 		'updated_at' => false
     ];
 
@@ -230,27 +230,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'sku_key' => 'skuKey',
-        'name' => 'name',
-        'description' => 'description',
-        'category_id' => 'categoryId',
-        'category' => 'category',
-        'is_seller_sku' => 'isSellerSku',
-        'is_buybox' => 'isBuybox',
-        'seller_id' => 'sellerId',
-        'seller_name' => 'sellerName',
         'brand_id' => 'brandId',
         'brand_name' => 'brandName',
+        'category' => 'category',
+        'category_id' => 'categoryId',
+        'description' => 'description',
+        'gtin' => 'gtin',
+        'image_url' => 'imageUrl',
+        'is_buybox' => 'isBuybox',
+        'is_in_stock' => 'isInStock',
+        'is_seller_sku' => 'isSellerSku',
+        'model_number' => 'modelNumber',
+        'mpn' => 'mpn',
+        'name' => 'name',
+        'parent_id' => 'parentId',
+        'price' => 'price',
+        'product_page' => 'productPage',
         'retailer_id' => 'retailerId',
         'retailer_name' => 'retailerName',
-        'price' => 'price',
-        'is_in_stock' => 'isInStock',
-        'gtin' => 'gtin',
-        'mpn' => 'mpn',
-        'model_number' => 'modelNumber',
-        'parent_id' => 'parentId',
-        'image_url' => 'imageUrl',
-        'product_page' => 'productPage',
+        'seller_id' => 'sellerId',
+        'seller_name' => 'sellerName',
+        'sku_key' => 'skuKey',
         'updated_at' => 'updatedAt'
     ];
 
@@ -260,27 +260,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'sku_key' => 'setSkuKey',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'category_id' => 'setCategoryId',
-        'category' => 'setCategory',
-        'is_seller_sku' => 'setIsSellerSku',
-        'is_buybox' => 'setIsBuybox',
-        'seller_id' => 'setSellerId',
-        'seller_name' => 'setSellerName',
         'brand_id' => 'setBrandId',
         'brand_name' => 'setBrandName',
+        'category' => 'setCategory',
+        'category_id' => 'setCategoryId',
+        'description' => 'setDescription',
+        'gtin' => 'setGtin',
+        'image_url' => 'setImageUrl',
+        'is_buybox' => 'setIsBuybox',
+        'is_in_stock' => 'setIsInStock',
+        'is_seller_sku' => 'setIsSellerSku',
+        'model_number' => 'setModelNumber',
+        'mpn' => 'setMpn',
+        'name' => 'setName',
+        'parent_id' => 'setParentId',
+        'price' => 'setPrice',
+        'product_page' => 'setProductPage',
         'retailer_id' => 'setRetailerId',
         'retailer_name' => 'setRetailerName',
-        'price' => 'setPrice',
-        'is_in_stock' => 'setIsInStock',
-        'gtin' => 'setGtin',
-        'mpn' => 'setMpn',
-        'model_number' => 'setModelNumber',
-        'parent_id' => 'setParentId',
-        'image_url' => 'setImageUrl',
-        'product_page' => 'setProductPage',
+        'seller_id' => 'setSellerId',
+        'seller_name' => 'setSellerName',
+        'sku_key' => 'setSkuKey',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -290,27 +290,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'sku_key' => 'getSkuKey',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'category_id' => 'getCategoryId',
-        'category' => 'getCategory',
-        'is_seller_sku' => 'getIsSellerSku',
-        'is_buybox' => 'getIsBuybox',
-        'seller_id' => 'getSellerId',
-        'seller_name' => 'getSellerName',
         'brand_id' => 'getBrandId',
         'brand_name' => 'getBrandName',
+        'category' => 'getCategory',
+        'category_id' => 'getCategoryId',
+        'description' => 'getDescription',
+        'gtin' => 'getGtin',
+        'image_url' => 'getImageUrl',
+        'is_buybox' => 'getIsBuybox',
+        'is_in_stock' => 'getIsInStock',
+        'is_seller_sku' => 'getIsSellerSku',
+        'model_number' => 'getModelNumber',
+        'mpn' => 'getMpn',
+        'name' => 'getName',
+        'parent_id' => 'getParentId',
+        'price' => 'getPrice',
+        'product_page' => 'getProductPage',
         'retailer_id' => 'getRetailerId',
         'retailer_name' => 'getRetailerName',
-        'price' => 'getPrice',
-        'is_in_stock' => 'getIsInStock',
-        'gtin' => 'getGtin',
-        'mpn' => 'getMpn',
-        'model_number' => 'getModelNumber',
-        'parent_id' => 'getParentId',
-        'image_url' => 'getImageUrl',
-        'product_page' => 'getProductPage',
+        'seller_id' => 'getSellerId',
+        'seller_name' => 'getSellerName',
+        'sku_key' => 'getSkuKey',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -371,27 +371,27 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sku_key', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('category_id', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('is_seller_sku', $data ?? [], null);
-        $this->setIfExists('is_buybox', $data ?? [], null);
-        $this->setIfExists('seller_id', $data ?? [], null);
-        $this->setIfExists('seller_name', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
         $this->setIfExists('brand_name', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('category_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('gtin', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('is_buybox', $data ?? [], null);
+        $this->setIfExists('is_in_stock', $data ?? [], null);
+        $this->setIfExists('is_seller_sku', $data ?? [], null);
+        $this->setIfExists('model_number', $data ?? [], null);
+        $this->setIfExists('mpn', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('parent_id', $data ?? [], null);
+        $this->setIfExists('price', $data ?? [], null);
+        $this->setIfExists('product_page', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('retailer_name', $data ?? [], null);
-        $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('is_in_stock', $data ?? [], null);
-        $this->setIfExists('gtin', $data ?? [], null);
-        $this->setIfExists('mpn', $data ?? [], null);
-        $this->setIfExists('model_number', $data ?? [], null);
-        $this->setIfExists('parent_id', $data ?? [], null);
-        $this->setIfExists('image_url', $data ?? [], null);
-        $this->setIfExists('product_page', $data ?? [], null);
+        $this->setIfExists('seller_id', $data ?? [], null);
+        $this->setIfExists('seller_name', $data ?? [], null);
+        $this->setIfExists('sku_key', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -422,28 +422,6 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['sku_key'] === null) {
-            $invalidProperties[] = "'sku_key' can't be null";
-        }
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 0)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['category_id'] === null) {
-            $invalidProperties[] = "'category_id' can't be null";
-        }
-        if (!is_null($this->container['category']) && (mb_strlen($this->container['category']) > 1000)) {
-            $invalidProperties[] = "invalid value for 'category', the character length must be smaller than or equal to 1000.";
-        }
-
-        if (!is_null($this->container['category']) && (mb_strlen($this->container['category']) < 0)) {
-            $invalidProperties[] = "invalid value for 'category', the character length must be bigger than or equal to 0.";
-        }
-
         if ($this->container['brand_id'] === null) {
             $invalidProperties[] = "'brand_id' can't be null";
         }
@@ -458,6 +436,31 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'brand_name', the character length must be bigger than or equal to 0.";
         }
 
+        if (!is_null($this->container['category']) && (mb_strlen($this->container['category']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'category', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['category']) && (mb_strlen($this->container['category']) < 0)) {
+            $invalidProperties[] = "invalid value for 'category', the character length must be bigger than or equal to 0.";
+        }
+
+        if ($this->container['category_id'] === null) {
+            $invalidProperties[] = "'category_id' can't be null";
+        }
+        if ($this->container['is_in_stock'] === null) {
+            $invalidProperties[] = "'is_in_stock' can't be null";
+        }
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 1000.";
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 0)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        }
+
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
+        }
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
         }
@@ -472,11 +475,8 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'retailer_name', the character length must be bigger than or equal to 0.";
         }
 
-        if ($this->container['price'] === null) {
-            $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['is_in_stock'] === null) {
-            $invalidProperties[] = "'is_in_stock' can't be null";
+        if ($this->container['sku_key'] === null) {
+            $invalidProperties[] = "'sku_key' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -497,123 +497,62 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets sku_key
+     * Gets brand_id
      *
      * @return string
      */
-    public function getSkuKey()
+    public function getBrandId()
     {
-        return $this->container['sku_key'];
+        return $this->container['brand_id'];
     }
 
     /**
-     * Sets sku_key
+     * Sets brand_id
      *
-     * @param string $sku_key The product SKU Key.
+     * @param string $brand_id The global brand id associated to the product.
      *
      * @return self
      */
-    public function setSkuKey($sku_key)
+    public function setBrandId($brand_id)
     {
-        if (is_null($sku_key)) {
-            throw new \InvalidArgumentException('non-nullable sku_key cannot be null');
+        if (is_null($brand_id)) {
+            throw new \InvalidArgumentException('non-nullable brand_id cannot be null');
         }
-        $this->container['sku_key'] = $sku_key;
+        $this->container['brand_id'] = $brand_id;
 
         return $this;
     }
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name A short product name.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 1000)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be smaller than or equal to 1000.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be bigger than or equal to 0.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description A product description.
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets category_id
+     * Gets brand_name
      *
      * @return string
      */
-    public function getCategoryId()
+    public function getBrandName()
     {
-        return $this->container['category_id'];
+        return $this->container['brand_name'];
     }
 
     /**
-     * Sets category_id
+     * Sets brand_name
      *
-     * @param string $category_id The category Id.
+     * @param string $brand_name The name of the global brand.
      *
      * @return self
      */
-    public function setCategoryId($category_id)
+    public function setBrandName($brand_name)
     {
-        if (is_null($category_id)) {
-            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
+        if (is_null($brand_name)) {
+            throw new \InvalidArgumentException('non-nullable brand_name cannot be null');
         }
-        $this->container['category_id'] = $category_id;
+        if ((mb_strlen($brand_name) > 120)) {
+            throw new \InvalidArgumentException('invalid length for $brand_name when calling SkuDataPreview., must be smaller than or equal to 120.');
+        }
+        if ((mb_strlen($brand_name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $brand_name when calling SkuDataPreview., must be bigger than or equal to 0.');
+        }
+
+        $this->container['brand_name'] = $brand_name;
 
         return $this;
     }
@@ -660,28 +599,123 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets is_seller_sku
+     * Gets category_id
      *
-     * @return bool|null
+     * @return string
      */
-    public function getIsSellerSku()
+    public function getCategoryId()
     {
-        return $this->container['is_seller_sku'];
+        return $this->container['category_id'];
     }
 
     /**
-     * Sets is_seller_sku
+     * Sets category_id
      *
-     * @param bool|null $is_seller_sku An indication of if the sku is seller sku.
+     * @param string $category_id The category Id.
      *
      * @return self
      */
-    public function setIsSellerSku($is_seller_sku)
+    public function setCategoryId($category_id)
     {
-        if (is_null($is_seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable is_seller_sku cannot be null');
+        if (is_null($category_id)) {
+            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
         }
-        $this->container['is_seller_sku'] = $is_seller_sku;
+        $this->container['category_id'] = $category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description A product description.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets gtin
+     *
+     * @return string|null
+     */
+    public function getGtin()
+    {
+        return $this->container['gtin'];
+    }
+
+    /**
+     * Sets gtin
+     *
+     * @param string|null $gtin A GTIN identifier for the product if available. Covers variations such as EANs and UPCs.
+     *
+     * @return self
+     */
+    public function setGtin($gtin)
+    {
+        if (is_null($gtin)) {
+            array_push($this->openAPINullablesSetToNull, 'gtin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gtin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['gtin'] = $gtin;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url An http image resource provided by the retailer.
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }
@@ -709,6 +743,318 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_buybox cannot be null');
         }
         $this->container['is_buybox'] = $is_buybox;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_in_stock
+     *
+     * @return bool
+     */
+    public function getIsInStock()
+    {
+        return $this->container['is_in_stock'];
+    }
+
+    /**
+     * Sets is_in_stock
+     *
+     * @param bool $is_in_stock An indication of if the retailer currently has the product in stock.
+     *
+     * @return self
+     */
+    public function setIsInStock($is_in_stock)
+    {
+        if (is_null($is_in_stock)) {
+            throw new \InvalidArgumentException('non-nullable is_in_stock cannot be null');
+        }
+        $this->container['is_in_stock'] = $is_in_stock;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_seller_sku
+     *
+     * @return bool|null
+     */
+    public function getIsSellerSku()
+    {
+        return $this->container['is_seller_sku'];
+    }
+
+    /**
+     * Sets is_seller_sku
+     *
+     * @param bool|null $is_seller_sku An indication of if the sku is seller sku.
+     *
+     * @return self
+     */
+    public function setIsSellerSku($is_seller_sku)
+    {
+        if (is_null($is_seller_sku)) {
+            throw new \InvalidArgumentException('non-nullable is_seller_sku cannot be null');
+        }
+        $this->container['is_seller_sku'] = $is_seller_sku;
+
+        return $this;
+    }
+
+    /**
+     * Gets model_number
+     *
+     * @return string|null
+     */
+    public function getModelNumber()
+    {
+        return $this->container['model_number'];
+    }
+
+    /**
+     * Sets model_number
+     *
+     * @param string|null $model_number The Model Number for the product if available.
+     *
+     * @return self
+     */
+    public function setModelNumber($model_number)
+    {
+        if (is_null($model_number)) {
+            array_push($this->openAPINullablesSetToNull, 'model_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('model_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['model_number'] = $model_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets mpn
+     *
+     * @return string|null
+     */
+    public function getMpn()
+    {
+        return $this->container['mpn'];
+    }
+
+    /**
+     * Sets mpn
+     *
+     * @param string|null $mpn The MPN for the product if available.
+     *
+     * @return self
+     */
+    public function setMpn($mpn)
+    {
+        if (is_null($mpn)) {
+            array_push($this->openAPINullablesSetToNull, 'mpn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mpn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mpn'] = $mpn;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name A short product name.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be smaller than or equal to 1000.');
+        }
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be bigger than or equal to 0.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return string|null
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param string|null $parent_id The ParentId for the product if available.
+     *
+     * @return self
+     */
+    public function setParentId($parent_id)
+    {
+        if (is_null($parent_id)) {
+            array_push($this->openAPINullablesSetToNull, 'parent_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets price
+     *
+     * @return float
+     */
+    public function getPrice()
+    {
+        return $this->container['price'];
+    }
+
+    /**
+     * Sets price
+     *
+     * @param float $price The price of the product on the retailer site.
+     *
+     * @return self
+     */
+    public function setPrice($price)
+    {
+        if (is_null($price)) {
+            throw new \InvalidArgumentException('non-nullable price cannot be null');
+        }
+        $this->container['price'] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_page
+     *
+     * @return string|null
+     */
+    public function getProductPage()
+    {
+        return $this->container['product_page'];
+    }
+
+    /**
+     * Sets product_page
+     *
+     * @param string|null $product_page The product page URL
+     *
+     * @return self
+     */
+    public function setProductPage($product_page)
+    {
+        if (is_null($product_page)) {
+            array_push($this->openAPINullablesSetToNull, 'product_page');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_page', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_page'] = $product_page;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return string
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param string $retailer_id The identifier for the retailer the product is listed by.
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_name
+     *
+     * @return string
+     */
+    public function getRetailerName()
+    {
+        return $this->container['retailer_name'];
+    }
+
+    /**
+     * Sets retailer_name
+     *
+     * @param string $retailer_name The retailer name.
+     *
+     * @return self
+     */
+    public function setRetailerName($retailer_name)
+    {
+        if (is_null($retailer_name)) {
+            throw new \InvalidArgumentException('non-nullable retailer_name cannot be null');
+        }
+        if ((mb_strlen($retailer_name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_name when calling SkuDataPreview., must be smaller than or equal to 100.');
+        }
+        if ((mb_strlen($retailer_name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_name when calling SkuDataPreview., must be bigger than or equal to 0.');
+        }
+
+        $this->container['retailer_name'] = $retailer_name;
 
         return $this;
     }
@@ -782,374 +1128,28 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets brand_id
+     * Gets sku_key
      *
      * @return string
      */
-    public function getBrandId()
+    public function getSkuKey()
     {
-        return $this->container['brand_id'];
+        return $this->container['sku_key'];
     }
 
     /**
-     * Sets brand_id
+     * Sets sku_key
      *
-     * @param string $brand_id The global brand id associated to the product.
+     * @param string $sku_key The product SKU Key.
      *
      * @return self
      */
-    public function setBrandId($brand_id)
+    public function setSkuKey($sku_key)
     {
-        if (is_null($brand_id)) {
-            throw new \InvalidArgumentException('non-nullable brand_id cannot be null');
+        if (is_null($sku_key)) {
+            throw new \InvalidArgumentException('non-nullable sku_key cannot be null');
         }
-        $this->container['brand_id'] = $brand_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_name
-     *
-     * @return string
-     */
-    public function getBrandName()
-    {
-        return $this->container['brand_name'];
-    }
-
-    /**
-     * Sets brand_name
-     *
-     * @param string $brand_name The name of the global brand.
-     *
-     * @return self
-     */
-    public function setBrandName($brand_name)
-    {
-        if (is_null($brand_name)) {
-            throw new \InvalidArgumentException('non-nullable brand_name cannot be null');
-        }
-        if ((mb_strlen($brand_name) > 120)) {
-            throw new \InvalidArgumentException('invalid length for $brand_name when calling SkuDataPreview., must be smaller than or equal to 120.');
-        }
-        if ((mb_strlen($brand_name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $brand_name when calling SkuDataPreview., must be bigger than or equal to 0.');
-        }
-
-        $this->container['brand_name'] = $brand_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_id
-     *
-     * @return string
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string $retailer_id The identifier for the retailer the product is listed by.
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
-        }
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_name
-     *
-     * @return string
-     */
-    public function getRetailerName()
-    {
-        return $this->container['retailer_name'];
-    }
-
-    /**
-     * Sets retailer_name
-     *
-     * @param string $retailer_name The retailer name.
-     *
-     * @return self
-     */
-    public function setRetailerName($retailer_name)
-    {
-        if (is_null($retailer_name)) {
-            throw new \InvalidArgumentException('non-nullable retailer_name cannot be null');
-        }
-        if ((mb_strlen($retailer_name) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $retailer_name when calling SkuDataPreview., must be smaller than or equal to 100.');
-        }
-        if ((mb_strlen($retailer_name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $retailer_name when calling SkuDataPreview., must be bigger than or equal to 0.');
-        }
-
-        $this->container['retailer_name'] = $retailer_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets price
-     *
-     * @return float
-     */
-    public function getPrice()
-    {
-        return $this->container['price'];
-    }
-
-    /**
-     * Sets price
-     *
-     * @param float $price The price of the product on the retailer site.
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        if (is_null($price)) {
-            throw new \InvalidArgumentException('non-nullable price cannot be null');
-        }
-        $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_in_stock
-     *
-     * @return bool
-     */
-    public function getIsInStock()
-    {
-        return $this->container['is_in_stock'];
-    }
-
-    /**
-     * Sets is_in_stock
-     *
-     * @param bool $is_in_stock An indication of if the retailer currently has the product in stock.
-     *
-     * @return self
-     */
-    public function setIsInStock($is_in_stock)
-    {
-        if (is_null($is_in_stock)) {
-            throw new \InvalidArgumentException('non-nullable is_in_stock cannot be null');
-        }
-        $this->container['is_in_stock'] = $is_in_stock;
-
-        return $this;
-    }
-
-    /**
-     * Gets gtin
-     *
-     * @return string|null
-     */
-    public function getGtin()
-    {
-        return $this->container['gtin'];
-    }
-
-    /**
-     * Sets gtin
-     *
-     * @param string|null $gtin A GTIN identifier for the product if available. Covers variations such as EANs and UPCs.
-     *
-     * @return self
-     */
-    public function setGtin($gtin)
-    {
-        if (is_null($gtin)) {
-            array_push($this->openAPINullablesSetToNull, 'gtin');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('gtin', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['gtin'] = $gtin;
-
-        return $this;
-    }
-
-    /**
-     * Gets mpn
-     *
-     * @return string|null
-     */
-    public function getMpn()
-    {
-        return $this->container['mpn'];
-    }
-
-    /**
-     * Sets mpn
-     *
-     * @param string|null $mpn The MPN for the product if available.
-     *
-     * @return self
-     */
-    public function setMpn($mpn)
-    {
-        if (is_null($mpn)) {
-            array_push($this->openAPINullablesSetToNull, 'mpn');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('mpn', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['mpn'] = $mpn;
-
-        return $this;
-    }
-
-    /**
-     * Gets model_number
-     *
-     * @return string|null
-     */
-    public function getModelNumber()
-    {
-        return $this->container['model_number'];
-    }
-
-    /**
-     * Sets model_number
-     *
-     * @param string|null $model_number The Model Number for the product if available.
-     *
-     * @return self
-     */
-    public function setModelNumber($model_number)
-    {
-        if (is_null($model_number)) {
-            array_push($this->openAPINullablesSetToNull, 'model_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('model_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['model_number'] = $model_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_id
-     *
-     * @return string|null
-     */
-    public function getParentId()
-    {
-        return $this->container['parent_id'];
-    }
-
-    /**
-     * Sets parent_id
-     *
-     * @param string|null $parent_id The ParentId for the product if available.
-     *
-     * @return self
-     */
-    public function setParentId($parent_id)
-    {
-        if (is_null($parent_id)) {
-            array_push($this->openAPINullablesSetToNull, 'parent_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('parent_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['parent_id'] = $parent_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     *
-     * @return string|null
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     *
-     * @param string|null $image_url An http image resource provided by the retailer.
-     *
-     * @return self
-     */
-    public function setImageUrl($image_url)
-    {
-        if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
-        }
-        $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_page
-     *
-     * @return string|null
-     */
-    public function getProductPage()
-    {
-        return $this->container['product_page'];
-    }
-
-    /**
-     * Sets product_page
-     *
-     * @param string|null $product_page The product page URL
-     *
-     * @return self
-     */
-    public function setProductPage($product_page)
-    {
-        if (is_null($product_page)) {
-            array_push($this->openAPINullablesSetToNull, 'product_page');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_page', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['product_page'] = $product_page;
+        $this->container['sku_key'] = $sku_key;
 
         return $this;
     }

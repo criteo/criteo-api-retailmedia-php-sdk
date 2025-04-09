@@ -58,9 +58,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_ids' => 'int[]',
+        'brand_type' => 'string',
         'name' => 'string',
-        'brand_type' => 'string'
+        'retailer_ids' => 'int[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_ids' => 'int32',
+        'brand_type' => null,
         'name' => null,
-        'brand_type' => null
+        'retailer_ids' => 'int32'
     ];
 
     /**
@@ -82,9 +82,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_ids' => false,
+        'brand_type' => false,
 		'name' => true,
-		'brand_type' => false
+		'retailer_ids' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_ids' => 'retailerIds',
+        'brand_type' => 'brandType',
         'name' => 'name',
-        'brand_type' => 'brandType'
+        'retailer_ids' => 'retailerIds'
     ];
 
     /**
@@ -184,9 +184,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'retailer_ids' => 'setRetailerIds',
+        'brand_type' => 'setBrandType',
         'name' => 'setName',
-        'brand_type' => 'setBrandType'
+        'retailer_ids' => 'setRetailerIds'
     ];
 
     /**
@@ -195,9 +195,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'retailer_ids' => 'getRetailerIds',
+        'brand_type' => 'getBrandType',
         'name' => 'getName',
-        'brand_type' => 'getBrandType'
+        'retailer_ids' => 'getRetailerIds'
     ];
 
     /**
@@ -274,9 +274,9 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('brand_type', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
     }
 
     /**
@@ -306,13 +306,6 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_ids'] === null) {
-            $invalidProperties[] = "'retailer_ids' can't be null";
-        }
-        if ((count($this->container['retailer_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be greater than or equal to 1.";
-        }
-
         $allowedValues = $this->getBrandTypeAllowableValues();
         if (!is_null($this->container['brand_type']) && !in_array($this->container['brand_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -320,6 +313,13 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->container['brand_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if ($this->container['retailer_ids'] === null) {
+            $invalidProperties[] = "'retailer_ids' can't be null";
+        }
+        if ((count($this->container['retailer_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -338,33 +338,38 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets retailer_ids
+     * Gets brand_type
      *
-     * @return int[]
+     * @return string|null
      */
-    public function getRetailerIds()
+    public function getBrandType()
     {
-        return $this->container['retailer_ids'];
+        return $this->container['brand_type'];
     }
 
     /**
-     * Sets retailer_ids
+     * Sets brand_type
      *
-     * @param int[] $retailer_ids IDs of the retailers we want to limit the search to
+     * @param string|null $brand_type The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
      *
      * @return self
      */
-    public function setRetailerIds($retailer_ids)
+    public function setBrandType($brand_type)
     {
-        if (is_null($retailer_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
+        if (is_null($brand_type)) {
+            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
         }
-
-
-        if ((count($retailer_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $retailer_ids when calling BrandIdSearchRequest., number of items must be greater than or equal to 1.');
+        $allowedValues = $this->getBrandTypeAllowableValues();
+        if (!in_array($brand_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'brand_type', must be one of '%s'",
+                    $brand_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['retailer_ids'] = $retailer_ids;
+        $this->container['brand_type'] = $brand_type;
 
         return $this;
     }
@@ -404,38 +409,33 @@ class BrandIdSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets brand_type
+     * Gets retailer_ids
      *
-     * @return string|null
+     * @return int[]
      */
-    public function getBrandType()
+    public function getRetailerIds()
     {
-        return $this->container['brand_type'];
+        return $this->container['retailer_ids'];
     }
 
     /**
-     * Sets brand_type
+     * Sets retailer_ids
      *
-     * @param string|null $brand_type The type of brand, primarily where this brand belongs: UC, Retailer or All (both)
+     * @param int[] $retailer_ids IDs of the retailers we want to limit the search to
      *
      * @return self
      */
-    public function setBrandType($brand_type)
+    public function setRetailerIds($retailer_ids)
     {
-        if (is_null($brand_type)) {
-            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
+        if (is_null($retailer_ids)) {
+            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
         }
-        $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!in_array($brand_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'brand_type', must be one of '%s'",
-                    $brand_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+
+        if ((count($retailer_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_ids when calling BrandIdSearchRequest., number of items must be greater than or equal to 1.');
         }
-        $this->container['brand_type'] = $brand_type;
+        $this->container['retailer_ids'] = $retailer_ids;
 
         return $this;
     }

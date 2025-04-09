@@ -58,9 +58,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sellers' => '\criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]',
+        'include_fields' => 'string[]',
         'modified_after' => '\DateTime',
-        'include_fields' => 'string[]'
+        'sellers' => '\criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sellers' => null,
+        'include_fields' => null,
         'modified_after' => 'date-time',
-        'include_fields' => null
+        'sellers' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sellers' => false,
+        'include_fields' => false,
 		'modified_after' => false,
-		'include_fields' => false
+		'sellers' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'sellers' => 'sellers',
+        'include_fields' => 'includeFields',
         'modified_after' => 'modifiedAfter',
-        'include_fields' => 'includeFields'
+        'sellers' => 'sellers'
     ];
 
     /**
@@ -184,9 +184,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'sellers' => 'setSellers',
+        'include_fields' => 'setIncludeFields',
         'modified_after' => 'setModifiedAfter',
-        'include_fields' => 'setIncludeFields'
+        'sellers' => 'setSellers'
     ];
 
     /**
@@ -195,9 +195,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'sellers' => 'getSellers',
+        'include_fields' => 'getIncludeFields',
         'modified_after' => 'getModifiedAfter',
-        'include_fields' => 'getIncludeFields'
+        'sellers' => 'getSellers'
     ];
 
     /**
@@ -282,9 +282,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sellers', $data ?? [], null);
-        $this->setIfExists('modified_after', $data ?? [], null);
         $this->setIfExists('include_fields', $data ?? [], null);
+        $this->setIfExists('modified_after', $data ?? [], null);
+        $this->setIfExists('sellers', $data ?? [], null);
     }
 
     /**
@@ -330,28 +330,37 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets sellers
+     * Gets include_fields
      *
-     * @return \criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]|null
+     * @return string[]|null
      */
-    public function getSellers()
+    public function getIncludeFields()
     {
-        return $this->container['sellers'];
+        return $this->container['include_fields'];
     }
 
     /**
-     * Sets sellers
+     * Sets include_fields
      *
-     * @param \criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]|null $sellers A list of sellers to restrict the catalog to.
+     * @param string[]|null $include_fields Out of the optional fields, only the ones specified will be included in the catalog generated.
      *
      * @return self
      */
-    public function setSellers($sellers)
+    public function setIncludeFields($include_fields)
     {
-        if (is_null($sellers)) {
-            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
+        if (is_null($include_fields)) {
+            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
         }
-        $this->container['sellers'] = $sellers;
+        $allowedValues = $this->getIncludeFieldsAllowableValues();
+        if (array_diff($include_fields, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'include_fields', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['include_fields'] = $include_fields;
 
         return $this;
     }
@@ -384,37 +393,28 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets include_fields
+     * Gets sellers
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]|null
      */
-    public function getIncludeFields()
+    public function getSellers()
     {
-        return $this->container['include_fields'];
+        return $this->container['sellers'];
     }
 
     /**
-     * Sets include_fields
+     * Sets sellers
      *
-     * @param string[]|null $include_fields Out of the optional fields, only the ones specified will be included in the catalog generated.
+     * @param \criteo\api\retailmedia\preview\Model\SellerIdentifierV2[]|null $sellers A list of sellers to restrict the catalog to.
      *
      * @return self
      */
-    public function setIncludeFields($include_fields)
+    public function setSellers($sellers)
     {
-        if (is_null($include_fields)) {
-            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
+        if (is_null($sellers)) {
+            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
         }
-        $allowedValues = $this->getIncludeFieldsAllowableValues();
-        if (array_diff($include_fields, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'include_fields', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['include_fields'] = $include_fields;
+        $this->container['sellers'] = $sellers;
 
         return $this;
     }

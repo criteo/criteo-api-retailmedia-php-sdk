@@ -58,12 +58,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'row_count' => 'int',
+        'created_at' => '\DateTime',
         'file_size_bytes' => 'int',
         'md5_checksum' => 'string',
-        'created_at' => '\DateTime',
-        'message' => 'string'
+        'message' => 'string',
+        'row_count' => 'int',
+        'status' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'row_count' => 'int32',
+        'created_at' => 'date-time',
         'file_size_bytes' => 'int32',
         'md5_checksum' => null,
-        'created_at' => 'date-time',
-        'message' => null
+        'message' => null,
+        'row_count' => 'int32',
+        'status' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-		'row_count' => true,
+        'created_at' => false,
 		'file_size_bytes' => true,
 		'md5_checksum' => true,
-		'created_at' => false,
-		'message' => true
+		'message' => true,
+		'row_count' => true,
+		'status' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'row_count' => 'rowCount',
+        'created_at' => 'createdAt',
         'file_size_bytes' => 'fileSizeBytes',
         'md5_checksum' => 'md5Checksum',
-        'created_at' => 'createdAt',
-        'message' => 'message'
+        'message' => 'message',
+        'row_count' => 'rowCount',
+        'status' => 'status'
     ];
 
     /**
@@ -196,12 +196,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'row_count' => 'setRowCount',
+        'created_at' => 'setCreatedAt',
         'file_size_bytes' => 'setFileSizeBytes',
         'md5_checksum' => 'setMd5Checksum',
-        'created_at' => 'setCreatedAt',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'row_count' => 'setRowCount',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -210,12 +210,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'row_count' => 'getRowCount',
+        'created_at' => 'getCreatedAt',
         'file_size_bytes' => 'getFileSizeBytes',
         'md5_checksum' => 'getMd5Checksum',
-        'created_at' => 'getCreatedAt',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'row_count' => 'getRowCount',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -296,12 +296,12 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('row_count', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('file_size_bytes', $data ?? [], null);
         $this->setIfExists('md5_checksum', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('row_count', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -331,6 +331,9 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -343,9 +346,6 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -362,72 +362,28 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets status
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getCreatedAt()
     {
-        return $this->container['status'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets status
+     * Sets created_at
      *
-     * @param string $status An enumeration of the status of the catalog.
+     * @param \DateTime $created_at The time this catalog was created. Represented as a UTC ISO8601 string.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_count
-     *
-     * @return int|null
-     */
-    public function getRowCount()
-    {
-        return $this->container['row_count'];
-    }
-
-    /**
-     * Sets row_count
-     *
-     * @param int|null $row_count An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
-     *
-     * @return self
-     */
-    public function setRowCount($row_count)
-    {
-        if (is_null($row_count)) {
-            array_push($this->openAPINullablesSetToNull, 'row_count');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('row_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['row_count'] = $row_count;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -501,33 +457,6 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at The time this catalog was created. Represented as a UTC ISO8601 string.
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets message
      *
      * @return string|null
@@ -557,6 +486,77 @@ class CatalogStatusV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_count
+     *
+     * @return int|null
+     */
+    public function getRowCount()
+    {
+        return $this->container['row_count'];
+    }
+
+    /**
+     * Sets row_count
+     *
+     * @param int|null $row_count An indication of the number of products contained in this catalog. Available when  this catalog reaches a success status.
+     *
+     * @return self
+     */
+    public function setRowCount($row_count)
+    {
+        if (is_null($row_count)) {
+            array_push($this->openAPINullablesSetToNull, 'row_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('row_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['row_count'] = $row_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status An enumeration of the status of the catalog.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

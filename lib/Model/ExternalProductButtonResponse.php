@@ -58,10 +58,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'background_image' => 'string',
-        'rank' => 'int',
         'is_mandatory' => 'int',
+        'name' => 'string',
+        'rank' => 'int',
         'skus' => 'string[]'
     ];
 
@@ -73,10 +73,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'background_image' => null,
-        'rank' => 'int32',
         'is_mandatory' => 'int32',
+        'name' => null,
+        'rank' => 'int32',
         'skus' => null
     ];
 
@@ -86,10 +86,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'background_image' => false,
-		'rank' => false,
+        'background_image' => false,
 		'is_mandatory' => false,
+		'name' => false,
+		'rank' => false,
 		'skus' => false
     ];
 
@@ -179,10 +179,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'background_image' => 'backgroundImage',
-        'rank' => 'rank',
         'is_mandatory' => 'isMandatory',
+        'name' => 'name',
+        'rank' => 'rank',
         'skus' => 'skus'
     ];
 
@@ -192,10 +192,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'background_image' => 'setBackgroundImage',
-        'rank' => 'setRank',
         'is_mandatory' => 'setIsMandatory',
+        'name' => 'setName',
+        'rank' => 'setRank',
         'skus' => 'setSkus'
     ];
 
@@ -205,10 +205,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'background_image' => 'getBackgroundImage',
-        'rank' => 'getRank',
         'is_mandatory' => 'getIsMandatory',
+        'name' => 'getName',
+        'rank' => 'getRank',
         'skus' => 'getSkus'
     ];
 
@@ -269,10 +269,10 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('background_image', $data ?? [], null);
-        $this->setIfExists('rank', $data ?? [], null);
         $this->setIfExists('is_mandatory', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('rank', $data ?? [], null);
         $this->setIfExists('skus', $data ?? [], null);
     }
 
@@ -303,17 +303,17 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['background_image'] === null) {
             $invalidProperties[] = "'background_image' can't be null";
         }
-        if ($this->container['rank'] === null) {
-            $invalidProperties[] = "'rank' can't be null";
-        }
         if ($this->container['is_mandatory'] === null) {
             $invalidProperties[] = "'is_mandatory' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['rank'] === null) {
+            $invalidProperties[] = "'rank' can't be null";
         }
         if ($this->container['skus'] === null) {
             $invalidProperties[] = "'skus' can't be null";
@@ -332,33 +332,6 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the Product Button
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets background_image
@@ -388,33 +361,6 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets rank
-     *
-     * @return int
-     */
-    public function getRank()
-    {
-        return $this->container['rank'];
-    }
-
-    /**
-     * Sets rank
-     *
-     * @param int $rank Rank of the Product Button
-     *
-     * @return self
-     */
-    public function setRank($rank)
-    {
-        if (is_null($rank)) {
-            throw new \InvalidArgumentException('non-nullable rank cannot be null');
-        }
-        $this->container['rank'] = $rank;
-
-        return $this;
-    }
-
-    /**
      * Gets is_mandatory
      *
      * @return int
@@ -437,6 +383,60 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
         }
         $this->container['is_mandatory'] = $is_mandatory;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the Product Button
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets rank
+     *
+     * @return int
+     */
+    public function getRank()
+    {
+        return $this->container['rank'];
+    }
+
+    /**
+     * Sets rank
+     *
+     * @param int $rank Rank of the Product Button
+     *
+     * @return self
+     */
+    public function setRank($rank)
+    {
+        if (is_null($rank)) {
+            throw new \InvalidArgumentException('non-nullable rank cannot be null');
+        }
+        $this->container['rank'] = $rank;
 
         return $this;
     }

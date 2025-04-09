@@ -1,10 +1,10 @@
-# # JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2
+# # ValueResourceAccountFeesUpdateRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  |
-**attributes** | [**\criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2**](BrandCatalogRequestV2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\preview\Model\AccountFeesUpdateRequest**](AccountFeesUpdateRequest.md) |  | [optional]
+**type** | **string** | Type of the resource. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

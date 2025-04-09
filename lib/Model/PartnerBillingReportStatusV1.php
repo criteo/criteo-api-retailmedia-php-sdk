@@ -58,9 +58,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
+        'created_at' => '\DateTime',
         'error_message' => 'string',
-        'created_at' => '\DateTime'
+        'status' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
+        'created_at' => 'date-time',
         'error_message' => null,
-        'created_at' => 'date-time'
+        'status' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
+        'created_at' => false,
 		'error_message' => true,
-		'created_at' => false
+		'status' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
+        'created_at' => 'createdAt',
         'error_message' => 'errorMessage',
-        'created_at' => 'createdAt'
+        'status' => 'status'
     ];
 
     /**
@@ -184,9 +184,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
+        'created_at' => 'setCreatedAt',
         'error_message' => 'setErrorMessage',
-        'created_at' => 'setCreatedAt'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -195,9 +195,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
+        'created_at' => 'getCreatedAt',
         'error_message' => 'getErrorMessage',
-        'created_at' => 'getCreatedAt'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -276,9 +276,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('error_message', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -308,6 +308,9 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -320,9 +323,6 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
             );
         }
 
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -339,38 +339,28 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets status
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getStatus()
+    public function getCreatedAt()
     {
-        return $this->container['status'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets status
+     * Sets created_at
      *
-     * @param string $status Status of the report.
+     * @param \DateTime $created_at The date when the report request is created.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -410,28 +400,38 @@ class PartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets created_at
+     * Gets status
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedAt()
+    public function getStatus()
     {
-        return $this->container['created_at'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets created_at
+     * Sets status
      *
-     * @param \DateTime $created_at The date when the report request is created.
+     * @param string $status Status of the report.
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setStatus($status)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

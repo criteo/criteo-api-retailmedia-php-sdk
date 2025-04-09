@@ -59,9 +59,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'retailer_id' => 'string',
+        'page_environment_type' => 'string',
         'page_type' => 'string',
-        'page_environment_type' => 'string'
+        'retailer_id' => 'string'
     ];
 
     /**
@@ -73,9 +73,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'retailer_id' => null,
+        'page_environment_type' => null,
         'page_type' => null,
-        'page_environment_type' => null
+        'retailer_id' => null
     ];
 
     /**
@@ -85,9 +85,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'name' => false,
-		'retailer_id' => false,
+		'page_environment_type' => false,
 		'page_type' => false,
-		'page_environment_type' => false
+		'retailer_id' => false
     ];
 
     /**
@@ -177,9 +177,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'retailer_id' => 'retailerId',
+        'page_environment_type' => 'pageEnvironmentType',
         'page_type' => 'pageType',
-        'page_environment_type' => 'pageEnvironmentType'
+        'retailer_id' => 'retailerId'
     ];
 
     /**
@@ -189,9 +189,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'name' => 'setName',
-        'retailer_id' => 'setRetailerId',
+        'page_environment_type' => 'setPageEnvironmentType',
         'page_type' => 'setPageType',
-        'page_environment_type' => 'setPageEnvironmentType'
+        'retailer_id' => 'setRetailerId'
     ];
 
     /**
@@ -201,9 +201,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'name' => 'getName',
-        'retailer_id' => 'getRetailerId',
+        'page_environment_type' => 'getPageEnvironmentType',
         'page_type' => 'getPageType',
-        'page_environment_type' => 'getPageEnvironmentType'
+        'retailer_id' => 'getRetailerId'
     ];
 
     /**
@@ -247,6 +247,14 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const PAGE_ENVIRONMENT_TYPE_UNKNOWN = 'Unknown';
+    public const PAGE_ENVIRONMENT_TYPE_WEB = 'Web';
+    public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'Mobile';
+    public const PAGE_ENVIRONMENT_TYPE_APP = 'App';
+    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'Lockout';
+    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'Mixed';
+    public const PAGE_ENVIRONMENT_TYPE_I_OS = 'iOS';
+    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'Android';
     public const PAGE_TYPE_UNKNOWN = 'Unknown';
     public const PAGE_TYPE_SEARCH = 'Search';
     public const PAGE_TYPE_HOME = 'Home';
@@ -257,14 +265,25 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
     public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
     public const PAGE_TYPE_DEALS = 'Deals';
-    public const PAGE_ENVIRONMENT_TYPE_UNKNOWN = 'Unknown';
-    public const PAGE_ENVIRONMENT_TYPE_WEB = 'Web';
-    public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'Mobile';
-    public const PAGE_ENVIRONMENT_TYPE_APP = 'App';
-    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'Lockout';
-    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'Mixed';
-    public const PAGE_ENVIRONMENT_TYPE_I_OS = 'iOS';
-    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'Android';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageEnvironmentTypeAllowableValues()
+    {
+        return [
+            self::PAGE_ENVIRONMENT_TYPE_UNKNOWN,
+            self::PAGE_ENVIRONMENT_TYPE_WEB,
+            self::PAGE_ENVIRONMENT_TYPE_MOBILE,
+            self::PAGE_ENVIRONMENT_TYPE_APP,
+            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
+            self::PAGE_ENVIRONMENT_TYPE_MIXED,
+            self::PAGE_ENVIRONMENT_TYPE_I_OS,
+            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -288,25 +307,6 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageEnvironmentTypeAllowableValues()
-    {
-        return [
-            self::PAGE_ENVIRONMENT_TYPE_UNKNOWN,
-            self::PAGE_ENVIRONMENT_TYPE_WEB,
-            self::PAGE_ENVIRONMENT_TYPE_MOBILE,
-            self::PAGE_ENVIRONMENT_TYPE_APP,
-            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
-            self::PAGE_ENVIRONMENT_TYPE_MIXED,
-            self::PAGE_ENVIRONMENT_TYPE_I_OS,
-            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -322,9 +322,9 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('page_type', $data ?? [], null);
         $this->setIfExists('page_environment_type', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
     }
 
     /**
@@ -357,21 +357,6 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        if ($this->container['page_type'] === null) {
-            $invalidProperties[] = "'page_type' can't be null";
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['page_environment_type'] === null) {
             $invalidProperties[] = "'page_environment_type' can't be null";
         }
@@ -384,6 +369,21 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['page_type'] === null) {
+            $invalidProperties[] = "'page_type' can't be null";
+        }
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -427,28 +427,38 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets retailer_id
+     * Gets page_environment_type
      *
      * @return string
      */
-    public function getRetailerId()
+    public function getPageEnvironmentType()
     {
-        return $this->container['retailer_id'];
+        return $this->container['page_environment_type'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets page_environment_type
      *
-     * @param string $retailer_id Retailer Id
+     * @param string $page_environment_type Page Environment
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setPageEnvironmentType($page_environment_type)
     {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        if (is_null($page_environment_type)) {
+            throw new \InvalidArgumentException('non-nullable page_environment_type cannot be null');
         }
-        $this->container['retailer_id'] = $retailer_id;
+        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
+        if (!in_array($page_environment_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_environment_type', must be one of '%s'",
+                    $page_environment_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_environment_type'] = $page_environment_type;
 
         return $this;
     }
@@ -491,38 +501,28 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets page_environment_type
+     * Gets retailer_id
      *
      * @return string
      */
-    public function getPageEnvironmentType()
+    public function getRetailerId()
     {
-        return $this->container['page_environment_type'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets page_environment_type
+     * Sets retailer_id
      *
-     * @param string $page_environment_type Page Environment
+     * @param string $retailer_id Retailer Id
      *
      * @return self
      */
-    public function setPageEnvironmentType($page_environment_type)
+    public function setRetailerId($retailer_id)
     {
-        if (is_null($page_environment_type)) {
-            throw new \InvalidArgumentException('non-nullable page_environment_type cannot be null');
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
-        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
-        if (!in_array($page_environment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_environment_type', must be one of '%s'",
-                    $page_environment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_environment_type'] = $page_environment_type;
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }

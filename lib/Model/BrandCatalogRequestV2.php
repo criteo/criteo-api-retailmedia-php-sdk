@@ -59,9 +59,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'brand_id_filter' => 'string[]',
-        'retailer_id_filter' => 'int[]',
+        'include_fields' => 'string[]',
         'modified_after' => '\DateTime',
-        'include_fields' => 'string[]'
+        'retailer_id_filter' => 'int[]'
     ];
 
     /**
@@ -73,9 +73,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'brand_id_filter' => 'long-id',
-        'retailer_id_filter' => 'int32',
+        'include_fields' => null,
         'modified_after' => 'date-time',
-        'include_fields' => null
+        'retailer_id_filter' => 'int32'
     ];
 
     /**
@@ -85,9 +85,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'brand_id_filter' => false,
-		'retailer_id_filter' => false,
+		'include_fields' => false,
 		'modified_after' => false,
-		'include_fields' => false
+		'retailer_id_filter' => false
     ];
 
     /**
@@ -177,9 +177,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'brand_id_filter' => 'brandIdFilter',
-        'retailer_id_filter' => 'retailerIdFilter',
+        'include_fields' => 'includeFields',
         'modified_after' => 'modifiedAfter',
-        'include_fields' => 'includeFields'
+        'retailer_id_filter' => 'retailerIdFilter'
     ];
 
     /**
@@ -189,9 +189,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'brand_id_filter' => 'setBrandIdFilter',
-        'retailer_id_filter' => 'setRetailerIdFilter',
+        'include_fields' => 'setIncludeFields',
         'modified_after' => 'setModifiedAfter',
-        'include_fields' => 'setIncludeFields'
+        'retailer_id_filter' => 'setRetailerIdFilter'
     ];
 
     /**
@@ -201,9 +201,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'brand_id_filter' => 'getBrandIdFilter',
-        'retailer_id_filter' => 'getRetailerIdFilter',
+        'include_fields' => 'getIncludeFields',
         'modified_after' => 'getModifiedAfter',
-        'include_fields' => 'getIncludeFields'
+        'retailer_id_filter' => 'getRetailerIdFilter'
     ];
 
     /**
@@ -250,7 +250,7 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public const INCLUDE_FIELDS_UNKNOWN = 'Unknown';
     public const INCLUDE_FIELDS_DESCRIPTION = 'Description';
     public const INCLUDE_FIELDS_IMAGE_URL = 'ImageUrl';
-    public const INCLUDE_FIELDS_GLOBAL_CATEGORY_ID = 'GlobalCategoryId';
+    public const INCLUDE_FIELDS_GOOGLE_CATEGORY = 'GoogleCategory';
     public const INCLUDE_FIELDS_RETAILER_NAME = 'RetailerName';
     public const INCLUDE_FIELDS_CATEGORY = 'Category';
     public const INCLUDE_FIELDS_BRAND_NAME = 'BrandName';
@@ -266,7 +266,7 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
             self::INCLUDE_FIELDS_UNKNOWN,
             self::INCLUDE_FIELDS_DESCRIPTION,
             self::INCLUDE_FIELDS_IMAGE_URL,
-            self::INCLUDE_FIELDS_GLOBAL_CATEGORY_ID,
+            self::INCLUDE_FIELDS_GOOGLE_CATEGORY,
             self::INCLUDE_FIELDS_RETAILER_NAME,
             self::INCLUDE_FIELDS_CATEGORY,
             self::INCLUDE_FIELDS_BRAND_NAME,
@@ -289,9 +289,9 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(array $data = null)
     {
         $this->setIfExists('brand_id_filter', $data ?? [], null);
-        $this->setIfExists('retailer_id_filter', $data ?? [], null);
-        $this->setIfExists('modified_after', $data ?? [], null);
         $this->setIfExists('include_fields', $data ?? [], null);
+        $this->setIfExists('modified_after', $data ?? [], null);
+        $this->setIfExists('retailer_id_filter', $data ?? [], null);
     }
 
     /**
@@ -364,28 +364,37 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets retailer_id_filter
+     * Gets include_fields
      *
-     * @return int[]|null
+     * @return string[]|null
      */
-    public function getRetailerIdFilter()
+    public function getIncludeFields()
     {
-        return $this->container['retailer_id_filter'];
+        return $this->container['include_fields'];
     }
 
     /**
-     * Sets retailer_id_filter
+     * Sets include_fields
      *
-     * @param int[]|null $retailer_id_filter The retailer ids to filter the catalog by.
+     * @param string[]|null $include_fields Out of the optional fields, only the ones specified will be included in the catalog generated.
      *
      * @return self
      */
-    public function setRetailerIdFilter($retailer_id_filter)
+    public function setIncludeFields($include_fields)
     {
-        if (is_null($retailer_id_filter)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id_filter cannot be null');
+        if (is_null($include_fields)) {
+            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
         }
-        $this->container['retailer_id_filter'] = $retailer_id_filter;
+        $allowedValues = $this->getIncludeFieldsAllowableValues();
+        if (array_diff($include_fields, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'include_fields', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['include_fields'] = $include_fields;
 
         return $this;
     }
@@ -418,37 +427,28 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets include_fields
+     * Gets retailer_id_filter
      *
-     * @return string[]|null
+     * @return int[]|null
      */
-    public function getIncludeFields()
+    public function getRetailerIdFilter()
     {
-        return $this->container['include_fields'];
+        return $this->container['retailer_id_filter'];
     }
 
     /**
-     * Sets include_fields
+     * Sets retailer_id_filter
      *
-     * @param string[]|null $include_fields Out of the optional fields, only the ones specified will be included in the catalog generated.
+     * @param int[]|null $retailer_id_filter The retailer ids to filter the catalog by.
      *
      * @return self
      */
-    public function setIncludeFields($include_fields)
+    public function setRetailerIdFilter($retailer_id_filter)
     {
-        if (is_null($include_fields)) {
-            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
+        if (is_null($retailer_id_filter)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id_filter cannot be null');
         }
-        $allowedValues = $this->getIncludeFieldsAllowableValues();
-        if (array_diff($include_fields, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'include_fields', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['include_fields'] = $include_fields;
+        $this->container['retailer_id_filter'] = $retailer_id_filter;
 
         return $this;
     }

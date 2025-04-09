@@ -58,9 +58,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_date' => 'string',
         'end_date' => 'string',
-        'memo' => 'string'
+        'memo' => 'string',
+        'start_date' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'start_date' => null,
         'end_date' => null,
-        'memo' => null
+        'memo' => null,
+        'start_date' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_date' => true,
-		'end_date' => true,
-		'memo' => true
+        'end_date' => true,
+		'memo' => true,
+		'start_date' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'memo' => 'memo'
+        'memo' => 'memo',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'memo' => 'setMemo'
+        'memo' => 'setMemo',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'memo' => 'getMemo'
+        'memo' => 'getMemo',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -303,40 +303,6 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets start_date
-     *
-     * @return string|null
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param string|null $start_date Start date of the balance in the format YYYY-MM-DD.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            array_push($this->openAPINullablesSetToNull, 'start_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
 
     /**
      * Gets end_date
@@ -402,6 +368,40 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return string|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param string|null $start_date Start date of the balance in the format YYYY-MM-DD.
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            array_push($this->openAPINullablesSetToNull, 'start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }

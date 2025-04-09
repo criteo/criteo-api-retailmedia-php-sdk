@@ -58,10 +58,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
       * @var string[]
       */
     protected static $openAPITypes = [
-        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
         'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfRetailMediaChildAccount[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'metadata' => null,
         'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'metadata' => true,
-		'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'data' => true,
+		'errors' => true,
+		'metadata' => true,
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
      * @var string[]
      */
     protected static $attributeMap = [
-        'metadata' => 'metadata',
         'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +188,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
      * @var string[]
      */
     protected static $setters = [
-        'metadata' => 'setMetadata',
         'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +200,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
      * @var string[]
      */
     protected static $getters = [
-        'metadata' => 'getMetadata',
         'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +263,10 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -312,40 +312,6 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
 
 
     /**
-     * Gets metadata
-     *
-     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailMediaChildAccount[]|null
@@ -380,40 +346,6 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
     }
 
     /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
      * Gets errors
      *
      * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
@@ -443,6 +375,74 @@ class EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata implem
             }
         }
         $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

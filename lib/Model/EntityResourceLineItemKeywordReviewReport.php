@@ -58,9 +58,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
+        'attributes' => '\criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport',
         'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport'
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'attributes' => null,
         'id' => null,
-        'type' => null,
-        'attributes' => null
+        'type' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-		'type' => true,
-		'attributes' => true
+        'attributes' => true,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
+        'attributes' => 'attributes',
         'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +184,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
+        'attributes' => 'setAttributes',
         'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +195,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
+        'attributes' => 'getAttributes',
         'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'type' => 'getType'
     ];
 
     /**
@@ -257,9 +257,9 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -303,6 +303,40 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -368,40 +402,6 @@ class EntityResourceLineItemKeywordReviewReport implements ModelInterface, Array
             }
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\preview\Model\LineItemKeywordReviewReport|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['attributes'] = $attributes;
 
         return $this;
     }

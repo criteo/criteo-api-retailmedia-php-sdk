@@ -58,12 +58,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'supply_account_ids' => 'string[]',
         'dimensions' => 'string[]',
-        'metrics' => 'string[]',
-        'format' => 'string',
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
+        'format' => 'string',
+        'metrics' => 'string[]',
+        'start_date' => '\DateTime',
+        'supply_account_ids' => 'string[]',
         'timezone' => 'string'
     ];
 
@@ -75,12 +75,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'supply_account_ids' => null,
         'dimensions' => null,
-        'metrics' => null,
-        'format' => null,
-        'start_date' => 'date-time',
         'end_date' => 'date-time',
+        'format' => null,
+        'metrics' => null,
+        'start_date' => 'date-time',
+        'supply_account_ids' => null,
         'timezone' => null
     ];
 
@@ -90,12 +90,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'supply_account_ids' => false,
-		'dimensions' => false,
-		'metrics' => false,
-		'format' => false,
-		'start_date' => false,
+        'dimensions' => false,
 		'end_date' => false,
+		'format' => false,
+		'metrics' => false,
+		'start_date' => false,
+		'supply_account_ids' => false,
 		'timezone' => false
     ];
 
@@ -185,12 +185,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'supply_account_ids' => 'supplyAccountIds',
         'dimensions' => 'dimensions',
-        'metrics' => 'metrics',
-        'format' => 'format',
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
+        'format' => 'format',
+        'metrics' => 'metrics',
+        'start_date' => 'startDate',
+        'supply_account_ids' => 'supplyAccountIds',
         'timezone' => 'timezone'
     ];
 
@@ -200,12 +200,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'supply_account_ids' => 'setSupplyAccountIds',
         'dimensions' => 'setDimensions',
-        'metrics' => 'setMetrics',
-        'format' => 'setFormat',
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
+        'format' => 'setFormat',
+        'metrics' => 'setMetrics',
+        'start_date' => 'setStartDate',
+        'supply_account_ids' => 'setSupplyAccountIds',
         'timezone' => 'setTimezone'
     ];
 
@@ -215,12 +215,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'supply_account_ids' => 'getSupplyAccountIds',
         'dimensions' => 'getDimensions',
-        'metrics' => 'getMetrics',
-        'format' => 'getFormat',
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
+        'format' => 'getFormat',
+        'metrics' => 'getMetrics',
+        'start_date' => 'getStartDate',
+        'supply_account_ids' => 'getSupplyAccountIds',
         'timezone' => 'getTimezone'
     ];
 
@@ -275,6 +275,10 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
     public const DIMENSIONS_RETAILER_CATEGORY_ID = 'retailerCategoryId';
     public const DIMENSIONS_RETAILER_CATEGORY_NAME = 'retailerCategoryName';
+    public const FORMAT_JSON = 'json';
+    public const FORMAT_JSON_COMPACT = 'json-compact';
+    public const FORMAT_JSON_NEWLINE = 'json-newline';
+    public const FORMAT_CSV = 'csv';
     public const METRICS_PAGE_VIEWS = 'pageViews';
     public const METRICS_AVAILABLE_PLACEMENTS = 'availablePlacements';
     public const METRICS_UNFILLED_PLACEMENTS = 'unfilledPlacements';
@@ -296,10 +300,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_NET_REVENUE = 'netRevenue';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
-    public const FORMAT_JSON = 'json';
-    public const FORMAT_JSON_COMPACT = 'json-compact';
-    public const FORMAT_JSON_NEWLINE = 'json-newline';
-    public const FORMAT_CSV = 'csv';
 
     /**
      * Gets allowable values of the enum
@@ -319,6 +319,21 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_SERVED_CATEGORY,
             self::DIMENSIONS_RETAILER_CATEGORY_ID,
             self::DIMENSIONS_RETAILER_CATEGORY_NAME,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_JSON,
+            self::FORMAT_JSON_COMPACT,
+            self::FORMAT_JSON_NEWLINE,
+            self::FORMAT_CSV,
         ];
     }
 
@@ -355,21 +370,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFormatAllowableValues()
-    {
-        return [
-            self::FORMAT_JSON,
-            self::FORMAT_JSON_COMPACT,
-            self::FORMAT_JSON_NEWLINE,
-            self::FORMAT_CSV,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -384,12 +384,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('supply_account_ids', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], 'json');
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json');
+        $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('supply_account_ids', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
     }
 
@@ -420,9 +420,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['supply_account_ids'] === null) {
-            $invalidProperties[] = "'supply_account_ids' can't be null";
-        }
         if ($this->container['dimensions'] === null) {
             $invalidProperties[] = "'dimensions' can't be null";
         }
@@ -430,13 +427,9 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'dimensions', number of items must be greater than or equal to 1.";
         }
 
-        if ($this->container['metrics'] === null) {
-            $invalidProperties[] = "'metrics' can't be null";
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
         }
-        if ((count($this->container['metrics']) < 1)) {
-            $invalidProperties[] = "invalid value for 'metrics', number of items must be greater than or equal to 1.";
-        }
-
         $allowedValues = $this->getFormatAllowableValues();
         if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -446,11 +439,18 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
+        if ($this->container['metrics'] === null) {
+            $invalidProperties[] = "'metrics' can't be null";
+        }
+        if ((count($this->container['metrics']) < 1)) {
+            $invalidProperties[] = "invalid value for 'metrics', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        if ($this->container['supply_account_ids'] === null) {
+            $invalidProperties[] = "'supply_account_ids' can't be null";
         }
         return $invalidProperties;
     }
@@ -466,33 +466,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets supply_account_ids
-     *
-     * @return string[]
-     */
-    public function getSupplyAccountIds()
-    {
-        return $this->container['supply_account_ids'];
-    }
-
-    /**
-     * Sets supply_account_ids
-     *
-     * @param string[] $supply_account_ids Supply account ids to report on
-     *
-     * @return self
-     */
-    public function setSupplyAccountIds($supply_account_ids)
-    {
-        if (is_null($supply_account_ids)) {
-            throw new \InvalidArgumentException('non-nullable supply_account_ids cannot be null');
-        }
-        $this->container['supply_account_ids'] = $supply_account_ids;
-
-        return $this;
-    }
 
     /**
      * Gets dimensions
@@ -531,6 +504,70 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('invalid length for $dimensions when calling AsyncFillRateReport., number of items must be greater than or equal to 1.');
         }
         $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date End date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Format of the output
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -577,43 +614,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format Format of the output
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        if (is_null($format)) {
-            throw new \InvalidArgumentException('non-nullable format cannot be null');
-        }
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format'] = $format;
-
-        return $this;
-    }
-
-    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -641,28 +641,28 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets end_date
+     * Gets supply_account_ids
      *
-     * @return \DateTime
+     * @return string[]
      */
-    public function getEndDate()
+    public function getSupplyAccountIds()
     {
-        return $this->container['end_date'];
+        return $this->container['supply_account_ids'];
     }
 
     /**
-     * Sets end_date
+     * Sets supply_account_ids
      *
-     * @param \DateTime $end_date End date
+     * @param string[] $supply_account_ids Supply account ids to report on
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setSupplyAccountIds($supply_account_ids)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($supply_account_ids)) {
+            throw new \InvalidArgumentException('non-nullable supply_account_ids cannot be null');
         }
-        $this->container['end_date'] = $end_date;
+        $this->container['supply_account_ids'] = $supply_account_ids;
 
         return $this;
     }

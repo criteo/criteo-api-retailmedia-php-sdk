@@ -58,13 +58,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'deposited' => 'float',
+        'end_date' => '\DateTime',
+        'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
-        'deposited' => 'float',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
         'spend_type' => 'string',
-        'memo' => 'string'
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -75,13 +75,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'deposited' => 'decimal',
+        'end_date' => 'date',
+        'memo' => null,
         'name' => null,
         'po_number' => null,
-        'deposited' => 'decimal',
-        'start_date' => 'date',
-        'end_date' => 'date',
         'spend_type' => null,
-        'memo' => null
+        'start_date' => 'date'
     ];
 
     /**
@@ -90,13 +90,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'po_number' => true,
-		'deposited' => false,
-		'start_date' => false,
+        'deposited' => false,
 		'end_date' => true,
+		'memo' => true,
+		'name' => false,
+		'po_number' => true,
 		'spend_type' => false,
-		'memo' => true
+		'start_date' => false
     ];
 
     /**
@@ -185,13 +185,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'deposited' => 'deposited',
+        'end_date' => 'endDate',
+        'memo' => 'memo',
         'name' => 'name',
         'po_number' => 'poNumber',
-        'deposited' => 'deposited',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
         'spend_type' => 'spendType',
-        'memo' => 'memo'
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -200,13 +200,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'deposited' => 'setDeposited',
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
         'name' => 'setName',
         'po_number' => 'setPoNumber',
-        'deposited' => 'setDeposited',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
         'spend_type' => 'setSpendType',
-        'memo' => 'setMemo'
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -215,13 +215,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'deposited' => 'getDeposited',
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
         'name' => 'getName',
         'po_number' => 'getPoNumber',
-        'deposited' => 'getDeposited',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
         'spend_type' => 'getSpendType',
-        'memo' => 'getMemo'
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -298,13 +298,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('deposited', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('po_number', $data ?? [], null);
-        $this->setIfExists('deposited', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('spend_type', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -337,9 +337,6 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         if ($this->container['spend_type'] === null) {
             $invalidProperties[] = "'spend_type' can't be null";
         }
@@ -352,6 +349,9 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -366,6 +366,101 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets deposited
+     *
+     * @return float|null
+     */
+    public function getDeposited()
+    {
+        return $this->container['deposited'];
+    }
+
+    /**
+     * Sets deposited
+     *
+     * @param float|null $deposited Amount of billable funds allotted to the balance.
+     *
+     * @return self
+     */
+    public function setDeposited($deposited)
+    {
+        if (is_null($deposited)) {
+            throw new \InvalidArgumentException('non-nullable deposited cannot be null');
+        }
+        $this->container['deposited'] = $deposited;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string|null
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string|null $memo Memo
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if (is_null($memo)) {
+            array_push($this->openAPINullablesSetToNull, 'memo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('memo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -429,94 +524,6 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets deposited
-     *
-     * @return float|null
-     */
-    public function getDeposited()
-    {
-        return $this->container['deposited'];
-    }
-
-    /**
-     * Sets deposited
-     *
-     * @param float|null $deposited Amount of billable funds allotted to the balance.
-     *
-     * @return self
-     */
-    public function setDeposited($deposited)
-    {
-        if (is_null($deposited)) {
-            throw new \InvalidArgumentException('non-nullable deposited cannot be null');
-        }
-        $this->container['deposited'] = $deposited;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
      * Gets spend_type
      *
      * @return string
@@ -554,35 +561,28 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets memo
+     * Gets start_date
      *
-     * @return string|null
+     * @return \DateTime
      */
-    public function getMemo()
+    public function getStartDate()
     {
-        return $this->container['memo'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets memo
+     * Sets start_date
      *
-     * @param string|null $memo Memo
+     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
-    public function setMemo($memo)
+    public function setStartDate($start_date)
     {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
-        $this->container['memo'] = $memo;
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }

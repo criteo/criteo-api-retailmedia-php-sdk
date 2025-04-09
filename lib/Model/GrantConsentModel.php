@@ -58,9 +58,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'client_id' => 'string',
+        'callback_state' => 'string',
         'callback_url' => 'string',
-        'callback_state' => 'string'
+        'client_id' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'client_id' => null,
+        'callback_state' => null,
         'callback_url' => null,
-        'callback_state' => null
+        'client_id' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'client_id' => false,
+        'callback_state' => false,
 		'callback_url' => false,
-		'callback_state' => false
+		'client_id' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'client_id' => 'clientId',
+        'callback_state' => 'callbackState',
         'callback_url' => 'callbackUrl',
-        'callback_state' => 'callbackState'
+        'client_id' => 'clientId'
     ];
 
     /**
@@ -184,9 +184,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'client_id' => 'setClientId',
+        'callback_state' => 'setCallbackState',
         'callback_url' => 'setCallbackUrl',
-        'callback_state' => 'setCallbackState'
+        'client_id' => 'setClientId'
     ];
 
     /**
@@ -195,9 +195,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'client_id' => 'getClientId',
+        'callback_state' => 'getCallbackState',
         'callback_url' => 'getCallbackUrl',
-        'callback_state' => 'getCallbackState'
+        'client_id' => 'getClientId'
     ];
 
     /**
@@ -257,9 +257,9 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('client_id', $data ?? [], null);
-        $this->setIfExists('callback_url', $data ?? [], null);
         $this->setIfExists('callback_state', $data ?? [], null);
+        $this->setIfExists('callback_url', $data ?? [], null);
+        $this->setIfExists('client_id', $data ?? [], null);
     }
 
     /**
@@ -289,11 +289,11 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['client_id'] === null) {
-            $invalidProperties[] = "'client_id' can't be null";
-        }
         if ($this->container['callback_url'] === null) {
             $invalidProperties[] = "'callback_url' can't be null";
+        }
+        if ($this->container['client_id'] === null) {
+            $invalidProperties[] = "'client_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,28 +311,28 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets client_id
+     * Gets callback_state
      *
-     * @return string
+     * @return string|null
      */
-    public function getClientId()
+    public function getCallbackState()
     {
-        return $this->container['client_id'];
+        return $this->container['callback_state'];
     }
 
     /**
-     * Sets client_id
+     * Sets callback_state
      *
-     * @param string $client_id client_id
+     * @param string|null $callback_state callback_state
      *
      * @return self
      */
-    public function setClientId($client_id)
+    public function setCallbackState($callback_state)
     {
-        if (is_null($client_id)) {
-            throw new \InvalidArgumentException('non-nullable client_id cannot be null');
+        if (is_null($callback_state)) {
+            throw new \InvalidArgumentException('non-nullable callback_state cannot be null');
         }
-        $this->container['client_id'] = $client_id;
+        $this->container['callback_state'] = $callback_state;
 
         return $this;
     }
@@ -365,28 +365,28 @@ class GrantConsentModel implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets callback_state
+     * Gets client_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getCallbackState()
+    public function getClientId()
     {
-        return $this->container['callback_state'];
+        return $this->container['client_id'];
     }
 
     /**
-     * Sets callback_state
+     * Sets client_id
      *
-     * @param string|null $callback_state callback_state
+     * @param string $client_id client_id
      *
      * @return self
      */
-    public function setCallbackState($callback_state)
+    public function setClientId($client_id)
     {
-        if (is_null($callback_state)) {
-            throw new \InvalidArgumentException('non-nullable callback_state cannot be null');
+        if (is_null($client_id)) {
+            throw new \InvalidArgumentException('non-nullable client_id cannot be null');
         }
-        $this->container['callback_state'] = $callback_state;
+        $this->container['client_id'] = $client_id;
 
         return $this;
     }

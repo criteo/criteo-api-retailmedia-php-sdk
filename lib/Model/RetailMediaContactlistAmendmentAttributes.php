@@ -58,9 +58,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'operation' => 'string',
+        'identifiers' => 'string[]',
         'identifier_type' => 'string',
-        'identifiers' => 'string[]'
+        'operation' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'operation' => null,
+        'identifiers' => null,
         'identifier_type' => null,
-        'identifiers' => null
+        'operation' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'operation' => false,
+        'identifiers' => false,
 		'identifier_type' => false,
-		'identifiers' => false
+		'operation' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'operation' => 'operation',
+        'identifiers' => 'identifiers',
         'identifier_type' => 'identifierType',
-        'identifiers' => 'identifiers'
+        'operation' => 'operation'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'operation' => 'setOperation',
+        'identifiers' => 'setIdentifiers',
         'identifier_type' => 'setIdentifierType',
-        'identifiers' => 'setIdentifiers'
+        'operation' => 'setOperation'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'operation' => 'getOperation',
+        'identifiers' => 'getIdentifiers',
         'identifier_type' => 'getIdentifierType',
-        'identifiers' => 'getIdentifiers'
+        'operation' => 'getOperation'
     ];
 
     /**
@@ -241,27 +241,14 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const OPERATION_ADD = 'add';
-    public const OPERATION_REMOVE = 'remove';
     public const IDENTIFIER_TYPE_EMAIL = 'Email';
     public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
     public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
     public const IDENTIFIER_TYPE_GUM = 'Gum';
     public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
     public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getOperationAllowableValues()
-    {
-        return [
-            self::OPERATION_ADD,
-            self::OPERATION_REMOVE,
-        ];
-    }
+    public const OPERATION_ADD = 'add';
+    public const OPERATION_REMOVE = 'remove';
 
     /**
      * Gets allowable values of the enum
@@ -281,6 +268,19 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOperationAllowableValues()
+    {
+        return [
+            self::OPERATION_ADD,
+            self::OPERATION_REMOVE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -295,9 +295,9 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('operation', $data ?? [], null);
-        $this->setIfExists('identifier_type', $data ?? [], null);
         $this->setIfExists('identifiers', $data ?? [], null);
+        $this->setIfExists('identifier_type', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
     }
 
     /**
@@ -327,6 +327,18 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['identifiers'] === null) {
+            $invalidProperties[] = "'identifiers' can't be null";
+        }
+        $allowedValues = $this->getIdentifierTypeAllowableValues();
+        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identifier_type', must be one of '%s'",
+                $this->container['identifier_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['operation'] === null) {
             $invalidProperties[] = "'operation' can't be null";
         }
@@ -339,18 +351,6 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
             );
         }
 
-        $allowedValues = $this->getIdentifierTypeAllowableValues();
-        if (!is_null($this->container['identifier_type']) && !in_array($this->container['identifier_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'identifier_type', must be one of '%s'",
-                $this->container['identifier_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['identifiers'] === null) {
-            $invalidProperties[] = "'identifiers' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -367,38 +367,28 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
 
 
     /**
-     * Gets operation
+     * Gets identifiers
      *
-     * @return string
+     * @return string[]
      */
-    public function getOperation()
+    public function getIdentifiers()
     {
-        return $this->container['operation'];
+        return $this->container['identifiers'];
     }
 
     /**
-     * Sets operation
+     * Sets identifiers
      *
-     * @param string $operation Whether to add or remove users
+     * @param string[] $identifiers The users to add or remove, each in the schema specified
      *
      * @return self
      */
-    public function setOperation($operation)
+    public function setIdentifiers($identifiers)
     {
-        if (is_null($operation)) {
-            throw new \InvalidArgumentException('non-nullable operation cannot be null');
+        if (is_null($identifiers)) {
+            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
         }
-        $allowedValues = $this->getOperationAllowableValues();
-        if (!in_array($operation, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'operation', must be one of '%s'",
-                    $operation,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['operation'] = $operation;
+        $this->container['identifiers'] = $identifiers;
 
         return $this;
     }
@@ -441,28 +431,38 @@ class RetailMediaContactlistAmendmentAttributes implements ModelInterface, Array
     }
 
     /**
-     * Gets identifiers
+     * Gets operation
      *
-     * @return string[]
+     * @return string
      */
-    public function getIdentifiers()
+    public function getOperation()
     {
-        return $this->container['identifiers'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets identifiers
+     * Sets operation
      *
-     * @param string[] $identifiers The users to add or remove, each in the schema specified
+     * @param string $operation Whether to add or remove users
      *
      * @return self
      */
-    public function setIdentifiers($identifiers)
+    public function setOperation($operation)
     {
-        if (is_null($identifiers)) {
-            throw new \InvalidArgumentException('non-nullable identifiers cannot be null');
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $this->container['identifiers'] = $identifiers;
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!in_array($operation, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'operation', must be one of '%s'",
+                    $operation,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['operation'] = $operation;
 
         return $this;
     }

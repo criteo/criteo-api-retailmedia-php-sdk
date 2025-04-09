@@ -59,14 +59,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'retailer_id' => 'string',
-        'created_by_id' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
+        'algebra' => '\criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1',
         'channels' => 'string[]',
-        'algebra' => '\criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1'
+        'created_at' => '\DateTime',
+        'created_by_id' => 'string',
+        'description' => 'string',
+        'name' => 'string',
+        'retailer_id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -78,14 +78,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'account_id' => null,
-        'name' => null,
-        'description' => null,
-        'retailer_id' => null,
-        'created_by_id' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
+        'algebra' => null,
         'channels' => null,
-        'algebra' => null
+        'created_at' => 'date-time',
+        'created_by_id' => null,
+        'description' => null,
+        'name' => null,
+        'retailer_id' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -95,14 +95,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'account_id' => true,
-		'name' => true,
-		'description' => true,
-		'retailer_id' => true,
-		'created_by_id' => true,
-		'created_at' => true,
-		'updated_at' => true,
+		'algebra' => true,
 		'channels' => true,
-		'algebra' => true
+		'created_at' => true,
+		'created_by_id' => true,
+		'description' => true,
+		'name' => true,
+		'retailer_id' => true,
+		'updated_at' => true
     ];
 
     /**
@@ -192,14 +192,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
-        'name' => 'name',
-        'description' => 'description',
-        'retailer_id' => 'retailerId',
-        'created_by_id' => 'createdById',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
+        'algebra' => 'algebra',
         'channels' => 'channels',
-        'algebra' => 'algebra'
+        'created_at' => 'createdAt',
+        'created_by_id' => 'createdById',
+        'description' => 'description',
+        'name' => 'name',
+        'retailer_id' => 'retailerId',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -209,14 +209,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'retailer_id' => 'setRetailerId',
-        'created_by_id' => 'setCreatedById',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
+        'algebra' => 'setAlgebra',
         'channels' => 'setChannels',
-        'algebra' => 'setAlgebra'
+        'created_at' => 'setCreatedAt',
+        'created_by_id' => 'setCreatedById',
+        'description' => 'setDescription',
+        'name' => 'setName',
+        'retailer_id' => 'setRetailerId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -226,14 +226,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'retailer_id' => 'getRetailerId',
-        'created_by_id' => 'getCreatedById',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
+        'algebra' => 'getAlgebra',
         'channels' => 'getChannels',
-        'algebra' => 'getAlgebra'
+        'created_at' => 'getCreatedAt',
+        'created_by_id' => 'getCreatedById',
+        'description' => 'getDescription',
+        'name' => 'getName',
+        'retailer_id' => 'getRetailerId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -311,14 +311,14 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('created_by_id', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('channels', $data ?? [], null);
         $this->setIfExists('algebra', $data ?? [], null);
+        $this->setIfExists('channels', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('created_by_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -398,205 +398,35 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets name
+     * Gets algebra
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null
      */
-    public function getName()
+    public function getAlgebra()
     {
-        return $this->container['name'];
+        return $this->container['algebra'];
     }
 
     /**
-     * Sets name
+     * Sets algebra
      *
-     * @param string|null $name Name of the audience
+     * @param \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null $algebra algebra
      *
      * @return self
      */
-    public function setName($name)
+    public function setAlgebra($algebra)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($algebra)) {
+            array_push($this->openAPINullablesSetToNull, 'algebra');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('algebra', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description of the audience
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_id
-     *
-     * @return string|null
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string|null $retailer_id Retailer  associated to the audience
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by_id
-     *
-     * @return string|null
-     */
-    public function getCreatedById()
-    {
-        return $this->container['created_by_id'];
-    }
-
-    /**
-     * Sets created_by_id
-     *
-     * @param string|null $created_by_id User that created the audience
-     *
-     * @return self
-     */
-    public function setCreatedById($created_by_id)
-    {
-        if (is_null($created_by_id)) {
-            array_push($this->openAPINullablesSetToNull, 'created_by_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_by_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['created_by_id'] = $created_by_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at ISO-8601 timestamp in UTC of audience creation (read-only)
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at ISO-8601 timestamp in UTC of audience update (read-only)
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['algebra'] = $algebra;
 
         return $this;
     }
@@ -645,35 +475,205 @@ class RmAudienceEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets algebra
+     * Gets created_at
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null
+     * @return \DateTime|null
      */
-    public function getAlgebra()
+    public function getCreatedAt()
     {
-        return $this->container['algebra'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets algebra
+     * Sets created_at
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null $algebra algebra
+     * @param \DateTime|null $created_at ISO-8601 timestamp in UTC of audience creation (read-only)
      *
      * @return self
      */
-    public function setAlgebra($algebra)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($algebra)) {
-            array_push($this->openAPINullablesSetToNull, 'algebra');
+        if (is_null($created_at)) {
+            array_push($this->openAPINullablesSetToNull, 'created_at');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('algebra', $nullablesSetToNull);
+            $index = array_search('created_at', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['algebra'] = $algebra;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_id
+     *
+     * @return string|null
+     */
+    public function getCreatedById()
+    {
+        return $this->container['created_by_id'];
+    }
+
+    /**
+     * Sets created_by_id
+     *
+     * @param string|null $created_by_id User that created the audience
+     *
+     * @return self
+     */
+    public function setCreatedById($created_by_id)
+    {
+        if (is_null($created_by_id)) {
+            array_push($this->openAPINullablesSetToNull, 'created_by_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_by_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_by_id'] = $created_by_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Description of the audience
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the audience
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return string|null
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param string|null $retailer_id Retailer  associated to the audience
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at ISO-8601 timestamp in UTC of audience update (read-only)
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

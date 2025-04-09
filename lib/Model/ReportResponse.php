@@ -58,10 +58,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\criteo\api\retailmedia\preview\Model\ExportReportMetaData',
         'data' => '\criteo\api\retailmedia\preview\Model\ReportDataResponseResource',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
+        'meta' => '\criteo\api\retailmedia\preview\Model\ExportReportMetaData',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
         'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'errors' => null,
+        'meta' => null,
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => true,
-		'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'data' => true,
+		'errors' => true,
+		'meta' => true,
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
         'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'errors' => 'errors',
+        'meta' => 'meta',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +188,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
         'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'errors' => 'setErrors',
+        'meta' => 'setMeta',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +200,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
         'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'errors' => 'getErrors',
+        'meta' => 'getMeta',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +263,10 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -312,40 +312,6 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets meta
-     *
-     * @return \criteo\api\retailmedia\preview\Model\ExportReportMetaData|null
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \criteo\api\retailmedia\preview\Model\ExportReportMetaData|null $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            array_push($this->openAPINullablesSetToNull, 'meta');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('meta', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
-
-    /**
      * Gets data
      *
      * @return \criteo\api\retailmedia\preview\Model\ReportDataResponseResource|null
@@ -380,40 +346,6 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
      * Gets errors
      *
      * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
@@ -443,6 +375,74 @@ class ReportResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \criteo\api\retailmedia\preview\Model\ExportReportMetaData|null
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \criteo\api\retailmedia\preview\Model\ExportReportMetaData|null $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta'] = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

@@ -58,14 +58,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'rationale' => 'string',
-        'name' => 'string',
+        'brand' => 'string',
+        'currency' => 'string',
         'description' => 'string',
         'image_url' => 'string',
-        'url' => 'string',
-        'brand' => 'string',
+        'name' => 'string',
         'price' => 'float',
-        'currency' => 'string'
+        'rationale' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'rationale' => null,
-        'name' => null,
+        'brand' => null,
+        'currency' => null,
         'description' => null,
         'image_url' => 'uri',
-        'url' => 'uri',
-        'brand' => null,
+        'name' => null,
         'price' => null,
-        'currency' => null
+        'rationale' => null,
+        'url' => 'uri'
     ];
 
     /**
@@ -92,14 +92,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rationale' => false,
-		'name' => true,
+        'brand' => true,
+		'currency' => true,
 		'description' => true,
 		'image_url' => true,
-		'url' => true,
-		'brand' => true,
+		'name' => true,
 		'price' => true,
-		'currency' => true
+		'rationale' => false,
+		'url' => true
     ];
 
     /**
@@ -188,14 +188,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'rationale' => 'rationale',
-        'name' => 'name',
+        'brand' => 'brand',
+        'currency' => 'currency',
         'description' => 'description',
         'image_url' => 'imageUrl',
-        'url' => 'url',
-        'brand' => 'brand',
+        'name' => 'name',
         'price' => 'price',
-        'currency' => 'currency'
+        'rationale' => 'rationale',
+        'url' => 'url'
     ];
 
     /**
@@ -204,14 +204,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'rationale' => 'setRationale',
-        'name' => 'setName',
+        'brand' => 'setBrand',
+        'currency' => 'setCurrency',
         'description' => 'setDescription',
         'image_url' => 'setImageUrl',
-        'url' => 'setUrl',
-        'brand' => 'setBrand',
+        'name' => 'setName',
         'price' => 'setPrice',
-        'currency' => 'setCurrency'
+        'rationale' => 'setRationale',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -220,14 +220,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'rationale' => 'getRationale',
-        'name' => 'getName',
+        'brand' => 'getBrand',
+        'currency' => 'getCurrency',
         'description' => 'getDescription',
         'image_url' => 'getImageUrl',
-        'url' => 'getUrl',
-        'brand' => 'getBrand',
+        'name' => 'getName',
         'price' => 'getPrice',
-        'currency' => 'getCurrency'
+        'rationale' => 'getRationale',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -287,14 +287,14 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('rationale', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('brand', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('rationale', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -324,9 +324,6 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['rationale'] === null) {
-            $invalidProperties[] = "'rationale' can't be null";
-        }
         if (!is_null($this->container['image_url']) && (mb_strlen($this->container['image_url']) > 65536)) {
             $invalidProperties[] = "invalid value for 'image_url', the character length must be smaller than or equal to 65536.";
         }
@@ -335,6 +332,9 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'image_url', the character length must be bigger than or equal to 1.";
         }
 
+        if ($this->container['rationale'] === null) {
+            $invalidProperties[] = "'rationale' can't be null";
+        }
         if (!is_null($this->container['url']) && (mb_strlen($this->container['url']) > 65536)) {
             $invalidProperties[] = "invalid value for 'url', the character length must be smaller than or equal to 65536.";
         }
@@ -359,62 +359,69 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets rationale
-     *
-     * @return string
-     */
-    public function getRationale()
-    {
-        return $this->container['rationale'];
-    }
-
-    /**
-     * Sets rationale
-     *
-     * @param string $rationale reason for this recommendation, given by the bot
-     *
-     * @return self
-     */
-    public function setRationale($rationale)
-    {
-        if (is_null($rationale)) {
-            throw new \InvalidArgumentException('non-nullable rationale cannot be null');
-        }
-        $this->container['rationale'] = $rationale;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets brand
      *
      * @return string|null
      */
-    public function getName()
+    public function getBrand()
     {
-        return $this->container['name'];
+        return $this->container['brand'];
     }
 
     /**
-     * Sets name
+     * Sets brand
      *
-     * @param string|null $name name of the product
+     * @param string|null $brand brand of the product
      *
      * @return self
      */
-    public function setName($name)
+    public function setBrand($brand)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($brand)) {
+            array_push($this->openAPINullablesSetToNull, 'brand');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('brand', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['brand'] = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency currency of the price of the product
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            array_push($this->openAPINullablesSetToNull, 'currency');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('currency', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['currency'] = $currency;
 
         return $this;
     }
@@ -495,76 +502,35 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets url
+     * Gets name
      *
      * @return string|null
      */
-    public function getUrl()
+    public function getName()
     {
-        return $this->container['url'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets url
+     * Sets name
      *
-     * @param string|null $url url of the product on the retailer website
+     * @param string|null $name name of the product
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setName($name)
     {
-        if (is_null($url)) {
-            array_push($this->openAPINullablesSetToNull, 'url');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('url', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        if (!is_null($url) && (mb_strlen($url) > 65536)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling ProductRecommendation., must be smaller than or equal to 65536.');
-        }
-        if (!is_null($url) && (mb_strlen($url) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $url when calling ProductRecommendation., must be bigger than or equal to 1.');
-        }
-
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand
-     *
-     * @return string|null
-     */
-    public function getBrand()
-    {
-        return $this->container['brand'];
-    }
-
-    /**
-     * Sets brand
-     *
-     * @param string|null $brand brand of the product
-     *
-     * @return self
-     */
-    public function setBrand($brand)
-    {
-        if (is_null($brand)) {
-            array_push($this->openAPINullablesSetToNull, 'brand');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['brand'] = $brand;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -604,35 +570,69 @@ class ProductRecommendation implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets currency
+     * Gets rationale
      *
-     * @return string|null
+     * @return string
      */
-    public function getCurrency()
+    public function getRationale()
     {
-        return $this->container['currency'];
+        return $this->container['rationale'];
     }
 
     /**
-     * Sets currency
+     * Sets rationale
      *
-     * @param string|null $currency currency of the price of the product
+     * @param string $rationale reason for this recommendation, given by the bot
      *
      * @return self
      */
-    public function setCurrency($currency)
+    public function setRationale($rationale)
     {
-        if (is_null($currency)) {
-            array_push($this->openAPINullablesSetToNull, 'currency');
+        if (is_null($rationale)) {
+            throw new \InvalidArgumentException('non-nullable rationale cannot be null');
+        }
+        $this->container['rationale'] = $rationale;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string|null
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string|null $url url of the product on the retailer website
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            array_push($this->openAPINullablesSetToNull, 'url');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('currency', $nullablesSetToNull);
+            $index = array_search('url', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['currency'] = $currency;
+        if (!is_null($url) && (mb_strlen($url) > 65536)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling ProductRecommendation., must be smaller than or equal to 65536.');
+        }
+        if (!is_null($url) && (mb_strlen($url) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $url when calling ProductRecommendation., must be bigger than or equal to 1.');
+        }
+
+        $this->container['url'] = $url;
 
         return $this;
     }

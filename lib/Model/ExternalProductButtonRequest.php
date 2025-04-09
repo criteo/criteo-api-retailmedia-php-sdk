@@ -58,9 +58,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'background_image' => 'string',
         'is_mandatory' => 'int',
+        'name' => 'string',
         'skus' => 'string[]'
     ];
 
@@ -72,9 +72,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'background_image' => null,
         'is_mandatory' => 'int32',
+        'name' => null,
         'skus' => null
     ];
 
@@ -84,9 +84,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'background_image' => false,
+        'background_image' => false,
 		'is_mandatory' => false,
+		'name' => false,
 		'skus' => false
     ];
 
@@ -176,9 +176,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'background_image' => 'backgroundImage',
         'is_mandatory' => 'isMandatory',
+        'name' => 'name',
         'skus' => 'skus'
     ];
 
@@ -188,9 +188,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'background_image' => 'setBackgroundImage',
         'is_mandatory' => 'setIsMandatory',
+        'name' => 'setName',
         'skus' => 'setSkus'
     ];
 
@@ -200,9 +200,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'background_image' => 'getBackgroundImage',
         'is_mandatory' => 'getIsMandatory',
+        'name' => 'getName',
         'skus' => 'getSkus'
     ];
 
@@ -263,9 +263,9 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('background_image', $data ?? [], null);
         $this->setIfExists('is_mandatory', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('skus', $data ?? [], null);
     }
 
@@ -296,14 +296,14 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['background_image'] === null) {
             $invalidProperties[] = "'background_image' can't be null";
         }
         if ($this->container['is_mandatory'] === null) {
             $invalidProperties[] = "'is_mandatory' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['skus'] === null) {
             $invalidProperties[] = "'skus' can't be null";
@@ -322,33 +322,6 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the Product Button
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets background_image
@@ -400,6 +373,33 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
         }
         $this->container['is_mandatory'] = $is_mandatory;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the Product Button
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

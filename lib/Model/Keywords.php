@@ -58,11 +58,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'review_state' => 'string',
-        'match_type' => 'string',
         'bid' => 'float',
-        'input_keywords' => '\criteo\api\retailmedia\preview\Model\InputKeywords',
         'created_at' => '\DateTime',
+        'input_keywords' => '\criteo\api\retailmedia\preview\Model\InputKeywords',
+        'match_type' => 'string',
+        'review_state' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -74,11 +74,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'review_state' => null,
-        'match_type' => null,
         'bid' => 'double',
-        'input_keywords' => null,
         'created_at' => 'date-time',
+        'input_keywords' => null,
+        'match_type' => null,
+        'review_state' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -88,11 +88,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'review_state' => false,
-		'match_type' => false,
-		'bid' => true,
-		'input_keywords' => false,
+        'bid' => true,
 		'created_at' => false,
+		'input_keywords' => false,
+		'match_type' => false,
+		'review_state' => false,
 		'updated_at' => false
     ];
 
@@ -182,11 +182,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'review_state' => 'reviewState',
-        'match_type' => 'matchType',
         'bid' => 'bid',
-        'input_keywords' => 'inputKeywords',
         'created_at' => 'createdAt',
+        'input_keywords' => 'inputKeywords',
+        'match_type' => 'matchType',
+        'review_state' => 'reviewState',
         'updated_at' => 'updatedAt'
     ];
 
@@ -196,11 +196,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'review_state' => 'setReviewState',
-        'match_type' => 'setMatchType',
         'bid' => 'setBid',
-        'input_keywords' => 'setInputKeywords',
         'created_at' => 'setCreatedAt',
+        'input_keywords' => 'setInputKeywords',
+        'match_type' => 'setMatchType',
+        'review_state' => 'setReviewState',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -210,11 +210,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'review_state' => 'getReviewState',
-        'match_type' => 'getMatchType',
         'bid' => 'getBid',
-        'input_keywords' => 'getInputKeywords',
         'created_at' => 'getCreatedAt',
+        'input_keywords' => 'getInputKeywords',
+        'match_type' => 'getMatchType',
+        'review_state' => 'getReviewState',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -259,6 +259,10 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const MATCH_TYPE_POSITIVE_EXACT_MATCH = 'PositiveExactMatch';
+    public const MATCH_TYPE_NEGATIVE_EXACT_MATCH = 'NegativeExactMatch';
+    public const MATCH_TYPE_NEGATIVE_BROAD_MATCH = 'NegativeBroadMatch';
+    public const MATCH_TYPE_UNKNOWN = 'Unknown';
     public const REVIEW_STATE_IN_REVIEW = 'InReview';
     public const REVIEW_STATE_RECOMMENDED = 'Recommended';
     public const REVIEW_STATE_APPROVED = 'Approved';
@@ -266,10 +270,21 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     public const REVIEW_STATE_REJECTED = 'Rejected';
     public const REVIEW_STATE_AUTO_REJECTED = 'AutoRejected';
     public const REVIEW_STATE_UNKOWN = 'Unkown';
-    public const MATCH_TYPE_POSITIVE_EXACT_MATCH = 'PositiveExactMatch';
-    public const MATCH_TYPE_NEGATIVE_EXACT_MATCH = 'NegativeExactMatch';
-    public const MATCH_TYPE_NEGATIVE_BROAD_MATCH = 'NegativeBroadMatch';
-    public const MATCH_TYPE_UNKNOWN = 'Unknown';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMatchTypeAllowableValues()
+    {
+        return [
+            self::MATCH_TYPE_POSITIVE_EXACT_MATCH,
+            self::MATCH_TYPE_NEGATIVE_EXACT_MATCH,
+            self::MATCH_TYPE_NEGATIVE_BROAD_MATCH,
+            self::MATCH_TYPE_UNKNOWN,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -290,21 +305,6 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getMatchTypeAllowableValues()
-    {
-        return [
-            self::MATCH_TYPE_POSITIVE_EXACT_MATCH,
-            self::MATCH_TYPE_NEGATIVE_EXACT_MATCH,
-            self::MATCH_TYPE_NEGATIVE_BROAD_MATCH,
-            self::MATCH_TYPE_UNKNOWN,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -319,11 +319,11 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('review_state', $data ?? [], null);
-        $this->setIfExists('match_type', $data ?? [], null);
         $this->setIfExists('bid', $data ?? [], null);
-        $this->setIfExists('input_keywords', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('input_keywords', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
+        $this->setIfExists('review_state', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -354,20 +354,20 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getReviewStateAllowableValues();
-        if (!is_null($this->container['review_state']) && !in_array($this->container['review_state'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'review_state', must be one of '%s'",
-                $this->container['review_state'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getMatchTypeAllowableValues();
         if (!is_null($this->container['match_type']) && !in_array($this->container['match_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'match_type', must be one of '%s'",
                 $this->container['match_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getReviewStateAllowableValues();
+        if (!is_null($this->container['review_state']) && !in_array($this->container['review_state'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'review_state', must be one of '%s'",
+                $this->container['review_state'],
                 implode("', '", $allowedValues)
             );
         }
@@ -388,38 +388,89 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets review_state
+     * Gets bid
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getReviewState()
+    public function getBid()
     {
-        return $this->container['review_state'];
+        return $this->container['bid'];
     }
 
     /**
-     * Sets review_state
+     * Sets bid
      *
-     * @param string|null $review_state Review status of the keyword
+     * @param float|null $bid The bid to use when a positive keyword matches the shopper search phrase
      *
      * @return self
      */
-    public function setReviewState($review_state)
+    public function setBid($bid)
     {
-        if (is_null($review_state)) {
-            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
+        if (is_null($bid)) {
+            array_push($this->openAPINullablesSetToNull, 'bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getReviewStateAllowableValues();
-        if (!in_array($review_state, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'review_state', must be one of '%s'",
-                    $review_state,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['bid'] = $bid;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at The time at which this keyword was created in UTC
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['review_state'] = $review_state;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets input_keywords
+     *
+     * @return \criteo\api\retailmedia\preview\Model\InputKeywords|null
+     */
+    public function getInputKeywords()
+    {
+        return $this->container['input_keywords'];
+    }
+
+    /**
+     * Sets input_keywords
+     *
+     * @param \criteo\api\retailmedia\preview\Model\InputKeywords|null $input_keywords input_keywords
+     *
+     * @return self
+     */
+    public function setInputKeywords($input_keywords)
+    {
+        if (is_null($input_keywords)) {
+            throw new \InvalidArgumentException('non-nullable input_keywords cannot be null');
+        }
+        $this->container['input_keywords'] = $input_keywords;
 
         return $this;
     }
@@ -462,89 +513,38 @@ class Keywords implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets bid
+     * Gets review_state
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getBid()
+    public function getReviewState()
     {
-        return $this->container['bid'];
+        return $this->container['review_state'];
     }
 
     /**
-     * Sets bid
+     * Sets review_state
      *
-     * @param float|null $bid The bid to use when a positive keyword matches the shopper search phrase
+     * @param string|null $review_state Review status of the keyword
      *
      * @return self
      */
-    public function setBid($bid)
+    public function setReviewState($review_state)
     {
-        if (is_null($bid)) {
-            array_push($this->openAPINullablesSetToNull, 'bid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('bid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($review_state)) {
+            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
         }
-        $this->container['bid'] = $bid;
-
-        return $this;
-    }
-
-    /**
-     * Gets input_keywords
-     *
-     * @return \criteo\api\retailmedia\preview\Model\InputKeywords|null
-     */
-    public function getInputKeywords()
-    {
-        return $this->container['input_keywords'];
-    }
-
-    /**
-     * Sets input_keywords
-     *
-     * @param \criteo\api\retailmedia\preview\Model\InputKeywords|null $input_keywords input_keywords
-     *
-     * @return self
-     */
-    public function setInputKeywords($input_keywords)
-    {
-        if (is_null($input_keywords)) {
-            throw new \InvalidArgumentException('non-nullable input_keywords cannot be null');
+        $allowedValues = $this->getReviewStateAllowableValues();
+        if (!in_array($review_state, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'review_state', must be one of '%s'",
+                    $review_state,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['input_keywords'] = $input_keywords;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at The time at which this keyword was created in UTC
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['review_state'] = $review_state;
 
         return $this;
     }

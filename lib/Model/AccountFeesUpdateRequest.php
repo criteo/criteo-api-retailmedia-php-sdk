@@ -1,6 +1,6 @@
 <?php
 /**
- * CatalogStatusV2Response
+ * AccountFeesUpdateRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * CatalogStatusV2Response Class Doc Comment
+ * AccountFeesUpdateRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single entity
+ * @description request body to set provided fees for the provided accounts
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class AccountFeesUpdateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CatalogStatusV2Response';
+    protected static $openAPIModelName = 'AccountFeesUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'account_ids' => 'string[]',
+        'fees' => '\criteo\api\retailmedia\preview\Model\PrivateMarketFees'
     ];
 
     /**
@@ -71,9 +70,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'account_ids' => null,
+        'fees' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'warnings' => true,
-		'errors' => true
+        'account_ids' => false,
+		'fees' => true
     ];
 
     /**
@@ -173,9 +170,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'account_ids' => 'accountIds',
+        'fees' => 'fees'
     ];
 
     /**
@@ -184,9 +180,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'account_ids' => 'setAccountIds',
+        'fees' => 'setFees'
     ];
 
     /**
@@ -195,9 +190,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'account_ids' => 'getAccountIds',
+        'fees' => 'getFees'
     ];
 
     /**
@@ -257,9 +251,8 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('fees', $data ?? [], null);
     }
 
     /**
@@ -289,6 +282,12 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['account_ids'] === null) {
+            $invalidProperties[] = "'account_ids' can't be null";
+        }
+        if ($this->container['fees'] === null) {
+            $invalidProperties[] = "'fees' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,103 +304,62 @@ class CatalogStatusV2Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets data
+     * Gets account_ids
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2|null
+     * @return string[]
      */
-    public function getData()
+    public function getAccountIds()
     {
-        return $this->container['data'];
+        return $this->container['account_ids'];
     }
 
     /**
-     * Sets data
+     * Sets account_ids
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfCatalogStatusV2|null $data data
+     * @param string[] $account_ids accounts to update
      *
      * @return self
      */
-    public function setData($data)
+    public function setAccountIds($account_ids)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($account_ids)) {
+            throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['account_ids'] = $account_ids;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets fees
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\PrivateMarketFees
      */
-    public function getWarnings()
+    public function getFees()
     {
-        return $this->container['warnings'];
+        return $this->container['fees'];
     }
 
     /**
-     * Sets warnings
+     * Sets fees
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\preview\Model\PrivateMarketFees $fees fees
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setFees($fees)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($fees)) {
+            array_push($this->openAPINullablesSetToNull, 'fees');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('fees', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
+        $this->container['fees'] = $fees;
 
         return $this;
     }

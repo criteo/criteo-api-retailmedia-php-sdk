@@ -58,18 +58,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_ids' => 'string[]',
-        'line_item_ids' => 'string[]',
         'account_id' => 'string',
-        'click_attribution_window' => 'string',
-        'view_attribution_window' => 'string',
+        'campaign_ids' => 'string[]',
         'campaign_type' => 'string',
-        'sales_channel' => 'string',
+        'click_attribution_window' => 'string',
         'dimensions' => 'string[]',
-        'metrics' => 'string[]',
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'timezone' => 'string'
+        'line_item_ids' => 'string[]',
+        'metrics' => 'string[]',
+        'sales_channel' => 'string',
+        'start_date' => '\DateTime',
+        'timezone' => 'string',
+        'view_attribution_window' => 'string'
     ];
 
     /**
@@ -80,18 +80,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'campaign_ids' => null,
-        'line_item_ids' => null,
         'account_id' => null,
-        'click_attribution_window' => null,
-        'view_attribution_window' => null,
+        'campaign_ids' => null,
         'campaign_type' => null,
-        'sales_channel' => null,
+        'click_attribution_window' => null,
         'dimensions' => null,
-        'metrics' => null,
-        'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'timezone' => null
+        'line_item_ids' => null,
+        'metrics' => null,
+        'sales_channel' => null,
+        'start_date' => 'date-time',
+        'timezone' => null,
+        'view_attribution_window' => null
     ];
 
     /**
@@ -100,18 +100,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'campaign_ids' => false,
-		'line_item_ids' => false,
-		'account_id' => false,
-		'click_attribution_window' => false,
-		'view_attribution_window' => false,
+        'account_id' => false,
+		'campaign_ids' => false,
 		'campaign_type' => false,
-		'sales_channel' => false,
+		'click_attribution_window' => false,
 		'dimensions' => false,
-		'metrics' => false,
-		'start_date' => false,
 		'end_date' => false,
-		'timezone' => false
+		'line_item_ids' => false,
+		'metrics' => false,
+		'sales_channel' => false,
+		'start_date' => false,
+		'timezone' => false,
+		'view_attribution_window' => false
     ];
 
     /**
@@ -200,18 +200,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'campaign_ids' => 'campaignIds',
-        'line_item_ids' => 'lineItemIds',
         'account_id' => 'accountId',
-        'click_attribution_window' => 'clickAttributionWindow',
-        'view_attribution_window' => 'viewAttributionWindow',
+        'campaign_ids' => 'campaignIds',
         'campaign_type' => 'campaignType',
-        'sales_channel' => 'salesChannel',
+        'click_attribution_window' => 'clickAttributionWindow',
         'dimensions' => 'dimensions',
-        'metrics' => 'metrics',
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'timezone' => 'timezone'
+        'line_item_ids' => 'lineItemIds',
+        'metrics' => 'metrics',
+        'sales_channel' => 'salesChannel',
+        'start_date' => 'startDate',
+        'timezone' => 'timezone',
+        'view_attribution_window' => 'viewAttributionWindow'
     ];
 
     /**
@@ -220,18 +220,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'campaign_ids' => 'setCampaignIds',
-        'line_item_ids' => 'setLineItemIds',
         'account_id' => 'setAccountId',
-        'click_attribution_window' => 'setClickAttributionWindow',
-        'view_attribution_window' => 'setViewAttributionWindow',
+        'campaign_ids' => 'setCampaignIds',
         'campaign_type' => 'setCampaignType',
-        'sales_channel' => 'setSalesChannel',
+        'click_attribution_window' => 'setClickAttributionWindow',
         'dimensions' => 'setDimensions',
-        'metrics' => 'setMetrics',
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'timezone' => 'setTimezone'
+        'line_item_ids' => 'setLineItemIds',
+        'metrics' => 'setMetrics',
+        'sales_channel' => 'setSalesChannel',
+        'start_date' => 'setStartDate',
+        'timezone' => 'setTimezone',
+        'view_attribution_window' => 'setViewAttributionWindow'
     ];
 
     /**
@@ -240,18 +240,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'campaign_ids' => 'getCampaignIds',
-        'line_item_ids' => 'getLineItemIds',
         'account_id' => 'getAccountId',
-        'click_attribution_window' => 'getClickAttributionWindow',
-        'view_attribution_window' => 'getViewAttributionWindow',
+        'campaign_ids' => 'getCampaignIds',
         'campaign_type' => 'getCampaignType',
-        'sales_channel' => 'getSalesChannel',
+        'click_attribution_window' => 'getClickAttributionWindow',
         'dimensions' => 'getDimensions',
-        'metrics' => 'getMetrics',
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'timezone' => 'getTimezone'
+        'line_item_ids' => 'getLineItemIds',
+        'metrics' => 'getMetrics',
+        'sales_channel' => 'getSalesChannel',
+        'start_date' => 'getStartDate',
+        'timezone' => 'getTimezone',
+        'view_attribution_window' => 'getViewAttributionWindow'
     ];
 
     /**
@@ -295,21 +295,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const CAMPAIGN_TYPE_ALL = 'all';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
-    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CAMPAIGN_TYPE_ALL = 'all';
-    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
-    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
-    public const SALES_CHANNEL_ONLINE = 'online';
     public const DIMENSIONS_PURCHASED_DATE = 'purchasedDate';
     public const DIMENSIONS_PURCHASED_HOUR = 'purchasedHour';
     public const DIMENSIONS_ADV_DATE = 'advDate';
@@ -342,37 +334,14 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_ACTIVITY_SELLER_NAME = 'activitySellerName';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
     public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getClickAttributionWindowAllowableValues()
-    {
-        return [
-            self::CLICK_ATTRIBUTION_WINDOW_NONE,
-            self::CLICK_ATTRIBUTION_WINDOW__7_D,
-            self::CLICK_ATTRIBUTION_WINDOW__14_D,
-            self::CLICK_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getViewAttributionWindowAllowableValues()
-    {
-        return [
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW__1_D,
-            self::VIEW_ATTRIBUTION_WINDOW__7_D,
-            self::VIEW_ATTRIBUTION_WINDOW__14_D,
-            self::VIEW_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
+    public const SALES_CHANNEL_ALL = 'all';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ONLINE = 'online';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
 
     /**
      * Gets allowable values of the enum
@@ -393,12 +362,13 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      *
      * @return string[]
      */
-    public function getSalesChannelAllowableValues()
+    public function getClickAttributionWindowAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
-            self::SALES_CHANNEL_ONLINE,
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
+            self::CLICK_ATTRIBUTION_WINDOW__7_D,
+            self::CLICK_ATTRIBUTION_WINDOW__14_D,
+            self::CLICK_ATTRIBUTION_WINDOW__30_D,
         ];
     }
 
@@ -457,6 +427,36 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSalesChannelAllowableValues()
+    {
+        return [
+            self::SALES_CHANNEL_ALL,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ONLINE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewAttributionWindowAllowableValues()
+    {
+        return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -471,18 +471,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('campaign_ids', $data ?? [], null);
-        $this->setIfExists('line_item_ids', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('click_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
-        $this->setIfExists('sales_channel', $data ?? [], 'all');
+        $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
+        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
+        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
 
     /**
@@ -515,24 +515,6 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
-        $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'click_attribution_window', must be one of '%s'",
-                $this->container['click_attribution_window'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                $this->container['view_attribution_window'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getCampaignTypeAllowableValues();
         if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -542,6 +524,18 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             );
         }
 
+        $allowedValues = $this->getClickAttributionWindowAllowableValues();
+        if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'click_attribution_window', must be one of '%s'",
+                $this->container['click_attribution_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
         $allowedValues = $this->getSalesChannelAllowableValues();
         if (!is_null($this->container['sales_channel']) && !in_array($this->container['sales_channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -554,9 +548,15 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                $this->container['view_attribution_window'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -571,60 +571,6 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets campaign_ids
-     *
-     * @return string[]|null
-     */
-    public function getCampaignIds()
-    {
-        return $this->container['campaign_ids'];
-    }
-
-    /**
-     * Sets campaign_ids
-     *
-     * @param string[]|null $campaign_ids Campaign ids to filter
-     *
-     * @return self
-     */
-    public function setCampaignIds($campaign_ids)
-    {
-        if (is_null($campaign_ids)) {
-            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-        $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_item_ids
-     *
-     * @return string[]|null
-     */
-    public function getLineItemIds()
-    {
-        return $this->container['line_item_ids'];
-    }
-
-    /**
-     * Sets line_item_ids
-     *
-     * @param string[]|null $line_item_ids Line item ids to filter
-     *
-     * @return self
-     */
-    public function setLineItemIds($line_item_ids)
-    {
-        if (is_null($line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
-        }
-        $this->container['line_item_ids'] = $line_item_ids;
-
-        return $this;
-    }
 
     /**
      * Gets account_id
@@ -654,75 +600,28 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets click_attribution_window
+     * Gets campaign_ids
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getClickAttributionWindow()
+    public function getCampaignIds()
     {
-        return $this->container['click_attribution_window'];
+        return $this->container['campaign_ids'];
     }
 
     /**
-     * Sets click_attribution_window
+     * Sets campaign_ids
      *
-     * @param string|null $click_attribution_window Click attribution window
+     * @param string[]|null $campaign_ids Campaign ids to filter
      *
      * @return self
      */
-    public function setClickAttributionWindow($click_attribution_window)
+    public function setCampaignIds($campaign_ids)
     {
-        if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
-        $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
-                    $click_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['click_attribution_window'] = $click_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_attribution_window
-     *
-     * @return string|null
-     */
-    public function getViewAttributionWindow()
-    {
-        return $this->container['view_attribution_window'];
-    }
-
-    /**
-     * Sets view_attribution_window
-     *
-     * @param string|null $view_attribution_window View attribution window
-     *
-     * @return self
-     */
-    public function setViewAttributionWindow($view_attribution_window)
-    {
-        if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
-        }
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                    $view_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['view_attribution_window'] = $view_attribution_window;
+        $this->container['campaign_ids'] = $campaign_ids;
 
         return $this;
     }
@@ -765,38 +664,38 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets sales_channel
+     * Gets click_attribution_window
      *
      * @return string|null
      */
-    public function getSalesChannel()
+    public function getClickAttributionWindow()
     {
-        return $this->container['sales_channel'];
+        return $this->container['click_attribution_window'];
     }
 
     /**
-     * Sets sales_channel
+     * Sets click_attribution_window
      *
-     * @param string|null $sales_channel Filter on specific sales channel: offline or online
+     * @param string|null $click_attribution_window Click attribution window
      *
      * @return self
      */
-    public function setSalesChannel($sales_channel)
+    public function setClickAttributionWindow($click_attribution_window)
     {
-        if (is_null($sales_channel)) {
-            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+        if (is_null($click_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
         }
-        $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!in_array($sales_channel, $allowedValues, true)) {
+        $allowedValues = $this->getClickAttributionWindowAllowableValues();
+        if (!in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
-                    $sales_channel,
+                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
+                    $click_attribution_window,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['sales_channel'] = $sales_channel;
+        $this->container['click_attribution_window'] = $click_attribution_window;
 
         return $this;
     }
@@ -838,6 +737,60 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date End date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Line item ids to filter
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets metrics
      *
      * @return string[]|null
@@ -874,6 +827,43 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets sales_channel
+     *
+     * @return string|null
+     */
+    public function getSalesChannel()
+    {
+        return $this->container['sales_channel'];
+    }
+
+    /**
+     * Sets sales_channel
+     *
+     * @param string|null $sales_channel Filter on specific sales channel: offline or online
+     *
+     * @return self
+     */
+    public function setSalesChannel($sales_channel)
+    {
+        if (is_null($sales_channel)) {
+            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+        }
+        $allowedValues = $this->getSalesChannelAllowableValues();
+        if (!in_array($sales_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
+                    $sales_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -901,33 +891,6 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     }
 
     /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date End date
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
      * Gets timezone
      *
      * @return string|null
@@ -950,6 +913,43 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_attribution_window
+     *
+     * @return string|null
+     */
+    public function getViewAttributionWindow()
+    {
+        return $this->container['view_attribution_window'];
+    }
+
+    /**
+     * Sets view_attribution_window
+     *
+     * @param string|null $view_attribution_window View attribution window
+     *
+     * @return self
+     */
+    public function setViewAttributionWindow($view_attribution_window)
+    {
+        if (is_null($view_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+        }
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                    $view_attribution_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['view_attribution_window'] = $view_attribution_window;
 
         return $this;
     }

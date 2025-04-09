@@ -58,10 +58,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trace_id' => 'string',
-        'type' => 'string',
         'code' => 'string',
-        'instance' => 'string'
+        'instance' => 'string',
+        'trace_id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trace_id' => null,
-        'type' => null,
         'code' => null,
-        'instance' => null
+        'instance' => null,
+        'trace_id' => null,
+        'type' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trace_id' => true,
-		'type' => true,
-		'code' => true,
-		'instance' => true
+        'code' => true,
+		'instance' => true,
+		'trace_id' => true,
+		'type' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'trace_id' => 'traceId',
-        'type' => 'type',
         'code' => 'code',
-        'instance' => 'instance'
+        'instance' => 'instance',
+        'trace_id' => 'traceId',
+        'type' => 'type'
     ];
 
     /**
@@ -188,10 +188,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'trace_id' => 'setTraceId',
-        'type' => 'setType',
         'code' => 'setCode',
-        'instance' => 'setInstance'
+        'instance' => 'setInstance',
+        'trace_id' => 'setTraceId',
+        'type' => 'setType'
     ];
 
     /**
@@ -200,10 +200,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'trace_id' => 'getTraceId',
-        'type' => 'getType',
         'code' => 'getCode',
-        'instance' => 'getInstance'
+        'instance' => 'getInstance',
+        'trace_id' => 'getTraceId',
+        'type' => 'getType'
     ];
 
     /**
@@ -263,10 +263,10 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('instance', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -310,74 +310,6 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets trace_id
-     *
-     * @return string|null
-     */
-    public function getTraceId()
-    {
-        return $this->container['trace_id'];
-    }
-
-    /**
-     * Sets trace_id
-     *
-     * @param string|null $trace_id correlation ID, unique to each request
-     *
-     * @return self
-     */
-    public function setTraceId($trace_id)
-    {
-        if (is_null($trace_id)) {
-            array_push($this->openAPINullablesSetToNull, 'trace_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trace_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['trace_id'] = $trace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type error category
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
 
     /**
      * Gets code
@@ -443,6 +375,74 @@ class MessageError implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['instance'] = $instance;
+
+        return $this;
+    }
+
+    /**
+     * Gets trace_id
+     *
+     * @return string|null
+     */
+    public function getTraceId()
+    {
+        return $this->container['trace_id'];
+    }
+
+    /**
+     * Sets trace_id
+     *
+     * @param string|null $trace_id correlation ID, unique to each request
+     *
+     * @return self
+     */
+    public function setTraceId($trace_id)
+    {
+        if (is_null($trace_id)) {
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['trace_id'] = $trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type error category
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -58,10 +58,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
+        'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListCreateV1',
         'description' => 'string',
-        'retailer_id' => 'string',
-        'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListCreateV1'
+        'name' => 'string',
+        'retailer_id' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
+        'contact_list' => null,
         'description' => null,
-        'retailer_id' => null,
-        'contact_list' => null
+        'name' => null,
+        'retailer_id' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
+        'contact_list' => false,
 		'description' => false,
-		'retailer_id' => false,
-		'contact_list' => false
+		'name' => false,
+		'retailer_id' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
+        'contact_list' => 'contactList',
         'description' => 'description',
-        'retailer_id' => 'retailerId',
-        'contact_list' => 'contactList'
+        'name' => 'name',
+        'retailer_id' => 'retailerId'
     ];
 
     /**
@@ -188,10 +188,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
+        'contact_list' => 'setContactList',
         'description' => 'setDescription',
-        'retailer_id' => 'setRetailerId',
-        'contact_list' => 'setContactList'
+        'name' => 'setName',
+        'retailer_id' => 'setRetailerId'
     ];
 
     /**
@@ -200,10 +200,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
+        'contact_list' => 'getContactList',
         'description' => 'getDescription',
-        'retailer_id' => 'getRetailerId',
-        'contact_list' => 'getContactList'
+        'name' => 'getName',
+        'retailer_id' => 'getRetailerId'
     ];
 
     /**
@@ -263,10 +263,10 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('contact_list', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
     }
 
     /**
@@ -318,28 +318,28 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets name
+     * Gets contact_list
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\RmContactListCreateV1|null
      */
-    public function getName()
+    public function getContactList()
     {
-        return $this->container['name'];
+        return $this->container['contact_list'];
     }
 
     /**
-     * Sets name
+     * Sets contact_list
      *
-     * @param string $name Name of the segment
+     * @param \criteo\api\retailmedia\preview\Model\RmContactListCreateV1|null $contact_list contact_list
      *
      * @return self
      */
-    public function setName($name)
+    public function setContactList($contact_list)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($contact_list)) {
+            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['contact_list'] = $contact_list;
 
         return $this;
     }
@@ -372,6 +372,33 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the segment
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets retailer_id
      *
      * @return string
@@ -394,33 +421,6 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
         $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contact_list
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RmContactListCreateV1|null
-     */
-    public function getContactList()
-    {
-        return $this->container['contact_list'];
-    }
-
-    /**
-     * Sets contact_list
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RmContactListCreateV1|null $contact_list contact_list
-     *
-     * @return self
-     */
-    public function setContactList($contact_list)
-    {
-        if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
-        }
-        $this->container['contact_list'] = $contact_list;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2
+ * ValueResourceInputOfBrandCatalogRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 Class Doc Comment
+ * ValueResourceInputOfBrandCatalogRequestV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and  Attributes properties
+ * @description A top-level object that encapsulates a Criteo API request for a single value objects.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputOfBrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2';
+    protected static $openAPIModelName = 'ValueResourceInputOfBrandCatalogRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfBrandCatalogRequestV2'
     ];
 
     /**
@@ -70,8 +69,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'attributes' => true
+        'data' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'data' => 'getData'
     ];
 
     /**
@@ -251,8 +245,7 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -282,9 +275,6 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,62 +291,35 @@ class JsonApiBodyWithoutIdOfBrandCatalogRequestV2AndBrandCatalogRequestV2 implem
 
 
     /**
-     * Gets type
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfBrandCatalogRequestV2|null
      */
-    public function getType()
+    public function getData()
     {
-        return $this->container['type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets type
+     * Sets data
      *
-     * @param string $type type
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfBrandCatalogRequestV2|null $data data
      *
      * @return self
      */
-    public function setType($type)
+    public function setData($data)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\preview\Model\BrandCatalogRequestV2|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }

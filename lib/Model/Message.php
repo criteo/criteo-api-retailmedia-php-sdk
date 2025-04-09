@@ -58,8 +58,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_message' => 'string',
-        'bot_message' => '\criteo\api\retailmedia\preview\Model\BotMessage'
+        'bot_message' => '\criteo\api\retailmedia\preview\Model\BotMessage',
+        'user_message' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_message' => null,
-        'bot_message' => null
+        'bot_message' => null,
+        'user_message' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'user_message' => true,
-		'bot_message' => true
+        'bot_message' => true,
+		'user_message' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_message' => 'userMessage',
-        'bot_message' => 'botMessage'
+        'bot_message' => 'botMessage',
+        'user_message' => 'userMessage'
     ];
 
     /**
@@ -180,8 +180,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'user_message' => 'setUserMessage',
-        'bot_message' => 'setBotMessage'
+        'bot_message' => 'setBotMessage',
+        'user_message' => 'setUserMessage'
     ];
 
     /**
@@ -190,8 +190,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'user_message' => 'getUserMessage',
-        'bot_message' => 'getBotMessage'
+        'bot_message' => 'getBotMessage',
+        'user_message' => 'getUserMessage'
     ];
 
     /**
@@ -251,8 +251,8 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('user_message', $data ?? [], null);
         $this->setIfExists('bot_message', $data ?? [], null);
+        $this->setIfExists('user_message', $data ?? [], null);
     }
 
     /**
@@ -298,40 +298,6 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets user_message
-     *
-     * @return string|null
-     */
-    public function getUserMessage()
-    {
-        return $this->container['user_message'];
-    }
-
-    /**
-     * Sets user_message
-     *
-     * @param string|null $user_message user prompt
-     *
-     * @return self
-     */
-    public function setUserMessage($user_message)
-    {
-        if (is_null($user_message)) {
-            array_push($this->openAPINullablesSetToNull, 'user_message');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('user_message', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['user_message'] = $user_message;
-
-        return $this;
-    }
-
-    /**
      * Gets bot_message
      *
      * @return \criteo\api\retailmedia\preview\Model\BotMessage|null
@@ -361,6 +327,40 @@ class Message implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['bot_message'] = $bot_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_message
+     *
+     * @return string|null
+     */
+    public function getUserMessage()
+    {
+        return $this->container['user_message'];
+    }
+
+    /**
+     * Sets user_message
+     *
+     * @param string|null $user_message user prompt
+     *
+     * @return self
+     */
+    public function setUserMessage($user_message)
+    {
+        if (is_null($user_message)) {
+            array_push($this->openAPINullablesSetToNull, 'user_message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user_message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['user_message'] = $user_message;
 
         return $this;
     }

@@ -772,18 +772,18 @@ class BalanceApi
      * Operation getBalanceHistory
      *
      * @param  string $balance_id Balance id. (required)
-     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
+     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceHistory'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PageOfBalanceHistoryChangeDataCaptureV1
      */
-    public function getBalanceHistory($balance_id, $offset = 0, $limit = 25, $limit_to_change_types = null, string $contentType = self::contentTypes['getBalanceHistory'][0])
+    public function getBalanceHistory($balance_id, $limit = 25, $limit_to_change_types = null, $offset = 0, string $contentType = self::contentTypes['getBalanceHistory'][0])
     {
-        list($response) = $this->getBalanceHistoryWithHttpInfo($balance_id, $offset, $limit, $limit_to_change_types, $contentType);
+        list($response) = $this->getBalanceHistoryWithHttpInfo($balance_id, $limit, $limit_to_change_types, $offset, $contentType);
         return $response;
     }
 
@@ -791,18 +791,18 @@ class BalanceApi
      * Operation getBalanceHistoryWithHttpInfo
      *
      * @param  string $balance_id Balance id. (required)
-     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
+     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceHistory'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PageOfBalanceHistoryChangeDataCaptureV1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBalanceHistoryWithHttpInfo($balance_id, $offset = 0, $limit = 25, $limit_to_change_types = null, string $contentType = self::contentTypes['getBalanceHistory'][0])
+    public function getBalanceHistoryWithHttpInfo($balance_id, $limit = 25, $limit_to_change_types = null, $offset = 0, string $contentType = self::contentTypes['getBalanceHistory'][0])
     {
-        $request = $this->getBalanceHistoryRequest($balance_id, $offset, $limit, $limit_to_change_types, $contentType);
+        $request = $this->getBalanceHistoryRequest($balance_id, $limit, $limit_to_change_types, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -892,17 +892,17 @@ class BalanceApi
      * Operation getBalanceHistoryAsync
      *
      * @param  string $balance_id Balance id. (required)
-     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
+     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBalanceHistoryAsync($balance_id, $offset = 0, $limit = 25, $limit_to_change_types = null, string $contentType = self::contentTypes['getBalanceHistory'][0])
+    public function getBalanceHistoryAsync($balance_id, $limit = 25, $limit_to_change_types = null, $offset = 0, string $contentType = self::contentTypes['getBalanceHistory'][0])
     {
-        return $this->getBalanceHistoryAsyncWithHttpInfo($balance_id, $offset, $limit, $limit_to_change_types, $contentType)
+        return $this->getBalanceHistoryAsyncWithHttpInfo($balance_id, $limit, $limit_to_change_types, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -914,18 +914,18 @@ class BalanceApi
      * Operation getBalanceHistoryAsyncWithHttpInfo
      *
      * @param  string $balance_id Balance id. (required)
-     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
+     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBalanceHistoryAsyncWithHttpInfo($balance_id, $offset = 0, $limit = 25, $limit_to_change_types = null, string $contentType = self::contentTypes['getBalanceHistory'][0])
+    public function getBalanceHistoryAsyncWithHttpInfo($balance_id, $limit = 25, $limit_to_change_types = null, $offset = 0, string $contentType = self::contentTypes['getBalanceHistory'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PageOfBalanceHistoryChangeDataCaptureV1';
-        $request = $this->getBalanceHistoryRequest($balance_id, $offset, $limit, $limit_to_change_types, $contentType);
+        $request = $this->getBalanceHistoryRequest($balance_id, $limit, $limit_to_change_types, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -967,15 +967,15 @@ class BalanceApi
      * Create request for operation 'getBalanceHistory'
      *
      * @param  string $balance_id Balance id. (required)
-     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
+     * @param  int $offset The (zero-based) starting offset in the collection. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceHistory'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBalanceHistoryRequest($balance_id, $offset = 0, $limit = 25, $limit_to_change_types = null, string $contentType = self::contentTypes['getBalanceHistory'][0])
+    public function getBalanceHistoryRequest($balance_id, $limit = 25, $limit_to_change_types = null, $offset = 0, string $contentType = self::contentTypes['getBalanceHistory'][0])
     {
 
         // verify the required parameter 'balance_id' is set
@@ -985,13 +985,6 @@ class BalanceApi
             );
         }
 
-        if ($offset !== null && $offset > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling BalanceApi.getBalanceHistory, must be smaller than or equal to 2147483647.');
-        }
-        if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling BalanceApi.getBalanceHistory, must be bigger than or equal to 0.');
-        }
-        
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling BalanceApi.getBalanceHistory, must be smaller than or equal to 100.');
         }
@@ -1000,6 +993,13 @@ class BalanceApi
         }
         
 
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling BalanceApi.getBalanceHistory, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling BalanceApi.getBalanceHistory, must be bigger than or equal to 0.');
+        }
+        
 
         $resourcePath = '/preview/retail-media/balances/{balanceId}/history';
         $formParams = [];
@@ -1008,15 +1008,6 @@ class BalanceApi
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
@@ -1031,6 +1022,15 @@ class BalanceApi
             $limit_to_change_types,
             'limitToChangeTypes', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required

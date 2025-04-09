@@ -58,15 +58,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
+        'account_id' => 'string',
+        'account_name' => 'string',
+        'campaign_id' => 'string',
+        'campaign_name' => 'string',
+        'count_keywords' => 'int',
         'line_item_id' => 'string',
         'line_item_name' => 'string',
         'retailer_id' => 'string',
-        'retailer_name' => 'string',
-        'campaign_id' => 'string',
-        'campaign_name' => 'string',
-        'account_id' => 'string',
-        'account_name' => 'string',
-        'count_keywords' => 'int'
+        'retailer_name' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'account_id' => null,
+        'account_name' => null,
+        'campaign_id' => null,
+        'campaign_name' => null,
+        'count_keywords' => 'int32',
         'line_item_id' => null,
         'line_item_name' => null,
         'retailer_id' => null,
-        'retailer_name' => null,
-        'campaign_id' => null,
-        'campaign_name' => null,
-        'account_id' => null,
-        'account_name' => null,
-        'count_keywords' => 'int32'
+        'retailer_name' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'line_item_id' => false,
-		'line_item_name' => false,
-		'retailer_id' => false,
-		'retailer_name' => false,
+        'account_id' => false,
+		'account_name' => false,
 		'campaign_id' => false,
 		'campaign_name' => false,
-		'account_id' => false,
-		'account_name' => false,
-		'count_keywords' => false
+		'count_keywords' => false,
+		'line_item_id' => false,
+		'line_item_name' => false,
+		'retailer_id' => false,
+		'retailer_name' => false
     ];
 
     /**
@@ -191,15 +191,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
+        'account_id' => 'accountId',
+        'account_name' => 'accountName',
+        'campaign_id' => 'campaignId',
+        'campaign_name' => 'campaignName',
+        'count_keywords' => 'countKeywords',
         'line_item_id' => 'lineItemId',
         'line_item_name' => 'lineItemName',
         'retailer_id' => 'retailerId',
-        'retailer_name' => 'retailerName',
-        'campaign_id' => 'campaignId',
-        'campaign_name' => 'campaignName',
-        'account_id' => 'accountId',
-        'account_name' => 'accountName',
-        'count_keywords' => 'countKeywords'
+        'retailer_name' => 'retailerName'
     ];
 
     /**
@@ -208,15 +208,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
+        'account_id' => 'setAccountId',
+        'account_name' => 'setAccountName',
+        'campaign_id' => 'setCampaignId',
+        'campaign_name' => 'setCampaignName',
+        'count_keywords' => 'setCountKeywords',
         'line_item_id' => 'setLineItemId',
         'line_item_name' => 'setLineItemName',
         'retailer_id' => 'setRetailerId',
-        'retailer_name' => 'setRetailerName',
-        'campaign_id' => 'setCampaignId',
-        'campaign_name' => 'setCampaignName',
-        'account_id' => 'setAccountId',
-        'account_name' => 'setAccountName',
-        'count_keywords' => 'setCountKeywords'
+        'retailer_name' => 'setRetailerName'
     ];
 
     /**
@@ -225,15 +225,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
+        'account_id' => 'getAccountId',
+        'account_name' => 'getAccountName',
+        'campaign_id' => 'getCampaignId',
+        'campaign_name' => 'getCampaignName',
+        'count_keywords' => 'getCountKeywords',
         'line_item_id' => 'getLineItemId',
         'line_item_name' => 'getLineItemName',
         'retailer_id' => 'getRetailerId',
-        'retailer_name' => 'getRetailerName',
-        'campaign_id' => 'getCampaignId',
-        'campaign_name' => 'getCampaignName',
-        'account_id' => 'getAccountId',
-        'account_name' => 'getAccountName',
-        'count_keywords' => 'getCountKeywords'
+        'retailer_name' => 'getRetailerName'
     ];
 
     /**
@@ -293,15 +293,15 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('account_name', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('campaign_name', $data ?? [], null);
+        $this->setIfExists('count_keywords', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
         $this->setIfExists('line_item_name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('retailer_name', $data ?? [], null);
-        $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('campaign_name', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('account_name', $data ?? [], null);
-        $this->setIfExists('count_keywords', $data ?? [], null);
     }
 
     /**
@@ -331,6 +331,21 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['account_name'] === null) {
+            $invalidProperties[] = "'account_name' can't be null";
+        }
+        if ($this->container['campaign_id'] === null) {
+            $invalidProperties[] = "'campaign_id' can't be null";
+        }
+        if ($this->container['campaign_name'] === null) {
+            $invalidProperties[] = "'campaign_name' can't be null";
+        }
+        if ($this->container['count_keywords'] === null) {
+            $invalidProperties[] = "'count_keywords' can't be null";
+        }
         if ($this->container['line_item_id'] === null) {
             $invalidProperties[] = "'line_item_id' can't be null";
         }
@@ -342,21 +357,6 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
         }
         if ($this->container['retailer_name'] === null) {
             $invalidProperties[] = "'retailer_name' can't be null";
-        }
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
-        }
-        if ($this->container['campaign_name'] === null) {
-            $invalidProperties[] = "'campaign_name' can't be null";
-        }
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
-        if ($this->container['account_name'] === null) {
-            $invalidProperties[] = "'account_name' can't be null";
-        }
-        if ($this->container['count_keywords'] === null) {
-            $invalidProperties[] = "'count_keywords' can't be null";
         }
         return $invalidProperties;
     }
@@ -372,6 +372,141 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id External ID of the account containing the campaign containing the line item this report is for
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_name
+     *
+     * @return string
+     */
+    public function getAccountName()
+    {
+        return $this->container['account_name'];
+    }
+
+    /**
+     * Sets account_name
+     *
+     * @param string $account_name Name of the account containing the campaign containing the line item this report is for
+     *
+     * @return self
+     */
+    public function setAccountName($account_name)
+    {
+        if (is_null($account_name)) {
+            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
+        }
+        $this->container['account_name'] = $account_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_id
+     *
+     * @return string
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaign_id'];
+    }
+
+    /**
+     * Sets campaign_id
+     *
+     * @param string $campaign_id External ID of the campaign containing the line item this report is for
+     *
+     * @return self
+     */
+    public function setCampaignId($campaign_id)
+    {
+        if (is_null($campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        }
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_name
+     *
+     * @return string
+     */
+    public function getCampaignName()
+    {
+        return $this->container['campaign_name'];
+    }
+
+    /**
+     * Sets campaign_name
+     *
+     * @param string $campaign_name Name of the campaign containing the line item this report is for
+     *
+     * @return self
+     */
+    public function setCampaignName($campaign_name)
+    {
+        if (is_null($campaign_name)) {
+            throw new \InvalidArgumentException('non-nullable campaign_name cannot be null');
+        }
+        $this->container['campaign_name'] = $campaign_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets count_keywords
+     *
+     * @return int
+     */
+    public function getCountKeywords()
+    {
+        return $this->container['count_keywords'];
+    }
+
+    /**
+     * Sets count_keywords
+     *
+     * @param int $count_keywords Number of PositiveExactMatch keywords on this line item that are in either \"InReview\" or \"Pending\" state
+     *
+     * @return self
+     */
+    public function setCountKeywords($count_keywords)
+    {
+        if (is_null($count_keywords)) {
+            throw new \InvalidArgumentException('non-nullable count_keywords cannot be null');
+        }
+        $this->container['count_keywords'] = $count_keywords;
+
+        return $this;
+    }
 
     /**
      * Gets line_item_id
@@ -477,141 +612,6 @@ class LineItemKeywordReviewReport implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable retailer_name cannot be null');
         }
         $this->container['retailer_name'] = $retailer_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_id
-     *
-     * @return string
-     */
-    public function getCampaignId()
-    {
-        return $this->container['campaign_id'];
-    }
-
-    /**
-     * Sets campaign_id
-     *
-     * @param string $campaign_id External ID of the campaign containing the line item this report is for
-     *
-     * @return self
-     */
-    public function setCampaignId($campaign_id)
-    {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
-        }
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_name
-     *
-     * @return string
-     */
-    public function getCampaignName()
-    {
-        return $this->container['campaign_name'];
-    }
-
-    /**
-     * Sets campaign_name
-     *
-     * @param string $campaign_name Name of the campaign containing the line item this report is for
-     *
-     * @return self
-     */
-    public function setCampaignName($campaign_name)
-    {
-        if (is_null($campaign_name)) {
-            throw new \InvalidArgumentException('non-nullable campaign_name cannot be null');
-        }
-        $this->container['campaign_name'] = $campaign_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string $account_id External ID of the account containing the campaign containing the line item this report is for
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_name
-     *
-     * @return string
-     */
-    public function getAccountName()
-    {
-        return $this->container['account_name'];
-    }
-
-    /**
-     * Sets account_name
-     *
-     * @param string $account_name Name of the account containing the campaign containing the line item this report is for
-     *
-     * @return self
-     */
-    public function setAccountName($account_name)
-    {
-        if (is_null($account_name)) {
-            throw new \InvalidArgumentException('non-nullable account_name cannot be null');
-        }
-        $this->container['account_name'] = $account_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets count_keywords
-     *
-     * @return int
-     */
-    public function getCountKeywords()
-    {
-        return $this->container['count_keywords'];
-    }
-
-    /**
-     * Sets count_keywords
-     *
-     * @param int $count_keywords Number of PositiveExactMatch keywords on this line item that are in either \"InReview\" or \"Pending\" state
-     *
-     * @return self
-     */
-    public function setCountKeywords($count_keywords)
-    {
-        if (is_null($count_keywords)) {
-            throw new \InvalidArgumentException('non-nullable count_keywords cannot be null');
-        }
-        $this->container['count_keywords'] = $count_keywords;
 
         return $this;
     }

@@ -95,6 +95,12 @@ class AnalyticsApi
             'text/json',
             'application/*+json',
         ],
+        'generateAsyncOffsiteReport' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
         'generateSyncAttributedTransactionsReport' => [
             'application/json-patch+json',
             'application/json',
@@ -1480,6 +1486,334 @@ class AnalyticsApi
     }
 
     /**
+     * Operation generateAsyncOffsiteReport
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request async_offsite_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome
+     */
+    public function generateAsyncOffsiteReport($async_offsite_report_request, string $contentType = self::contentTypes['generateAsyncOffsiteReport'][0])
+    {
+        list($response) = $this->generateAsyncOffsiteReportWithHttpInfo($async_offsite_report_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateAsyncOffsiteReportWithHttpInfo
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateAsyncOffsiteReportWithHttpInfo($async_offsite_report_request, string $contentType = self::contentTypes['generateAsyncOffsiteReport'][0])
+    {
+        $request = $this->generateAsyncOffsiteReportRequest($async_offsite_report_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\ReportOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ReportOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ReportOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\criteo\api\retailmedia\preview\Model\ReportOutcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ReportOutcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ReportOutcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ReportOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ReportOutcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateAsyncOffsiteReportAsync
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncOffsiteReportAsync($async_offsite_report_request, string $contentType = self::contentTypes['generateAsyncOffsiteReport'][0])
+    {
+        return $this->generateAsyncOffsiteReportAsyncWithHttpInfo($async_offsite_report_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateAsyncOffsiteReportAsyncWithHttpInfo
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncOffsiteReportAsyncWithHttpInfo($async_offsite_report_request, string $contentType = self::contentTypes['generateAsyncOffsiteReport'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+        $request = $this->generateAsyncOffsiteReportRequest($async_offsite_report_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateAsyncOffsiteReport'
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateAsyncOffsiteReportRequest($async_offsite_report_request, string $contentType = self::contentTypes['generateAsyncOffsiteReport'][0])
+    {
+
+        // verify the required parameter 'async_offsite_report_request' is set
+        if ($async_offsite_report_request === null || (is_array($async_offsite_report_request) && count($async_offsite_report_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $async_offsite_report_request when calling generateAsyncOffsiteReport'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/reports/offsite';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($async_offsite_report_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_offsite_report_request));
+            } else {
+                $httpBody = $async_offsite_report_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation generateSyncAttributedTransactionsReport
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncAttributedTransactionsReportRequest $sync_attributed_transactions_report_request sync_attributed_transactions_report_request (required)
@@ -2471,7 +2805,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome
+     * @return \SplFileObject|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome
      */
     public function getAsyncExportOutput($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -2487,7 +2821,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\criteo\api\retailmedia\preview\Model\ReportOutcome|\criteo\api\retailmedia\preview\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAsyncExportOutputWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -2530,17 +2864,17 @@ class AnalyticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('string' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'string', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2576,7 +2910,7 @@ class AnalyticsApi
                     ];
             }
 
-            $returnType = 'string';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2597,7 +2931,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2653,7 +2987,7 @@ class AnalyticsApi
      */
     public function getAsyncExportOutputAsyncWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
-        $returnType = 'string';
+        $returnType = '\SplFileObject';
         $request = $this->getAsyncExportOutputRequest($report_id, $contentType);
 
         return $this->client

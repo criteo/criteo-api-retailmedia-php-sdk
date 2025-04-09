@@ -59,10 +59,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
-        'retailer_ids' => 'int[]',
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'format' => 'string'
+        'format' => 'string',
+        'retailer_ids' => 'int[]',
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -74,10 +74,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'account_ids' => null,
-        'retailer_ids' => 'int32',
-        'start_date' => 'date',
         'end_date' => 'date',
-        'format' => null
+        'format' => null,
+        'retailer_ids' => 'int32',
+        'start_date' => 'date'
     ];
 
     /**
@@ -87,10 +87,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'account_ids' => true,
-		'retailer_ids' => true,
-		'start_date' => false,
 		'end_date' => false,
-		'format' => false
+		'format' => false,
+		'retailer_ids' => true,
+		'start_date' => false
     ];
 
     /**
@@ -180,10 +180,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
-        'retailer_ids' => 'retailerIds',
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'format' => 'format'
+        'format' => 'format',
+        'retailer_ids' => 'retailerIds',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -193,10 +193,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'account_ids' => 'setAccountIds',
-        'retailer_ids' => 'setRetailerIds',
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'format' => 'setFormat'
+        'format' => 'setFormat',
+        'retailer_ids' => 'setRetailerIds',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -206,10 +206,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'account_ids' => 'getAccountIds',
-        'retailer_ids' => 'getRetailerIds',
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'format' => 'getFormat'
+        'format' => 'getFormat',
+        'retailer_ids' => 'getRetailerIds',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -285,10 +285,10 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json');
         $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], null);
     }
 
     /**
@@ -322,18 +322,8 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
             $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
         }
 
-        if (!is_null($this->container['retailer_ids']) && (count($this->container['retailer_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['format'] === null) {
-            $invalidProperties[] = "'format' can't be null";
         }
         $allowedValues = $this->getFormatAllowableValues();
         if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
@@ -344,6 +334,13 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
             );
         }
 
+        if (!is_null($this->container['retailer_ids']) && (count($this->container['retailer_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -394,6 +391,70 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('invalid length for $account_ids when calling PartnerBillingReportRequestV1., number of items must be greater than or equal to 1.');
         }
         $this->container['account_ids'] = $account_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date End date of the report (ISO 8601 format, e.g. YYYY-MM-DD).
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Format type of the report.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -460,70 +521,6 @@ class PartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date End date of the report (ISO 8601 format, e.g. YYYY-MM-DD).
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string $format Format type of the report.
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        if (is_null($format)) {
-            throw new \InvalidArgumentException('non-nullable format cannot be null');
-        }
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format'] = $format;
 
         return $this;
     }

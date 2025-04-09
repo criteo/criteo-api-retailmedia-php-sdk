@@ -369,7 +369,7 @@ try {
 ## `fetchPromotedProducts()`
 
 ```php
-fetchPromotedProducts($line_item_id, $offset, $limit, $fields): \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionOutcome
+fetchPromotedProducts($line_item_id, $fields, $limit, $offset): \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionOutcome
 ```
 
 
@@ -397,12 +397,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | ID of the line item.
-$offset = 56; // int | Offset of the first item to fetch. Defaults to zero.
-$limit = 56; // int | Maximum page size to fetch. Defaults to 500.
 $fields = 'fields_example'; // string | A comma separated list of attribute names from the response model to compute and return.              Valid values are `status` and `bidOverride` in any order. Defaults to `status`.
+$limit = 56; // int | Maximum page size to fetch. Defaults to 500.
+$offset = 56; // int | Offset of the first item to fetch. Defaults to zero.
 
 try {
-    $result = $apiInstance->fetchPromotedProducts($line_item_id, $offset, $limit, $fields);
+    $result = $apiInstance->fetchPromotedProducts($line_item_id, $fields, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->fetchPromotedProducts: ', $e->getMessage(), PHP_EOL;
@@ -414,9 +414,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| ID of the line item. | |
-| **offset** | **int**| Offset of the first item to fetch. Defaults to zero. | [optional] |
-| **limit** | **int**| Maximum page size to fetch. Defaults to 500. | [optional] |
 | **fields** | **string**| A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. | [optional] |
+| **limit** | **int**| Maximum page size to fetch. Defaults to 500. | [optional] |
+| **offset** | **int**| Offset of the first item to fetch. Defaults to zero. | [optional] |
 
 ### Return type
 
@@ -566,7 +566,7 @@ try {
 ## `getApiExternalV2CatalogStatusByCatalogId()`
 
 ```php
-getApiExternalV2CatalogStatusByCatalogId($catalog_id): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+getApiExternalV2CatalogStatusByCatalogId($catalog_id): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2
 ```
 
 
@@ -611,7 +611,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2**](../Model/EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -629,7 +629,7 @@ try {
 ## `getApiV1ExternalRetailerBrandsByRetailerId()`
 
 ```php
-getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter, $brand_type): \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
+getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $brand_type, $sku_stock_type_filter): \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
 ```
 
 
@@ -657,11 +657,11 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $retailer_id = 56; // int | The retailer id for which brands should be fetched.
-$sku_stock_type_filter = 'sku_stock_type_filter_example'; // string | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
 $brand_type = 'brand_type_example'; // string | Filter to narrow down brands [all|uc|retailer]. Defaults to uc
+$sku_stock_type_filter = 'sku_stock_type_filter_example'; // string | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
 
 try {
-    $result = $apiInstance->getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $sku_stock_type_filter, $brand_type);
+    $result = $apiInstance->getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $brand_type, $sku_stock_type_filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getApiV1ExternalRetailerBrandsByRetailerId: ', $e->getMessage(), PHP_EOL;
@@ -673,8 +673,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **retailer_id** | **int**| The retailer id for which brands should be fetched. | |
-| **sku_stock_type_filter** | **string**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] |
 | **brand_type** | **string**| Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] |
+| **sku_stock_type_filter** | **string**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] |
 
 ### Return type
 
@@ -1277,7 +1277,7 @@ try {
 ## `inReviewReportV1()`
 
 ```php
-inReviewReportV1($account_id, $offset, $limit): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
+inReviewReportV1($account_id, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
 ```
 
 
@@ -1305,11 +1305,11 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 56; // int | The account to generate a report for
-$offset = 0; // int | Offset for pagination
 $limit = 25; // int | Number of items per page
+$offset = 0; // int | Offset for pagination
 
 try {
-    $result = $apiInstance->inReviewReportV1($account_id, $offset, $limit);
+    $result = $apiInstance->inReviewReportV1($account_id, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->inReviewReportV1: ', $e->getMessage(), PHP_EOL;
@@ -1321,8 +1321,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **int**| The account to generate a report for | |
-| **offset** | **int**| Offset for pagination | [optional] [default to 0] |
 | **limit** | **int**| Number of items per page | [optional] [default to 25] |
+| **offset** | **int**| Offset for pagination | [optional] [default to 0] |
 
 ### Return type
 
@@ -1538,7 +1538,7 @@ try {
 ## `postApiExternalV2AccountBrandCatalogExportByAccountId()`
 
 ```php
-postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $json_api_request_of_brand_catalog_request_v2): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $value_resource_input_of_brand_catalog_request_v2): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2
 ```
 
 
@@ -1566,10 +1566,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The account to request the catalog for.
-$json_api_request_of_brand_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2
+$value_resource_input_of_brand_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfBrandCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfBrandCatalogRequestV2
 
 try {
-    $result = $apiInstance->postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $json_api_request_of_brand_catalog_request_v2);
+    $result = $apiInstance->postApiExternalV2AccountBrandCatalogExportByAccountId($account_id, $value_resource_input_of_brand_catalog_request_v2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiExternalV2AccountBrandCatalogExportByAccountId: ', $e->getMessage(), PHP_EOL;
@@ -1581,11 +1581,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to request the catalog for. | |
-| **json_api_request_of_brand_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\JsonApiRequestOfBrandCatalogRequestV2**](../Model/JsonApiRequestOfBrandCatalogRequestV2.md)|  | [optional] |
+| **value_resource_input_of_brand_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfBrandCatalogRequestV2**](../Model/ValueResourceInputOfBrandCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2**](../Model/EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -1603,7 +1603,7 @@ try {
 ## `postApiExternalV2AccountSellerCatalogExportByAccountId()`
 
 ```php
-postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $json_api_request_of_seller_catalog_request_v2): \criteo\api\retailmedia\preview\Model\CatalogStatusV2Response
+postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $value_resource_input_of_seller_catalog_request_v2): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2
 ```
 
 
@@ -1631,10 +1631,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The account to request the catalog for.
-$json_api_request_of_seller_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2
+$value_resource_input_of_seller_catalog_request_v2 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerCatalogRequestV2(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerCatalogRequestV2
 
 try {
-    $result = $apiInstance->postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $json_api_request_of_seller_catalog_request_v2);
+    $result = $apiInstance->postApiExternalV2AccountSellerCatalogExportByAccountId($account_id, $value_resource_input_of_seller_catalog_request_v2);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiExternalV2AccountSellerCatalogExportByAccountId: ', $e->getMessage(), PHP_EOL;
@@ -1646,11 +1646,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to request the catalog for. | |
-| **json_api_request_of_seller_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\JsonApiRequestOfSellerCatalogRequestV2**](../Model/JsonApiRequestOfSellerCatalogRequestV2.md)|  | [optional] |
+| **value_resource_input_of_seller_catalog_request_v2** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerCatalogRequestV2**](../Model/ValueResourceInputOfSellerCatalogRequestV2.md)|  | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\CatalogStatusV2Response**](../Model/CatalogStatusV2Response.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2**](../Model/EntityResourceOutcomeOfCatalogStatusV2.md)
 
 ### Authorization
 
@@ -1802,7 +1802,7 @@ try {
 ## `postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId()`
 
 ```php
-postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId($account_id, $retailer_id, $offset, $limit, $sku_search_request_slim_preview_request): \criteo\api\retailmedia\preview\Model\SkuSlimDataPreviewListResponse
+postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId($account_id, $retailer_id, $limit, $offset, $sku_search_request_slim_preview_request): \criteo\api\retailmedia\preview\Model\SkuSlimDataPreviewListResponse
 ```
 
 
@@ -1831,12 +1831,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
 );
 $account_id = 'account_id_example'; // string | The account for which skus should be searched for.
 $retailer_id = 'retailer_id_example'; // string | The client id/retailer id for which skus should be searched for.
-$offset = 0; // int | The start position in the overall list of matches. Must be zero or greater.
 $limit = 100; // int | The maximum number of results to return with each call. Must be greater than zero.
+$offset = 0; // int | The start position in the overall list of matches. Must be zero or greater.
 $sku_search_request_slim_preview_request = new \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreviewRequest(); // \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreviewRequest | 
 
 try {
-    $result = $apiInstance->postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId($account_id, $retailer_id, $offset, $limit, $sku_search_request_slim_preview_request);
+    $result = $apiInstance->postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId($account_id, $retailer_id, $limit, $offset, $sku_search_request_slim_preview_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiV1ExternalCatalogsSkuSearchAccountIdAndRetailerId: ', $e->getMessage(), PHP_EOL;
@@ -1849,8 +1849,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account for which skus should be searched for. | |
 | **retailer_id** | **string**| The client id/retailer id for which skus should be searched for. | |
-| **offset** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **limit** | **int**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100] |
+| **offset** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **sku_search_request_slim_preview_request** | [**\criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreviewRequest**](../Model/SkuSearchRequestSlimPreviewRequest.md)|  | [optional] |
 
 ### Return type
@@ -1873,7 +1873,7 @@ try {
 ## `postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId()`
 
 ```php
-postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId($retailer_id, $x_origin_account, $offset, $limit, $sku_search_request_slim_v2_preview_request): \criteo\api\retailmedia\preview\Model\SkuSlimDataV2ListResponse
+postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId($retailer_id, $limit, $offset, $x_origin_account, $sku_search_request_slim_v2_preview_request): \criteo\api\retailmedia\preview\Model\SkuSlimDataV2ListResponse
 ```
 
 
@@ -1901,13 +1901,13 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $retailer_id = 'retailer_id_example'; // string | The client id/retailer id for which skus should be searched for.
-$x_origin_account = 'x_origin_account_example'; // string | The account id of the initiator of the call.
-$offset = 0; // int | The start position in the overall list of matches. Must be zero or greater.
 $limit = 100; // int | The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit.
+$offset = 0; // int | The start position in the overall list of matches. Must be zero or greater.
+$x_origin_account = 'x_origin_account_example'; // string | The account id of the initiator of the call.
 $sku_search_request_slim_v2_preview_request = new \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimV2PreviewRequest(); // \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimV2PreviewRequest | 
 
 try {
-    $result = $apiInstance->postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId($retailer_id, $x_origin_account, $offset, $limit, $sku_search_request_slim_v2_preview_request);
+    $result = $apiInstance->postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId($retailer_id, $limit, $offset, $x_origin_account, $sku_search_request_slim_v2_preview_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiV1ExternalCatalogsSkuSearchRetailerByRetailerId: ', $e->getMessage(), PHP_EOL;
@@ -1919,9 +1919,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **retailer_id** | **string**| The client id/retailer id for which skus should be searched for. | |
-| **x_origin_account** | **string**| The account id of the initiator of the call. | [optional] |
-| **offset** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **limit** | **int**| The maximum number of results to return with each call. Must be greater than zero and less than 1500. 10,000 records deep is the max limit. | [optional] [default to 100] |
+| **offset** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
+| **x_origin_account** | **string**| The account id of the initiator of the call. | [optional] |
 | **sku_search_request_slim_v2_preview_request** | [**\criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimV2PreviewRequest**](../Model/SkuSearchRequestSlimV2PreviewRequest.md)|  | [optional] |
 
 ### Return type
@@ -2338,7 +2338,7 @@ try {
 ## `searchBrandsByNameAsyncV1()`
 
 ```php
-searchBrandsByNameAsyncV1($offset, $limit, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+searchBrandsByNameAsyncV1($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
 ```
 
 
@@ -2365,12 +2365,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$offset = 0; // int | offset of paginated results
 $limit = 25; // int | the number of brands to return
+$offset = 0; // int | offset of paginated results
 $value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
 
 try {
-    $result = $apiInstance->searchBrandsByNameAsyncV1($offset, $limit, $value_resource_input_brand_id_search_request);
+    $result = $apiInstance->searchBrandsByNameAsyncV1($limit, $offset, $value_resource_input_brand_id_search_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->searchBrandsByNameAsyncV1: ', $e->getMessage(), PHP_EOL;
@@ -2381,8 +2381,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **offset** | **int**| offset of paginated results | [optional] [default to 0] |
 | **limit** | **int**| the number of brands to return | [optional] [default to 25] |
+| **offset** | **int**| offset of paginated results | [optional] [default to 0] |
 | **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
 
 ### Return type

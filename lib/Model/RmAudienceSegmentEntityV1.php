@@ -59,16 +59,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'name' => 'string',
+        'channels' => 'string[]',
+        'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListV1',
+        'created_at' => '\DateTime',
+        'created_by_id' => 'string',
         'description' => 'string',
+        'events' => '\criteo\api\retailmedia\preview\Model\RmEventsV1',
+        'name' => 'string',
         'retailer_id' => 'string',
         'type' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'created_by_id' => 'string',
-        'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListV1',
-        'events' => '\criteo\api\retailmedia\preview\Model\RmEventsV1',
-        'channels' => 'string[]'
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -80,16 +80,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'account_id' => null,
-        'name' => null,
+        'channels' => null,
+        'contact_list' => null,
+        'created_at' => 'date-time',
+        'created_by_id' => null,
         'description' => null,
+        'events' => null,
+        'name' => null,
         'retailer_id' => null,
         'type' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'created_by_id' => null,
-        'contact_list' => null,
-        'events' => null,
-        'channels' => null
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -99,16 +99,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'account_id' => true,
-		'name' => true,
+		'channels' => true,
+		'contact_list' => true,
+		'created_at' => true,
+		'created_by_id' => true,
 		'description' => true,
+		'events' => true,
+		'name' => true,
 		'retailer_id' => true,
 		'type' => true,
-		'created_at' => true,
-		'updated_at' => true,
-		'created_by_id' => true,
-		'contact_list' => true,
-		'events' => true,
-		'channels' => true
+		'updated_at' => true
     ];
 
     /**
@@ -198,16 +198,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
-        'name' => 'name',
+        'channels' => 'channels',
+        'contact_list' => 'contactList',
+        'created_at' => 'createdAt',
+        'created_by_id' => 'createdById',
         'description' => 'description',
+        'events' => 'events',
+        'name' => 'name',
         'retailer_id' => 'retailerId',
         'type' => 'type',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'created_by_id' => 'createdById',
-        'contact_list' => 'contactList',
-        'events' => 'events',
-        'channels' => 'channels'
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -217,16 +217,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
-        'name' => 'setName',
+        'channels' => 'setChannels',
+        'contact_list' => 'setContactList',
+        'created_at' => 'setCreatedAt',
+        'created_by_id' => 'setCreatedById',
         'description' => 'setDescription',
+        'events' => 'setEvents',
+        'name' => 'setName',
         'retailer_id' => 'setRetailerId',
         'type' => 'setType',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'created_by_id' => 'setCreatedById',
-        'contact_list' => 'setContactList',
-        'events' => 'setEvents',
-        'channels' => 'setChannels'
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -236,16 +236,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
-        'name' => 'getName',
+        'channels' => 'getChannels',
+        'contact_list' => 'getContactList',
+        'created_at' => 'getCreatedAt',
+        'created_by_id' => 'getCreatedById',
         'description' => 'getDescription',
+        'events' => 'getEvents',
+        'name' => 'getName',
         'retailer_id' => 'getRetailerId',
         'type' => 'getType',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'created_by_id' => 'getCreatedById',
-        'contact_list' => 'getContactList',
-        'events' => 'getEvents',
-        'channels' => 'getChannels'
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -289,26 +289,12 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'Unknown';
-    public const TYPE_CONTACT_LIST = 'ContactList';
-    public const TYPE_EVENTS = 'Events';
     public const CHANNELS_UNKNOWN = 'Unknown';
     public const CHANNELS_ONSITE = 'Onsite';
     public const CHANNELS_OFFSITE = 'Offsite';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_CONTACT_LIST,
-            self::TYPE_EVENTS,
-        ];
-    }
+    public const TYPE_UNKNOWN = 'Unknown';
+    public const TYPE_CONTACT_LIST = 'ContactList';
+    public const TYPE_EVENTS = 'Events';
 
     /**
      * Gets allowable values of the enum
@@ -321,6 +307,20 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
             self::CHANNELS_UNKNOWN,
             self::CHANNELS_ONSITE,
             self::CHANNELS_OFFSITE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_CONTACT_LIST,
+            self::TYPE_EVENTS,
         ];
     }
 
@@ -340,16 +340,16 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('channels', $data ?? [], null);
+        $this->setIfExists('contact_list', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('created_by_id', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('created_by_id', $data ?? [], null);
-        $this->setIfExists('contact_list', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('channels', $data ?? [], null);
     }
 
     /**
@@ -438,35 +438,146 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets name
+     * Gets channels
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getName()
+    public function getChannels()
     {
-        return $this->container['name'];
+        return $this->container['channels'];
     }
 
     /**
-     * Sets name
+     * Sets channels
      *
-     * @param string|null $name Name of the segment
+     * @param string[]|null $channels Channels associated to the segment (read-only)
      *
      * @return self
      */
-    public function setName($name)
+    public function setChannels($channels)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($channels)) {
+            array_push($this->openAPINullablesSetToNull, 'channels');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('channels', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getChannelsAllowableValues();
+        if (!is_null($channels) && array_diff($channels, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'channels', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['channels'] = $channels;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_list
+     *
+     * @return \criteo\api\retailmedia\preview\Model\RmContactListV1|null
+     */
+    public function getContactList()
+    {
+        return $this->container['contact_list'];
+    }
+
+    /**
+     * Sets contact_list
+     *
+     * @param \criteo\api\retailmedia\preview\Model\RmContactListV1|null $contact_list contact_list
+     *
+     * @return self
+     */
+    public function setContactList($contact_list)
+    {
+        if (is_null($contact_list)) {
+            array_push($this->openAPINullablesSetToNull, 'contact_list');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact_list', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact_list'] = $contact_list;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at ISO-8601 timestamp in UTC of segment creation (read-only)
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            array_push($this->openAPINullablesSetToNull, 'created_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_id
+     *
+     * @return string|null
+     */
+    public function getCreatedById()
+    {
+        return $this->container['created_by_id'];
+    }
+
+    /**
+     * Sets created_by_id
+     *
+     * @param string|null $created_by_id User that created the segment
+     *
+     * @return self
+     */
+    public function setCreatedById($created_by_id)
+    {
+        if (is_null($created_by_id)) {
+            array_push($this->openAPINullablesSetToNull, 'created_by_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('created_by_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['created_by_id'] = $created_by_id;
 
         return $this;
     }
@@ -501,6 +612,74 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets events
+     *
+     * @return \criteo\api\retailmedia\preview\Model\RmEventsV1|null
+     */
+    public function getEvents()
+    {
+        return $this->container['events'];
+    }
+
+    /**
+     * Sets events
+     *
+     * @param \criteo\api\retailmedia\preview\Model\RmEventsV1|null $events events
+     *
+     * @return self
+     */
+    public function setEvents($events)
+    {
+        if (is_null($events)) {
+            array_push($this->openAPINullablesSetToNull, 'events');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('events', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['events'] = $events;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the segment
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -584,40 +763,6 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at ISO-8601 timestamp in UTC of segment creation (read-only)
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            array_push($this->openAPINullablesSetToNull, 'created_at');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_at', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets updated_at
      *
      * @return \DateTime|null
@@ -647,151 +792,6 @@ class RmAudienceSegmentEntityV1 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_by_id
-     *
-     * @return string|null
-     */
-    public function getCreatedById()
-    {
-        return $this->container['created_by_id'];
-    }
-
-    /**
-     * Sets created_by_id
-     *
-     * @param string|null $created_by_id User that created the segment
-     *
-     * @return self
-     */
-    public function setCreatedById($created_by_id)
-    {
-        if (is_null($created_by_id)) {
-            array_push($this->openAPINullablesSetToNull, 'created_by_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('created_by_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['created_by_id'] = $created_by_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets contact_list
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RmContactListV1|null
-     */
-    public function getContactList()
-    {
-        return $this->container['contact_list'];
-    }
-
-    /**
-     * Sets contact_list
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RmContactListV1|null $contact_list contact_list
-     *
-     * @return self
-     */
-    public function setContactList($contact_list)
-    {
-        if (is_null($contact_list)) {
-            array_push($this->openAPINullablesSetToNull, 'contact_list');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('contact_list', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['contact_list'] = $contact_list;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return \criteo\api\retailmedia\preview\Model\RmEventsV1|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param \criteo\api\retailmedia\preview\Model\RmEventsV1|null $events events
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            array_push($this->openAPINullablesSetToNull, 'events');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('events', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['events'] = $events;
-
-        return $this;
-    }
-
-    /**
-     * Gets channels
-     *
-     * @return string[]|null
-     */
-    public function getChannels()
-    {
-        return $this->container['channels'];
-    }
-
-    /**
-     * Sets channels
-     *
-     * @param string[]|null $channels Channels associated to the segment (read-only)
-     *
-     * @return self
-     */
-    public function setChannels($channels)
-    {
-        if (is_null($channels)) {
-            array_push($this->openAPINullablesSetToNull, 'channels');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('channels', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getChannelsAllowableValues();
-        if (!is_null($channels) && array_diff($channels, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'channels', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['channels'] = $channels;
 
         return $this;
     }

@@ -59,11 +59,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
       */
     protected static $openAPITypes = [
         'contact_list_id' => 'int',
-        'operation' => 'string',
-        'request_date' => '\DateTime',
         'identifier_type' => 'string',
         'nb_invalid_identifiers' => 'int',
         'nb_valid_identifiers' => 'int',
+        'operation' => 'string',
+        'request_date' => '\DateTime',
         'sample_invalid_identifiers' => 'string[]'
     ];
 
@@ -76,11 +76,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
       */
     protected static $openAPIFormats = [
         'contact_list_id' => 'int64',
-        'operation' => null,
-        'request_date' => 'date-time',
         'identifier_type' => null,
         'nb_invalid_identifiers' => 'int32',
         'nb_valid_identifiers' => 'int32',
+        'operation' => null,
+        'request_date' => 'date-time',
         'sample_invalid_identifiers' => null
     ];
 
@@ -91,11 +91,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
       */
     protected static array $openAPINullables = [
         'contact_list_id' => false,
-		'operation' => false,
-		'request_date' => false,
 		'identifier_type' => true,
 		'nb_invalid_identifiers' => true,
 		'nb_valid_identifiers' => true,
+		'operation' => false,
+		'request_date' => false,
 		'sample_invalid_identifiers' => true
     ];
 
@@ -186,11 +186,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
      */
     protected static $attributeMap = [
         'contact_list_id' => 'contactListId',
-        'operation' => 'operation',
-        'request_date' => 'requestDate',
         'identifier_type' => 'identifierType',
         'nb_invalid_identifiers' => 'nbInvalidIdentifiers',
         'nb_valid_identifiers' => 'nbValidIdentifiers',
+        'operation' => 'operation',
+        'request_date' => 'requestDate',
         'sample_invalid_identifiers' => 'sampleInvalidIdentifiers'
     ];
 
@@ -201,11 +201,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
      */
     protected static $setters = [
         'contact_list_id' => 'setContactListId',
-        'operation' => 'setOperation',
-        'request_date' => 'setRequestDate',
         'identifier_type' => 'setIdentifierType',
         'nb_invalid_identifiers' => 'setNbInvalidIdentifiers',
         'nb_valid_identifiers' => 'setNbValidIdentifiers',
+        'operation' => 'setOperation',
+        'request_date' => 'setRequestDate',
         'sample_invalid_identifiers' => 'setSampleInvalidIdentifiers'
     ];
 
@@ -216,11 +216,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
      */
     protected static $getters = [
         'contact_list_id' => 'getContactListId',
-        'operation' => 'getOperation',
-        'request_date' => 'getRequestDate',
         'identifier_type' => 'getIdentifierType',
         'nb_invalid_identifiers' => 'getNbInvalidIdentifiers',
         'nb_valid_identifiers' => 'getNbValidIdentifiers',
+        'operation' => 'getOperation',
+        'request_date' => 'getRequestDate',
         'sample_invalid_identifiers' => 'getSampleInvalidIdentifiers'
     ];
 
@@ -282,11 +282,11 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
     public function __construct(array $data = null)
     {
         $this->setIfExists('contact_list_id', $data ?? [], null);
-        $this->setIfExists('operation', $data ?? [], null);
-        $this->setIfExists('request_date', $data ?? [], null);
         $this->setIfExists('identifier_type', $data ?? [], null);
         $this->setIfExists('nb_invalid_identifiers', $data ?? [], null);
         $this->setIfExists('nb_valid_identifiers', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
+        $this->setIfExists('request_date', $data ?? [], null);
         $this->setIfExists('sample_invalid_identifiers', $data ?? [], null);
     }
 
@@ -364,60 +364,6 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
             throw new \InvalidArgumentException('non-nullable contact_list_id cannot be null');
         }
         $this->container['contact_list_id'] = $contact_list_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets operation
-     *
-     * @return string
-     */
-    public function getOperation()
-    {
-        return $this->container['operation'];
-    }
-
-    /**
-     * Sets operation
-     *
-     * @param string $operation The action recorded
-     *
-     * @return self
-     */
-    public function setOperation($operation)
-    {
-        if (is_null($operation)) {
-            throw new \InvalidArgumentException('non-nullable operation cannot be null');
-        }
-        $this->container['operation'] = $operation;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_date
-     *
-     * @return \DateTime
-     */
-    public function getRequestDate()
-    {
-        return $this->container['request_date'];
-    }
-
-    /**
-     * Sets request_date
-     *
-     * @param \DateTime $request_date When the action was recorded
-     *
-     * @return self
-     */
-    public function setRequestDate($request_date)
-    {
-        if (is_null($request_date)) {
-            throw new \InvalidArgumentException('non-nullable request_date cannot be null');
-        }
-        $this->container['request_date'] = $request_date;
 
         return $this;
     }
@@ -520,6 +466,60 @@ class RetailMediaContactlistOperationResponseAttributes implements ModelInterfac
             }
         }
         $this->container['nb_valid_identifiers'] = $nb_valid_identifiers;
+
+        return $this;
+    }
+
+    /**
+     * Gets operation
+     *
+     * @return string
+     */
+    public function getOperation()
+    {
+        return $this->container['operation'];
+    }
+
+    /**
+     * Sets operation
+     *
+     * @param string $operation The action recorded
+     *
+     * @return self
+     */
+    public function setOperation($operation)
+    {
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
+        }
+        $this->container['operation'] = $operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets request_date
+     *
+     * @return \DateTime
+     */
+    public function getRequestDate()
+    {
+        return $this->container['request_date'];
+    }
+
+    /**
+     * Sets request_date
+     *
+     * @param \DateTime $request_date When the action was recorded
+     *
+     * @return self
+     */
+    public function setRequestDate($request_date)
+    {
+        if (is_null($request_date)) {
+            throw new \InvalidArgumentException('non-nullable request_date cannot be null');
+        }
+        $this->container['request_date'] = $request_date;
 
         return $this;
     }

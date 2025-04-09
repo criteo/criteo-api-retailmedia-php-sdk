@@ -58,9 +58,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'previous_value' => 'string',
+        'change_value' => 'string',
         'current_value' => 'string',
-        'change_value' => 'string'
+        'previous_value' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'previous_value' => null,
+        'change_value' => null,
         'current_value' => null,
-        'change_value' => null
+        'previous_value' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'previous_value' => true,
+        'change_value' => true,
 		'current_value' => true,
-		'change_value' => true
+		'previous_value' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'previous_value' => 'previousValue',
+        'change_value' => 'changeValue',
         'current_value' => 'currentValue',
-        'change_value' => 'changeValue'
+        'previous_value' => 'previousValue'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'previous_value' => 'setPreviousValue',
+        'change_value' => 'setChangeValue',
         'current_value' => 'setCurrentValue',
-        'change_value' => 'setChangeValue'
+        'previous_value' => 'setPreviousValue'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'previous_value' => 'getPreviousValue',
+        'change_value' => 'getChangeValue',
         'current_value' => 'getCurrentValue',
-        'change_value' => 'getChangeValue'
+        'previous_value' => 'getPreviousValue'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('previous_value', $data ?? [], null);
-        $this->setIfExists('current_value', $data ?? [], null);
         $this->setIfExists('change_value', $data ?? [], null);
+        $this->setIfExists('current_value', $data ?? [], null);
+        $this->setIfExists('previous_value', $data ?? [], null);
     }
 
     /**
@@ -305,35 +305,35 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets previous_value
+     * Gets change_value
      *
      * @return string|null
      */
-    public function getPreviousValue()
+    public function getChangeValue()
     {
-        return $this->container['previous_value'];
+        return $this->container['change_value'];
     }
 
     /**
-     * Sets previous_value
+     * Sets change_value
      *
-     * @param string|null $previous_value Previous value of a property of the insertion order.
+     * @param string|null $change_value Change detail of a property of the insertion order.
      *
      * @return self
      */
-    public function setPreviousValue($previous_value)
+    public function setChangeValue($change_value)
     {
-        if (is_null($previous_value)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_value');
+        if (is_null($change_value)) {
+            array_push($this->openAPINullablesSetToNull, 'change_value');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_value', $nullablesSetToNull);
+            $index = array_search('change_value', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['previous_value'] = $previous_value;
+        $this->container['change_value'] = $change_value;
 
         return $this;
     }
@@ -373,35 +373,35 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets change_value
+     * Gets previous_value
      *
      * @return string|null
      */
-    public function getChangeValue()
+    public function getPreviousValue()
     {
-        return $this->container['change_value'];
+        return $this->container['previous_value'];
     }
 
     /**
-     * Sets change_value
+     * Sets previous_value
      *
-     * @param string|null $change_value Change detail of a property of the insertion order.
+     * @param string|null $previous_value Previous value of a property of the insertion order.
      *
      * @return self
      */
-    public function setChangeValue($change_value)
+    public function setPreviousValue($previous_value)
     {
-        if (is_null($change_value)) {
-            array_push($this->openAPINullablesSetToNull, 'change_value');
+        if (is_null($previous_value)) {
+            array_push($this->openAPINullablesSetToNull, 'previous_value');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('change_value', $nullablesSetToNull);
+            $index = array_search('previous_value', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['change_value'] = $change_value;
+        $this->container['previous_value'] = $previous_value;
 
         return $this;
     }

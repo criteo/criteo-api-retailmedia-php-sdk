@@ -58,14 +58,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trace_id' => 'string',
-        'type' => 'string',
         'code' => 'string',
-        'instance' => 'string',
-        'title' => 'string',
         'detail' => 'string',
+        'instance' => 'string',
         'source' => 'array<string,string>',
-        'stack_trace' => 'string'
+        'stack_trace' => 'string',
+        'title' => 'string',
+        'trace_id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trace_id' => null,
-        'type' => null,
         'code' => null,
-        'instance' => null,
-        'title' => null,
         'detail' => null,
+        'instance' => null,
         'source' => null,
-        'stack_trace' => null
+        'stack_trace' => null,
+        'title' => null,
+        'trace_id' => null,
+        'type' => null
     ];
 
     /**
@@ -92,14 +92,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trace_id' => false,
-		'type' => false,
-		'code' => false,
-		'instance' => false,
-		'title' => false,
+        'code' => false,
 		'detail' => false,
+		'instance' => false,
 		'source' => false,
-		'stack_trace' => false
+		'stack_trace' => false,
+		'title' => false,
+		'trace_id' => false,
+		'type' => false
     ];
 
     /**
@@ -188,14 +188,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'trace_id' => 'traceId',
-        'type' => 'type',
         'code' => 'code',
-        'instance' => 'instance',
-        'title' => 'title',
         'detail' => 'detail',
+        'instance' => 'instance',
         'source' => 'source',
-        'stack_trace' => 'stackTrace'
+        'stack_trace' => 'stackTrace',
+        'title' => 'title',
+        'trace_id' => 'traceId',
+        'type' => 'type'
     ];
 
     /**
@@ -204,14 +204,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'trace_id' => 'setTraceId',
-        'type' => 'setType',
         'code' => 'setCode',
-        'instance' => 'setInstance',
-        'title' => 'setTitle',
         'detail' => 'setDetail',
+        'instance' => 'setInstance',
         'source' => 'setSource',
-        'stack_trace' => 'setStackTrace'
+        'stack_trace' => 'setStackTrace',
+        'title' => 'setTitle',
+        'trace_id' => 'setTraceId',
+        'type' => 'setType'
     ];
 
     /**
@@ -220,14 +220,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'trace_id' => 'getTraceId',
-        'type' => 'getType',
         'code' => 'getCode',
-        'instance' => 'getInstance',
-        'title' => 'getTitle',
         'detail' => 'getDetail',
+        'instance' => 'getInstance',
         'source' => 'getSource',
-        'stack_trace' => 'getStackTrace'
+        'stack_trace' => 'getStackTrace',
+        'title' => 'getTitle',
+        'trace_id' => 'getTraceId',
+        'type' => 'getType'
     ];
 
     /**
@@ -314,14 +314,14 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('instance', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('detail', $data ?? [], null);
+        $this->setIfExists('instance', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('stack_trace', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -374,6 +374,168 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kabab-case.
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets detail
+     *
+     * @return string|null
+     */
+    public function getDetail()
+    {
+        return $this->container['detail'];
+    }
+
+    /**
+     * Sets detail
+     *
+     * @param string|null $detail (RECOMMENDED) A human-readable explanation specific to this occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setDetail($detail)
+    {
+        if (is_null($detail)) {
+            throw new \InvalidArgumentException('non-nullable detail cannot be null');
+        }
+        $this->container['detail'] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets instance
+     *
+     * @return string|null
+     */
+    public function getInstance()
+    {
+        return $this->container['instance'];
+    }
+
+    /**
+     * Sets instance
+     *
+     * @param string|null $instance (REQUIRED) A URI reference that identifies the specific occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setInstance($instance)
+    {
+        if (is_null($instance)) {
+            throw new \InvalidArgumentException('non-nullable instance cannot be null');
+        }
+        $this->container['instance'] = $instance;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return array<string,string>|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param array<string,string>|null $source (OPTIONAL) A machine-readable structure to reference to the exact location(s) causing the error(s)
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets stack_trace
+     *
+     * @return string|null
+     */
+    public function getStackTrace()
+    {
+        return $this->container['stack_trace'];
+    }
+
+    /**
+     * Sets stack_trace
+     *
+     * @param string|null $stack_trace (NEVER IN PRODUCTION) A human-readable stacktrace produced by the implementation technology
+     *
+     * @return self
+     */
+    public function setStackTrace($stack_trace)
+    {
+        if (is_null($stack_trace)) {
+            throw new \InvalidArgumentException('non-nullable stack_trace cannot be null');
+        }
+        $this->container['stack_trace'] = $stack_trace;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title (RECOMMENDED) A short, human-readable summary of the problem type.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
 
     /**
      * Gets trace_id
@@ -435,168 +597,6 @@ class CommonWarning implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kabab-case.
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets instance
-     *
-     * @return string|null
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string|null $instance (REQUIRED) A URI reference that identifies the specific occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        if (is_null($instance)) {
-            throw new \InvalidArgumentException('non-nullable instance cannot be null');
-        }
-        $this->container['instance'] = $instance;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title (RECOMMENDED) A short, human-readable summary of the problem type.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets detail
-     *
-     * @return string|null
-     */
-    public function getDetail()
-    {
-        return $this->container['detail'];
-    }
-
-    /**
-     * Sets detail
-     *
-     * @param string|null $detail (RECOMMENDED) A human-readable explanation specific to this occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setDetail($detail)
-    {
-        if (is_null($detail)) {
-            throw new \InvalidArgumentException('non-nullable detail cannot be null');
-        }
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return array<string,string>|null
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param array<string,string>|null $source (OPTIONAL) A machine-readable structure to reference to the exact location(s) causing the error(s)
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        if (is_null($source)) {
-            throw new \InvalidArgumentException('non-nullable source cannot be null');
-        }
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets stack_trace
-     *
-     * @return string|null
-     */
-    public function getStackTrace()
-    {
-        return $this->container['stack_trace'];
-    }
-
-    /**
-     * Sets stack_trace
-     *
-     * @param string|null $stack_trace (NEVER IN PRODUCTION) A human-readable stacktrace produced by the implementation technology
-     *
-     * @return self
-     */
-    public function setStackTrace($stack_trace)
-    {
-        if (is_null($stack_trace)) {
-            throw new \InvalidArgumentException('non-nullable stack_trace cannot be null');
-        }
-        $this->container['stack_trace'] = $stack_trace;
 
         return $this;
     }

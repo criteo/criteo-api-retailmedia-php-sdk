@@ -58,8 +58,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_type' => 'string',
-        'environments' => 'string[]'
+        'environments' => 'string[]',
+        'page_type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_type' => 'string',
-        'environments' => 'string'
+        'environments' => 'string',
+        'page_type' => 'string'
     ];
 
     /**
@@ -80,8 +80,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'page_type' => true,
-		'environments' => true
+        'environments' => true,
+		'page_type' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_type' => 'pageType',
-        'environments' => 'environments'
+        'environments' => 'environments',
+        'page_type' => 'pageType'
     ];
 
     /**
@@ -180,8 +180,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'page_type' => 'setPageType',
-        'environments' => 'setEnvironments'
+        'environments' => 'setEnvironments',
+        'page_type' => 'setPageType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'page_type' => 'getPageType',
-        'environments' => 'getEnvironments'
+        'environments' => 'getEnvironments',
+        'page_type' => 'getPageType'
     ];
 
     /**
@@ -235,6 +235,13 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const ENVIRONMENTS_WEB = 'Web';
+    public const ENVIRONMENTS_MOBILE = 'Mobile';
+    public const ENVIRONMENTS_APP = 'App';
+    public const ENVIRONMENTS_LOCKOUT = 'Lockout';
+    public const ENVIRONMENTS_MIXED = 'Mixed';
+    public const ENVIRONMENTS_I_OS = 'iOS';
+    public const ENVIRONMENTS_ANDROID = 'Android';
     public const PAGE_TYPE_UNKNOWN = 'Unknown';
     public const PAGE_TYPE_SEARCH = 'Search';
     public const PAGE_TYPE_HOME = 'Home';
@@ -248,13 +255,24 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
     public const PAGE_TYPE_FAVORITES = 'Favorites';
     public const PAGE_TYPE_SEARCH_BAR = 'SearchBar';
     public const PAGE_TYPE_CATEGORY_MENU = 'CategoryMenu';
-    public const ENVIRONMENTS_WEB = 'Web';
-    public const ENVIRONMENTS_MOBILE = 'Mobile';
-    public const ENVIRONMENTS_APP = 'App';
-    public const ENVIRONMENTS_LOCKOUT = 'Lockout';
-    public const ENVIRONMENTS_MIXED = 'Mixed';
-    public const ENVIRONMENTS_I_OS = 'iOS';
-    public const ENVIRONMENTS_ANDROID = 'Android';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEnvironmentsAllowableValues()
+    {
+        return [
+            self::ENVIRONMENTS_WEB,
+            self::ENVIRONMENTS_MOBILE,
+            self::ENVIRONMENTS_APP,
+            self::ENVIRONMENTS_LOCKOUT,
+            self::ENVIRONMENTS_MIXED,
+            self::ENVIRONMENTS_I_OS,
+            self::ENVIRONMENTS_ANDROID,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -281,24 +299,6 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEnvironmentsAllowableValues()
-    {
-        return [
-            self::ENVIRONMENTS_WEB,
-            self::ENVIRONMENTS_MOBILE,
-            self::ENVIRONMENTS_APP,
-            self::ENVIRONMENTS_LOCKOUT,
-            self::ENVIRONMENTS_MIXED,
-            self::ENVIRONMENTS_I_OS,
-            self::ENVIRONMENTS_ANDROID,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -313,8 +313,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('page_type', $data ?? [], null);
         $this->setIfExists('environments', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
     }
 
     /**
@@ -369,6 +369,49 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
+     * Gets environments
+     *
+     * @return string[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param string[]|null $environments List of environments per PageType
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        if (is_null($environments)) {
+            array_push($this->openAPINullablesSetToNull, 'environments');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('environments', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getEnvironmentsAllowableValues();
+        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'environments', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['environments'] = $environments;
+
+        return $this;
+    }
+
+    /**
      * Gets page_type
      *
      * @return string|null
@@ -408,49 +451,6 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
         $this->container['page_type'] = $page_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return string[]|null
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param string[]|null $environments List of environments per PageType
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        if (is_null($environments)) {
-            array_push($this->openAPINullablesSetToNull, 'environments');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('environments', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getEnvironmentsAllowableValues();
-        if (!is_null($environments) && array_diff($environments, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'environments', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['environments'] = $environments;
 
         return $this;
     }

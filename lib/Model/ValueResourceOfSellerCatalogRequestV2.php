@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2
+ * ValueResourceOfSellerCatalogRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 Class Doc Comment
+ * ValueResourceOfSellerCatalogRequestV2 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Type, and  Attributes properties
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOfSellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2';
+    protected static $openAPIModelName = 'ValueResourceOfSellerCatalogRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\preview\Model\SellerCatalogRequestV2'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\SellerCatalogRequestV2',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'attributes' => true
+        'attributes' => true,
+		'type' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -282,9 +282,6 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -299,33 +296,6 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
 
     /**
      * Gets attributes
@@ -357,6 +327,33 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestV2AndSellerCatalogRequestV2 impl
             }
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type The Type of the resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

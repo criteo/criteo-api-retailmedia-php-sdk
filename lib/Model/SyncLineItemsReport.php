@@ -58,19 +58,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'report_type' => 'string',
-        'line_item_ids' => 'string[]',
-        'campaign_ids' => 'string[]',
         'account_id' => 'string',
-        'click_attribution_window' => 'string',
-        'view_attribution_window' => 'string',
+        'campaign_ids' => 'string[]',
         'campaign_type' => 'string',
-        'sales_channel' => 'string',
+        'click_attribution_window' => 'string',
         'dimensions' => 'string[]',
-        'metrics' => 'string[]',
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'timezone' => 'string'
+        'line_item_ids' => 'string[]',
+        'metrics' => 'string[]',
+        'report_type' => 'string',
+        'sales_channel' => 'string',
+        'start_date' => '\DateTime',
+        'timezone' => 'string',
+        'view_attribution_window' => 'string'
     ];
 
     /**
@@ -81,19 +81,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'report_type' => null,
-        'line_item_ids' => null,
-        'campaign_ids' => null,
         'account_id' => null,
-        'click_attribution_window' => null,
-        'view_attribution_window' => null,
+        'campaign_ids' => null,
         'campaign_type' => null,
-        'sales_channel' => null,
+        'click_attribution_window' => null,
         'dimensions' => null,
-        'metrics' => null,
-        'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'timezone' => null
+        'line_item_ids' => null,
+        'metrics' => null,
+        'report_type' => null,
+        'sales_channel' => null,
+        'start_date' => 'date-time',
+        'timezone' => null,
+        'view_attribution_window' => null
     ];
 
     /**
@@ -102,19 +102,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'report_type' => false,
-		'line_item_ids' => false,
+        'account_id' => false,
 		'campaign_ids' => false,
-		'account_id' => false,
-		'click_attribution_window' => false,
-		'view_attribution_window' => false,
 		'campaign_type' => false,
-		'sales_channel' => false,
+		'click_attribution_window' => false,
 		'dimensions' => false,
-		'metrics' => false,
-		'start_date' => false,
 		'end_date' => false,
-		'timezone' => false
+		'line_item_ids' => false,
+		'metrics' => false,
+		'report_type' => false,
+		'sales_channel' => false,
+		'start_date' => false,
+		'timezone' => false,
+		'view_attribution_window' => false
     ];
 
     /**
@@ -203,19 +203,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'report_type' => 'reportType',
-        'line_item_ids' => 'lineItemIds',
-        'campaign_ids' => 'campaignIds',
         'account_id' => 'accountId',
-        'click_attribution_window' => 'clickAttributionWindow',
-        'view_attribution_window' => 'viewAttributionWindow',
+        'campaign_ids' => 'campaignIds',
         'campaign_type' => 'campaignType',
-        'sales_channel' => 'salesChannel',
+        'click_attribution_window' => 'clickAttributionWindow',
         'dimensions' => 'dimensions',
-        'metrics' => 'metrics',
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'timezone' => 'timezone'
+        'line_item_ids' => 'lineItemIds',
+        'metrics' => 'metrics',
+        'report_type' => 'reportType',
+        'sales_channel' => 'salesChannel',
+        'start_date' => 'startDate',
+        'timezone' => 'timezone',
+        'view_attribution_window' => 'viewAttributionWindow'
     ];
 
     /**
@@ -224,19 +224,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'report_type' => 'setReportType',
-        'line_item_ids' => 'setLineItemIds',
-        'campaign_ids' => 'setCampaignIds',
         'account_id' => 'setAccountId',
-        'click_attribution_window' => 'setClickAttributionWindow',
-        'view_attribution_window' => 'setViewAttributionWindow',
+        'campaign_ids' => 'setCampaignIds',
         'campaign_type' => 'setCampaignType',
-        'sales_channel' => 'setSalesChannel',
+        'click_attribution_window' => 'setClickAttributionWindow',
         'dimensions' => 'setDimensions',
-        'metrics' => 'setMetrics',
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'timezone' => 'setTimezone'
+        'line_item_ids' => 'setLineItemIds',
+        'metrics' => 'setMetrics',
+        'report_type' => 'setReportType',
+        'sales_channel' => 'setSalesChannel',
+        'start_date' => 'setStartDate',
+        'timezone' => 'setTimezone',
+        'view_attribution_window' => 'setViewAttributionWindow'
     ];
 
     /**
@@ -245,19 +245,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'report_type' => 'getReportType',
-        'line_item_ids' => 'getLineItemIds',
-        'campaign_ids' => 'getCampaignIds',
         'account_id' => 'getAccountId',
-        'click_attribution_window' => 'getClickAttributionWindow',
-        'view_attribution_window' => 'getViewAttributionWindow',
+        'campaign_ids' => 'getCampaignIds',
         'campaign_type' => 'getCampaignType',
-        'sales_channel' => 'getSalesChannel',
+        'click_attribution_window' => 'getClickAttributionWindow',
         'dimensions' => 'getDimensions',
-        'metrics' => 'getMetrics',
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'timezone' => 'getTimezone'
+        'line_item_ids' => 'getLineItemIds',
+        'metrics' => 'getMetrics',
+        'report_type' => 'getReportType',
+        'sales_channel' => 'getSalesChannel',
+        'start_date' => 'getStartDate',
+        'timezone' => 'getTimezone',
+        'view_attribution_window' => 'getViewAttributionWindow'
     ];
 
     /**
@@ -301,27 +301,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const REPORT_TYPE_SUMMARY = 'summary';
-    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
-    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
-    public const REPORT_TYPE_PRODUCT = 'product';
-    public const REPORT_TYPE_ENVIRONMENT = 'environment';
-    public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
+    public const CAMPAIGN_TYPE_ALL = 'all';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
-    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CAMPAIGN_TYPE_ALL = 'all';
-    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
-    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
-    public const SALES_CHANNEL_ONLINE = 'online';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
@@ -359,54 +345,20 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_ROAS = 'roas';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getReportTypeAllowableValues()
-    {
-        return [
-            self::REPORT_TYPE_SUMMARY,
-            self::REPORT_TYPE_PAGE_TYPE,
-            self::REPORT_TYPE_PRODUCT_CATEGORY,
-            self::REPORT_TYPE_PRODUCT,
-            self::REPORT_TYPE_ENVIRONMENT,
-            self::REPORT_TYPE_SERVED_CATEGORY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getClickAttributionWindowAllowableValues()
-    {
-        return [
-            self::CLICK_ATTRIBUTION_WINDOW_NONE,
-            self::CLICK_ATTRIBUTION_WINDOW__7_D,
-            self::CLICK_ATTRIBUTION_WINDOW__14_D,
-            self::CLICK_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getViewAttributionWindowAllowableValues()
-    {
-        return [
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW__1_D,
-            self::VIEW_ATTRIBUTION_WINDOW__7_D,
-            self::VIEW_ATTRIBUTION_WINDOW__14_D,
-            self::VIEW_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
+    public const REPORT_TYPE_SUMMARY = 'summary';
+    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
+    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
+    public const REPORT_TYPE_PRODUCT = 'product';
+    public const REPORT_TYPE_ENVIRONMENT = 'environment';
+    public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
+    public const SALES_CHANNEL_ALL = 'all';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ONLINE = 'online';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
 
     /**
      * Gets allowable values of the enum
@@ -427,12 +379,13 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getSalesChannelAllowableValues()
+    public function getClickAttributionWindowAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
-            self::SALES_CHANNEL_ONLINE,
+            self::CLICK_ATTRIBUTION_WINDOW_NONE,
+            self::CLICK_ATTRIBUTION_WINDOW__7_D,
+            self::CLICK_ATTRIBUTION_WINDOW__14_D,
+            self::CLICK_ATTRIBUTION_WINDOW__30_D,
         ];
     }
 
@@ -496,6 +449,53 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReportTypeAllowableValues()
+    {
+        return [
+            self::REPORT_TYPE_SUMMARY,
+            self::REPORT_TYPE_PAGE_TYPE,
+            self::REPORT_TYPE_PRODUCT_CATEGORY,
+            self::REPORT_TYPE_PRODUCT,
+            self::REPORT_TYPE_ENVIRONMENT,
+            self::REPORT_TYPE_SERVED_CATEGORY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSalesChannelAllowableValues()
+    {
+        return [
+            self::SALES_CHANNEL_ALL,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ONLINE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewAttributionWindowAllowableValues()
+    {
+        return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -510,19 +510,19 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('report_type', $data ?? [], 'summary');
-        $this->setIfExists('line_item_ids', $data ?? [], null);
-        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('click_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
-        $this->setIfExists('sales_channel', $data ?? [], 'all');
+        $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('report_type', $data ?? [], 'summary');
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
+        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
+        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
 
     /**
@@ -552,18 +552,18 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'report_type', must be one of '%s'",
-                $this->container['report_type'],
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
         if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -573,20 +573,14 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                $this->container['view_attribution_window'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
         }
-
-        $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'campaign_type', must be one of '%s'",
-                $this->container['campaign_type'],
+                "invalid value '%s' for 'report_type', must be one of '%s'",
+                $this->container['report_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -603,9 +597,15 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                $this->container['view_attribution_window'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -620,97 +620,6 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets report_type
-     *
-     * @return string|null
-     */
-    public function getReportType()
-    {
-        return $this->container['report_type'];
-    }
-
-    /**
-     * Sets report_type
-     *
-     * @param string|null $report_type Type of report, if no dimensions/metrics are provided, falls back to summary reportType
-     *
-     * @return self
-     */
-    public function setReportType($report_type)
-    {
-        if (is_null($report_type)) {
-            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
-        }
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!in_array($report_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'report_type', must be one of '%s'",
-                    $report_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['report_type'] = $report_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_item_ids
-     *
-     * @return string[]|null
-     */
-    public function getLineItemIds()
-    {
-        return $this->container['line_item_ids'];
-    }
-
-    /**
-     * Sets line_item_ids
-     *
-     * @param string[]|null $line_item_ids Line Item ids to filter
-     *
-     * @return self
-     */
-    public function setLineItemIds($line_item_ids)
-    {
-        if (is_null($line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
-        }
-        $this->container['line_item_ids'] = $line_item_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_ids
-     *
-     * @return string[]|null
-     */
-    public function getCampaignIds()
-    {
-        return $this->container['campaign_ids'];
-    }
-
-    /**
-     * Sets campaign_ids
-     *
-     * @param string[]|null $campaign_ids Campaign ids to filter
-     *
-     * @return self
-     */
-    public function setCampaignIds($campaign_ids)
-    {
-        if (is_null($campaign_ids)) {
-            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-        $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
 
     /**
      * Gets account_id
@@ -740,75 +649,28 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets click_attribution_window
+     * Gets campaign_ids
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getClickAttributionWindow()
+    public function getCampaignIds()
     {
-        return $this->container['click_attribution_window'];
+        return $this->container['campaign_ids'];
     }
 
     /**
-     * Sets click_attribution_window
+     * Sets campaign_ids
      *
-     * @param string|null $click_attribution_window Click attribution window
+     * @param string[]|null $campaign_ids Campaign ids to filter
      *
      * @return self
      */
-    public function setClickAttributionWindow($click_attribution_window)
+    public function setCampaignIds($campaign_ids)
     {
-        if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
-        $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
-                    $click_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['click_attribution_window'] = $click_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_attribution_window
-     *
-     * @return string|null
-     */
-    public function getViewAttributionWindow()
-    {
-        return $this->container['view_attribution_window'];
-    }
-
-    /**
-     * Sets view_attribution_window
-     *
-     * @param string|null $view_attribution_window View attribution window
-     *
-     * @return self
-     */
-    public function setViewAttributionWindow($view_attribution_window)
-    {
-        if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
-        }
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                    $view_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['view_attribution_window'] = $view_attribution_window;
+        $this->container['campaign_ids'] = $campaign_ids;
 
         return $this;
     }
@@ -851,38 +713,38 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets sales_channel
+     * Gets click_attribution_window
      *
      * @return string|null
      */
-    public function getSalesChannel()
+    public function getClickAttributionWindow()
     {
-        return $this->container['sales_channel'];
+        return $this->container['click_attribution_window'];
     }
 
     /**
-     * Sets sales_channel
+     * Sets click_attribution_window
      *
-     * @param string|null $sales_channel Filter on specific sales channel: offline or online
+     * @param string|null $click_attribution_window Click attribution window
      *
      * @return self
      */
-    public function setSalesChannel($sales_channel)
+    public function setClickAttributionWindow($click_attribution_window)
     {
-        if (is_null($sales_channel)) {
-            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+        if (is_null($click_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
         }
-        $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!in_array($sales_channel, $allowedValues, true)) {
+        $allowedValues = $this->getClickAttributionWindowAllowableValues();
+        if (!in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
-                    $sales_channel,
+                    "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
+                    $click_attribution_window,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['sales_channel'] = $sales_channel;
+        $this->container['click_attribution_window'] = $click_attribution_window;
 
         return $this;
     }
@@ -924,6 +786,60 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date End date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Line Item ids to filter
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets metrics
      *
      * @return string[]|null
@@ -960,6 +876,80 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets report_type
+     *
+     * @return string|null
+     */
+    public function getReportType()
+    {
+        return $this->container['report_type'];
+    }
+
+    /**
+     * Sets report_type
+     *
+     * @param string|null $report_type Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+     *
+     * @return self
+     */
+    public function setReportType($report_type)
+    {
+        if (is_null($report_type)) {
+            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
+        }
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!in_array($report_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'report_type', must be one of '%s'",
+                    $report_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['report_type'] = $report_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales_channel
+     *
+     * @return string|null
+     */
+    public function getSalesChannel()
+    {
+        return $this->container['sales_channel'];
+    }
+
+    /**
+     * Sets sales_channel
+     *
+     * @param string|null $sales_channel Filter on specific sales channel: offline or online
+     *
+     * @return self
+     */
+    public function setSalesChannel($sales_channel)
+    {
+        if (is_null($sales_channel)) {
+            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+        }
+        $allowedValues = $this->getSalesChannelAllowableValues();
+        if (!in_array($sales_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
+                    $sales_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -987,33 +977,6 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date End date
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
      * Gets timezone
      *
      * @return string|null
@@ -1036,6 +999,43 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_attribution_window
+     *
+     * @return string|null
+     */
+    public function getViewAttributionWindow()
+    {
+        return $this->container['view_attribution_window'];
+    }
+
+    /**
+     * Sets view_attribution_window
+     *
+     * @param string|null $view_attribution_window View attribution window
+     *
+     * @return self
+     */
+    public function setViewAttributionWindow($view_attribution_window)
+    {
+        if (is_null($view_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+        }
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                    $view_attribution_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['view_attribution_window'] = $view_attribution_window;
 
         return $this;
     }

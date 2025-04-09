@@ -58,8 +58,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'search_string' => 'string',
-        'brand_id' => 'string[]'
+        'brand_id' => 'string[]',
+        'search_string' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'search_string' => null,
-        'brand_id' => 'long-id'
+        'brand_id' => 'long-id',
+        'search_string' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'search_string' => false,
-		'brand_id' => false
+        'brand_id' => false,
+		'search_string' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'search_string' => 'searchString',
-        'brand_id' => 'brandId'
+        'brand_id' => 'brandId',
+        'search_string' => 'searchString'
     ];
 
     /**
@@ -180,8 +180,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'search_string' => 'setSearchString',
-        'brand_id' => 'setBrandId'
+        'brand_id' => 'setBrandId',
+        'search_string' => 'setSearchString'
     ];
 
     /**
@@ -190,8 +190,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'search_string' => 'getSearchString',
-        'brand_id' => 'getBrandId'
+        'brand_id' => 'getBrandId',
+        'search_string' => 'getSearchString'
     ];
 
     /**
@@ -251,8 +251,8 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('search_string', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('search_string', $data ?? [], null);
     }
 
     /**
@@ -301,33 +301,6 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets search_string
-     *
-     * @return string
-     */
-    public function getSearchString()
-    {
-        return $this->container['search_string'];
-    }
-
-    /**
-     * Sets search_string
-     *
-     * @param string $search_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
-     *
-     * @return self
-     */
-    public function setSearchString($search_string)
-    {
-        if (is_null($search_string)) {
-            throw new \InvalidArgumentException('non-nullable search_string cannot be null');
-        }
-        $this->container['search_string'] = $search_string;
-
-        return $this;
-    }
-
-    /**
      * Gets brand_id
      *
      * @return string[]|null
@@ -350,6 +323,33 @@ class SkuSearchRequestSlimV2Preview implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable brand_id cannot be null');
         }
         $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_string
+     *
+     * @return string
+     */
+    public function getSearchString()
+    {
+        return $this->container['search_string'];
+    }
+
+    /**
+     * Sets search_string
+     *
+     * @param string $search_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
+     *
+     * @return self
+     */
+    public function setSearchString($search_string)
+    {
+        if (is_null($search_string)) {
+            throw new \InvalidArgumentException('non-nullable search_string cannot be null');
+        }
+        $this->container['search_string'] = $search_string;
 
         return $this;
     }

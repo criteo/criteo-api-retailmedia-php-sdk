@@ -58,9 +58,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_minimum_cpc_bid' => 'float',
+        'categories' => 'array<string,\criteo\api\retailmedia\preview\Model\Category202204>',
         'category_minimum_cpc_bids' => 'array<string,float>',
-        'categories' => 'array<string,\criteo\api\retailmedia\preview\Model\Category202204>'
+        'retailer_minimum_cpc_bid' => 'float'
     ];
 
     /**
@@ -71,9 +71,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_minimum_cpc_bid' => 'double',
+        'categories' => null,
         'category_minimum_cpc_bids' => 'double',
-        'categories' => null
+        'retailer_minimum_cpc_bid' => 'double'
     ];
 
     /**
@@ -82,9 +82,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_minimum_cpc_bid' => false,
+        'categories' => true,
 		'category_minimum_cpc_bids' => true,
-		'categories' => true
+		'retailer_minimum_cpc_bid' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_minimum_cpc_bid' => 'retailerMinimumCpcBid',
+        'categories' => 'categories',
         'category_minimum_cpc_bids' => 'categoryMinimumCpcBids',
-        'categories' => 'categories'
+        'retailer_minimum_cpc_bid' => 'retailerMinimumCpcBid'
     ];
 
     /**
@@ -184,9 +184,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'retailer_minimum_cpc_bid' => 'setRetailerMinimumCpcBid',
+        'categories' => 'setCategories',
         'category_minimum_cpc_bids' => 'setCategoryMinimumCpcBids',
-        'categories' => 'setCategories'
+        'retailer_minimum_cpc_bid' => 'setRetailerMinimumCpcBid'
     ];
 
     /**
@@ -195,9 +195,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'retailer_minimum_cpc_bid' => 'getRetailerMinimumCpcBid',
+        'categories' => 'getCategories',
         'category_minimum_cpc_bids' => 'getCategoryMinimumCpcBids',
-        'categories' => 'getCategories'
+        'retailer_minimum_cpc_bid' => 'getRetailerMinimumCpcBid'
     ];
 
     /**
@@ -257,9 +257,9 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_minimum_cpc_bid', $data ?? [], null);
-        $this->setIfExists('category_minimum_cpc_bids', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('category_minimum_cpc_bids', $data ?? [], null);
+        $this->setIfExists('retailer_minimum_cpc_bid', $data ?? [], null);
     }
 
     /**
@@ -308,28 +308,35 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets retailer_minimum_cpc_bid
+     * Gets categories
      *
-     * @return float
+     * @return array<string,\criteo\api\retailmedia\preview\Model\Category202204>|null
      */
-    public function getRetailerMinimumCpcBid()
+    public function getCategories()
     {
-        return $this->container['retailer_minimum_cpc_bid'];
+        return $this->container['categories'];
     }
 
     /**
-     * Sets retailer_minimum_cpc_bid
+     * Sets categories
      *
-     * @param float $retailer_minimum_cpc_bid retailer minimum cpc bid
+     * @param array<string,\criteo\api\retailmedia\preview\Model\Category202204>|null $categories map of category id to category values
      *
      * @return self
      */
-    public function setRetailerMinimumCpcBid($retailer_minimum_cpc_bid)
+    public function setCategories($categories)
     {
-        if (is_null($retailer_minimum_cpc_bid)) {
-            throw new \InvalidArgumentException('non-nullable retailer_minimum_cpc_bid cannot be null');
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['retailer_minimum_cpc_bid'] = $retailer_minimum_cpc_bid;
+        $this->container['categories'] = $categories;
 
         return $this;
     }
@@ -369,35 +376,28 @@ class CpcRateCardPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets categories
+     * Gets retailer_minimum_cpc_bid
      *
-     * @return array<string,\criteo\api\retailmedia\preview\Model\Category202204>|null
+     * @return float
      */
-    public function getCategories()
+    public function getRetailerMinimumCpcBid()
     {
-        return $this->container['categories'];
+        return $this->container['retailer_minimum_cpc_bid'];
     }
 
     /**
-     * Sets categories
+     * Sets retailer_minimum_cpc_bid
      *
-     * @param array<string,\criteo\api\retailmedia\preview\Model\Category202204>|null $categories map of category id to category values
+     * @param float $retailer_minimum_cpc_bid retailer minimum cpc bid
      *
      * @return self
      */
-    public function setCategories($categories)
+    public function setRetailerMinimumCpcBid($retailer_minimum_cpc_bid)
     {
-        if (is_null($categories)) {
-            array_push($this->openAPINullablesSetToNull, 'categories');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('categories', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($retailer_minimum_cpc_bid)) {
+            throw new \InvalidArgumentException('non-nullable retailer_minimum_cpc_bid cannot be null');
         }
-        $this->container['categories'] = $categories;
+        $this->container['retailer_minimum_cpc_bid'] = $retailer_minimum_cpc_bid;
 
         return $this;
     }
