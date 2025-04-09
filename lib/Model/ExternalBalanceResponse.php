@@ -58,21 +58,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'balance_type' => 'string',
+        'created_at' => '\DateTime',
+        'deposited' => 'float',
+        'end_date' => '\DateTime',
+        'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
-        'memo' => 'string',
-        'deposited' => 'float',
-        'spent' => 'float',
+        'private_market_billing_type' => 'string',
         'remaining' => 'float',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'status' => 'string',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'balance_type' => 'string',
         'sales_force_id' => 'string',
         'spend_type' => 'string',
-        'private_market_billing_type' => 'string'
+        'spent' => 'float',
+        'start_date' => '\DateTime',
+        'status' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -83,21 +83,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'balance_type' => null,
+        'created_at' => 'date-time',
+        'deposited' => 'decimal',
+        'end_date' => 'date',
+        'memo' => null,
         'name' => null,
         'po_number' => null,
-        'memo' => null,
-        'deposited' => 'decimal',
-        'spent' => 'decimal',
+        'private_market_billing_type' => null,
         'remaining' => 'decimal',
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'status' => null,
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'balance_type' => null,
         'sales_force_id' => null,
         'spend_type' => null,
-        'private_market_billing_type' => null
+        'spent' => 'decimal',
+        'start_date' => 'date',
+        'status' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -106,21 +106,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'po_number' => false,
-		'memo' => false,
-		'deposited' => true,
-		'spent' => true,
-		'remaining' => true,
-		'start_date' => false,
-		'end_date' => false,
-		'status' => false,
+        'balance_type' => false,
 		'created_at' => false,
-		'updated_at' => false,
-		'balance_type' => false,
+		'deposited' => true,
+		'end_date' => false,
+		'memo' => false,
+		'name' => false,
+		'po_number' => false,
+		'private_market_billing_type' => false,
+		'remaining' => true,
 		'sales_force_id' => false,
 		'spend_type' => false,
-		'private_market_billing_type' => false
+		'spent' => true,
+		'start_date' => false,
+		'status' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -209,21 +209,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'balance_type' => 'balanceType',
+        'created_at' => 'createdAt',
+        'deposited' => 'deposited',
+        'end_date' => 'endDate',
+        'memo' => 'memo',
         'name' => 'name',
         'po_number' => 'poNumber',
-        'memo' => 'memo',
-        'deposited' => 'deposited',
-        'spent' => 'spent',
+        'private_market_billing_type' => 'privateMarketBillingType',
         'remaining' => 'remaining',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'status' => 'status',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'balance_type' => 'balanceType',
         'sales_force_id' => 'salesForceId',
         'spend_type' => 'spendType',
-        'private_market_billing_type' => 'privateMarketBillingType'
+        'spent' => 'spent',
+        'start_date' => 'startDate',
+        'status' => 'status',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -232,21 +232,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'balance_type' => 'setBalanceType',
+        'created_at' => 'setCreatedAt',
+        'deposited' => 'setDeposited',
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
         'name' => 'setName',
         'po_number' => 'setPoNumber',
-        'memo' => 'setMemo',
-        'deposited' => 'setDeposited',
-        'spent' => 'setSpent',
+        'private_market_billing_type' => 'setPrivateMarketBillingType',
         'remaining' => 'setRemaining',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'status' => 'setStatus',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'balance_type' => 'setBalanceType',
         'sales_force_id' => 'setSalesForceId',
         'spend_type' => 'setSpendType',
-        'private_market_billing_type' => 'setPrivateMarketBillingType'
+        'spent' => 'setSpent',
+        'start_date' => 'setStartDate',
+        'status' => 'setStatus',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -255,21 +255,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'balance_type' => 'getBalanceType',
+        'created_at' => 'getCreatedAt',
+        'deposited' => 'getDeposited',
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
         'name' => 'getName',
         'po_number' => 'getPoNumber',
-        'memo' => 'getMemo',
-        'deposited' => 'getDeposited',
-        'spent' => 'getSpent',
+        'private_market_billing_type' => 'getPrivateMarketBillingType',
         'remaining' => 'getRemaining',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'status' => 'getStatus',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'balance_type' => 'getBalanceType',
         'sales_force_id' => 'getSalesForceId',
         'spend_type' => 'getSpendType',
-        'private_market_billing_type' => 'getPrivateMarketBillingType'
+        'spent' => 'getSpent',
+        'start_date' => 'getStartDate',
+        'status' => 'getStatus',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -313,35 +313,20 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const STATUS_UNKNOWN = 'unknown';
-    public const STATUS_SCHEDULED = 'scheduled';
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_ENDED = 'ended';
     public const BALANCE_TYPE_UNKNOWN = 'unknown';
     public const BALANCE_TYPE_CAPPED = 'capped';
     public const BALANCE_TYPE_UNCAPPED = 'uncapped';
-    public const SPEND_TYPE_ONSITE = 'Onsite';
-    public const SPEND_TYPE_OFFSITE = 'Offsite';
-    public const SPEND_TYPE_OFFSITE_AWARENESS = 'OffsiteAwareness';
     public const PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE = 'notApplicable';
     public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'billByRetailer';
     public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'billByCriteo';
     public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'unknown';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_UNKNOWN,
-            self::STATUS_SCHEDULED,
-            self::STATUS_ACTIVE,
-            self::STATUS_ENDED,
-        ];
-    }
+    public const SPEND_TYPE_ONSITE = 'Onsite';
+    public const SPEND_TYPE_OFFSITE = 'Offsite';
+    public const SPEND_TYPE_OFFSITE_AWARENESS = 'OffsiteAwareness';
+    public const STATUS_UNKNOWN = 'unknown';
+    public const STATUS_SCHEDULED = 'scheduled';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_ENDED = 'ended';
 
     /**
      * Gets allowable values of the enum
@@ -354,6 +339,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
             self::BALANCE_TYPE_UNKNOWN,
             self::BALANCE_TYPE_CAPPED,
             self::BALANCE_TYPE_UNCAPPED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPrivateMarketBillingTypeAllowableValues()
+    {
+        return [
+            self::PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE,
+            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER,
+            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO,
+            self::PRIVATE_MARKET_BILLING_TYPE_UNKNOWN,
         ];
     }
 
@@ -376,13 +376,13 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return string[]
      */
-    public function getPrivateMarketBillingTypeAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::PRIVATE_MARKET_BILLING_TYPE_NOT_APPLICABLE,
-            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER,
-            self::PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO,
-            self::PRIVATE_MARKET_BILLING_TYPE_UNKNOWN,
+            self::STATUS_UNKNOWN,
+            self::STATUS_SCHEDULED,
+            self::STATUS_ACTIVE,
+            self::STATUS_ENDED,
         ];
     }
 
@@ -401,21 +401,21 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('balance_type', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('deposited', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('po_number', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
-        $this->setIfExists('deposited', $data ?? [], null);
-        $this->setIfExists('spent', $data ?? [], null);
+        $this->setIfExists('private_market_billing_type', $data ?? [], null);
         $this->setIfExists('remaining', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('balance_type', $data ?? [], null);
         $this->setIfExists('sales_force_id', $data ?? [], null);
         $this->setIfExists('spend_type', $data ?? [], null);
-        $this->setIfExists('private_market_billing_type', $data ?? [], null);
+        $this->setIfExists('spent', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -445,48 +445,6 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['po_number'] === null) {
-            $invalidProperties[] = "'po_number' can't be null";
-        }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['deposited'] === null) {
-            $invalidProperties[] = "'deposited' can't be null";
-        }
-        if ($this->container['spent'] === null) {
-            $invalidProperties[] = "'spent' can't be null";
-        }
-        if ($this->container['remaining'] === null) {
-            $invalidProperties[] = "'remaining' can't be null";
-        }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         if ($this->container['balance_type'] === null) {
             $invalidProperties[] = "'balance_type' can't be null";
         }
@@ -499,6 +457,39 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['deposited'] === null) {
+            $invalidProperties[] = "'deposited' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['po_number'] === null) {
+            $invalidProperties[] = "'po_number' can't be null";
+        }
+        if ($this->container['private_market_billing_type'] === null) {
+            $invalidProperties[] = "'private_market_billing_type' can't be null";
+        }
+        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
+        if (!is_null($this->container['private_market_billing_type']) && !in_array($this->container['private_market_billing_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
+                $this->container['private_market_billing_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['remaining'] === null) {
+            $invalidProperties[] = "'remaining' can't be null";
+        }
         if ($this->container['sales_force_id'] === null) {
             $invalidProperties[] = "'sales_force_id' can't be null";
         }
@@ -514,18 +505,27 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['private_market_billing_type'] === null) {
-            $invalidProperties[] = "'private_market_billing_type' can't be null";
+        if ($this->container['spent'] === null) {
+            $invalidProperties[] = "'spent' can't be null";
         }
-        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
-        if (!is_null($this->container['private_market_billing_type']) && !in_array($this->container['private_market_billing_type'], $allowedValues, true)) {
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
-                $this->container['private_market_billing_type'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -540,6 +540,158 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets balance_type
+     *
+     * @return string
+     */
+    public function getBalanceType()
+    {
+        return $this->container['balance_type'];
+    }
+
+    /**
+     * Sets balance_type
+     *
+     * @param string $balance_type Type of the balance
+     *
+     * @return self
+     */
+    public function setBalanceType($balance_type)
+    {
+        if (is_null($balance_type)) {
+            throw new \InvalidArgumentException('non-nullable balance_type cannot be null');
+        }
+        $allowedValues = $this->getBalanceTypeAllowableValues();
+        if (!in_array($balance_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'balance_type', must be one of '%s'",
+                    $balance_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['balance_type'] = $balance_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets deposited
+     *
+     * @return float
+     */
+    public function getDeposited()
+    {
+        return $this->container['deposited'];
+    }
+
+    /**
+     * Sets deposited
+     *
+     * @param float $deposited Amount of billable funds allotted to the balance.
+     *
+     * @return self
+     */
+    public function setDeposited($deposited)
+    {
+        if (is_null($deposited)) {
+            array_push($this->openAPINullablesSetToNull, 'deposited');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deposited', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deposited'] = $deposited;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo Memo
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if (is_null($memo)) {
+            throw new \InvalidArgumentException('non-nullable memo cannot be null');
+        }
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -596,96 +748,38 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets memo
+     * Gets private_market_billing_type
      *
      * @return string
      */
-    public function getMemo()
+    public function getPrivateMarketBillingType()
     {
-        return $this->container['memo'];
+        return $this->container['private_market_billing_type'];
     }
 
     /**
-     * Sets memo
+     * Sets private_market_billing_type
      *
-     * @param string $memo Memo
+     * @param string $private_market_billing_type Billing type for Private Market.
      *
      * @return self
      */
-    public function setMemo($memo)
+    public function setPrivateMarketBillingType($private_market_billing_type)
     {
-        if (is_null($memo)) {
-            throw new \InvalidArgumentException('non-nullable memo cannot be null');
+        if (is_null($private_market_billing_type)) {
+            throw new \InvalidArgumentException('non-nullable private_market_billing_type cannot be null');
         }
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets deposited
-     *
-     * @return float
-     */
-    public function getDeposited()
-    {
-        return $this->container['deposited'];
-    }
-
-    /**
-     * Sets deposited
-     *
-     * @param float $deposited Amount of billable funds allotted to the balance.
-     *
-     * @return self
-     */
-    public function setDeposited($deposited)
-    {
-        if (is_null($deposited)) {
-            array_push($this->openAPINullablesSetToNull, 'deposited');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deposited', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
+        if (!in_array($private_market_billing_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
+                    $private_market_billing_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['deposited'] = $deposited;
-
-        return $this;
-    }
-
-    /**
-     * Gets spent
-     *
-     * @return float
-     */
-    public function getSpent()
-    {
-        return $this->container['spent'];
-    }
-
-    /**
-     * Sets spent
-     *
-     * @param float $spent spent
-     *
-     * @return self
-     */
-    public function setSpent($spent)
-    {
-        if (is_null($spent)) {
-            array_push($this->openAPINullablesSetToNull, 'spent');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('spent', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['spent'] = $spent;
+        $this->container['private_market_billing_type'] = $private_market_billing_type;
 
         return $this;
     }
@@ -720,188 +814,6 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
             }
         }
         $this->container['remaining'] = $remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets balance_type
-     *
-     * @return string
-     */
-    public function getBalanceType()
-    {
-        return $this->container['balance_type'];
-    }
-
-    /**
-     * Sets balance_type
-     *
-     * @param string $balance_type Type of the balance
-     *
-     * @return self
-     */
-    public function setBalanceType($balance_type)
-    {
-        if (is_null($balance_type)) {
-            throw new \InvalidArgumentException('non-nullable balance_type cannot be null');
-        }
-        $allowedValues = $this->getBalanceTypeAllowableValues();
-        if (!in_array($balance_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'balance_type', must be one of '%s'",
-                    $balance_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['balance_type'] = $balance_type;
 
         return $this;
     }
@@ -971,38 +883,126 @@ class ExternalBalanceResponse implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets private_market_billing_type
+     * Gets spent
      *
-     * @return string
+     * @return float
      */
-    public function getPrivateMarketBillingType()
+    public function getSpent()
     {
-        return $this->container['private_market_billing_type'];
+        return $this->container['spent'];
     }
 
     /**
-     * Sets private_market_billing_type
+     * Sets spent
      *
-     * @param string $private_market_billing_type Billing type for Private Market.
+     * @param float $spent spent
      *
      * @return self
      */
-    public function setPrivateMarketBillingType($private_market_billing_type)
+    public function setSpent($spent)
     {
-        if (is_null($private_market_billing_type)) {
-            throw new \InvalidArgumentException('non-nullable private_market_billing_type cannot be null');
+        if (is_null($spent)) {
+            array_push($this->openAPINullablesSetToNull, 'spent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('spent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getPrivateMarketBillingTypeAllowableValues();
-        if (!in_array($private_market_billing_type, $allowedValues, true)) {
+        $this->container['spent'] = $spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'private_market_billing_type', must be one of '%s'",
-                    $private_market_billing_type,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['private_market_billing_type'] = $private_market_billing_type;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

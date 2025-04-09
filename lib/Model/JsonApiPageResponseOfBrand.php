@@ -58,10 +58,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'data' => '\criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[]',
         'errors' => '\criteo\api\retailmedia\v2024_01\Model\CommonError[]',
-        'warnings' => '\criteo\api\retailmedia\v2024_01\Model\CommonWarning[]',
         'metadata' => '\criteo\api\retailmedia\v2024_01\Model\PageMetadata',
-        'data' => '\criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[]'
+        'warnings' => '\criteo\api\retailmedia\v2024_01\Model\CommonWarning[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'data' => null,
         'errors' => null,
-        'warnings' => null,
         'metadata' => null,
-        'data' => null
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => true,
-		'warnings' => true,
+        'data' => false,
+		'errors' => true,
 		'metadata' => false,
-		'data' => false
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'data' => 'data',
         'errors' => 'errors',
-        'warnings' => 'warnings',
         'metadata' => 'metadata',
-        'data' => 'data'
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +188,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'data' => 'setData',
         'errors' => 'setErrors',
-        'warnings' => 'setWarnings',
         'metadata' => 'setMetadata',
-        'data' => 'setData'
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +200,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'data' => 'getData',
         'errors' => 'getErrors',
-        'warnings' => 'getWarnings',
         'metadata' => 'getMetadata',
-        'data' => 'getData'
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +263,10 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -296,11 +296,11 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['metadata'] === null) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -316,6 +316,33 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets data
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[]
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[] $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        }
+        $this->container['data'] = $data;
+
+        return $this;
+    }
 
     /**
      * Gets errors
@@ -352,6 +379,33 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\PageMetadata
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\PageMetadata $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
      * Gets warnings
      *
      * @return \criteo\api\retailmedia\v2024_01\Model\CommonWarning[]|null
@@ -381,60 +435,6 @@ class JsonApiPageResponseOfBrand implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\PageMetadata
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\PageMetadata $metadata metadata
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
-        }
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[]
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndBrandAndBrand[] $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
 
         return $this;
     }

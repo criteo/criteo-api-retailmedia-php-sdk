@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**attributes** | [**\criteo\api\retailmedia\v2024_01\Model\LineItemBidMultipliers**](LineItemBidMultipliers.md) |  | [optional]
 **id** | **string** |  |
 **type** | **string** |  |
-**attributes** | [**\criteo\api\retailmedia\v2024_01\Model\LineItemBidMultipliers**](LineItemBidMultipliers.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

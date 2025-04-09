@@ -58,9 +58,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phrase' => 'string',
+        'is_deleted' => 'bool',
         'match_type' => '\criteo\api\retailmedia\v2024_01\Model\MatchTypeModel',
-        'is_deleted' => 'bool'
+        'phrase' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phrase' => null,
+        'is_deleted' => null,
         'match_type' => null,
-        'is_deleted' => null
+        'phrase' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phrase' => true,
+        'is_deleted' => false,
 		'match_type' => false,
-		'is_deleted' => false
+		'phrase' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'phrase' => 'phrase',
+        'is_deleted' => 'isDeleted',
         'match_type' => 'matchType',
-        'is_deleted' => 'isDeleted'
+        'phrase' => 'phrase'
     ];
 
     /**
@@ -184,9 +184,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'phrase' => 'setPhrase',
+        'is_deleted' => 'setIsDeleted',
         'match_type' => 'setMatchType',
-        'is_deleted' => 'setIsDeleted'
+        'phrase' => 'setPhrase'
     ];
 
     /**
@@ -195,9 +195,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'phrase' => 'getPhrase',
+        'is_deleted' => 'getIsDeleted',
         'match_type' => 'getMatchType',
-        'is_deleted' => 'getIsDeleted'
+        'phrase' => 'getPhrase'
     ];
 
     /**
@@ -257,9 +257,9 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('phrase', $data ?? [], null);
-        $this->setIfExists('match_type', $data ?? [], null);
         $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
+        $this->setIfExists('phrase', $data ?? [], null);
     }
 
     /**
@@ -313,6 +313,60 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
+     * Gets is_deleted
+     *
+     * @return bool|null
+     */
+    public function getIsDeleted()
+    {
+        return $this->container['is_deleted'];
+    }
+
+    /**
+     * Sets is_deleted
+     *
+     * @param bool|null $is_deleted is_deleted
+     *
+     * @return self
+     */
+    public function setIsDeleted($is_deleted)
+    {
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        }
+        $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets match_type
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\MatchTypeModel|null
+     */
+    public function getMatchType()
+    {
+        return $this->container['match_type'];
+    }
+
+    /**
+     * Sets match_type
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\MatchTypeModel|null $match_type match_type
+     *
+     * @return self
+     */
+    public function setMatchType($match_type)
+    {
+        if (is_null($match_type)) {
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
+        }
+        $this->container['match_type'] = $match_type;
+
+        return $this;
+    }
+
+    /**
      * Gets phrase
      *
      * @return string|null
@@ -349,60 +403,6 @@ class AddRemoveKeywordModel implements ModelInterface, ArrayAccess, \JsonSeriali
         }
 
         $this->container['phrase'] = $phrase;
-
-        return $this;
-    }
-
-    /**
-     * Gets match_type
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\MatchTypeModel|null
-     */
-    public function getMatchType()
-    {
-        return $this->container['match_type'];
-    }
-
-    /**
-     * Sets match_type
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\MatchTypeModel|null $match_type match_type
-     *
-     * @return self
-     */
-    public function setMatchType($match_type)
-    {
-        if (is_null($match_type)) {
-            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
-        }
-        $this->container['match_type'] = $match_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_deleted
-     *
-     * @return bool|null
-     */
-    public function getIsDeleted()
-    {
-        return $this->container['is_deleted'];
-    }
-
-    /**
-     * Sets is_deleted
-     *
-     * @param bool|null $is_deleted is_deleted
-     *
-     * @return self
-     */
-    public function setIsDeleted($is_deleted)
-    {
-        if (is_null($is_deleted)) {
-            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
-        }
-        $this->container['is_deleted'] = $is_deleted;
 
         return $this;
     }

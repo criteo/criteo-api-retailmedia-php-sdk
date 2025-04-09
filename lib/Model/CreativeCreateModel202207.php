@@ -58,8 +58,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'brand_id' => 'int',
+        'name' => 'string',
         'retailer_id' => 'int',
         'template_id' => 'int',
         'template_variable_values' => '\criteo\api\retailmedia\v2024_01\Model\TemplateVariableValue[]'
@@ -73,8 +73,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'brand_id' => 'int64',
+        'name' => null,
         'retailer_id' => 'int32',
         'template_id' => 'int32',
         'template_variable_values' => null
@@ -86,8 +86,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'brand_id' => true,
+        'brand_id' => true,
+		'name' => false,
 		'retailer_id' => false,
 		'template_id' => false,
 		'template_variable_values' => false
@@ -179,8 +179,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'brand_id' => 'brandId',
+        'name' => 'name',
         'retailer_id' => 'retailerId',
         'template_id' => 'templateId',
         'template_variable_values' => 'templateVariableValues'
@@ -192,8 +192,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'brand_id' => 'setBrandId',
+        'name' => 'setName',
         'retailer_id' => 'setRetailerId',
         'template_id' => 'setTemplateId',
         'template_variable_values' => 'setTemplateVariableValues'
@@ -205,8 +205,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'brand_id' => 'getBrandId',
+        'name' => 'getName',
         'retailer_id' => 'getRetailerId',
         'template_id' => 'getTemplateId',
         'template_variable_values' => 'getTemplateVariableValues'
@@ -269,8 +269,8 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
         $this->setIfExists('template_variable_values', $data ?? [], null);
@@ -331,33 +331,6 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the creative
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets brand_id
      *
      * @return int|null
@@ -387,6 +360,33 @@ class CreativeCreateModel202207 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The name of the creative
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

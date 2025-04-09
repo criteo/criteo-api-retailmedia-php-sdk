@@ -58,8 +58,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_type' => 'string',
         'categories' => '\criteo\api\retailmedia\v2024_01\Model\ExternalLineItemPageCategory202110[]',
+        'page_type' => 'string',
         'search_keywords' => 'string[]'
     ];
 
@@ -71,8 +71,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_type' => null,
         'categories' => null,
+        'page_type' => null,
         'search_keywords' => null
     ];
 
@@ -82,8 +82,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'page_type' => false,
-		'categories' => false,
+        'categories' => true,
+		'page_type' => false,
 		'search_keywords' => false
     ];
 
@@ -173,8 +173,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_type' => 'pageType',
         'categories' => 'categories',
+        'page_type' => 'pageType',
         'search_keywords' => 'searchKeywords'
     ];
 
@@ -184,8 +184,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'page_type' => 'setPageType',
         'categories' => 'setCategories',
+        'page_type' => 'setPageType',
         'search_keywords' => 'setSearchKeywords'
     ];
 
@@ -195,8 +195,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'page_type' => 'getPageType',
         'categories' => 'getCategories',
+        'page_type' => 'getPageType',
         'search_keywords' => 'getSearchKeywords'
     ];
 
@@ -284,8 +284,8 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('page_type', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
         $this->setIfExists('search_keywords', $data ?? [], null);
     }
 
@@ -344,6 +344,40 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
+     * Gets categories
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\ExternalLineItemPageCategory202110[]|null
+     */
+    public function getCategories()
+    {
+        return $this->container['categories'];
+    }
+
+    /**
+     * Sets categories
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\ExternalLineItemPageCategory202110[]|null $categories categories
+     *
+     * @return self
+     */
+    public function setCategories($categories)
+    {
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['categories'] = $categories;
+
+        return $this;
+    }
+
+    /**
      * Gets page_type
      *
      * @return string
@@ -376,33 +410,6 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
             );
         }
         $this->container['page_type'] = $page_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets categories
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\ExternalLineItemPageCategory202110[]|null
-     */
-    public function getCategories()
-    {
-        return $this->container['categories'];
-    }
-
-    /**
-     * Sets categories
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\ExternalLineItemPageCategory202110[]|null $categories categories
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        if (is_null($categories)) {
-            throw new \InvalidArgumentException('non-nullable categories cannot be null');
-        }
-        $this->container['categories'] = $categories;
 
         return $this;
     }

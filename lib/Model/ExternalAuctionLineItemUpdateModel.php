@@ -58,17 +58,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'status' => 'string',
+        'bid_strategy' => 'string',
         'budget' => 'float',
-        'target_bid' => 'float',
+        'daily_pacing' => 'float',
+        'end_date' => '\DateTime',
+        'is_auto_daily_pacing' => 'bool',
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
-        'daily_pacing' => 'float',
-        'is_auto_daily_pacing' => 'bool',
-        'bid_strategy' => 'string'
+        'name' => 'string',
+        'start_date' => '\DateTime',
+        'status' => 'string',
+        'target_bid' => 'float'
     ];
 
     /**
@@ -79,17 +79,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'status' => null,
+        'bid_strategy' => null,
         'budget' => 'decimal',
-        'target_bid' => 'decimal',
+        'daily_pacing' => 'decimal',
+        'end_date' => 'date',
+        'is_auto_daily_pacing' => null,
         'max_bid' => 'decimal',
         'monthly_pacing' => 'decimal',
-        'daily_pacing' => 'decimal',
-        'is_auto_daily_pacing' => null,
-        'bid_strategy' => null
+        'name' => null,
+        'start_date' => 'date',
+        'status' => null,
+        'target_bid' => 'decimal'
     ];
 
     /**
@@ -98,17 +98,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'start_date' => false,
-		'end_date' => false,
-		'status' => false,
+        'bid_strategy' => false,
 		'budget' => true,
-		'target_bid' => true,
+		'daily_pacing' => true,
+		'end_date' => false,
+		'is_auto_daily_pacing' => false,
 		'max_bid' => true,
 		'monthly_pacing' => true,
-		'daily_pacing' => true,
-		'is_auto_daily_pacing' => false,
-		'bid_strategy' => false
+		'name' => false,
+		'start_date' => false,
+		'status' => false,
+		'target_bid' => true
     ];
 
     /**
@@ -197,17 +197,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'status' => 'status',
+        'bid_strategy' => 'bidStrategy',
         'budget' => 'budget',
-        'target_bid' => 'targetBid',
+        'daily_pacing' => 'dailyPacing',
+        'end_date' => 'endDate',
+        'is_auto_daily_pacing' => 'isAutoDailyPacing',
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
-        'daily_pacing' => 'dailyPacing',
-        'is_auto_daily_pacing' => 'isAutoDailyPacing',
-        'bid_strategy' => 'bidStrategy'
+        'name' => 'name',
+        'start_date' => 'startDate',
+        'status' => 'status',
+        'target_bid' => 'targetBid'
     ];
 
     /**
@@ -216,17 +216,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'status' => 'setStatus',
+        'bid_strategy' => 'setBidStrategy',
         'budget' => 'setBudget',
-        'target_bid' => 'setTargetBid',
+        'daily_pacing' => 'setDailyPacing',
+        'end_date' => 'setEndDate',
+        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
-        'daily_pacing' => 'setDailyPacing',
-        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
-        'bid_strategy' => 'setBidStrategy'
+        'name' => 'setName',
+        'start_date' => 'setStartDate',
+        'status' => 'setStatus',
+        'target_bid' => 'setTargetBid'
     ];
 
     /**
@@ -235,17 +235,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'status' => 'getStatus',
+        'bid_strategy' => 'getBidStrategy',
         'budget' => 'getBudget',
-        'target_bid' => 'getTargetBid',
+        'daily_pacing' => 'getDailyPacing',
+        'end_date' => 'getEndDate',
+        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
-        'daily_pacing' => 'getDailyPacing',
-        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
-        'bid_strategy' => 'getBidStrategy'
+        'name' => 'getName',
+        'start_date' => 'getStartDate',
+        'status' => 'getStatus',
+        'target_bid' => 'getTargetBid'
     ];
 
     /**
@@ -289,6 +289,10 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const BID_STRATEGY_UNKNOWN = 'unknown';
+    public const BID_STRATEGY_CONVERSION = 'conversion';
+    public const BID_STRATEGY_CLICKS = 'clicks';
+    public const BID_STRATEGY_REVENUE = 'revenue';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -298,10 +302,21 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     public const STATUS_ENDED = 'ended';
     public const STATUS_ARCHIVED = 'archived';
     public const STATUS_NO_FUNDS = 'noFunds';
-    public const BID_STRATEGY_UNKNOWN = 'unknown';
-    public const BID_STRATEGY_CONVERSION = 'conversion';
-    public const BID_STRATEGY_CLICKS = 'clicks';
-    public const BID_STRATEGY_REVENUE = 'revenue';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBidStrategyAllowableValues()
+    {
+        return [
+            self::BID_STRATEGY_UNKNOWN,
+            self::BID_STRATEGY_CONVERSION,
+            self::BID_STRATEGY_CLICKS,
+            self::BID_STRATEGY_REVENUE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -324,21 +339,6 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBidStrategyAllowableValues()
-    {
-        return [
-            self::BID_STRATEGY_UNKNOWN,
-            self::BID_STRATEGY_CONVERSION,
-            self::BID_STRATEGY_CLICKS,
-            self::BID_STRATEGY_REVENUE,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -353,17 +353,17 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('target_bid', $data ?? [], null);
+        $this->setIfExists('daily_pacing', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
-        $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('target_bid', $data ?? [], null);
     }
 
     /**
@@ -393,6 +393,18 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!is_null($this->container['bid_strategy']) && !in_array($this->container['bid_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                $this->container['bid_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['is_auto_daily_pacing'] === null) {
+            $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -422,18 +434,6 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
         if ($this->container['target_bid'] === null) {
             $invalidProperties[] = "'target_bid' can't be null";
         }
-        if ($this->container['is_auto_daily_pacing'] === null) {
-            $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
-        }
-        $allowedValues = $this->getBidStrategyAllowableValues();
-        if (!is_null($this->container['bid_strategy']) && !in_array($this->container['bid_strategy'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'bid_strategy', must be one of '%s'",
-                $this->container['bid_strategy'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -450,126 +450,38 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets name
+     * Gets bid_strategy
      *
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getBidStrategy()
     {
-        return $this->container['name'];
+        return $this->container['bid_strategy'];
     }
 
     /**
-     * Sets name
+     * Sets bid_strategy
      *
-     * @param string $name name
+     * @param string|null $bid_strategy bid_strategy
      *
      * @return self
      */
-    public function setName($name)
+    public function setBidStrategy($bid_strategy)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAuctionLineItemUpdateModel., must be smaller than or equal to 255.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAuctionLineItemUpdateModel., must be bigger than or equal to 0.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!in_array($bid_strategy, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
+                    "Invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                    $bid_strategy,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['status'] = $status;
+        $this->container['bid_strategy'] = $bid_strategy;
 
         return $this;
     }
@@ -609,35 +521,89 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets target_bid
+     * Gets daily_pacing
      *
-     * @return float
+     * @return float|null
      */
-    public function getTargetBid()
+    public function getDailyPacing()
     {
-        return $this->container['target_bid'];
+        return $this->container['daily_pacing'];
     }
 
     /**
-     * Sets target_bid
+     * Sets daily_pacing
      *
-     * @param float $target_bid target_bid
+     * @param float|null $daily_pacing daily_pacing
      *
      * @return self
      */
-    public function setTargetBid($target_bid)
+    public function setDailyPacing($daily_pacing)
     {
-        if (is_null($target_bid)) {
-            array_push($this->openAPINullablesSetToNull, 'target_bid');
+        if (is_null($daily_pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('target_bid', $nullablesSetToNull);
+            $index = array_search('daily_pacing', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['target_bid'] = $target_bid;
+        $this->container['daily_pacing'] = $daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_auto_daily_pacing
+     *
+     * @return bool
+     */
+    public function getIsAutoDailyPacing()
+    {
+        return $this->container['is_auto_daily_pacing'];
+    }
+
+    /**
+     * Sets is_auto_daily_pacing
+     *
+     * @param bool $is_auto_daily_pacing is_auto_daily_pacing
+     *
+     * @return self
+     */
+    public function setIsAutoDailyPacing($is_auto_daily_pacing)
+    {
+        if (is_null($is_auto_daily_pacing)) {
+            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
+        }
+        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
 
         return $this;
     }
@@ -711,99 +677,133 @@ class ExternalAuctionLineItemUpdateModel implements ModelInterface, ArrayAccess,
     }
 
     /**
-     * Gets daily_pacing
+     * Gets name
      *
-     * @return float|null
+     * @return string
      */
-    public function getDailyPacing()
+    public function getName()
     {
-        return $this->container['daily_pacing'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets daily_pacing
+     * Sets name
      *
-     * @param float|null $daily_pacing daily_pacing
+     * @param string $name name
      *
      * @return self
      */
-    public function setDailyPacing($daily_pacing)
+    public function setName($name)
     {
-        if (is_null($daily_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAuctionLineItemUpdateModel., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAuctionLineItemUpdateModel., must be bigger than or equal to 0.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_bid
+     *
+     * @return float
+     */
+    public function getTargetBid()
+    {
+        return $this->container['target_bid'];
+    }
+
+    /**
+     * Sets target_bid
+     *
+     * @param float $target_bid target_bid
+     *
+     * @return self
+     */
+    public function setTargetBid($target_bid)
+    {
+        if (is_null($target_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'target_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily_pacing', $nullablesSetToNull);
+            $index = array_search('target_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily_pacing'] = $daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_auto_daily_pacing
-     *
-     * @return bool
-     */
-    public function getIsAutoDailyPacing()
-    {
-        return $this->container['is_auto_daily_pacing'];
-    }
-
-    /**
-     * Sets is_auto_daily_pacing
-     *
-     * @param bool $is_auto_daily_pacing is_auto_daily_pacing
-     *
-     * @return self
-     */
-    public function setIsAutoDailyPacing($is_auto_daily_pacing)
-    {
-        if (is_null($is_auto_daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
-        }
-        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_strategy
-     *
-     * @return string|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param string|null $bid_strategy bid_strategy
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $allowedValues = $this->getBidStrategyAllowableValues();
-        if (!in_array($bid_strategy, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'bid_strategy', must be one of '%s'",
-                    $bid_strategy,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
+        $this->container['target_bid'] = $target_bid;
 
         return $this;
     }

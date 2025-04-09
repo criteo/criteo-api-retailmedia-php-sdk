@@ -58,12 +58,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total_items_across_all_pages' => 'int',
-        'current_page_size' => 'int',
         'current_page_index' => 'int',
-        'total_pages' => 'int',
+        'current_page_size' => 'int',
         'next_page' => 'string',
-        'previous_page' => 'string'
+        'previous_page' => 'string',
+        'total_items_across_all_pages' => 'int',
+        'total_pages' => 'int'
     ];
 
     /**
@@ -74,12 +74,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'total_items_across_all_pages' => 'int64',
-        'current_page_size' => 'int32',
         'current_page_index' => 'int32',
-        'total_pages' => 'int64',
+        'current_page_size' => 'int32',
         'next_page' => null,
-        'previous_page' => null
+        'previous_page' => null,
+        'total_items_across_all_pages' => 'int64',
+        'total_pages' => 'int64'
     ];
 
     /**
@@ -88,12 +88,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_items_across_all_pages' => true,
+        'current_page_index' => false,
 		'current_page_size' => false,
-		'current_page_index' => false,
-		'total_pages' => true,
 		'next_page' => true,
-		'previous_page' => true
+		'previous_page' => true,
+		'total_items_across_all_pages' => true,
+		'total_pages' => true
     ];
 
     /**
@@ -182,12 +182,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'total_items_across_all_pages' => 'totalItemsAcrossAllPages',
-        'current_page_size' => 'currentPageSize',
         'current_page_index' => 'currentPageIndex',
-        'total_pages' => 'totalPages',
+        'current_page_size' => 'currentPageSize',
         'next_page' => 'nextPage',
-        'previous_page' => 'previousPage'
+        'previous_page' => 'previousPage',
+        'total_items_across_all_pages' => 'totalItemsAcrossAllPages',
+        'total_pages' => 'totalPages'
     ];
 
     /**
@@ -196,12 +196,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'total_items_across_all_pages' => 'setTotalItemsAcrossAllPages',
-        'current_page_size' => 'setCurrentPageSize',
         'current_page_index' => 'setCurrentPageIndex',
-        'total_pages' => 'setTotalPages',
+        'current_page_size' => 'setCurrentPageSize',
         'next_page' => 'setNextPage',
-        'previous_page' => 'setPreviousPage'
+        'previous_page' => 'setPreviousPage',
+        'total_items_across_all_pages' => 'setTotalItemsAcrossAllPages',
+        'total_pages' => 'setTotalPages'
     ];
 
     /**
@@ -210,12 +210,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'total_items_across_all_pages' => 'getTotalItemsAcrossAllPages',
-        'current_page_size' => 'getCurrentPageSize',
         'current_page_index' => 'getCurrentPageIndex',
-        'total_pages' => 'getTotalPages',
+        'current_page_size' => 'getCurrentPageSize',
         'next_page' => 'getNextPage',
-        'previous_page' => 'getPreviousPage'
+        'previous_page' => 'getPreviousPage',
+        'total_items_across_all_pages' => 'getTotalItemsAcrossAllPages',
+        'total_pages' => 'getTotalPages'
     ];
 
     /**
@@ -275,12 +275,12 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('total_items_across_all_pages', $data ?? [], null);
-        $this->setIfExists('current_page_size', $data ?? [], null);
         $this->setIfExists('current_page_index', $data ?? [], null);
-        $this->setIfExists('total_pages', $data ?? [], null);
+        $this->setIfExists('current_page_size', $data ?? [], null);
         $this->setIfExists('next_page', $data ?? [], null);
         $this->setIfExists('previous_page', $data ?? [], null);
+        $this->setIfExists('total_items_across_all_pages', $data ?? [], null);
+        $this->setIfExists('total_pages', $data ?? [], null);
     }
 
     /**
@@ -310,11 +310,11 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['current_page_size'] === null) {
-            $invalidProperties[] = "'current_page_size' can't be null";
-        }
         if ($this->container['current_page_index'] === null) {
             $invalidProperties[] = "'current_page_index' can't be null";
+        }
+        if ($this->container['current_page_size'] === null) {
+            $invalidProperties[] = "'current_page_size' can't be null";
         }
         return $invalidProperties;
     }
@@ -330,67 +330,6 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets total_items_across_all_pages
-     *
-     * @return int|null
-     */
-    public function getTotalItemsAcrossAllPages()
-    {
-        return $this->container['total_items_across_all_pages'];
-    }
-
-    /**
-     * Sets total_items_across_all_pages
-     *
-     * @param int|null $total_items_across_all_pages total_items_across_all_pages
-     *
-     * @return self
-     */
-    public function setTotalItemsAcrossAllPages($total_items_across_all_pages)
-    {
-        if (is_null($total_items_across_all_pages)) {
-            array_push($this->openAPINullablesSetToNull, 'total_items_across_all_pages');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total_items_across_all_pages', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total_items_across_all_pages'] = $total_items_across_all_pages;
-
-        return $this;
-    }
-
-    /**
-     * Gets current_page_size
-     *
-     * @return int
-     */
-    public function getCurrentPageSize()
-    {
-        return $this->container['current_page_size'];
-    }
-
-    /**
-     * Sets current_page_size
-     *
-     * @param int $current_page_size current_page_size
-     *
-     * @return self
-     */
-    public function setCurrentPageSize($current_page_size)
-    {
-        if (is_null($current_page_size)) {
-            throw new \InvalidArgumentException('non-nullable current_page_size cannot be null');
-        }
-        $this->container['current_page_size'] = $current_page_size;
-
-        return $this;
-    }
 
     /**
      * Gets current_page_index
@@ -420,35 +359,28 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets total_pages
+     * Gets current_page_size
      *
-     * @return int|null
+     * @return int
      */
-    public function getTotalPages()
+    public function getCurrentPageSize()
     {
-        return $this->container['total_pages'];
+        return $this->container['current_page_size'];
     }
 
     /**
-     * Sets total_pages
+     * Sets current_page_size
      *
-     * @param int|null $total_pages total_pages
+     * @param int $current_page_size current_page_size
      *
      * @return self
      */
-    public function setTotalPages($total_pages)
+    public function setCurrentPageSize($current_page_size)
     {
-        if (is_null($total_pages)) {
-            array_push($this->openAPINullablesSetToNull, 'total_pages');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total_pages', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($current_page_size)) {
+            throw new \InvalidArgumentException('non-nullable current_page_size cannot be null');
         }
-        $this->container['total_pages'] = $total_pages;
+        $this->container['current_page_size'] = $current_page_size;
 
         return $this;
     }
@@ -517,6 +449,74 @@ class PageMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['previous_page'] = $previous_page;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_items_across_all_pages
+     *
+     * @return int|null
+     */
+    public function getTotalItemsAcrossAllPages()
+    {
+        return $this->container['total_items_across_all_pages'];
+    }
+
+    /**
+     * Sets total_items_across_all_pages
+     *
+     * @param int|null $total_items_across_all_pages total_items_across_all_pages
+     *
+     * @return self
+     */
+    public function setTotalItemsAcrossAllPages($total_items_across_all_pages)
+    {
+        if (is_null($total_items_across_all_pages)) {
+            array_push($this->openAPINullablesSetToNull, 'total_items_across_all_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_items_across_all_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['total_items_across_all_pages'] = $total_items_across_all_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_pages
+     *
+     * @return int|null
+     */
+    public function getTotalPages()
+    {
+        return $this->container['total_pages'];
+    }
+
+    /**
+     * Sets total_pages
+     *
+     * @param int|null $total_pages total_pages
+     *
+     * @return self
+     */
+    public function setTotalPages($total_pages)
+    {
+        if (is_null($total_pages)) {
+            array_push($this->openAPINullablesSetToNull, 'total_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }

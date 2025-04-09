@@ -449,17 +449,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1ListResponse
      */
-    public function legacyGetAudienceV1($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
+    public function legacyGetAudienceV1($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        list($response) = $this->legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        list($response) = $this->legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
         return $response;
     }
 
@@ -468,17 +468,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
+    public function legacyGetAudienceV1WithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -569,16 +569,16 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function legacyGetAudienceV1Async($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
+    public function legacyGetAudienceV1Async($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
-        return $this->legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
+        return $this->legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -591,17 +591,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
+    public function legacyGetAudienceV1AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV1ListResponse';
-        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV1Request($account_id, $limit_to_id, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -644,14 +644,14 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function legacyGetAudienceV1Request($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
+    public function legacyGetAudienceV1Request($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV1'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -683,8 +683,8 @@ class AudienceApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
+            $page_index,
+            'pageIndex', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -692,8 +692,8 @@ class AudienceApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_index,
-            'pageIndex', // param base name
+            $page_size,
+            'pageSize', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -777,17 +777,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV2ListResponse
      */
-    public function legacyGetAudienceV2($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
+    public function legacyGetAudienceV2($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        list($response) = $this->legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        list($response) = $this->legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
         return $response;
     }
 
@@ -796,17 +796,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV2ListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
+    public function legacyGetAudienceV2WithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -897,16 +897,16 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function legacyGetAudienceV2Async($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
+    public function legacyGetAudienceV2Async($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
-        return $this->legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id, $page_size, $page_index, $contentType)
+        return $this->legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -919,17 +919,17 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
+    public function legacyGetAudienceV2AsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceGetEntityV2ListResponse';
-        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_size, $page_index, $contentType);
+        $request = $this->legacyGetAudienceV2Request($account_id, $limit_to_id, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -972,14 +972,14 @@ class AudienceApi
      *
      * @param  int $account_id ID of the account to which this audience belongs. (required)
      * @param  int[] $limit_to_id Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 (optional)
-     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  int $page_index Returns the specified page of results given a pageSize; pages are 0-indexed. (optional)
+     * @param  int $page_size Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['legacyGetAudienceV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function legacyGetAudienceV2Request($account_id, $limit_to_id = null, $page_size = null, $page_index = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
+    public function legacyGetAudienceV2Request($account_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['legacyGetAudienceV2'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1011,8 +1011,8 @@ class AudienceApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
+            $page_index,
+            'pageIndex', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -1020,8 +1020,8 @@ class AudienceApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_index,
-            'pageIndex', // param base name
+            $page_size,
+            'pageSize', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode

@@ -58,14 +58,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'deposited' => 'float',
+        'end_date' => '\DateTime',
+        'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
-        'deposited' => 'float',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
+        'sales_force_id' => 'string',
         'spend_type' => 'string',
-        'memo' => 'string',
-        'sales_force_id' => 'string'
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -76,14 +76,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'deposited' => 'decimal',
+        'end_date' => 'date',
+        'memo' => null,
         'name' => null,
         'po_number' => null,
-        'deposited' => 'decimal',
-        'start_date' => 'date',
-        'end_date' => 'date',
+        'sales_force_id' => null,
         'spend_type' => null,
-        'memo' => null,
-        'sales_force_id' => null
+        'start_date' => 'date'
     ];
 
     /**
@@ -92,14 +92,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'po_number' => false,
-		'deposited' => true,
-		'start_date' => false,
+        'deposited' => true,
 		'end_date' => false,
-		'spend_type' => false,
 		'memo' => false,
-		'sales_force_id' => false
+		'name' => false,
+		'po_number' => false,
+		'sales_force_id' => false,
+		'spend_type' => false,
+		'start_date' => false
     ];
 
     /**
@@ -188,14 +188,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'deposited' => 'deposited',
+        'end_date' => 'endDate',
+        'memo' => 'memo',
         'name' => 'name',
         'po_number' => 'poNumber',
-        'deposited' => 'deposited',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
+        'sales_force_id' => 'salesForceId',
         'spend_type' => 'spendType',
-        'memo' => 'memo',
-        'sales_force_id' => 'salesForceId'
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -204,14 +204,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'deposited' => 'setDeposited',
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
         'name' => 'setName',
         'po_number' => 'setPoNumber',
-        'deposited' => 'setDeposited',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
+        'sales_force_id' => 'setSalesForceId',
         'spend_type' => 'setSpendType',
-        'memo' => 'setMemo',
-        'sales_force_id' => 'setSalesForceId'
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -220,14 +220,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'deposited' => 'getDeposited',
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
         'name' => 'getName',
         'po_number' => 'getPoNumber',
-        'deposited' => 'getDeposited',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
+        'sales_force_id' => 'getSalesForceId',
         'spend_type' => 'getSpendType',
-        'memo' => 'getMemo',
-        'sales_force_id' => 'getSalesForceId'
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -304,14 +304,14 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('deposited', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('po_number', $data ?? [], null);
-        $this->setIfExists('deposited', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('spend_type', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('sales_force_id', $data ?? [], null);
+        $this->setIfExists('spend_type', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -341,17 +341,20 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         if ($this->container['deposited'] === null) {
             $invalidProperties[] = "'deposited' can't be null";
         }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['sales_force_id'] === null) {
+            $invalidProperties[] = "'sales_force_id' can't be null";
         }
         if ($this->container['spend_type'] === null) {
             $invalidProperties[] = "'spend_type' can't be null";
@@ -365,11 +368,8 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
 
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['sales_force_id'] === null) {
-            $invalidProperties[] = "'sales_force_id' can't be null";
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -385,6 +385,94 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets deposited
+     *
+     * @return float
+     */
+    public function getDeposited()
+    {
+        return $this->container['deposited'];
+    }
+
+    /**
+     * Sets deposited
+     *
+     * @param float $deposited Amount of billable funds allotted to the balance.
+     *
+     * @return self
+     */
+    public function setDeposited($deposited)
+    {
+        if (is_null($deposited)) {
+            array_push($this->openAPINullablesSetToNull, 'deposited');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deposited', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deposited'] = $deposited;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo Memo
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if (is_null($memo)) {
+            throw new \InvalidArgumentException('non-nullable memo cannot be null');
+        }
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -441,89 +529,28 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets deposited
+     * Gets sales_force_id
      *
-     * @return float
+     * @return string
      */
-    public function getDeposited()
+    public function getSalesForceId()
     {
-        return $this->container['deposited'];
+        return $this->container['sales_force_id'];
     }
 
     /**
-     * Sets deposited
+     * Sets sales_force_id
      *
-     * @param float $deposited Amount of billable funds allotted to the balance.
+     * @param string $sales_force_id SalesForceId the balance is linked to.
      *
      * @return self
      */
-    public function setDeposited($deposited)
+    public function setSalesForceId($sales_force_id)
     {
-        if (is_null($deposited)) {
-            array_push($this->openAPINullablesSetToNull, 'deposited');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deposited', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($sales_force_id)) {
+            throw new \InvalidArgumentException('non-nullable sales_force_id cannot be null');
         }
-        $this->container['deposited'] = $deposited;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
+        $this->container['sales_force_id'] = $sales_force_id;
 
         return $this;
     }
@@ -566,55 +593,28 @@ class ExternalCreateBalance implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets memo
+     * Gets start_date
      *
-     * @return string
+     * @return \DateTime
      */
-    public function getMemo()
+    public function getStartDate()
     {
-        return $this->container['memo'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets memo
+     * Sets start_date
      *
-     * @param string $memo Memo
+     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
      *
      * @return self
      */
-    public function setMemo($memo)
+    public function setStartDate($start_date)
     {
-        if (is_null($memo)) {
-            throw new \InvalidArgumentException('non-nullable memo cannot be null');
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets sales_force_id
-     *
-     * @return string
-     */
-    public function getSalesForceId()
-    {
-        return $this->container['sales_force_id'];
-    }
-
-    /**
-     * Sets sales_force_id
-     *
-     * @param string $sales_force_id SalesForceId the balance is linked to.
-     *
-     * @return self
-     */
-    public function setSalesForceId($sales_force_id)
-    {
-        if (is_null($sales_force_id)) {
-            throw new \InvalidArgumentException('non-nullable sales_force_id cannot be null');
-        }
-        $this->container['sales_force_id'] = $sales_force_id;
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }

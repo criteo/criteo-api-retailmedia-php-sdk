@@ -58,10 +58,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
+        'data' => '\criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[]',
         'errors' => '\criteo\api\retailmedia\v2024_01\Model\CommonError[]',
-        'warnings' => '\criteo\api\retailmedia\v2024_01\Model\CommonWarning[]',
         'metadata' => '\criteo\api\retailmedia\v2024_01\Model\PageMetadata',
-        'data' => '\criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[]'
+        'warnings' => '\criteo\api\retailmedia\v2024_01\Model\CommonWarning[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'data' => null,
         'errors' => null,
-        'warnings' => null,
         'metadata' => null,
-        'data' => null
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => false,
-		'warnings' => false,
+        'data' => false,
+		'errors' => false,
 		'metadata' => false,
-		'data' => false
+		'warnings' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
+        'data' => 'data',
         'errors' => 'errors',
-        'warnings' => 'warnings',
         'metadata' => 'metadata',
-        'data' => 'data'
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +188,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
+        'data' => 'setData',
         'errors' => 'setErrors',
-        'warnings' => 'setWarnings',
         'metadata' => 'setMetadata',
-        'data' => 'setData'
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +200,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
+        'data' => 'getData',
         'errors' => 'getErrors',
-        'warnings' => 'getWarnings',
         'metadata' => 'getMetadata',
-        'data' => 'getData'
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +263,10 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -296,11 +296,11 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
-        if ($this->container['metadata'] === null) {
-            $invalidProperties[] = "'metadata' can't be null";
-        }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['metadata'] === null) {
+            $invalidProperties[] = "'metadata' can't be null";
         }
         return $invalidProperties;
     }
@@ -316,6 +316,33 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets data
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[]
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[] $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        }
+        $this->container['data'] = $data;
+
+        return $this;
+    }
 
     /**
      * Gets errors
@@ -340,33 +367,6 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
         $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\CommonWarning[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\CommonWarning[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
 
         return $this;
     }
@@ -399,28 +399,28 @@ class JsonApiPageResponseOfCampaignV202301 implements ModelInterface, ArrayAcces
     }
 
     /**
-     * Gets data
+     * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[]
+     * @return \criteo\api\retailmedia\v2024_01\Model\CommonWarning[]|null
      */
-    public function getData()
+    public function getWarnings()
     {
-        return $this->container['data'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets data
+     * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2024_01\Model\JsonApiBodyWithIdOfInt64AndCampaignV202301AndCampaignV202301[] $data data
+     * @param \criteo\api\retailmedia\v2024_01\Model\CommonWarning[]|null $warnings warnings
      *
      * @return self
      */
-    public function setData($data)
+    public function setWarnings($warnings)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

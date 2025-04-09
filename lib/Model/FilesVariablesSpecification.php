@@ -60,8 +60,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'extensions' => 'string[]',
         'max_bytes' => 'int',
-        'min_files' => 'int',
-        'max_file' => 'int'
+        'max_file' => 'int',
+        'min_files' => 'int'
     ];
 
     /**
@@ -74,8 +74,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'extensions' => 'string',
         'max_bytes' => 'int32',
-        'min_files' => 'int32',
-        'max_file' => 'int32'
+        'max_file' => 'int32',
+        'min_files' => 'int32'
     ];
 
     /**
@@ -86,8 +86,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'extensions' => false,
 		'max_bytes' => true,
-		'min_files' => true,
-		'max_file' => true
+		'max_file' => true,
+		'min_files' => true
     ];
 
     /**
@@ -178,8 +178,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'extensions' => 'extensions',
         'max_bytes' => 'maxBytes',
-        'min_files' => 'minFiles',
-        'max_file' => 'maxFile'
+        'max_file' => 'maxFile',
+        'min_files' => 'minFiles'
     ];
 
     /**
@@ -190,8 +190,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'extensions' => 'setExtensions',
         'max_bytes' => 'setMaxBytes',
-        'min_files' => 'setMinFiles',
-        'max_file' => 'setMaxFile'
+        'max_file' => 'setMaxFile',
+        'min_files' => 'setMinFiles'
     ];
 
     /**
@@ -202,8 +202,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'extensions' => 'getExtensions',
         'max_bytes' => 'getMaxBytes',
-        'min_files' => 'getMinFiles',
-        'max_file' => 'getMaxFile'
+        'max_file' => 'getMaxFile',
+        'min_files' => 'getMinFiles'
     ];
 
     /**
@@ -286,8 +286,8 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('extensions', $data ?? [], null);
         $this->setIfExists('max_bytes', $data ?? [], null);
-        $this->setIfExists('min_files', $data ?? [], null);
         $this->setIfExists('max_file', $data ?? [], null);
+        $this->setIfExists('min_files', $data ?? [], null);
     }
 
     /**
@@ -406,40 +406,6 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets min_files
-     *
-     * @return int|null
-     */
-    public function getMinFiles()
-    {
-        return $this->container['min_files'];
-    }
-
-    /**
-     * Sets min_files
-     *
-     * @param int|null $min_files The minimum amount of files requires
-     *
-     * @return self
-     */
-    public function setMinFiles($min_files)
-    {
-        if (is_null($min_files)) {
-            array_push($this->openAPINullablesSetToNull, 'min_files');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('min_files', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['min_files'] = $min_files;
-
-        return $this;
-    }
-
-    /**
      * Gets max_file
      *
      * @return int|null
@@ -469,6 +435,40 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['max_file'] = $max_file;
+
+        return $this;
+    }
+
+    /**
+     * Gets min_files
+     *
+     * @return int|null
+     */
+    public function getMinFiles()
+    {
+        return $this->container['min_files'];
+    }
+
+    /**
+     * Sets min_files
+     *
+     * @param int|null $min_files The minimum amount of files requires
+     *
+     * @return self
+     */
+    public function setMinFiles($min_files)
+    {
+        if (is_null($min_files)) {
+            array_push($this->openAPINullablesSetToNull, 'min_files');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('min_files', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['min_files'] = $min_files;
 
         return $this;
     }

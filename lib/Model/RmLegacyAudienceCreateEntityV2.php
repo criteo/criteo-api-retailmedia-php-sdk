@@ -58,9 +58,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
+        'name' => 'string',
         'retailer_id' => 'int',
-        'user_behavior_details' => '\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceUserBehaviorCreateV2',
-        'name' => 'string'
+        'user_behavior_details' => '\criteo\api\retailmedia\v2024_01\Model\RmLegacyAudienceUserBehaviorCreateV2'
     ];
 
     /**
@@ -71,9 +71,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'name' => null,
         'retailer_id' => 'int64',
-        'user_behavior_details' => null,
-        'name' => null
+        'user_behavior_details' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id' => false,
-		'user_behavior_details' => false,
-		'name' => false
+        'name' => false,
+		'retailer_id' => false,
+		'user_behavior_details' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
+        'name' => 'name',
         'retailer_id' => 'retailerId',
-        'user_behavior_details' => 'userBehaviorDetails',
-        'name' => 'name'
+        'user_behavior_details' => 'userBehaviorDetails'
     ];
 
     /**
@@ -184,9 +184,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
+        'name' => 'setName',
         'retailer_id' => 'setRetailerId',
-        'user_behavior_details' => 'setUserBehaviorDetails',
-        'name' => 'setName'
+        'user_behavior_details' => 'setUserBehaviorDetails'
     ];
 
     /**
@@ -195,9 +195,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
+        'name' => 'getName',
         'retailer_id' => 'getRetailerId',
-        'user_behavior_details' => 'getUserBehaviorDetails',
-        'name' => 'getName'
+        'user_behavior_details' => 'getUserBehaviorDetails'
     ];
 
     /**
@@ -257,9 +257,9 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('user_behavior_details', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -289,14 +289,14 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
         }
         if ($this->container['user_behavior_details'] === null) {
             $invalidProperties[] = "'user_behavior_details' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,6 +312,33 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Name of the audience
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
 
     /**
      * Gets retailer_id
@@ -363,33 +390,6 @@ class RmLegacyAudienceCreateEntityV2 implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable user_behavior_details cannot be null');
         }
         $this->container['user_behavior_details'] = $user_behavior_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the audience
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
 
         return $this;
     }

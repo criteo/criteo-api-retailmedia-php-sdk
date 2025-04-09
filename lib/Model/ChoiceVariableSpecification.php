@@ -58,9 +58,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'options' => '\criteo\api\retailmedia\v2024_01\Model\ChoiceOption[]',
         'max_selected' => 'int',
-        'min_selected' => 'int'
+        'min_selected' => 'int',
+        'options' => '\criteo\api\retailmedia\v2024_01\Model\ChoiceOption[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'options' => null,
         'max_selected' => 'int32',
-        'min_selected' => 'int32'
+        'min_selected' => 'int32',
+        'options' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'options' => false,
-		'max_selected' => true,
-		'min_selected' => true
+        'max_selected' => true,
+		'min_selected' => true,
+		'options' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'options' => 'options',
         'max_selected' => 'maxSelected',
-        'min_selected' => 'minSelected'
+        'min_selected' => 'minSelected',
+        'options' => 'options'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'options' => 'setOptions',
         'max_selected' => 'setMaxSelected',
-        'min_selected' => 'setMinSelected'
+        'min_selected' => 'setMinSelected',
+        'options' => 'setOptions'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'options' => 'getOptions',
         'max_selected' => 'getMaxSelected',
-        'min_selected' => 'getMinSelected'
+        'min_selected' => 'getMinSelected',
+        'options' => 'getOptions'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('options', $data ?? [], null);
         $this->setIfExists('max_selected', $data ?? [], null);
         $this->setIfExists('min_selected', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
     }
 
     /**
@@ -306,33 +306,6 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets options
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\ChoiceOption[]
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\ChoiceOption[] $options The available options
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        if (is_null($options)) {
-            throw new \InvalidArgumentException('non-nullable options cannot be null');
-        }
-        $this->container['options'] = $options;
-
-        return $this;
-    }
 
     /**
      * Gets max_selected
@@ -398,6 +371,33 @@ class ChoiceVariableSpecification implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['min_selected'] = $min_selected;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\ChoiceOption[]
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\ChoiceOption[] $options The available options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
 
         return $this;
     }

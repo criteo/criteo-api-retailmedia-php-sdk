@@ -58,12 +58,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
+        'end_date' => '\DateTime',
+        'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
         'sales_force_id' => 'string',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'memo' => 'string'
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -74,12 +74,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'end_date' => 'date',
+        'memo' => null,
         'name' => null,
         'po_number' => null,
         'sales_force_id' => null,
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'memo' => null
+        'start_date' => 'date'
     ];
 
     /**
@@ -88,12 +88,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
+        'end_date' => false,
+		'memo' => false,
+		'name' => false,
 		'po_number' => false,
 		'sales_force_id' => false,
-		'start_date' => false,
-		'end_date' => false,
-		'memo' => false
+		'start_date' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
+        'end_date' => 'endDate',
+        'memo' => 'memo',
         'name' => 'name',
         'po_number' => 'poNumber',
         'sales_force_id' => 'salesForceId',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'memo' => 'memo'
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -196,12 +196,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
         'name' => 'setName',
         'po_number' => 'setPoNumber',
         'sales_force_id' => 'setSalesForceId',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'memo' => 'setMemo'
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -210,12 +210,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
         'name' => 'getName',
         'po_number' => 'getPoNumber',
         'sales_force_id' => 'getSalesForceId',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'memo' => 'getMemo'
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -275,12 +275,12 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('po_number', $data ?? [], null);
         $this->setIfExists('sales_force_id', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
     }
 
     /**
@@ -324,6 +324,60 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string|null
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string|null $memo Memo
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if (is_null($memo)) {
+            throw new \InvalidArgumentException('non-nullable memo cannot be null');
+        }
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -429,60 +483,6 @@ class ExternalUpdateBalanceModel implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Memo
-     *
-     * @return self
-     */
-    public function setMemo($memo)
-    {
-        if (is_null($memo)) {
-            throw new \InvalidArgumentException('non-nullable memo cannot be null');
-        }
-        $this->container['memo'] = $memo;
 
         return $this;
     }

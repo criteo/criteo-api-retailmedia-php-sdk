@@ -58,8 +58,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'monthly_line_item_budget_overrides' => '\criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[]',
-        'daily_line_item_budget_overrides' => '\criteo\api\retailmedia\v2024_01\Model\DailyLineItemBudgetOverride[]'
+        'daily_line_item_budget_overrides' => '\criteo\api\retailmedia\v2024_01\Model\DailyLineItemBudgetOverride[]',
+        'monthly_line_item_budget_overrides' => '\criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'monthly_line_item_budget_overrides' => null,
-        'daily_line_item_budget_overrides' => null
+        'daily_line_item_budget_overrides' => null,
+        'monthly_line_item_budget_overrides' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'monthly_line_item_budget_overrides' => false,
-		'daily_line_item_budget_overrides' => false
+        'daily_line_item_budget_overrides' => false,
+		'monthly_line_item_budget_overrides' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'monthly_line_item_budget_overrides' => 'monthlyLineItemBudgetOverrides',
-        'daily_line_item_budget_overrides' => 'dailyLineItemBudgetOverrides'
+        'daily_line_item_budget_overrides' => 'dailyLineItemBudgetOverrides',
+        'monthly_line_item_budget_overrides' => 'monthlyLineItemBudgetOverrides'
     ];
 
     /**
@@ -180,8 +180,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'monthly_line_item_budget_overrides' => 'setMonthlyLineItemBudgetOverrides',
-        'daily_line_item_budget_overrides' => 'setDailyLineItemBudgetOverrides'
+        'daily_line_item_budget_overrides' => 'setDailyLineItemBudgetOverrides',
+        'monthly_line_item_budget_overrides' => 'setMonthlyLineItemBudgetOverrides'
     ];
 
     /**
@@ -190,8 +190,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'monthly_line_item_budget_overrides' => 'getMonthlyLineItemBudgetOverrides',
-        'daily_line_item_budget_overrides' => 'getDailyLineItemBudgetOverrides'
+        'daily_line_item_budget_overrides' => 'getDailyLineItemBudgetOverrides',
+        'monthly_line_item_budget_overrides' => 'getMonthlyLineItemBudgetOverrides'
     ];
 
     /**
@@ -251,8 +251,8 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('monthly_line_item_budget_overrides', $data ?? [], null);
         $this->setIfExists('daily_line_item_budget_overrides', $data ?? [], null);
+        $this->setIfExists('monthly_line_item_budget_overrides', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['monthly_line_item_budget_overrides'] === null) {
-            $invalidProperties[] = "'monthly_line_item_budget_overrides' can't be null";
-        }
         if ($this->container['daily_line_item_budget_overrides'] === null) {
             $invalidProperties[] = "'daily_line_item_budget_overrides' can't be null";
+        }
+        if ($this->container['monthly_line_item_budget_overrides'] === null) {
+            $invalidProperties[] = "'monthly_line_item_budget_overrides' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets monthly_line_item_budget_overrides
-     *
-     * @return \criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[]
-     */
-    public function getMonthlyLineItemBudgetOverrides()
-    {
-        return $this->container['monthly_line_item_budget_overrides'];
-    }
-
-    /**
-     * Sets monthly_line_item_budget_overrides
-     *
-     * @param \criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[] $monthly_line_item_budget_overrides Line item budget override monthly part, chronological order restricted.
-     *
-     * @return self
-     */
-    public function setMonthlyLineItemBudgetOverrides($monthly_line_item_budget_overrides)
-    {
-        if (is_null($monthly_line_item_budget_overrides)) {
-            throw new \InvalidArgumentException('non-nullable monthly_line_item_budget_overrides cannot be null');
-        }
-        $this->container['monthly_line_item_budget_overrides'] = $monthly_line_item_budget_overrides;
-
-        return $this;
-    }
 
     /**
      * Gets daily_line_item_budget_overrides
@@ -353,6 +326,33 @@ class LineItemBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable daily_line_item_budget_overrides cannot be null');
         }
         $this->container['daily_line_item_budget_overrides'] = $daily_line_item_budget_overrides;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_line_item_budget_overrides
+     *
+     * @return \criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[]
+     */
+    public function getMonthlyLineItemBudgetOverrides()
+    {
+        return $this->container['monthly_line_item_budget_overrides'];
+    }
+
+    /**
+     * Sets monthly_line_item_budget_overrides
+     *
+     * @param \criteo\api\retailmedia\v2024_01\Model\MonthlyLineItemBudegetOverride[] $monthly_line_item_budget_overrides Line item budget override monthly part, chronological order restricted.
+     *
+     * @return self
+     */
+    public function setMonthlyLineItemBudgetOverrides($monthly_line_item_budget_overrides)
+    {
+        if (is_null($monthly_line_item_budget_overrides)) {
+            throw new \InvalidArgumentException('non-nullable monthly_line_item_budget_overrides cannot be null');
+        }
+        $this->container['monthly_line_item_budget_overrides'] = $monthly_line_item_budget_overrides;
 
         return $this;
     }

@@ -58,8 +58,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product_ids' => 'string[]',
-        'category_ids' => 'string[]'
+        'category_ids' => 'string[]',
+        'product_ids' => 'string[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product_ids' => null,
-        'category_ids' => null
+        'category_ids' => null,
+        'product_ids' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product_ids' => false,
-		'category_ids' => false
+        'category_ids' => false,
+		'product_ids' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'product_ids' => 'productIds',
-        'category_ids' => 'categoryIds'
+        'category_ids' => 'categoryIds',
+        'product_ids' => 'productIds'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'product_ids' => 'setProductIds',
-        'category_ids' => 'setCategoryIds'
+        'category_ids' => 'setCategoryIds',
+        'product_ids' => 'setProductIds'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'product_ids' => 'getProductIds',
-        'category_ids' => 'getCategoryIds'
+        'category_ids' => 'getCategoryIds',
+        'product_ids' => 'getProductIds'
     ];
 
     /**
@@ -251,8 +251,8 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('product_ids', $data ?? [], null);
         $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('product_ids', $data ?? [], null);
     }
 
     /**
@@ -298,33 +298,6 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets product_ids
-     *
-     * @return string[]|null
-     */
-    public function getProductIds()
-    {
-        return $this->container['product_ids'];
-    }
-
-    /**
-     * Sets product_ids
-     *
-     * @param string[]|null $product_ids Product ids that add to basket should target
-     *
-     * @return self
-     */
-    public function setProductIds($product_ids)
-    {
-        if (is_null($product_ids)) {
-            throw new \InvalidArgumentException('non-nullable product_ids cannot be null');
-        }
-        $this->container['product_ids'] = $product_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets category_ids
      *
      * @return string[]|null
@@ -347,6 +320,33 @@ class ExternalAddToBasketIdsUpdateModel202110 implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
         }
         $this->container['category_ids'] = $category_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_ids
+     *
+     * @return string[]|null
+     */
+    public function getProductIds()
+    {
+        return $this->container['product_ids'];
+    }
+
+    /**
+     * Sets product_ids
+     *
+     * @param string[]|null $product_ids Product ids that add to basket should target
+     *
+     * @return self
+     */
+    public function setProductIds($product_ids)
+    {
+        if (is_null($product_ids)) {
+            throw new \InvalidArgumentException('non-nullable product_ids cannot be null');
+        }
+        $this->container['product_ids'] = $product_ids;
 
         return $this;
     }

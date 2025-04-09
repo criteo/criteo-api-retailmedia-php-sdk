@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  |
-**type** | **string** |  |
-**subtype** | **string** |  | [optional]
+**company_name** | **string** |  | [optional]
 **countries** | **string[]** |  |
 **currency** | **string** |  |
-**parent_account_label** | **string** |  |
-**time_zone** | **string** |  |
-**company_name** | **string** |  | [optional]
+**name** | **string** |  |
 **on_behalf_company_name** | **string** |  | [optional]
+**parent_account_label** | **string** |  |
+**subtype** | **string** |  | [optional]
+**time_zone** | **string** |  |
+**type** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

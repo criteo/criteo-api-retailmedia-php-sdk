@@ -58,9 +58,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'memo' => 'string'
+        'memo' => 'string',
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'start_date' => 'date',
         'end_date' => 'date',
-        'memo' => null
+        'memo' => null,
+        'start_date' => 'date'
     ];
 
     /**
@@ -82,9 +82,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_date' => false,
-		'end_date' => false,
-		'memo' => false
+        'end_date' => false,
+		'memo' => false,
+		'start_date' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'memo' => 'memo'
+        'memo' => 'memo',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'memo' => 'setMemo'
+        'memo' => 'setMemo',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'memo' => 'getMemo'
+        'memo' => 'getMemo',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -289,14 +289,14 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
         }
         if ($this->container['memo'] === null) {
             $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,33 +312,6 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
 
     /**
      * Gets end_date
@@ -390,6 +363,33 @@ class ExternalChangeDatesOfBalance implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable memo cannot be null');
         }
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }
