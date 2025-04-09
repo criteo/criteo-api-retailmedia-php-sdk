@@ -203,7 +203,7 @@ try {
 ## `getAsyncExportOutput()`
 
 ```php
-getAsyncExportOutput($report_id): string
+getAsyncExportOutput($report_id): \SplFileObject
 ```
 
 
@@ -248,7 +248,7 @@ try {
 
 ### Return type
 
-**string**
+**\SplFileObject**
 
 ### Authorization
 

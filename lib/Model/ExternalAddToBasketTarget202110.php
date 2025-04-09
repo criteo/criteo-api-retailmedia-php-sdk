@@ -58,9 +58,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'scope' => 'string',
+        'category_ids' => 'string[]',
         'product_ids' => 'string[]',
-        'category_ids' => 'string[]'
+        'scope' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'scope' => null,
+        'category_ids' => null,
         'product_ids' => null,
-        'category_ids' => null
+        'scope' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'scope' => false,
+        'category_ids' => false,
 		'product_ids' => false,
-		'category_ids' => false
+		'scope' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'scope' => 'scope',
+        'category_ids' => 'categoryIds',
         'product_ids' => 'productIds',
-        'category_ids' => 'categoryIds'
+        'scope' => 'scope'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'scope' => 'setScope',
+        'category_ids' => 'setCategoryIds',
         'product_ids' => 'setProductIds',
-        'category_ids' => 'setCategoryIds'
+        'scope' => 'setScope'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'scope' => 'getScope',
+        'category_ids' => 'getCategoryIds',
         'product_ids' => 'getProductIds',
-        'category_ids' => 'getCategoryIds'
+        'scope' => 'getScope'
     ];
 
     /**
@@ -274,9 +274,9 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('scope', $data ?? [], null);
-        $this->setIfExists('product_ids', $data ?? [], null);
         $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('product_ids', $data ?? [], null);
+        $this->setIfExists('scope', $data ?? [], null);
     }
 
     /**
@@ -334,38 +334,28 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets scope
+     * Gets category_ids
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getScope()
+    public function getCategoryIds()
     {
-        return $this->container['scope'];
+        return $this->container['category_ids'];
     }
 
     /**
-     * Sets scope
+     * Sets category_ids
      *
-     * @param string $scope Scope of the add to basket target
+     * @param string[]|null $category_ids Category ids that add to basket should target
      *
      * @return self
      */
-    public function setScope($scope)
+    public function setCategoryIds($category_ids)
     {
-        if (is_null($scope)) {
-            throw new \InvalidArgumentException('non-nullable scope cannot be null');
+        if (is_null($category_ids)) {
+            throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
         }
-        $allowedValues = $this->getScopeAllowableValues();
-        if (!in_array($scope, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'scope', must be one of '%s'",
-                    $scope,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['scope'] = $scope;
+        $this->container['category_ids'] = $category_ids;
 
         return $this;
     }
@@ -398,28 +388,38 @@ class ExternalAddToBasketTarget202110 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets category_ids
+     * Gets scope
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getCategoryIds()
+    public function getScope()
     {
-        return $this->container['category_ids'];
+        return $this->container['scope'];
     }
 
     /**
-     * Sets category_ids
+     * Sets scope
      *
-     * @param string[]|null $category_ids Category ids that add to basket should target
+     * @param string $scope Scope of the add to basket target
      *
      * @return self
      */
-    public function setCategoryIds($category_ids)
+    public function setScope($scope)
     {
-        if (is_null($category_ids)) {
-            throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
+        if (is_null($scope)) {
+            throw new \InvalidArgumentException('non-nullable scope cannot be null');
         }
-        $this->container['category_ids'] = $category_ids;
+        $allowedValues = $this->getScopeAllowableValues();
+        if (!in_array($scope, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scope', must be one of '%s'",
+                    $scope,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scope'] = $scope;
 
         return $this;
     }

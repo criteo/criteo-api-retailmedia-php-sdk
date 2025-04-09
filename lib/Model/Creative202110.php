@@ -58,11 +58,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'status' => 'string',
-        'brand_id' => 'int',
-        'retailer_id' => 'int',
         'associated_line_item_ids' => 'string[]',
+        'brand_id' => 'int',
+        'id' => 'string',
+        'name' => 'string',
+        'retailer_id' => 'int',
+        'status' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -74,11 +75,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'status' => 'string',
-        'brand_id' => 'int64',
-        'retailer_id' => 'int32',
         'associated_line_item_ids' => null,
+        'brand_id' => 'int64',
+        'id' => null,
+        'name' => null,
+        'retailer_id' => 'int32',
+        'status' => 'string',
         'updated_at' => 'date-time'
     ];
 
@@ -88,11 +90,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'status' => false,
+        'associated_line_item_ids' => true,
 		'brand_id' => true,
+		'id' => true,
+		'name' => false,
 		'retailer_id' => false,
-		'associated_line_item_ids' => true,
+		'status' => false,
 		'updated_at' => true
     ];
 
@@ -182,11 +185,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'status' => 'status',
-        'brand_id' => 'brandId',
-        'retailer_id' => 'retailerId',
         'associated_line_item_ids' => 'associatedLineItemIds',
+        'brand_id' => 'brandId',
+        'id' => 'id',
+        'name' => 'name',
+        'retailer_id' => 'retailerId',
+        'status' => 'status',
         'updated_at' => 'updatedAt'
     ];
 
@@ -196,11 +200,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'brand_id' => 'setBrandId',
-        'retailer_id' => 'setRetailerId',
         'associated_line_item_ids' => 'setAssociatedLineItemIds',
+        'brand_id' => 'setBrandId',
+        'id' => 'setId',
+        'name' => 'setName',
+        'retailer_id' => 'setRetailerId',
+        'status' => 'setStatus',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -210,11 +215,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'brand_id' => 'getBrandId',
-        'retailer_id' => 'getRetailerId',
         'associated_line_item_ids' => 'getAssociatedLineItemIds',
+        'brand_id' => 'getBrandId',
+        'id' => 'getId',
+        'name' => 'getName',
+        'retailer_id' => 'getRetailerId',
+        'status' => 'getStatus',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -294,11 +300,12 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('brand_id', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('associated_line_item_ids', $data ?? [], null);
+        $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -332,6 +339,9 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         if ($this->container['status'] === null) {
             $invalidProperties[] = "'status' can't be null";
         }
@@ -344,9 +354,6 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -363,65 +370,35 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
+     * Gets associated_line_item_ids
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getName()
+    public function getAssociatedLineItemIds()
     {
-        return $this->container['name'];
+        return $this->container['associated_line_item_ids'];
     }
 
     /**
-     * Sets name
+     * Sets associated_line_item_ids
      *
-     * @param string $name name
+     * @param string[]|null $associated_line_item_ids associated_line_item_ids
      *
      * @return self
      */
-    public function setName($name)
+    public function setAssociatedLineItemIds($associated_line_item_ids)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($associated_line_item_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['associated_line_item_ids'] = $associated_line_item_ids;
 
         return $this;
     }
@@ -461,6 +438,67 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets retailer_id
      *
      * @return int
@@ -488,35 +526,38 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets associated_line_item_ids
+     * Gets status
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getAssociatedLineItemIds()
+    public function getStatus()
     {
-        return $this->container['associated_line_item_ids'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets associated_line_item_ids
+     * Sets status
      *
-     * @param string[]|null $associated_line_item_ids associated_line_item_ids
+     * @param string $status status
      *
      * @return self
      */
-    public function setAssociatedLineItemIds($associated_line_item_ids)
+    public function setStatus($status)
     {
-        if (is_null($associated_line_item_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['associated_line_item_ids'] = $associated_line_item_ids;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

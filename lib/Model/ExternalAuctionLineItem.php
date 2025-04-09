@@ -58,24 +58,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'bid_strategy' => 'string',
+        'budget' => 'float',
+        'budget_remaining' => 'float',
+        'budget_spent' => 'float',
+        'campaign_id' => 'string',
+        'created_at' => '\DateTime',
+        'daily_pacing' => 'float',
+        'end_date' => '\DateTime',
+        'id' => 'string',
+        'is_auto_daily_pacing' => 'bool',
+        'max_bid' => 'float',
+        'monthly_pacing' => 'float',
         'name' => 'string',
         'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'max_bid' => 'float',
-        'budget' => 'float',
-        'monthly_pacing' => 'float',
-        'daily_pacing' => 'float',
-        'bid_strategy' => 'string',
-        'target_retailer_id' => 'string',
         'status' => 'string',
         'target_bid' => 'float',
-        'is_auto_daily_pacing' => 'bool',
-        'campaign_id' => 'string',
-        'budget_spent' => 'float',
-        'budget_remaining' => 'float',
-        'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'id' => 'string'
+        'target_retailer_id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -86,24 +86,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'bid_strategy' => null,
+        'budget' => 'decimal',
+        'budget_remaining' => 'decimal',
+        'budget_spent' => 'double',
+        'campaign_id' => 'long-id',
+        'created_at' => 'date-time',
+        'daily_pacing' => 'decimal',
+        'end_date' => 'date',
+        'id' => null,
+        'is_auto_daily_pacing' => null,
+        'max_bid' => 'decimal',
+        'monthly_pacing' => 'decimal',
         'name' => null,
         'start_date' => 'date',
-        'end_date' => 'date',
-        'max_bid' => 'decimal',
-        'budget' => 'decimal',
-        'monthly_pacing' => 'decimal',
-        'daily_pacing' => 'decimal',
-        'bid_strategy' => null,
-        'target_retailer_id' => 'long-id',
         'status' => null,
         'target_bid' => 'decimal',
-        'is_auto_daily_pacing' => null,
-        'campaign_id' => 'long-id',
-        'budget_spent' => 'double',
-        'budget_remaining' => 'decimal',
-        'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'id' => null
+        'target_retailer_id' => 'long-id',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -112,24 +112,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'start_date' => false,
-		'end_date' => true,
-		'max_bid' => true,
+        'bid_strategy' => false,
 		'budget' => true,
-		'monthly_pacing' => true,
+		'budget_remaining' => true,
+		'budget_spent' => false,
+		'campaign_id' => false,
+		'created_at' => false,
 		'daily_pacing' => true,
-		'bid_strategy' => false,
-		'target_retailer_id' => false,
+		'end_date' => true,
+		'id' => true,
+		'is_auto_daily_pacing' => false,
+		'max_bid' => true,
+		'monthly_pacing' => true,
+		'name' => false,
+		'start_date' => false,
 		'status' => false,
 		'target_bid' => true,
-		'is_auto_daily_pacing' => false,
-		'campaign_id' => false,
-		'budget_spent' => false,
-		'budget_remaining' => true,
-		'created_at' => false,
-		'updated_at' => false,
-		'id' => true
+		'target_retailer_id' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -218,24 +218,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'bid_strategy' => 'bidStrategy',
+        'budget' => 'budget',
+        'budget_remaining' => 'budgetRemaining',
+        'budget_spent' => 'budgetSpent',
+        'campaign_id' => 'campaignId',
+        'created_at' => 'createdAt',
+        'daily_pacing' => 'dailyPacing',
+        'end_date' => 'endDate',
+        'id' => 'id',
+        'is_auto_daily_pacing' => 'isAutoDailyPacing',
+        'max_bid' => 'maxBid',
+        'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
         'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'max_bid' => 'maxBid',
-        'budget' => 'budget',
-        'monthly_pacing' => 'monthlyPacing',
-        'daily_pacing' => 'dailyPacing',
-        'bid_strategy' => 'bidStrategy',
-        'target_retailer_id' => 'targetRetailerId',
         'status' => 'status',
         'target_bid' => 'targetBid',
-        'is_auto_daily_pacing' => 'isAutoDailyPacing',
-        'campaign_id' => 'campaignId',
-        'budget_spent' => 'budgetSpent',
-        'budget_remaining' => 'budgetRemaining',
-        'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'id' => 'id'
+        'target_retailer_id' => 'targetRetailerId',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -244,24 +244,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'bid_strategy' => 'setBidStrategy',
+        'budget' => 'setBudget',
+        'budget_remaining' => 'setBudgetRemaining',
+        'budget_spent' => 'setBudgetSpent',
+        'campaign_id' => 'setCampaignId',
+        'created_at' => 'setCreatedAt',
+        'daily_pacing' => 'setDailyPacing',
+        'end_date' => 'setEndDate',
+        'id' => 'setId',
+        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
+        'max_bid' => 'setMaxBid',
+        'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
         'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'max_bid' => 'setMaxBid',
-        'budget' => 'setBudget',
-        'monthly_pacing' => 'setMonthlyPacing',
-        'daily_pacing' => 'setDailyPacing',
-        'bid_strategy' => 'setBidStrategy',
-        'target_retailer_id' => 'setTargetRetailerId',
         'status' => 'setStatus',
         'target_bid' => 'setTargetBid',
-        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
-        'campaign_id' => 'setCampaignId',
-        'budget_spent' => 'setBudgetSpent',
-        'budget_remaining' => 'setBudgetRemaining',
-        'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'id' => 'setId'
+        'target_retailer_id' => 'setTargetRetailerId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -270,24 +270,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'bid_strategy' => 'getBidStrategy',
+        'budget' => 'getBudget',
+        'budget_remaining' => 'getBudgetRemaining',
+        'budget_spent' => 'getBudgetSpent',
+        'campaign_id' => 'getCampaignId',
+        'created_at' => 'getCreatedAt',
+        'daily_pacing' => 'getDailyPacing',
+        'end_date' => 'getEndDate',
+        'id' => 'getId',
+        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
+        'max_bid' => 'getMaxBid',
+        'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
         'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'max_bid' => 'getMaxBid',
-        'budget' => 'getBudget',
-        'monthly_pacing' => 'getMonthlyPacing',
-        'daily_pacing' => 'getDailyPacing',
-        'bid_strategy' => 'getBidStrategy',
-        'target_retailer_id' => 'getTargetRetailerId',
         'status' => 'getStatus',
         'target_bid' => 'getTargetBid',
-        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
-        'campaign_id' => 'getCampaignId',
-        'budget_spent' => 'getBudgetSpent',
-        'budget_remaining' => 'getBudgetRemaining',
-        'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'id' => 'getId'
+        'target_retailer_id' => 'getTargetRetailerId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -395,24 +395,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
+        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('budget_remaining', $data ?? [], null);
+        $this->setIfExists('budget_spent', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('daily_pacing', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('is_auto_daily_pacing', $data ?? [], false);
+        $this->setIfExists('max_bid', $data ?? [], null);
+        $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('max_bid', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('monthly_pacing', $data ?? [], null);
-        $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
-        $this->setIfExists('target_retailer_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
-        $this->setIfExists('is_auto_daily_pacing', $data ?? [], false);
-        $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('budget_spent', $data ?? [], null);
-        $this->setIfExists('budget_remaining', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('target_retailer_id', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -442,6 +442,24 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!is_null($this->container['bid_strategy']) && !in_array($this->container['bid_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                $this->container['bid_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['budget_remaining'] === null) {
+            $invalidProperties[] = "'budget_remaining' can't be null";
+        }
+        if ($this->container['campaign_id'] === null) {
+            $invalidProperties[] = "'campaign_id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -456,18 +474,6 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        $allowedValues = $this->getBidStrategyAllowableValues();
-        if (!is_null($this->container['bid_strategy']) && !in_array($this->container['bid_strategy'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'bid_strategy', must be one of '%s'",
-                $this->container['bid_strategy'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['target_retailer_id'] === null) {
-            $invalidProperties[] = "'target_retailer_id' can't be null";
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -477,14 +483,8 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
-        }
-        if ($this->container['budget_remaining'] === null) {
-            $invalidProperties[] = "'budget_remaining' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['target_retailer_id'] === null) {
+            $invalidProperties[] = "'target_retailer_id' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -503,6 +503,389 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return string|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param string|null $bid_strategy bid_strategy
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!in_array($bid_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                    $bid_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget
+     *
+     * @return float|null
+     */
+    public function getBudget()
+    {
+        return $this->container['budget'];
+    }
+
+    /**
+     * Sets budget
+     *
+     * @param float|null $budget budget
+     *
+     * @return self
+     */
+    public function setBudget($budget)
+    {
+        if (is_null($budget)) {
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_remaining
+     *
+     * @return float
+     */
+    public function getBudgetRemaining()
+    {
+        return $this->container['budget_remaining'];
+    }
+
+    /**
+     * Sets budget_remaining
+     *
+     * @param float $budget_remaining budget_remaining
+     *
+     * @return self
+     */
+    public function setBudgetRemaining($budget_remaining)
+    {
+        if (is_null($budget_remaining)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_remaining', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget_remaining'] = $budget_remaining;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_spent
+     *
+     * @return float|null
+     */
+    public function getBudgetSpent()
+    {
+        return $this->container['budget_spent'];
+    }
+
+    /**
+     * Sets budget_spent
+     *
+     * @param float|null $budget_spent budget_spent
+     *
+     * @return self
+     */
+    public function setBudgetSpent($budget_spent)
+    {
+        if (is_null($budget_spent)) {
+            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
+        }
+        $this->container['budget_spent'] = $budget_spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_id
+     *
+     * @return string
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaign_id'];
+    }
+
+    /**
+     * Sets campaign_id
+     *
+     * @param string $campaign_id campaign_id
+     *
+     * @return self
+     */
+    public function setCampaignId($campaign_id)
+    {
+        if (is_null($campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        }
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets daily_pacing
+     *
+     * @return float|null
+     */
+    public function getDailyPacing()
+    {
+        return $this->container['daily_pacing'];
+    }
+
+    /**
+     * Sets daily_pacing
+     *
+     * @param float|null $daily_pacing daily_pacing
+     *
+     * @return self
+     */
+    public function setDailyPacing($daily_pacing)
+    {
+        if (is_null($daily_pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('daily_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['daily_pacing'] = $daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_auto_daily_pacing
+     *
+     * @return bool|null
+     */
+    public function getIsAutoDailyPacing()
+    {
+        return $this->container['is_auto_daily_pacing'];
+    }
+
+    /**
+     * Sets is_auto_daily_pacing
+     *
+     * @param bool|null $is_auto_daily_pacing is_auto_daily_pacing
+     *
+     * @return self
+     */
+    public function setIsAutoDailyPacing($is_auto_daily_pacing)
+    {
+        if (is_null($is_auto_daily_pacing)) {
+            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
+        }
+        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_bid
+     *
+     * @return float|null
+     */
+    public function getMaxBid()
+    {
+        return $this->container['max_bid'];
+    }
+
+    /**
+     * Sets max_bid
+     *
+     * @param float|null $max_bid max_bid
+     *
+     * @return self
+     */
+    public function setMaxBid($max_bid)
+    {
+        if (is_null($max_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'max_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('max_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['max_bid'] = $max_bid;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_pacing
+     *
+     * @return float|null
+     */
+    public function getMonthlyPacing()
+    {
+        return $this->container['monthly_pacing'];
+    }
+
+    /**
+     * Sets monthly_pacing
+     *
+     * @param float|null $monthly_pacing monthly_pacing
+     *
+     * @return self
+     */
+    public function setMonthlyPacing($monthly_pacing)
+    {
+        if (is_null($monthly_pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly_pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['monthly_pacing'] = $monthly_pacing;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -561,240 +944,6 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets max_bid
-     *
-     * @return float|null
-     */
-    public function getMaxBid()
-    {
-        return $this->container['max_bid'];
-    }
-
-    /**
-     * Sets max_bid
-     *
-     * @param float|null $max_bid max_bid
-     *
-     * @return self
-     */
-    public function setMaxBid($max_bid)
-    {
-        if (is_null($max_bid)) {
-            array_push($this->openAPINullablesSetToNull, 'max_bid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_bid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['max_bid'] = $max_bid;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return float|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param float|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            array_push($this->openAPINullablesSetToNull, 'budget');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly_pacing
-     *
-     * @return float|null
-     */
-    public function getMonthlyPacing()
-    {
-        return $this->container['monthly_pacing'];
-    }
-
-    /**
-     * Sets monthly_pacing
-     *
-     * @param float|null $monthly_pacing monthly_pacing
-     *
-     * @return self
-     */
-    public function setMonthlyPacing($monthly_pacing)
-    {
-        if (is_null($monthly_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly_pacing'] = $monthly_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets daily_pacing
-     *
-     * @return float|null
-     */
-    public function getDailyPacing()
-    {
-        return $this->container['daily_pacing'];
-    }
-
-    /**
-     * Sets daily_pacing
-     *
-     * @param float|null $daily_pacing daily_pacing
-     *
-     * @return self
-     */
-    public function setDailyPacing($daily_pacing)
-    {
-        if (is_null($daily_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['daily_pacing'] = $daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid_strategy
-     *
-     * @return string|null
-     */
-    public function getBidStrategy()
-    {
-        return $this->container['bid_strategy'];
-    }
-
-    /**
-     * Sets bid_strategy
-     *
-     * @param string|null $bid_strategy bid_strategy
-     *
-     * @return self
-     */
-    public function setBidStrategy($bid_strategy)
-    {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
-        }
-        $allowedValues = $this->getBidStrategyAllowableValues();
-        if (!in_array($bid_strategy, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'bid_strategy', must be one of '%s'",
-                    $bid_strategy,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['bid_strategy'] = $bid_strategy;
-
-        return $this;
-    }
-
-    /**
-     * Gets target_retailer_id
-     *
-     * @return string
-     */
-    public function getTargetRetailerId()
-    {
-        return $this->container['target_retailer_id'];
-    }
-
-    /**
-     * Sets target_retailer_id
-     *
-     * @param string $target_retailer_id target_retailer_id
-     *
-     * @return self
-     */
-    public function setTargetRetailerId($target_retailer_id)
-    {
-        if (is_null($target_retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable target_retailer_id cannot be null');
-        }
-        $this->container['target_retailer_id'] = $target_retailer_id;
 
         return $this;
     }
@@ -871,143 +1020,28 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets is_auto_daily_pacing
-     *
-     * @return bool|null
-     */
-    public function getIsAutoDailyPacing()
-    {
-        return $this->container['is_auto_daily_pacing'];
-    }
-
-    /**
-     * Sets is_auto_daily_pacing
-     *
-     * @param bool|null $is_auto_daily_pacing is_auto_daily_pacing
-     *
-     * @return self
-     */
-    public function setIsAutoDailyPacing($is_auto_daily_pacing)
-    {
-        if (is_null($is_auto_daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
-        }
-        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_id
+     * Gets target_retailer_id
      *
      * @return string
      */
-    public function getCampaignId()
+    public function getTargetRetailerId()
     {
-        return $this->container['campaign_id'];
+        return $this->container['target_retailer_id'];
     }
 
     /**
-     * Sets campaign_id
+     * Sets target_retailer_id
      *
-     * @param string $campaign_id campaign_id
+     * @param string $target_retailer_id target_retailer_id
      *
      * @return self
      */
-    public function setCampaignId($campaign_id)
+    public function setTargetRetailerId($target_retailer_id)
     {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        if (is_null($target_retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable target_retailer_id cannot be null');
         }
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return float|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param float|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        if (is_null($budget_spent)) {
-            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
-        }
-        $this->container['budget_spent'] = $budget_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_remaining
-     *
-     * @return float
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        if (is_null($budget_remaining)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_remaining', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['target_retailer_id'] = $target_retailer_id;
 
         return $this;
     }
@@ -1035,40 +1069,6 @@ class ExternalAuctionLineItem implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Id of the entity
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }

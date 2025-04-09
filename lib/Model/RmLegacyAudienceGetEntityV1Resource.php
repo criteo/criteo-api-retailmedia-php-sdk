@@ -59,8 +59,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'attributes' => '\criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceGetEntityV1',
-        'id' => 'string',
         'audience_type' => 'string',
+        'id' => 'string',
         'type' => 'string'
     ];
 
@@ -73,8 +73,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'attributes' => null,
-        'id' => null,
         'audience_type' => null,
+        'id' => null,
         'type' => null
     ];
 
@@ -85,8 +85,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'attributes' => true,
-		'id' => true,
 		'audience_type' => true,
+		'id' => true,
 		'type' => true
     ];
 
@@ -177,8 +177,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'attributes' => 'attributes',
-        'id' => 'id',
         'audience_type' => 'audienceType',
+        'id' => 'id',
         'type' => 'type'
     ];
 
@@ -189,8 +189,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'attributes' => 'setAttributes',
-        'id' => 'setId',
         'audience_type' => 'setAudienceType',
+        'id' => 'setId',
         'type' => 'setType'
     ];
 
@@ -201,8 +201,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'attributes' => 'getAttributes',
-        'id' => 'getId',
         'audience_type' => 'getAudienceType',
+        'id' => 'getId',
         'type' => 'getType'
     ];
 
@@ -279,8 +279,8 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('audience_type', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -370,40 +370,6 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Unique identifier of this resource.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets audience_type
      *
      * @return string|null
@@ -443,6 +409,40 @@ class RmLegacyAudienceGetEntityV1Resource implements ModelInterface, ArrayAccess
             );
         }
         $this->container['audience_type'] = $audience_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Unique identifier of this resource.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

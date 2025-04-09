@@ -78,7 +78,7 @@ try {
 ## `legacyGetAudienceV1()`
 
 ```php
-legacyGetAudienceV1($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceGetEntityV1ListResponse
+legacyGetAudienceV1($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceGetEntityV1ListResponse
 ```
 
 
@@ -107,11 +107,11 @@ $apiInstance = new criteo\api\retailmedia\v2024_04\Api\AudienceApi(
 );
 $account_id = 56; // int | ID of the account to which this audience belongs.
 $limit_to_id = array(56); // int[] | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
 $page_index = 56; // int | Returns the specified page of results given a pageSize; pages are 0-indexed.
+$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
 
 try {
-    $result = $apiInstance->legacyGetAudienceV1($account_id, $limit_to_id, $page_size, $page_index);
+    $result = $apiInstance->legacyGetAudienceV1($account_id, $limit_to_id, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceApi->legacyGetAudienceV1: ', $e->getMessage(), PHP_EOL;
@@ -124,8 +124,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **int**| ID of the account to which this audience belongs. | |
 | **limit_to_id** | [**int[]**](../Model/int.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 | **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed. | [optional] |
+| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 
 ### Return type
 
@@ -147,7 +147,7 @@ try {
 ## `legacyGetAudienceV2()`
 
 ```php
-legacyGetAudienceV2($account_id, $limit_to_id, $page_size, $page_index): \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceGetEntityV2ListResponse
+legacyGetAudienceV2($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceGetEntityV2ListResponse
 ```
 
 
@@ -176,11 +176,11 @@ $apiInstance = new criteo\api\retailmedia\v2024_04\Api\AudienceApi(
 );
 $account_id = 56; // int | ID of the account to which this audience belongs.
 $limit_to_id = array(56); // int[] | Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId=1&limitToId=2
-$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
 $page_index = 56; // int | Returns the specified page of results given a pageSize; pages are 0-indexed.
+$page_size = 56; // int | Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page.
 
 try {
-    $result = $apiInstance->legacyGetAudienceV2($account_id, $limit_to_id, $page_size, $page_index);
+    $result = $apiInstance->legacyGetAudienceV2($account_id, $limit_to_id, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AudienceApi->legacyGetAudienceV2: ', $e->getMessage(), PHP_EOL;
@@ -193,8 +193,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **int**| ID of the account to which this audience belongs. | |
 | **limit_to_id** | [**int[]**](../Model/int.md)| Limits results to the entity IDs specified; parameter key is repeated, eg. limitToId&#x3D;1&amp;limitToId&#x3D;2 | [optional] |
-| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 | **page_index** | **int**| Returns the specified page of results given a pageSize; pages are 0-indexed. | [optional] |
+| **page_size** | **int**| Specifies the maximum number of entities returned in a single page; defaults to 25 entities per page. | [optional] |
 
 ### Return type
 

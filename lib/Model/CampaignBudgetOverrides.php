@@ -58,8 +58,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'monthly_budget_overrides' => '\criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[]',
-        'daily_budget_overrides' => '\criteo\api\retailmedia\v2024_04\Model\CampaignDailyBudgetOverride[]'
+        'daily_budget_overrides' => '\criteo\api\retailmedia\v2024_04\Model\CampaignDailyBudgetOverride[]',
+        'monthly_budget_overrides' => '\criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'monthly_budget_overrides' => null,
-        'daily_budget_overrides' => null
+        'daily_budget_overrides' => null,
+        'monthly_budget_overrides' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'monthly_budget_overrides' => false,
-		'daily_budget_overrides' => false
+        'daily_budget_overrides' => false,
+		'monthly_budget_overrides' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'monthly_budget_overrides' => 'monthlyBudgetOverrides',
-        'daily_budget_overrides' => 'dailyBudgetOverrides'
+        'daily_budget_overrides' => 'dailyBudgetOverrides',
+        'monthly_budget_overrides' => 'monthlyBudgetOverrides'
     ];
 
     /**
@@ -180,8 +180,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'monthly_budget_overrides' => 'setMonthlyBudgetOverrides',
-        'daily_budget_overrides' => 'setDailyBudgetOverrides'
+        'daily_budget_overrides' => 'setDailyBudgetOverrides',
+        'monthly_budget_overrides' => 'setMonthlyBudgetOverrides'
     ];
 
     /**
@@ -190,8 +190,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'monthly_budget_overrides' => 'getMonthlyBudgetOverrides',
-        'daily_budget_overrides' => 'getDailyBudgetOverrides'
+        'daily_budget_overrides' => 'getDailyBudgetOverrides',
+        'monthly_budget_overrides' => 'getMonthlyBudgetOverrides'
     ];
 
     /**
@@ -251,8 +251,8 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('monthly_budget_overrides', $data ?? [], null);
         $this->setIfExists('daily_budget_overrides', $data ?? [], null);
+        $this->setIfExists('monthly_budget_overrides', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['monthly_budget_overrides'] === null) {
-            $invalidProperties[] = "'monthly_budget_overrides' can't be null";
-        }
         if ($this->container['daily_budget_overrides'] === null) {
             $invalidProperties[] = "'daily_budget_overrides' can't be null";
+        }
+        if ($this->container['monthly_budget_overrides'] === null) {
+            $invalidProperties[] = "'monthly_budget_overrides' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets monthly_budget_overrides
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[]
-     */
-    public function getMonthlyBudgetOverrides()
-    {
-        return $this->container['monthly_budget_overrides'];
-    }
-
-    /**
-     * Sets monthly_budget_overrides
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[] $monthly_budget_overrides Campaign budget override monthly part, chronological order restricted.
-     *
-     * @return self
-     */
-    public function setMonthlyBudgetOverrides($monthly_budget_overrides)
-    {
-        if (is_null($monthly_budget_overrides)) {
-            throw new \InvalidArgumentException('non-nullable monthly_budget_overrides cannot be null');
-        }
-        $this->container['monthly_budget_overrides'] = $monthly_budget_overrides;
-
-        return $this;
-    }
 
     /**
      * Gets daily_budget_overrides
@@ -353,6 +326,33 @@ class CampaignBudgetOverrides implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable daily_budget_overrides cannot be null');
         }
         $this->container['daily_budget_overrides'] = $daily_budget_overrides;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_budget_overrides
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[]
+     */
+    public function getMonthlyBudgetOverrides()
+    {
+        return $this->container['monthly_budget_overrides'];
+    }
+
+    /**
+     * Sets monthly_budget_overrides
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\CampaignMonthlyBudgetOverride[] $monthly_budget_overrides Campaign budget override monthly part, chronological order restricted.
+     *
+     * @return self
+     */
+    public function setMonthlyBudgetOverrides($monthly_budget_overrides)
+    {
+        if (is_null($monthly_budget_overrides)) {
+            throw new \InvalidArgumentException('non-nullable monthly_budget_overrides cannot be null');
+        }
+        $this->container['monthly_budget_overrides'] = $monthly_budget_overrides;
 
         return $this;
     }

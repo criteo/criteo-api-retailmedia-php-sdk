@@ -58,9 +58,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'data' => '\criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource',
         'errors' => '\criteo\api\retailmedia\v2024_04\Model\RmcaCommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\v2024_04\Model\RmcaCommonProblem[]',
-        'data' => '\criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource'
+        'warnings' => '\criteo\api\retailmedia\v2024_04\Model\RmcaCommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'data' => null,
         'errors' => null,
-        'warnings' => null,
-        'data' => null
+        'warnings' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'errors' => true,
-		'warnings' => true,
-		'data' => true
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'data' => 'data',
         'errors' => 'errors',
-        'warnings' => 'warnings',
-        'data' => 'data'
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -184,9 +184,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'data' => 'setData',
         'errors' => 'setErrors',
-        'warnings' => 'setWarnings',
-        'data' => 'setData'
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -195,9 +195,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'data' => 'getData',
         'errors' => 'getErrors',
-        'warnings' => 'getWarnings',
-        'data' => 'getData'
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -257,9 +257,9 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
-        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -303,6 +303,40 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets data
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource|null
+     */
+    public function getData()
+    {
+        return $this->container['data'];
+    }
+
+    /**
+     * Sets data
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource|null $data data
+     *
+     * @return self
+     */
+    public function setData($data)
+    {
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['data'] = $data;
+
+        return $this;
+    }
 
     /**
      * Gets errors
@@ -368,40 +402,6 @@ class KeywordsModelResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
-     * Gets data
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource|null
-     */
-    public function getData()
-    {
-        return $this->container['data'];
-    }
-
-    /**
-     * Sets data
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\KeywordsModelResource|null $data data
-     *
-     * @return self
-     */
-    public function setData($data)
-    {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['data'] = $data;
 
         return $this;
     }

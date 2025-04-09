@@ -58,10 +58,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_type' => 'string',
         'lookback_window' => 'string',
+        'target_ids' => 'string[]',
         'target_type' => 'string',
-        'target_ids' => 'string[]'
+        'user_type' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_type' => null,
         'lookback_window' => null,
+        'target_ids' => null,
         'target_type' => null,
-        'target_ids' => null
+        'user_type' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'user_type' => false,
-		'lookback_window' => false,
+        'lookback_window' => false,
+		'target_ids' => true,
 		'target_type' => true,
-		'target_ids' => true
+		'user_type' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_type' => 'userType',
         'lookback_window' => 'lookbackWindow',
+        'target_ids' => 'targetIds',
         'target_type' => 'targetType',
-        'target_ids' => 'targetIds'
+        'user_type' => 'userType'
     ];
 
     /**
@@ -188,10 +188,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'user_type' => 'setUserType',
         'lookback_window' => 'setLookbackWindow',
+        'target_ids' => 'setTargetIds',
         'target_type' => 'setTargetType',
-        'target_ids' => 'setTargetIds'
+        'user_type' => 'setUserType'
     ];
 
     /**
@@ -200,10 +200,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'user_type' => 'getUserType',
         'lookback_window' => 'getLookbackWindow',
+        'target_ids' => 'getTargetIds',
         'target_type' => 'getTargetType',
-        'target_ids' => 'getTargetIds'
+        'user_type' => 'getUserType'
     ];
 
     /**
@@ -247,9 +247,6 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const USER_TYPE_VIEWER = 'viewer';
-    public const USER_TYPE_BUYER = 'buyer';
-    public const USER_TYPE_ADD_TO_CARTER = 'addToCarter';
     public const LOOKBACK_WINDOW_P7_D = 'P7D';
     public const LOOKBACK_WINDOW_P14_D = 'P14D';
     public const LOOKBACK_WINDOW_P30_D = 'P30D';
@@ -261,20 +258,9 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
     public const LOOKBACK_WINDOW_P180_D = 'P180D';
     public const TARGET_TYPE_BRAND = 'brand';
     public const TARGET_TYPE_CATEGORY = 'category';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUserTypeAllowableValues()
-    {
-        return [
-            self::USER_TYPE_VIEWER,
-            self::USER_TYPE_BUYER,
-            self::USER_TYPE_ADD_TO_CARTER,
-        ];
-    }
+    public const USER_TYPE_VIEWER = 'viewer';
+    public const USER_TYPE_BUYER = 'buyer';
+    public const USER_TYPE_ADD_TO_CARTER = 'addToCarter';
 
     /**
      * Gets allowable values of the enum
@@ -310,6 +296,20 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUserTypeAllowableValues()
+    {
+        return [
+            self::USER_TYPE_VIEWER,
+            self::USER_TYPE_BUYER,
+            self::USER_TYPE_ADD_TO_CARTER,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -324,10 +324,10 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('user_type', $data ?? [], null);
         $this->setIfExists('lookback_window', $data ?? [], null);
-        $this->setIfExists('target_type', $data ?? [], null);
         $this->setIfExists('target_ids', $data ?? [], null);
+        $this->setIfExists('target_type', $data ?? [], null);
+        $this->setIfExists('user_type', $data ?? [], null);
     }
 
     /**
@@ -357,18 +357,6 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['user_type'] === null) {
-            $invalidProperties[] = "'user_type' can't be null";
-        }
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'user_type', must be one of '%s'",
-                $this->container['user_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['lookback_window'] === null) {
             $invalidProperties[] = "'lookback_window' can't be null";
         }
@@ -390,6 +378,18 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
             );
         }
 
+        if ($this->container['user_type'] === null) {
+            $invalidProperties[] = "'user_type' can't be null";
+        }
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'user_type', must be one of '%s'",
+                $this->container['user_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -404,43 +404,6 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets user_type
-     *
-     * @return string
-     */
-    public function getUserType()
-    {
-        return $this->container['user_type'];
-    }
-
-    /**
-     * Sets user_type
-     *
-     * @param string $user_type Type of shopper activity used to generate the audience.
-     *
-     * @return self
-     */
-    public function setUserType($user_type)
-    {
-        if (is_null($user_type)) {
-            throw new \InvalidArgumentException('non-nullable user_type cannot be null');
-        }
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!in_array($user_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'user_type', must be one of '%s'",
-                    $user_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['user_type'] = $user_type;
-
-        return $this;
-    }
 
     /**
      * Gets lookback_window
@@ -475,6 +438,42 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
             );
         }
         $this->container['lookback_window'] = $lookback_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_ids
+     *
+     * @return string[]|null
+     */
+    public function getTargetIds()
+    {
+        return $this->container['target_ids'];
+    }
+
+    /**
+     * Sets target_ids
+     *
+     * @param string[]|null $target_ids The categories to target
+     *
+     * @return self
+     */
+    public function setTargetIds($target_ids)
+    {
+        if (is_null($target_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'target_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('target_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+
+        $this->container['target_ids'] = $target_ids;
 
         return $this;
     }
@@ -524,37 +523,38 @@ class RmLegacySegmentUserBehaviorV1 implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets target_ids
+     * Gets user_type
      *
-     * @return string[]|null
+     * @return string
      */
-    public function getTargetIds()
+    public function getUserType()
     {
-        return $this->container['target_ids'];
+        return $this->container['user_type'];
     }
 
     /**
-     * Sets target_ids
+     * Sets user_type
      *
-     * @param string[]|null $target_ids The categories to target
+     * @param string $user_type Type of shopper activity used to generate the audience.
      *
      * @return self
      */
-    public function setTargetIds($target_ids)
+    public function setUserType($user_type)
     {
-        if (is_null($target_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'target_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('target_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($user_type)) {
+            throw new \InvalidArgumentException('non-nullable user_type cannot be null');
         }
-
-
-        $this->container['target_ids'] = $target_ids;
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!in_array($user_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'user_type', must be one of '%s'",
+                    $user_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['user_type'] = $user_type;
 
         return $this;
     }

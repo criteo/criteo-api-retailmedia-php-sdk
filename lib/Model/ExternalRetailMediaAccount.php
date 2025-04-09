@@ -58,15 +58,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'company_name' => 'string',
-        'on_behalf_company_name' => 'string',
-        'type' => 'string',
-        'sub_type' => 'string',
         'country_ids' => 'string[]',
         'currency_id' => 'string',
+        'name' => 'string',
+        'on_behalf_company_name' => 'string',
         'parent_account_label' => 'string',
-        'time_zone' => 'string'
+        'sub_type' => 'string',
+        'time_zone' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'company_name' => null,
-        'on_behalf_company_name' => null,
-        'type' => null,
-        'sub_type' => null,
         'country_ids' => null,
         'currency_id' => null,
+        'name' => null,
+        'on_behalf_company_name' => null,
         'parent_account_label' => null,
-        'time_zone' => null
+        'sub_type' => null,
+        'time_zone' => null,
+        'type' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
-		'company_name' => true,
-		'on_behalf_company_name' => true,
-		'type' => true,
-		'sub_type' => true,
+        'company_name' => true,
 		'country_ids' => true,
 		'currency_id' => true,
+		'name' => true,
+		'on_behalf_company_name' => true,
 		'parent_account_label' => true,
-		'time_zone' => true
+		'sub_type' => true,
+		'time_zone' => true,
+		'type' => true
     ];
 
     /**
@@ -191,15 +191,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName',
-        'type' => 'type',
-        'sub_type' => 'subType',
         'country_ids' => 'countryIds',
         'currency_id' => 'currencyId',
+        'name' => 'name',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
         'parent_account_label' => 'parentAccountLabel',
-        'time_zone' => 'timeZone'
+        'sub_type' => 'subType',
+        'time_zone' => 'timeZone',
+        'type' => 'type'
     ];
 
     /**
@@ -208,15 +208,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'type' => 'setType',
-        'sub_type' => 'setSubType',
         'country_ids' => 'setCountryIds',
         'currency_id' => 'setCurrencyId',
+        'name' => 'setName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'parent_account_label' => 'setParentAccountLabel',
-        'time_zone' => 'setTimeZone'
+        'sub_type' => 'setSubType',
+        'time_zone' => 'setTimeZone',
+        'type' => 'setType'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'type' => 'getType',
-        'sub_type' => 'getSubType',
         'country_ids' => 'getCountryIds',
         'currency_id' => 'getCurrencyId',
+        'name' => 'getName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'parent_account_label' => 'getParentAccountLabel',
-        'time_zone' => 'getTimeZone'
+        'sub_type' => 'getSubType',
+        'time_zone' => 'getTimeZone',
+        'type' => 'getType'
     ];
 
     /**
@@ -277,26 +277,12 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'Unknown';
-    public const TYPE_SUPPLY = 'Supply';
-    public const TYPE_DEMAND = 'Demand';
     public const SUB_TYPE_UNKNOWN = 'Unknown';
     public const SUB_TYPE_BRAND = 'Brand';
     public const SUB_TYPE_SELLER = 'Seller';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_SUPPLY,
-            self::TYPE_DEMAND,
-        ];
-    }
+    public const TYPE_UNKNOWN = 'Unknown';
+    public const TYPE_SUPPLY = 'Supply';
+    public const TYPE_DEMAND = 'Demand';
 
     /**
      * Gets allowable values of the enum
@@ -309,6 +295,20 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
             self::SUB_TYPE_UNKNOWN,
             self::SUB_TYPE_BRAND,
             self::SUB_TYPE_SELLER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_SUPPLY,
+            self::TYPE_DEMAND,
         ];
     }
 
@@ -327,15 +327,15 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
-        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('sub_type', $data ?? [], null);
         $this->setIfExists('country_ids', $data ?? [], null);
         $this->setIfExists('currency_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('parent_account_label', $data ?? [], null);
+        $this->setIfExists('sub_type', $data ?? [], null);
         $this->setIfExists('time_zone', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -365,20 +365,20 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getSubTypeAllowableValues();
         if (!is_null($this->container['sub_type']) && !in_array($this->container['sub_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'sub_type', must be one of '%s'",
                 $this->container['sub_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -397,40 +397,6 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name account name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
 
     /**
      * Gets company_name
@@ -462,128 +428,6 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['company_name'] = $company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets on_behalf_company_name
-     *
-     * @return string|null
-     */
-    public function getOnBehalfCompanyName()
-    {
-        return $this->container['on_behalf_company_name'];
-    }
-
-    /**
-     * Sets on_behalf_company_name
-     *
-     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
-     *
-     * @return self
-     */
-    public function setOnBehalfCompanyName($on_behalf_company_name)
-    {
-        if (is_null($on_behalf_company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type for the account
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets sub_type
-     *
-     * @return string|null
-     */
-    public function getSubType()
-    {
-        return $this->container['sub_type'];
-    }
-
-    /**
-     * Sets sub_type
-     *
-     * @param string|null $sub_type subtype for the account
-     *
-     * @return self
-     */
-    public function setSubType($sub_type)
-    {
-        if (is_null($sub_type)) {
-            array_push($this->openAPINullablesSetToNull, 'sub_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sub_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getSubTypeAllowableValues();
-        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sub_type', must be one of '%s'",
-                    $sub_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sub_type'] = $sub_type;
 
         return $this;
     }
@@ -657,6 +501,74 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name account name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets on_behalf_company_name
+     *
+     * @return string|null
+     */
+    public function getOnBehalfCompanyName()
+    {
+        return $this->container['on_behalf_company_name'];
+    }
+
+    /**
+     * Sets on_behalf_company_name
+     *
+     * @param string|null $on_behalf_company_name On behalf entity name of ads for the Digital Services Act
+     *
+     * @return self
+     */
+    public function setOnBehalfCompanyName($on_behalf_company_name)
+    {
+        if (is_null($on_behalf_company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'on_behalf_company_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('on_behalf_company_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
      * Gets parent_account_label
      *
      * @return string|null
@@ -691,6 +603,50 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
+     * Gets sub_type
+     *
+     * @return string|null
+     */
+    public function getSubType()
+    {
+        return $this->container['sub_type'];
+    }
+
+    /**
+     * Sets sub_type
+     *
+     * @param string|null $sub_type subtype for the account
+     *
+     * @return self
+     */
+    public function setSubType($sub_type)
+    {
+        if (is_null($sub_type)) {
+            array_push($this->openAPINullablesSetToNull, 'sub_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sub_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSubTypeAllowableValues();
+        if (!is_null($sub_type) && !in_array($sub_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sub_type', must be one of '%s'",
+                    $sub_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sub_type'] = $sub_type;
+
+        return $this;
+    }
+
+    /**
      * Gets time_zone
      *
      * @return string|null
@@ -720,6 +676,50 @@ class ExternalRetailMediaAccount implements ModelInterface, ArrayAccess, \JsonSe
             }
         }
         $this->container['time_zone'] = $time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type for the account
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

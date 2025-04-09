@@ -58,21 +58,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'status' => 'string',
-        'pacing' => 'string',
-        'capping' => '\criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110',
-        'page' => '\criteo\api\retailmedia\v2024_04\Model\ExternalLineItemPage202110',
-        'target_retailer_id' => 'string',
         'budget' => 'float',
-        'campaign_id' => 'string',
-        'budget_spent' => 'float',
         'budget_remaining' => 'float',
+        'budget_spent' => 'float',
+        'campaign_id' => 'string',
+        'capping' => '\criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'creative_id' => 'string'
+        'creative_id' => 'string',
+        'end_date' => '\DateTime',
+        'id' => 'string',
+        'name' => 'string',
+        'pacing' => 'string',
+        'page' => '\criteo\api\retailmedia\v2024_04\Model\ExternalLineItemPage202110',
+        'start_date' => '\DateTime',
+        'status' => 'string',
+        'target_retailer_id' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -83,21 +84,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'start_date' => 'date',
-        'end_date' => 'date',
-        'status' => null,
-        'pacing' => null,
-        'capping' => null,
-        'page' => null,
-        'target_retailer_id' => 'long-id',
         'budget' => 'double',
-        'campaign_id' => 'long-id',
-        'budget_spent' => 'double',
         'budget_remaining' => 'double',
+        'budget_spent' => 'double',
+        'campaign_id' => 'long-id',
+        'capping' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'creative_id' => 'long-id'
+        'creative_id' => 'long-id',
+        'end_date' => 'date',
+        'id' => null,
+        'name' => null,
+        'pacing' => null,
+        'page' => null,
+        'start_date' => 'date',
+        'status' => null,
+        'target_retailer_id' => 'long-id',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -106,21 +108,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'start_date' => false,
-		'end_date' => false,
-		'status' => false,
-		'pacing' => false,
-		'capping' => false,
-		'page' => false,
-		'target_retailer_id' => false,
-		'budget' => false,
-		'campaign_id' => false,
-		'budget_spent' => false,
+        'budget' => false,
 		'budget_remaining' => false,
+		'budget_spent' => false,
+		'campaign_id' => false,
+		'capping' => false,
 		'created_at' => false,
-		'updated_at' => false,
-		'creative_id' => true
+		'creative_id' => true,
+		'end_date' => false,
+		'id' => true,
+		'name' => false,
+		'pacing' => false,
+		'page' => false,
+		'start_date' => false,
+		'status' => false,
+		'target_retailer_id' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -209,21 +212,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'status' => 'status',
-        'pacing' => 'pacing',
-        'capping' => 'capping',
-        'page' => 'page',
-        'target_retailer_id' => 'targetRetailerId',
         'budget' => 'budget',
-        'campaign_id' => 'campaignId',
-        'budget_spent' => 'budgetSpent',
         'budget_remaining' => 'budgetRemaining',
+        'budget_spent' => 'budgetSpent',
+        'campaign_id' => 'campaignId',
+        'capping' => 'capping',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'creative_id' => 'creativeId'
+        'creative_id' => 'creativeId',
+        'end_date' => 'endDate',
+        'id' => 'id',
+        'name' => 'name',
+        'pacing' => 'pacing',
+        'page' => 'page',
+        'start_date' => 'startDate',
+        'status' => 'status',
+        'target_retailer_id' => 'targetRetailerId',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -232,21 +236,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'status' => 'setStatus',
-        'pacing' => 'setPacing',
-        'capping' => 'setCapping',
-        'page' => 'setPage',
-        'target_retailer_id' => 'setTargetRetailerId',
         'budget' => 'setBudget',
-        'campaign_id' => 'setCampaignId',
-        'budget_spent' => 'setBudgetSpent',
         'budget_remaining' => 'setBudgetRemaining',
+        'budget_spent' => 'setBudgetSpent',
+        'campaign_id' => 'setCampaignId',
+        'capping' => 'setCapping',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'creative_id' => 'setCreativeId'
+        'creative_id' => 'setCreativeId',
+        'end_date' => 'setEndDate',
+        'id' => 'setId',
+        'name' => 'setName',
+        'pacing' => 'setPacing',
+        'page' => 'setPage',
+        'start_date' => 'setStartDate',
+        'status' => 'setStatus',
+        'target_retailer_id' => 'setTargetRetailerId',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -255,21 +260,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'status' => 'getStatus',
-        'pacing' => 'getPacing',
-        'capping' => 'getCapping',
-        'page' => 'getPage',
-        'target_retailer_id' => 'getTargetRetailerId',
         'budget' => 'getBudget',
-        'campaign_id' => 'getCampaignId',
-        'budget_spent' => 'getBudgetSpent',
         'budget_remaining' => 'getBudgetRemaining',
+        'budget_spent' => 'getBudgetSpent',
+        'campaign_id' => 'getCampaignId',
+        'capping' => 'getCapping',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'creative_id' => 'getCreativeId'
+        'creative_id' => 'getCreativeId',
+        'end_date' => 'getEndDate',
+        'id' => 'getId',
+        'name' => 'getName',
+        'pacing' => 'getPacing',
+        'page' => 'getPage',
+        'start_date' => 'getStartDate',
+        'status' => 'getStatus',
+        'target_retailer_id' => 'getTargetRetailerId',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -313,6 +319,9 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const PACING_UNKNOWN = 'unknown';
+    public const PACING_STANDARD = 'standard';
+    public const PACING_ACCELERATED = 'accelerated';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -322,9 +331,20 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     public const STATUS_ENDED = 'ended';
     public const STATUS_ARCHIVED = 'archived';
     public const STATUS_NO_FUNDS = 'noFunds';
-    public const PACING_UNKNOWN = 'unknown';
-    public const PACING_STANDARD = 'standard';
-    public const PACING_ACCELERATED = 'accelerated';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPacingAllowableValues()
+    {
+        return [
+            self::PACING_UNKNOWN,
+            self::PACING_STANDARD,
+            self::PACING_ACCELERATED,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -347,20 +367,6 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPacingAllowableValues()
-    {
-        return [
-            self::PACING_UNKNOWN,
-            self::PACING_STANDARD,
-            self::PACING_ACCELERATED,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -375,21 +381,22 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('pacing', $data ?? [], null);
-        $this->setIfExists('capping', $data ?? [], null);
-        $this->setIfExists('page', $data ?? [], null);
-        $this->setIfExists('target_retailer_id', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('budget_spent', $data ?? [], null);
         $this->setIfExists('budget_remaining', $data ?? [], null);
+        $this->setIfExists('budget_spent', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('capping', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('pacing', $data ?? [], null);
+        $this->setIfExists('page', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('target_retailer_id', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -419,6 +426,18 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['budget'] === null) {
+            $invalidProperties[] = "'budget' can't be null";
+        }
+        if ($this->container['campaign_id'] === null) {
+            $invalidProperties[] = "'campaign_id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -428,24 +447,6 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
 
         if ((mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
         }
 
         if ($this->container['pacing'] === null) {
@@ -463,17 +464,23 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
         if ($this->container['page'] === null) {
             $invalidProperties[] = "'page' can't be null";
         }
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['target_retailer_id'] === null) {
             $invalidProperties[] = "'target_retailer_id' can't be null";
-        }
-        if ($this->container['budget'] === null) {
-            $invalidProperties[] = "'budget' can't be null";
-        }
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
         }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
@@ -494,62 +501,197 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets name
+     * Gets budget
      *
-     * @return string
+     * @return float
      */
-    public function getName()
+    public function getBudget()
     {
-        return $this->container['name'];
+        return $this->container['budget'];
     }
 
     /**
-     * Sets name
+     * Sets budget
      *
-     * @param string $name name
+     * @param float $budget budget
      *
      * @return self
      */
-    public function setName($name)
+    public function setBudget($budget)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($budget)) {
+            throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem202110., must be smaller than or equal to 255.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem202110., must be bigger than or equal to 0.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['budget'] = $budget;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets budget_remaining
      *
-     * @return \DateTime
+     * @return float|null
      */
-    public function getStartDate()
+    public function getBudgetRemaining()
     {
-        return $this->container['start_date'];
+        return $this->container['budget_remaining'];
     }
 
     /**
-     * Sets start_date
+     * Sets budget_remaining
      *
-     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     * @param float|null $budget_remaining budget_remaining
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setBudgetRemaining($budget_remaining)
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($budget_remaining)) {
+            throw new \InvalidArgumentException('non-nullable budget_remaining cannot be null');
         }
-        $this->container['start_date'] = $start_date;
+        $this->container['budget_remaining'] = $budget_remaining;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_spent
+     *
+     * @return float|null
+     */
+    public function getBudgetSpent()
+    {
+        return $this->container['budget_spent'];
+    }
+
+    /**
+     * Sets budget_spent
+     *
+     * @param float|null $budget_spent budget_spent
+     *
+     * @return self
+     */
+    public function setBudgetSpent($budget_spent)
+    {
+        if (is_null($budget_spent)) {
+            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
+        }
+        $this->container['budget_spent'] = $budget_spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_id
+     *
+     * @return string
+     */
+    public function getCampaignId()
+    {
+        return $this->container['campaign_id'];
+    }
+
+    /**
+     * Sets campaign_id
+     *
+     * @param string $campaign_id campaign_id
+     *
+     * @return self
+     */
+    public function setCampaignId($campaign_id)
+    {
+        if (is_null($campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
+        }
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets capping
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110|null
+     */
+    public function getCapping()
+    {
+        return $this->container['capping'];
+    }
+
+    /**
+     * Sets capping
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110|null $capping capping
+     *
+     * @return self
+     */
+    public function setCapping($capping)
+    {
+        if (is_null($capping)) {
+            throw new \InvalidArgumentException('non-nullable capping cannot be null');
+        }
+        $this->container['capping'] = $capping;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_id
+     *
+     * @return string|null
+     */
+    public function getCreativeId()
+    {
+        return $this->container['creative_id'];
+    }
+
+    /**
+     * Sets creative_id
+     *
+     * @param string|null $creative_id creative_id
+     *
+     * @return self
+     */
+    public function setCreativeId($creative_id)
+    {
+        if (is_null($creative_id)) {
+            array_push($this->openAPINullablesSetToNull, 'creative_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creative_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['creative_id'] = $creative_id;
 
         return $this;
     }
@@ -582,38 +724,69 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets status
+     * Gets id
      *
-     * @return string
+     * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string $status status
+     * @param string|null $id Id of the entity
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['status'] = $status;
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem202110., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItem202110., must be bigger than or equal to 0.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -656,33 +829,6 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets capping
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110|null
-     */
-    public function getCapping()
-    {
-        return $this->container['capping'];
-    }
-
-    /**
-     * Sets capping
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\ExternalLineItemCapping202110|null $capping capping
-     *
-     * @return self
-     */
-    public function setCapping($capping)
-    {
-        if (is_null($capping)) {
-            throw new \InvalidArgumentException('non-nullable capping cannot be null');
-        }
-        $this->container['capping'] = $capping;
-
-        return $this;
-    }
-
-    /**
      * Gets page
      *
      * @return \criteo\api\retailmedia\v2024_04\Model\ExternalLineItemPage202110
@@ -705,6 +851,70 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable page cannot be null');
         }
         $this->container['page'] = $page;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -737,141 +947,6 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets budget
-     *
-     * @return float
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param float $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_id
-     *
-     * @return string
-     */
-    public function getCampaignId()
-    {
-        return $this->container['campaign_id'];
-    }
-
-    /**
-     * Sets campaign_id
-     *
-     * @param string $campaign_id campaign_id
-     *
-     * @return self
-     */
-    public function setCampaignId($campaign_id)
-    {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
-        }
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return float|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param float|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        if (is_null($budget_spent)) {
-            throw new \InvalidArgumentException('non-nullable budget_spent cannot be null');
-        }
-        $this->container['budget_spent'] = $budget_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_remaining
-     *
-     * @return float|null
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float|null $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        if (is_null($budget_remaining)) {
-            throw new \InvalidArgumentException('non-nullable budget_remaining cannot be null');
-        }
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
      * Gets updated_at
      *
      * @return \DateTime
@@ -894,40 +969,6 @@ class ExternalPreferredLineItem202110 implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets creative_id
-     *
-     * @return string|null
-     */
-    public function getCreativeId()
-    {
-        return $this->container['creative_id'];
-    }
-
-    /**
-     * Sets creative_id
-     *
-     * @param string|null $creative_id creative_id
-     *
-     * @return self
-     */
-    public function setCreativeId($creative_id)
-    {
-        if (is_null($creative_id)) {
-            array_push($this->openAPINullablesSetToNull, 'creative_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('creative_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['creative_id'] = $creative_id;
 
         return $this;
     }

@@ -4,11 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  |
-**status** | **string** |  |
-**brand_id** | **int** |  | [optional]
-**retailer_id** | **int** |  |
 **associated_line_item_ids** | **string[]** |  | [optional]
+**brand_id** | **int** |  | [optional]
+**id** | **string** | Id of the entity | [optional]
+**name** | **string** |  |
+**retailer_id** | **int** |  |
+**status** | **string** |  |
 **updated_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

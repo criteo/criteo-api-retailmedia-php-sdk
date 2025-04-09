@@ -58,12 +58,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_type' => 'string',
-        'lookback_window' => 'string',
         'brand_ids' => 'int[]',
         'category_ids' => 'int[]',
+        'lookback_window' => 'string',
+        'name' => 'string',
         'retailer_id' => 'int',
-        'name' => 'string'
+        'user_type' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_type' => null,
-        'lookback_window' => null,
         'brand_ids' => 'int64',
         'category_ids' => 'int32',
+        'lookback_window' => null,
+        'name' => null,
         'retailer_id' => 'int64',
-        'name' => null
+        'user_type' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'user_type' => false,
-		'lookback_window' => false,
-		'brand_ids' => true,
+        'brand_ids' => true,
 		'category_ids' => true,
+		'lookback_window' => false,
+		'name' => false,
 		'retailer_id' => false,
-		'name' => false
+		'user_type' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_type' => 'userType',
-        'lookback_window' => 'lookbackWindow',
         'brand_ids' => 'brandIds',
         'category_ids' => 'categoryIds',
+        'lookback_window' => 'lookbackWindow',
+        'name' => 'name',
         'retailer_id' => 'retailerId',
-        'name' => 'name'
+        'user_type' => 'userType'
     ];
 
     /**
@@ -196,12 +196,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'user_type' => 'setUserType',
-        'lookback_window' => 'setLookbackWindow',
         'brand_ids' => 'setBrandIds',
         'category_ids' => 'setCategoryIds',
+        'lookback_window' => 'setLookbackWindow',
+        'name' => 'setName',
         'retailer_id' => 'setRetailerId',
-        'name' => 'setName'
+        'user_type' => 'setUserType'
     ];
 
     /**
@@ -210,12 +210,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'user_type' => 'getUserType',
-        'lookback_window' => 'getLookbackWindow',
         'brand_ids' => 'getBrandIds',
         'category_ids' => 'getCategoryIds',
+        'lookback_window' => 'getLookbackWindow',
+        'name' => 'getName',
         'retailer_id' => 'getRetailerId',
-        'name' => 'getName'
+        'user_type' => 'getUserType'
     ];
 
     /**
@@ -259,9 +259,6 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const USER_TYPE_VIEWER = 'viewer';
-    public const USER_TYPE_BUYER = 'buyer';
-    public const USER_TYPE_ADD_TO_CARTER = 'addToCarter';
     public const LOOKBACK_WINDOW_P7_D = 'P7D';
     public const LOOKBACK_WINDOW_P14_D = 'P14D';
     public const LOOKBACK_WINDOW_P30_D = 'P30D';
@@ -271,20 +268,9 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
     public const LOOKBACK_WINDOW_P120_D = 'P120D';
     public const LOOKBACK_WINDOW_P150_D = 'P150D';
     public const LOOKBACK_WINDOW_P180_D = 'P180D';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUserTypeAllowableValues()
-    {
-        return [
-            self::USER_TYPE_VIEWER,
-            self::USER_TYPE_BUYER,
-            self::USER_TYPE_ADD_TO_CARTER,
-        ];
-    }
+    public const USER_TYPE_VIEWER = 'viewer';
+    public const USER_TYPE_BUYER = 'buyer';
+    public const USER_TYPE_ADD_TO_CARTER = 'addToCarter';
 
     /**
      * Gets allowable values of the enum
@@ -307,6 +293,20 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUserTypeAllowableValues()
+    {
+        return [
+            self::USER_TYPE_VIEWER,
+            self::USER_TYPE_BUYER,
+            self::USER_TYPE_ADD_TO_CARTER,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -321,12 +321,12 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('user_type', $data ?? [], null);
-        $this->setIfExists('lookback_window', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
         $this->setIfExists('category_ids', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('lookback_window', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('user_type', $data ?? [], null);
     }
 
     /**
@@ -356,18 +356,6 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['user_type'] === null) {
-            $invalidProperties[] = "'user_type' can't be null";
-        }
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'user_type', must be one of '%s'",
-                $this->container['user_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['lookback_window'] === null) {
             $invalidProperties[] = "'lookback_window' can't be null";
         }
@@ -380,12 +368,24 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
             );
         }
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['user_type'] === null) {
+            $invalidProperties[] = "'user_type' can't be null";
+        }
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!is_null($this->container['user_type']) && !in_array($this->container['user_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'user_type', must be one of '%s'",
+                $this->container['user_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -400,80 +400,6 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets user_type
-     *
-     * @return string
-     */
-    public function getUserType()
-    {
-        return $this->container['user_type'];
-    }
-
-    /**
-     * Sets user_type
-     *
-     * @param string $user_type Type of the user
-     *
-     * @return self
-     */
-    public function setUserType($user_type)
-    {
-        if (is_null($user_type)) {
-            throw new \InvalidArgumentException('non-nullable user_type cannot be null');
-        }
-        $allowedValues = $this->getUserTypeAllowableValues();
-        if (!in_array($user_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'user_type', must be one of '%s'",
-                    $user_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['user_type'] = $user_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets lookback_window
-     *
-     * @return string
-     */
-    public function getLookbackWindow()
-    {
-        return $this->container['lookback_window'];
-    }
-
-    /**
-     * Sets lookback_window
-     *
-     * @param string $lookback_window Length of lookback window
-     *
-     * @return self
-     */
-    public function setLookbackWindow($lookback_window)
-    {
-        if (is_null($lookback_window)) {
-            throw new \InvalidArgumentException('non-nullable lookback_window cannot be null');
-        }
-        $allowedValues = $this->getLookbackWindowAllowableValues();
-        if (!in_array($lookback_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'lookback_window', must be one of '%s'",
-                    $lookback_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['lookback_window'] = $lookback_window;
-
-        return $this;
-    }
 
     /**
      * Gets brand_ids
@@ -548,28 +474,38 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
-     * Gets retailer_id
+     * Gets lookback_window
      *
-     * @return int
+     * @return string
      */
-    public function getRetailerId()
+    public function getLookbackWindow()
     {
-        return $this->container['retailer_id'];
+        return $this->container['lookback_window'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets lookback_window
      *
-     * @param int $retailer_id ID of the retailer associated with this audience
+     * @param string $lookback_window Length of lookback window
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setLookbackWindow($lookback_window)
     {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        if (is_null($lookback_window)) {
+            throw new \InvalidArgumentException('non-nullable lookback_window cannot be null');
         }
-        $this->container['retailer_id'] = $retailer_id;
+        $allowedValues = $this->getLookbackWindowAllowableValues();
+        if (!in_array($lookback_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_window', must be one of '%s'",
+                    $lookback_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_window'] = $lookback_window;
 
         return $this;
     }
@@ -597,6 +533,70 @@ class RmLegacyAudienceCreateEntityV1 implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return int
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param int $retailer_id ID of the retailer associated with this audience
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_type
+     *
+     * @return string
+     */
+    public function getUserType()
+    {
+        return $this->container['user_type'];
+    }
+
+    /**
+     * Sets user_type
+     *
+     * @param string $user_type Type of the user
+     *
+     * @return self
+     */
+    public function setUserType($user_type)
+    {
+        if (is_null($user_type)) {
+            throw new \InvalidArgumentException('non-nullable user_type cannot be null');
+        }
+        $allowedValues = $this->getUserTypeAllowableValues();
+        if (!in_array($user_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'user_type', must be one of '%s'",
+                    $user_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['user_type'] = $user_type;
 
         return $this;
     }

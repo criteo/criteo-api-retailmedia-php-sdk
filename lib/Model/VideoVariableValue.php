@@ -58,10 +58,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'width' => 'int',
+        'duration' => 'string',
         'height' => 'int',
-        'duration' => 'string'
+        'url' => 'string',
+        'width' => 'int'
     ];
 
     /**
@@ -72,10 +72,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => null,
-        'width' => 'int32',
+        'duration' => null,
         'height' => 'int32',
-        'duration' => null
+        'url' => null,
+        'width' => 'int32'
     ];
 
     /**
@@ -84,10 +84,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-		'width' => false,
+        'duration' => false,
 		'height' => false,
-		'duration' => false
+		'url' => false,
+		'width' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'width' => 'width',
+        'duration' => 'duration',
         'height' => 'height',
-        'duration' => 'duration'
+        'url' => 'url',
+        'width' => 'width'
     ];
 
     /**
@@ -188,10 +188,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'width' => 'setWidth',
+        'duration' => 'setDuration',
         'height' => 'setHeight',
-        'duration' => 'setDuration'
+        'url' => 'setUrl',
+        'width' => 'setWidth'
     ];
 
     /**
@@ -200,10 +200,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'width' => 'getWidth',
+        'duration' => 'getDuration',
         'height' => 'getHeight',
-        'duration' => 'getDuration'
+        'url' => 'getUrl',
+        'width' => 'getWidth'
     ];
 
     /**
@@ -263,10 +263,10 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('duration', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('width', $data ?? [], null);
-        $this->setIfExists('height', $data ?? [], null);
-        $this->setIfExists('duration', $data ?? [], null);
     }
 
     /**
@@ -296,6 +296,16 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['duration'] === null) {
+            $invalidProperties[] = "'duration' can't be null";
+        }
+        if ((mb_strlen($this->container['duration']) < 1)) {
+            $invalidProperties[] = "invalid value for 'duration', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
@@ -306,16 +316,6 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['width'] === null) {
             $invalidProperties[] = "'width' can't be null";
         }
-        if ($this->container['height'] === null) {
-            $invalidProperties[] = "'height' can't be null";
-        }
-        if ($this->container['duration'] === null) {
-            $invalidProperties[] = "'duration' can't be null";
-        }
-        if ((mb_strlen($this->container['duration']) < 1)) {
-            $invalidProperties[] = "invalid value for 'duration', the character length must be bigger than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -330,6 +330,65 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        return $this->container['duration'];
+    }
+
+    /**
+     * Sets duration
+     *
+     * @param string $duration The video's duration
+     *
+     * @return self
+     */
+    public function setDuration($duration)
+    {
+        if (is_null($duration)) {
+            throw new \InvalidArgumentException('non-nullable duration cannot be null');
+        }
+
+        if ((mb_strlen($duration) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $duration when calling VideoVariableValue., must be bigger than or equal to 1.');
+        }
+
+        $this->container['duration'] = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     *
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     *
+     * @param int $height The video's height
+     *
+     * @return self
+     */
+    public function setHeight($height)
+    {
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
+        }
+        $this->container['height'] = $height;
+
+        return $this;
+    }
 
     /**
      * Gets url
@@ -386,65 +445,6 @@ class VideoVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
         $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return int
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param int $height The video's height
-     *
-     * @return self
-     */
-    public function setHeight($height)
-    {
-        if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
-        }
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets duration
-     *
-     * @return string
-     */
-    public function getDuration()
-    {
-        return $this->container['duration'];
-    }
-
-    /**
-     * Sets duration
-     *
-     * @param string $duration The video's duration
-     *
-     * @return self
-     */
-    public function setDuration($duration)
-    {
-        if (is_null($duration)) {
-            throw new \InvalidArgumentException('non-nullable duration cannot be null');
-        }
-
-        if ((mb_strlen($duration) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $duration when calling VideoVariableValue., must be bigger than or equal to 1.');
-        }
-
-        $this->container['duration'] = $duration;
 
         return $this;
     }

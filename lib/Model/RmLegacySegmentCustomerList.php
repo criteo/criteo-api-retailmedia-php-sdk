@@ -58,8 +58,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'size' => 'string',
-        'is_shared' => 'bool'
+        'is_shared' => 'bool',
+        'size' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'size' => null,
-        'is_shared' => null
+        'is_shared' => null,
+        'size' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'size' => false,
-		'is_shared' => false
+        'is_shared' => false,
+		'size' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'size' => 'size',
-        'is_shared' => 'isShared'
+        'is_shared' => 'isShared',
+        'size' => 'size'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'size' => 'setSize',
-        'is_shared' => 'setIsShared'
+        'is_shared' => 'setIsShared',
+        'size' => 'setSize'
     ];
 
     /**
@@ -190,8 +190,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'size' => 'getSize',
-        'is_shared' => 'getIsShared'
+        'is_shared' => 'getIsShared',
+        'size' => 'getSize'
     ];
 
     /**
@@ -251,8 +251,8 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('is_shared', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['size'] === null) {
-            $invalidProperties[] = "'size' can't be null";
-        }
         if ($this->container['is_shared'] === null) {
             $invalidProperties[] = "'is_shared' can't be null";
+        }
+        if ($this->container['size'] === null) {
+            $invalidProperties[] = "'size' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets size
-     *
-     * @return string
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param string $size Number of users in the customer list audience.
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
 
     /**
      * Gets is_shared
@@ -353,6 +326,33 @@ class RmLegacySegmentCustomerList implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable is_shared cannot be null');
         }
         $this->container['is_shared'] = $is_shared;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return string
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param string $size Number of users in the customer list audience.
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        }
+        $this->container['size'] = $size;
 
         return $this;
     }

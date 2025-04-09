@@ -58,9 +58,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @var string[]
       */
     protected static $openAPITypes = [
+        'attributes' => '\criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus',
         'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus'
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'attributes' => null,
         'id' => 'long-id',
-        'type' => null,
-        'attributes' => null
+        'type' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'type' => false,
-		'attributes' => false
+        'attributes' => false,
+		'id' => false,
+		'type' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $attributeMap = [
+        'attributes' => 'attributes',
         'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +184,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $setters = [
+        'attributes' => 'setAttributes',
         'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +195,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      * @var string[]
      */
     protected static $getters = [
+        'attributes' => 'getAttributes',
         'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'type' => 'getType'
     ];
 
     /**
@@ -257,9 +257,9 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -311,6 +311,33 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
 
 
     /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string
@@ -360,33 +387,6 @@ class JsonApiBodyWithIdOfInt64AndCatalogStatusAndCatalogStatus implements ModelI
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\ExternalCatalogStatus|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
 
         return $this;
     }

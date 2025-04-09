@@ -1135,7 +1135,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2024_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome
+     * @return \SplFileObject|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome
      */
     public function getAsyncExportOutput($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -1151,7 +1151,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2024_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome|\criteo\api\retailmedia\v2024_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAsyncExportOutputWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -1194,17 +1194,17 @@ class AnalyticsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('string' === '\SplFileObject') {
+                    if ('\SplFileObject' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('string' !== 'string') {
+                        if ('\SplFileObject' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, 'string', []),
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1240,7 +1240,7 @@ class AnalyticsApi
                     ];
             }
 
-            $returnType = 'string';
+            $returnType = '\SplFileObject';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1261,7 +1261,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\SplFileObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1317,7 +1317,7 @@ class AnalyticsApi
      */
     public function getAsyncExportOutputAsyncWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
-        $returnType = 'string';
+        $returnType = '\SplFileObject';
         $request = $this->getAsyncExportOutputRequest($report_id, $contentType);
 
         return $this->client

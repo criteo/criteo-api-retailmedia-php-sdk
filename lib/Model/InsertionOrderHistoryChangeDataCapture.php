@@ -58,11 +58,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'date_of_modification' => '\DateTime',
-        'modified_by_user' => 'string',
-        'change_type' => 'string',
         'change_details' => '\criteo\api\retailmedia\v2024_04\Model\ChangeDetails',
-        'memo' => 'string'
+        'change_type' => 'string',
+        'date_of_modification' => '\DateTime',
+        'memo' => 'string',
+        'modified_by_user' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'date_of_modification' => 'date-time',
-        'modified_by_user' => null,
-        'change_type' => null,
         'change_details' => null,
-        'memo' => null
+        'change_type' => null,
+        'date_of_modification' => 'date-time',
+        'memo' => null,
+        'modified_by_user' => null
     ];
 
     /**
@@ -86,11 +86,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'date_of_modification' => false,
-		'modified_by_user' => false,
+        'change_details' => false,
 		'change_type' => false,
-		'change_details' => false,
-		'memo' => true
+		'date_of_modification' => false,
+		'memo' => true,
+		'modified_by_user' => false
     ];
 
     /**
@@ -179,11 +179,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'date_of_modification' => 'dateOfModification',
-        'modified_by_user' => 'modifiedByUser',
-        'change_type' => 'changeType',
         'change_details' => 'changeDetails',
-        'memo' => 'memo'
+        'change_type' => 'changeType',
+        'date_of_modification' => 'dateOfModification',
+        'memo' => 'memo',
+        'modified_by_user' => 'modifiedByUser'
     ];
 
     /**
@@ -192,11 +192,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'date_of_modification' => 'setDateOfModification',
-        'modified_by_user' => 'setModifiedByUser',
-        'change_type' => 'setChangeType',
         'change_details' => 'setChangeDetails',
-        'memo' => 'setMemo'
+        'change_type' => 'setChangeType',
+        'date_of_modification' => 'setDateOfModification',
+        'memo' => 'setMemo',
+        'modified_by_user' => 'setModifiedByUser'
     ];
 
     /**
@@ -205,11 +205,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'date_of_modification' => 'getDateOfModification',
-        'modified_by_user' => 'getModifiedByUser',
-        'change_type' => 'getChangeType',
         'change_details' => 'getChangeDetails',
-        'memo' => 'getMemo'
+        'change_type' => 'getChangeType',
+        'date_of_modification' => 'getDateOfModification',
+        'memo' => 'getMemo',
+        'modified_by_user' => 'getModifiedByUser'
     ];
 
     /**
@@ -302,11 +302,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('date_of_modification', $data ?? [], null);
-        $this->setIfExists('modified_by_user', $data ?? [], null);
-        $this->setIfExists('change_type', $data ?? [], null);
         $this->setIfExists('change_details', $data ?? [], null);
+        $this->setIfExists('change_type', $data ?? [], null);
+        $this->setIfExists('date_of_modification', $data ?? [], null);
         $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('modified_by_user', $data ?? [], null);
     }
 
     /**
@@ -336,11 +336,8 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['date_of_modification'] === null) {
-            $invalidProperties[] = "'date_of_modification' can't be null";
-        }
-        if ($this->container['modified_by_user'] === null) {
-            $invalidProperties[] = "'modified_by_user' can't be null";
+        if ($this->container['change_details'] === null) {
+            $invalidProperties[] = "'change_details' can't be null";
         }
         if ($this->container['change_type'] === null) {
             $invalidProperties[] = "'change_type' can't be null";
@@ -354,8 +351,11 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
             );
         }
 
-        if ($this->container['change_details'] === null) {
-            $invalidProperties[] = "'change_details' can't be null";
+        if ($this->container['date_of_modification'] === null) {
+            $invalidProperties[] = "'date_of_modification' can't be null";
+        }
+        if ($this->container['modified_by_user'] === null) {
+            $invalidProperties[] = "'modified_by_user' can't be null";
         }
         return $invalidProperties;
     }
@@ -373,55 +373,28 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets date_of_modification
+     * Gets change_details
      *
-     * @return \DateTime
+     * @return \criteo\api\retailmedia\v2024_04\Model\ChangeDetails
      */
-    public function getDateOfModification()
+    public function getChangeDetails()
     {
-        return $this->container['date_of_modification'];
+        return $this->container['change_details'];
     }
 
     /**
-     * Sets date_of_modification
+     * Sets change_details
      *
-     * @param \DateTime $date_of_modification Date when data change has occured.
+     * @param \criteo\api\retailmedia\v2024_04\Model\ChangeDetails $change_details change_details
      *
      * @return self
      */
-    public function setDateOfModification($date_of_modification)
+    public function setChangeDetails($change_details)
     {
-        if (is_null($date_of_modification)) {
-            throw new \InvalidArgumentException('non-nullable date_of_modification cannot be null');
+        if (is_null($change_details)) {
+            throw new \InvalidArgumentException('non-nullable change_details cannot be null');
         }
-        $this->container['date_of_modification'] = $date_of_modification;
-
-        return $this;
-    }
-
-    /**
-     * Gets modified_by_user
-     *
-     * @return string
-     */
-    public function getModifiedByUser()
-    {
-        return $this->container['modified_by_user'];
-    }
-
-    /**
-     * Sets modified_by_user
-     *
-     * @param string $modified_by_user User name who modified the insertion order.
-     *
-     * @return self
-     */
-    public function setModifiedByUser($modified_by_user)
-    {
-        if (is_null($modified_by_user)) {
-            throw new \InvalidArgumentException('non-nullable modified_by_user cannot be null');
-        }
-        $this->container['modified_by_user'] = $modified_by_user;
+        $this->container['change_details'] = $change_details;
 
         return $this;
     }
@@ -464,28 +437,28 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
     }
 
     /**
-     * Gets change_details
+     * Gets date_of_modification
      *
-     * @return \criteo\api\retailmedia\v2024_04\Model\ChangeDetails
+     * @return \DateTime
      */
-    public function getChangeDetails()
+    public function getDateOfModification()
     {
-        return $this->container['change_details'];
+        return $this->container['date_of_modification'];
     }
 
     /**
-     * Sets change_details
+     * Sets date_of_modification
      *
-     * @param \criteo\api\retailmedia\v2024_04\Model\ChangeDetails $change_details change_details
+     * @param \DateTime $date_of_modification Date when data change has occured.
      *
      * @return self
      */
-    public function setChangeDetails($change_details)
+    public function setDateOfModification($date_of_modification)
     {
-        if (is_null($change_details)) {
-            throw new \InvalidArgumentException('non-nullable change_details cannot be null');
+        if (is_null($date_of_modification)) {
+            throw new \InvalidArgumentException('non-nullable date_of_modification cannot be null');
         }
-        $this->container['change_details'] = $change_details;
+        $this->container['date_of_modification'] = $date_of_modification;
 
         return $this;
     }
@@ -520,6 +493,33 @@ class InsertionOrderHistoryChangeDataCapture implements ModelInterface, ArrayAcc
             }
         }
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified_by_user
+     *
+     * @return string
+     */
+    public function getModifiedByUser()
+    {
+        return $this->container['modified_by_user'];
+    }
+
+    /**
+     * Sets modified_by_user
+     *
+     * @param string $modified_by_user User name who modified the insertion order.
+     *
+     * @return self
+     */
+    public function setModifiedByUser($modified_by_user)
+    {
+        if (is_null($modified_by_user)) {
+            throw new \InvalidArgumentException('non-nullable modified_by_user cannot be null');
+        }
+        $this->container['modified_by_user'] = $modified_by_user;
 
         return $this;
     }

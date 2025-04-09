@@ -58,15 +58,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trace_id' => 'string',
-        'type' => 'string',
         'code' => 'string',
-        'instance' => 'string',
-        'title' => 'string',
         'detail' => 'string',
+        'instance' => 'string',
         'source' => 'array<string,string>',
         'stack_trace' => 'string',
-        'status' => 'int'
+        'status' => 'int',
+        'title' => 'string',
+        'trace_id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trace_id' => null,
-        'type' => null,
         'code' => null,
-        'instance' => null,
-        'title' => null,
         'detail' => null,
+        'instance' => null,
         'source' => null,
         'stack_trace' => null,
-        'status' => 'int32'
+        'status' => 'int32',
+        'title' => null,
+        'trace_id' => null,
+        'type' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trace_id' => true,
-		'type' => true,
-		'code' => true,
-		'instance' => true,
-		'title' => true,
+        'code' => true,
 		'detail' => true,
+		'instance' => true,
 		'source' => true,
 		'stack_trace' => true,
-		'status' => true
+		'status' => true,
+		'title' => true,
+		'trace_id' => true,
+		'type' => true
     ];
 
     /**
@@ -191,15 +191,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'trace_id' => 'traceId',
-        'type' => 'type',
         'code' => 'code',
-        'instance' => 'instance',
-        'title' => 'title',
         'detail' => 'detail',
+        'instance' => 'instance',
         'source' => 'source',
         'stack_trace' => 'stackTrace',
-        'status' => 'status'
+        'status' => 'status',
+        'title' => 'title',
+        'trace_id' => 'traceId',
+        'type' => 'type'
     ];
 
     /**
@@ -208,15 +208,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'trace_id' => 'setTraceId',
-        'type' => 'setType',
         'code' => 'setCode',
-        'instance' => 'setInstance',
-        'title' => 'setTitle',
         'detail' => 'setDetail',
+        'instance' => 'setInstance',
         'source' => 'setSource',
         'stack_trace' => 'setStackTrace',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'title' => 'setTitle',
+        'trace_id' => 'setTraceId',
+        'type' => 'setType'
     ];
 
     /**
@@ -225,15 +225,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'trace_id' => 'getTraceId',
-        'type' => 'getType',
         'code' => 'getCode',
-        'instance' => 'getInstance',
-        'title' => 'getTitle',
         'detail' => 'getDetail',
+        'instance' => 'getInstance',
         'source' => 'getSource',
         'stack_trace' => 'getStackTrace',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'title' => 'getTitle',
+        'trace_id' => 'getTraceId',
+        'type' => 'getType'
     ];
 
     /**
@@ -320,15 +320,15 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('instance', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('detail', $data ?? [], null);
+        $this->setIfExists('instance', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('stack_trace', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -383,84 +383,6 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets trace_id
-     *
-     * @return string|null
-     */
-    public function getTraceId()
-    {
-        return $this->container['trace_id'];
-    }
-
-    /**
-     * Sets trace_id
-     *
-     * @param string|null $trace_id The request correlation ID this problem comes from.
-     *
-     * @return self
-     */
-    public function setTraceId($trace_id)
-    {
-        if (is_null($trace_id)) {
-            array_push($this->openAPINullablesSetToNull, 'trace_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trace_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['trace_id'] = $trace_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type The problem's category.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets code
      *
      * @return string|null
@@ -495,74 +417,6 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets instance
-     *
-     * @return string|null
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        if (is_null($instance)) {
-            array_push($this->openAPINullablesSetToNull, 'instance');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('instance', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['instance'] = $instance;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title A short human-readable description of the problem type
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
      * Gets detail
      *
      * @return string|null
@@ -592,6 +446,40 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['detail'] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets instance
+     *
+     * @return string|null
+     */
+    public function getInstance()
+    {
+        return $this->container['instance'];
+    }
+
+    /**
+     * Sets instance
+     *
+     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setInstance($instance)
+    {
+        if (is_null($instance)) {
+            array_push($this->openAPINullablesSetToNull, 'instance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('instance', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['instance'] = $instance;
 
         return $this;
     }
@@ -694,6 +582,118 @@ class RmcaCommonProblem implements ModelInterface, ArrayAccess, \JsonSerializabl
             }
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A short human-readable description of the problem type
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets trace_id
+     *
+     * @return string|null
+     */
+    public function getTraceId()
+    {
+        return $this->container['trace_id'];
+    }
+
+    /**
+     * Sets trace_id
+     *
+     * @param string|null $trace_id The request correlation ID this problem comes from.
+     *
+     * @return self
+     */
+    public function setTraceId($trace_id)
+    {
+        if (is_null($trace_id)) {
+            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('trace_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['trace_id'] = $trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type The problem's category.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($type) && !in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

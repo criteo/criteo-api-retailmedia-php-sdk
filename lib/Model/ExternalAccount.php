@@ -58,15 +58,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'type' => 'string',
-        'subtype' => 'string',
+        'company_name' => 'string',
         'countries' => 'string[]',
         'currency' => 'string',
+        'name' => 'string',
+        'on_behalf_company_name' => 'string',
         'parent_account_label' => 'string',
+        'subtype' => 'string',
         'time_zone' => 'string',
-        'company_name' => 'string',
-        'on_behalf_company_name' => 'string'
+        'type' => 'string'
     ];
 
     /**
@@ -77,15 +77,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'type' => null,
-        'subtype' => null,
+        'company_name' => null,
         'countries' => null,
         'currency' => null,
+        'name' => null,
+        'on_behalf_company_name' => null,
         'parent_account_label' => null,
+        'subtype' => null,
         'time_zone' => null,
-        'company_name' => null,
-        'on_behalf_company_name' => null
+        'type' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'type' => false,
-		'subtype' => true,
+        'company_name' => true,
 		'countries' => false,
 		'currency' => false,
+		'name' => false,
+		'on_behalf_company_name' => true,
 		'parent_account_label' => false,
+		'subtype' => true,
 		'time_zone' => false,
-		'company_name' => true,
-		'on_behalf_company_name' => true
+		'type' => false
     ];
 
     /**
@@ -191,15 +191,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'type' => 'type',
-        'subtype' => 'subtype',
+        'company_name' => 'companyName',
         'countries' => 'countries',
         'currency' => 'currency',
+        'name' => 'name',
+        'on_behalf_company_name' => 'onBehalfCompanyName',
         'parent_account_label' => 'parentAccountLabel',
+        'subtype' => 'subtype',
         'time_zone' => 'timeZone',
-        'company_name' => 'companyName',
-        'on_behalf_company_name' => 'onBehalfCompanyName'
+        'type' => 'type'
     ];
 
     /**
@@ -208,15 +208,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'type' => 'setType',
-        'subtype' => 'setSubtype',
+        'company_name' => 'setCompanyName',
         'countries' => 'setCountries',
         'currency' => 'setCurrency',
+        'name' => 'setName',
+        'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'parent_account_label' => 'setParentAccountLabel',
+        'subtype' => 'setSubtype',
         'time_zone' => 'setTimeZone',
-        'company_name' => 'setCompanyName',
-        'on_behalf_company_name' => 'setOnBehalfCompanyName'
+        'type' => 'setType'
     ];
 
     /**
@@ -225,15 +225,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'type' => 'getType',
-        'subtype' => 'getSubtype',
+        'company_name' => 'getCompanyName',
         'countries' => 'getCountries',
         'currency' => 'getCurrency',
+        'name' => 'getName',
+        'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'parent_account_label' => 'getParentAccountLabel',
+        'subtype' => 'getSubtype',
         'time_zone' => 'getTimeZone',
-        'company_name' => 'getCompanyName',
-        'on_behalf_company_name' => 'getOnBehalfCompanyName'
+        'type' => 'getType'
     ];
 
     /**
@@ -277,26 +277,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_SUPPLY = 'supply';
-    public const TYPE_DEMAND = 'demand';
     public const SUBTYPE_UNKNOWN = 'unknown';
     public const SUBTYPE_BRAND = 'brand';
     public const SUBTYPE_SELLER = 'seller';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_SUPPLY,
-            self::TYPE_DEMAND,
-        ];
-    }
+    public const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_SUPPLY = 'supply';
+    public const TYPE_DEMAND = 'demand';
 
     /**
      * Gets allowable values of the enum
@@ -309,6 +295,20 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             self::SUBTYPE_UNKNOWN,
             self::SUBTYPE_BRAND,
             self::SUBTYPE_SELLER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_SUPPLY,
+            self::TYPE_DEMAND,
         ];
     }
 
@@ -327,15 +327,15 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('subtype', $data ?? [], null);
+        $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
-        $this->setIfExists('parent_account_label', $data ?? [], null);
-        $this->setIfExists('time_zone', $data ?? [], null);
-        $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('parent_account_label', $data ?? [], null);
+        $this->setIfExists('subtype', $data ?? [], null);
+        $this->setIfExists('time_zone', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -365,6 +365,12 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['countries'] === null) {
+            $invalidProperties[] = "'countries' can't be null";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -376,6 +382,29 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
+        if ($this->container['parent_account_label'] === null) {
+            $invalidProperties[] = "'parent_account_label' can't be null";
+        }
+        if ((mb_strlen($this->container['parent_account_label']) > 510)) {
+            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be smaller than or equal to 510.";
+        }
+
+        if ((mb_strlen($this->container['parent_account_label']) < 0)) {
+            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getSubtypeAllowableValues();
+        if (!is_null($this->container['subtype']) && !in_array($this->container['subtype'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'subtype', must be one of '%s'",
+                $this->container['subtype'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['time_zone'] === null) {
+            $invalidProperties[] = "'time_zone' can't be null";
+        }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -388,35 +417,6 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        $allowedValues = $this->getSubtypeAllowableValues();
-        if (!is_null($this->container['subtype']) && !in_array($this->container['subtype'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'subtype', must be one of '%s'",
-                $this->container['subtype'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['countries'] === null) {
-            $invalidProperties[] = "'countries' can't be null";
-        }
-        if ($this->container['currency'] === null) {
-            $invalidProperties[] = "'currency' can't be null";
-        }
-        if ($this->container['parent_account_label'] === null) {
-            $invalidProperties[] = "'parent_account_label' can't be null";
-        }
-        if ((mb_strlen($this->container['parent_account_label']) > 510)) {
-            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be smaller than or equal to 510.";
-        }
-
-        if ((mb_strlen($this->container['parent_account_label']) < 0)) {
-            $invalidProperties[] = "invalid value for 'parent_account_label', the character length must be bigger than or equal to 0.";
-        }
-
-        if ($this->container['time_zone'] === null) {
-            $invalidProperties[] = "'time_zone' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -433,116 +433,35 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 510)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be smaller than or equal to 510.');
-        }
-        if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be bigger than or equal to 0.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets subtype
+     * Gets company_name
      *
      * @return string|null
      */
-    public function getSubtype()
+    public function getCompanyName()
     {
-        return $this->container['subtype'];
+        return $this->container['company_name'];
     }
 
     /**
-     * Sets subtype
+     * Sets company_name
      *
-     * @param string|null $subtype subtype
+     * @param string|null $company_name company_name
      *
      * @return self
      */
-    public function setSubtype($subtype)
+    public function setCompanyName($company_name)
     {
-        if (is_null($subtype)) {
-            array_push($this->openAPINullablesSetToNull, 'subtype');
+        if (is_null($company_name)) {
+            array_push($this->openAPINullablesSetToNull, 'company_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('subtype', $nullablesSetToNull);
+            $index = array_search('company_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getSubtypeAllowableValues();
-        if (!is_null($subtype) && !in_array($subtype, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'subtype', must be one of '%s'",
-                    $subtype,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['subtype'] = $subtype;
+        $this->container['company_name'] = $company_name;
 
         return $this;
     }
@@ -602,96 +521,35 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets parent_account_label
+     * Gets name
      *
      * @return string
      */
-    public function getParentAccountLabel()
+    public function getName()
     {
-        return $this->container['parent_account_label'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets parent_account_label
+     * Sets name
      *
-     * @param string $parent_account_label parent_account_label
+     * @param string $name name
      *
      * @return self
      */
-    public function setParentAccountLabel($parent_account_label)
+    public function setName($name)
     {
-        if (is_null($parent_account_label)) {
-            throw new \InvalidArgumentException('non-nullable parent_account_label cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($parent_account_label) > 510)) {
-            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be smaller than or equal to 510.');
+        if ((mb_strlen($name) > 510)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be smaller than or equal to 510.');
         }
-        if ((mb_strlen($parent_account_label) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be bigger than or equal to 0.');
+        if ((mb_strlen($name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalAccount., must be bigger than or equal to 0.');
         }
 
-        $this->container['parent_account_label'] = $parent_account_label;
-
-        return $this;
-    }
-
-    /**
-     * Gets time_zone
-     *
-     * @return string
-     */
-    public function getTimeZone()
-    {
-        return $this->container['time_zone'];
-    }
-
-    /**
-     * Sets time_zone
-     *
-     * @param string $time_zone time_zone
-     *
-     * @return self
-     */
-    public function setTimeZone($time_zone)
-    {
-        if (is_null($time_zone)) {
-            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
-        }
-        $this->container['time_zone'] = $time_zone;
-
-        return $this;
-    }
-
-    /**
-     * Gets company_name
-     *
-     * @return string|null
-     */
-    public function getCompanyName()
-    {
-        return $this->container['company_name'];
-    }
-
-    /**
-     * Sets company_name
-     *
-     * @param string|null $company_name company_name
-     *
-     * @return self
-     */
-    public function setCompanyName($company_name)
-    {
-        if (is_null($company_name)) {
-            array_push($this->openAPINullablesSetToNull, 'company_name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('company_name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['company_name'] = $company_name;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -726,6 +584,148 @@ class ExternalAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_account_label
+     *
+     * @return string
+     */
+    public function getParentAccountLabel()
+    {
+        return $this->container['parent_account_label'];
+    }
+
+    /**
+     * Sets parent_account_label
+     *
+     * @param string $parent_account_label parent_account_label
+     *
+     * @return self
+     */
+    public function setParentAccountLabel($parent_account_label)
+    {
+        if (is_null($parent_account_label)) {
+            throw new \InvalidArgumentException('non-nullable parent_account_label cannot be null');
+        }
+        if ((mb_strlen($parent_account_label) > 510)) {
+            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be smaller than or equal to 510.');
+        }
+        if ((mb_strlen($parent_account_label) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $parent_account_label when calling ExternalAccount., must be bigger than or equal to 0.');
+        }
+
+        $this->container['parent_account_label'] = $parent_account_label;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtype
+     *
+     * @return string|null
+     */
+    public function getSubtype()
+    {
+        return $this->container['subtype'];
+    }
+
+    /**
+     * Sets subtype
+     *
+     * @param string|null $subtype subtype
+     *
+     * @return self
+     */
+    public function setSubtype($subtype)
+    {
+        if (is_null($subtype)) {
+            array_push($this->openAPINullablesSetToNull, 'subtype');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('subtype', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getSubtypeAllowableValues();
+        if (!is_null($subtype) && !in_array($subtype, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'subtype', must be one of '%s'",
+                    $subtype,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['subtype'] = $subtype;
+
+        return $this;
+    }
+
+    /**
+     * Gets time_zone
+     *
+     * @return string
+     */
+    public function getTimeZone()
+    {
+        return $this->container['time_zone'];
+    }
+
+    /**
+     * Sets time_zone
+     *
+     * @param string $time_zone time_zone
+     *
+     * @return self
+     */
+    public function setTimeZone($time_zone)
+    {
+        if (is_null($time_zone)) {
+            throw new \InvalidArgumentException('non-nullable time_zone cannot be null');
+        }
+        $this->container['time_zone'] = $time_zone;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

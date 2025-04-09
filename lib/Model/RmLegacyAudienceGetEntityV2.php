@@ -58,10 +58,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id' => 'string',
-        'user_behavior_details' => '\criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2',
         'customer_list_details' => '\criteo\api\retailmedia\v2024_04\Model\RmLegacySegmentCustomerList',
-        'name' => 'string'
+        'name' => 'string',
+        'retailer_id' => 'string',
+        'user_behavior_details' => '\criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2'
     ];
 
     /**
@@ -72,10 +72,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id' => null,
-        'user_behavior_details' => null,
         'customer_list_details' => null,
-        'name' => null
+        'name' => null,
+        'retailer_id' => null,
+        'user_behavior_details' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id' => false,
-		'user_behavior_details' => true,
-		'customer_list_details' => true,
-		'name' => false
+        'customer_list_details' => true,
+		'name' => false,
+		'retailer_id' => false,
+		'user_behavior_details' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id' => 'retailerId',
-        'user_behavior_details' => 'userBehaviorDetails',
         'customer_list_details' => 'customerListDetails',
-        'name' => 'name'
+        'name' => 'name',
+        'retailer_id' => 'retailerId',
+        'user_behavior_details' => 'userBehaviorDetails'
     ];
 
     /**
@@ -188,10 +188,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id' => 'setRetailerId',
-        'user_behavior_details' => 'setUserBehaviorDetails',
         'customer_list_details' => 'setCustomerListDetails',
-        'name' => 'setName'
+        'name' => 'setName',
+        'retailer_id' => 'setRetailerId',
+        'user_behavior_details' => 'setUserBehaviorDetails'
     ];
 
     /**
@@ -200,10 +200,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id' => 'getRetailerId',
-        'user_behavior_details' => 'getUserBehaviorDetails',
         'customer_list_details' => 'getCustomerListDetails',
-        'name' => 'getName'
+        'name' => 'getName',
+        'retailer_id' => 'getRetailerId',
+        'user_behavior_details' => 'getUserBehaviorDetails'
     ];
 
     /**
@@ -263,10 +263,10 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('user_behavior_details', $data ?? [], null);
         $this->setIfExists('customer_list_details', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('user_behavior_details', $data ?? [], null);
     }
 
     /**
@@ -296,11 +296,11 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -316,67 +316,6 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets retailer_id
-     *
-     * @return string
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string $retailer_id ID of the retailer associated with this audience
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
-        }
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_behavior_details
-     *
-     * @return \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2|null
-     */
-    public function getUserBehaviorDetails()
-    {
-        return $this->container['user_behavior_details'];
-    }
-
-    /**
-     * Sets user_behavior_details
-     *
-     * @param \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2|null $user_behavior_details user_behavior_details
-     *
-     * @return self
-     */
-    public function setUserBehaviorDetails($user_behavior_details)
-    {
-        if (is_null($user_behavior_details)) {
-            array_push($this->openAPINullablesSetToNull, 'user_behavior_details');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('user_behavior_details', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['user_behavior_details'] = $user_behavior_details;
-
-        return $this;
-    }
 
     /**
      * Gets customer_list_details
@@ -435,6 +374,67 @@ class RmLegacyAudienceGetEntityV2 implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return string
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param string $retailer_id ID of the retailer associated with this audience
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_behavior_details
+     *
+     * @return \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2|null
+     */
+    public function getUserBehaviorDetails()
+    {
+        return $this->container['user_behavior_details'];
+    }
+
+    /**
+     * Sets user_behavior_details
+     *
+     * @param \criteo\api\retailmedia\v2024_04\Model\RmLegacyAudienceUserBehaviorDetailsV2|null $user_behavior_details user_behavior_details
+     *
+     * @return self
+     */
+    public function setUserBehaviorDetails($user_behavior_details)
+    {
+        if (is_null($user_behavior_details)) {
+            array_push($this->openAPINullablesSetToNull, 'user_behavior_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('user_behavior_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['user_behavior_details'] = $user_behavior_details;
 
         return $this;
     }

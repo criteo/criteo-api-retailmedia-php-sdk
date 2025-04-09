@@ -59,8 +59,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'delta_amount' => 'float',
-        'po_number' => 'string',
-        'memo' => 'string'
+        'memo' => 'string',
+        'po_number' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'delta_amount' => 'double',
-        'po_number' => null,
-        'memo' => null
+        'memo' => null,
+        'po_number' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'delta_amount' => false,
-		'po_number' => false,
-		'memo' => false
+		'memo' => false,
+		'po_number' => false
     ];
 
     /**
@@ -174,8 +174,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'delta_amount' => 'deltaAmount',
-        'po_number' => 'poNumber',
-        'memo' => 'memo'
+        'memo' => 'memo',
+        'po_number' => 'poNumber'
     ];
 
     /**
@@ -185,8 +185,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'delta_amount' => 'setDeltaAmount',
-        'po_number' => 'setPoNumber',
-        'memo' => 'setMemo'
+        'memo' => 'setMemo',
+        'po_number' => 'setPoNumber'
     ];
 
     /**
@@ -196,8 +196,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'delta_amount' => 'getDeltaAmount',
-        'po_number' => 'getPoNumber',
-        'memo' => 'getMemo'
+        'memo' => 'getMemo',
+        'po_number' => 'getPoNumber'
     ];
 
     /**
@@ -258,8 +258,8 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('delta_amount', $data ?? [], null);
-        $this->setIfExists('po_number', $data ?? [], null);
         $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('po_number', $data ?? [], null);
     }
 
     /**
@@ -338,33 +338,6 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets po_number
-     *
-     * @return string|null
-     */
-    public function getPoNumber()
-    {
-        return $this->container['po_number'];
-    }
-
-    /**
-     * Sets po_number
-     *
-     * @param string|null $po_number Purchase Order number.
-     *
-     * @return self
-     */
-    public function setPoNumber($po_number)
-    {
-        if (is_null($po_number)) {
-            throw new \InvalidArgumentException('non-nullable po_number cannot be null');
-        }
-        $this->container['po_number'] = $po_number;
-
-        return $this;
-    }
-
-    /**
      * Gets memo
      *
      * @return string
@@ -387,6 +360,33 @@ class ExternalAddFundsToBalance implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable memo cannot be null');
         }
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets po_number
+     *
+     * @return string|null
+     */
+    public function getPoNumber()
+    {
+        return $this->container['po_number'];
+    }
+
+    /**
+     * Sets po_number
+     *
+     * @param string|null $po_number Purchase Order number.
+     *
+     * @return self
+     */
+    public function setPoNumber($po_number)
+    {
+        if (is_null($po_number)) {
+            throw new \InvalidArgumentException('non-nullable po_number cannot be null');
+        }
+        $this->container['po_number'] = $po_number;
 
         return $this;
     }
