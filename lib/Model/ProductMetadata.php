@@ -58,9 +58,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'offset' => 'int',
-        'limit' => 'int',
         'count' => 'int',
+        'limit' => 'int',
+        'offset' => 'int',
         'response_count' => 'int'
     ];
 
@@ -72,9 +72,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'offset' => 'int32',
-        'limit' => 'int32',
         'count' => 'int32',
+        'limit' => 'int32',
+        'offset' => 'int32',
         'response_count' => 'int32'
     ];
 
@@ -84,9 +84,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'offset' => true,
+        'count' => true,
 		'limit' => true,
-		'count' => true,
+		'offset' => true,
 		'response_count' => true
     ];
 
@@ -176,9 +176,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'offset' => 'offset',
-        'limit' => 'limit',
         'count' => 'count',
+        'limit' => 'limit',
+        'offset' => 'offset',
         'response_count' => 'responseCount'
     ];
 
@@ -188,9 +188,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'offset' => 'setOffset',
-        'limit' => 'setLimit',
         'count' => 'setCount',
+        'limit' => 'setLimit',
+        'offset' => 'setOffset',
         'response_count' => 'setResponseCount'
     ];
 
@@ -200,9 +200,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'offset' => 'getOffset',
-        'limit' => 'getLimit',
         'count' => 'getCount',
+        'limit' => 'getLimit',
+        'offset' => 'getOffset',
         'response_count' => 'getResponseCount'
     ];
 
@@ -263,9 +263,9 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('offset', $data ?? [], null);
-        $this->setIfExists('limit', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
         $this->setIfExists('response_count', $data ?? [], null);
     }
 
@@ -312,35 +312,35 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets offset
+     * Gets count
      *
      * @return int|null
      */
-    public function getOffset()
+    public function getCount()
     {
-        return $this->container['offset'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets offset
+     * Sets count
      *
-     * @param int|null $offset Zero based offset of the first item in the response.
+     * @param int|null $count Total number of items available.
      *
      * @return self
      */
-    public function setOffset($offset)
+    public function setCount($count)
     {
-        if (is_null($offset)) {
-            array_push($this->openAPINullablesSetToNull, 'offset');
+        if (is_null($count)) {
+            array_push($this->openAPINullablesSetToNull, 'count');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('offset', $nullablesSetToNull);
+            $index = array_search('count', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['offset'] = $offset;
+        $this->container['count'] = $count;
 
         return $this;
     }
@@ -380,35 +380,35 @@ class ProductMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets count
+     * Gets offset
      *
      * @return int|null
      */
-    public function getCount()
+    public function getOffset()
     {
-        return $this->container['count'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets count
+     * Sets offset
      *
-     * @param int|null $count Total number of items available.
+     * @param int|null $offset Zero based offset of the first item in the response.
      *
      * @return self
      */
-    public function setCount($count)
+    public function setOffset($offset)
     {
-        if (is_null($count)) {
-            array_push($this->openAPINullablesSetToNull, 'count');
+        if (is_null($offset)) {
+            array_push($this->openAPINullablesSetToNull, 'offset');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('count', $nullablesSetToNull);
+            $index = array_search('offset', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['count'] = $count;
+        $this->container['offset'] = $offset;
 
         return $this;
     }

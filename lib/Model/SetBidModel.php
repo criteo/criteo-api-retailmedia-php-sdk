@@ -58,8 +58,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phrase' => 'string',
-        'bid' => 'float'
+        'bid' => 'float',
+        'phrase' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'phrase' => null,
-        'bid' => 'double'
+        'bid' => 'double',
+        'phrase' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'phrase' => true,
-		'bid' => true
+        'bid' => true,
+		'phrase' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'phrase' => 'phrase',
-        'bid' => 'bid'
+        'bid' => 'bid',
+        'phrase' => 'phrase'
     ];
 
     /**
@@ -180,8 +180,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'phrase' => 'setPhrase',
-        'bid' => 'setBid'
+        'bid' => 'setBid',
+        'phrase' => 'setPhrase'
     ];
 
     /**
@@ -190,8 +190,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'phrase' => 'getPhrase',
-        'bid' => 'getBid'
+        'bid' => 'getBid',
+        'phrase' => 'getPhrase'
     ];
 
     /**
@@ -251,8 +251,8 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('phrase', $data ?? [], null);
         $this->setIfExists('bid', $data ?? [], null);
+        $this->setIfExists('phrase', $data ?? [], null);
     }
 
     /**
@@ -306,6 +306,40 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets bid
+     *
+     * @return float|null
+     */
+    public function getBid()
+    {
+        return $this->container['bid'];
+    }
+
+    /**
+     * Sets bid
+     *
+     * @param float|null $bid bid
+     *
+     * @return self
+     */
+    public function setBid($bid)
+    {
+        if (is_null($bid)) {
+            array_push($this->openAPINullablesSetToNull, 'bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['bid'] = $bid;
+
+        return $this;
+    }
+
+    /**
      * Gets phrase
      *
      * @return string|null
@@ -342,40 +376,6 @@ class SetBidModel implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['phrase'] = $phrase;
-
-        return $this;
-    }
-
-    /**
-     * Gets bid
-     *
-     * @return float|null
-     */
-    public function getBid()
-    {
-        return $this->container['bid'];
-    }
-
-    /**
-     * Sets bid
-     *
-     * @param float|null $bid bid
-     *
-     * @return self
-     */
-    public function setBid($bid)
-    {
-        if (is_null($bid)) {
-            array_push($this->openAPINullablesSetToNull, 'bid');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('bid', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['bid'] = $bid;
 
         return $this;
     }

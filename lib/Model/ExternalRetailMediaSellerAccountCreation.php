@@ -58,8 +58,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
         'company_name' => 'string',
+        'name' => 'string',
         'on_behalf_company_name' => 'string',
         'sellers' => '\criteo\api\retailmedia\v2024_07\Model\ExternalRetailMediaSeller[]'
     ];
@@ -72,8 +72,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
         'company_name' => null,
+        'name' => null,
         'on_behalf_company_name' => null,
         'sellers' => null
     ];
@@ -84,8 +84,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
-		'company_name' => true,
+        'company_name' => true,
+		'name' => true,
 		'on_behalf_company_name' => true,
 		'sellers' => false
     ];
@@ -176,8 +176,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
         'company_name' => 'companyName',
+        'name' => 'name',
         'on_behalf_company_name' => 'onBehalfCompanyName',
         'sellers' => 'sellers'
     ];
@@ -188,8 +188,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
         'company_name' => 'setCompanyName',
+        'name' => 'setName',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'sellers' => 'setSellers'
     ];
@@ -200,8 +200,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
         'company_name' => 'getCompanyName',
+        'name' => 'getName',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'sellers' => 'getSellers'
     ];
@@ -263,8 +263,8 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('sellers', $data ?? [], null);
     }
@@ -315,40 +315,6 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
 
 
     /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name the name of the account, must be unique across all accounts
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets company_name
      *
      * @return string|null
@@ -378,6 +344,40 @@ class ExternalRetailMediaSellerAccountCreation implements ModelInterface, ArrayA
             }
         }
         $this->container['company_name'] = $company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name the name of the account, must be unique across all accounts
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

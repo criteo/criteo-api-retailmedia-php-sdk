@@ -58,14 +58,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'row_count' => 'int',
-        'file_size_bytes' => 'int',
-        'md5_check_sum' => 'string',
         'created_at' => 'string',
         'expires_at' => 'string',
+        'file_size_bytes' => 'int',
+        'id' => 'string',
+        'md5_check_sum' => 'string',
         'message' => 'string',
-        'id' => 'string'
+        'row_count' => 'int',
+        'status' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'row_count' => 'int32',
-        'file_size_bytes' => 'int64',
-        'md5_check_sum' => null,
         'created_at' => null,
         'expires_at' => null,
+        'file_size_bytes' => 'int64',
+        'id' => null,
+        'md5_check_sum' => null,
         'message' => null,
-        'id' => null
+        'row_count' => 'int32',
+        'status' => null
     ];
 
     /**
@@ -92,14 +92,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => true,
-		'row_count' => true,
-		'file_size_bytes' => true,
-		'md5_check_sum' => true,
-		'created_at' => true,
+        'created_at' => true,
 		'expires_at' => true,
+		'file_size_bytes' => true,
+		'id' => true,
+		'md5_check_sum' => true,
 		'message' => true,
-		'id' => true
+		'row_count' => true,
+		'status' => true
     ];
 
     /**
@@ -188,14 +188,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'row_count' => 'rowCount',
-        'file_size_bytes' => 'fileSizeBytes',
-        'md5_check_sum' => 'md5CheckSum',
         'created_at' => 'createdAt',
         'expires_at' => 'expiresAt',
+        'file_size_bytes' => 'fileSizeBytes',
+        'id' => 'id',
+        'md5_check_sum' => 'md5CheckSum',
         'message' => 'message',
-        'id' => 'id'
+        'row_count' => 'rowCount',
+        'status' => 'status'
     ];
 
     /**
@@ -204,14 +204,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'row_count' => 'setRowCount',
-        'file_size_bytes' => 'setFileSizeBytes',
-        'md5_check_sum' => 'setMd5CheckSum',
         'created_at' => 'setCreatedAt',
         'expires_at' => 'setExpiresAt',
+        'file_size_bytes' => 'setFileSizeBytes',
+        'id' => 'setId',
+        'md5_check_sum' => 'setMd5CheckSum',
         'message' => 'setMessage',
-        'id' => 'setId'
+        'row_count' => 'setRowCount',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -220,14 +220,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'row_count' => 'getRowCount',
-        'file_size_bytes' => 'getFileSizeBytes',
-        'md5_check_sum' => 'getMd5CheckSum',
         'created_at' => 'getCreatedAt',
         'expires_at' => 'getExpiresAt',
+        'file_size_bytes' => 'getFileSizeBytes',
+        'id' => 'getId',
+        'md5_check_sum' => 'getMd5CheckSum',
         'message' => 'getMessage',
-        'id' => 'getId'
+        'row_count' => 'getRowCount',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -306,14 +306,14 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('row_count', $data ?? [], null);
-        $this->setIfExists('file_size_bytes', $data ?? [], null);
-        $this->setIfExists('md5_check_sum', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('file_size_bytes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('md5_check_sum', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('row_count', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -366,152 +366,6 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            array_push($this->openAPINullablesSetToNull, 'status');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('status', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets row_count
-     *
-     * @return int|null
-     */
-    public function getRowCount()
-    {
-        return $this->container['row_count'];
-    }
-
-    /**
-     * Sets row_count
-     *
-     * @param int|null $row_count row_count
-     *
-     * @return self
-     */
-    public function setRowCount($row_count)
-    {
-        if (is_null($row_count)) {
-            array_push($this->openAPINullablesSetToNull, 'row_count');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('row_count', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['row_count'] = $row_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets file_size_bytes
-     *
-     * @return int|null
-     */
-    public function getFileSizeBytes()
-    {
-        return $this->container['file_size_bytes'];
-    }
-
-    /**
-     * Sets file_size_bytes
-     *
-     * @param int|null $file_size_bytes file_size_bytes
-     *
-     * @return self
-     */
-    public function setFileSizeBytes($file_size_bytes)
-    {
-        if (is_null($file_size_bytes)) {
-            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('file_size_bytes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['file_size_bytes'] = $file_size_bytes;
-
-        return $this;
-    }
-
-    /**
-     * Gets md5_check_sum
-     *
-     * @return string|null
-     */
-    public function getMd5CheckSum()
-    {
-        return $this->container['md5_check_sum'];
-    }
-
-    /**
-     * Sets md5_check_sum
-     *
-     * @param string|null $md5_check_sum md5_check_sum
-     *
-     * @return self
-     */
-    public function setMd5CheckSum($md5_check_sum)
-    {
-        if (is_null($md5_check_sum)) {
-            array_push($this->openAPINullablesSetToNull, 'md5_check_sum');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('md5_check_sum', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['md5_check_sum'] = $md5_check_sum;
-
-        return $this;
-    }
 
     /**
      * Gets created_at
@@ -582,35 +436,35 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets message
+     * Gets file_size_bytes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getMessage()
+    public function getFileSizeBytes()
     {
-        return $this->container['message'];
+        return $this->container['file_size_bytes'];
     }
 
     /**
-     * Sets message
+     * Sets file_size_bytes
      *
-     * @param string|null $message message
+     * @param int|null $file_size_bytes file_size_bytes
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setFileSizeBytes($file_size_bytes)
     {
-        if (is_null($message)) {
-            array_push($this->openAPINullablesSetToNull, 'message');
+        if (is_null($file_size_bytes)) {
+            array_push($this->openAPINullablesSetToNull, 'file_size_bytes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('message', $nullablesSetToNull);
+            $index = array_search('file_size_bytes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['message'] = $message;
+        $this->container['file_size_bytes'] = $file_size_bytes;
 
         return $this;
     }
@@ -645,6 +499,152 @@ class StatusResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets md5_check_sum
+     *
+     * @return string|null
+     */
+    public function getMd5CheckSum()
+    {
+        return $this->container['md5_check_sum'];
+    }
+
+    /**
+     * Sets md5_check_sum
+     *
+     * @param string|null $md5_check_sum md5_check_sum
+     *
+     * @return self
+     */
+    public function setMd5CheckSum($md5_check_sum)
+    {
+        if (is_null($md5_check_sum)) {
+            array_push($this->openAPINullablesSetToNull, 'md5_check_sum');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('md5_check_sum', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['md5_check_sum'] = $md5_check_sum;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets row_count
+     *
+     * @return int|null
+     */
+    public function getRowCount()
+    {
+        return $this->container['row_count'];
+    }
+
+    /**
+     * Sets row_count
+     *
+     * @param int|null $row_count row_count
+     *
+     * @return self
+     */
+    public function setRowCount($row_count)
+    {
+        if (is_null($row_count)) {
+            array_push($this->openAPINullablesSetToNull, 'row_count');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('row_count', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['row_count'] = $row_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }

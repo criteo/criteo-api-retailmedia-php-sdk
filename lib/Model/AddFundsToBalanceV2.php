@@ -59,8 +59,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'delta_amount' => 'float',
-        'po_number' => 'string',
-        'memo' => 'string'
+        'memo' => 'string',
+        'po_number' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'delta_amount' => 'decimal',
-        'po_number' => null,
-        'memo' => null
+        'memo' => null,
+        'po_number' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'delta_amount' => false,
-		'po_number' => true,
-		'memo' => true
+		'memo' => true,
+		'po_number' => true
     ];
 
     /**
@@ -174,8 +174,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'delta_amount' => 'deltaAmount',
-        'po_number' => 'poNumber',
-        'memo' => 'memo'
+        'memo' => 'memo',
+        'po_number' => 'poNumber'
     ];
 
     /**
@@ -185,8 +185,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'delta_amount' => 'setDeltaAmount',
-        'po_number' => 'setPoNumber',
-        'memo' => 'setMemo'
+        'memo' => 'setMemo',
+        'po_number' => 'setPoNumber'
     ];
 
     /**
@@ -196,8 +196,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'delta_amount' => 'getDeltaAmount',
-        'po_number' => 'getPoNumber',
-        'memo' => 'getMemo'
+        'memo' => 'getMemo',
+        'po_number' => 'getPoNumber'
     ];
 
     /**
@@ -258,8 +258,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('delta_amount', $data ?? [], null);
-        $this->setIfExists('po_number', $data ?? [], null);
         $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('po_number', $data ?? [], null);
     }
 
     /**
@@ -335,40 +335,6 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets po_number
-     *
-     * @return string|null
-     */
-    public function getPoNumber()
-    {
-        return $this->container['po_number'];
-    }
-
-    /**
-     * Sets po_number
-     *
-     * @param string|null $po_number Purchase Order number.
-     *
-     * @return self
-     */
-    public function setPoNumber($po_number)
-    {
-        if (is_null($po_number)) {
-            array_push($this->openAPINullablesSetToNull, 'po_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('po_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['po_number'] = $po_number;
-
-        return $this;
-    }
-
-    /**
      * Gets memo
      *
      * @return string|null
@@ -398,6 +364,40 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets po_number
+     *
+     * @return string|null
+     */
+    public function getPoNumber()
+    {
+        return $this->container['po_number'];
+    }
+
+    /**
+     * Sets po_number
+     *
+     * @param string|null $po_number Purchase Order number.
+     *
+     * @return self
+     */
+    public function setPoNumber($po_number)
+    {
+        if (is_null($po_number)) {
+            array_push($this->openAPINullablesSetToNull, 'po_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('po_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['po_number'] = $po_number;
 
         return $this;
     }

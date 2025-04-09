@@ -58,9 +58,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110',
         'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110'
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'attributes' => null,
         'id' => null,
-        'type' => null,
-        'attributes' => null
+        'type' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'type' => false,
-		'attributes' => false
+        'attributes' => false,
+		'id' => false,
+		'type' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
+        'attributes' => 'attributes',
         'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
+        'attributes' => 'setAttributes',
         'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
+        'attributes' => 'getAttributes',
         'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'type' => 'getType'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -303,6 +303,33 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -354,33 +381,6 @@ class ResourceOfPreferredLineItemUpdateModel202110 implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalPreferredLineItemUpdateModel202110|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
-        }
-        $this->container['attributes'] = $attributes;
 
         return $this;
     }

@@ -58,8 +58,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'inclusive_segment' => '\criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2',
-        'exclusive_segment' => '\criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2'
+        'exclusive_segment' => '\criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2',
+        'inclusive_segment' => '\criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2'
     ];
 
     /**
@@ -70,8 +70,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'inclusive_segment' => null,
-        'exclusive_segment' => null
+        'exclusive_segment' => null,
+        'inclusive_segment' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'inclusive_segment' => true,
-		'exclusive_segment' => true
+        'exclusive_segment' => true,
+		'inclusive_segment' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'inclusive_segment' => 'inclusiveSegment',
-        'exclusive_segment' => 'exclusiveSegment'
+        'exclusive_segment' => 'exclusiveSegment',
+        'inclusive_segment' => 'inclusiveSegment'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'inclusive_segment' => 'setInclusiveSegment',
-        'exclusive_segment' => 'setExclusiveSegment'
+        'exclusive_segment' => 'setExclusiveSegment',
+        'inclusive_segment' => 'setInclusiveSegment'
     ];
 
     /**
@@ -190,8 +190,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'inclusive_segment' => 'getInclusiveSegment',
-        'exclusive_segment' => 'getExclusiveSegment'
+        'exclusive_segment' => 'getExclusiveSegment',
+        'inclusive_segment' => 'getInclusiveSegment'
     ];
 
     /**
@@ -251,8 +251,8 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('inclusive_segment', $data ?? [], null);
         $this->setIfExists('exclusive_segment', $data ?? [], null);
+        $this->setIfExists('inclusive_segment', $data ?? [], null);
     }
 
     /**
@@ -301,40 +301,6 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets inclusive_segment
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2
-     */
-    public function getInclusiveSegment()
-    {
-        return $this->container['inclusive_segment'];
-    }
-
-    /**
-     * Sets inclusive_segment
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2 $inclusive_segment inclusive_segment
-     *
-     * @return self
-     */
-    public function setInclusiveSegment($inclusive_segment)
-    {
-        if (is_null($inclusive_segment)) {
-            array_push($this->openAPINullablesSetToNull, 'inclusive_segment');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('inclusive_segment', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['inclusive_segment'] = $inclusive_segment;
-
-        return $this;
-    }
-
-    /**
      * Gets exclusive_segment
      *
      * @return \criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2|null
@@ -364,6 +330,40 @@ class RmLegacyAudienceUserBehaviorCreateV2 implements ModelInterface, ArrayAcces
             }
         }
         $this->container['exclusive_segment'] = $exclusive_segment;
+
+        return $this;
+    }
+
+    /**
+     * Gets inclusive_segment
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2
+     */
+    public function getInclusiveSegment()
+    {
+        return $this->container['inclusive_segment'];
+    }
+
+    /**
+     * Sets inclusive_segment
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\RmLegacySegmentUserBehaviorCreateV2 $inclusive_segment inclusive_segment
+     *
+     * @return self
+     */
+    public function setInclusiveSegment($inclusive_segment)
+    {
+        if (is_null($inclusive_segment)) {
+            array_push($this->openAPINullablesSetToNull, 'inclusive_segment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('inclusive_segment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['inclusive_segment'] = $inclusive_segment;
 
         return $this;
     }

@@ -390,7 +390,7 @@ try {
 ## `fetchPromotedProducts()`
 
 ```php
-fetchPromotedProducts($line_item_id, $offset, $limit, $fields): \criteo\api\retailmedia\v2024_07\Model\PromotedProductResourceCollectionOutcome
+fetchPromotedProducts($line_item_id, $fields, $limit, $offset): \criteo\api\retailmedia\v2024_07\Model\PromotedProductResourceCollectionOutcome
 ```
 
 
@@ -418,12 +418,12 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | ID of the line item.
-$offset = 56; // int | Offset of the first item to fetch. Defaults to zero.
-$limit = 56; // int | Maximum page size to fetch. Defaults to 500.
 $fields = 'fields_example'; // string | A comma separated list of attribute names from the response model to compute and return.              Valid values are `status` and `bidOverride` in any order. Defaults to `status`.
+$limit = 56; // int | Maximum page size to fetch. Defaults to 500.
+$offset = 56; // int | Offset of the first item to fetch. Defaults to zero.
 
 try {
-    $result = $apiInstance->fetchPromotedProducts($line_item_id, $offset, $limit, $fields);
+    $result = $apiInstance->fetchPromotedProducts($line_item_id, $fields, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->fetchPromotedProducts: ', $e->getMessage(), PHP_EOL;
@@ -435,9 +435,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| ID of the line item. | |
-| **offset** | **int**| Offset of the first item to fetch. Defaults to zero. | [optional] |
-| **limit** | **int**| Maximum page size to fetch. Defaults to 500. | [optional] |
 | **fields** | **string**| A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. | [optional] |
+| **limit** | **int**| Maximum page size to fetch. Defaults to 500. | [optional] |
+| **offset** | **int**| Offset of the first item to fetch. Defaults to zero. | [optional] |
 
 ### Return type
 
@@ -1032,7 +1032,7 @@ try {
 ## `getApi202204ExternalCategories()`
 
 ```php
-getApi202204ExternalCategories($retailer_id, $text_substring, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\Category202204ListResponse
+getApi202204ExternalCategories($page_index, $page_size, $retailer_id, $text_substring): \criteo\api\retailmedia\v2024_07\Model\Category202204ListResponse
 ```
 
 
@@ -1059,13 +1059,13 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | The retailer id for which Categories fetched
-$text_substring = 'text_substring_example'; // string | Query string to search across Categories
 $page_index = 0; // int | The start position in the overall list of matches. Must be zero or greater.
 $page_size = 100; // int | The maximum number of results to return with each call. Must be greater than zero.
+$retailer_id = 56; // int | The retailer id for which Categories fetched
+$text_substring = 'text_substring_example'; // string | Query string to search across Categories
 
 try {
-    $result = $apiInstance->getApi202204ExternalCategories($retailer_id, $text_substring, $page_index, $page_size);
+    $result = $apiInstance->getApi202204ExternalCategories($page_index, $page_size, $retailer_id, $text_substring);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getApi202204ExternalCategories: ', $e->getMessage(), PHP_EOL;
@@ -1076,10 +1076,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailer id for which Categories fetched | [optional] |
-| **text_substring** | **string**| Query string to search across Categories | [optional] |
 | **page_index** | **int**| The start position in the overall list of matches. Must be zero or greater. | [optional] [default to 0] |
 | **page_size** | **int**| The maximum number of results to return with each call. Must be greater than zero. | [optional] [default to 100] |
+| **retailer_id** | **int**| The retailer id for which Categories fetched | [optional] |
+| **text_substring** | **string**| Query string to search across Categories | [optional] |
 
 ### Return type
 
@@ -1753,7 +1753,7 @@ try {
 ## `getApiV2ExternalAccountLineItemsByAccountId()`
 
 ```php
-getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\CommonLineItemPagedListResponse
+getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size): \criteo\api\retailmedia\v2024_07\Model\CommonLineItemPagedListResponse
 ```
 
 
@@ -1782,13 +1782,13 @@ $apiInstance = new criteo\api\retailmedia\v2024_07\Api\CampaignApi(
 );
 $account_id = 'account_id_example'; // string | The given account id
 $limit_to_campaign_id = array('limit_to_campaign_id_example'); // string[] | The campaign ids that you would like to limit your result set to
-$limit_to_type = 'limit_to_type_example'; // string | The campaign types that you would like to limit your result set to
 $limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
+$limit_to_type = 'limit_to_type_example'; // string | The campaign types that you would like to limit your result set to
 $page_index = 56; // int | The 0 indexed page index you would like to receive given the page size
 $page_size = 56; // int | The maximum number of items you would like to receive in this request
 
 try {
-    $result = $apiInstance->getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_type, $limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getApiV2ExternalAccountLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getApiV2ExternalAccountLineItemsByAccountId: ', $e->getMessage(), PHP_EOL;
@@ -1801,8 +1801,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
 | **limit_to_campaign_id** | [**string[]**](../Model/string.md)| The campaign ids that you would like to limit your result set to | [optional] |
-| **limit_to_type** | **string**| The campaign types that you would like to limit your result set to | [optional] |
 | **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
+| **limit_to_type** | **string**| The campaign types that you would like to limit your result set to | [optional] |
 | **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] |
 | **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] |
 

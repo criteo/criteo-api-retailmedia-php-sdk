@@ -58,12 +58,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_action' => 'string',
-        'lookback_window' => 'string',
-        'category_ids' => 'int[]',
         'brand_ids' => 'int[]',
+        'category_ids' => 'int[]',
+        'lookback_window' => 'string',
+        'max_price' => 'float',
         'min_price' => 'float',
-        'max_price' => 'float'
+        'user_action' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_action' => null,
-        'lookback_window' => null,
-        'category_ids' => 'int32',
         'brand_ids' => 'int64',
+        'category_ids' => 'int32',
+        'lookback_window' => null,
+        'max_price' => 'double',
         'min_price' => 'double',
-        'max_price' => 'double'
+        'user_action' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'user_action' => false,
-		'lookback_window' => false,
+        'brand_ids' => true,
 		'category_ids' => true,
-		'brand_ids' => true,
+		'lookback_window' => false,
+		'max_price' => true,
 		'min_price' => true,
-		'max_price' => true
+		'user_action' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_action' => 'userAction',
-        'lookback_window' => 'lookbackWindow',
-        'category_ids' => 'categoryIds',
         'brand_ids' => 'brandIds',
+        'category_ids' => 'categoryIds',
+        'lookback_window' => 'lookbackWindow',
+        'max_price' => 'maxPrice',
         'min_price' => 'minPrice',
-        'max_price' => 'maxPrice'
+        'user_action' => 'userAction'
     ];
 
     /**
@@ -196,12 +196,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'user_action' => 'setUserAction',
-        'lookback_window' => 'setLookbackWindow',
-        'category_ids' => 'setCategoryIds',
         'brand_ids' => 'setBrandIds',
+        'category_ids' => 'setCategoryIds',
+        'lookback_window' => 'setLookbackWindow',
+        'max_price' => 'setMaxPrice',
         'min_price' => 'setMinPrice',
-        'max_price' => 'setMaxPrice'
+        'user_action' => 'setUserAction'
     ];
 
     /**
@@ -210,12 +210,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'user_action' => 'getUserAction',
-        'lookback_window' => 'getLookbackWindow',
-        'category_ids' => 'getCategoryIds',
         'brand_ids' => 'getBrandIds',
+        'category_ids' => 'getCategoryIds',
+        'lookback_window' => 'getLookbackWindow',
+        'max_price' => 'getMaxPrice',
         'min_price' => 'getMinPrice',
-        'max_price' => 'getMaxPrice'
+        'user_action' => 'getUserAction'
     ];
 
     /**
@@ -259,9 +259,6 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const USER_ACTION_BUY = 'buy';
-    public const USER_ACTION_VIEW = 'view';
-    public const USER_ACTION_ADD_TO_CART = 'addToCart';
     public const LOOKBACK_WINDOW_P7_D = 'P7D';
     public const LOOKBACK_WINDOW_P14_D = 'P14D';
     public const LOOKBACK_WINDOW_P30_D = 'P30D';
@@ -271,20 +268,9 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
     public const LOOKBACK_WINDOW_P120_D = 'P120D';
     public const LOOKBACK_WINDOW_P150_D = 'P150D';
     public const LOOKBACK_WINDOW_P180_D = 'P180D';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUserActionAllowableValues()
-    {
-        return [
-            self::USER_ACTION_BUY,
-            self::USER_ACTION_VIEW,
-            self::USER_ACTION_ADD_TO_CART,
-        ];
-    }
+    public const USER_ACTION_BUY = 'buy';
+    public const USER_ACTION_VIEW = 'view';
+    public const USER_ACTION_ADD_TO_CART = 'addToCart';
 
     /**
      * Gets allowable values of the enum
@@ -307,6 +293,20 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUserActionAllowableValues()
+    {
+        return [
+            self::USER_ACTION_BUY,
+            self::USER_ACTION_VIEW,
+            self::USER_ACTION_ADD_TO_CART,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -321,12 +321,12 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('user_action', $data ?? [], null);
-        $this->setIfExists('lookback_window', $data ?? [], null);
-        $this->setIfExists('category_ids', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
-        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('lookback_window', $data ?? [], null);
         $this->setIfExists('max_price', $data ?? [], null);
+        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('user_action', $data ?? [], null);
     }
 
     /**
@@ -356,18 +356,6 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['user_action'] === null) {
-            $invalidProperties[] = "'user_action' can't be null";
-        }
-        $allowedValues = $this->getUserActionAllowableValues();
-        if (!is_null($this->container['user_action']) && !in_array($this->container['user_action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'user_action', must be one of '%s'",
-                $this->container['user_action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['lookback_window'] === null) {
             $invalidProperties[] = "'lookback_window' can't be null";
         }
@@ -376,6 +364,18 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'lookback_window', must be one of '%s'",
                 $this->container['lookback_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['user_action'] === null) {
+            $invalidProperties[] = "'user_action' can't be null";
+        }
+        $allowedValues = $this->getUserActionAllowableValues();
+        if (!is_null($this->container['user_action']) && !in_array($this->container['user_action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'user_action', must be one of '%s'",
+                $this->container['user_action'],
                 implode("', '", $allowedValues)
             );
         }
@@ -396,38 +396,73 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets user_action
+     * Gets brand_ids
      *
-     * @return string
+     * @return int[]|null
      */
-    public function getUserAction()
+    public function getBrandIds()
     {
-        return $this->container['user_action'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets user_action
+     * Sets brand_ids
      *
-     * @param string $user_action Type of shopper activity used to generate the audience.
+     * @param int[]|null $brand_ids The brands to target
      *
      * @return self
      */
-    public function setUserAction($user_action)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($user_action)) {
-            throw new \InvalidArgumentException('non-nullable user_action cannot be null');
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getUserActionAllowableValues();
-        if (!in_array($user_action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'user_action', must be one of '%s'",
-                    $user_action,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return int[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param int[]|null $category_ids The categories to target
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['user_action'] = $user_action;
+
+
+        $this->container['category_ids'] = $category_ids;
 
         return $this;
     }
@@ -470,73 +505,35 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets category_ids
+     * Gets max_price
      *
-     * @return int[]|null
+     * @return float|null
      */
-    public function getCategoryIds()
+    public function getMaxPrice()
     {
-        return $this->container['category_ids'];
+        return $this->container['max_price'];
     }
 
     /**
-     * Sets category_ids
+     * Sets max_price
      *
-     * @param int[]|null $category_ids The categories to target
+     * @param float|null $max_price The max price of targeted skus.
      *
      * @return self
      */
-    public function setCategoryIds($category_ids)
+    public function setMaxPrice($max_price)
     {
-        if (is_null($category_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        if (is_null($max_price)) {
+            array_push($this->openAPINullablesSetToNull, 'max_price');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('category_ids', $nullablesSetToNull);
+            $index = array_search('max_price', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-
-        $this->container['category_ids'] = $category_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_ids
-     *
-     * @return int[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param int[]|null $brand_ids The brands to target
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-
-
-        $this->container['brand_ids'] = $brand_ids;
+        $this->container['max_price'] = $max_price;
 
         return $this;
     }
@@ -576,35 +573,38 @@ class RmLegacySegmentUserBehaviorV2 implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets max_price
+     * Gets user_action
      *
-     * @return float|null
+     * @return string
      */
-    public function getMaxPrice()
+    public function getUserAction()
     {
-        return $this->container['max_price'];
+        return $this->container['user_action'];
     }
 
     /**
-     * Sets max_price
+     * Sets user_action
      *
-     * @param float|null $max_price The max price of targeted skus.
+     * @param string $user_action Type of shopper activity used to generate the audience.
      *
      * @return self
      */
-    public function setMaxPrice($max_price)
+    public function setUserAction($user_action)
     {
-        if (is_null($max_price)) {
-            array_push($this->openAPINullablesSetToNull, 'max_price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('max_price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($user_action)) {
+            throw new \InvalidArgumentException('non-nullable user_action cannot be null');
         }
-        $this->container['max_price'] = $max_price;
+        $allowedValues = $this->getUserActionAllowableValues();
+        if (!in_array($user_action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'user_action', must be one of '%s'",
+                    $user_action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['user_action'] = $user_action;
 
         return $this;
     }

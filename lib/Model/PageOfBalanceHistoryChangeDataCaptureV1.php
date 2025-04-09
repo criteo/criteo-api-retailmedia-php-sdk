@@ -58,8 +58,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'meta' => '\criteo\api\retailmedia\v2024_07\Model\Metadata',
-        'data' => '\criteo\api\retailmedia\v2024_07\Model\BalanceHistoryChangeDataCaptureV1[]'
+        'data' => '\criteo\api\retailmedia\v2024_07\Model\BalanceHistoryChangeDataCaptureV1[]',
+        'meta' => '\criteo\api\retailmedia\v2024_07\Model\Metadata'
     ];
 
     /**
@@ -70,8 +70,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'meta' => null,
-        'data' => null
+        'data' => null,
+        'meta' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'meta' => false,
-		'data' => false
+        'data' => false,
+		'meta' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'meta' => 'meta',
-        'data' => 'data'
+        'data' => 'data',
+        'meta' => 'meta'
     ];
 
     /**
@@ -180,8 +180,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'meta' => 'setMeta',
-        'data' => 'setData'
+        'data' => 'setData',
+        'meta' => 'setMeta'
     ];
 
     /**
@@ -190,8 +190,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'meta' => 'getMeta',
-        'data' => 'getData'
+        'data' => 'getData',
+        'meta' => 'getMeta'
     ];
 
     /**
@@ -251,8 +251,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('meta', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('meta', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
         if ($this->container['data'] === null) {
             $invalidProperties[] = "'data' can't be null";
+        }
+        if ($this->container['meta'] === null) {
+            $invalidProperties[] = "'meta' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets meta
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\Metadata
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\Metadata $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
-        }
-        $this->container['meta'] = $meta;
-
-        return $this;
-    }
 
     /**
      * Gets data
@@ -353,6 +326,33 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\Metadata
+     */
+    public function getMeta()
+    {
+        return $this->container['meta'];
+    }
+
+    /**
+     * Sets meta
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\Metadata $meta meta
+     *
+     * @return self
+     */
+    public function setMeta($meta)
+    {
+        if (is_null($meta)) {
+            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+        }
+        $this->container['meta'] = $meta;
 
         return $this;
     }

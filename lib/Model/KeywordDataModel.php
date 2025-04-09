@@ -58,11 +58,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'review_state' => '\criteo\api\retailmedia\v2024_07\Model\ReviewStateModel',
-        'match_type' => '\criteo\api\retailmedia\v2024_07\Model\MatchTypeModel',
         'bid' => 'float',
-        'input_keywords' => '\criteo\api\retailmedia\v2024_07\Model\InputKeywordsModel',
         'created_at' => '\DateTime',
+        'input_keywords' => '\criteo\api\retailmedia\v2024_07\Model\InputKeywordsModel',
+        'match_type' => '\criteo\api\retailmedia\v2024_07\Model\MatchTypeModel',
+        'review_state' => '\criteo\api\retailmedia\v2024_07\Model\ReviewStateModel',
         'updated_at' => '\DateTime'
     ];
 
@@ -74,11 +74,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'review_state' => null,
-        'match_type' => null,
         'bid' => 'double',
-        'input_keywords' => null,
         'created_at' => 'date-time',
+        'input_keywords' => null,
+        'match_type' => null,
+        'review_state' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -88,11 +88,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'review_state' => false,
-		'match_type' => false,
-		'bid' => true,
-		'input_keywords' => false,
+        'bid' => true,
 		'created_at' => false,
+		'input_keywords' => false,
+		'match_type' => false,
+		'review_state' => false,
 		'updated_at' => false
     ];
 
@@ -182,11 +182,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'review_state' => 'reviewState',
-        'match_type' => 'matchType',
         'bid' => 'bid',
-        'input_keywords' => 'inputKeywords',
         'created_at' => 'createdAt',
+        'input_keywords' => 'inputKeywords',
+        'match_type' => 'matchType',
+        'review_state' => 'reviewState',
         'updated_at' => 'updatedAt'
     ];
 
@@ -196,11 +196,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'review_state' => 'setReviewState',
-        'match_type' => 'setMatchType',
         'bid' => 'setBid',
-        'input_keywords' => 'setInputKeywords',
         'created_at' => 'setCreatedAt',
+        'input_keywords' => 'setInputKeywords',
+        'match_type' => 'setMatchType',
+        'review_state' => 'setReviewState',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -210,11 +210,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'review_state' => 'getReviewState',
-        'match_type' => 'getMatchType',
         'bid' => 'getBid',
-        'input_keywords' => 'getInputKeywords',
         'created_at' => 'getCreatedAt',
+        'input_keywords' => 'getInputKeywords',
+        'match_type' => 'getMatchType',
+        'review_state' => 'getReviewState',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -275,11 +275,11 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('review_state', $data ?? [], null);
-        $this->setIfExists('match_type', $data ?? [], null);
         $this->setIfExists('bid', $data ?? [], null);
-        $this->setIfExists('input_keywords', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('input_keywords', $data ?? [], null);
+        $this->setIfExists('match_type', $data ?? [], null);
+        $this->setIfExists('review_state', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -326,60 +326,6 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets review_state
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ReviewStateModel|null
-     */
-    public function getReviewState()
-    {
-        return $this->container['review_state'];
-    }
-
-    /**
-     * Sets review_state
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ReviewStateModel|null $review_state review_state
-     *
-     * @return self
-     */
-    public function setReviewState($review_state)
-    {
-        if (is_null($review_state)) {
-            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
-        }
-        $this->container['review_state'] = $review_state;
-
-        return $this;
-    }
-
-    /**
-     * Gets match_type
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\MatchTypeModel|null
-     */
-    public function getMatchType()
-    {
-        return $this->container['match_type'];
-    }
-
-    /**
-     * Sets match_type
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\MatchTypeModel|null $match_type match_type
-     *
-     * @return self
-     */
-    public function setMatchType($match_type)
-    {
-        if (is_null($match_type)) {
-            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
-        }
-        $this->container['match_type'] = $match_type;
-
-        return $this;
-    }
-
-    /**
      * Gets bid
      *
      * @return float|null
@@ -414,6 +360,33 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
      * Gets input_keywords
      *
      * @return \criteo\api\retailmedia\v2024_07\Model\InputKeywordsModel|null
@@ -441,28 +414,55 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets created_at
+     * Gets match_type
      *
-     * @return \DateTime|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\MatchTypeModel|null
      */
-    public function getCreatedAt()
+    public function getMatchType()
     {
-        return $this->container['created_at'];
+        return $this->container['match_type'];
     }
 
     /**
-     * Sets created_at
+     * Sets match_type
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \criteo\api\retailmedia\v2024_07\Model\MatchTypeModel|null $match_type match_type
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setMatchType($match_type)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($match_type)) {
+            throw new \InvalidArgumentException('non-nullable match_type cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['match_type'] = $match_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets review_state
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\ReviewStateModel|null
+     */
+    public function getReviewState()
+    {
+        return $this->container['review_state'];
+    }
+
+    /**
+     * Sets review_state
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\ReviewStateModel|null $review_state review_state
+     *
+     * @return self
+     */
+    public function setReviewState($review_state)
+    {
+        if (is_null($review_state)) {
+            throw new \InvalidArgumentException('non-nullable review_state cannot be null');
+        }
+        $this->container['review_state'] = $review_state;
 
         return $this;
     }

@@ -58,14 +58,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'search' => 'float',
-        'homepage' => 'float',
         'categories' => 'float',
-        'product_detail' => 'float',
+        'checkout' => 'float',
         'confirmation' => 'float',
-        'merchandising' => 'float',
         'deals' => 'float',
-        'checkout' => 'float'
+        'homepage' => 'float',
+        'merchandising' => 'float',
+        'product_detail' => 'float',
+        'search' => 'float'
     ];
 
     /**
@@ -76,14 +76,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'search' => 'double',
-        'homepage' => 'double',
         'categories' => 'double',
-        'product_detail' => 'double',
+        'checkout' => 'double',
         'confirmation' => 'double',
-        'merchandising' => 'double',
         'deals' => 'double',
-        'checkout' => 'double'
+        'homepage' => 'double',
+        'merchandising' => 'double',
+        'product_detail' => 'double',
+        'search' => 'double'
     ];
 
     /**
@@ -92,14 +92,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'search' => false,
-		'homepage' => false,
-		'categories' => false,
-		'product_detail' => false,
+        'categories' => false,
+		'checkout' => false,
 		'confirmation' => false,
-		'merchandising' => false,
 		'deals' => false,
-		'checkout' => false
+		'homepage' => false,
+		'merchandising' => false,
+		'product_detail' => false,
+		'search' => false
     ];
 
     /**
@@ -188,14 +188,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'search' => 'search',
-        'homepage' => 'homepage',
         'categories' => 'categories',
-        'product_detail' => 'productDetail',
+        'checkout' => 'checkout',
         'confirmation' => 'confirmation',
-        'merchandising' => 'merchandising',
         'deals' => 'deals',
-        'checkout' => 'checkout'
+        'homepage' => 'homepage',
+        'merchandising' => 'merchandising',
+        'product_detail' => 'productDetail',
+        'search' => 'search'
     ];
 
     /**
@@ -204,14 +204,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'search' => 'setSearch',
-        'homepage' => 'setHomepage',
         'categories' => 'setCategories',
-        'product_detail' => 'setProductDetail',
+        'checkout' => 'setCheckout',
         'confirmation' => 'setConfirmation',
-        'merchandising' => 'setMerchandising',
         'deals' => 'setDeals',
-        'checkout' => 'setCheckout'
+        'homepage' => 'setHomepage',
+        'merchandising' => 'setMerchandising',
+        'product_detail' => 'setProductDetail',
+        'search' => 'setSearch'
     ];
 
     /**
@@ -220,14 +220,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'search' => 'getSearch',
-        'homepage' => 'getHomepage',
         'categories' => 'getCategories',
-        'product_detail' => 'getProductDetail',
+        'checkout' => 'getCheckout',
         'confirmation' => 'getConfirmation',
-        'merchandising' => 'getMerchandising',
         'deals' => 'getDeals',
-        'checkout' => 'getCheckout'
+        'homepage' => 'getHomepage',
+        'merchandising' => 'getMerchandising',
+        'product_detail' => 'getProductDetail',
+        'search' => 'getSearch'
     ];
 
     /**
@@ -287,14 +287,14 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('search', $data ?? [], null);
-        $this->setIfExists('homepage', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
-        $this->setIfExists('product_detail', $data ?? [], null);
-        $this->setIfExists('confirmation', $data ?? [], null);
-        $this->setIfExists('merchandising', $data ?? [], null);
-        $this->setIfExists('deals', $data ?? [], null);
         $this->setIfExists('checkout', $data ?? [], null);
+        $this->setIfExists('confirmation', $data ?? [], null);
+        $this->setIfExists('deals', $data ?? [], null);
+        $this->setIfExists('homepage', $data ?? [], null);
+        $this->setIfExists('merchandising', $data ?? [], null);
+        $this->setIfExists('product_detail', $data ?? [], null);
+        $this->setIfExists('search', $data ?? [], null);
     }
 
     /**
@@ -340,60 +340,6 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets search
-     *
-     * @return float|null
-     */
-    public function getSearch()
-    {
-        return $this->container['search'];
-    }
-
-    /**
-     * Sets search
-     *
-     * @param float|null $search search
-     *
-     * @return self
-     */
-    public function setSearch($search)
-    {
-        if (is_null($search)) {
-            throw new \InvalidArgumentException('non-nullable search cannot be null');
-        }
-        $this->container['search'] = $search;
-
-        return $this;
-    }
-
-    /**
-     * Gets homepage
-     *
-     * @return float|null
-     */
-    public function getHomepage()
-    {
-        return $this->container['homepage'];
-    }
-
-    /**
-     * Sets homepage
-     *
-     * @param float|null $homepage homepage
-     *
-     * @return self
-     */
-    public function setHomepage($homepage)
-    {
-        if (is_null($homepage)) {
-            throw new \InvalidArgumentException('non-nullable homepage cannot be null');
-        }
-        $this->container['homepage'] = $homepage;
-
-        return $this;
-    }
-
-    /**
      * Gets categories
      *
      * @return float|null
@@ -421,28 +367,28 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets product_detail
+     * Gets checkout
      *
      * @return float|null
      */
-    public function getProductDetail()
+    public function getCheckout()
     {
-        return $this->container['product_detail'];
+        return $this->container['checkout'];
     }
 
     /**
-     * Sets product_detail
+     * Sets checkout
      *
-     * @param float|null $product_detail product_detail
+     * @param float|null $checkout checkout
      *
      * @return self
      */
-    public function setProductDetail($product_detail)
+    public function setCheckout($checkout)
     {
-        if (is_null($product_detail)) {
-            throw new \InvalidArgumentException('non-nullable product_detail cannot be null');
+        if (is_null($checkout)) {
+            throw new \InvalidArgumentException('non-nullable checkout cannot be null');
         }
-        $this->container['product_detail'] = $product_detail;
+        $this->container['checkout'] = $checkout;
 
         return $this;
     }
@@ -475,33 +421,6 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets merchandising
-     *
-     * @return float|null
-     */
-    public function getMerchandising()
-    {
-        return $this->container['merchandising'];
-    }
-
-    /**
-     * Sets merchandising
-     *
-     * @param float|null $merchandising merchandising
-     *
-     * @return self
-     */
-    public function setMerchandising($merchandising)
-    {
-        if (is_null($merchandising)) {
-            throw new \InvalidArgumentException('non-nullable merchandising cannot be null');
-        }
-        $this->container['merchandising'] = $merchandising;
-
-        return $this;
-    }
-
-    /**
      * Gets deals
      *
      * @return float|null
@@ -529,28 +448,109 @@ class LineItemBidMultipliers implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets checkout
+     * Gets homepage
      *
      * @return float|null
      */
-    public function getCheckout()
+    public function getHomepage()
     {
-        return $this->container['checkout'];
+        return $this->container['homepage'];
     }
 
     /**
-     * Sets checkout
+     * Sets homepage
      *
-     * @param float|null $checkout checkout
+     * @param float|null $homepage homepage
      *
      * @return self
      */
-    public function setCheckout($checkout)
+    public function setHomepage($homepage)
     {
-        if (is_null($checkout)) {
-            throw new \InvalidArgumentException('non-nullable checkout cannot be null');
+        if (is_null($homepage)) {
+            throw new \InvalidArgumentException('non-nullable homepage cannot be null');
         }
-        $this->container['checkout'] = $checkout;
+        $this->container['homepage'] = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchandising
+     *
+     * @return float|null
+     */
+    public function getMerchandising()
+    {
+        return $this->container['merchandising'];
+    }
+
+    /**
+     * Sets merchandising
+     *
+     * @param float|null $merchandising merchandising
+     *
+     * @return self
+     */
+    public function setMerchandising($merchandising)
+    {
+        if (is_null($merchandising)) {
+            throw new \InvalidArgumentException('non-nullable merchandising cannot be null');
+        }
+        $this->container['merchandising'] = $merchandising;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_detail
+     *
+     * @return float|null
+     */
+    public function getProductDetail()
+    {
+        return $this->container['product_detail'];
+    }
+
+    /**
+     * Sets product_detail
+     *
+     * @param float|null $product_detail product_detail
+     *
+     * @return self
+     */
+    public function setProductDetail($product_detail)
+    {
+        if (is_null($product_detail)) {
+            throw new \InvalidArgumentException('non-nullable product_detail cannot be null');
+        }
+        $this->container['product_detail'] = $product_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets search
+     *
+     * @return float|null
+     */
+    public function getSearch()
+    {
+        return $this->container['search'];
+    }
+
+    /**
+     * Sets search
+     *
+     * @param float|null $search search
+     *
+     * @return self
+     */
+    public function setSearch($search)
+    {
+        if (is_null($search)) {
+            throw new \InvalidArgumentException('non-nullable search cannot be null');
+        }
+        $this->container['search'] = $search;
 
         return $this;
     }

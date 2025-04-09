@@ -58,12 +58,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'choice_variable_specification' => '\criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification',
+        'files_variables_specification' => '\criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification',
         'id' => 'string',
         'required' => 'bool',
-        'type' => 'string',
-        'choice_variable_specification' => '\criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification',
         'text_variable_specification' => '\criteo\api\retailmedia\v2024_07\Model\TextVariableSpecification',
-        'files_variables_specification' => '\criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification'
+        'type' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'choice_variable_specification' => null,
+        'files_variables_specification' => null,
         'id' => null,
         'required' => null,
-        'type' => 'string',
-        'choice_variable_specification' => null,
         'text_variable_specification' => null,
-        'files_variables_specification' => null
+        'type' => 'string'
     ];
 
     /**
@@ -88,12 +88,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        'choice_variable_specification' => true,
+		'files_variables_specification' => true,
+		'id' => false,
 		'required' => false,
-		'type' => false,
-		'choice_variable_specification' => true,
 		'text_variable_specification' => true,
-		'files_variables_specification' => true
+		'type' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'choice_variable_specification' => 'choiceVariableSpecification',
+        'files_variables_specification' => 'filesVariablesSpecification',
         'id' => 'id',
         'required' => 'required',
-        'type' => 'type',
-        'choice_variable_specification' => 'choiceVariableSpecification',
         'text_variable_specification' => 'textVariableSpecification',
-        'files_variables_specification' => 'filesVariablesSpecification'
+        'type' => 'type'
     ];
 
     /**
@@ -196,12 +196,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'choice_variable_specification' => 'setChoiceVariableSpecification',
+        'files_variables_specification' => 'setFilesVariablesSpecification',
         'id' => 'setId',
         'required' => 'setRequired',
-        'type' => 'setType',
-        'choice_variable_specification' => 'setChoiceVariableSpecification',
         'text_variable_specification' => 'setTextVariableSpecification',
-        'files_variables_specification' => 'setFilesVariablesSpecification'
+        'type' => 'setType'
     ];
 
     /**
@@ -210,12 +210,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'choice_variable_specification' => 'getChoiceVariableSpecification',
+        'files_variables_specification' => 'getFilesVariablesSpecification',
         'id' => 'getId',
         'required' => 'getRequired',
-        'type' => 'getType',
-        'choice_variable_specification' => 'getChoiceVariableSpecification',
         'text_variable_specification' => 'getTextVariableSpecification',
-        'files_variables_specification' => 'getFilesVariablesSpecification'
+        'type' => 'getType'
     ];
 
     /**
@@ -296,12 +296,12 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('choice_variable_specification', $data ?? [], null);
+        $this->setIfExists('files_variables_specification', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('required', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('choice_variable_specification', $data ?? [], null);
         $this->setIfExists('text_variable_specification', $data ?? [], null);
-        $this->setIfExists('files_variables_specification', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -365,6 +365,74 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
+     * Gets choice_variable_specification
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification|null
+     */
+    public function getChoiceVariableSpecification()
+    {
+        return $this->container['choice_variable_specification'];
+    }
+
+    /**
+     * Sets choice_variable_specification
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification|null $choice_variable_specification choice_variable_specification
+     *
+     * @return self
+     */
+    public function setChoiceVariableSpecification($choice_variable_specification)
+    {
+        if (is_null($choice_variable_specification)) {
+            array_push($this->openAPINullablesSetToNull, 'choice_variable_specification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('choice_variable_specification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['choice_variable_specification'] = $choice_variable_specification;
+
+        return $this;
+    }
+
+    /**
+     * Gets files_variables_specification
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification|null
+     */
+    public function getFilesVariablesSpecification()
+    {
+        return $this->container['files_variables_specification'];
+    }
+
+    /**
+     * Sets files_variables_specification
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification|null $files_variables_specification files_variables_specification
+     *
+     * @return self
+     */
+    public function setFilesVariablesSpecification($files_variables_specification)
+    {
+        if (is_null($files_variables_specification)) {
+            array_push($this->openAPINullablesSetToNull, 'files_variables_specification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('files_variables_specification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['files_variables_specification'] = $files_variables_specification;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string
@@ -419,77 +487,6 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type The type of the variable
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets choice_variable_specification
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification|null
-     */
-    public function getChoiceVariableSpecification()
-    {
-        return $this->container['choice_variable_specification'];
-    }
-
-    /**
-     * Sets choice_variable_specification
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ChoiceVariableSpecification|null $choice_variable_specification choice_variable_specification
-     *
-     * @return self
-     */
-    public function setChoiceVariableSpecification($choice_variable_specification)
-    {
-        if (is_null($choice_variable_specification)) {
-            array_push($this->openAPINullablesSetToNull, 'choice_variable_specification');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('choice_variable_specification', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['choice_variable_specification'] = $choice_variable_specification;
-
-        return $this;
-    }
-
-    /**
      * Gets text_variable_specification
      *
      * @return \criteo\api\retailmedia\v2024_07\Model\TextVariableSpecification|null
@@ -524,35 +521,38 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets files_variables_specification
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification|null
+     * @return string
      */
-    public function getFilesVariablesSpecification()
+    public function getType()
     {
-        return $this->container['files_variables_specification'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets files_variables_specification
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\FilesVariablesSpecification|null $files_variables_specification files_variables_specification
+     * @param string $type The type of the variable
      *
      * @return self
      */
-    public function setFilesVariablesSpecification($files_variables_specification)
+    public function setType($type)
     {
-        if (is_null($files_variables_specification)) {
-            array_push($this->openAPINullablesSetToNull, 'files_variables_specification');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('files_variables_specification', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['files_variables_specification'] = $files_variables_specification;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

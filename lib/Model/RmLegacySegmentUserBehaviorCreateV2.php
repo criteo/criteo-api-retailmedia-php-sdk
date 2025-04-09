@@ -58,10 +58,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user_action' => 'string',
-        'lookback_window' => 'string',
+        'brand_ids' => 'int[]',
         'category_ids' => 'int[]',
-        'brand_ids' => 'int[]'
+        'lookback_window' => 'string',
+        'user_action' => 'string'
     ];
 
     /**
@@ -72,10 +72,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'user_action' => null,
-        'lookback_window' => null,
+        'brand_ids' => 'int64',
         'category_ids' => 'int32',
-        'brand_ids' => 'int64'
+        'lookback_window' => null,
+        'user_action' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'user_action' => false,
-		'lookback_window' => false,
+        'brand_ids' => true,
 		'category_ids' => true,
-		'brand_ids' => true
+		'lookback_window' => false,
+		'user_action' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'user_action' => 'userAction',
-        'lookback_window' => 'lookbackWindow',
+        'brand_ids' => 'brandIds',
         'category_ids' => 'categoryIds',
-        'brand_ids' => 'brandIds'
+        'lookback_window' => 'lookbackWindow',
+        'user_action' => 'userAction'
     ];
 
     /**
@@ -188,10 +188,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'user_action' => 'setUserAction',
-        'lookback_window' => 'setLookbackWindow',
+        'brand_ids' => 'setBrandIds',
         'category_ids' => 'setCategoryIds',
-        'brand_ids' => 'setBrandIds'
+        'lookback_window' => 'setLookbackWindow',
+        'user_action' => 'setUserAction'
     ];
 
     /**
@@ -200,10 +200,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'user_action' => 'getUserAction',
-        'lookback_window' => 'getLookbackWindow',
+        'brand_ids' => 'getBrandIds',
         'category_ids' => 'getCategoryIds',
-        'brand_ids' => 'getBrandIds'
+        'lookback_window' => 'getLookbackWindow',
+        'user_action' => 'getUserAction'
     ];
 
     /**
@@ -247,9 +247,6 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const USER_ACTION_BUY = 'buy';
-    public const USER_ACTION_VIEW = 'view';
-    public const USER_ACTION_ADD_TO_CART = 'addToCart';
     public const LOOKBACK_WINDOW_P7_D = 'P7D';
     public const LOOKBACK_WINDOW_P14_D = 'P14D';
     public const LOOKBACK_WINDOW_P30_D = 'P30D';
@@ -259,20 +256,9 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
     public const LOOKBACK_WINDOW_P120_D = 'P120D';
     public const LOOKBACK_WINDOW_P150_D = 'P150D';
     public const LOOKBACK_WINDOW_P180_D = 'P180D';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUserActionAllowableValues()
-    {
-        return [
-            self::USER_ACTION_BUY,
-            self::USER_ACTION_VIEW,
-            self::USER_ACTION_ADD_TO_CART,
-        ];
-    }
+    public const USER_ACTION_BUY = 'buy';
+    public const USER_ACTION_VIEW = 'view';
+    public const USER_ACTION_ADD_TO_CART = 'addToCart';
 
     /**
      * Gets allowable values of the enum
@@ -295,6 +281,20 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getUserActionAllowableValues()
+    {
+        return [
+            self::USER_ACTION_BUY,
+            self::USER_ACTION_VIEW,
+            self::USER_ACTION_ADD_TO_CART,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -309,10 +309,10 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('user_action', $data ?? [], null);
-        $this->setIfExists('lookback_window', $data ?? [], null);
-        $this->setIfExists('category_ids', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('lookback_window', $data ?? [], null);
+        $this->setIfExists('user_action', $data ?? [], null);
     }
 
     /**
@@ -342,18 +342,6 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['user_action'] === null) {
-            $invalidProperties[] = "'user_action' can't be null";
-        }
-        $allowedValues = $this->getUserActionAllowableValues();
-        if (!is_null($this->container['user_action']) && !in_array($this->container['user_action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'user_action', must be one of '%s'",
-                $this->container['user_action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['lookback_window'] === null) {
             $invalidProperties[] = "'lookback_window' can't be null";
         }
@@ -362,6 +350,18 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'lookback_window', must be one of '%s'",
                 $this->container['lookback_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['user_action'] === null) {
+            $invalidProperties[] = "'user_action' can't be null";
+        }
+        $allowedValues = $this->getUserActionAllowableValues();
+        if (!is_null($this->container['user_action']) && !in_array($this->container['user_action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'user_action', must be one of '%s'",
+                $this->container['user_action'],
                 implode("', '", $allowedValues)
             );
         }
@@ -382,38 +382,73 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets user_action
+     * Gets brand_ids
      *
-     * @return string
+     * @return int[]|null
      */
-    public function getUserAction()
+    public function getBrandIds()
     {
-        return $this->container['user_action'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets user_action
+     * Sets brand_ids
      *
-     * @param string $user_action Type of shopper activity used to generate the audience.
+     * @param int[]|null $brand_ids The brands to target
      *
      * @return self
      */
-    public function setUserAction($user_action)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($user_action)) {
-            throw new \InvalidArgumentException('non-nullable user_action cannot be null');
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getUserActionAllowableValues();
-        if (!in_array($user_action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'user_action', must be one of '%s'",
-                    $user_action,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+
+        $this->container['brand_ids'] = $brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets category_ids
+     *
+     * @return int[]|null
+     */
+    public function getCategoryIds()
+    {
+        return $this->container['category_ids'];
+    }
+
+    /**
+     * Sets category_ids
+     *
+     * @param int[]|null $category_ids The categories to target
+     *
+     * @return self
+     */
+    public function setCategoryIds($category_ids)
+    {
+        if (is_null($category_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'category_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['user_action'] = $user_action;
+
+
+        $this->container['category_ids'] = $category_ids;
 
         return $this;
     }
@@ -456,73 +491,38 @@ class RmLegacySegmentUserBehaviorCreateV2 implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets category_ids
+     * Gets user_action
      *
-     * @return int[]|null
+     * @return string
      */
-    public function getCategoryIds()
+    public function getUserAction()
     {
-        return $this->container['category_ids'];
+        return $this->container['user_action'];
     }
 
     /**
-     * Sets category_ids
+     * Sets user_action
      *
-     * @param int[]|null $category_ids The categories to target
+     * @param string $user_action Type of shopper activity used to generate the audience.
      *
      * @return self
      */
-    public function setCategoryIds($category_ids)
+    public function setUserAction($user_action)
     {
-        if (is_null($category_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'category_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('category_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($user_action)) {
+            throw new \InvalidArgumentException('non-nullable user_action cannot be null');
         }
-
-
-        $this->container['category_ids'] = $category_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets brand_ids
-     *
-     * @return int[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param int[]|null $brand_ids The brands to target
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getUserActionAllowableValues();
+        if (!in_array($user_action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'user_action', must be one of '%s'",
+                    $user_action,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-
-
-        $this->container['brand_ids'] = $brand_ids;
+        $this->container['user_action'] = $user_action;
 
         return $this;
     }

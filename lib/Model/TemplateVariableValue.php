@@ -58,12 +58,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'text_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\TextVariableValue',
         'choice_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\ChoiceVariableValue',
         'color_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\ColorVariableValue',
         'files_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\FilesVariableValue',
         'hyperlink_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\HyperlinkVariableValue',
+        'id' => 'string',
+        'text_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\TextVariableValue',
         'video_variable_value' => '\criteo\api\retailmedia\v2024_07\Model\VideoVariableValue'
     ];
 
@@ -75,12 +75,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'text_variable_value' => null,
         'choice_variable_value' => null,
         'color_variable_value' => null,
         'files_variable_value' => null,
         'hyperlink_variable_value' => null,
+        'id' => null,
+        'text_variable_value' => null,
         'video_variable_value' => null
     ];
 
@@ -90,12 +90,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-		'text_variable_value' => true,
-		'choice_variable_value' => true,
+        'choice_variable_value' => true,
 		'color_variable_value' => true,
 		'files_variable_value' => true,
 		'hyperlink_variable_value' => true,
+		'id' => false,
+		'text_variable_value' => true,
 		'video_variable_value' => true
     ];
 
@@ -185,12 +185,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'text_variable_value' => 'textVariableValue',
         'choice_variable_value' => 'choiceVariableValue',
         'color_variable_value' => 'colorVariableValue',
         'files_variable_value' => 'filesVariableValue',
         'hyperlink_variable_value' => 'hyperlinkVariableValue',
+        'id' => 'id',
+        'text_variable_value' => 'textVariableValue',
         'video_variable_value' => 'videoVariableValue'
     ];
 
@@ -200,12 +200,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'text_variable_value' => 'setTextVariableValue',
         'choice_variable_value' => 'setChoiceVariableValue',
         'color_variable_value' => 'setColorVariableValue',
         'files_variable_value' => 'setFilesVariableValue',
         'hyperlink_variable_value' => 'setHyperlinkVariableValue',
+        'id' => 'setId',
+        'text_variable_value' => 'setTextVariableValue',
         'video_variable_value' => 'setVideoVariableValue'
     ];
 
@@ -215,12 +215,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'text_variable_value' => 'getTextVariableValue',
         'choice_variable_value' => 'getChoiceVariableValue',
         'color_variable_value' => 'getColorVariableValue',
         'files_variable_value' => 'getFilesVariableValue',
         'hyperlink_variable_value' => 'getHyperlinkVariableValue',
+        'id' => 'getId',
+        'text_variable_value' => 'getTextVariableValue',
         'video_variable_value' => 'getVideoVariableValue'
     ];
 
@@ -281,12 +281,12 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('text_variable_value', $data ?? [], null);
         $this->setIfExists('choice_variable_value', $data ?? [], null);
         $this->setIfExists('color_variable_value', $data ?? [], null);
         $this->setIfExists('files_variable_value', $data ?? [], null);
         $this->setIfExists('hyperlink_variable_value', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('text_variable_value', $data ?? [], null);
         $this->setIfExists('video_variable_value', $data ?? [], null);
     }
 
@@ -334,67 +334,6 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The id of the template variable the value is applied to
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets text_variable_value
-     *
-     * @return \criteo\api\retailmedia\v2024_07\Model\TextVariableValue|null
-     */
-    public function getTextVariableValue()
-    {
-        return $this->container['text_variable_value'];
-    }
-
-    /**
-     * Sets text_variable_value
-     *
-     * @param \criteo\api\retailmedia\v2024_07\Model\TextVariableValue|null $text_variable_value text_variable_value
-     *
-     * @return self
-     */
-    public function setTextVariableValue($text_variable_value)
-    {
-        if (is_null($text_variable_value)) {
-            array_push($this->openAPINullablesSetToNull, 'text_variable_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('text_variable_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['text_variable_value'] = $text_variable_value;
-
-        return $this;
-    }
 
     /**
      * Gets choice_variable_value
@@ -528,6 +467,67 @@ class TemplateVariableValue implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['hyperlink_variable_value'] = $hyperlink_variable_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The id of the template variable the value is applied to
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets text_variable_value
+     *
+     * @return \criteo\api\retailmedia\v2024_07\Model\TextVariableValue|null
+     */
+    public function getTextVariableValue()
+    {
+        return $this->container['text_variable_value'];
+    }
+
+    /**
+     * Sets text_variable_value
+     *
+     * @param \criteo\api\retailmedia\v2024_07\Model\TextVariableValue|null $text_variable_value text_variable_value
+     *
+     * @return self
+     */
+    public function setTextVariableValue($text_variable_value)
+    {
+        if (is_null($text_variable_value)) {
+            array_push($this->openAPINullablesSetToNull, 'text_variable_value');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('text_variable_value', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['text_variable_value'] = $text_variable_value;
 
         return $this;
     }

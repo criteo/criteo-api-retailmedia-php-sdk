@@ -58,8 +58,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'seller_id' => 'string',
-        'retailer_id' => 'int'
+        'retailer_id' => 'int',
+        'seller_id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'seller_id' => null,
-        'retailer_id' => 'int32'
+        'retailer_id' => 'int32',
+        'seller_id' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'seller_id' => false,
-		'retailer_id' => false
+        'retailer_id' => false,
+		'seller_id' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'seller_id' => 'sellerId',
-        'retailer_id' => 'retailerId'
+        'retailer_id' => 'retailerId',
+        'seller_id' => 'sellerId'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'seller_id' => 'setSellerId',
-        'retailer_id' => 'setRetailerId'
+        'retailer_id' => 'setRetailerId',
+        'seller_id' => 'setSellerId'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'seller_id' => 'getSellerId',
-        'retailer_id' => 'getRetailerId'
+        'retailer_id' => 'getRetailerId',
+        'seller_id' => 'getSellerId'
     ];
 
     /**
@@ -251,8 +251,8 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('seller_id', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('seller_id', $data ?? [], null);
     }
 
     /**
@@ -282,11 +282,11 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['seller_id'] === null) {
-            $invalidProperties[] = "'seller_id' can't be null";
-        }
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['seller_id'] === null) {
+            $invalidProperties[] = "'seller_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -302,33 +302,6 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets seller_id
-     *
-     * @return string
-     */
-    public function getSellerId()
-    {
-        return $this->container['seller_id'];
-    }
-
-    /**
-     * Sets seller_id
-     *
-     * @param string $seller_id the seller id
-     *
-     * @return self
-     */
-    public function setSellerId($seller_id)
-    {
-        if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
-        }
-        $this->container['seller_id'] = $seller_id;
-
-        return $this;
-    }
 
     /**
      * Gets retailer_id
@@ -353,6 +326,33 @@ class ExternalRetailMediaSeller implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
         $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_id
+     *
+     * @return string
+     */
+    public function getSellerId()
+    {
+        return $this->container['seller_id'];
+    }
+
+    /**
+     * Sets seller_id
+     *
+     * @param string $seller_id the seller id
+     *
+     * @return self
+     */
+    public function setSellerId($seller_id)
+    {
+        if (is_null($seller_id)) {
+            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
+        }
+        $this->container['seller_id'] = $seller_id;
 
         return $this;
     }

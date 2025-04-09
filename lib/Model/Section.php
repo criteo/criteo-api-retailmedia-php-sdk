@@ -58,9 +58,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'title' => 'string',
         'description' => 'string',
-        'template_variables' => '\criteo\api\retailmedia\v2024_07\Model\TemplateVariable[]'
+        'template_variables' => '\criteo\api\retailmedia\v2024_07\Model\TemplateVariable[]',
+        'title' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'title' => null,
         'description' => null,
-        'template_variables' => null
+        'template_variables' => null,
+        'title' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'title' => true,
-		'description' => true,
-		'template_variables' => false
+        'description' => true,
+		'template_variables' => false,
+		'title' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'title' => 'title',
         'description' => 'description',
-        'template_variables' => 'templateVariables'
+        'template_variables' => 'templateVariables',
+        'title' => 'title'
     ];
 
     /**
@@ -184,9 +184,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'title' => 'setTitle',
         'description' => 'setDescription',
-        'template_variables' => 'setTemplateVariables'
+        'template_variables' => 'setTemplateVariables',
+        'title' => 'setTitle'
     ];
 
     /**
@@ -195,9 +195,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'title' => 'getTitle',
         'description' => 'getDescription',
-        'template_variables' => 'getTemplateVariables'
+        'template_variables' => 'getTemplateVariables',
+        'title' => 'getTitle'
     ];
 
     /**
@@ -257,9 +257,9 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('template_variables', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
     }
 
     /**
@@ -306,40 +306,6 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
 
     /**
      * Gets description
@@ -398,6 +364,40 @@ class Section implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable template_variables cannot be null');
         }
         $this->container['template_variables'] = $template_variables;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }

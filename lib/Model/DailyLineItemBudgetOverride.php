@@ -58,9 +58,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_date' => '\DateTime',
         'duration' => 'string',
         'max_daily_spend' => 'float',
+        'start_date' => '\DateTime',
         'status' => 'string'
     ];
 
@@ -72,9 +72,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'start_date' => 'date-time',
         'duration' => null,
         'max_daily_spend' => 'double',
+        'start_date' => 'date-time',
         'status' => null
     ];
 
@@ -84,9 +84,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'start_date' => true,
-		'duration' => false,
+        'duration' => false,
 		'max_daily_spend' => true,
+		'start_date' => true,
 		'status' => true
     ];
 
@@ -176,9 +176,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'start_date' => 'startDate',
         'duration' => 'duration',
         'max_daily_spend' => 'maxDailySpend',
+        'start_date' => 'startDate',
         'status' => 'status'
     ];
 
@@ -188,9 +188,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'start_date' => 'setStartDate',
         'duration' => 'setDuration',
         'max_daily_spend' => 'setMaxDailySpend',
+        'start_date' => 'setStartDate',
         'status' => 'setStatus'
     ];
 
@@ -200,9 +200,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'start_date' => 'getStartDate',
         'duration' => 'getDuration',
         'max_daily_spend' => 'getMaxDailySpend',
+        'start_date' => 'getStartDate',
         'status' => 'getStatus'
     ];
 
@@ -280,9 +280,9 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('duration', $data ?? [], null);
         $this->setIfExists('max_daily_spend', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -341,40 +341,6 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets start_date
-     *
-     * @return \DateTime|null
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime|null $start_date Daily budget override start date, format \"yyyy-MM-dd\". If it is null, the StartDate would be the following date of the last item in the override sequence.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            array_push($this->openAPINullablesSetToNull, 'start_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
      * Gets duration
      *
      * @return string
@@ -431,6 +397,40 @@ class DailyLineItemBudgetOverride implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['max_daily_spend'] = $max_daily_spend;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime|null $start_date Daily budget override start date, format \"yyyy-MM-dd\". If it is null, the StartDate would be the following date of the last item in the override sequence.
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            array_push($this->openAPINullablesSetToNull, 'start_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('start_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }
