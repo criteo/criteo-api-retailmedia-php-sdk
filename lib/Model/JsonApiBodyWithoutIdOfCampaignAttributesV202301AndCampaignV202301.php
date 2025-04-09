@@ -58,8 +58,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\CampaignAttributesV202301'
+        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\CampaignAttributesV202301',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-		'attributes' => false
+        'attributes' => false,
+		'type' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -301,33 +301,6 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
 
 
     /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets attributes
      *
      * @return \criteo\api\retailmedia\v2025_01\Model\CampaignAttributesV202301|null
@@ -350,6 +323,33 @@ class JsonApiBodyWithoutIdOfCampaignAttributesV202301AndCampaignV202301 implemen
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

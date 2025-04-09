@@ -58,8 +58,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'scope' => 'string',
-        'audience_ids' => 'string[]'
+        'audience_ids' => 'string[]',
+        'scope' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'scope' => null,
-        'audience_ids' => 'long-id'
+        'audience_ids' => 'long-id',
+        'scope' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'scope' => false,
-		'audience_ids' => false
+        'audience_ids' => false,
+		'scope' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'scope' => 'scope',
-        'audience_ids' => 'audienceIds'
+        'audience_ids' => 'audienceIds',
+        'scope' => 'scope'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'scope' => 'setScope',
-        'audience_ids' => 'setAudienceIds'
+        'audience_ids' => 'setAudienceIds',
+        'scope' => 'setScope'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'scope' => 'getScope',
-        'audience_ids' => 'getAudienceIds'
+        'audience_ids' => 'getAudienceIds',
+        'scope' => 'getScope'
     ];
 
     /**
@@ -268,8 +268,8 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('scope', $data ?? [], null);
         $this->setIfExists('audience_ids', $data ?? [], null);
+        $this->setIfExists('scope', $data ?? [], null);
     }
 
     /**
@@ -299,6 +299,9 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['audience_ids'] === null) {
+            $invalidProperties[] = "'audience_ids' can't be null";
+        }
         if ($this->container['scope'] === null) {
             $invalidProperties[] = "'scope' can't be null";
         }
@@ -311,9 +314,6 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
             );
         }
 
-        if ($this->container['audience_ids'] === null) {
-            $invalidProperties[] = "'audience_ids' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -328,6 +328,33 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets audience_ids
+     *
+     * @return string[]
+     */
+    public function getAudienceIds()
+    {
+        return $this->container['audience_ids'];
+    }
+
+    /**
+     * Sets audience_ids
+     *
+     * @param string[] $audience_ids Audience ids that should be targeted
+     *
+     * @return self
+     */
+    public function setAudienceIds($audience_ids)
+    {
+        if (is_null($audience_ids)) {
+            throw new \InvalidArgumentException('non-nullable audience_ids cannot be null');
+        }
+        $this->container['audience_ids'] = $audience_ids;
+
+        return $this;
+    }
 
     /**
      * Gets scope
@@ -362,33 +389,6 @@ class ExternalAudienceTarget202110 implements ModelInterface, ArrayAccess, \Json
             );
         }
         $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets audience_ids
-     *
-     * @return string[]
-     */
-    public function getAudienceIds()
-    {
-        return $this->container['audience_ids'];
-    }
-
-    /**
-     * Sets audience_ids
-     *
-     * @param string[] $audience_ids Audience ids that should be targeted
-     *
-     * @return self
-     */
-    public function setAudienceIds($audience_ids)
-    {
-        if (is_null($audience_ids)) {
-            throw new \InvalidArgumentException('non-nullable audience_ids cannot be null');
-        }
-        $this->container['audience_ids'] = $audience_ids;
 
         return $this;
     }

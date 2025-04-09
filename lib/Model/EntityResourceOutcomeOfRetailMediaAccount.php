@@ -59,8 +59,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_01\Model\EntityResourceOfRetailMediaAccount',
-        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]',
-        'errors' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]'
+        'errors' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
       */
     protected static $openAPIFormats = [
         'data' => null,
-        'warnings' => null,
-        'errors' => null
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -83,8 +83,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
       */
     protected static array $openAPINullables = [
         'data' => true,
-		'warnings' => true,
-		'errors' => true
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -174,8 +174,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
      */
     protected static $attributeMap = [
         'data' => 'data',
-        'warnings' => 'warnings',
-        'errors' => 'errors'
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -185,8 +185,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
      */
     protected static $setters = [
         'data' => 'setData',
-        'warnings' => 'setWarnings',
-        'errors' => 'setErrors'
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -196,8 +196,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
      */
     protected static $getters = [
         'data' => 'getData',
-        'warnings' => 'getWarnings',
-        'errors' => 'getErrors'
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -258,8 +258,8 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -339,40 +339,6 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
     }
 
     /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
-
-        return $this;
-    }
-
-    /**
      * Gets errors
      *
      * @return \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null
@@ -402,6 +368,40 @@ class EntityResourceOutcomeOfRetailMediaAccount implements ModelInterface, Array
             }
         }
         $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\v2025_01\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

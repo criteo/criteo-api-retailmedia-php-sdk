@@ -58,14 +58,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'trace_id' => 'string',
-        'type' => 'string',
         'code' => 'string',
-        'instance' => 'string',
-        'title' => 'string',
         'detail' => 'string',
+        'instance' => 'string',
         'source' => 'array<string,string>',
-        'stack_trace' => 'string'
+        'stack_trace' => 'string',
+        'title' => 'string',
+        'trace_id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -76,14 +76,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'trace_id' => null,
-        'type' => null,
         'code' => null,
-        'instance' => null,
-        'title' => null,
         'detail' => null,
+        'instance' => null,
         'source' => null,
-        'stack_trace' => null
+        'stack_trace' => null,
+        'title' => null,
+        'trace_id' => null,
+        'type' => null
     ];
 
     /**
@@ -92,14 +92,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'trace_id' => true,
-		'type' => true,
-		'code' => true,
-		'instance' => true,
-		'title' => true,
+        'code' => true,
 		'detail' => true,
+		'instance' => true,
 		'source' => true,
-		'stack_trace' => true
+		'stack_trace' => true,
+		'title' => true,
+		'trace_id' => true,
+		'type' => true
     ];
 
     /**
@@ -188,14 +188,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'trace_id' => 'traceId',
-        'type' => 'type',
         'code' => 'code',
-        'instance' => 'instance',
-        'title' => 'title',
         'detail' => 'detail',
+        'instance' => 'instance',
         'source' => 'source',
-        'stack_trace' => 'stackTrace'
+        'stack_trace' => 'stackTrace',
+        'title' => 'title',
+        'trace_id' => 'traceId',
+        'type' => 'type'
     ];
 
     /**
@@ -204,14 +204,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'trace_id' => 'setTraceId',
-        'type' => 'setType',
         'code' => 'setCode',
-        'instance' => 'setInstance',
-        'title' => 'setTitle',
         'detail' => 'setDetail',
+        'instance' => 'setInstance',
         'source' => 'setSource',
-        'stack_trace' => 'setStackTrace'
+        'stack_trace' => 'setStackTrace',
+        'title' => 'setTitle',
+        'trace_id' => 'setTraceId',
+        'type' => 'setType'
     ];
 
     /**
@@ -220,14 +220,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'trace_id' => 'getTraceId',
-        'type' => 'getType',
         'code' => 'getCode',
-        'instance' => 'getInstance',
-        'title' => 'getTitle',
         'detail' => 'getDetail',
+        'instance' => 'getInstance',
         'source' => 'getSource',
-        'stack_trace' => 'getStackTrace'
+        'stack_trace' => 'getStackTrace',
+        'title' => 'getTitle',
+        'trace_id' => 'getTraceId',
+        'type' => 'getType'
     ];
 
     /**
@@ -314,14 +314,14 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('instance', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('detail', $data ?? [], null);
+        $this->setIfExists('instance', $data ?? [], null);
         $this->setIfExists('source', $data ?? [], null);
         $this->setIfExists('stack_trace', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -374,6 +374,210 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code A machine-readable error code, expressed as a string value.
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            array_push($this->openAPINullablesSetToNull, 'code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets detail
+     *
+     * @return string|null
+     */
+    public function getDetail()
+    {
+        return $this->container['detail'];
+    }
+
+    /**
+     * Sets detail
+     *
+     * @param string|null $detail A human-readable explanation specific to this occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setDetail($detail)
+    {
+        if (is_null($detail)) {
+            array_push($this->openAPINullablesSetToNull, 'detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('detail', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['detail'] = $detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets instance
+     *
+     * @return string|null
+     */
+    public function getInstance()
+    {
+        return $this->container['instance'];
+    }
+
+    /**
+     * Sets instance
+     *
+     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
+     *
+     * @return self
+     */
+    public function setInstance($instance)
+    {
+        if (is_null($instance)) {
+            array_push($this->openAPINullablesSetToNull, 'instance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('instance', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['instance'] = $instance;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return array<string,string>|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param array<string,string>|null $source A machine-readable structure to reference to the exact location(s) causing the error(s).
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            array_push($this->openAPINullablesSetToNull, 'source');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('source', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets stack_trace
+     *
+     * @return string|null
+     */
+    public function getStackTrace()
+    {
+        return $this->container['stack_trace'];
+    }
+
+    /**
+     * Sets stack_trace
+     *
+     * @param string|null $stack_trace 
+     *
+     * @return self
+     */
+    public function setStackTrace($stack_trace)
+    {
+        if (is_null($stack_trace)) {
+            array_push($this->openAPINullablesSetToNull, 'stack_trace');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stack_trace', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stack_trace'] = $stack_trace;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title A short human-readable description of the problem type.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            array_push($this->openAPINullablesSetToNull, 'title');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('title', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
 
     /**
      * Gets trace_id
@@ -449,210 +653,6 @@ class SdkApiRestCommonProblem implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string|null
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string|null $code A machine-readable error code, expressed as a string value.
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
-        if (is_null($code)) {
-            array_push($this->openAPINullablesSetToNull, 'code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets instance
-     *
-     * @return string|null
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        if (is_null($instance)) {
-            array_push($this->openAPINullablesSetToNull, 'instance');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('instance', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['instance'] = $instance;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title A short human-readable description of the problem type.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            array_push($this->openAPINullablesSetToNull, 'title');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('title', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets detail
-     *
-     * @return string|null
-     */
-    public function getDetail()
-    {
-        return $this->container['detail'];
-    }
-
-    /**
-     * Sets detail
-     *
-     * @param string|null $detail A human-readable explanation specific to this occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setDetail($detail)
-    {
-        if (is_null($detail)) {
-            array_push($this->openAPINullablesSetToNull, 'detail');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('detail', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return array<string,string>|null
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param array<string,string>|null $source A machine-readable structure to reference to the exact location(s) causing the error(s).
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        if (is_null($source)) {
-            array_push($this->openAPINullablesSetToNull, 'source');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('source', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets stack_trace
-     *
-     * @return string|null
-     */
-    public function getStackTrace()
-    {
-        return $this->container['stack_trace'];
-    }
-
-    /**
-     * Sets stack_trace
-     *
-     * @param string|null $stack_trace 
-     *
-     * @return self
-     */
-    public function setStackTrace($stack_trace)
-    {
-        if (is_null($stack_trace)) {
-            array_push($this->openAPINullablesSetToNull, 'stack_trace');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('stack_trace', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['stack_trace'] = $stack_trace;
 
         return $this;
     }

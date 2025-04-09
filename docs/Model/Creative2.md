@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | Name |
-**status** | **string** | Creative Status |
-**brand_id** | **int** | Brand Id |
-**retailer_id** | **int** | Retailer Id |
-**template_id** | **int** | Template Id |
-**template_name** | **string** | Template Name |
-**format_id** | **int** | Format Id |
 **associated_line_item_ids** | **string[]** | Associated Line Item Ids |
-**updated_at** | **\DateTime** | Updated at time |
+**brand_id** | **int** | Brand Id |
 **creative_format_v2_type** | **string** | Creative format type |
 **environments** | [**\criteo\api\retailmedia\v2025_01\Model\PageTypeEnvironment2[]**](PageTypeEnvironment2.md) | Environment type (e.g. mobile, web, app) |
-**template_variable_values** | [**\criteo\api\retailmedia\v2025_01\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |
+**format_id** | **int** | Format Id |
 **id** | **string** | Id of the entity | [optional]
+**name** | **string** | Name |
+**retailer_id** | **int** | Retailer Id |
+**status** | **string** | Creative Status |
+**template_id** | **int** | Template Id |
+**template_name** | **string** | Template Name |
+**template_variable_values** | [**\criteo\api\retailmedia\v2025_01\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |
+**updated_at** | **\DateTime** | Updated at time |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

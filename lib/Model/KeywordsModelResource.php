@@ -58,9 +58,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\KeywordsModel',
         'id' => 'string',
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\KeywordsModel'
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'attributes' => null,
         'id' => null,
-        'type' => null,
-        'attributes' => null
+        'type' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-		'type' => true,
-		'attributes' => true
+        'attributes' => true,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'attributes' => 'attributes',
         'id' => 'id',
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +184,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'attributes' => 'setAttributes',
         'id' => 'setId',
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +195,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'attributes' => 'getAttributes',
         'id' => 'getId',
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'type' => 'getType'
     ];
 
     /**
@@ -257,9 +257,9 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('attributes', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('attributes', $data ?? [], null);
     }
 
     /**
@@ -303,6 +303,40 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets attributes
+     *
+     * @return \criteo\api\retailmedia\v2025_01\Model\KeywordsModel|null
+     */
+    public function getAttributes()
+    {
+        return $this->container['attributes'];
+    }
+
+    /**
+     * Sets attributes
+     *
+     * @param \criteo\api\retailmedia\v2025_01\Model\KeywordsModel|null $attributes attributes
+     *
+     * @return self
+     */
+    public function setAttributes($attributes)
+    {
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -368,40 +402,6 @@ class KeywordsModelResource implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets attributes
-     *
-     * @return \criteo\api\retailmedia\v2025_01\Model\KeywordsModel|null
-     */
-    public function getAttributes()
-    {
-        return $this->container['attributes'];
-    }
-
-    /**
-     * Sets attributes
-     *
-     * @param \criteo\api\retailmedia\v2025_01\Model\KeywordsModel|null $attributes attributes
-     *
-     * @return self
-     */
-    public function setAttributes($attributes)
-    {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['attributes'] = $attributes;
 
         return $this;
     }

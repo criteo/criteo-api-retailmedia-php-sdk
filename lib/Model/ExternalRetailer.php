@@ -58,8 +58,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'campaign_eligibilities' => 'string[]'
+        'campaign_eligibilities' => 'string[]',
+        'name' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'campaign_eligibilities' => null
+        'campaign_eligibilities' => null,
+        'name' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-		'campaign_eligibilities' => true
+        'campaign_eligibilities' => true,
+		'name' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'campaign_eligibilities' => 'campaignEligibilities'
+        'campaign_eligibilities' => 'campaignEligibilities',
+        'name' => 'name'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'campaign_eligibilities' => 'setCampaignEligibilities'
+        'campaign_eligibilities' => 'setCampaignEligibilities',
+        'name' => 'setName'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'campaign_eligibilities' => 'getCampaignEligibilities'
+        'campaign_eligibilities' => 'getCampaignEligibilities',
+        'name' => 'getName'
     ];
 
     /**
@@ -272,8 +272,8 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('campaign_eligibilities', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -326,37 +326,6 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalRetailer., must be smaller than or equal to 100.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets campaign_eligibilities
      *
      * @return string[]|null
@@ -395,6 +364,37 @@ class ExternalRetailer implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['campaign_eligibilities'] = $campaign_eligibilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling ExternalRetailer., must be smaller than or equal to 100.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }

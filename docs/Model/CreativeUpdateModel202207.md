@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | The name of the creative |
 **brand_id** | **int** | The brand associated to the creative | [optional]
+**name** | **string** | The name of the creative |
 **retailer_id** | **int** | The retailer associated to the creative |
 **template_id** | **int** | The creative template used for this creative |
 **template_variable_values** | [**\criteo\api\retailmedia\v2025_01\Model\TemplateVariableValue[]**](TemplateVariableValue.md) | The template chosen values |

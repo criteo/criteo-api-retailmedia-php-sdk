@@ -58,11 +58,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'end_date' => 'string',
+        'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
-        'start_date' => 'string',
-        'end_date' => 'string',
-        'memo' => 'string'
+        'start_date' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'end_date' => null,
+        'memo' => null,
         'name' => null,
         'po_number' => null,
-        'start_date' => null,
-        'end_date' => null,
-        'memo' => null
+        'start_date' => null
     ];
 
     /**
@@ -86,11 +86,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => true,
+        'end_date' => true,
+		'memo' => true,
+		'name' => true,
 		'po_number' => true,
-		'start_date' => true,
-		'end_date' => true,
-		'memo' => true
+		'start_date' => true
     ];
 
     /**
@@ -179,11 +179,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'end_date' => 'endDate',
+        'memo' => 'memo',
         'name' => 'name',
         'po_number' => 'poNumber',
-        'start_date' => 'startDate',
-        'end_date' => 'endDate',
-        'memo' => 'memo'
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -192,11 +192,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
         'name' => 'setName',
         'po_number' => 'setPoNumber',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'memo' => 'setMemo'
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -205,11 +205,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
         'name' => 'getName',
         'po_number' => 'getPoNumber',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'memo' => 'getMemo'
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -269,11 +269,11 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('po_number', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
     }
 
     /**
@@ -317,6 +317,74 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets end_date
+     *
+     * @return string|null
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string|null
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string|null $memo Memo.
+     *
+     * @return self
+     */
+    public function setMemo($memo)
+    {
+        if (is_null($memo)) {
+            array_push($this->openAPINullablesSetToNull, 'memo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('memo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -416,74 +484,6 @@ class UpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return string|null
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Memo.
-     *
-     * @return self
-     */
-    public function setMemo($memo)
-    {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['memo'] = $memo;
 
         return $this;
     }

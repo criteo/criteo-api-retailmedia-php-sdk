@@ -58,8 +58,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => 'string',
-        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\LineItemBudgetOverrides'
+        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\LineItemBudgetOverrides',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'attributes' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => true,
-		'attributes' => true
+        'attributes' => true,
+		'type' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'attributes' => 'attributes'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'attributes' => 'setAttributes'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'attributes' => 'getAttributes'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -298,40 +298,6 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
      * Gets attributes
      *
      * @return \criteo\api\retailmedia\v2025_01\Model\LineItemBudgetOverrides|null
@@ -361,6 +327,40 @@ class ValueResourceOfLineItemBudgetOverrides implements ModelInterface, ArrayAcc
             }
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

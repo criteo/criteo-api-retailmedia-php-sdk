@@ -58,8 +58,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
         'bid_override' => 'float',
+        'id' => 'string',
         'status' => '\criteo\api\retailmedia\v2025_01\Model\LineItemProductStatus'
     ];
 
@@ -71,8 +71,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
         'bid_override' => 'decimal',
+        'id' => null,
         'status' => null
     ];
 
@@ -82,8 +82,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => true,
-		'bid_override' => true,
+        'bid_override' => true,
+		'id' => true,
 		'status' => true
     ];
 
@@ -173,8 +173,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
         'bid_override' => 'bidOverride',
+        'id' => 'id',
         'status' => 'status'
     ];
 
@@ -184,8 +184,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
         'bid_override' => 'setBidOverride',
+        'id' => 'setId',
         'status' => 'setStatus'
     ];
 
@@ -195,8 +195,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
         'bid_override' => 'getBidOverride',
+        'id' => 'getId',
         'status' => 'getStatus'
     ];
 
@@ -257,8 +257,8 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('bid_override', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -305,40 +305,6 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id A retailer defined SKU ID for the promoted product.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets bid_override
      *
      * @return float|null
@@ -368,6 +334,40 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['bid_override'] = $bid_override;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id A retailer defined SKU ID for the promoted product.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

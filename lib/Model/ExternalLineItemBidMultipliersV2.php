@@ -58,18 +58,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'search' => 'float',
-        'home' => 'float',
         'category' => 'float',
-        'product_detail' => 'float',
-        'confirmation' => 'float',
-        'merchandising' => 'float',
-        'deals' => 'float',
-        'checkout' => 'float',
-        'favorites' => 'float',
-        'search_bar' => 'float',
         'category_menu' => 'float',
-        'id' => 'string'
+        'checkout' => 'float',
+        'confirmation' => 'float',
+        'deals' => 'float',
+        'favorites' => 'float',
+        'home' => 'float',
+        'id' => 'string',
+        'merchandising' => 'float',
+        'product_detail' => 'float',
+        'search' => 'float',
+        'search_bar' => 'float'
     ];
 
     /**
@@ -80,18 +80,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'search' => 'decimal',
-        'home' => 'decimal',
         'category' => 'decimal',
-        'product_detail' => 'decimal',
-        'confirmation' => 'decimal',
-        'merchandising' => 'decimal',
-        'deals' => 'decimal',
-        'checkout' => 'decimal',
-        'favorites' => 'decimal',
-        'search_bar' => 'decimal',
         'category_menu' => 'decimal',
-        'id' => null
+        'checkout' => 'decimal',
+        'confirmation' => 'decimal',
+        'deals' => 'decimal',
+        'favorites' => 'decimal',
+        'home' => 'decimal',
+        'id' => null,
+        'merchandising' => 'decimal',
+        'product_detail' => 'decimal',
+        'search' => 'decimal',
+        'search_bar' => 'decimal'
     ];
 
     /**
@@ -100,18 +100,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'search' => true,
-		'home' => true,
-		'category' => true,
-		'product_detail' => true,
-		'confirmation' => true,
-		'merchandising' => true,
-		'deals' => true,
-		'checkout' => true,
-		'favorites' => true,
-		'search_bar' => true,
+        'category' => true,
 		'category_menu' => true,
-		'id' => true
+		'checkout' => true,
+		'confirmation' => true,
+		'deals' => true,
+		'favorites' => true,
+		'home' => true,
+		'id' => true,
+		'merchandising' => true,
+		'product_detail' => true,
+		'search' => true,
+		'search_bar' => true
     ];
 
     /**
@@ -200,18 +200,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'search' => 'search',
-        'home' => 'home',
         'category' => 'category',
-        'product_detail' => 'productDetail',
-        'confirmation' => 'confirmation',
-        'merchandising' => 'merchandising',
-        'deals' => 'deals',
-        'checkout' => 'checkout',
-        'favorites' => 'favorites',
-        'search_bar' => 'searchBar',
         'category_menu' => 'categoryMenu',
-        'id' => 'id'
+        'checkout' => 'checkout',
+        'confirmation' => 'confirmation',
+        'deals' => 'deals',
+        'favorites' => 'favorites',
+        'home' => 'home',
+        'id' => 'id',
+        'merchandising' => 'merchandising',
+        'product_detail' => 'productDetail',
+        'search' => 'search',
+        'search_bar' => 'searchBar'
     ];
 
     /**
@@ -220,18 +220,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'search' => 'setSearch',
-        'home' => 'setHome',
         'category' => 'setCategory',
-        'product_detail' => 'setProductDetail',
-        'confirmation' => 'setConfirmation',
-        'merchandising' => 'setMerchandising',
-        'deals' => 'setDeals',
-        'checkout' => 'setCheckout',
-        'favorites' => 'setFavorites',
-        'search_bar' => 'setSearchBar',
         'category_menu' => 'setCategoryMenu',
-        'id' => 'setId'
+        'checkout' => 'setCheckout',
+        'confirmation' => 'setConfirmation',
+        'deals' => 'setDeals',
+        'favorites' => 'setFavorites',
+        'home' => 'setHome',
+        'id' => 'setId',
+        'merchandising' => 'setMerchandising',
+        'product_detail' => 'setProductDetail',
+        'search' => 'setSearch',
+        'search_bar' => 'setSearchBar'
     ];
 
     /**
@@ -240,18 +240,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'search' => 'getSearch',
-        'home' => 'getHome',
         'category' => 'getCategory',
-        'product_detail' => 'getProductDetail',
-        'confirmation' => 'getConfirmation',
-        'merchandising' => 'getMerchandising',
-        'deals' => 'getDeals',
-        'checkout' => 'getCheckout',
-        'favorites' => 'getFavorites',
-        'search_bar' => 'getSearchBar',
         'category_menu' => 'getCategoryMenu',
-        'id' => 'getId'
+        'checkout' => 'getCheckout',
+        'confirmation' => 'getConfirmation',
+        'deals' => 'getDeals',
+        'favorites' => 'getFavorites',
+        'home' => 'getHome',
+        'id' => 'getId',
+        'merchandising' => 'getMerchandising',
+        'product_detail' => 'getProductDetail',
+        'search' => 'getSearch',
+        'search_bar' => 'getSearchBar'
     ];
 
     /**
@@ -311,18 +311,18 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('search', $data ?? [], null);
-        $this->setIfExists('home', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('product_detail', $data ?? [], null);
-        $this->setIfExists('confirmation', $data ?? [], null);
-        $this->setIfExists('merchandising', $data ?? [], null);
-        $this->setIfExists('deals', $data ?? [], null);
-        $this->setIfExists('checkout', $data ?? [], null);
-        $this->setIfExists('favorites', $data ?? [], null);
-        $this->setIfExists('search_bar', $data ?? [], null);
         $this->setIfExists('category_menu', $data ?? [], null);
+        $this->setIfExists('checkout', $data ?? [], null);
+        $this->setIfExists('confirmation', $data ?? [], null);
+        $this->setIfExists('deals', $data ?? [], null);
+        $this->setIfExists('favorites', $data ?? [], null);
+        $this->setIfExists('home', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('merchandising', $data ?? [], null);
+        $this->setIfExists('product_detail', $data ?? [], null);
+        $this->setIfExists('search', $data ?? [], null);
+        $this->setIfExists('search_bar', $data ?? [], null);
     }
 
     /**
@@ -368,74 +368,6 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets search
-     *
-     * @return float|null
-     */
-    public function getSearch()
-    {
-        return $this->container['search'];
-    }
-
-    /**
-     * Sets search
-     *
-     * @param float|null $search Search Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setSearch($search)
-    {
-        if (is_null($search)) {
-            array_push($this->openAPINullablesSetToNull, 'search');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('search', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['search'] = $search;
-
-        return $this;
-    }
-
-    /**
-     * Gets home
-     *
-     * @return float|null
-     */
-    public function getHome()
-    {
-        return $this->container['home'];
-    }
-
-    /**
-     * Sets home
-     *
-     * @param float|null $home Home Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setHome($home)
-    {
-        if (is_null($home)) {
-            array_push($this->openAPINullablesSetToNull, 'home');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('home', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['home'] = $home;
-
-        return $this;
-    }
-
-    /**
      * Gets category
      *
      * @return float|null
@@ -465,244 +397,6 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_detail
-     *
-     * @return float|null
-     */
-    public function getProductDetail()
-    {
-        return $this->container['product_detail'];
-    }
-
-    /**
-     * Sets product_detail
-     *
-     * @param float|null $product_detail ProductDetail Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setProductDetail($product_detail)
-    {
-        if (is_null($product_detail)) {
-            array_push($this->openAPINullablesSetToNull, 'product_detail');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_detail', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['product_detail'] = $product_detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets confirmation
-     *
-     * @return float|null
-     */
-    public function getConfirmation()
-    {
-        return $this->container['confirmation'];
-    }
-
-    /**
-     * Sets confirmation
-     *
-     * @param float|null $confirmation Confirmation Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setConfirmation($confirmation)
-    {
-        if (is_null($confirmation)) {
-            array_push($this->openAPINullablesSetToNull, 'confirmation');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('confirmation', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['confirmation'] = $confirmation;
-
-        return $this;
-    }
-
-    /**
-     * Gets merchandising
-     *
-     * @return float|null
-     */
-    public function getMerchandising()
-    {
-        return $this->container['merchandising'];
-    }
-
-    /**
-     * Sets merchandising
-     *
-     * @param float|null $merchandising Merchandising Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setMerchandising($merchandising)
-    {
-        if (is_null($merchandising)) {
-            array_push($this->openAPINullablesSetToNull, 'merchandising');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('merchandising', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['merchandising'] = $merchandising;
-
-        return $this;
-    }
-
-    /**
-     * Gets deals
-     *
-     * @return float|null
-     */
-    public function getDeals()
-    {
-        return $this->container['deals'];
-    }
-
-    /**
-     * Sets deals
-     *
-     * @param float|null $deals Deals Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setDeals($deals)
-    {
-        if (is_null($deals)) {
-            array_push($this->openAPINullablesSetToNull, 'deals');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('deals', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['deals'] = $deals;
-
-        return $this;
-    }
-
-    /**
-     * Gets checkout
-     *
-     * @return float|null
-     */
-    public function getCheckout()
-    {
-        return $this->container['checkout'];
-    }
-
-    /**
-     * Sets checkout
-     *
-     * @param float|null $checkout Checkout Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setCheckout($checkout)
-    {
-        if (is_null($checkout)) {
-            array_push($this->openAPINullablesSetToNull, 'checkout');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('checkout', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['checkout'] = $checkout;
-
-        return $this;
-    }
-
-    /**
-     * Gets favorites
-     *
-     * @return float|null
-     */
-    public function getFavorites()
-    {
-        return $this->container['favorites'];
-    }
-
-    /**
-     * Sets favorites
-     *
-     * @param float|null $favorites Favorites Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setFavorites($favorites)
-    {
-        if (is_null($favorites)) {
-            array_push($this->openAPINullablesSetToNull, 'favorites');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('favorites', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['favorites'] = $favorites;
-
-        return $this;
-    }
-
-    /**
-     * Gets search_bar
-     *
-     * @return float|null
-     */
-    public function getSearchBar()
-    {
-        return $this->container['search_bar'];
-    }
-
-    /**
-     * Sets search_bar
-     *
-     * @param float|null $search_bar SearchBar Page Type Bid Multiplier
-     *
-     * @return self
-     */
-    public function setSearchBar($search_bar)
-    {
-        if (is_null($search_bar)) {
-            array_push($this->openAPINullablesSetToNull, 'search_bar');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('search_bar', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['search_bar'] = $search_bar;
 
         return $this;
     }
@@ -742,6 +436,176 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
     }
 
     /**
+     * Gets checkout
+     *
+     * @return float|null
+     */
+    public function getCheckout()
+    {
+        return $this->container['checkout'];
+    }
+
+    /**
+     * Sets checkout
+     *
+     * @param float|null $checkout Checkout Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setCheckout($checkout)
+    {
+        if (is_null($checkout)) {
+            array_push($this->openAPINullablesSetToNull, 'checkout');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('checkout', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['checkout'] = $checkout;
+
+        return $this;
+    }
+
+    /**
+     * Gets confirmation
+     *
+     * @return float|null
+     */
+    public function getConfirmation()
+    {
+        return $this->container['confirmation'];
+    }
+
+    /**
+     * Sets confirmation
+     *
+     * @param float|null $confirmation Confirmation Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setConfirmation($confirmation)
+    {
+        if (is_null($confirmation)) {
+            array_push($this->openAPINullablesSetToNull, 'confirmation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('confirmation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['confirmation'] = $confirmation;
+
+        return $this;
+    }
+
+    /**
+     * Gets deals
+     *
+     * @return float|null
+     */
+    public function getDeals()
+    {
+        return $this->container['deals'];
+    }
+
+    /**
+     * Sets deals
+     *
+     * @param float|null $deals Deals Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setDeals($deals)
+    {
+        if (is_null($deals)) {
+            array_push($this->openAPINullablesSetToNull, 'deals');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deals', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['deals'] = $deals;
+
+        return $this;
+    }
+
+    /**
+     * Gets favorites
+     *
+     * @return float|null
+     */
+    public function getFavorites()
+    {
+        return $this->container['favorites'];
+    }
+
+    /**
+     * Sets favorites
+     *
+     * @param float|null $favorites Favorites Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setFavorites($favorites)
+    {
+        if (is_null($favorites)) {
+            array_push($this->openAPINullablesSetToNull, 'favorites');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('favorites', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['favorites'] = $favorites;
+
+        return $this;
+    }
+
+    /**
+     * Gets home
+     *
+     * @return float|null
+     */
+    public function getHome()
+    {
+        return $this->container['home'];
+    }
+
+    /**
+     * Sets home
+     *
+     * @param float|null $home Home Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setHome($home)
+    {
+        if (is_null($home)) {
+            array_push($this->openAPINullablesSetToNull, 'home');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('home', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['home'] = $home;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
      * @return string|null
@@ -771,6 +635,142 @@ class ExternalLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \
             }
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets merchandising
+     *
+     * @return float|null
+     */
+    public function getMerchandising()
+    {
+        return $this->container['merchandising'];
+    }
+
+    /**
+     * Sets merchandising
+     *
+     * @param float|null $merchandising Merchandising Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setMerchandising($merchandising)
+    {
+        if (is_null($merchandising)) {
+            array_push($this->openAPINullablesSetToNull, 'merchandising');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('merchandising', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['merchandising'] = $merchandising;
+
+        return $this;
+    }
+
+    /**
+     * Gets product_detail
+     *
+     * @return float|null
+     */
+    public function getProductDetail()
+    {
+        return $this->container['product_detail'];
+    }
+
+    /**
+     * Sets product_detail
+     *
+     * @param float|null $product_detail ProductDetail Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setProductDetail($product_detail)
+    {
+        if (is_null($product_detail)) {
+            array_push($this->openAPINullablesSetToNull, 'product_detail');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_detail', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['product_detail'] = $product_detail;
+
+        return $this;
+    }
+
+    /**
+     * Gets search
+     *
+     * @return float|null
+     */
+    public function getSearch()
+    {
+        return $this->container['search'];
+    }
+
+    /**
+     * Sets search
+     *
+     * @param float|null $search Search Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setSearch($search)
+    {
+        if (is_null($search)) {
+            array_push($this->openAPINullablesSetToNull, 'search');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['search'] = $search;
+
+        return $this;
+    }
+
+    /**
+     * Gets search_bar
+     *
+     * @return float|null
+     */
+    public function getSearchBar()
+    {
+        return $this->container['search_bar'];
+    }
+
+    /**
+     * Sets search_bar
+     *
+     * @param float|null $search_bar SearchBar Page Type Bid Multiplier
+     *
+     * @return self
+     */
+    public function setSearchBar($search_bar)
+    {
+        if (is_null($search_bar)) {
+            array_push($this->openAPINullablesSetToNull, 'search_bar');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search_bar', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['search_bar'] = $search_bar;
 
         return $this;
     }

@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **and** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1[]**](RmAlgebraNodeV1.md) |  | [optional]
-**or** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1[]**](RmAlgebraNodeV1.md) |  | [optional]
-**not** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  | [optional]
 **audience_segment_id** | **string** |  | [optional]
+**not** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  | [optional]
+**or** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1[]**](RmAlgebraNodeV1.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -58,17 +58,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'creative_format' => 'string',
-        'name' => 'string',
-        'sku_collection_min' => 'int',
-        'sku_collection_max' => 'int',
-        'sku_per_collection_min' => 'int',
-        'sku_per_collection_max' => 'int',
-        'displayable_skus_max' => 'int',
         'all_collections_mandatory' => 'bool',
         'created_at' => '\DateTime',
-        'updated_at' => '\DateTime',
-        'sections' => '\criteo\api\retailmedia\v2025_01\Model\Section[]'
+        'creative_format' => 'string',
+        'displayable_skus_max' => 'int',
+        'name' => 'string',
+        'sections' => '\criteo\api\retailmedia\v2025_01\Model\Section[]',
+        'sku_collection_max' => 'int',
+        'sku_collection_min' => 'int',
+        'sku_per_collection_max' => 'int',
+        'sku_per_collection_min' => 'int',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -79,17 +79,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'creative_format' => 'string',
-        'name' => null,
-        'sku_collection_min' => 'int32',
-        'sku_collection_max' => 'int32',
-        'sku_per_collection_min' => 'int32',
-        'sku_per_collection_max' => 'int32',
-        'displayable_skus_max' => 'int32',
         'all_collections_mandatory' => null,
         'created_at' => 'date-time',
-        'updated_at' => 'date-time',
-        'sections' => null
+        'creative_format' => 'string',
+        'displayable_skus_max' => 'int32',
+        'name' => null,
+        'sections' => null,
+        'sku_collection_max' => 'int32',
+        'sku_collection_min' => 'int32',
+        'sku_per_collection_max' => 'int32',
+        'sku_per_collection_min' => 'int32',
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -98,17 +98,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'creative_format' => false,
-		'name' => false,
-		'sku_collection_min' => false,
-		'sku_collection_max' => true,
-		'sku_per_collection_min' => false,
-		'sku_per_collection_max' => true,
-		'displayable_skus_max' => true,
-		'all_collections_mandatory' => false,
+        'all_collections_mandatory' => false,
 		'created_at' => false,
-		'updated_at' => false,
-		'sections' => false
+		'creative_format' => false,
+		'displayable_skus_max' => true,
+		'name' => false,
+		'sections' => false,
+		'sku_collection_max' => true,
+		'sku_collection_min' => false,
+		'sku_per_collection_max' => true,
+		'sku_per_collection_min' => false,
+		'updated_at' => false
     ];
 
     /**
@@ -197,17 +197,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'creative_format' => 'creativeFormat',
-        'name' => 'name',
-        'sku_collection_min' => 'skuCollectionMin',
-        'sku_collection_max' => 'skuCollectionMax',
-        'sku_per_collection_min' => 'skuPerCollectionMin',
-        'sku_per_collection_max' => 'skuPerCollectionMax',
-        'displayable_skus_max' => 'displayableSkusMax',
         'all_collections_mandatory' => 'allCollectionsMandatory',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt',
-        'sections' => 'sections'
+        'creative_format' => 'creativeFormat',
+        'displayable_skus_max' => 'displayableSkusMax',
+        'name' => 'name',
+        'sections' => 'sections',
+        'sku_collection_max' => 'skuCollectionMax',
+        'sku_collection_min' => 'skuCollectionMin',
+        'sku_per_collection_max' => 'skuPerCollectionMax',
+        'sku_per_collection_min' => 'skuPerCollectionMin',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -216,17 +216,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'creative_format' => 'setCreativeFormat',
-        'name' => 'setName',
-        'sku_collection_min' => 'setSkuCollectionMin',
-        'sku_collection_max' => 'setSkuCollectionMax',
-        'sku_per_collection_min' => 'setSkuPerCollectionMin',
-        'sku_per_collection_max' => 'setSkuPerCollectionMax',
-        'displayable_skus_max' => 'setDisplayableSkusMax',
         'all_collections_mandatory' => 'setAllCollectionsMandatory',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt',
-        'sections' => 'setSections'
+        'creative_format' => 'setCreativeFormat',
+        'displayable_skus_max' => 'setDisplayableSkusMax',
+        'name' => 'setName',
+        'sections' => 'setSections',
+        'sku_collection_max' => 'setSkuCollectionMax',
+        'sku_collection_min' => 'setSkuCollectionMin',
+        'sku_per_collection_max' => 'setSkuPerCollectionMax',
+        'sku_per_collection_min' => 'setSkuPerCollectionMin',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -235,17 +235,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'creative_format' => 'getCreativeFormat',
-        'name' => 'getName',
-        'sku_collection_min' => 'getSkuCollectionMin',
-        'sku_collection_max' => 'getSkuCollectionMax',
-        'sku_per_collection_min' => 'getSkuPerCollectionMin',
-        'sku_per_collection_max' => 'getSkuPerCollectionMax',
-        'displayable_skus_max' => 'getDisplayableSkusMax',
         'all_collections_mandatory' => 'getAllCollectionsMandatory',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt',
-        'sections' => 'getSections'
+        'creative_format' => 'getCreativeFormat',
+        'displayable_skus_max' => 'getDisplayableSkusMax',
+        'name' => 'getName',
+        'sections' => 'getSections',
+        'sku_collection_max' => 'getSkuCollectionMax',
+        'sku_collection_min' => 'getSkuCollectionMin',
+        'sku_per_collection_max' => 'getSkuPerCollectionMax',
+        'sku_per_collection_min' => 'getSkuPerCollectionMin',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -336,17 +336,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('creative_format', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('sku_collection_min', $data ?? [], null);
-        $this->setIfExists('sku_collection_max', $data ?? [], null);
-        $this->setIfExists('sku_per_collection_min', $data ?? [], null);
-        $this->setIfExists('sku_per_collection_max', $data ?? [], null);
-        $this->setIfExists('displayable_skus_max', $data ?? [], null);
         $this->setIfExists('all_collections_mandatory', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('creative_format', $data ?? [], null);
+        $this->setIfExists('displayable_skus_max', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('sections', $data ?? [], null);
+        $this->setIfExists('sku_collection_max', $data ?? [], null);
+        $this->setIfExists('sku_collection_min', $data ?? [], null);
+        $this->setIfExists('sku_per_collection_max', $data ?? [], null);
+        $this->setIfExists('sku_per_collection_min', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -376,6 +376,12 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['all_collections_mandatory'] === null) {
+            $invalidProperties[] = "'all_collections_mandatory' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
         if ($this->container['creative_format'] === null) {
             $invalidProperties[] = "'creative_format' can't be null";
         }
@@ -391,23 +397,17 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['sections'] === null) {
+            $invalidProperties[] = "'sections' can't be null";
+        }
         if ($this->container['sku_collection_min'] === null) {
             $invalidProperties[] = "'sku_collection_min' can't be null";
         }
         if ($this->container['sku_per_collection_min'] === null) {
             $invalidProperties[] = "'sku_per_collection_min' can't be null";
         }
-        if ($this->container['all_collections_mandatory'] === null) {
-            $invalidProperties[] = "'all_collections_mandatory' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['updated_at'] === null) {
             $invalidProperties[] = "'updated_at' can't be null";
-        }
-        if ($this->container['sections'] === null) {
-            $invalidProperties[] = "'sections' can't be null";
         }
         return $invalidProperties;
     }
@@ -423,226 +423,6 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets creative_format
-     *
-     * @return string
-     */
-    public function getCreativeFormat()
-    {
-        return $this->container['creative_format'];
-    }
-
-    /**
-     * Sets creative_format
-     *
-     * @param string $creative_format The kind of creative this template can be used to build.
-     *
-     * @return self
-     */
-    public function setCreativeFormat($creative_format)
-    {
-        if (is_null($creative_format)) {
-            throw new \InvalidArgumentException('non-nullable creative_format cannot be null');
-        }
-        $allowedValues = $this->getCreativeFormatAllowableValues();
-        if (!in_array($creative_format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'creative_format', must be one of '%s'",
-                    $creative_format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['creative_format'] = $creative_format;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the template
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_collection_min
-     *
-     * @return int
-     */
-    public function getSkuCollectionMin()
-    {
-        return $this->container['sku_collection_min'];
-    }
-
-    /**
-     * Sets sku_collection_min
-     *
-     * @param int $sku_collection_min Minimum number of skus in the collection
-     *
-     * @return self
-     */
-    public function setSkuCollectionMin($sku_collection_min)
-    {
-        if (is_null($sku_collection_min)) {
-            throw new \InvalidArgumentException('non-nullable sku_collection_min cannot be null');
-        }
-        $this->container['sku_collection_min'] = $sku_collection_min;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_collection_max
-     *
-     * @return int|null
-     */
-    public function getSkuCollectionMax()
-    {
-        return $this->container['sku_collection_max'];
-    }
-
-    /**
-     * Sets sku_collection_max
-     *
-     * @param int|null $sku_collection_max Maximum number of skus in the collection
-     *
-     * @return self
-     */
-    public function setSkuCollectionMax($sku_collection_max)
-    {
-        if (is_null($sku_collection_max)) {
-            array_push($this->openAPINullablesSetToNull, 'sku_collection_max');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sku_collection_max', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sku_collection_max'] = $sku_collection_max;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_per_collection_min
-     *
-     * @return int
-     */
-    public function getSkuPerCollectionMin()
-    {
-        return $this->container['sku_per_collection_min'];
-    }
-
-    /**
-     * Sets sku_per_collection_min
-     *
-     * @param int $sku_per_collection_min Minimum number of skus per collection
-     *
-     * @return self
-     */
-    public function setSkuPerCollectionMin($sku_per_collection_min)
-    {
-        if (is_null($sku_per_collection_min)) {
-            throw new \InvalidArgumentException('non-nullable sku_per_collection_min cannot be null');
-        }
-        $this->container['sku_per_collection_min'] = $sku_per_collection_min;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_per_collection_max
-     *
-     * @return int|null
-     */
-    public function getSkuPerCollectionMax()
-    {
-        return $this->container['sku_per_collection_max'];
-    }
-
-    /**
-     * Sets sku_per_collection_max
-     *
-     * @param int|null $sku_per_collection_max Maximum number of skus per collection
-     *
-     * @return self
-     */
-    public function setSkuPerCollectionMax($sku_per_collection_max)
-    {
-        if (is_null($sku_per_collection_max)) {
-            array_push($this->openAPINullablesSetToNull, 'sku_per_collection_max');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sku_per_collection_max', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sku_per_collection_max'] = $sku_per_collection_max;
-
-        return $this;
-    }
-
-    /**
-     * Gets displayable_skus_max
-     *
-     * @return int|null
-     */
-    public function getDisplayableSkusMax()
-    {
-        return $this->container['displayable_skus_max'];
-    }
-
-    /**
-     * Sets displayable_skus_max
-     *
-     * @param int|null $displayable_skus_max Maximum number of displayable skus
-     *
-     * @return self
-     */
-    public function setDisplayableSkusMax($displayable_skus_max)
-    {
-        if (is_null($displayable_skus_max)) {
-            array_push($this->openAPINullablesSetToNull, 'displayable_skus_max');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('displayable_skus_max', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['displayable_skus_max'] = $displayable_skus_max;
-
-        return $this;
-    }
 
     /**
      * Gets all_collections_mandatory
@@ -699,28 +479,99 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets updated_at
+     * Gets creative_format
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getUpdatedAt()
+    public function getCreativeFormat()
     {
-        return $this->container['updated_at'];
+        return $this->container['creative_format'];
     }
 
     /**
-     * Sets updated_at
+     * Sets creative_format
      *
-     * @param \DateTime $updated_at The time at which the template was updated
+     * @param string $creative_format The kind of creative this template can be used to build.
      *
      * @return self
      */
-    public function setUpdatedAt($updated_at)
+    public function setCreativeFormat($creative_format)
     {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        if (is_null($creative_format)) {
+            throw new \InvalidArgumentException('non-nullable creative_format cannot be null');
         }
-        $this->container['updated_at'] = $updated_at;
+        $allowedValues = $this->getCreativeFormatAllowableValues();
+        if (!in_array($creative_format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'creative_format', must be one of '%s'",
+                    $creative_format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_format'] = $creative_format;
+
+        return $this;
+    }
+
+    /**
+     * Gets displayable_skus_max
+     *
+     * @return int|null
+     */
+    public function getDisplayableSkusMax()
+    {
+        return $this->container['displayable_skus_max'];
+    }
+
+    /**
+     * Sets displayable_skus_max
+     *
+     * @param int|null $displayable_skus_max Maximum number of displayable skus
+     *
+     * @return self
+     */
+    public function setDisplayableSkusMax($displayable_skus_max)
+    {
+        if (is_null($displayable_skus_max)) {
+            array_push($this->openAPINullablesSetToNull, 'displayable_skus_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('displayable_skus_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['displayable_skus_max'] = $displayable_skus_max;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name The name of the template
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -748,6 +599,155 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable sections cannot be null');
         }
         $this->container['sections'] = $sections;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_collection_max
+     *
+     * @return int|null
+     */
+    public function getSkuCollectionMax()
+    {
+        return $this->container['sku_collection_max'];
+    }
+
+    /**
+     * Sets sku_collection_max
+     *
+     * @param int|null $sku_collection_max Maximum number of skus in the collection
+     *
+     * @return self
+     */
+    public function setSkuCollectionMax($sku_collection_max)
+    {
+        if (is_null($sku_collection_max)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_collection_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_collection_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku_collection_max'] = $sku_collection_max;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_collection_min
+     *
+     * @return int
+     */
+    public function getSkuCollectionMin()
+    {
+        return $this->container['sku_collection_min'];
+    }
+
+    /**
+     * Sets sku_collection_min
+     *
+     * @param int $sku_collection_min Minimum number of skus in the collection
+     *
+     * @return self
+     */
+    public function setSkuCollectionMin($sku_collection_min)
+    {
+        if (is_null($sku_collection_min)) {
+            throw new \InvalidArgumentException('non-nullable sku_collection_min cannot be null');
+        }
+        $this->container['sku_collection_min'] = $sku_collection_min;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_per_collection_max
+     *
+     * @return int|null
+     */
+    public function getSkuPerCollectionMax()
+    {
+        return $this->container['sku_per_collection_max'];
+    }
+
+    /**
+     * Sets sku_per_collection_max
+     *
+     * @param int|null $sku_per_collection_max Maximum number of skus per collection
+     *
+     * @return self
+     */
+    public function setSkuPerCollectionMax($sku_per_collection_max)
+    {
+        if (is_null($sku_per_collection_max)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_per_collection_max');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_per_collection_max', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku_per_collection_max'] = $sku_per_collection_max;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_per_collection_min
+     *
+     * @return int
+     */
+    public function getSkuPerCollectionMin()
+    {
+        return $this->container['sku_per_collection_min'];
+    }
+
+    /**
+     * Sets sku_per_collection_min
+     *
+     * @param int $sku_per_collection_min Minimum number of skus per collection
+     *
+     * @return self
+     */
+    public function setSkuPerCollectionMin($sku_per_collection_min)
+    {
+        if (is_null($sku_per_collection_min)) {
+            throw new \InvalidArgumentException('non-nullable sku_per_collection_min cannot be null');
+        }
+        $this->container['sku_per_collection_min'] = $sku_per_collection_min;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at The time at which the template was updated
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

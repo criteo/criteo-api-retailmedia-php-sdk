@@ -58,28 +58,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ids' => 'string[]',
-        'id' => 'string',
-        'retailer_ids' => 'string[]',
         'account_ids' => 'string[]',
-        'campaign_ids' => 'string[]',
-        'line_item_ids' => 'string[]',
-        'report_type' => 'string',
-        'revenue_type' => 'string',
-        'sold_by' => 'string',
-        'buy_type' => 'string',
         'advertiser_types' => 'string[]',
-        'sku_relations' => 'string[]',
-        'format' => 'string',
+        'buy_type' => 'string',
+        'campaign_ids' => 'string[]',
         'campaign_type' => 'string',
-        'sales_channel' => 'string',
         'click_attribution_window' => 'string',
-        'view_attribution_window' => 'string',
         'dimensions' => 'string[]',
-        'metrics' => 'string[]',
-        'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'timezone' => 'string'
+        'format' => 'string',
+        'id' => 'string',
+        'ids' => 'string[]',
+        'line_item_ids' => 'string[]',
+        'metrics' => 'string[]',
+        'report_type' => 'string',
+        'retailer_ids' => 'string[]',
+        'revenue_type' => 'string',
+        'sales_channel' => 'string',
+        'sku_relations' => 'string[]',
+        'sold_by' => 'string',
+        'start_date' => '\DateTime',
+        'timezone' => 'string',
+        'view_attribution_window' => 'string'
     ];
 
     /**
@@ -90,28 +90,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'ids' => null,
-        'id' => null,
-        'retailer_ids' => null,
         'account_ids' => null,
-        'campaign_ids' => null,
-        'line_item_ids' => null,
-        'report_type' => null,
-        'revenue_type' => null,
-        'sold_by' => null,
-        'buy_type' => null,
         'advertiser_types' => null,
-        'sku_relations' => null,
-        'format' => null,
+        'buy_type' => null,
+        'campaign_ids' => null,
         'campaign_type' => null,
-        'sales_channel' => null,
         'click_attribution_window' => null,
-        'view_attribution_window' => null,
         'dimensions' => null,
-        'metrics' => null,
-        'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'timezone' => null
+        'format' => null,
+        'id' => null,
+        'ids' => null,
+        'line_item_ids' => null,
+        'metrics' => null,
+        'report_type' => null,
+        'retailer_ids' => null,
+        'revenue_type' => null,
+        'sales_channel' => null,
+        'sku_relations' => null,
+        'sold_by' => null,
+        'start_date' => 'date-time',
+        'timezone' => null,
+        'view_attribution_window' => null
     ];
 
     /**
@@ -120,28 +120,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'ids' => false,
-		'id' => false,
-		'retailer_ids' => false,
-		'account_ids' => false,
-		'campaign_ids' => false,
-		'line_item_ids' => false,
-		'report_type' => false,
-		'revenue_type' => false,
-		'sold_by' => false,
-		'buy_type' => false,
+        'account_ids' => false,
 		'advertiser_types' => false,
-		'sku_relations' => false,
-		'format' => false,
+		'buy_type' => false,
+		'campaign_ids' => false,
 		'campaign_type' => false,
-		'sales_channel' => false,
 		'click_attribution_window' => false,
-		'view_attribution_window' => false,
 		'dimensions' => false,
-		'metrics' => false,
-		'start_date' => false,
 		'end_date' => false,
-		'timezone' => false
+		'format' => false,
+		'id' => false,
+		'ids' => false,
+		'line_item_ids' => false,
+		'metrics' => false,
+		'report_type' => false,
+		'retailer_ids' => false,
+		'revenue_type' => false,
+		'sales_channel' => false,
+		'sku_relations' => false,
+		'sold_by' => false,
+		'start_date' => false,
+		'timezone' => false,
+		'view_attribution_window' => false
     ];
 
     /**
@@ -230,28 +230,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'ids' => 'ids',
-        'id' => 'id',
-        'retailer_ids' => 'retailerIds',
         'account_ids' => 'accountIds',
-        'campaign_ids' => 'campaignIds',
-        'line_item_ids' => 'lineItemIds',
-        'report_type' => 'reportType',
-        'revenue_type' => 'revenueType',
-        'sold_by' => 'soldBy',
-        'buy_type' => 'buyType',
         'advertiser_types' => 'advertiserTypes',
-        'sku_relations' => 'skuRelations',
-        'format' => 'format',
+        'buy_type' => 'buyType',
+        'campaign_ids' => 'campaignIds',
         'campaign_type' => 'campaignType',
-        'sales_channel' => 'salesChannel',
         'click_attribution_window' => 'clickAttributionWindow',
-        'view_attribution_window' => 'viewAttributionWindow',
         'dimensions' => 'dimensions',
-        'metrics' => 'metrics',
-        'start_date' => 'startDate',
         'end_date' => 'endDate',
-        'timezone' => 'timezone'
+        'format' => 'format',
+        'id' => 'id',
+        'ids' => 'ids',
+        'line_item_ids' => 'lineItemIds',
+        'metrics' => 'metrics',
+        'report_type' => 'reportType',
+        'retailer_ids' => 'retailerIds',
+        'revenue_type' => 'revenueType',
+        'sales_channel' => 'salesChannel',
+        'sku_relations' => 'skuRelations',
+        'sold_by' => 'soldBy',
+        'start_date' => 'startDate',
+        'timezone' => 'timezone',
+        'view_attribution_window' => 'viewAttributionWindow'
     ];
 
     /**
@@ -260,28 +260,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'ids' => 'setIds',
-        'id' => 'setId',
-        'retailer_ids' => 'setRetailerIds',
         'account_ids' => 'setAccountIds',
-        'campaign_ids' => 'setCampaignIds',
-        'line_item_ids' => 'setLineItemIds',
-        'report_type' => 'setReportType',
-        'revenue_type' => 'setRevenueType',
-        'sold_by' => 'setSoldBy',
-        'buy_type' => 'setBuyType',
         'advertiser_types' => 'setAdvertiserTypes',
-        'sku_relations' => 'setSkuRelations',
-        'format' => 'setFormat',
+        'buy_type' => 'setBuyType',
+        'campaign_ids' => 'setCampaignIds',
         'campaign_type' => 'setCampaignType',
-        'sales_channel' => 'setSalesChannel',
         'click_attribution_window' => 'setClickAttributionWindow',
-        'view_attribution_window' => 'setViewAttributionWindow',
         'dimensions' => 'setDimensions',
-        'metrics' => 'setMetrics',
-        'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'timezone' => 'setTimezone'
+        'format' => 'setFormat',
+        'id' => 'setId',
+        'ids' => 'setIds',
+        'line_item_ids' => 'setLineItemIds',
+        'metrics' => 'setMetrics',
+        'report_type' => 'setReportType',
+        'retailer_ids' => 'setRetailerIds',
+        'revenue_type' => 'setRevenueType',
+        'sales_channel' => 'setSalesChannel',
+        'sku_relations' => 'setSkuRelations',
+        'sold_by' => 'setSoldBy',
+        'start_date' => 'setStartDate',
+        'timezone' => 'setTimezone',
+        'view_attribution_window' => 'setViewAttributionWindow'
     ];
 
     /**
@@ -290,28 +290,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'ids' => 'getIds',
-        'id' => 'getId',
-        'retailer_ids' => 'getRetailerIds',
         'account_ids' => 'getAccountIds',
-        'campaign_ids' => 'getCampaignIds',
-        'line_item_ids' => 'getLineItemIds',
-        'report_type' => 'getReportType',
-        'revenue_type' => 'getRevenueType',
-        'sold_by' => 'getSoldBy',
-        'buy_type' => 'getBuyType',
         'advertiser_types' => 'getAdvertiserTypes',
-        'sku_relations' => 'getSkuRelations',
-        'format' => 'getFormat',
+        'buy_type' => 'getBuyType',
+        'campaign_ids' => 'getCampaignIds',
         'campaign_type' => 'getCampaignType',
-        'sales_channel' => 'getSalesChannel',
         'click_attribution_window' => 'getClickAttributionWindow',
-        'view_attribution_window' => 'getViewAttributionWindow',
         'dimensions' => 'getDimensions',
-        'metrics' => 'getMetrics',
-        'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'timezone' => 'getTimezone'
+        'format' => 'getFormat',
+        'id' => 'getId',
+        'ids' => 'getIds',
+        'line_item_ids' => 'getLineItemIds',
+        'metrics' => 'getMetrics',
+        'report_type' => 'getReportType',
+        'retailer_ids' => 'getRetailerIds',
+        'revenue_type' => 'getRevenueType',
+        'sales_channel' => 'getSalesChannel',
+        'sku_relations' => 'getSkuRelations',
+        'sold_by' => 'getSoldBy',
+        'start_date' => 'getStartDate',
+        'timezone' => 'getTimezone',
+        'view_attribution_window' => 'getViewAttributionWindow'
     ];
 
     /**
@@ -355,46 +355,19 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-    public const REPORT_TYPE_ADVERTISER = 'advertiser';
-    public const REPORT_TYPE_ENVIRONMENT = 'environment';
-    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
-    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
-    public const REPORT_TYPE_BRAND = 'brand';
-    public const REVENUE_TYPE_AUCTION = 'auction';
-    public const REVENUE_TYPE_PREFERRED = 'preferred';
-    public const SOLD_BY_DIRECT_SOLD = 'directSold';
-    public const SOLD_BY_INDIRECT_SOLD = 'indirectSold';
-    public const SOLD_BY_PRIVATE_MARKET = 'privateMarket';
-    public const BUY_TYPE_AUCTION = 'auction';
-    public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
-    public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
     public const ADVERTISER_TYPES_RETAILER = 'retailer';
     public const ADVERTISER_TYPES_BRAND = 'brand';
     public const ADVERTISER_TYPES_SELLER = 'seller';
-    public const SKU_RELATIONS_SAME_SKU = 'sameSku';
-    public const SKU_RELATIONS_SAME_PARENT_SKU = 'sameParentSku';
-    public const SKU_RELATIONS_SAME_CATEGORY = 'sameCategory';
-    public const SKU_RELATIONS_SAME_BRAND = 'sameBrand';
-    public const SKU_RELATIONS_SAME_SELLER = 'sameSeller';
-    public const FORMAT_JSON = 'json';
-    public const FORMAT_JSON_COMPACT = 'json-compact';
-    public const FORMAT_JSON_NEWLINE = 'json-newline';
-    public const FORMAT_CSV = 'csv';
+    public const BUY_TYPE_AUCTION = 'auction';
+    public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
+    public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
     public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
-    public const SALES_CHANNEL_ONLINE = 'online';
     public const CLICK_ATTRIBUTION_WINDOW_NONE = 'none';
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
-    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
-    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
-    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_PARENT_ACCOUNT = 'parentAccount';
@@ -450,6 +423,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_TAXONOMY6_NAME = 'taxonomy6Name';
     public const DIMENSIONS_TAXONOMY7_ID = 'taxonomy7Id';
     public const DIMENSIONS_TAXONOMY7_NAME = 'taxonomy7Name';
+    public const FORMAT_JSON = 'json';
+    public const FORMAT_JSON_COMPACT = 'json-compact';
+    public const FORMAT_JSON_NEWLINE = 'json-newline';
+    public const FORMAT_CSV = 'csv';
     public const METRICS_NUMBER_OF_CAMPAIGNS = 'numberOfCampaigns';
     public const METRICS_NUMBER_OF_LINE_ITEMS = 'numberOfLineItems';
     public const METRICS_NUMBER_OF_SKUS = 'numberOfSkus';
@@ -494,47 +471,41 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METRICS_VIDEO_CPCV = 'videoCPCV';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
+    public const REPORT_TYPE_ADVERTISER = 'advertiser';
+    public const REPORT_TYPE_ENVIRONMENT = 'environment';
+    public const REPORT_TYPE_PAGE_TYPE = 'pageType';
+    public const REPORT_TYPE_PRODUCT_CATEGORY = 'productCategory';
+    public const REPORT_TYPE_BRAND = 'brand';
+    public const REVENUE_TYPE_AUCTION = 'auction';
+    public const REVENUE_TYPE_PREFERRED = 'preferred';
+    public const SALES_CHANNEL_ALL = 'all';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ONLINE = 'online';
+    public const SKU_RELATIONS_SAME_SKU = 'sameSku';
+    public const SKU_RELATIONS_SAME_PARENT_SKU = 'sameParentSku';
+    public const SKU_RELATIONS_SAME_CATEGORY = 'sameCategory';
+    public const SKU_RELATIONS_SAME_BRAND = 'sameBrand';
+    public const SKU_RELATIONS_SAME_SELLER = 'sameSeller';
+    public const SOLD_BY_DIRECT_SOLD = 'directSold';
+    public const SOLD_BY_INDIRECT_SOLD = 'indirectSold';
+    public const SOLD_BY_PRIVATE_MARKET = 'privateMarket';
+    public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
+    public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
+    public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
+    public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
+    public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getReportTypeAllowableValues()
+    public function getAdvertiserTypesAllowableValues()
     {
         return [
-            self::REPORT_TYPE_ADVERTISER,
-            self::REPORT_TYPE_ENVIRONMENT,
-            self::REPORT_TYPE_PAGE_TYPE,
-            self::REPORT_TYPE_PRODUCT_CATEGORY,
-            self::REPORT_TYPE_BRAND,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getRevenueTypeAllowableValues()
-    {
-        return [
-            self::REVENUE_TYPE_AUCTION,
-            self::REVENUE_TYPE_PREFERRED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSoldByAllowableValues()
-    {
-        return [
-            self::SOLD_BY_DIRECT_SOLD,
-            self::SOLD_BY_INDIRECT_SOLD,
-            self::SOLD_BY_PRIVATE_MARKET,
+            self::ADVERTISER_TYPES_RETAILER,
+            self::ADVERTISER_TYPES_BRAND,
+            self::ADVERTISER_TYPES_SELLER,
         ];
     }
 
@@ -557,71 +528,12 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public function getAdvertiserTypesAllowableValues()
-    {
-        return [
-            self::ADVERTISER_TYPES_RETAILER,
-            self::ADVERTISER_TYPES_BRAND,
-            self::ADVERTISER_TYPES_SELLER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSkuRelationsAllowableValues()
-    {
-        return [
-            self::SKU_RELATIONS_SAME_SKU,
-            self::SKU_RELATIONS_SAME_PARENT_SKU,
-            self::SKU_RELATIONS_SAME_CATEGORY,
-            self::SKU_RELATIONS_SAME_BRAND,
-            self::SKU_RELATIONS_SAME_SELLER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFormatAllowableValues()
-    {
-        return [
-            self::FORMAT_JSON,
-            self::FORMAT_JSON_COMPACT,
-            self::FORMAT_JSON_NEWLINE,
-            self::FORMAT_CSV,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
     public function getCampaignTypeAllowableValues()
     {
         return [
             self::CAMPAIGN_TYPE_ALL,
             self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPE_ON_SITE_DISPLAYS,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSalesChannelAllowableValues()
-    {
-        return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
-            self::SALES_CHANNEL_ONLINE,
         ];
     }
 
@@ -637,22 +549,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getViewAttributionWindowAllowableValues()
-    {
-        return [
-            self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW__1_D,
-            self::VIEW_ATTRIBUTION_WINDOW__7_D,
-            self::VIEW_ATTRIBUTION_WINDOW__14_D,
-            self::VIEW_ATTRIBUTION_WINDOW__30_D,
         ];
     }
 
@@ -727,6 +623,21 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_JSON,
+            self::FORMAT_JSON_COMPACT,
+            self::FORMAT_JSON_NEWLINE,
+            self::FORMAT_CSV,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getMetricsAllowableValues()
     {
         return [
@@ -778,6 +689,95 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReportTypeAllowableValues()
+    {
+        return [
+            self::REPORT_TYPE_ADVERTISER,
+            self::REPORT_TYPE_ENVIRONMENT,
+            self::REPORT_TYPE_PAGE_TYPE,
+            self::REPORT_TYPE_PRODUCT_CATEGORY,
+            self::REPORT_TYPE_BRAND,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRevenueTypeAllowableValues()
+    {
+        return [
+            self::REVENUE_TYPE_AUCTION,
+            self::REVENUE_TYPE_PREFERRED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSalesChannelAllowableValues()
+    {
+        return [
+            self::SALES_CHANNEL_ALL,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ONLINE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSkuRelationsAllowableValues()
+    {
+        return [
+            self::SKU_RELATIONS_SAME_SKU,
+            self::SKU_RELATIONS_SAME_PARENT_SKU,
+            self::SKU_RELATIONS_SAME_CATEGORY,
+            self::SKU_RELATIONS_SAME_BRAND,
+            self::SKU_RELATIONS_SAME_SELLER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSoldByAllowableValues()
+    {
+        return [
+            self::SOLD_BY_DIRECT_SOLD,
+            self::SOLD_BY_INDIRECT_SOLD,
+            self::SOLD_BY_PRIVATE_MARKET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewAttributionWindowAllowableValues()
+    {
+        return [
+            self::VIEW_ATTRIBUTION_WINDOW_NONE,
+            self::VIEW_ATTRIBUTION_WINDOW__1_D,
+            self::VIEW_ATTRIBUTION_WINDOW__7_D,
+            self::VIEW_ATTRIBUTION_WINDOW__14_D,
+            self::VIEW_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -792,28 +792,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('ids', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('account_ids', $data ?? [], null);
-        $this->setIfExists('campaign_ids', $data ?? [], null);
-        $this->setIfExists('line_item_ids', $data ?? [], null);
-        $this->setIfExists('report_type', $data ?? [], null);
-        $this->setIfExists('revenue_type', $data ?? [], null);
-        $this->setIfExists('sold_by', $data ?? [], null);
-        $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('advertiser_types', $data ?? [], null);
-        $this->setIfExists('sku_relations', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], 'json');
+        $this->setIfExists('buy_type', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
-        $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('dimensions', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json');
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('ids', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('report_type', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
+        $this->setIfExists('revenue_type', $data ?? [], null);
+        $this->setIfExists('sales_channel', $data ?? [], 'all');
+        $this->setIfExists('sku_relations', $data ?? [], null);
+        $this->setIfExists('sold_by', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
+        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
 
     /**
@@ -843,6 +843,45 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBuyTypeAllowableValues();
+        if (!is_null($this->container['buy_type']) && !in_array($this->container['buy_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'buy_type', must be one of '%s'",
+                $this->container['buy_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getClickAttributionWindowAllowableValues();
+        if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'click_attribution_window', must be one of '%s'",
+                $this->container['click_attribution_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getReportTypeAllowableValues();
         if (!is_null($this->container['report_type']) && !in_array($this->container['report_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -861,42 +900,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        $allowedValues = $this->getSoldByAllowableValues();
-        if (!is_null($this->container['sold_by']) && !in_array($this->container['sold_by'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sold_by', must be one of '%s'",
-                $this->container['sold_by'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getBuyTypeAllowableValues();
-        if (!is_null($this->container['buy_type']) && !in_array($this->container['buy_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'buy_type', must be one of '%s'",
-                $this->container['buy_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'format', must be one of '%s'",
-                $this->container['format'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'campaign_type', must be one of '%s'",
-                $this->container['campaign_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         $allowedValues = $this->getSalesChannelAllowableValues();
         if (!is_null($this->container['sales_channel']) && !in_array($this->container['sales_channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -906,15 +909,18 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!is_null($this->container['click_attribution_window']) && !in_array($this->container['click_attribution_window'], $allowedValues, true)) {
+        $allowedValues = $this->getSoldByAllowableValues();
+        if (!is_null($this->container['sold_by']) && !in_array($this->container['sold_by'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'click_attribution_window', must be one of '%s'",
-                $this->container['click_attribution_window'],
+                "invalid value '%s' for 'sold_by', must be one of '%s'",
+                $this->container['sold_by'],
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
         if (!is_null($this->container['view_attribution_window']) && !in_array($this->container['view_attribution_window'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -924,12 +930,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -944,87 +944,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets ids
-     *
-     * @return string[]|null
-     */
-    public function getIds()
-    {
-        return $this->container['ids'];
-    }
-
-    /**
-     * Sets ids
-     *
-     * @param string[]|null $ids Supply account ids to report on
-     *
-     * @return self
-     */
-    public function setIds($ids)
-    {
-        if (is_null($ids)) {
-            throw new \InvalidArgumentException('non-nullable ids cannot be null');
-        }
-        $this->container['ids'] = $ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Supply account id to report on
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_ids
-     *
-     * @return string[]|null
-     */
-    public function getRetailerIds()
-    {
-        return $this->container['retailer_ids'];
-    }
-
-    /**
-     * Sets retailer_ids
-     *
-     * @param string[]|null $retailer_ids Retailer ids to filter
-     *
-     * @return self
-     */
-    public function setRetailerIds($retailer_ids)
-    {
-        if (is_null($retailer_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
-
-        return $this;
-    }
 
     /**
      * Gets account_ids
@@ -1054,166 +973,37 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets campaign_ids
+     * Gets advertiser_types
      *
      * @return string[]|null
      */
-    public function getCampaignIds()
+    public function getAdvertiserTypes()
     {
-        return $this->container['campaign_ids'];
+        return $this->container['advertiser_types'];
     }
 
     /**
-     * Sets campaign_ids
+     * Sets advertiser_types
      *
-     * @param string[]|null $campaign_ids Campaign ids to filter
+     * @param string[]|null $advertiser_types Filter on the type of advertiser: retailer, brand, seller
      *
      * @return self
      */
-    public function setCampaignIds($campaign_ids)
+    public function setAdvertiserTypes($advertiser_types)
     {
-        if (is_null($campaign_ids)) {
-            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
+        if (is_null($advertiser_types)) {
+            throw new \InvalidArgumentException('non-nullable advertiser_types cannot be null');
         }
-        $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets line_item_ids
-     *
-     * @return string[]|null
-     */
-    public function getLineItemIds()
-    {
-        return $this->container['line_item_ids'];
-    }
-
-    /**
-     * Sets line_item_ids
-     *
-     * @param string[]|null $line_item_ids Line item ids to filter
-     *
-     * @return self
-     */
-    public function setLineItemIds($line_item_ids)
-    {
-        if (is_null($line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
-        }
-        $this->container['line_item_ids'] = $line_item_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets report_type
-     *
-     * @return string|null
-     */
-    public function getReportType()
-    {
-        return $this->container['report_type'];
-    }
-
-    /**
-     * Sets report_type
-     *
-     * @param string|null $report_type Type of report
-     *
-     * @return self
-     */
-    public function setReportType($report_type)
-    {
-        if (is_null($report_type)) {
-            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
-        }
-        $allowedValues = $this->getReportTypeAllowableValues();
-        if (!in_array($report_type, $allowedValues, true)) {
+        $allowedValues = $this->getAdvertiserTypesAllowableValues();
+        if (array_diff($advertiser_types, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'report_type', must be one of '%s'",
-                    $report_type,
+                    "Invalid value for 'advertiser_types', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['report_type'] = $report_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets revenue_type
-     *
-     * @return string|null
-     */
-    public function getRevenueType()
-    {
-        return $this->container['revenue_type'];
-    }
-
-    /**
-     * Sets revenue_type
-     *
-     * @param string|null $revenue_type Type of revenue
-     *
-     * @return self
-     */
-    public function setRevenueType($revenue_type)
-    {
-        if (is_null($revenue_type)) {
-            throw new \InvalidArgumentException('non-nullable revenue_type cannot be null');
-        }
-        $allowedValues = $this->getRevenueTypeAllowableValues();
-        if (!in_array($revenue_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'revenue_type', must be one of '%s'",
-                    $revenue_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['revenue_type'] = $revenue_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets sold_by
-     *
-     * @return string|null
-     */
-    public function getSoldBy()
-    {
-        return $this->container['sold_by'];
-    }
-
-    /**
-     * Sets sold_by
-     *
-     * @param string|null $sold_by Filter on the seller: Indirect Sold, Direct Sold or Private Market
-     *
-     * @return self
-     */
-    public function setSoldBy($sold_by)
-    {
-        if (is_null($sold_by)) {
-            throw new \InvalidArgumentException('non-nullable sold_by cannot be null');
-        }
-        $allowedValues = $this->getSoldByAllowableValues();
-        if (!in_array($sold_by, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sold_by', must be one of '%s'",
-                    $sold_by,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sold_by'] = $sold_by;
+        $this->container['advertiser_types'] = $advertiser_types;
 
         return $this;
     }
@@ -1256,110 +1046,28 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets advertiser_types
+     * Gets campaign_ids
      *
      * @return string[]|null
      */
-    public function getAdvertiserTypes()
+    public function getCampaignIds()
     {
-        return $this->container['advertiser_types'];
+        return $this->container['campaign_ids'];
     }
 
     /**
-     * Sets advertiser_types
+     * Sets campaign_ids
      *
-     * @param string[]|null $advertiser_types Filter on the type of advertiser: retailer, brand, seller
+     * @param string[]|null $campaign_ids Campaign ids to filter
      *
      * @return self
      */
-    public function setAdvertiserTypes($advertiser_types)
+    public function setCampaignIds($campaign_ids)
     {
-        if (is_null($advertiser_types)) {
-            throw new \InvalidArgumentException('non-nullable advertiser_types cannot be null');
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
-        $allowedValues = $this->getAdvertiserTypesAllowableValues();
-        if (array_diff($advertiser_types, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'advertiser_types', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['advertiser_types'] = $advertiser_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_relations
-     *
-     * @return string[]|null
-     */
-    public function getSkuRelations()
-    {
-        return $this->container['sku_relations'];
-    }
-
-    /**
-     * Sets sku_relations
-     *
-     * @param string[]|null $sku_relations Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller
-     *
-     * @return self
-     */
-    public function setSkuRelations($sku_relations)
-    {
-        if (is_null($sku_relations)) {
-            throw new \InvalidArgumentException('non-nullable sku_relations cannot be null');
-        }
-        $allowedValues = $this->getSkuRelationsAllowableValues();
-        if (array_diff($sku_relations, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'sku_relations', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sku_relations'] = $sku_relations;
-
-        return $this;
-    }
-
-    /**
-     * Gets format
-     *
-     * @return string|null
-     */
-    public function getFormat()
-    {
-        return $this->container['format'];
-    }
-
-    /**
-     * Sets format
-     *
-     * @param string|null $format Format of the output
-     *
-     * @return self
-     */
-    public function setFormat($format)
-    {
-        if (is_null($format)) {
-            throw new \InvalidArgumentException('non-nullable format cannot be null');
-        }
-        $allowedValues = $this->getFormatAllowableValues();
-        if (!in_array($format, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'format', must be one of '%s'",
-                    $format,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['format'] = $format;
+        $this->container['campaign_ids'] = $campaign_ids;
 
         return $this;
     }
@@ -1402,43 +1110,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets sales_channel
-     *
-     * @return string|null
-     */
-    public function getSalesChannel()
-    {
-        return $this->container['sales_channel'];
-    }
-
-    /**
-     * Sets sales_channel
-     *
-     * @param string|null $sales_channel Filter on specific sales channel: offline or online
-     *
-     * @return self
-     */
-    public function setSalesChannel($sales_channel)
-    {
-        if (is_null($sales_channel)) {
-            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
-        }
-        $allowedValues = $this->getSalesChannelAllowableValues();
-        if (!in_array($sales_channel, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
-                    $sales_channel,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sales_channel'] = $sales_channel;
-
-        return $this;
-    }
-
-    /**
      * Gets click_attribution_window
      *
      * @return string|null
@@ -1471,43 +1142,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['click_attribution_window'] = $click_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets view_attribution_window
-     *
-     * @return string|null
-     */
-    public function getViewAttributionWindow()
-    {
-        return $this->container['view_attribution_window'];
-    }
-
-    /**
-     * Sets view_attribution_window
-     *
-     * @param string|null $view_attribution_window View attribution window
-     *
-     * @return self
-     */
-    public function setViewAttributionWindow($view_attribution_window)
-    {
-        if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
-        }
-        $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
-                    $view_attribution_window,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['view_attribution_window'] = $view_attribution_window;
 
         return $this;
     }
@@ -1549,6 +1183,151 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date End date
+     *
+     * @return self
+     */
+    public function setEndDate($end_date)
+    {
+        if (is_null($end_date)) {
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        }
+        $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Format of the output
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Supply account id to report on
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ids
+     *
+     * @return string[]|null
+     */
+    public function getIds()
+    {
+        return $this->container['ids'];
+    }
+
+    /**
+     * Sets ids
+     *
+     * @param string[]|null $ids Supply account ids to report on
+     *
+     * @return self
+     */
+    public function setIds($ids)
+    {
+        if (is_null($ids)) {
+            throw new \InvalidArgumentException('non-nullable ids cannot be null');
+        }
+        $this->container['ids'] = $ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Line item ids to filter
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
      * Gets metrics
      *
      * @return string[]|null
@@ -1585,6 +1364,217 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets report_type
+     *
+     * @return string|null
+     */
+    public function getReportType()
+    {
+        return $this->container['report_type'];
+    }
+
+    /**
+     * Sets report_type
+     *
+     * @param string|null $report_type Type of report
+     *
+     * @return self
+     */
+    public function setReportType($report_type)
+    {
+        if (is_null($report_type)) {
+            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
+        }
+        $allowedValues = $this->getReportTypeAllowableValues();
+        if (!in_array($report_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'report_type', must be one of '%s'",
+                    $report_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['report_type'] = $report_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_ids
+     *
+     * @return string[]|null
+     */
+    public function getRetailerIds()
+    {
+        return $this->container['retailer_ids'];
+    }
+
+    /**
+     * Sets retailer_ids
+     *
+     * @param string[]|null $retailer_ids Retailer ids to filter
+     *
+     * @return self
+     */
+    public function setRetailerIds($retailer_ids)
+    {
+        if (is_null($retailer_ids)) {
+            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
+        }
+        $this->container['retailer_ids'] = $retailer_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets revenue_type
+     *
+     * @return string|null
+     */
+    public function getRevenueType()
+    {
+        return $this->container['revenue_type'];
+    }
+
+    /**
+     * Sets revenue_type
+     *
+     * @param string|null $revenue_type Type of revenue
+     *
+     * @return self
+     */
+    public function setRevenueType($revenue_type)
+    {
+        if (is_null($revenue_type)) {
+            throw new \InvalidArgumentException('non-nullable revenue_type cannot be null');
+        }
+        $allowedValues = $this->getRevenueTypeAllowableValues();
+        if (!in_array($revenue_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'revenue_type', must be one of '%s'",
+                    $revenue_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['revenue_type'] = $revenue_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets sales_channel
+     *
+     * @return string|null
+     */
+    public function getSalesChannel()
+    {
+        return $this->container['sales_channel'];
+    }
+
+    /**
+     * Sets sales_channel
+     *
+     * @param string|null $sales_channel Filter on specific sales channel: offline or online
+     *
+     * @return self
+     */
+    public function setSalesChannel($sales_channel)
+    {
+        if (is_null($sales_channel)) {
+            throw new \InvalidArgumentException('non-nullable sales_channel cannot be null');
+        }
+        $allowedValues = $this->getSalesChannelAllowableValues();
+        if (!in_array($sales_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sales_channel', must be one of '%s'",
+                    $sales_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sales_channel'] = $sales_channel;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_relations
+     *
+     * @return string[]|null
+     */
+    public function getSkuRelations()
+    {
+        return $this->container['sku_relations'];
+    }
+
+    /**
+     * Sets sku_relations
+     *
+     * @param string[]|null $sku_relations Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller
+     *
+     * @return self
+     */
+    public function setSkuRelations($sku_relations)
+    {
+        if (is_null($sku_relations)) {
+            throw new \InvalidArgumentException('non-nullable sku_relations cannot be null');
+        }
+        $allowedValues = $this->getSkuRelationsAllowableValues();
+        if (array_diff($sku_relations, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'sku_relations', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sku_relations'] = $sku_relations;
+
+        return $this;
+    }
+
+    /**
+     * Gets sold_by
+     *
+     * @return string|null
+     */
+    public function getSoldBy()
+    {
+        return $this->container['sold_by'];
+    }
+
+    /**
+     * Sets sold_by
+     *
+     * @param string|null $sold_by Filter on the seller: Indirect Sold, Direct Sold or Private Market
+     *
+     * @return self
+     */
+    public function setSoldBy($sold_by)
+    {
+        if (is_null($sold_by)) {
+            throw new \InvalidArgumentException('non-nullable sold_by cannot be null');
+        }
+        $allowedValues = $this->getSoldByAllowableValues();
+        if (!in_array($sold_by, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sold_by', must be one of '%s'",
+                    $sold_by,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sold_by'] = $sold_by;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -1612,33 +1602,6 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date End date
-     *
-     * @return self
-     */
-    public function setEndDate($end_date)
-    {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
-        }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
      * Gets timezone
      *
      * @return string|null
@@ -1661,6 +1624,43 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_attribution_window
+     *
+     * @return string|null
+     */
+    public function getViewAttributionWindow()
+    {
+        return $this->container['view_attribution_window'];
+    }
+
+    /**
+     * Sets view_attribution_window
+     *
+     * @param string|null $view_attribution_window View attribution window
+     *
+     * @return self
+     */
+    public function setViewAttributionWindow($view_attribution_window)
+    {
+        if (is_null($view_attribution_window)) {
+            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+        }
+        $allowedValues = $this->getViewAttributionWindowAllowableValues();
+        if (!in_array($view_attribution_window, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",
+                    $view_attribution_window,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['view_attribution_window'] = $view_attribution_window;
 
         return $this;
     }

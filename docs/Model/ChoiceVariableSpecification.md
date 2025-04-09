@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**options** | [**\criteo\api\retailmedia\v2025_01\Model\ChoiceOption[]**](ChoiceOption.md) | The available options |
 **max_selected** | **int** | The maximum number of selectable options | [optional]
 **min_selected** | **int** | The minimum number of selectable options | [optional]
+**options** | [**\criteo\api\retailmedia\v2025_01\Model\ChoiceOption[]**](ChoiceOption.md) | The available options |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
