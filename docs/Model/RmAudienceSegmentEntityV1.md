@@ -6,11 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** | Account associated to the segment | [optional]
 **channels** | **string[]** | Channels associated to the segment (read-only) | [optional]
-**contact_list** | [**\criteo\api\retailmedia\preview\Model\RmContactListV1**](RmContactListV1.md) |  | [optional]
+**contact_list** | [**\criteo\api\retailmedia\v2025_04\Model\RmContactListV1**](RmContactListV1.md) |  | [optional]
 **created_at** | **\DateTime** | ISO-8601 timestamp in UTC of segment creation (read-only) | [optional]
 **created_by_id** | **string** | User that created the segment | [optional]
 **description** | **string** | Description of the segment | [optional]
-**events** | [**\criteo\api\retailmedia\preview\Model\RmEventsV1**](RmEventsV1.md) |  | [optional]
+**events** | [**\criteo\api\retailmedia\v2025_04\Model\RmEventsV1**](RmEventsV1.md) |  | [optional]
 **name** | **string** | Name of the segment | [optional]
 **retailer_id** | **string** | Retailer  associated to the segment | [optional]
 **type** | **string** | Type of segment (read-only) | [optional]

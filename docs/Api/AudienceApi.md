@@ -1,23 +1,23 @@
-# criteo\api\retailmedia\preview\AudienceApi
+# criteo\api\retailmedia\v2025_04\AudienceApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/create |  |
-| [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/delete |  |
-| [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
-| [**deleteContactListIdentifiers()**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
-| [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
-| [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
-| [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListIdentifiers()**](AudienceApi.md#updateContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
+| [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/create |  |
+| [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/delete |  |
+| [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /2025-04/retail-media/accounts/{account-id}/audience-segments |  |
+| [**deleteContactListIdentifiers()**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /2025-04/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
+| [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /2025-04/retail-media/accounts/{account-id}/audience-segments/search |  |
+| [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /2025-04/retail-media/accounts/{account-id}/audiences/search |  |
+| [**updateContactListIdentifiers()**](AudienceApi.md#updateContactListIdentifiers) | **POST** /2025-04/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
 
 ## `bulkCreateAudienceSegments()`
 
 ```php
-bulkCreateAudienceSegments($account_id, $rm_audience_segment_bulk_create_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1ListResponse
+bulkCreateAudienceSegments($account_id, $rm_audience_segment_bulk_create_input_v1): \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1ListResponse
 ```
 
 
@@ -32,20 +32,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id
-$rm_audience_segment_bulk_create_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1 | Segment creation parameter
+$rm_audience_segment_bulk_create_input_v1 = new \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkCreateInputV1(); // \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkCreateInputV1 | Segment creation parameter
 
 try {
     $result = $apiInstance->bulkCreateAudienceSegments($account_id, $rm_audience_segment_bulk_create_input_v1);
@@ -60,11 +60,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
-| **rm_audience_segment_bulk_create_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1**](../Model/RmAudienceSegmentBulkCreateInputV1.md)| Segment creation parameter | |
+| **rm_audience_segment_bulk_create_input_v1** | [**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkCreateInputV1**](../Model/RmAudienceSegmentBulkCreateInputV1.md)| Segment creation parameter | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1ListResponse**](../Model/RmAudienceSegmentEntityV1ListResponse.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1ListResponse**](../Model/RmAudienceSegmentEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ try {
 ## `bulkDeleteAudienceSegments()`
 
 ```php
-bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse
+bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v1): \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentIdEntityV1ListResponse
 ```
 
 
@@ -97,20 +97,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | Account id
-$rm_audience_segment_bulk_delete_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1 | Segment delete request.
+$rm_audience_segment_bulk_delete_input_v1 = new \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkDeleteInputV1(); // \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkDeleteInputV1 | Segment delete request.
 
 try {
     $result = $apiInstance->bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v1);
@@ -125,11 +125,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account id | |
-| **rm_audience_segment_bulk_delete_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1**](../Model/RmAudienceSegmentBulkDeleteInputV1.md)| Segment delete request. | |
+| **rm_audience_segment_bulk_delete_input_v1** | [**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkDeleteInputV1**](../Model/RmAudienceSegmentBulkDeleteInputV1.md)| Segment delete request. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse**](../Model/RmAudienceSegmentIdEntityV1ListResponse.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentIdEntityV1ListResponse**](../Model/RmAudienceSegmentIdEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ try {
 ## `bulkUpdateAudienceSegments()`
 
 ```php
-bulkUpdateAudienceSegments($account_id, $rm_audience_segment_bulk_update_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1ListResponse
+bulkUpdateAudienceSegments($account_id, $rm_audience_segment_bulk_update_input_v1): \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1ListResponse
 ```
 
 
@@ -162,20 +162,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | Account id
-$rm_audience_segment_bulk_update_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1 | Segment Update request
+$rm_audience_segment_bulk_update_input_v1 = new \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkUpdateInputV1(); // \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkUpdateInputV1 | Segment Update request
 
 try {
     $result = $apiInstance->bulkUpdateAudienceSegments($account_id, $rm_audience_segment_bulk_update_input_v1);
@@ -190,11 +190,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account id | |
-| **rm_audience_segment_bulk_update_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1**](../Model/RmAudienceSegmentBulkUpdateInputV1.md)| Segment Update request | |
+| **rm_audience_segment_bulk_update_input_v1** | [**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentBulkUpdateInputV1**](../Model/RmAudienceSegmentBulkUpdateInputV1.md)| Segment Update request | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1ListResponse**](../Model/RmAudienceSegmentEntityV1ListResponse.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1ListResponse**](../Model/RmAudienceSegmentEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -227,13 +227,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -274,7 +274,7 @@ void (empty response body)
 ## `getAudienceSegmentContactListStatistics()`
 
 ```php
-getAudienceSegmentContactListStatistics($account_id, $audience_segment_id): \criteo\api\retailmedia\preview\Model\RmContactListStatisticsEntityV1Response
+getAudienceSegmentContactListStatistics($account_id, $audience_segment_id): \criteo\api\retailmedia\v2025_04\Model\RmContactListStatisticsEntityV1Response
 ```
 
 
@@ -289,13 +289,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -321,7 +321,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmContactListStatisticsEntityV1Response**](../Model/RmContactListStatisticsEntityV1Response.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmContactListStatisticsEntityV1Response**](../Model/RmContactListStatisticsEntityV1Response.md)
 
 ### Authorization
 
@@ -339,7 +339,7 @@ try {
 ## `searchAudienceSegments()`
 
 ```php
-searchAudienceSegments($account_id, $rm_audience_segment_search_input_v1, $limit, $offset): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse
+searchAudienceSegments($account_id, $rm_audience_segment_search_input_v1, $limit, $offset): \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse
 ```
 
 
@@ -354,20 +354,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id
-$rm_audience_segment_search_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 | Segment search filters.
+$rm_audience_segment_search_input_v1 = new \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1(); // \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 | Segment search filters.
 $limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 100.
 $offset = 0; // int | The (zero-based) offset into the collection. The default is 0.
 
@@ -384,13 +384,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
-| **rm_audience_segment_search_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1**](../Model/RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
+| **rm_audience_segment_search_input_v1** | [**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1**](../Model/RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
 | **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
 | **offset** | **int**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse**](../Model/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse**](../Model/RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse.md)
 
 ### Authorization
 
@@ -408,7 +408,7 @@ try {
 ## `searchAudiences()`
 
 ```php
-searchAudiences($account_id, $rm_audience_search_input_v1, $limit, $offset): \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse
+searchAudiences($account_id, $rm_audience_search_input_v1, $limit, $offset): \criteo\api\retailmedia\v2025_04\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse
 ```
 
 
@@ -423,20 +423,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | Account Id
-$rm_audience_search_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 | Audience search filters.
+$rm_audience_search_input_v1 = new \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1(); // \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 | Audience search filters.
 $limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 100.
 $offset = 0; // int | The (zero-based) offset into the collection. The default is 0.
 
@@ -453,13 +453,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
-| **rm_audience_search_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1**](../Model/RmAudienceSearchInputV1.md)| Audience search filters. | |
+| **rm_audience_search_input_v1** | [**\criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1**](../Model/RmAudienceSearchInputV1.md)| Audience search filters. | |
 | **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
 | **offset** | **int**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse**](../Model/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse**](../Model/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ try {
 ## `updateContactListIdentifiers()`
 
 ```php
-updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
+updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation
 ```
 
 
@@ -492,20 +492,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\v2025_04\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+$apiInstance = new criteo\api\retailmedia\v2025_04\Api\AudienceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
-$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest
+$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistAmendmentRequest
 
 try {
     $result = $apiInstance->updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request);
@@ -520,11 +520,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
-| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
+| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
+[**\criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
 
 ### Authorization
 

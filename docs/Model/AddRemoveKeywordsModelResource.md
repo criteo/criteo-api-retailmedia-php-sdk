@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\AddRemoveKeywordsModel**](AddRemoveKeywordsModel.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_04\Model\AddRemoveKeywordsModel**](AddRemoveKeywordsModel.md) |  | [optional]
 **id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contact_list** | **object** | Settings to update the contact list of the segment | [optional]
-**description** | [**\criteo\api\retailmedia\preview\Model\NillableString**](NillableString.md) |  | [optional]
+**description** | [**\criteo\api\retailmedia\v2025_04\Model\NillableString**](NillableString.md) |  | [optional]
 **name** | **string** | Name of the segment | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

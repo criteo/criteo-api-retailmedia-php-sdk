@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceV2**](CreateBalanceV2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_04\Model\CreateBalanceV2**](CreateBalanceV2.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 

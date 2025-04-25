@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\ExternalRetailMediaChildAccount**](ExternalRetailMediaChildAccount.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_04\Model\ExternalRetailMediaChildAccount**](ExternalRetailMediaChildAccount.md) |  | [optional]
 **id** | **string** | Unique id of the entity. | [optional]
 **type** | **string** | Type of the resource. | [optional]
 
