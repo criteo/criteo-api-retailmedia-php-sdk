@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **string** | Line Item id to report on | [optional]
 **ids** | **string[]** | Line Item ids to report on | [optional]
 **metrics** | **string[]** | List of metrics to report on | [optional]
-**report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
+**report_type** | **string** | Type of report, if no dimensions and metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **search_term_targetings** | **string[]** | Filter on the type of search term targeting: unknown, automatic, manual | [optional]
 **search_term_types** | **string[]** | Filter on the type of search term type: unknown, searched, entered | [optional]
