@@ -478,9 +478,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const REPORT_TYPE_BRAND = 'brand';
     public const REVENUE_TYPE_AUCTION = 'auction';
     public const REVENUE_TYPE_PREFERRED = 'preferred';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ALL = 'all';
     public const SKU_RELATIONS_SAME_SKU = 'sameSku';
     public const SKU_RELATIONS_SAME_PARENT_SKU = 'sameParentSku';
     public const SKU_RELATIONS_SAME_CATEGORY = 'sameCategory';
@@ -725,9 +725,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public function getSalesChannelAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ALL,
         ];
     }
 
@@ -1376,7 +1376,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets report_type
      *
-     * @param string|null $report_type Type of report
+     * @param string|null $report_type Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType
      *
      * @return self
      */

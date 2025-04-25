@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **ids** | **string[]** | Supply account ids to report on | [optional]
 **line_item_ids** | **string[]** | Line item ids to filter | [optional]
 **metrics** | **string[]** | List of metrics to report on | [optional]
-**report_type** | **string** | Type of report | [optional]
+**report_type** | **string** | Type of report, if no dimensions and metrics are provided, falls back to advertiser reportType | [optional]
 **retailer_ids** | **string[]** | Retailer ids to filter | [optional]
 **revenue_type** | **string** | Type of revenue | [optional]
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
