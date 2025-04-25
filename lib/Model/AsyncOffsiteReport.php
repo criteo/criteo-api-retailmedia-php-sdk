@@ -68,7 +68,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'end_date' => '\DateTime',
         'format' => 'string',
         'line_item_ids' => 'string[]',
-        'media_types' => 'string',
+        'media_type' => 'string',
         'metrics' => 'string[]',
         'retailer_ids' => 'string[]',
         'sales_channel' => 'string',
@@ -95,7 +95,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'end_date' => 'date-time',
         'format' => null,
         'line_item_ids' => null,
-        'media_types' => null,
+        'media_type' => null,
         'metrics' => null,
         'retailer_ids' => null,
         'sales_channel' => null,
@@ -120,7 +120,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'end_date' => false,
 		'format' => false,
 		'line_item_ids' => false,
-		'media_types' => false,
+		'media_type' => false,
 		'metrics' => false,
 		'retailer_ids' => false,
 		'sales_channel' => false,
@@ -225,7 +225,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'end_date' => 'endDate',
         'format' => 'format',
         'line_item_ids' => 'lineItemIds',
-        'media_types' => 'mediaTypes',
+        'media_type' => 'mediaType',
         'metrics' => 'metrics',
         'retailer_ids' => 'retailerIds',
         'sales_channel' => 'salesChannel',
@@ -250,7 +250,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
         'line_item_ids' => 'setLineItemIds',
-        'media_types' => 'setMediaTypes',
+        'media_type' => 'setMediaType',
         'metrics' => 'setMetrics',
         'retailer_ids' => 'setRetailerIds',
         'sales_channel' => 'setSalesChannel',
@@ -275,7 +275,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
         'line_item_ids' => 'getLineItemIds',
-        'media_types' => 'getMediaTypes',
+        'media_type' => 'getMediaType',
         'metrics' => 'getMetrics',
         'retailer_ids' => 'getRetailerIds',
         'sales_channel' => 'getSalesChannel',
@@ -346,24 +346,25 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const DIMENSIONS_CREATIVE_ID = 'creativeId';
-    public const DIMENSIONS_CREATIVE_NAME = 'creativeName';
     public const DIMENSIONS_BILLING_TYPE = 'billingType';
-    public const DIMENSIONS_BUY_TYPE_NAME = 'buyTypeName';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_AD_FORMAT_SIZE = 'adFormatSize';
     public const DIMENSIONS_SSP = 'ssp';
     public const DIMENSIONS_PUBLISHER = 'publisher';
     public const DIMENSIONS_INVENTORY_TYPE = 'inventoryType';
     public const DIMENSIONS_MEDIA_TYPE = 'mediaType';
+    public const DIMENSIONS_BUY_TYPE = 'buyType';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
+    public const DIMENSIONS_CREATIVE_ID = 'creativeId';
+    public const DIMENSIONS_CREATIVE_NAME = 'creativeName';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
-    public const MEDIA_TYPES_ALL = 'all';
-    public const MEDIA_TYPES_DISPLAY = 'display';
-    public const MEDIA_TYPES_VIDEO = 'video';
+    public const MEDIA_TYPE_UNKNOWN = 'unknown';
+    public const MEDIA_TYPE_VIDEO = 'video';
+    public const MEDIA_TYPE_DISPLAY = 'display';
+    public const MEDIA_TYPE_ALL = 'all';
     public const METRICS_AUDIENCE = 'audience';
     public const METRICS_UNIQUE_USERS = 'uniqueUsers';
     public const METRICS_REACH_RATE = 'reachRate';
@@ -385,16 +386,16 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METRICS_VIDEOS_PLAYED_TO50 = 'videosPlayedTo50';
     public const METRICS_VIDEOS_PLAYED_TO75 = 'videosPlayedTo75';
     public const METRICS_VIDEOS_PLAYED_TO100 = 'videosPlayedTo100';
-    public const METRICS_STARTING_RATE = 'startingRate';
-    public const METRICS_COMPLETION_RATE = 'completionRate';
+    public const METRICS_VIDEO_STARTING_RATE = 'videoStartingRate';
+    public const METRICS_VIDEO_COMPLETION_RATE = 'videoCompletionRate';
     public const METRICS_VIDEO_CPC = 'videoCPC';
     public const METRICS_VIDEO_CPCV = 'videoCPCV';
     public const METRICS_VISITS = 'visits';
     public const METRICS_QUALIFIED_VISITS = 'qualifiedVisits';
     public const METRICS_LANDING_RATE = 'landingRate';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ALL = 'all';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -463,17 +464,17 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_LINE_ITEM_NAME,
             self::DIMENSIONS_RETAILER_ID,
             self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_CREATIVE_ID,
-            self::DIMENSIONS_CREATIVE_NAME,
             self::DIMENSIONS_BILLING_TYPE,
-            self::DIMENSIONS_BUY_TYPE_NAME,
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_AD_FORMAT_SIZE,
             self::DIMENSIONS_SSP,
             self::DIMENSIONS_PUBLISHER,
             self::DIMENSIONS_INVENTORY_TYPE,
             self::DIMENSIONS_MEDIA_TYPE,
+            self::DIMENSIONS_BUY_TYPE,
             self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_CREATIVE_ID,
+            self::DIMENSIONS_CREATIVE_NAME,
         ];
     }
 
@@ -497,12 +498,13 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
-    public function getMediaTypesAllowableValues()
+    public function getMediaTypeAllowableValues()
     {
         return [
-            self::MEDIA_TYPES_ALL,
-            self::MEDIA_TYPES_DISPLAY,
-            self::MEDIA_TYPES_VIDEO,
+            self::MEDIA_TYPE_UNKNOWN,
+            self::MEDIA_TYPE_VIDEO,
+            self::MEDIA_TYPE_DISPLAY,
+            self::MEDIA_TYPE_ALL,
         ];
     }
 
@@ -535,8 +537,8 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METRICS_VIDEOS_PLAYED_TO50,
             self::METRICS_VIDEOS_PLAYED_TO75,
             self::METRICS_VIDEOS_PLAYED_TO100,
-            self::METRICS_STARTING_RATE,
-            self::METRICS_COMPLETION_RATE,
+            self::METRICS_VIDEO_STARTING_RATE,
+            self::METRICS_VIDEO_COMPLETION_RATE,
             self::METRICS_VIDEO_CPC,
             self::METRICS_VIDEO_CPCV,
             self::METRICS_VISITS,
@@ -553,9 +555,9 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public function getSalesChannelAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ALL,
         ];
     }
 
@@ -600,7 +602,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
         $this->setIfExists('line_item_ids', $data ?? [], null);
-        $this->setIfExists('media_types', $data ?? [], 'all');
+        $this->setIfExists('media_type', $data ?? [], 'all');
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], 'all');
@@ -669,6 +671,10 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['dimensions'] === null) {
             $invalidProperties[] = "'dimensions' can't be null";
         }
+        if ((count($this->container['dimensions']) < 1)) {
+            $invalidProperties[] = "invalid value for 'dimensions', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
         }
@@ -681,11 +687,11 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
-        $allowedValues = $this->getMediaTypesAllowableValues();
-        if (!is_null($this->container['media_types']) && !in_array($this->container['media_types'], $allowedValues, true)) {
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'media_types', must be one of '%s'",
-                $this->container['media_types'],
+                "invalid value '%s' for 'media_type', must be one of '%s'",
+                $this->container['media_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -693,6 +699,10 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['metrics'] === null) {
             $invalidProperties[] = "'metrics' can't be null";
         }
+        if ((count($this->container['metrics']) < 1)) {
+            $invalidProperties[] = "invalid value for 'metrics', number of items must be greater than or equal to 1.";
+        }
+
         $allowedValues = $this->getSalesChannelAllowableValues();
         if (!is_null($this->container['sales_channel']) && !in_array($this->container['sales_channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -907,7 +917,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets creative_ids
      *
-     * @param string[]|null $creative_ids Filter creative ids
+     * @param string[]|null $creative_ids Creative ids to filter
      *
      * @return self
      */
@@ -951,6 +961,11 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
                     implode("', '", $allowedValues)
                 )
             );
+        }
+
+
+        if ((count($dimensions) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $dimensions when calling AsyncOffsiteReport., number of items must be greater than or equal to 1.');
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -1049,38 +1064,38 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets media_types
+     * Gets media_type
      *
      * @return string|null
      */
-    public function getMediaTypes()
+    public function getMediaType()
     {
-        return $this->container['media_types'];
+        return $this->container['media_type'];
     }
 
     /**
-     * Sets media_types
+     * Sets media_type
      *
-     * @param string|null $media_types Filter by media type
+     * @param string|null $media_type Filter on the type of media: unknown, display, video
      *
      * @return self
      */
-    public function setMediaTypes($media_types)
+    public function setMediaType($media_type)
     {
-        if (is_null($media_types)) {
-            throw new \InvalidArgumentException('non-nullable media_types cannot be null');
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
         }
-        $allowedValues = $this->getMediaTypesAllowableValues();
-        if (!in_array($media_types, $allowedValues, true)) {
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!in_array($media_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'media_types', must be one of '%s'",
-                    $media_types,
+                    "Invalid value '%s' for 'media_type', must be one of '%s'",
+                    $media_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['media_types'] = $media_types;
+        $this->container['media_type'] = $media_type;
 
         return $this;
     }
@@ -1115,6 +1130,11 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
                     implode("', '", $allowedValues)
                 )
             );
+        }
+
+
+        if ((count($metrics) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $metrics when calling AsyncOffsiteReport., number of items must be greater than or equal to 1.');
         }
         $this->container['metrics'] = $metrics;
 
@@ -1225,7 +1245,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets timezone
      *
-     * @param string|null $timezone Time zone : see Criteo developer portal for supported time zones
+     * @param string|null $timezone Time zone : see criteo developer portal for supported time zones
      *
      * @return self
      */

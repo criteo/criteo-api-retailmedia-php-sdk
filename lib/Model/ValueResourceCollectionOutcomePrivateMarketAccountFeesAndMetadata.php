@@ -1,6 +1,6 @@
 <?php
 /**
- * JsonApiSingleResponseOfLineItemBidMultipliersV2
+ * ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * JsonApiSingleResponseOfLineItemBidMultipliersV2 Class Doc Comment
+ * ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to add one JSON:API &lt;typeparamref name&#x3D;\&quot;T\&quot; /&gt; within a data property
+ * @description A top-level object that encapsulates a Criteo API response for several value objects and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'JsonApiSingleResponseOfLineItemBidMultipliersV2';
+    protected static $openAPIModelName = 'ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonError[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonWarning[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourcePrivateMarketAccountFees[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -73,6 +74,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     protected static $openAPIFormats = [
         'data' => null,
         'errors' => null,
+        'metadata' => null,
         'warnings' => null
     ];
 
@@ -82,8 +84,9 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
+        'data' => true,
 		'errors' => true,
+		'metadata' => true,
 		'warnings' => true
     ];
 
@@ -175,6 +178,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     protected static $attributeMap = [
         'data' => 'data',
         'errors' => 'errors',
+        'metadata' => 'metadata',
         'warnings' => 'warnings'
     ];
 
@@ -186,6 +190,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     protected static $setters = [
         'data' => 'setData',
         'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
         'warnings' => 'setWarnings'
     ];
 
@@ -197,6 +202,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     protected static $getters = [
         'data' => 'getData',
         'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
         'warnings' => 'getWarnings'
     ];
 
@@ -259,6 +265,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     {
         $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
     }
 
@@ -289,9 +296,6 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -310,7 +314,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourcePrivateMarketAccountFees[]|null
      */
     public function getData()
     {
@@ -320,14 +324,21 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 $data data
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourcePrivateMarketAccountFees[]|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -337,7 +348,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonError[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -347,7 +358,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonError[]|null $errors errors
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
@@ -369,9 +380,43 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     }
 
     /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonWarning[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -381,7 +426,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonWarning[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */

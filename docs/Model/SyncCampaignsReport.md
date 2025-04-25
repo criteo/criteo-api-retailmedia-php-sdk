@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **metrics** | **string[]** | List of metrics to report on | [optional]
-**report_type** | **string** | Type of report, if no dimensions/metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
+**report_type** | **string** | Type of report, if no dimensions and metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **start_date** | **\DateTime** | Start date |
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']

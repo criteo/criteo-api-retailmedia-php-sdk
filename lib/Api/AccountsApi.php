@@ -74,12 +74,6 @@ class AccountsApi
         'getApiExternalV1AccountPrivateMarketChildAccountsByAccountId' => [
             'application/json',
         ],
-        'grantConsent' => [
-            'application/json-patch+json',
-            'application/json',
-            'text/json',
-            'application/*+json',
-        ],
         'previewRetailMediaAccountsFeesSearchPost' => [
             'application/json-patch+json',
             'application/json',
@@ -460,256 +454,6 @@ class AccountsApi
     }
 
     /**
-     * Operation grantConsent
-     *
-     * 
-     *
-     * @param  string $account_id The demand account ID on which to grant consent (required)
-     * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input grant_consent_input (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['grantConsent'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function grantConsent($account_id, $grant_consent_input = null, string $contentType = self::contentTypes['grantConsent'][0])
-    {
-        $this->grantConsentWithHttpInfo($account_id, $grant_consent_input, $contentType);
-    }
-
-    /**
-     * Operation grantConsentWithHttpInfo
-     *
-     * 
-     *
-     * @param  string $account_id The demand account ID on which to grant consent (required)
-     * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['grantConsent'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function grantConsentWithHttpInfo($account_id, $grant_consent_input = null, string $contentType = self::contentTypes['grantConsent'][0])
-    {
-        $request = $this->grantConsentRequest($account_id, $grant_consent_input, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation grantConsentAsync
-     *
-     * 
-     *
-     * @param  string $account_id The demand account ID on which to grant consent (required)
-     * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['grantConsent'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function grantConsentAsync($account_id, $grant_consent_input = null, string $contentType = self::contentTypes['grantConsent'][0])
-    {
-        return $this->grantConsentAsyncWithHttpInfo($account_id, $grant_consent_input, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation grantConsentAsyncWithHttpInfo
-     *
-     * 
-     *
-     * @param  string $account_id The demand account ID on which to grant consent (required)
-     * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['grantConsent'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function grantConsentAsyncWithHttpInfo($account_id, $grant_consent_input = null, string $contentType = self::contentTypes['grantConsent'][0])
-    {
-        $returnType = '';
-        $request = $this->grantConsentRequest($account_id, $grant_consent_input, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'grantConsent'
-     *
-     * @param  string $account_id The demand account ID on which to grant consent (required)
-     * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['grantConsent'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function grantConsentRequest($account_id, $grant_consent_input = null, string $contentType = self::contentTypes['grantConsent'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling grantConsent'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{accountId}/grant-consent';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            [],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($grant_consent_input)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($grant_consent_input));
-            } else {
-                $httpBody = $grant_consent_input;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation previewRetailMediaAccountsFeesSearchPost
      *
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
@@ -719,7 +463,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata|\criteo\api\retailmedia\preview\Model\Outcome
      */
     public function previewRetailMediaAccountsFeesSearchPost($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesSearchPost'][0])
     {
@@ -737,7 +481,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaAccountsFeesSearchPostWithHttpInfo($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesSearchPost'][0])
     {
@@ -780,17 +524,17 @@ class AccountsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -811,7 +555,7 @@ class AccountsApi
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees';
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -832,7 +576,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees',
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -884,7 +628,7 @@ class AccountsApi
      */
     public function previewRetailMediaAccountsFeesSearchPostAsyncWithHttpInfo($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesSearchPost'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees';
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata';
         $request = $this->previewRetailMediaAccountsFeesSearchPostRequest($limit, $offset, $value_resource_input_account_fees_search_request, $contentType);
 
         return $this->client

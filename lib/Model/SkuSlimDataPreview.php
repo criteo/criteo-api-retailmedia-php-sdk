@@ -109,10 +109,10 @@ class SkuSlimDataPreview implements ModelInterface, ArrayAccess, \JsonSerializab
 		'global_brand_id' => false,
 		'global_brand_name' => false,
 		'global_category_id' => false,
-		'gtin' => false,
+		'gtin' => true,
 		'image_url' => false,
 		'is_in_stock' => false,
-		'mpn' => false,
+		'mpn' => true,
 		'name' => false,
 		'price' => true,
 		'retailer_brand_id' => false,
@@ -600,7 +600,14 @@ class SkuSlimDataPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setGtin($gtin)
     {
         if (is_null($gtin)) {
-            throw new \InvalidArgumentException('non-nullable gtin cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'gtin');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('gtin', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['gtin'] = $gtin;
 
@@ -681,7 +688,14 @@ class SkuSlimDataPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMpn($mpn)
     {
         if (is_null($mpn)) {
-            throw new \InvalidArgumentException('non-nullable mpn cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'mpn');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mpn', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['mpn'] = $mpn;
 

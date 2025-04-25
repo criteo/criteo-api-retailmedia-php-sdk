@@ -285,6 +285,14 @@ class AccountFeesUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
         if ($this->container['account_ids'] === null) {
             $invalidProperties[] = "'account_ids' can't be null";
         }
+        if ((count($this->container['account_ids']) > 25)) {
+            $invalidProperties[] = "invalid value for 'account_ids', number of items must be less than or equal to 25.";
+        }
+
+        if ((count($this->container['account_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
+        }
+
         if ($this->container['fees'] === null) {
             $invalidProperties[] = "'fees' can't be null";
         }
@@ -324,6 +332,13 @@ class AccountFeesUpdateRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($account_ids)) {
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
+        }
+
+        if ((count($account_ids) > 25)) {
+            throw new \InvalidArgumentException('invalid value for $account_ids when calling AccountFeesUpdateRequest., number of items must be less than or equal to 25.');
+        }
+        if ((count($account_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $account_ids when calling AccountFeesUpdateRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['account_ids'] = $account_ids;
 

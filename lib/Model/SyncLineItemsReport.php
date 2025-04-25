@@ -351,9 +351,9 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const REPORT_TYPE_PRODUCT = 'product';
     public const REPORT_TYPE_ENVIRONMENT = 'environment';
     public const REPORT_TYPE_SERVED_CATEGORY = 'servedCategory';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ALL = 'all';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -473,9 +473,9 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getSalesChannelAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ALL,
         ];
     }
 
@@ -888,7 +888,7 @@ class SyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets report_type
      *
-     * @param string|null $report_type Type of report, if no dimensions/metrics are provided, falls back to summary reportType
+     * @param string|null $report_type Type of report, if no dimensions and metrics are provided, falls back to summary reportType
      *
      * @return self
      */

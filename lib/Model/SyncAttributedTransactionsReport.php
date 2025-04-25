@@ -334,9 +334,9 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_ACTIVITY_SELLER_NAME = 'activitySellerName';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
     public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const SALES_CHANNEL_ALL = 'all';
-    public const SALES_CHANNEL_OFFLINE = 'offline';
     public const SALES_CHANNEL_ONLINE = 'online';
+    public const SALES_CHANNEL_OFFLINE = 'offline';
+    public const SALES_CHANNEL_ALL = 'all';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -434,9 +434,9 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public function getSalesChannelAllowableValues()
     {
         return [
-            self::SALES_CHANNEL_ALL,
-            self::SALES_CHANNEL_OFFLINE,
             self::SALES_CHANNEL_ONLINE,
+            self::SALES_CHANNEL_OFFLINE,
+            self::SALES_CHANNEL_ALL,
         ];
     }
 

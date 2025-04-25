@@ -5,7 +5,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
-| [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-consent |  |
 | [**previewRetailMediaAccountsFeesSearchPost()**](AccountsApi.md#previewRetailMediaAccountsFeesSearchPost) | **POST** /preview/retail-media/accounts/fees/search |  |
 | [**previewRetailMediaAccountsFeesUpdatePost()**](AccountsApi.md#previewRetailMediaAccountsFeesUpdatePost) | **POST** /preview/retail-media/accounts/fees/update |  |
 | [**searchSellers()**](AccountsApi.md#searchSellers) | **POST** /preview/retail-media/accounts/sellers/search |  |
@@ -78,74 +77,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `grantConsent()`
-
-```php
-grantConsent($account_id, $grant_consent_input)
-```
-
-
-
-Grant consent to a business application on behalf of a Private Market demand account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The demand account ID on which to grant consent
-$grant_consent_input = new \criteo\api\retailmedia\preview\Model\GrantConsentInput(); // \criteo\api\retailmedia\preview\Model\GrantConsentInput
-
-try {
-    $apiInstance->grantConsent($account_id, $grant_consent_input);
-} catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->grantConsent: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The demand account ID on which to grant consent | |
-| **grant_consent_input** | [**\criteo\api\retailmedia\preview\Model\GrantConsentInput**](../Model/GrantConsentInput.md)|  | [optional] |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `previewRetailMediaAccountsFeesSearchPost()`
 
 ```php
-previewRetailMediaAccountsFeesSearchPost($limit, $offset, $value_resource_input_account_fees_search_request): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees
+previewRetailMediaAccountsFeesSearchPost($limit, $offset, $value_resource_input_account_fees_search_request): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
 ```
 
 
@@ -194,7 +129,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFees**](../Model/ValueResourceCollectionOutcomePrivateMarketAccountFees.md)
+[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata**](../Model/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.md)
 
 ### Authorization
 
