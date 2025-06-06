@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **campaign_id** | **string** |  |
 **created_at** | **\DateTime** |  |
 **end_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD | [optional]
+**id** | **string** | Id of the entity | [optional]
 **name** | **string** |  |
 **start_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
 **status** | **string** |  | [optional]
