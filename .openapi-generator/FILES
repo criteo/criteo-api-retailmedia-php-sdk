@@ -158,6 +158,7 @@ docs/Model/LineItemProductStatus.md
 docs/Model/MatchTypeModel.md
 docs/Model/Metadata.md
 docs/Model/MonthlyLineItemBudegetOverride.md
+docs/Model/NillableDecimal.md
 docs/Model/NillableString.md
 docs/Model/Outcome.md
 docs/Model/PageMetadata.md
@@ -236,6 +237,8 @@ docs/Model/RmContactListStatisticsEntityV1.md
 docs/Model/RmContactListStatisticsEntityV1Resource.md
 docs/Model/RmContactListStatisticsEntityV1Response.md
 docs/Model/RmContactListV1.md
+docs/Model/RmEventsCreateV1.md
+docs/Model/RmEventsUpdateV1.md
 docs/Model/RmEventsV1.md
 docs/Model/RmcaCommonProblem.md
 docs/Model/SdkApiRestCommonProblem.md
@@ -457,6 +460,7 @@ lib/Model/MatchTypeModel.php
 lib/Model/Metadata.php
 lib/Model/ModelInterface.php
 lib/Model/MonthlyLineItemBudegetOverride.php
+lib/Model/NillableDecimal.php
 lib/Model/NillableString.php
 lib/Model/Outcome.php
 lib/Model/PageMetadata.php
@@ -535,6 +539,8 @@ lib/Model/RmContactListStatisticsEntityV1.php
 lib/Model/RmContactListStatisticsEntityV1Resource.php
 lib/Model/RmContactListStatisticsEntityV1Response.php
 lib/Model/RmContactListV1.php
+lib/Model/RmEventsCreateV1.php
+lib/Model/RmEventsUpdateV1.php
 lib/Model/RmEventsV1.php
 lib/Model/RmcaCommonProblem.php
 lib/Model/SdkApiRestCommonProblem.php
