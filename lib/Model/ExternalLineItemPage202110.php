@@ -84,7 +84,7 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
     protected static array $openAPINullables = [
         'categories' => true,
 		'page_type' => false,
-		'search_keywords' => false
+		'search_keywords' => true
     ];
 
     /**
@@ -434,7 +434,14 @@ class ExternalLineItemPage202110 implements ModelInterface, ArrayAccess, \JsonSe
     public function setSearchKeywords($search_keywords)
     {
         if (is_null($search_keywords)) {
-            throw new \InvalidArgumentException('non-nullable search_keywords cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'search_keywords');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search_keywords', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['search_keywords'] = $search_keywords;
 
