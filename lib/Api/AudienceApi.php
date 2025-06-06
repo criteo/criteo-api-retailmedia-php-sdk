@@ -71,6 +71,12 @@ class AudienceApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'bulkCreateAudience' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
         'bulkCreateAudienceSegments' => [
             'application/json-patch+json',
             'application/json',
@@ -83,7 +89,31 @@ class AudienceApi
             'text/json',
             'application/*+json',
         ],
+        'bulkDeleteAudiences' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'bulkUpdateAudience' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
         'bulkUpdateAudienceSegments' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'computeAudienceSegmentsSizes' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'computeAudiencesSizes' => [
             'application/json-patch+json',
             'application/json',
             'text/json',
@@ -91,6 +121,18 @@ class AudienceApi
         ],
         'deleteContactListIdentifiers' => [
             'application/json',
+        ],
+        'estimateAudienceSegmentSize' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
+        ],
+        'estimateAudienceSize' => [
+            'application/json-patch+json',
+            'application/json',
+            'text/json',
+            'application/*+json',
         ],
         'getAudienceSegmentContactListStatistics' => [
             'application/json',
@@ -156,6 +198,308 @@ class AudienceApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation bulkCreateAudience
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse
+     */
+    public function bulkCreateAudience($account_id, $rm_audience_bulk_create_input_v1, string $contentType = self::contentTypes['bulkCreateAudience'][0])
+    {
+        list($response) = $this->bulkCreateAudienceWithHttpInfo($account_id, $rm_audience_bulk_create_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation bulkCreateAudienceWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bulkCreateAudienceWithHttpInfo($account_id, $rm_audience_bulk_create_input_v1, string $contentType = self::contentTypes['bulkCreateAudience'][0])
+    {
+        $request = $this->bulkCreateAudienceRequest($account_id, $rm_audience_bulk_create_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bulkCreateAudienceAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkCreateAudienceAsync($account_id, $rm_audience_bulk_create_input_v1, string $contentType = self::contentTypes['bulkCreateAudience'][0])
+    {
+        return $this->bulkCreateAudienceAsyncWithHttpInfo($account_id, $rm_audience_bulk_create_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bulkCreateAudienceAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkCreateAudienceAsyncWithHttpInfo($account_id, $rm_audience_bulk_create_input_v1, string $contentType = self::contentTypes['bulkCreateAudience'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse';
+        $request = $this->bulkCreateAudienceRequest($account_id, $rm_audience_bulk_create_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bulkCreateAudience'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bulkCreateAudienceRequest($account_id, $rm_audience_bulk_create_input_v1, string $contentType = self::contentTypes['bulkCreateAudience'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling bulkCreateAudience'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_bulk_create_input_v1' is set
+        if ($rm_audience_bulk_create_input_v1 === null || (is_array($rm_audience_bulk_create_input_v1) && count($rm_audience_bulk_create_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_bulk_create_input_v1 when calling bulkCreateAudience'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audiences/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_bulk_create_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_bulk_create_input_v1));
+            } else {
+                $httpBody = $rm_audience_bulk_create_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -763,6 +1107,610 @@ class AudienceApi
     }
 
     /**
+     * Operation bulkDeleteAudiences
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse
+     */
+    public function bulkDeleteAudiences($account_id, $rm_audience_bulk_delete_input_v1, string $contentType = self::contentTypes['bulkDeleteAudiences'][0])
+    {
+        list($response) = $this->bulkDeleteAudiencesWithHttpInfo($account_id, $rm_audience_bulk_delete_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation bulkDeleteAudiencesWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bulkDeleteAudiencesWithHttpInfo($account_id, $rm_audience_bulk_delete_input_v1, string $contentType = self::contentTypes['bulkDeleteAudiences'][0])
+    {
+        $request = $this->bulkDeleteAudiencesRequest($account_id, $rm_audience_bulk_delete_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bulkDeleteAudiencesAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkDeleteAudiencesAsync($account_id, $rm_audience_bulk_delete_input_v1, string $contentType = self::contentTypes['bulkDeleteAudiences'][0])
+    {
+        return $this->bulkDeleteAudiencesAsyncWithHttpInfo($account_id, $rm_audience_bulk_delete_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bulkDeleteAudiencesAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkDeleteAudiencesAsyncWithHttpInfo($account_id, $rm_audience_bulk_delete_input_v1, string $contentType = self::contentTypes['bulkDeleteAudiences'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse';
+        $request = $this->bulkDeleteAudiencesRequest($account_id, $rm_audience_bulk_delete_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bulkDeleteAudiences'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bulkDeleteAudiencesRequest($account_id, $rm_audience_bulk_delete_input_v1, string $contentType = self::contentTypes['bulkDeleteAudiences'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling bulkDeleteAudiences'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_bulk_delete_input_v1' is set
+        if ($rm_audience_bulk_delete_input_v1 === null || (is_array($rm_audience_bulk_delete_input_v1) && count($rm_audience_bulk_delete_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_bulk_delete_input_v1 when calling bulkDeleteAudiences'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audiences/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_bulk_delete_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_bulk_delete_input_v1));
+            } else {
+                $httpBody = $rm_audience_bulk_delete_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation bulkUpdateAudience
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse
+     */
+    public function bulkUpdateAudience($account_id, $rm_audience_bulk_update_input_v1, string $contentType = self::contentTypes['bulkUpdateAudience'][0])
+    {
+        list($response) = $this->bulkUpdateAudienceWithHttpInfo($account_id, $rm_audience_bulk_update_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation bulkUpdateAudienceWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bulkUpdateAudienceWithHttpInfo($account_id, $rm_audience_bulk_update_input_v1, string $contentType = self::contentTypes['bulkUpdateAudience'][0])
+    {
+        $request = $this->bulkUpdateAudienceRequest($account_id, $rm_audience_bulk_update_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bulkUpdateAudienceAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkUpdateAudienceAsync($account_id, $rm_audience_bulk_update_input_v1, string $contentType = self::contentTypes['bulkUpdateAudience'][0])
+    {
+        return $this->bulkUpdateAudienceAsyncWithHttpInfo($account_id, $rm_audience_bulk_update_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bulkUpdateAudienceAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkUpdateAudienceAsyncWithHttpInfo($account_id, $rm_audience_bulk_update_input_v1, string $contentType = self::contentTypes['bulkUpdateAudience'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse';
+        $request = $this->bulkUpdateAudienceRequest($account_id, $rm_audience_bulk_update_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bulkUpdateAudience'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bulkUpdateAudienceRequest($account_id, $rm_audience_bulk_update_input_v1, string $contentType = self::contentTypes['bulkUpdateAudience'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling bulkUpdateAudience'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_bulk_update_input_v1' is set
+        if ($rm_audience_bulk_update_input_v1 === null || (is_array($rm_audience_bulk_update_input_v1) && count($rm_audience_bulk_update_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_bulk_update_input_v1 when calling bulkUpdateAudience'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audiences';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_bulk_update_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_bulk_update_input_v1));
+            } else {
+                $httpBody = $rm_audience_bulk_update_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation bulkUpdateAudienceSegments
      *
      * @param  string $account_id Account id (required)
@@ -1065,6 +2013,610 @@ class AudienceApi
     }
 
     /**
+     * Operation computeAudienceSegmentsSizes
+     *
+     * @param  string $account_id Account id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse
+     */
+    public function computeAudienceSegmentsSizes($account_id, $rm_audience_segment_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudienceSegmentsSizes'][0])
+    {
+        list($response) = $this->computeAudienceSegmentsSizesWithHttpInfo($account_id, $rm_audience_segment_compute_sizes_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation computeAudienceSegmentsSizesWithHttpInfo
+     *
+     * @param  string $account_id Account id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function computeAudienceSegmentsSizesWithHttpInfo($account_id, $rm_audience_segment_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudienceSegmentsSizes'][0])
+    {
+        $request = $this->computeAudienceSegmentsSizesRequest($account_id, $rm_audience_segment_compute_sizes_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation computeAudienceSegmentsSizesAsync
+     *
+     * @param  string $account_id Account id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function computeAudienceSegmentsSizesAsync($account_id, $rm_audience_segment_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudienceSegmentsSizes'][0])
+    {
+        return $this->computeAudienceSegmentsSizesAsyncWithHttpInfo($account_id, $rm_audience_segment_compute_sizes_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation computeAudienceSegmentsSizesAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function computeAudienceSegmentsSizesAsyncWithHttpInfo($account_id, $rm_audience_segment_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudienceSegmentsSizes'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse';
+        $request = $this->computeAudienceSegmentsSizesRequest($account_id, $rm_audience_segment_compute_sizes_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'computeAudienceSegmentsSizes'
+     *
+     * @param  string $account_id Account id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function computeAudienceSegmentsSizesRequest($account_id, $rm_audience_segment_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudienceSegmentsSizes'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling computeAudienceSegmentsSizes'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_segment_compute_sizes_input_v1' is set
+        if ($rm_audience_segment_compute_sizes_input_v1 === null || (is_array($rm_audience_segment_compute_sizes_input_v1) && count($rm_audience_segment_compute_sizes_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_segment_compute_sizes_input_v1 when calling computeAudienceSegmentsSizes'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_segment_compute_sizes_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_segment_compute_sizes_input_v1));
+            } else {
+                $httpBody = $rm_audience_segment_compute_sizes_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation computeAudiencesSizes
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse
+     */
+    public function computeAudiencesSizes($account_id, $rm_audience_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudiencesSizes'][0])
+    {
+        list($response) = $this->computeAudiencesSizesWithHttpInfo($account_id, $rm_audience_compute_sizes_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation computeAudiencesSizesWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function computeAudiencesSizesWithHttpInfo($account_id, $rm_audience_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudiencesSizes'][0])
+    {
+        $request = $this->computeAudiencesSizesRequest($account_id, $rm_audience_compute_sizes_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation computeAudiencesSizesAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function computeAudiencesSizesAsync($account_id, $rm_audience_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudiencesSizes'][0])
+    {
+        return $this->computeAudiencesSizesAsyncWithHttpInfo($account_id, $rm_audience_compute_sizes_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation computeAudiencesSizesAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function computeAudiencesSizesAsyncWithHttpInfo($account_id, $rm_audience_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudiencesSizes'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse';
+        $request = $this->computeAudiencesSizesRequest($account_id, $rm_audience_compute_sizes_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'computeAudiencesSizes'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function computeAudiencesSizesRequest($account_id, $rm_audience_compute_sizes_input_v1, string $contentType = self::contentTypes['computeAudiencesSizes'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling computeAudiencesSizes'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_compute_sizes_input_v1' is set
+        if ($rm_audience_compute_sizes_input_v1 === null || (is_array($rm_audience_compute_sizes_input_v1) && count($rm_audience_compute_sizes_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_compute_sizes_input_v1 when calling computeAudiencesSizes'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audiences/compute-sizes';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_compute_sizes_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_compute_sizes_input_v1));
+            } else {
+                $httpBody = $rm_audience_compute_sizes_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteContactListIdentifiers
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
@@ -1248,6 +2800,610 @@ class AudienceApi
 
         // for model (json/xml)
         if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation estimateAudienceSegmentSize
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response
+     */
+    public function estimateAudienceSegmentSize($account_id, $rm_audience_segment_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSegmentSize'][0])
+    {
+        list($response) = $this->estimateAudienceSegmentSizeWithHttpInfo($account_id, $rm_audience_segment_estimate_size_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation estimateAudienceSegmentSizeWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function estimateAudienceSegmentSizeWithHttpInfo($account_id, $rm_audience_segment_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSegmentSize'][0])
+    {
+        $request = $this->estimateAudienceSegmentSizeRequest($account_id, $rm_audience_segment_estimate_size_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation estimateAudienceSegmentSizeAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAudienceSegmentSizeAsync($account_id, $rm_audience_segment_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSegmentSize'][0])
+    {
+        return $this->estimateAudienceSegmentSizeAsyncWithHttpInfo($account_id, $rm_audience_segment_estimate_size_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation estimateAudienceSegmentSizeAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAudienceSegmentSizeAsyncWithHttpInfo($account_id, $rm_audience_segment_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSegmentSize'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response';
+        $request = $this->estimateAudienceSegmentSizeRequest($account_id, $rm_audience_segment_estimate_size_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'estimateAudienceSegmentSize'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function estimateAudienceSegmentSizeRequest($account_id, $rm_audience_segment_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSegmentSize'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling estimateAudienceSegmentSize'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_segment_estimate_size_input_v1' is set
+        if ($rm_audience_segment_estimate_size_input_v1 === null || (is_array($rm_audience_segment_estimate_size_input_v1) && count($rm_audience_segment_estimate_size_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_segment_estimate_size_input_v1 when calling estimateAudienceSegmentSize'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audience-segments/estimate-size';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_segment_estimate_size_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_segment_estimate_size_input_v1));
+            } else {
+                $httpBody = $rm_audience_segment_estimate_size_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation estimateAudienceSize
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response
+     */
+    public function estimateAudienceSize($account_id, $rm_audience_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSize'][0])
+    {
+        list($response) = $this->estimateAudienceSizeWithHttpInfo($account_id, $rm_audience_estimate_size_input_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation estimateAudienceSizeWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function estimateAudienceSizeWithHttpInfo($account_id, $rm_audience_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSize'][0])
+    {
+        $request = $this->estimateAudienceSizeRequest($account_id, $rm_audience_estimate_size_input_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation estimateAudienceSizeAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAudienceSizeAsync($account_id, $rm_audience_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSize'][0])
+    {
+        return $this->estimateAudienceSizeAsyncWithHttpInfo($account_id, $rm_audience_estimate_size_input_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation estimateAudienceSizeAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAudienceSizeAsyncWithHttpInfo($account_id, $rm_audience_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSize'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response';
+        $request = $this->estimateAudienceSizeRequest($account_id, $rm_audience_estimate_size_input_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'estimateAudienceSize'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function estimateAudienceSizeRequest($account_id, $rm_audience_estimate_size_input_v1, string $contentType = self::contentTypes['estimateAudienceSize'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling estimateAudienceSize'
+            );
+        }
+
+        // verify the required parameter 'rm_audience_estimate_size_input_v1' is set
+        if ($rm_audience_estimate_size_input_v1 === null || (is_array($rm_audience_estimate_size_input_v1) && count($rm_audience_estimate_size_input_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $rm_audience_estimate_size_input_v1 when calling estimateAudienceSize'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/audiences/estimate-size';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($rm_audience_estimate_size_input_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($rm_audience_estimate_size_input_v1));
+            } else {
+                $httpBody = $rm_audience_estimate_size_input_v1;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

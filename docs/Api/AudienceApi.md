@@ -4,15 +4,87 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**bulkCreateAudience()**](AudienceApi.md#bulkCreateAudience) | **POST** /preview/retail-media/accounts/{account-id}/audiences/create |  |
 | [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/create |  |
 | [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/delete |  |
+| [**bulkDeleteAudiences()**](AudienceApi.md#bulkDeleteAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/delete |  |
+| [**bulkUpdateAudience()**](AudienceApi.md#bulkUpdateAudience) | **PATCH** /preview/retail-media/accounts/{account-id}/audiences |  |
 | [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
+| [**computeAudienceSegmentsSizes()**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |  |
+| [**computeAudiencesSizes()**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |  |
 | [**deleteContactListIdentifiers()**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**estimateAudienceSegmentSize()**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |  |
+| [**estimateAudienceSize()**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size |  |
 | [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
 | [**updateContactListIdentifiers()**](AudienceApi.md#updateContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
+
+## `bulkCreateAudience()`
+
+```php
+bulkCreateAudience($account_id, $rm_audience_bulk_create_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse
+```
+
+
+
+Creates all audiences with a valid configuration, and returns their IDs. For those that cannot be created, one or multiple errors are returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_bulk_create_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 | Audience creation parameter
+
+try {
+    $result = $apiInstance->bulkCreateAudience($account_id, $rm_audience_bulk_create_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->bulkCreateAudience: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_bulk_create_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1**](../Model/RmAudienceBulkCreateInputV1.md)| Audience creation parameter | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse**](../Model/RmAudienceEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `bulkCreateAudienceSegments()`
 
@@ -87,7 +159,7 @@ bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v
 
 
 
-Delete the segments associated to the given audience IDs.
+Delete the segments associated to the given IDs.
 
 ### Example
 
@@ -130,6 +202,136 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse**](../Model/RmAudienceSegmentIdEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bulkDeleteAudiences()`
+
+```php
+bulkDeleteAudiences($account_id, $rm_audience_bulk_delete_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse
+```
+
+
+
+Deletes the audiences associated to the given IDs.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_bulk_delete_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 | 
+
+try {
+    $result = $apiInstance->bulkDeleteAudiences($account_id, $rm_audience_bulk_delete_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->bulkDeleteAudiences: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_bulk_delete_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1**](../Model/RmAudienceBulkDeleteInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentIdEntityV1ListResponse**](../Model/RmAudienceSegmentIdEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `bulkUpdateAudience()`
+
+```php
+bulkUpdateAudience($account_id, $rm_audience_bulk_update_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse
+```
+
+
+
+Updates the properties of all audiences with a valid configuration, and returns their IDs. For those that cannot be updated, one or multiple errors are returned.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_bulk_update_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 | 
+
+try {
+    $result = $apiInstance->bulkUpdateAudience($account_id, $rm_audience_bulk_update_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->bulkUpdateAudience: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_bulk_update_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1**](../Model/RmAudienceBulkUpdateInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1ListResponse**](../Model/RmAudienceEntityV1ListResponse.md)
 
 ### Authorization
 
@@ -209,6 +411,136 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `computeAudienceSegmentsSizes()`
+
+```php
+computeAudienceSegmentsSizes($account_id, $rm_audience_segment_compute_sizes_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse
+```
+
+
+
+Gets the size of all segments. An error is returned for those whose size calculation is not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account id
+$rm_audience_segment_compute_sizes_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 | 
+
+try {
+    $result = $apiInstance->computeAudienceSegmentsSizes($account_id, $rm_audience_segment_compute_sizes_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->computeAudienceSegmentsSizes: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account id | |
+| **rm_audience_segment_compute_sizes_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1**](../Model/RmAudienceSegmentComputeSizesInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEntityV1ListResponse**](../Model/RmAudienceSegmentSizeEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `computeAudiencesSizes()`
+
+```php
+computeAudiencesSizes($account_id, $rm_audience_compute_sizes_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse
+```
+
+
+
+Gets the size of all audiences. An error is returned for those whose size calculation is not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_compute_sizes_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 | 
+
+try {
+    $result = $apiInstance->computeAudiencesSizes($account_id, $rm_audience_compute_sizes_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->computeAudiencesSizes: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_compute_sizes_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1**](../Model/RmAudienceComputeSizesInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceSizeEntityV1ListResponse**](../Model/RmAudienceSizeEntityV1ListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteContactListIdentifiers()`
 
 ```php
@@ -266,6 +598,136 @@ void (empty response body)
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `estimateAudienceSegmentSize()`
+
+```php
+estimateAudienceSegmentSize($account_id, $rm_audience_segment_estimate_size_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response
+```
+
+
+
+Gets the size estimation of a non existent segment. An error is returned when size calculation is not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_segment_estimate_size_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 | 
+
+try {
+    $result = $apiInstance->estimateAudienceSegmentSize($account_id, $rm_audience_segment_estimate_size_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->estimateAudienceSegmentSize: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_segment_estimate_size_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1**](../Model/RmAudienceSegmentEstimateSizeInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentSizeEstimationV1Response**](../Model/RmAudienceSegmentSizeEstimationV1Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `estimateAudienceSize()`
+
+```php
+estimateAudienceSize($account_id, $rm_audience_estimate_size_input_v1): \criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response
+```
+
+
+
+Gets the size estimation of a non existent audience. An error is returned when size calculation is not supported.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$rm_audience_estimate_size_input_v1 = new \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1(); // \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 | 
+
+try {
+    $result = $apiInstance->estimateAudienceSize($account_id, $rm_audience_estimate_size_input_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->estimateAudienceSize: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **rm_audience_estimate_size_input_v1** | [**\criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1**](../Model/RmAudienceEstimateSizeInputV1.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RmAudienceSizeEstimationV1Response**](../Model/RmAudienceSizeEstimationV1Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Accept**: `text/plain`, `application/json`, `text/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

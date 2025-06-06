@@ -60,6 +60,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'contact_list' => 'object',
         'description' => '\criteo\api\retailmedia\preview\Model\NillableString',
+        'events' => '\criteo\api\retailmedia\preview\Model\RmEventsUpdateV1',
         'name' => 'string'
     ];
 
@@ -73,6 +74,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'contact_list' => null,
         'description' => null,
+        'events' => null,
         'name' => null
     ];
 
@@ -84,6 +86,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'contact_list' => false,
 		'description' => true,
+		'events' => false,
 		'name' => false
     ];
 
@@ -175,6 +178,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'contact_list' => 'contactList',
         'description' => 'description',
+        'events' => 'events',
         'name' => 'name'
     ];
 
@@ -186,6 +190,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'contact_list' => 'setContactList',
         'description' => 'setDescription',
+        'events' => 'setEvents',
         'name' => 'setName'
     ];
 
@@ -197,6 +202,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'contact_list' => 'getContactList',
         'description' => 'getDescription',
+        'events' => 'getEvents',
         'name' => 'getName'
     ];
 
@@ -259,6 +265,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('contact_list', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
     }
 
@@ -361,6 +368,33 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
             }
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets events
+     *
+     * @return \criteo\api\retailmedia\preview\Model\RmEventsUpdateV1|null
+     */
+    public function getEvents()
+    {
+        return $this->container['events'];
+    }
+
+    /**
+     * Sets events
+     *
+     * @param \criteo\api\retailmedia\preview\Model\RmEventsUpdateV1|null $events events
+     *
+     * @return self
+     */
+    public function setEvents($events)
+    {
+        if (is_null($events)) {
+            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        }
+        $this->container['events'] = $events;
 
         return $this;
     }

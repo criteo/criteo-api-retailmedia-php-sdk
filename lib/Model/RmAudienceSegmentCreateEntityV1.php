@@ -60,6 +60,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'contact_list' => '\criteo\api\retailmedia\preview\Model\RmContactListCreateV1',
         'description' => 'string',
+        'events' => '\criteo\api\retailmedia\preview\Model\RmEventsCreateV1',
         'name' => 'string',
         'retailer_id' => 'string'
     ];
@@ -74,6 +75,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'contact_list' => null,
         'description' => null,
+        'events' => null,
         'name' => null,
         'retailer_id' => null
     ];
@@ -86,6 +88,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'contact_list' => false,
 		'description' => false,
+		'events' => false,
 		'name' => false,
 		'retailer_id' => false
     ];
@@ -178,6 +181,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'contact_list' => 'contactList',
         'description' => 'description',
+        'events' => 'events',
         'name' => 'name',
         'retailer_id' => 'retailerId'
     ];
@@ -190,6 +194,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'contact_list' => 'setContactList',
         'description' => 'setDescription',
+        'events' => 'setEvents',
         'name' => 'setName',
         'retailer_id' => 'setRetailerId'
     ];
@@ -202,6 +207,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'contact_list' => 'getContactList',
         'description' => 'getDescription',
+        'events' => 'getEvents',
         'name' => 'getName',
         'retailer_id' => 'getRetailerId'
     ];
@@ -265,6 +271,7 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('contact_list', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
     }
@@ -367,6 +374,33 @@ class RmAudienceSegmentCreateEntityV1 implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets events
+     *
+     * @return \criteo\api\retailmedia\preview\Model\RmEventsCreateV1|null
+     */
+    public function getEvents()
+    {
+        return $this->container['events'];
+    }
+
+    /**
+     * Sets events
+     *
+     * @param \criteo\api\retailmedia\preview\Model\RmEventsCreateV1|null $events events
+     *
+     * @return self
+     */
+    public function setEvents($events)
+    {
+        if (is_null($events)) {
+            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        }
+        $this->container['events'] = $events;
 
         return $this;
     }
