@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceSegmentUpdateEntityV1
+ * RmEventsUpdateV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
 
 /**
- * RmAudienceSegmentUpdateEntityV1 Class Doc Comment
+ * RmEventsUpdateV1 Class Doc Comment
  *
  * @category Class
- * @description Set of rules that defines specific people to target.
+ * @description Settings to target users based on their behavior
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RmEventsUpdateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceSegmentUpdateEntityV1';
+    protected static $openAPIModelName = 'RmEventsUpdateV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contact_list' => 'object',
-        'description' => '\criteo\api\retailmedia\v2024_10\Model\NillableString',
-        'events' => '\criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1',
-        'name' => 'string'
+        'brand_ids' => 'string[]',
+        'category_ids' => 'string[]',
+        'lookback_days' => 'string',
+        'max_price' => '\criteo\api\retailmedia\v2024_10\Model\NillableDecimal',
+        'min_price' => '\criteo\api\retailmedia\v2024_10\Model\NillableDecimal',
+        'shopper_activity' => 'string'
     ];
 
     /**
@@ -72,10 +74,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contact_list' => null,
-        'description' => null,
-        'events' => null,
-        'name' => null
+        'brand_ids' => null,
+        'category_ids' => null,
+        'lookback_days' => null,
+        'max_price' => null,
+        'min_price' => null,
+        'shopper_activity' => null
     ];
 
     /**
@@ -84,10 +88,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_list' => false,
-		'description' => true,
-		'events' => false,
-		'name' => false
+        'brand_ids' => false,
+		'category_ids' => false,
+		'lookback_days' => false,
+		'max_price' => true,
+		'min_price' => true,
+		'shopper_activity' => false
     ];
 
     /**
@@ -176,10 +182,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'contact_list' => 'contactList',
-        'description' => 'description',
-        'events' => 'events',
-        'name' => 'name'
+        'brand_ids' => 'brandIds',
+        'category_ids' => 'categoryIds',
+        'lookback_days' => 'lookbackDays',
+        'max_price' => 'maxPrice',
+        'min_price' => 'minPrice',
+        'shopper_activity' => 'shopperActivity'
     ];
 
     /**
@@ -188,10 +196,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'contact_list' => 'setContactList',
-        'description' => 'setDescription',
-        'events' => 'setEvents',
-        'name' => 'setName'
+        'brand_ids' => 'setBrandIds',
+        'category_ids' => 'setCategoryIds',
+        'lookback_days' => 'setLookbackDays',
+        'max_price' => 'setMaxPrice',
+        'min_price' => 'setMinPrice',
+        'shopper_activity' => 'setShopperActivity'
     ];
 
     /**
@@ -200,10 +210,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'contact_list' => 'getContactList',
-        'description' => 'getDescription',
-        'events' => 'getEvents',
-        'name' => 'getName'
+        'brand_ids' => 'getBrandIds',
+        'category_ids' => 'getCategoryIds',
+        'lookback_days' => 'getLookbackDays',
+        'max_price' => 'getMaxPrice',
+        'min_price' => 'getMinPrice',
+        'shopper_activity' => 'getShopperActivity'
     ];
 
     /**
@@ -247,6 +259,56 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const LOOKBACK_DAYS_UNKNOWN = 'Unknown';
+    public const LOOKBACK_DAYS_LAST7_DAYS = 'Last7Days';
+    public const LOOKBACK_DAYS_LAST14_DAYS = 'Last14Days';
+    public const LOOKBACK_DAYS_LAST30_DAYS = 'Last30Days';
+    public const LOOKBACK_DAYS_LAST45_DAYS = 'Last45Days';
+    public const LOOKBACK_DAYS_LAST60_DAYS = 'Last60Days';
+    public const LOOKBACK_DAYS_LAST90_DAYS = 'Last90Days';
+    public const LOOKBACK_DAYS_LAST120_DAYS = 'Last120Days';
+    public const LOOKBACK_DAYS_LAST150_DAYS = 'Last150Days';
+    public const LOOKBACK_DAYS_LAST180_DAYS = 'Last180Days';
+    public const SHOPPER_ACTIVITY_UNKNOWN = 'Unknown';
+    public const SHOPPER_ACTIVITY_VIEW = 'View';
+    public const SHOPPER_ACTIVITY_BUY = 'Buy';
+    public const SHOPPER_ACTIVITY_ADD_TO_CART = 'AddToCart';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getLookbackDaysAllowableValues()
+    {
+        return [
+            self::LOOKBACK_DAYS_UNKNOWN,
+            self::LOOKBACK_DAYS_LAST7_DAYS,
+            self::LOOKBACK_DAYS_LAST14_DAYS,
+            self::LOOKBACK_DAYS_LAST30_DAYS,
+            self::LOOKBACK_DAYS_LAST45_DAYS,
+            self::LOOKBACK_DAYS_LAST60_DAYS,
+            self::LOOKBACK_DAYS_LAST90_DAYS,
+            self::LOOKBACK_DAYS_LAST120_DAYS,
+            self::LOOKBACK_DAYS_LAST150_DAYS,
+            self::LOOKBACK_DAYS_LAST180_DAYS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getShopperActivityAllowableValues()
+    {
+        return [
+            self::SHOPPER_ACTIVITY_UNKNOWN,
+            self::SHOPPER_ACTIVITY_VIEW,
+            self::SHOPPER_ACTIVITY_BUY,
+            self::SHOPPER_ACTIVITY_ADD_TO_CART,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +325,12 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('contact_list', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('category_ids', $data ?? [], null);
+        $this->setIfExists('lookback_days', $data ?? [], null);
+        $this->setIfExists('max_price', $data ?? [], null);
+        $this->setIfExists('min_price', $data ?? [], null);
+        $this->setIfExists('shopper_activity', $data ?? [], null);
     }
 
     /**
@@ -296,6 +360,24 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'lookback_days', must be one of '%s'",
+                $this->container['lookback_days'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                $this->container['shopper_activity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,116 +394,197 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets contact_list
+     * Gets brand_ids
      *
-     * @return object|null
+     * @return string[]|null
      */
-    public function getContactList()
+    public function getBrandIds()
     {
-        return $this->container['contact_list'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets contact_list
+     * Sets brand_ids
      *
-     * @param object|null $contact_list Settings to update the contact list of the segment
+     * @param string[]|null $brand_ids Choose the brands your segment might be interested in
      *
      * @return self
      */
-    public function setContactList($contact_list)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
+        if (is_null($brand_ids)) {
+            throw new \InvalidArgumentException('non-nullable brand_ids cannot be null');
         }
-        $this->container['contact_list'] = $contact_list;
+        $this->container['brand_ids'] = $brand_ids;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets category_ids
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\NillableString|null
+     * @return string[]|null
      */
-    public function getDescription()
+    public function getCategoryIds()
     {
-        return $this->container['description'];
+        return $this->container['category_ids'];
     }
 
     /**
-     * Sets description
+     * Sets category_ids
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\NillableString|null $description description
+     * @param string[]|null $category_ids Choose the categories your segment might be interested in
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setCategoryIds($category_ids)
     {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($category_ids)) {
+            throw new \InvalidArgumentException('non-nullable category_ids cannot be null');
+        }
+        $this->container['category_ids'] = $category_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets lookback_days
+     *
+     * @return string|null
+     */
+    public function getLookbackDays()
+    {
+        return $this->container['lookback_days'];
+    }
+
+    /**
+     * Sets lookback_days
+     *
+     * @param string|null $lookback_days Number of days of the lookback windows
+     *
+     * @return self
+     */
+    public function setLookbackDays($lookback_days)
+    {
+        if (is_null($lookback_days)) {
+            throw new \InvalidArgumentException('non-nullable lookback_days cannot be null');
+        }
+        $allowedValues = $this->getLookbackDaysAllowableValues();
+        if (!in_array($lookback_days, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'lookback_days', must be one of '%s'",
+                    $lookback_days,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['lookback_days'] = $lookback_days;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_price
+     *
+     * @return \criteo\api\retailmedia\v2024_10\Model\NillableDecimal|null
+     */
+    public function getMaxPrice()
+    {
+        return $this->container['max_price'];
+    }
+
+    /**
+     * Sets max_price
+     *
+     * @param \criteo\api\retailmedia\v2024_10\Model\NillableDecimal|null $max_price max_price
+     *
+     * @return self
+     */
+    public function setMaxPrice($max_price)
+    {
+        if (is_null($max_price)) {
+            array_push($this->openAPINullablesSetToNull, 'max_price');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('max_price', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
+        $this->container['max_price'] = $max_price;
 
         return $this;
     }
 
     /**
-     * Gets events
+     * Gets min_price
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\NillableDecimal|null
      */
-    public function getEvents()
+    public function getMinPrice()
     {
-        return $this->container['events'];
+        return $this->container['min_price'];
     }
 
     /**
-     * Sets events
+     * Sets min_price
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1|null $events events
+     * @param \criteo\api\retailmedia\v2024_10\Model\NillableDecimal|null $min_price min_price
      *
      * @return self
      */
-    public function setEvents($events)
+    public function setMinPrice($min_price)
     {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        if (is_null($min_price)) {
+            array_push($this->openAPINullablesSetToNull, 'min_price');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('min_price', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['events'] = $events;
+        $this->container['min_price'] = $min_price;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets shopper_activity
      *
      * @return string|null
      */
-    public function getName()
+    public function getShopperActivity()
     {
-        return $this->container['name'];
+        return $this->container['shopper_activity'];
     }
 
     /**
-     * Sets name
+     * Sets shopper_activity
      *
-     * @param string|null $name Name of the segment
+     * @param string|null $shopper_activity Types of shopper activity.
      *
      * @return self
      */
-    public function setName($name)
+    public function setShopperActivity($shopper_activity)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($shopper_activity)) {
+            throw new \InvalidArgumentException('non-nullable shopper_activity cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getShopperActivityAllowableValues();
+        if (!in_array($shopper_activity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'shopper_activity', must be one of '%s'",
+                    $shopper_activity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['shopper_activity'] = $shopper_activity;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceSegmentUpdateEntityV1
+ * NillableDecimal
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
 
 /**
- * RmAudienceSegmentUpdateEntityV1 Class Doc Comment
+ * NillableDecimal Class Doc Comment
  *
  * @category Class
- * @description Set of rules that defines specific people to target.
+ * @description Placeholder object for value for which \&quot;null\&quot; is a valid business value
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class NillableDecimal implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceSegmentUpdateEntityV1';
+    protected static $openAPIModelName = 'NillableDecimal';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'contact_list' => 'object',
-        'description' => '\criteo\api\retailmedia\v2024_10\Model\NillableString',
-        'events' => '\criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1',
-        'name' => 'string'
+        'value' => 'float'
     ];
 
     /**
@@ -72,10 +69,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'contact_list' => null,
-        'description' => null,
-        'events' => null,
-        'name' => null
+        'value' => 'double'
     ];
 
     /**
@@ -84,10 +78,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'contact_list' => false,
-		'description' => true,
-		'events' => false,
-		'name' => false
+        'value' => true
     ];
 
     /**
@@ -176,10 +167,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'contact_list' => 'contactList',
-        'description' => 'description',
-        'events' => 'events',
-        'name' => 'name'
+        'value' => 'value'
     ];
 
     /**
@@ -188,10 +176,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'contact_list' => 'setContactList',
-        'description' => 'setDescription',
-        'events' => 'setEvents',
-        'name' => 'setName'
+        'value' => 'setValue'
     ];
 
     /**
@@ -200,10 +185,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'contact_list' => 'getContactList',
-        'description' => 'getDescription',
-        'events' => 'getEvents',
-        'name' => 'getName'
+        'value' => 'getValue'
     ];
 
     /**
@@ -263,10 +245,7 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('contact_list', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -312,116 +291,35 @@ class RmAudienceSegmentUpdateEntityV1 implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets contact_list
+     * Gets value
      *
-     * @return object|null
+     * @return float|null
      */
-    public function getContactList()
+    public function getValue()
     {
-        return $this->container['contact_list'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets contact_list
+     * Sets value
      *
-     * @param object|null $contact_list Settings to update the contact list of the segment
+     * @param float|null $value The value. If missing or null the value is set to \"null\"
      *
      * @return self
      */
-    public function setContactList($contact_list)
+    public function setValue($value)
     {
-        if (is_null($contact_list)) {
-            throw new \InvalidArgumentException('non-nullable contact_list cannot be null');
-        }
-        $this->container['contact_list'] = $contact_list;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return \criteo\api\retailmedia\v2024_10\Model\NillableString|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param \criteo\api\retailmedia\v2024_10\Model\NillableString|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
+        if (is_null($value)) {
+            array_push($this->openAPINullablesSetToNull, 'value');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
+            $index = array_search('value', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return \criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param \criteo\api\retailmedia\v2024_10\Model\RmEventsUpdateV1|null $events events
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $this->container['events'] = $events;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name of the segment
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
+        $this->container['value'] = $value;
 
         return $this;
     }

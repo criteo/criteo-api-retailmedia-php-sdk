@@ -87,7 +87,7 @@ bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v
 
 
 
-Delete the segments associated to the given audience IDs.
+Delete the segments associated to the given IDs.
 
 ### Example
 
