@@ -64,6 +64,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         'campaign_id' => 'string',
         'created_at' => '\DateTime',
         'end_date' => '\DateTime',
+        'id' => 'string',
         'name' => 'string',
         'start_date' => '\DateTime',
         'status' => 'string',
@@ -86,6 +87,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         'campaign_id' => 'long-id',
         'created_at' => 'date-time',
         'end_date' => 'date',
+        'id' => null,
         'name' => null,
         'start_date' => 'date',
         'status' => null,
@@ -106,6 +108,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
 		'campaign_id' => false,
 		'created_at' => false,
 		'end_date' => true,
+		'id' => true,
 		'name' => false,
 		'start_date' => false,
 		'status' => false,
@@ -206,6 +209,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         'campaign_id' => 'campaignId',
         'created_at' => 'createdAt',
         'end_date' => 'endDate',
+        'id' => 'id',
         'name' => 'name',
         'start_date' => 'startDate',
         'status' => 'status',
@@ -226,6 +230,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         'campaign_id' => 'setCampaignId',
         'created_at' => 'setCreatedAt',
         'end_date' => 'setEndDate',
+        'id' => 'setId',
         'name' => 'setName',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
@@ -246,6 +251,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         'campaign_id' => 'getCampaignId',
         'created_at' => 'getCreatedAt',
         'end_date' => 'getEndDate',
+        'id' => 'getId',
         'name' => 'getName',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
@@ -363,6 +369,7 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -642,6 +649,40 @@ class ExternalCommonLineItem implements ModelInterface, ArrayAccess, \JsonSerial
             }
         }
         $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Id of the entity
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }
