@@ -62,6 +62,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'string',
         'campaign_type' => 'string',
         'click_attribution_window' => 'string',
+        'conquesting_types' => 'string[]',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
@@ -87,6 +88,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => null,
         'campaign_type' => null,
         'click_attribution_window' => null,
+        'conquesting_types' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
@@ -110,6 +112,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 		'aggregation_level' => false,
 		'campaign_type' => false,
 		'click_attribution_window' => false,
+		'conquesting_types' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
@@ -213,6 +216,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'aggregationLevel',
         'campaign_type' => 'campaignType',
         'click_attribution_window' => 'clickAttributionWindow',
+        'conquesting_types' => 'conquestingTypes',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
@@ -236,6 +240,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'setAggregationLevel',
         'campaign_type' => 'setCampaignType',
         'click_attribution_window' => 'setClickAttributionWindow',
+        'conquesting_types' => 'setConquestingTypes',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
@@ -259,6 +264,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'getAggregationLevel',
         'campaign_type' => 'getCampaignType',
         'click_attribution_window' => 'getClickAttributionWindow',
+        'conquesting_types' => 'getConquestingTypes',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
@@ -322,6 +328,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CONQUESTING_TYPES_UNKNOWN = 'unknown';
+    public const CONQUESTING_TYPES_GENERIC = 'generic';
+    public const CONQUESTING_TYPES_BRANDED = 'branded';
+    public const CONQUESTING_TYPES_CONQUESTING = 'conquesting';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
@@ -354,6 +364,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_CREATIVE_TYPE_NAME = 'creativeTypeName';
     public const DIMENSIONS_CREATIVE_TEMPLATE_ID = 'creativeTemplateId';
     public const DIMENSIONS_CREATIVE_TEMPLATE_NAME = 'creativeTemplateName';
+    public const DIMENSIONS_CONQUESTING_TYPE = 'conquestingType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -466,6 +477,21 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getConquestingTypesAllowableValues()
+    {
+        return [
+            self::CONQUESTING_TYPES_UNKNOWN,
+            self::CONQUESTING_TYPES_GENERIC,
+            self::CONQUESTING_TYPES_BRANDED,
+            self::CONQUESTING_TYPES_CONQUESTING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getDimensionsAllowableValues()
     {
         return [
@@ -501,6 +527,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_CREATIVE_TYPE_NAME,
             self::DIMENSIONS_CREATIVE_TEMPLATE_ID,
             self::DIMENSIONS_CREATIVE_TEMPLATE_NAME,
+            self::DIMENSIONS_CONQUESTING_TYPE,
         ];
     }
 
@@ -664,6 +691,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('aggregation_level', $data ?? [], 'campaign');
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('conquesting_types', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
@@ -925,6 +953,42 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['click_attribution_window'] = $click_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets conquesting_types
+     *
+     * @return string[]|null
+     */
+    public function getConquestingTypes()
+    {
+        return $this->container['conquesting_types'];
+    }
+
+    /**
+     * Sets conquesting_types
+     *
+     * @param string[]|null $conquesting_types Filter on conquesting type: unknown, generic, branded, conquesting
+     *
+     * @return self
+     */
+    public function setConquestingTypes($conquesting_types)
+    {
+        if (is_null($conquesting_types)) {
+            throw new \InvalidArgumentException('non-nullable conquesting_types cannot be null');
+        }
+        $allowedValues = $this->getConquestingTypesAllowableValues();
+        if (array_diff($conquesting_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'conquesting_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['conquesting_types'] = $conquesting_types;
 
         return $this;
     }

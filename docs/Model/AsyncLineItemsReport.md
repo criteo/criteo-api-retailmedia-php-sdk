@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
+**conquesting_types** | **string[]** | Filter on conquesting type: unknown, generic, branded, conquesting | [optional]
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
