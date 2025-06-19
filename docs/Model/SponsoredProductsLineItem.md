@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **budget_remaining** | **float** |  |
 **budget_spent** | **float** |  | [optional]
 **buy_type** | **string** |  | [optional]
-**campaign_id** | **int** |  |
+**campaign_id** | **string** |  |
 **created_at** | **\DateTime** |  |
 **daily_pacing** | **float** |  | [optional]
 **end_date** | **\DateTime** |  | [optional]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **start_date** | **\DateTime** |  |
 **status** | **string** | Status of a line item. | [optional]
 **target_bid** | **float** |  | [optional]
-**target_retailer_id** | **int** |  |
+**target_retailer_id** | **string** |  |
 **updated_at** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

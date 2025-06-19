@@ -63,7 +63,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'float',
         'budget_spent' => 'float',
         'buy_type' => 'string',
-        'campaign_id' => 'int',
+        'campaign_id' => 'string',
         'created_at' => '\DateTime',
         'daily_pacing' => 'float',
         'end_date' => '\DateTime',
@@ -76,7 +76,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => '\DateTime',
         'status' => 'string',
         'target_bid' => 'float',
-        'target_retailer_id' => 'int',
+        'target_retailer_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -350,15 +350,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public const BUY_TYPE_UNKNOWN = 'Unknown';
     public const BUY_TYPE_AUCTION = 'Auction';
     public const BUY_TYPE_PREFERRED = 'Preferred';
-    public const STATUS_UNKNOWN = 'Unknown';
-    public const STATUS_ACTIVE = 'Active';
-    public const STATUS_SCHEDULED = 'Scheduled';
-    public const STATUS_DRAFT = 'Draft';
-    public const STATUS_PAUSED = 'Paused';
-    public const STATUS_BUDGET_HIT = 'BudgetHit';
-    public const STATUS_ENDED = 'Ended';
-    public const STATUS_ARCHIVED = 'Archived';
-    public const STATUS_NO_FUNDS = 'NoFunds';
+    public const STATUS_UNKNOWN = 'unknown';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_SCHEDULED = 'scheduled';
+    public const STATUS_DRAFT = 'draft';
+    public const STATUS_PAUSED = 'paused';
+    public const STATUS_BUDGET_HIT = 'budgetHit';
+    public const STATUS_ENDED = 'ended';
+    public const STATUS_ARCHIVED = 'archived';
+    public const STATUS_NO_FUNDS = 'noFunds';
 
     /**
      * Gets allowable values of the enum
@@ -740,7 +740,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets campaign_id
      *
-     * @return int
+     * @return string
      */
     public function getCampaignId()
     {
@@ -750,7 +750,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets campaign_id
      *
-     * @param int $campaign_id campaign_id
+     * @param string $campaign_id campaign_id
      *
      * @return self
      */
@@ -1164,7 +1164,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets target_retailer_id
      *
-     * @return int
+     * @return string
      */
     public function getTargetRetailerId()
     {
@@ -1174,7 +1174,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets target_retailer_id
      *
-     * @param int $target_retailer_id target_retailer_id
+     * @param string $target_retailer_id target_retailer_id
      *
      * @return self
      */

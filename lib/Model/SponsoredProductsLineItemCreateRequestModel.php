@@ -70,7 +70,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'start_date' => '\DateTime',
         'status' => 'string',
         'target_bid' => 'float',
-        'target_retailer_id' => 'int'
+        'target_retailer_id' => 'string'
     ];
 
     /**
@@ -848,7 +848,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Gets target_retailer_id
      *
-     * @return int
+     * @return string
      */
     public function getTargetRetailerId()
     {
@@ -858,7 +858,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Sets target_retailer_id
      *
-     * @param int $target_retailer_id target_retailer_id
+     * @param string $target_retailer_id target_retailer_id
      *
      * @return self
      */

@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **start_date** | **\DateTime** |  |
 **status** | **string** | Status of a line item. | [optional]
 **target_bid** | **float** |  | [optional]
-**target_retailer_id** | **int** |  |
+**target_retailer_id** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
