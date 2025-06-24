@@ -1170,8 +1170,8 @@ class CampaignApi
             );
         }
 
-        if ($limit !== null && $limit > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.categoriesSearchV1, must be smaller than or equal to 2147483647.');
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.categoriesSearchV1, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 1) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.categoriesSearchV1, must be bigger than or equal to 1.');
@@ -11856,7 +11856,7 @@ class CampaignApi
     /**
      * Operation recommendedKeywords
      *
-     * @param  int $retailer_id Retailer id. (required)
+     * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
@@ -11873,7 +11873,7 @@ class CampaignApi
     /**
      * Operation recommendedKeywordsWithHttpInfo
      *
-     * @param  int $retailer_id Retailer id. (required)
+     * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
@@ -11995,7 +11995,7 @@ class CampaignApi
     /**
      * Operation recommendedKeywordsAsync
      *
-     * @param  int $retailer_id Retailer id. (required)
+     * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
@@ -12015,7 +12015,7 @@ class CampaignApi
     /**
      * Operation recommendedKeywordsAsyncWithHttpInfo
      *
-     * @param  int $retailer_id Retailer id. (required)
+     * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
@@ -12066,7 +12066,7 @@ class CampaignApi
     /**
      * Create request for operation 'recommendedKeywords'
      *
-     * @param  int $retailer_id Retailer id. (required)
+     * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *

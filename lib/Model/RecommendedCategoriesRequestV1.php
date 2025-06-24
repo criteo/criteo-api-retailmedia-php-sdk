@@ -58,7 +58,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'sku_ids' => 'string[]'
+        'product_ids' => 'string[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'sku_ids' => null
+        'product_ids' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'sku_ids' => false
+        'product_ids' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'sku_ids' => 'skuIds'
+        'product_ids' => 'productIds'
     ];
 
     /**
@@ -176,7 +176,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'sku_ids' => 'setSkuIds'
+        'product_ids' => 'setProductIds'
     ];
 
     /**
@@ -185,7 +185,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'sku_ids' => 'getSkuIds'
+        'product_ids' => 'getProductIds'
     ];
 
     /**
@@ -245,7 +245,7 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('sku_ids', $data ?? [], null);
+        $this->setIfExists('product_ids', $data ?? [], null);
     }
 
     /**
@@ -275,11 +275,15 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['sku_ids'] === null) {
-            $invalidProperties[] = "'sku_ids' can't be null";
+        if ($this->container['product_ids'] === null) {
+            $invalidProperties[] = "'product_ids' can't be null";
         }
-        if ((count($this->container['sku_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'sku_ids', number of items must be greater than or equal to 1.";
+        if ((count($this->container['product_ids']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'product_ids', number of items must be less than or equal to 1000.";
+        }
+
+        if ((count($this->container['product_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_ids', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -298,33 +302,35 @@ class RecommendedCategoriesRequestV1 implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets sku_ids
+     * Gets product_ids
      *
      * @return string[]
      */
-    public function getSkuIds()
+    public function getProductIds()
     {
-        return $this->container['sku_ids'];
+        return $this->container['product_ids'];
     }
 
     /**
-     * Sets sku_ids
+     * Sets product_ids
      *
-     * @param string[] $sku_ids Sku id list.
+     * @param string[] $product_ids Sku id list.
      *
      * @return self
      */
-    public function setSkuIds($sku_ids)
+    public function setProductIds($product_ids)
     {
-        if (is_null($sku_ids)) {
-            throw new \InvalidArgumentException('non-nullable sku_ids cannot be null');
+        if (is_null($product_ids)) {
+            throw new \InvalidArgumentException('non-nullable product_ids cannot be null');
         }
 
-
-        if ((count($sku_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $sku_ids when calling RecommendedCategoriesRequestV1., number of items must be greater than or equal to 1.');
+        if ((count($product_ids) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $product_ids when calling RecommendedCategoriesRequestV1., number of items must be less than or equal to 1000.');
         }
-        $this->container['sku_ids'] = $sku_ids;
+        if ((count($product_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_ids when calling RecommendedCategoriesRequestV1., number of items must be greater than or equal to 1.');
+        }
+        $this->container['product_ids'] = $product_ids;
 
         return $this;
     }

@@ -2509,7 +2509,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | Retailer id.
+$retailer_id = 'retailer_id_example'; // string | Retailer id.
 $value_resource_input_recommended_keywords_request_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 | Request of recommended keywords.
 
 try {
@@ -2524,7 +2524,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| Retailer id. | |
+| **retailer_id** | **string**| Retailer id. | |
 | **value_resource_input_recommended_keywords_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1**](../Model/ValueResourceInputRecommendedKeywordsRequestV1.md)| Request of recommended keywords. | [optional] |
 
 ### Return type
