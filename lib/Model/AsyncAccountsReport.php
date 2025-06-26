@@ -62,7 +62,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'string',
         'campaign_type' => 'string',
         'click_attribution_window' => 'string',
-        'conquesting_types' => 'string[]',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
@@ -72,6 +71,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'search_term_targetings' => 'string[]',
         'search_term_types' => 'string[]',
         'start_date' => '\DateTime',
+        'targeted_keyword_types' => 'string[]',
         'timezone' => 'string',
         'view_attribution_window' => 'string'
     ];
@@ -88,7 +88,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => null,
         'campaign_type' => null,
         'click_attribution_window' => null,
-        'conquesting_types' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
@@ -98,6 +97,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'search_term_targetings' => null,
         'search_term_types' => null,
         'start_date' => 'date-time',
+        'targeted_keyword_types' => null,
         'timezone' => null,
         'view_attribution_window' => null
     ];
@@ -112,7 +112,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 		'aggregation_level' => false,
 		'campaign_type' => false,
 		'click_attribution_window' => false,
-		'conquesting_types' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
@@ -122,6 +121,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 		'search_term_targetings' => false,
 		'search_term_types' => false,
 		'start_date' => false,
+		'targeted_keyword_types' => false,
 		'timezone' => false,
 		'view_attribution_window' => false
     ];
@@ -216,7 +216,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'aggregationLevel',
         'campaign_type' => 'campaignType',
         'click_attribution_window' => 'clickAttributionWindow',
-        'conquesting_types' => 'conquestingTypes',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
@@ -226,6 +225,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'search_term_targetings' => 'searchTermTargetings',
         'search_term_types' => 'searchTermTypes',
         'start_date' => 'startDate',
+        'targeted_keyword_types' => 'targetedKeywordTypes',
         'timezone' => 'timezone',
         'view_attribution_window' => 'viewAttributionWindow'
     ];
@@ -240,7 +240,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'setAggregationLevel',
         'campaign_type' => 'setCampaignType',
         'click_attribution_window' => 'setClickAttributionWindow',
-        'conquesting_types' => 'setConquestingTypes',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
@@ -250,6 +249,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'search_term_targetings' => 'setSearchTermTargetings',
         'search_term_types' => 'setSearchTermTypes',
         'start_date' => 'setStartDate',
+        'targeted_keyword_types' => 'setTargetedKeywordTypes',
         'timezone' => 'setTimezone',
         'view_attribution_window' => 'setViewAttributionWindow'
     ];
@@ -264,7 +264,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'aggregation_level' => 'getAggregationLevel',
         'campaign_type' => 'getCampaignType',
         'click_attribution_window' => 'getClickAttributionWindow',
-        'conquesting_types' => 'getConquestingTypes',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
@@ -274,6 +273,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'search_term_targetings' => 'getSearchTermTargetings',
         'search_term_types' => 'getSearchTermTypes',
         'start_date' => 'getStartDate',
+        'targeted_keyword_types' => 'getTargetedKeywordTypes',
         'timezone' => 'getTimezone',
         'view_attribution_window' => 'getViewAttributionWindow'
     ];
@@ -328,10 +328,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
-    public const CONQUESTING_TYPES_UNKNOWN = 'unknown';
-    public const CONQUESTING_TYPES_GENERIC = 'generic';
-    public const CONQUESTING_TYPES_BRANDED = 'branded';
-    public const CONQUESTING_TYPES_CONQUESTING = 'conquesting';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
@@ -364,7 +360,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_CREATIVE_TYPE_NAME = 'creativeTypeName';
     public const DIMENSIONS_CREATIVE_TEMPLATE_ID = 'creativeTemplateId';
     public const DIMENSIONS_CREATIVE_TEMPLATE_NAME = 'creativeTemplateName';
-    public const DIMENSIONS_CONQUESTING_TYPE = 'conquestingType';
+    public const DIMENSIONS_TARGETED_KEYWORD_TYPE = 'targetedKeywordType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -424,6 +420,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const SEARCH_TERM_TYPES_UNKNOWN = 'unknown';
     public const SEARCH_TERM_TYPES_SEARCHED = 'searched';
     public const SEARCH_TERM_TYPES_ENTERED = 'entered';
+    public const TARGETED_KEYWORD_TYPES_UNKNOWN = 'unknown';
+    public const TARGETED_KEYWORD_TYPES_GENERIC = 'generic';
+    public const TARGETED_KEYWORD_TYPES_BRANDED = 'branded';
+    public const TARGETED_KEYWORD_TYPES_CONQUESTING = 'conquesting';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -477,21 +477,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getConquestingTypesAllowableValues()
-    {
-        return [
-            self::CONQUESTING_TYPES_UNKNOWN,
-            self::CONQUESTING_TYPES_GENERIC,
-            self::CONQUESTING_TYPES_BRANDED,
-            self::CONQUESTING_TYPES_CONQUESTING,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
     public function getDimensionsAllowableValues()
     {
         return [
@@ -527,7 +512,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_CREATIVE_TYPE_NAME,
             self::DIMENSIONS_CREATIVE_TEMPLATE_ID,
             self::DIMENSIONS_CREATIVE_TEMPLATE_NAME,
-            self::DIMENSIONS_CONQUESTING_TYPE,
+            self::DIMENSIONS_TARGETED_KEYWORD_TYPE,
         ];
     }
 
@@ -661,6 +646,21 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getTargetedKeywordTypesAllowableValues()
+    {
+        return [
+            self::TARGETED_KEYWORD_TYPES_UNKNOWN,
+            self::TARGETED_KEYWORD_TYPES_GENERIC,
+            self::TARGETED_KEYWORD_TYPES_BRANDED,
+            self::TARGETED_KEYWORD_TYPES_CONQUESTING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getViewAttributionWindowAllowableValues()
     {
         return [
@@ -691,7 +691,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('aggregation_level', $data ?? [], 'campaign');
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
-        $this->setIfExists('conquesting_types', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
@@ -701,6 +700,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('search_term_targetings', $data ?? [], null);
         $this->setIfExists('search_term_types', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('targeted_keyword_types', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
@@ -953,42 +953,6 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['click_attribution_window'] = $click_attribution_window;
-
-        return $this;
-    }
-
-    /**
-     * Gets conquesting_types
-     *
-     * @return string[]|null
-     */
-    public function getConquestingTypes()
-    {
-        return $this->container['conquesting_types'];
-    }
-
-    /**
-     * Sets conquesting_types
-     *
-     * @param string[]|null $conquesting_types Filter on conquesting type: unknown, generic, branded, conquesting
-     *
-     * @return self
-     */
-    public function setConquestingTypes($conquesting_types)
-    {
-        if (is_null($conquesting_types)) {
-            throw new \InvalidArgumentException('non-nullable conquesting_types cannot be null');
-        }
-        $allowedValues = $this->getConquestingTypesAllowableValues();
-        if (array_diff($conquesting_types, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'conquesting_types', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['conquesting_types'] = $conquesting_types;
 
         return $this;
     }
@@ -1298,6 +1262,42 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets targeted_keyword_types
+     *
+     * @return string[]|null
+     */
+    public function getTargetedKeywordTypes()
+    {
+        return $this->container['targeted_keyword_types'];
+    }
+
+    /**
+     * Sets targeted_keyword_types
+     *
+     * @param string[]|null $targeted_keyword_types Filter on targeted keyword type: unknown, generic, branded, conquesting
+     *
+     * @return self
+     */
+    public function setTargetedKeywordTypes($targeted_keyword_types)
+    {
+        if (is_null($targeted_keyword_types)) {
+            throw new \InvalidArgumentException('non-nullable targeted_keyword_types cannot be null');
+        }
+        $allowedValues = $this->getTargetedKeywordTypesAllowableValues();
+        if (array_diff($targeted_keyword_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'targeted_keyword_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['targeted_keyword_types'] = $targeted_keyword_types;
 
         return $this;
     }

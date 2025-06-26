@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **aggregation_level** | **string** | Level of aggregation, if no dimensions and metrics are provided, falls back to campaign aggregationLevel | [optional] [default to 'campaign']
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
-**conquesting_types** | **string[]** | Filter on conquesting type: unknown, generic, branded, conquesting | [optional]
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
@@ -18,6 +17,7 @@ Name | Type | Description | Notes
 **search_term_targetings** | **string[]** | Filter on the type of search term targeting: unknown, automatic, manual | [optional]
 **search_term_types** | **string[]** | Filter on the type of search term type: unknown, searched, entered | [optional]
 **start_date** | **\DateTime** | Start date |
+**targeted_keyword_types** | **string[]** | Filter on targeted keyword type: unknown, generic, branded, conquesting | [optional]
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
 
