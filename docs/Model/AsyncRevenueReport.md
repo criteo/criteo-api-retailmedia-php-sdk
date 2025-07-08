@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **campaign_ids** | **string[]** | Campaign ids to filter | [optional]
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
 **click_attribution_window** | **string** | Click attribution window | [optional] [default to 'none']
+**click_match_level** | **string** | Click Match Level: Campaign, Same SKU, Same Category or Same Brand | [optional] [default to 'campaign']
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **format** | **string** | Format of the output | [optional] [default to 'json']
@@ -26,5 +27,6 @@ Name | Type | Description | Notes
 **start_date** | **\DateTime** | Start date |
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
+**view_match_level** | **string** | View Match Level: Campaign, Same SKU, Same Category or Same Brand | [optional] [default to 'campaign']
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
