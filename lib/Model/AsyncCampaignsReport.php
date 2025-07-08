@@ -71,6 +71,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         'search_term_targetings' => 'string[]',
         'search_term_types' => 'string[]',
         'start_date' => '\DateTime',
+        'targeted_keyword_types' => 'string[]',
         'timezone' => 'string',
         'view_attribution_window' => 'string'
     ];
@@ -96,6 +97,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         'search_term_targetings' => null,
         'search_term_types' => null,
         'start_date' => 'date-time',
+        'targeted_keyword_types' => null,
         'timezone' => null,
         'view_attribution_window' => null
     ];
@@ -119,6 +121,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
 		'search_term_targetings' => false,
 		'search_term_types' => false,
 		'start_date' => false,
+		'targeted_keyword_types' => false,
 		'timezone' => false,
 		'view_attribution_window' => false
     ];
@@ -222,6 +225,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         'search_term_targetings' => 'searchTermTargetings',
         'search_term_types' => 'searchTermTypes',
         'start_date' => 'startDate',
+        'targeted_keyword_types' => 'targetedKeywordTypes',
         'timezone' => 'timezone',
         'view_attribution_window' => 'viewAttributionWindow'
     ];
@@ -245,6 +249,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         'search_term_targetings' => 'setSearchTermTargetings',
         'search_term_types' => 'setSearchTermTypes',
         'start_date' => 'setStartDate',
+        'targeted_keyword_types' => 'setTargetedKeywordTypes',
         'timezone' => 'setTimezone',
         'view_attribution_window' => 'setViewAttributionWindow'
     ];
@@ -268,6 +273,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         'search_term_targetings' => 'getSearchTermTargetings',
         'search_term_types' => 'getSearchTermTypes',
         'start_date' => 'getStartDate',
+        'targeted_keyword_types' => 'getTargetedKeywordTypes',
         'timezone' => 'getTimezone',
         'view_attribution_window' => 'getViewAttributionWindow'
     ];
@@ -352,6 +358,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public const DIMENSIONS_CREATIVE_TYPE_NAME = 'creativeTypeName';
     public const DIMENSIONS_CREATIVE_TEMPLATE_ID = 'creativeTemplateId';
     public const DIMENSIONS_CREATIVE_TEMPLATE_NAME = 'creativeTemplateName';
+    public const DIMENSIONS_TARGETED_KEYWORD_TYPE = 'targetedKeywordType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -411,6 +418,10 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public const SEARCH_TERM_TYPES_UNKNOWN = 'unknown';
     public const SEARCH_TERM_TYPES_SEARCHED = 'searched';
     public const SEARCH_TERM_TYPES_ENTERED = 'entered';
+    public const TARGETED_KEYWORD_TYPES_UNKNOWN = 'unknown';
+    public const TARGETED_KEYWORD_TYPES_GENERIC = 'generic';
+    public const TARGETED_KEYWORD_TYPES_BRANDED = 'branded';
+    public const TARGETED_KEYWORD_TYPES_CONQUESTING = 'conquesting';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -486,6 +497,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
             self::DIMENSIONS_CREATIVE_TYPE_NAME,
             self::DIMENSIONS_CREATIVE_TEMPLATE_ID,
             self::DIMENSIONS_CREATIVE_TEMPLATE_NAME,
+            self::DIMENSIONS_TARGETED_KEYWORD_TYPE,
         ];
     }
 
@@ -619,6 +631,21 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
      *
      * @return string[]
      */
+    public function getTargetedKeywordTypesAllowableValues()
+    {
+        return [
+            self::TARGETED_KEYWORD_TYPES_UNKNOWN,
+            self::TARGETED_KEYWORD_TYPES_GENERIC,
+            self::TARGETED_KEYWORD_TYPES_BRANDED,
+            self::TARGETED_KEYWORD_TYPES_CONQUESTING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getViewAttributionWindowAllowableValues()
     {
         return [
@@ -658,6 +685,7 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('search_term_targetings', $data ?? [], null);
         $this->setIfExists('search_term_types', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('targeted_keyword_types', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
     }
@@ -1197,6 +1225,42 @@ class AsyncCampaignsReport implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets targeted_keyword_types
+     *
+     * @return string[]|null
+     */
+    public function getTargetedKeywordTypes()
+    {
+        return $this->container['targeted_keyword_types'];
+    }
+
+    /**
+     * Sets targeted_keyword_types
+     *
+     * @param string[]|null $targeted_keyword_types Filter on targeted keyword type: unknown, generic, branded, conquesting
+     *
+     * @return self
+     */
+    public function setTargetedKeywordTypes($targeted_keyword_types)
+    {
+        if (is_null($targeted_keyword_types)) {
+            throw new \InvalidArgumentException('non-nullable targeted_keyword_types cannot be null');
+        }
+        $allowedValues = $this->getTargetedKeywordTypesAllowableValues();
+        if (array_diff($targeted_keyword_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'targeted_keyword_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['targeted_keyword_types'] = $targeted_keyword_types;
 
         return $this;
     }

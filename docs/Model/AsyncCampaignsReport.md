@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **search_term_targetings** | **string[]** | Filter on the type of search term targeting: unknown, automatic, manual | [optional]
 **search_term_types** | **string[]** | Filter on the type of search term type: unknown, searched, entered | [optional]
 **start_date** | **\DateTime** | Start date |
+**targeted_keyword_types** | **string[]** | Filter on targeted keyword type: unknown, generic, branded, conquesting | [optional]
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
 
