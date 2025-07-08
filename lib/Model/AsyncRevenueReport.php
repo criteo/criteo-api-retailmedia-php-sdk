@@ -64,6 +64,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'campaign_ids' => 'string[]',
         'campaign_type' => 'string',
         'click_attribution_window' => 'string',
+        'click_match_level' => 'string',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
@@ -79,7 +80,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sold_by' => 'string',
         'start_date' => '\DateTime',
         'timezone' => 'string',
-        'view_attribution_window' => 'string'
+        'view_attribution_window' => 'string',
+        'view_match_level' => 'string'
     ];
 
     /**
@@ -96,6 +98,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'campaign_ids' => null,
         'campaign_type' => null,
         'click_attribution_window' => null,
+        'click_match_level' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
@@ -111,7 +114,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sold_by' => null,
         'start_date' => 'date-time',
         'timezone' => null,
-        'view_attribution_window' => null
+        'view_attribution_window' => null,
+        'view_match_level' => null
     ];
 
     /**
@@ -126,6 +130,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'campaign_ids' => false,
 		'campaign_type' => false,
 		'click_attribution_window' => false,
+		'click_match_level' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
@@ -141,7 +146,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'sold_by' => false,
 		'start_date' => false,
 		'timezone' => false,
-		'view_attribution_window' => false
+		'view_attribution_window' => false,
+		'view_match_level' => false
     ];
 
     /**
@@ -236,6 +242,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'campaign_ids' => 'campaignIds',
         'campaign_type' => 'campaignType',
         'click_attribution_window' => 'clickAttributionWindow',
+        'click_match_level' => 'clickMatchLevel',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
@@ -251,7 +258,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sold_by' => 'soldBy',
         'start_date' => 'startDate',
         'timezone' => 'timezone',
-        'view_attribution_window' => 'viewAttributionWindow'
+        'view_attribution_window' => 'viewAttributionWindow',
+        'view_match_level' => 'viewMatchLevel'
     ];
 
     /**
@@ -266,6 +274,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'campaign_ids' => 'setCampaignIds',
         'campaign_type' => 'setCampaignType',
         'click_attribution_window' => 'setClickAttributionWindow',
+        'click_match_level' => 'setClickMatchLevel',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
@@ -281,7 +290,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sold_by' => 'setSoldBy',
         'start_date' => 'setStartDate',
         'timezone' => 'setTimezone',
-        'view_attribution_window' => 'setViewAttributionWindow'
+        'view_attribution_window' => 'setViewAttributionWindow',
+        'view_match_level' => 'setViewMatchLevel'
     ];
 
     /**
@@ -296,6 +306,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'campaign_ids' => 'getCampaignIds',
         'campaign_type' => 'getCampaignType',
         'click_attribution_window' => 'getClickAttributionWindow',
+        'click_match_level' => 'getClickMatchLevel',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
@@ -311,7 +322,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sold_by' => 'getSoldBy',
         'start_date' => 'getStartDate',
         'timezone' => 'getTimezone',
-        'view_attribution_window' => 'getViewAttributionWindow'
+        'view_attribution_window' => 'getViewAttributionWindow',
+        'view_match_level' => 'getViewMatchLevel'
     ];
 
     /**
@@ -368,6 +380,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CLICK_MATCH_LEVEL_SAME_SKU = 'sameSku';
+    public const CLICK_MATCH_LEVEL_SAME_CATEGORY = 'sameCategory';
+    public const CLICK_MATCH_LEVEL_SAME_BRAND = 'sameBrand';
+    public const CLICK_MATCH_LEVEL_CAMPAIGN = 'campaign';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_HOUR = 'hour';
     public const DIMENSIONS_PARENT_ACCOUNT = 'parentAccount';
@@ -494,6 +510,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_MATCH_LEVEL_SAME_SKU = 'sameSku';
+    public const VIEW_MATCH_LEVEL_SAME_CATEGORY = 'sameCategory';
+    public const VIEW_MATCH_LEVEL_SAME_BRAND = 'sameBrand';
+    public const VIEW_MATCH_LEVEL_CAMPAIGN = 'campaign';
 
     /**
      * Gets allowable values of the enum
@@ -549,6 +569,21 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getClickMatchLevelAllowableValues()
+    {
+        return [
+            self::CLICK_MATCH_LEVEL_SAME_SKU,
+            self::CLICK_MATCH_LEVEL_SAME_CATEGORY,
+            self::CLICK_MATCH_LEVEL_SAME_BRAND,
+            self::CLICK_MATCH_LEVEL_CAMPAIGN,
         ];
     }
 
@@ -778,6 +813,21 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewMatchLevelAllowableValues()
+    {
+        return [
+            self::VIEW_MATCH_LEVEL_SAME_SKU,
+            self::VIEW_MATCH_LEVEL_SAME_CATEGORY,
+            self::VIEW_MATCH_LEVEL_SAME_BRAND,
+            self::VIEW_MATCH_LEVEL_CAMPAIGN,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -798,6 +848,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('click_match_level', $data ?? [], 'campaign');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json');
@@ -814,6 +865,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('view_match_level', $data ?? [], 'campaign');
     }
 
     /**
@@ -866,6 +918,15 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'click_attribution_window', must be one of '%s'",
                 $this->container['click_attribution_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getClickMatchLevelAllowableValues();
+        if (!is_null($this->container['click_match_level']) && !in_array($this->container['click_match_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'click_match_level', must be one of '%s'",
+                $this->container['click_match_level'],
                 implode("', '", $allowedValues)
             );
         }
@@ -926,6 +987,15 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'view_attribution_window', must be one of '%s'",
                 $this->container['view_attribution_window'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getViewMatchLevelAllowableValues();
+        if (!is_null($this->container['view_match_level']) && !in_array($this->container['view_match_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'view_match_level', must be one of '%s'",
+                $this->container['view_match_level'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1142,6 +1212,43 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['click_attribution_window'] = $click_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets click_match_level
+     *
+     * @return string|null
+     */
+    public function getClickMatchLevel()
+    {
+        return $this->container['click_match_level'];
+    }
+
+    /**
+     * Sets click_match_level
+     *
+     * @param string|null $click_match_level Click Match Level: Campaign, Same SKU, Same Category or Same Brand
+     *
+     * @return self
+     */
+    public function setClickMatchLevel($click_match_level)
+    {
+        if (is_null($click_match_level)) {
+            throw new \InvalidArgumentException('non-nullable click_match_level cannot be null');
+        }
+        $allowedValues = $this->getClickMatchLevelAllowableValues();
+        if (!in_array($click_match_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'click_match_level', must be one of '%s'",
+                    $click_match_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['click_match_level'] = $click_match_level;
 
         return $this;
     }
@@ -1661,6 +1768,43 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['view_attribution_window'] = $view_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_match_level
+     *
+     * @return string|null
+     */
+    public function getViewMatchLevel()
+    {
+        return $this->container['view_match_level'];
+    }
+
+    /**
+     * Sets view_match_level
+     *
+     * @param string|null $view_match_level View Match Level: Campaign, Same SKU, Same Category or Same Brand
+     *
+     * @return self
+     */
+    public function setViewMatchLevel($view_match_level)
+    {
+        if (is_null($view_match_level)) {
+            throw new \InvalidArgumentException('non-nullable view_match_level cannot be null');
+        }
+        $allowedValues = $this->getViewMatchLevelAllowableValues();
+        if (!in_array($view_match_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_match_level', must be one of '%s'",
+                    $view_match_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['view_match_level'] = $view_match_level;
 
         return $this;
     }
