@@ -360,6 +360,9 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['lookback_days'] === null) {
+            $invalidProperties[] = "'lookback_days' can't be null";
+        }
         $allowedValues = $this->getLookbackDaysAllowableValues();
         if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -369,6 +372,9 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
             );
         }
 
+        if ($this->container['shopper_activity'] === null) {
+            $invalidProperties[] = "'shopper_activity' can't be null";
+        }
         $allowedValues = $this->getShopperActivityAllowableValues();
         if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -454,7 +460,7 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets lookback_days
      *
-     * @return string|null
+     * @return string
      */
     public function getLookbackDays()
     {
@@ -464,7 +470,7 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets lookback_days
      *
-     * @param string|null $lookback_days lookback_days
+     * @param string $lookback_days lookback_days
      *
      * @return self
      */
@@ -545,7 +551,7 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets shopper_activity
      *
-     * @return string|null
+     * @return string
      */
     public function getShopperActivity()
     {
@@ -555,7 +561,7 @@ class RmEventsEstimationV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets shopper_activity
      *
-     * @param string|null $shopper_activity shopper_activity
+     * @param string $shopper_activity shopper_activity
      *
      * @return self
      */

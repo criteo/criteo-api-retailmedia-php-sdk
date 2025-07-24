@@ -306,6 +306,12 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['algebra'] === null) {
+            $invalidProperties[] = "'algebra' can't be null";
+        }
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
+        }
         $allowedValues = $this->getChannelAllowableValues();
         if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -315,6 +321,9 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
             );
         }
 
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -333,7 +342,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets algebra
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null
+     * @return \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1
      */
     public function getAlgebra()
     {
@@ -343,7 +352,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets algebra
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1|null $algebra algebra
+     * @param \criteo\api\retailmedia\preview\Model\RmAlgebraNodeV1 $algebra algebra
      *
      * @return self
      */
@@ -367,7 +376,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets channel
      *
-     * @return string|null
+     * @return string
      */
     public function getChannel()
     {
@@ -377,7 +386,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets channel
      *
-     * @param string|null $channel Channel to estimate the size
+     * @param string $channel Channel to estimate the size
      *
      * @return self
      */
@@ -404,7 +413,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets retailer_id
      *
-     * @return string|null
+     * @return string
      */
     public function getRetailerId()
     {
@@ -414,7 +423,7 @@ class RmAudienceEstimateSizeEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets retailer_id
      *
-     * @param string|null $retailer_id Retailer id of the audience
+     * @param string $retailer_id Retailer id of the audience
      *
      * @return self
      */

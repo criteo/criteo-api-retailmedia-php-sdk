@@ -360,6 +360,9 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['lookback_days'] === null) {
+            $invalidProperties[] = "'lookback_days' can't be null";
+        }
         $allowedValues = $this->getLookbackDaysAllowableValues();
         if (!is_null($this->container['lookback_days']) && !in_array($this->container['lookback_days'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -369,6 +372,9 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['shopper_activity'] === null) {
+            $invalidProperties[] = "'shopper_activity' can't be null";
+        }
         $allowedValues = $this->getShopperActivityAllowableValues();
         if (!is_null($this->container['shopper_activity']) && !in_array($this->container['shopper_activity'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -454,7 +460,7 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets lookback_days
      *
-     * @return string|null
+     * @return string
      */
     public function getLookbackDays()
     {
@@ -464,7 +470,7 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lookback_days
      *
-     * @param string|null $lookback_days Number of days of the lookback windows
+     * @param string $lookback_days Number of days of the lookback windows
      *
      * @return self
      */
@@ -545,7 +551,7 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shopper_activity
      *
-     * @return string|null
+     * @return string
      */
     public function getShopperActivity()
     {
@@ -555,7 +561,7 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shopper_activity
      *
-     * @param string|null $shopper_activity Types of shopper activity.
+     * @param string $shopper_activity Types of shopper activity.
      *
      * @return self
      */

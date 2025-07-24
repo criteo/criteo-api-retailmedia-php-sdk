@@ -306,6 +306,9 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
+        }
         $allowedValues = $this->getChannelAllowableValues();
         if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -315,6 +318,12 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
             );
         }
 
+        if ($this->container['events'] === null) {
+            $invalidProperties[] = "'events' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -333,7 +342,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Gets channel
      *
-     * @return string|null
+     * @return string
      */
     public function getChannel()
     {
@@ -343,7 +352,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Sets channel
      *
-     * @param string|null $channel Channel to estimate the size
+     * @param string $channel Channel to estimate the size
      *
      * @return self
      */
@@ -370,7 +379,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Gets events
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmEventsEstimationV1|null
+     * @return \criteo\api\retailmedia\preview\Model\RmEventsEstimationV1
      */
     public function getEvents()
     {
@@ -380,7 +389,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Sets events
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmEventsEstimationV1|null $events events
+     * @param \criteo\api\retailmedia\preview\Model\RmEventsEstimationV1 $events events
      *
      * @return self
      */
@@ -397,7 +406,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Gets retailer_id
      *
-     * @return string|null
+     * @return string
      */
     public function getRetailerId()
     {
@@ -407,7 +416,7 @@ class RmAudienceSegmentEstimateSizeEntityV1 implements ModelInterface, ArrayAcce
     /**
      * Sets retailer_id
      *
-     * @param string|null $retailer_id Retailer id of the segment
+     * @param string $retailer_id Retailer id of the segment
      *
      * @return self
      */

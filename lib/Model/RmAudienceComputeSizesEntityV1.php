@@ -299,6 +299,9 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
+        }
         $allowedValues = $this->getChannelAllowableValues();
         if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -308,6 +311,9 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
             );
         }
 
+        if ($this->container['ids'] === null) {
+            $invalidProperties[] = "'ids' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -326,7 +332,7 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets channel
      *
-     * @return string|null
+     * @return string
      */
     public function getChannel()
     {
@@ -336,7 +342,7 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets channel
      *
-     * @param string|null $channel Channel to compute the sizes for.
+     * @param string $channel Channel to compute the sizes for.
      *
      * @return self
      */
@@ -363,7 +369,7 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets ids
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getIds()
     {
@@ -373,7 +379,7 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets ids
      *
-     * @param string[]|null $ids List of ids of the segments whose size is requested.
+     * @param string[] $ids List of ids of the segments whose size is requested.
      *
      * @return self
      */
