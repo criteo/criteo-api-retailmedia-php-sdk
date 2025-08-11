@@ -60,15 +60,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static $openAPITypes = [
         'bid_strategy' => 'string',
         'budget' => 'float',
+        'conquesting_adstrategy_enabled' => 'bool',
         'daily_pacing' => 'float',
+        'defensive_adstrategy_enabled' => 'bool',
         'end_date' => '\DateTime',
         'flight_schedule' => '\criteo\api\retailmedia\preview\Model\FlightSchedule',
         'is_auto_daily_pacing' => 'bool',
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
+        'neutral_adstrategy_enabled' => 'bool',
         'start_date' => '\DateTime',
-        'status' => 'string',
         'target_bid' => 'float',
         'target_retailer_id' => 'string'
     ];
@@ -83,17 +85,19 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static $openAPIFormats = [
         'bid_strategy' => null,
         'budget' => 'double',
+        'conquesting_adstrategy_enabled' => null,
         'daily_pacing' => 'double',
+        'defensive_adstrategy_enabled' => null,
         'end_date' => 'date-time',
         'flight_schedule' => null,
         'is_auto_daily_pacing' => null,
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
+        'neutral_adstrategy_enabled' => null,
         'start_date' => 'date-time',
-        'status' => null,
         'target_bid' => 'double',
-        'target_retailer_id' => 'int64'
+        'target_retailer_id' => 'long-id'
     ];
 
     /**
@@ -104,15 +108,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static array $openAPINullables = [
         'bid_strategy' => false,
 		'budget' => true,
+		'conquesting_adstrategy_enabled' => true,
 		'daily_pacing' => true,
+		'defensive_adstrategy_enabled' => true,
 		'end_date' => true,
 		'flight_schedule' => true,
 		'is_auto_daily_pacing' => false,
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
+		'neutral_adstrategy_enabled' => true,
 		'start_date' => false,
-		'status' => false,
 		'target_bid' => true,
 		'target_retailer_id' => false
     ];
@@ -205,15 +211,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static $attributeMap = [
         'bid_strategy' => 'bidStrategy',
         'budget' => 'budget',
+        'conquesting_adstrategy_enabled' => 'conquestingAdstrategyEnabled',
         'daily_pacing' => 'dailyPacing',
+        'defensive_adstrategy_enabled' => 'defensiveAdstrategyEnabled',
         'end_date' => 'endDate',
         'flight_schedule' => 'flightSchedule',
         'is_auto_daily_pacing' => 'isAutoDailyPacing',
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
+        'neutral_adstrategy_enabled' => 'neutralAdstrategyEnabled',
         'start_date' => 'startDate',
-        'status' => 'status',
         'target_bid' => 'targetBid',
         'target_retailer_id' => 'targetRetailerId'
     ];
@@ -226,15 +234,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static $setters = [
         'bid_strategy' => 'setBidStrategy',
         'budget' => 'setBudget',
+        'conquesting_adstrategy_enabled' => 'setConquestingAdstrategyEnabled',
         'daily_pacing' => 'setDailyPacing',
+        'defensive_adstrategy_enabled' => 'setDefensiveAdstrategyEnabled',
         'end_date' => 'setEndDate',
         'flight_schedule' => 'setFlightSchedule',
         'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
+        'neutral_adstrategy_enabled' => 'setNeutralAdstrategyEnabled',
         'start_date' => 'setStartDate',
-        'status' => 'setStatus',
         'target_bid' => 'setTargetBid',
         'target_retailer_id' => 'setTargetRetailerId'
     ];
@@ -247,15 +257,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     protected static $getters = [
         'bid_strategy' => 'getBidStrategy',
         'budget' => 'getBudget',
+        'conquesting_adstrategy_enabled' => 'getConquestingAdstrategyEnabled',
         'daily_pacing' => 'getDailyPacing',
+        'defensive_adstrategy_enabled' => 'getDefensiveAdstrategyEnabled',
         'end_date' => 'getEndDate',
         'flight_schedule' => 'getFlightSchedule',
         'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
+        'neutral_adstrategy_enabled' => 'getNeutralAdstrategyEnabled',
         'start_date' => 'getStartDate',
-        'status' => 'getStatus',
         'target_bid' => 'getTargetBid',
         'target_retailer_id' => 'getTargetRetailerId'
     ];
@@ -305,9 +317,6 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     public const BID_STRATEGY_CONVERSION = 'Conversion';
     public const BID_STRATEGY_CLICKS = 'Clicks';
     public const BID_STRATEGY_REVENUE = 'Revenue';
-    public const STATUS_ACTIVE = 'Active';
-    public const STATUS_PAUSED = 'Paused';
-    public const STATUS_DRAFT = 'Draft';
 
     /**
      * Gets allowable values of the enum
@@ -321,20 +330,6 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-            self::STATUS_DRAFT,
         ];
     }
 
@@ -355,15 +350,17 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     {
         $this->setIfExists('bid_strategy', $data ?? [], 'Conversion');
         $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('conquesting_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('daily_pacing', $data ?? [], null);
+        $this->setIfExists('defensive_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('flight_schedule', $data ?? [], null);
         $this->setIfExists('is_auto_daily_pacing', $data ?? [], false);
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('neutral_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
         $this->setIfExists('target_retailer_id', $data ?? [], null);
     }
@@ -418,15 +415,6 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['target_retailer_id'] === null) {
             $invalidProperties[] = "'target_retailer_id' can't be null";
         }
@@ -517,6 +505,40 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     }
 
     /**
+     * Gets conquesting_adstrategy_enabled
+     *
+     * @return bool|null
+     */
+    public function getConquestingAdstrategyEnabled()
+    {
+        return $this->container['conquesting_adstrategy_enabled'];
+    }
+
+    /**
+     * Sets conquesting_adstrategy_enabled
+     *
+     * @param bool|null $conquesting_adstrategy_enabled conquesting_adstrategy_enabled
+     *
+     * @return self
+     */
+    public function setConquestingAdstrategyEnabled($conquesting_adstrategy_enabled)
+    {
+        if (is_null($conquesting_adstrategy_enabled)) {
+            array_push($this->openAPINullablesSetToNull, 'conquesting_adstrategy_enabled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('conquesting_adstrategy_enabled', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['conquesting_adstrategy_enabled'] = $conquesting_adstrategy_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets daily_pacing
      *
      * @return float|null
@@ -546,6 +568,40 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
             }
         }
         $this->container['daily_pacing'] = $daily_pacing;
+
+        return $this;
+    }
+
+    /**
+     * Gets defensive_adstrategy_enabled
+     *
+     * @return bool|null
+     */
+    public function getDefensiveAdstrategyEnabled()
+    {
+        return $this->container['defensive_adstrategy_enabled'];
+    }
+
+    /**
+     * Sets defensive_adstrategy_enabled
+     *
+     * @param bool|null $defensive_adstrategy_enabled defensive_adstrategy_enabled
+     *
+     * @return self
+     */
+    public function setDefensiveAdstrategyEnabled($defensive_adstrategy_enabled)
+    {
+        if (is_null($defensive_adstrategy_enabled)) {
+            array_push($this->openAPINullablesSetToNull, 'defensive_adstrategy_enabled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('defensive_adstrategy_enabled', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['defensive_adstrategy_enabled'] = $defensive_adstrategy_enabled;
 
         return $this;
     }
@@ -748,6 +804,40 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     }
 
     /**
+     * Gets neutral_adstrategy_enabled
+     *
+     * @return bool|null
+     */
+    public function getNeutralAdstrategyEnabled()
+    {
+        return $this->container['neutral_adstrategy_enabled'];
+    }
+
+    /**
+     * Sets neutral_adstrategy_enabled
+     *
+     * @param bool|null $neutral_adstrategy_enabled neutral_adstrategy_enabled
+     *
+     * @return self
+     */
+    public function setNeutralAdstrategyEnabled($neutral_adstrategy_enabled)
+    {
+        if (is_null($neutral_adstrategy_enabled)) {
+            array_push($this->openAPINullablesSetToNull, 'neutral_adstrategy_enabled');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('neutral_adstrategy_enabled', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['neutral_adstrategy_enabled'] = $neutral_adstrategy_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -770,43 +860,6 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status Status of a line item.
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
 
         return $this;
     }

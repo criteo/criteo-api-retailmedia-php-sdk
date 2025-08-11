@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceOfSellerSearch
+ * ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceOfSellerSearch Class Doc Comment
+ * ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description A top-level object that encapsulates a Criteo API request for a single value objects.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceOfSellerSearch';
+    protected static $openAPIModelName = 'ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\SellerSearch',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemCreateRequestModel'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'type' => true
+        'data' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'data' => 'getData'
     ];
 
     /**
@@ -251,8 +245,7 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -298,62 +291,28 @@ class ValueResourceOfSellerSearch implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\SellerSearch|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemCreateRequestModel|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\SellerSearch|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemCreateRequestModel|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
+        $this->container['data'] = $data;
 
         return $this;
     }

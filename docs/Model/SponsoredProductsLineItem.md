@@ -8,17 +8,18 @@ Name | Type | Description | Notes
 **budget** | **float** |  | [optional]
 **budget_remaining** | **float** |  |
 **budget_spent** | **float** |  | [optional]
-**buy_type** | **string** |  | [optional]
 **campaign_id** | **string** |  |
+**conquesting_adstrategy_enabled** | **bool** |  | [optional]
 **created_at** | **\DateTime** |  |
 **daily_pacing** | **float** |  | [optional]
+**defensive_adstrategy_enabled** | **bool** |  | [optional]
 **end_date** | **\DateTime** |  | [optional]
-**external_line_item_id** | **int** |  |
 **flight_schedule** | [**\criteo\api\retailmedia\preview\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
 **is_auto_daily_pacing** | **bool** |  | [optional]
 **max_bid** | **float** |  | [optional]
 **monthly_pacing** | **float** |  | [optional]
 **name** | **string** |  |
+**neutral_adstrategy_enabled** | **bool** |  | [optional]
 **start_date** | **\DateTime** |  |
 **status** | **string** | Status of a line item. | [optional]
 **target_bid** | **float** |  | [optional]

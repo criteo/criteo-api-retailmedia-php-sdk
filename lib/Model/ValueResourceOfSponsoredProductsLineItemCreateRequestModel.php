@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfSkuSearchRequestSlimPreview
+ * ValueResourceOfSponsoredProductsLineItemCreateRequestModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ResourceOfSkuSearchRequestSlimPreview Class Doc Comment
+ * ValueResourceOfSponsoredProductsLineItemCreateRequestModel Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOfSponsoredProductsLineItemCreateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfSkuSearchRequestSlimPreview';
+    protected static $openAPIModelName = 'ValueResourceOfSponsoredProductsLineItemCreateRequestModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreview',
-        'id' => 'string',
+        'attributes' => '\criteo\api\retailmedia\preview\Model\SponsoredProductsLineItemCreateRequestModel',
         'type' => 'string'
     ];
 
@@ -72,7 +71,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
       */
     protected static $openAPIFormats = [
         'attributes' => null,
-        'id' => null,
         'type' => null
     ];
 
@@ -83,8 +81,7 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
       */
     protected static array $openAPINullables = [
         'attributes' => false,
-		'id' => false,
-		'type' => false
+		'type' => true
     ];
 
     /**
@@ -174,7 +171,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
      */
     protected static $attributeMap = [
         'attributes' => 'attributes',
-        'id' => 'id',
         'type' => 'type'
     ];
 
@@ -185,7 +181,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
      */
     protected static $setters = [
         'attributes' => 'setAttributes',
-        'id' => 'setId',
         'type' => 'setType'
     ];
 
@@ -196,7 +191,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
      */
     protected static $getters = [
         'attributes' => 'getAttributes',
-        'id' => 'getId',
         'type' => 'getType'
     ];
 
@@ -258,7 +252,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
     public function __construct(array $data = null)
     {
         $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -307,7 +300,7 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreview|null
+     * @return \criteo\api\retailmedia\preview\Model\SponsoredProductsLineItemCreateRequestModel|null
      */
     public function getAttributes()
     {
@@ -317,7 +310,7 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\SkuSearchRequestSlimPreview|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\SponsoredProductsLineItemCreateRequestModel|null $attributes attributes
      *
      * @return self
      */
@@ -327,33 +320,6 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Id of the entity
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }
@@ -371,14 +337,21 @@ class ResourceOfSkuSearchRequestSlimPreview implements ModelInterface, ArrayAcce
     /**
      * Sets type
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
     public function setType($type)
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 

@@ -7,7 +7,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
 | [**previewRetailMediaAccountsFeesSearchPost()**](AccountsApi.md#previewRetailMediaAccountsFeesSearchPost) | **POST** /preview/retail-media/accounts/fees/search |  |
 | [**previewRetailMediaAccountsFeesUpdatePost()**](AccountsApi.md#previewRetailMediaAccountsFeesUpdatePost) | **POST** /preview/retail-media/accounts/fees/update |  |
-| [**searchSellers()**](AccountsApi.md#searchSellers) | **POST** /preview/retail-media/accounts/sellers/search |  |
 
 
 ## `getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()`
@@ -193,69 +192,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult**](../Model/ValueResourceOutcomeAccountFeesUpdateResult.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `searchSellers()`
-
-```php
-searchSellers($value_resource_input_of_seller_search): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult
-```
-
-
-
-Get the sellers mapped to provided accounts
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$value_resource_input_of_seller_search = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerSearch(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerSearch | 
-
-try {
-    $result = $apiInstance->searchSellers($value_resource_input_of_seller_search);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->searchSellers: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **value_resource_input_of_seller_search** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSellerSearch**](../Model/ValueResourceInputOfSellerSearch.md)|  | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfSellerSearchResult**](../Model/ValueResourceCollectionOutcomeOfSellerSearchResult.md)
 
 ### Authorization
 
