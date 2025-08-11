@@ -1963,7 +1963,7 @@ getCampaignBudgetOverrides($campaign_id): \criteo\api\retailmedia\v2025_04\Model
 
 
 
-Get current campaign budget overrides by given external campaign id.
+Get current campaign budget overrides by given campaign id.
 
 ### Example
 
@@ -1985,7 +1985,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | External campaign id.
+$campaign_id = 56; // int | Campaign id.
 
 try {
     $result = $apiInstance->getCampaignBudgetOverrides($campaign_id);
@@ -1999,7 +1999,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| External campaign id. | |
+| **campaign_id** | **int**| Campaign id. | |
 
 ### Return type
 
@@ -2176,7 +2176,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$external_line_item_id = 'external_line_item_id_example'; // string | The external line item identifier
+$external_line_item_id = 'external_line_item_id_example'; // string | The line item identifier
 
 try {
     $result = $apiInstance->getRecommendedKeywords($external_line_item_id);
@@ -2190,7 +2190,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **external_line_item_id** | **string**| The external line item identifier | |
+| **external_line_item_id** | **string**| The line item identifier | |
 
 ### Return type
 
@@ -3907,7 +3907,7 @@ updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_bu
 
 
 
-Update campaign budget overrides by given external campaign id and new campaign budget overrides settings.
+Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
 
 ### Example
 
@@ -3929,7 +3929,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | External campaign id.
+$campaign_id = 56; // int | Campaign id.
 $value_resource_input_of_campaign_budget_overrides = new \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides(); // \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
 
 try {
@@ -3944,7 +3944,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| External campaign id. | |
+| **campaign_id** | **int**| Campaign id. | |
 | **value_resource_input_of_campaign_budget_overrides** | [**\criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides**](../Model/ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | [optional] |
 
 ### Return type
@@ -3972,7 +3972,7 @@ updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_
 
 
 
-Update line item budget overrides by given external line item id and new line item budget overrides settings.
+Update line item budget overrides by given line item id and new line item budget overrides settings.
 
 ### Example
 
@@ -3994,7 +3994,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | Line item external id.
+$line_item_id = 'line_item_id_example'; // string | Line item id.
 $value_resource_input_of_line_item_budget_overrides = new \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfLineItemBudgetOverrides(); // \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfLineItemBudgetOverrides | New line item budget overrides settings value resource input.
 
 try {
@@ -4009,7 +4009,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| Line item external id. | |
+| **line_item_id** | **string**| Line item id. | |
 | **value_resource_input_of_line_item_budget_overrides** | [**\criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfLineItemBudgetOverrides**](../Model/ValueResourceInputOfLineItemBudgetOverrides.md)| New line item budget overrides settings value resource input. | [optional] |
 
 ### Return type
