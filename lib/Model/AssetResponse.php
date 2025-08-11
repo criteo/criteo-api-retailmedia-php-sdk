@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
  * AssetResponse Class Doc Comment
  *
  * @category Class
- * @description A class implementing the response of the Criteo API as described in API Guild Guidelines with a single entity as body
+ * @description A top-level object that encapsulates a Criteo API response for a single entity
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -367,8 +367,6 @@ class AssetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-
         $this->container['errors'] = $errors;
 
         return $this;
@@ -403,8 +401,6 @@ class AssetResponse implements ModelInterface, ArrayAccess, \JsonSerializable
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-
         $this->container['warnings'] = $warnings;
 
         return $this;

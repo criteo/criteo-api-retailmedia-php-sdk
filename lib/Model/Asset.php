@@ -59,8 +59,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'file_extension' => 'string',
-        'file_location' => 'string',
-        'id' => 'string'
+        'file_location' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'file_extension' => null,
-        'file_location' => null,
-        'id' => null
+        'file_location' => null
     ];
 
     /**
@@ -83,8 +81,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'file_extension' => false,
-		'file_location' => true,
-		'id' => true
+		'file_location' => true
     ];
 
     /**
@@ -174,8 +171,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'file_extension' => 'fileExtension',
-        'file_location' => 'fileLocation',
-        'id' => 'id'
+        'file_location' => 'fileLocation'
     ];
 
     /**
@@ -185,8 +181,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'file_extension' => 'setFileExtension',
-        'file_location' => 'setFileLocation',
-        'id' => 'setId'
+        'file_location' => 'setFileLocation'
     ];
 
     /**
@@ -196,8 +191,7 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'file_extension' => 'getFileExtension',
-        'file_location' => 'getFileLocation',
-        'id' => 'getId'
+        'file_location' => 'getFileLocation'
     ];
 
     /**
@@ -259,7 +253,6 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('file_extension', $data ?? [], null);
         $this->setIfExists('file_location', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -364,40 +357,6 @@ class Asset implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['file_location'] = $file_location;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
 
         return $this;
     }
