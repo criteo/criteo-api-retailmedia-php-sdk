@@ -9594,7 +9594,7 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverrides
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
@@ -9610,7 +9610,7 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverridesWithHttpInfo
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
@@ -9708,7 +9708,7 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverridesAsync
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9727,7 +9727,7 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverridesAsyncWithHttpInfo
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9777,7 +9777,7 @@ class CampaignApi
     /**
      * Create request for operation 'getCampaignBudgetOverrides'
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10160,7 +10160,7 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywords
      *
-     * @param  string $external_line_item_id The external line item identifier (required)
+     * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
@@ -10176,7 +10176,7 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsWithHttpInfo
      *
-     * @param  string $external_line_item_id The external line item identifier (required)
+     * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_01\ApiException on non-2xx response
@@ -10274,7 +10274,7 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsAsync
      *
-     * @param  string $external_line_item_id The external line item identifier (required)
+     * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10293,7 +10293,7 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsAsyncWithHttpInfo
      *
-     * @param  string $external_line_item_id The external line item identifier (required)
+     * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -10343,7 +10343,7 @@ class CampaignApi
     /**
      * Create request for operation 'getRecommendedKeywords'
      *
-     * @param  string $external_line_item_id The external line item identifier (required)
+     * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -19080,7 +19080,7 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverrides
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -19097,7 +19097,7 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverridesWithHttpInfo
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -19196,7 +19196,7 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverridesAsync
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -19216,7 +19216,7 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverridesAsyncWithHttpInfo
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -19267,7 +19267,7 @@ class CampaignApi
     /**
      * Create request for operation 'updateCampaignBudgetOverrides'
      *
-     * @param  int $campaign_id External campaign id. (required)
+     * @param  int $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -19376,7 +19376,7 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverrides
      *
-     * @param  string $line_item_id Line item external id. (required)
+     * @param  string $line_item_id Line item id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -19393,7 +19393,7 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverridesWithHttpInfo
      *
-     * @param  string $line_item_id Line item external id. (required)
+     * @param  string $line_item_id Line item id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -19492,7 +19492,7 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverridesAsync
      *
-     * @param  string $line_item_id Line item external id. (required)
+     * @param  string $line_item_id Line item id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -19512,7 +19512,7 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverridesAsyncWithHttpInfo
      *
-     * @param  string $line_item_id Line item external id. (required)
+     * @param  string $line_item_id Line item id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -19563,7 +19563,7 @@ class CampaignApi
     /**
      * Create request for operation 'updateLineItemBudgetOverrides'
      *
-     * @param  string $line_item_id Line item external id. (required)
+     * @param  string $line_item_id Line item id. (required)
      * @param  \criteo\api\retailmedia\v2025_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
      *
