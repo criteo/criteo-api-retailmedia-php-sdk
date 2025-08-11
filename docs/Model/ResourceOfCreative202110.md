@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2024_07\Model\Creative202110**](Creative202110.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_07\Model\Creative202110**](Creative202110.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 

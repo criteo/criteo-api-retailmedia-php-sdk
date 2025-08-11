@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2024_07\Model\ExternalCatalogStatus**](ExternalCatalogStatus.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_07\Model\ExternalCatalogStatus**](ExternalCatalogStatus.md) |  | [optional]
 **id** | **string** |  |
 **type** | **string** |  |
 
