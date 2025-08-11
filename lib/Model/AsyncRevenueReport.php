@@ -79,6 +79,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sku_relations' => 'string[]',
         'sold_by' => 'string',
         'start_date' => '\DateTime',
+        'targeted_keyword_types' => 'string[]',
         'timezone' => 'string',
         'view_attribution_window' => 'string',
         'view_match_level' => 'string'
@@ -113,6 +114,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sku_relations' => null,
         'sold_by' => null,
         'start_date' => 'date-time',
+        'targeted_keyword_types' => null,
         'timezone' => null,
         'view_attribution_window' => null,
         'view_match_level' => null
@@ -145,6 +147,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'sku_relations' => false,
 		'sold_by' => false,
 		'start_date' => false,
+		'targeted_keyword_types' => false,
 		'timezone' => false,
 		'view_attribution_window' => false,
 		'view_match_level' => false
@@ -257,6 +260,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sku_relations' => 'skuRelations',
         'sold_by' => 'soldBy',
         'start_date' => 'startDate',
+        'targeted_keyword_types' => 'targetedKeywordTypes',
         'timezone' => 'timezone',
         'view_attribution_window' => 'viewAttributionWindow',
         'view_match_level' => 'viewMatchLevel'
@@ -289,6 +293,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sku_relations' => 'setSkuRelations',
         'sold_by' => 'setSoldBy',
         'start_date' => 'setStartDate',
+        'targeted_keyword_types' => 'setTargetedKeywordTypes',
         'timezone' => 'setTimezone',
         'view_attribution_window' => 'setViewAttributionWindow',
         'view_match_level' => 'setViewMatchLevel'
@@ -321,6 +326,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'sku_relations' => 'getSkuRelations',
         'sold_by' => 'getSoldBy',
         'start_date' => 'getStartDate',
+        'targeted_keyword_types' => 'getTargetedKeywordTypes',
         'timezone' => 'getTimezone',
         'view_attribution_window' => 'getViewAttributionWindow',
         'view_match_level' => 'getViewMatchLevel'
@@ -439,6 +445,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_TAXONOMY6_NAME = 'taxonomy6Name';
     public const DIMENSIONS_TAXONOMY7_ID = 'taxonomy7Id';
     public const DIMENSIONS_TAXONOMY7_NAME = 'taxonomy7Name';
+    public const DIMENSIONS_TARGETED_KEYWORD_TYPE = 'targetedKeywordType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -505,6 +512,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const SOLD_BY_DIRECT_SOLD = 'directSold';
     public const SOLD_BY_INDIRECT_SOLD = 'indirectSold';
     public const SOLD_BY_PRIVATE_MARKET = 'privateMarket';
+    public const TARGETED_KEYWORD_TYPES_UNKNOWN = 'unknown';
+    public const TARGETED_KEYWORD_TYPES_GENERIC = 'generic';
+    public const TARGETED_KEYWORD_TYPES_BRANDED = 'branded';
+    public const TARGETED_KEYWORD_TYPES_CONQUESTING = 'conquesting';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
@@ -650,6 +661,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_TAXONOMY6_NAME,
             self::DIMENSIONS_TAXONOMY7_ID,
             self::DIMENSIONS_TAXONOMY7_NAME,
+            self::DIMENSIONS_TARGETED_KEYWORD_TYPE,
         ];
     }
 
@@ -801,6 +813,21 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
+    public function getTargetedKeywordTypesAllowableValues()
+    {
+        return [
+            self::TARGETED_KEYWORD_TYPES_UNKNOWN,
+            self::TARGETED_KEYWORD_TYPES_GENERIC,
+            self::TARGETED_KEYWORD_TYPES_BRANDED,
+            self::TARGETED_KEYWORD_TYPES_CONQUESTING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getViewAttributionWindowAllowableValues()
     {
         return [
@@ -863,6 +890,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('sku_relations', $data ?? [], null);
         $this->setIfExists('sold_by', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('targeted_keyword_types', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
         $this->setIfExists('view_attribution_window', $data ?? [], 'none');
         $this->setIfExists('view_match_level', $data ?? [], 'campaign');
@@ -1704,6 +1732,42 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets targeted_keyword_types
+     *
+     * @return string[]|null
+     */
+    public function getTargetedKeywordTypes()
+    {
+        return $this->container['targeted_keyword_types'];
+    }
+
+    /**
+     * Sets targeted_keyword_types
+     *
+     * @param string[]|null $targeted_keyword_types Filter on targeted keyword type: unknown, generic, branded, conquesting
+     *
+     * @return self
+     */
+    public function setTargetedKeywordTypes($targeted_keyword_types)
+    {
+        if (is_null($targeted_keyword_types)) {
+            throw new \InvalidArgumentException('non-nullable targeted_keyword_types cannot be null');
+        }
+        $allowedValues = $this->getTargetedKeywordTypesAllowableValues();
+        if (array_diff($targeted_keyword_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'targeted_keyword_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['targeted_keyword_types'] = $targeted_keyword_types;
 
         return $this;
     }

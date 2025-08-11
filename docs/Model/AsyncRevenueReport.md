@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **sku_relations** | **string[]** | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller | [optional]
 **sold_by** | **string** | Filter on the seller: Indirect Sold, Direct Sold or Private Market | [optional]
 **start_date** | **\DateTime** | Start date |
+**targeted_keyword_types** | **string[]** | Filter on targeted keyword type: unknown, generic, branded, conquesting | [optional]
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']
 **view_attribution_window** | **string** | View attribution window | [optional] [default to 'none']
 **view_match_level** | **string** | View Match Level: Campaign, Same SKU, Same Category or Same Brand | [optional] [default to 'campaign']
