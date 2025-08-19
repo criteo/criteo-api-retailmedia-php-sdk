@@ -4,18 +4,18 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#getApiV2ExternalAccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**getApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#getApiV2ExternalAccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**getApiExternalV2AccountBalancesByAccountId()**](BalanceApi.md#getApiExternalV2AccountBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**getApiExternalV2AccountByAccountIdBalancesbalanceId()**](BalanceApi.md#getApiExternalV2AccountByAccountIdBalancesbalanceId) | **GET** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 | [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
-| [**patchApiV2ExternalAccountByAccountIdBalancesbalanceId()**](BalanceApi.md#patchApiV2ExternalAccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
-| [**postApiV2ExternalAccountBalancesByAccountId()**](BalanceApi.md#postApiV2ExternalAccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
-| [**postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
+| [**patchApiExternalV2AccountByAccountIdBalancesbalanceId()**](BalanceApi.md#patchApiExternalV2AccountByAccountIdBalancesbalanceId) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**postApiExternalV2AccountBalancesByAccountId()**](BalanceApi.md#postApiExternalV2AccountBalancesByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
+| [**postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId()**](BalanceApi.md#postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId) | **POST** /preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |  |
 
 
-## `getApiV2ExternalAccountBalancesByAccountId()`
+## `getApiExternalV2AccountBalancesByAccountId()`
 
 ```php
-getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2
+getApiExternalV2AccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse
 ```
 
 
@@ -48,10 +48,10 @@ $page_index = 0; // int | The 0 indexed page index you would like to receive giv
 $page_size = 25; // int | The maximum number of items you would like to receive in this request
 
 try {
-    $result = $apiInstance->getApiV2ExternalAccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getApiExternalV2AccountBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->getApiV2ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->getApiExternalV2AccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,7 +66,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\PagedResourceCollectionOutcomeOfBalanceResponseV2**](../Model/PagedResourceCollectionOutcomeOfBalanceResponseV2.md)
+[**\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse**](../Model/BalanceResponseV2PagedListResponse.md)
 
 ### Authorization
 
@@ -81,10 +81,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getApiV2ExternalAccountByAccountIdBalancesbalanceId()`
+## `getApiExternalV2AccountByAccountIdBalancesbalanceId()`
 
 ```php
-getApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+getApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
 ```
 
 
@@ -115,10 +115,10 @@ $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance id
 
 try {
-    $result = $apiInstance->getApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id);
+    $result = $apiInstance->getApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->getApiV2ExternalAccountByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->getApiExternalV2AccountByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -215,10 +215,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `patchApiV2ExternalAccountByAccountIdBalancesbalanceId()`
+## `patchApiExternalV2AccountByAccountIdBalancesbalanceId()`
 
 ```php
-patchApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+patchApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
 ```
 
 
@@ -250,10 +250,10 @@ $balance_id = 'balance_id_example'; // string | The balance to change the dates
 $update_balance_model_v2_request = new \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request(); // \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
 
 try {
-    $result = $apiInstance->patchApiV2ExternalAccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request);
+    $result = $apiInstance->patchApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->patchApiV2ExternalAccountByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->patchApiExternalV2AccountByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -263,7 +263,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
+| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | [optional] |
 
 ### Return type
 
@@ -282,10 +282,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApiV2ExternalAccountBalancesByAccountId()`
+## `postApiExternalV2AccountBalancesByAccountId()`
 
 ```php
-postApiV2ExternalAccountBalancesByAccountId($account_id, $create_balance_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request)
 ```
 
 
@@ -316,10 +316,9 @@ $account_id = 'account_id_example'; // string | The account to create balances f
 $create_balance_v2_request = new \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request(); // \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
 
 try {
-    $result = $apiInstance->postApiV2ExternalAccountBalancesByAccountId($account_id, $create_balance_v2_request);
-    print_r($result);
+    $apiInstance->postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->postApiV2ExternalAccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->postApiExternalV2AccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -328,11 +327,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to create balances for | |
-| **create_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
+| **create_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+void (empty response body)
 
 ### Authorization
 
@@ -347,10 +346,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId()`
+## `postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId()`
 
 ```php
-postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
 ```
 
 
@@ -382,10 +381,10 @@ $balance_id = 'balance_id_example'; // string | The balance to change the dates
 $change_dates_of_balance_v2_request = new \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request(); // \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request | An object that represents the available options to modify schedule of a balance.
 
 try {
-    $result = $apiInstance->postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request);
+    $result = $apiInstance->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->postApiV2ExternalAccountChangeDatesByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -395,7 +394,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | |
+| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | [optional] |
 
 ### Return type
 

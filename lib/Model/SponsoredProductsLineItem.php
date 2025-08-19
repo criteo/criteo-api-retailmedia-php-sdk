@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * SponsoredProductsLineItem Class Doc Comment
  *
  * @category Class
- * @description A model representing a Sponsored Products Line Item.
+ * @description Model of a retail media auction line item.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -349,10 +349,10 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_UNKNOWN = 'Unknown';
-    public const BID_STRATEGY_CONVERSION = 'Conversion';
-    public const BID_STRATEGY_CLICKS = 'Clicks';
-    public const BID_STRATEGY_REVENUE = 'Revenue';
+    public const BID_STRATEGY_UNKNOWN = 'unknown';
+    public const BID_STRATEGY_CONVERSION = 'conversion';
+    public const BID_STRATEGY_CLICKS = 'clicks';
+    public const BID_STRATEGY_REVENUE = 'revenue';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';

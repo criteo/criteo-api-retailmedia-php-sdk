@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalLineItemPageCategoryV2
+ * ProductButtonRequestRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalLineItemPageCategoryV2 Class Doc Comment
+ * ProductButtonRequestRequest Class Doc Comment
  *
  * @category Class
- * @description Category information for a preferred line item page
+ * @description A top-level object that encapsulates a Criteo API request for a single entity
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalLineItemPageCategoryV2';
+    protected static $openAPIModelName = 'ProductButtonRequestRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'category_id' => 'string',
-        'include_children' => 'bool'
+        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'category_id' => null,
-        'include_children' => null
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'category_id' => false,
-		'include_children' => false
+        'data' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'category_id' => 'categoryId',
-        'include_children' => 'includeChildren'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'category_id' => 'setCategoryId',
-        'include_children' => 'setIncludeChildren'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'category_id' => 'getCategoryId',
-        'include_children' => 'getIncludeChildren'
+        'data' => 'getData'
     ];
 
     /**
@@ -251,8 +245,7 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('category_id', $data ?? [], null);
-        $this->setIfExists('include_children', $data ?? [], true);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -282,9 +275,6 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['category_id'] === null) {
-            $invalidProperties[] = "'category_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,55 +291,35 @@ class ExternalLineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets category_id
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest|null
      */
-    public function getCategoryId()
+    public function getData()
     {
-        return $this->container['category_id'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets category_id
+     * Sets data
      *
-     * @param string $category_id category_id
+     * @param \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest|null $data data
      *
      * @return self
      */
-    public function setCategoryId($category_id)
+    public function setData($data)
     {
-        if (is_null($category_id)) {
-            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['category_id'] = $category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_children
-     *
-     * @return bool|null
-     */
-    public function getIncludeChildren()
-    {
-        return $this->container['include_children'];
-    }
-
-    /**
-     * Sets include_children
-     *
-     * @param bool|null $include_children include_children
-     *
-     * @return self
-     */
-    public function setIncludeChildren($include_children)
-    {
-        if (is_null($include_children)) {
-            throw new \InvalidArgumentException('non-nullable include_children cannot be null');
-        }
-        $this->container['include_children'] = $include_children;
+        $this->container['data'] = $data;
 
         return $this;
     }

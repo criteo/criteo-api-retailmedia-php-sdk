@@ -1,9 +1,10 @@
-# # ProductButtonListRequest
+# # RmAudienceComputeSizeEntityV1Resource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest[]**](ResourceOfProductButtonRequest.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizeEntityV1**](RmAudienceComputeSizeEntityV1.md) |  | [optional]
+**type** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

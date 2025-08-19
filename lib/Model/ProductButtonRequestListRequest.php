@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalLineItemPageV2
+ * ProductButtonRequestListRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalLineItemPageV2 Class Doc Comment
+ * ProductButtonRequestListRequest Class Doc Comment
  *
  * @category Class
- * @description Page information for a preferred line item
+ * @description A top-level object that encapsulates a Criteo API request for several entities
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductButtonRequestListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalLineItemPageV2';
+    protected static $openAPIModelName = 'ProductButtonRequestListRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'categories' => '\criteo\api\retailmedia\preview\Model\ExternalLineItemPageCategoryV2[]',
-        'page_type' => 'string',
-        'search_keywords' => 'string[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'categories' => null,
-        'page_type' => null,
-        'search_keywords' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'categories' => true,
-		'page_type' => false,
-		'search_keywords' => true
+        'data' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'categories' => 'categories',
-        'page_type' => 'pageType',
-        'search_keywords' => 'searchKeywords'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'categories' => 'setCategories',
-        'page_type' => 'setPageType',
-        'search_keywords' => 'setSearchKeywords'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'categories' => 'getCategories',
-        'page_type' => 'getPageType',
-        'search_keywords' => 'getSearchKeywords'
+        'data' => 'getData'
     ];
 
     /**
@@ -241,43 +229,6 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const PAGE_TYPE_UNKNOWN = 'unknown';
-    public const PAGE_TYPE_SEARCH = 'search';
-    public const PAGE_TYPE_HOME = 'home';
-    public const PAGE_TYPE_BROWSE = 'browse';
-    public const PAGE_TYPE_CHECKOUT = 'checkout';
-    public const PAGE_TYPE_CATEGORY = 'category';
-    public const PAGE_TYPE_PRODUCT_DETAIL = 'productDetail';
-    public const PAGE_TYPE_CONFIRMATION = 'confirmation';
-    public const PAGE_TYPE_MERCHANDISING = 'merchandising';
-    public const PAGE_TYPE_DEALS = 'deals';
-    public const PAGE_TYPE_FAVORITES = 'favorites';
-    public const PAGE_TYPE_SEARCH_BAR = 'searchBar';
-    public const PAGE_TYPE_CATEGORY_MENU = 'categoryMenu';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageTypeAllowableValues()
-    {
-        return [
-            self::PAGE_TYPE_UNKNOWN,
-            self::PAGE_TYPE_SEARCH,
-            self::PAGE_TYPE_HOME,
-            self::PAGE_TYPE_BROWSE,
-            self::PAGE_TYPE_CHECKOUT,
-            self::PAGE_TYPE_CATEGORY,
-            self::PAGE_TYPE_PRODUCT_DETAIL,
-            self::PAGE_TYPE_CONFIRMATION,
-            self::PAGE_TYPE_MERCHANDISING,
-            self::PAGE_TYPE_DEALS,
-            self::PAGE_TYPE_FAVORITES,
-            self::PAGE_TYPE_SEARCH_BAR,
-            self::PAGE_TYPE_CATEGORY_MENU,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -294,9 +245,7 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('categories', $data ?? [], null);
-        $this->setIfExists('page_type', $data ?? [], null);
-        $this->setIfExists('search_keywords', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -326,18 +275,6 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        if ($this->container['page_type'] === null) {
-            $invalidProperties[] = "'page_type' can't be null";
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -354,106 +291,28 @@ class ExternalLineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets categories
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalLineItemPageCategoryV2[]|null
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest[]|null
      */
-    public function getCategories()
+    public function getData()
     {
-        return $this->container['categories'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets categories
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalLineItemPageCategoryV2[]|null $categories categories
+     * @param \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonRequest[]|null $data data
      *
      * @return self
      */
-    public function setCategories($categories)
+    public function setData($data)
     {
-        if (is_null($categories)) {
-            array_push($this->openAPINullablesSetToNull, 'categories');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('categories', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['categories'] = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_type
-     *
-     * @return string
-     */
-    public function getPageType()
-    {
-        return $this->container['page_type'];
-    }
-
-    /**
-     * Sets page_type
-     *
-     * @param string $page_type Page Type Enum
-     *
-     * @return self
-     */
-    public function setPageType($page_type)
-    {
-        if (is_null($page_type)) {
-            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!in_array($page_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_type', must be one of '%s'",
-                    $page_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_type'] = $page_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets search_keywords
-     *
-     * @return string[]|null
-     */
-    public function getSearchKeywords()
-    {
-        return $this->container['search_keywords'];
-    }
-
-    /**
-     * Sets search_keywords
-     *
-     * @param string[]|null $search_keywords search_keywords
-     *
-     * @return self
-     */
-    public function setSearchKeywords($search_keywords)
-    {
-        if (is_null($search_keywords)) {
-            array_push($this->openAPINullablesSetToNull, 'search_keywords');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('search_keywords', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['search_keywords'] = $search_keywords;
+        $this->container['data'] = $data;
 
         return $this;
     }

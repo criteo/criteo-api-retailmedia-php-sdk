@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_strategy** | **string** |  | [optional] [default to 'Conversion']
+**bid_strategy** | **string** |  | [optional] [default to 'conversion']
 **budget** | **float** |  | [optional]
 **conquesting_adstrategy_enabled** | **bool** |  | [optional]
 **daily_pacing** | **float** |  | [optional]

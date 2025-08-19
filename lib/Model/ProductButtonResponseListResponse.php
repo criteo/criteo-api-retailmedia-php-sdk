@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalLineItemCappingV2
+ * ProductButtonResponseListResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalLineItemCappingV2 Class Doc Comment
+ * ProductButtonResponseListResponse Class Doc Comment
  *
  * @category Class
- * @description Frequency Capping for a Preferred Line Item
+ * @description A top-level object that encapsulates a Criteo API response for several entities
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductButtonResponseListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalLineItemCappingV2';
+    protected static $openAPIModelName = 'ProductButtonResponseListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'count' => 'int',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'count' => 'int32',
-        'type' => null
+        'data' => null,
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'count' => false,
-		'type' => false
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'count' => 'count',
-        'type' => 'type'
+        'data' => 'data',
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -180,8 +184,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'count' => 'setCount',
-        'type' => 'setType'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -190,8 +195,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'count' => 'getCount',
-        'type' => 'getType'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -235,23 +241,6 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_DAY = 'day';
-    public const TYPE_SESSION = 'session';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_DAY,
-            self::TYPE_SESSION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -268,8 +257,9 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('count', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -299,21 +289,6 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['count'] === null) {
-            $invalidProperties[] = "'count' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -330,65 +305,103 @@ class ExternalLineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets count
+     * Gets data
      *
-     * @return int
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]|null
      */
-    public function getCount()
+    public function getData()
     {
-        return $this->container['count'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets count
+     * Sets data
      *
-     * @param int $count count
+     * @param \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]|null $data data
      *
      * @return self
      */
-    public function setCount($count)
+    public function setData($data)
     {
-        if (is_null($count)) {
-            throw new \InvalidArgumentException('non-nullable count cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['count'] = $count;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets errors
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
      */
-    public function getType()
+    public function getErrors()
     {
-        return $this->container['type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets type
+     * Sets errors
      *
-     * @param string $type Line Item Capping Type Enum
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setType($type)
+    public function setErrors($errors)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

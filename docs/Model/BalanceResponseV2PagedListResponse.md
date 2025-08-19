@@ -1,4 +1,4 @@
-# # PagedResourceCollectionOutcomeOfBalanceResponseV2
+# # BalanceResponseV2PagedListResponse
 
 ## Properties
 

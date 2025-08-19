@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalPreferredLineItemUpdateModelV2
+ * PreferredLineItemCreateModelV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalPreferredLineItemUpdateModelV2 Class Doc Comment
+ * PreferredLineItemCreateModelV2 Class Doc Comment
  *
  * @category Class
- * @description Model used to update a preferred line item
+ * @description Model used to create a preferred line item
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreferredLineItemCreateModelV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalPreferredLineItemUpdateModelV2';
+    protected static $openAPIModelName = 'PreferredLineItemCreateModelV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,15 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
       */
     protected static $openAPITypes = [
         'budget' => 'float',
-        'capping' => '\criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2',
+        'capping' => '\criteo\api\retailmedia\preview\Model\LineItemCappingV2',
         'creative_id' => 'string',
         'end_date' => '\DateTime',
         'name' => 'string',
         'pacing' => 'string',
-        'page' => '\criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2',
+        'page' => '\criteo\api\retailmedia\preview\Model\LineItemPageV2',
         'start_date' => '\DateTime',
-        'status' => 'string'
+        'status' => 'string',
+        'target_retailer_id' => 'string'
     ];
 
     /**
@@ -85,7 +86,8 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
         'pacing' => null,
         'page' => null,
         'start_date' => 'date',
-        'status' => null
+        'status' => null,
+        'target_retailer_id' => 'long-id'
     ];
 
     /**
@@ -95,14 +97,15 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
       */
     protected static array $openAPINullables = [
         'budget' => false,
-		'capping' => true,
-		'creative_id' => true,
+		'capping' => false,
+		'creative_id' => false,
 		'end_date' => false,
 		'name' => false,
 		'pacing' => false,
-		'page' => false,
+		'page' => true,
 		'start_date' => false,
-		'status' => false
+		'status' => false,
+		'target_retailer_id' => false
     ];
 
     /**
@@ -199,7 +202,8 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
         'pacing' => 'pacing',
         'page' => 'page',
         'start_date' => 'startDate',
-        'status' => 'status'
+        'status' => 'status',
+        'target_retailer_id' => 'targetRetailerId'
     ];
 
     /**
@@ -216,7 +220,8 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
         'pacing' => 'setPacing',
         'page' => 'setPage',
         'start_date' => 'setStartDate',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'target_retailer_id' => 'setTargetRetailerId'
     ];
 
     /**
@@ -233,7 +238,8 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
         'pacing' => 'getPacing',
         'page' => 'getPage',
         'start_date' => 'getStartDate',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'target_retailer_id' => 'getTargetRetailerId'
     ];
 
     /**
@@ -344,10 +350,11 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
         $this->setIfExists('creative_id', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('pacing', $data ?? [], 'accelerated');
+        $this->setIfExists('pacing', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('target_retailer_id', $data ?? [], null);
     }
 
     /**
@@ -377,6 +384,9 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['budget'] === null) {
+            $invalidProperties[] = "'budget' can't be null";
+        }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
         }
@@ -391,6 +401,9 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
+        if ($this->container['pacing'] === null) {
+            $invalidProperties[] = "'pacing' can't be null";
+        }
         $allowedValues = $this->getPacingAllowableValues();
         if (!is_null($this->container['pacing']) && !in_array($this->container['pacing'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -400,11 +413,11 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
             );
         }
 
+        if ($this->container['page'] === null) {
+            $invalidProperties[] = "'page' can't be null";
+        }
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
@@ -415,6 +428,9 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
             );
         }
 
+        if ($this->container['target_retailer_id'] === null) {
+            $invalidProperties[] = "'target_retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -433,7 +449,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Gets budget
      *
-     * @return float|null
+     * @return float
      */
     public function getBudget()
     {
@@ -443,7 +459,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Sets budget
      *
-     * @param float|null $budget budget
+     * @param float $budget budget
      *
      * @return self
      */
@@ -460,7 +476,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Gets capping
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2|null
+     * @return \criteo\api\retailmedia\preview\Model\LineItemCappingV2|null
      */
     public function getCapping()
     {
@@ -470,21 +486,14 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Sets capping
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2|null $capping capping
+     * @param \criteo\api\retailmedia\preview\Model\LineItemCappingV2|null $capping capping
      *
      * @return self
      */
     public function setCapping($capping)
     {
         if (is_null($capping)) {
-            array_push($this->openAPINullablesSetToNull, 'capping');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('capping', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable capping cannot be null');
         }
         $this->container['capping'] = $capping;
 
@@ -511,14 +520,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     public function setCreativeId($creative_id)
     {
         if (is_null($creative_id)) {
-            array_push($this->openAPINullablesSetToNull, 'creative_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('creative_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
         }
         $this->container['creative_id'] = $creative_id;
 
@@ -575,10 +577,10 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModelV2., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling PreferredLineItemCreateModelV2., must be smaller than or equal to 255.');
         }
         if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemUpdateModelV2., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $name when calling PreferredLineItemCreateModelV2., must be bigger than or equal to 0.');
         }
 
         $this->container['name'] = $name;
@@ -589,7 +591,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Gets pacing
      *
-     * @return string|null
+     * @return string
      */
     public function getPacing()
     {
@@ -599,7 +601,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Sets pacing
      *
-     * @param string|null $pacing pacing
+     * @param string $pacing Line Item Pacing Enum
      *
      * @return self
      */
@@ -626,7 +628,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Gets page
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2|null
+     * @return \criteo\api\retailmedia\preview\Model\LineItemPageV2
      */
     public function getPage()
     {
@@ -636,14 +638,21 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Sets page
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2|null $page page
+     * @param \criteo\api\retailmedia\preview\Model\LineItemPageV2 $page page
      *
      * @return self
      */
     public function setPage($page)
     {
         if (is_null($page)) {
-            throw new \InvalidArgumentException('non-nullable page cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'page');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['page'] = $page;
 
@@ -680,7 +689,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -690,7 +699,7 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
     /**
      * Sets status
      *
-     * @param string $status Line Item Status Enum
+     * @param string|null $status Line Item Status Enum
      *
      * @return self
      */
@@ -710,6 +719,33 @@ class ExternalPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAcc
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_retailer_id
+     *
+     * @return string
+     */
+    public function getTargetRetailerId()
+    {
+        return $this->container['target_retailer_id'];
+    }
+
+    /**
+     * Sets target_retailer_id
+     *
+     * @param string $target_retailer_id target_retailer_id
+     *
+     * @return self
+     */
+    public function setTargetRetailerId($target_retailer_id)
+    {
+        if (is_null($target_retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable target_retailer_id cannot be null');
+        }
+        $this->container['target_retailer_id'] = $target_retailer_id;
 
         return $this;
     }

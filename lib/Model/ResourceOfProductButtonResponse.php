@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * ResourceOfProductButtonResponse Class Doc Comment
  *
  * @category Class
- * @description Data model for an output resource
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class ResourceOfProductButtonResponse implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\ExternalProductButtonResponse',
+        'attributes' => '\criteo\api\retailmedia\preview\Model\ProductButtonResponse',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfProductButtonResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalProductButtonResponse|null
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponse|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfProductButtonResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalProductButtonResponse|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\ProductButtonResponse|null $attributes attributes
      *
      * @return self
      */

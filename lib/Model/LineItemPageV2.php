@@ -1,6 +1,6 @@
 <?php
 /**
- * PagedResourceCollectionOutcomeOfBalanceResponseV2
+ * LineItemPageV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PagedResourceCollectionOutcomeOfBalanceResponseV2 Class Doc Comment
+ * LineItemPageV2 Class Doc Comment
  *
  * @category Class
- * @description Data model for a paged list of response resources
+ * @description Page information for a preferred line item
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemPageV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PagedResourceCollectionOutcomeOfBalanceResponseV2';
+    protected static $openAPIModelName = 'LineItemPageV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'metadata' => '\criteo\api\retailmedia\preview\Model\PageMetadata',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'categories' => '\criteo\api\retailmedia\preview\Model\LineItemPageCategoryV2[]',
+        'page_type' => 'string',
+        'search_keywords' => 'string[]'
     ];
 
     /**
@@ -72,10 +71,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'metadata' => null,
-        'warnings' => null
+        'categories' => null,
+        'page_type' => null,
+        'search_keywords' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'errors' => false,
-		'metadata' => false,
-		'warnings' => false
+        'categories' => true,
+		'page_type' => false,
+		'search_keywords' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'metadata' => 'metadata',
-        'warnings' => 'warnings'
+        'categories' => 'categories',
+        'page_type' => 'pageType',
+        'search_keywords' => 'searchKeywords'
     ];
 
     /**
@@ -188,10 +184,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'metadata' => 'setMetadata',
-        'warnings' => 'setWarnings'
+        'categories' => 'setCategories',
+        'page_type' => 'setPageType',
+        'search_keywords' => 'setSearchKeywords'
     ];
 
     /**
@@ -200,10 +195,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'metadata' => 'getMetadata',
-        'warnings' => 'getWarnings'
+        'categories' => 'getCategories',
+        'page_type' => 'getPageType',
+        'search_keywords' => 'getSearchKeywords'
     ];
 
     /**
@@ -247,6 +241,43 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
         return self::$openAPIModelName;
     }
 
+    public const PAGE_TYPE_UNKNOWN = 'unknown';
+    public const PAGE_TYPE_SEARCH = 'search';
+    public const PAGE_TYPE_HOME = 'home';
+    public const PAGE_TYPE_BROWSE = 'browse';
+    public const PAGE_TYPE_CHECKOUT = 'checkout';
+    public const PAGE_TYPE_CATEGORY = 'category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'productDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'merchandising';
+    public const PAGE_TYPE_DEALS = 'deals';
+    public const PAGE_TYPE_FAVORITES = 'favorites';
+    public const PAGE_TYPE_SEARCH_BAR = 'searchBar';
+    public const PAGE_TYPE_CATEGORY_MENU = 'categoryMenu';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_UNKNOWN,
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_BROWSE,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+            self::PAGE_TYPE_FAVORITES,
+            self::PAGE_TYPE_SEARCH_BAR,
+            self::PAGE_TYPE_CATEGORY_MENU,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +294,9 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('search_keywords', $data ?? [], null);
     }
 
     /**
@@ -296,6 +326,18 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
     {
         $invalidProperties = [];
 
+        if ($this->container['page_type'] === null) {
+            $invalidProperties[] = "'page_type' can't be null";
+        }
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,109 +354,106 @@ class PagedResourceCollectionOutcomeOfBalanceResponseV2 implements ModelInterfac
 
 
     /**
-     * Gets data
+     * Gets categories
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null
+     * @return \criteo\api\retailmedia\preview\Model\LineItemPageCategoryV2[]|null
      */
-    public function getData()
+    public function getCategories()
     {
-        return $this->container['data'];
+        return $this->container['categories'];
     }
 
     /**
-     * Sets data
+     * Sets categories
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\LineItemPageCategoryV2[]|null $categories categories
      *
      * @return self
      */
-    public function setData($data)
+    public function setCategories($categories)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['categories'] = $categories;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets page_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return string
      */
-    public function getErrors()
+    public function getPageType()
     {
-        return $this->container['errors'];
+        return $this->container['page_type'];
     }
 
     /**
-     * Sets errors
+     * Sets page_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     * @param string $page_type Page Type Enum
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setPageType($page_type)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($page_type)) {
+            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
         }
-        $this->container['errors'] = $errors;
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!in_array($page_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_type', must be one of '%s'",
+                    $page_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_type'] = $page_type;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets search_keywords
      *
-     * @return \criteo\api\retailmedia\preview\Model\PageMetadata|null
+     * @return string[]|null
      */
-    public function getMetadata()
+    public function getSearchKeywords()
     {
-        return $this->container['metadata'];
+        return $this->container['search_keywords'];
     }
 
     /**
-     * Sets metadata
+     * Sets search_keywords
      *
-     * @param \criteo\api\retailmedia\preview\Model\PageMetadata|null $metadata metadata
+     * @param string[]|null $search_keywords search_keywords
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setSearchKeywords($search_keywords)
     {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        if (is_null($search_keywords)) {
+            array_push($this->openAPINullablesSetToNull, 'search_keywords');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('search_keywords', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['search_keywords'] = $search_keywords;
 
         return $this;
     }

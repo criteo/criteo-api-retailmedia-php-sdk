@@ -89,7 +89,7 @@ class CampaignApi
             'text/json',
             'application/*+json',
         ],
-        'deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId' => [
+        'deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId' => [
             'application/json',
         ],
         'deletePromotedProducts' => [
@@ -101,13 +101,19 @@ class CampaignApi
         'fetchPromotedProducts' => [
             'application/json',
         ],
-        'getApi202210ExternalLineItemProductButtonsByLineItemId' => [
+        'getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId' => [
             'application/json',
         ],
-        'getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId' => [
+        'getApiExternalV1LineItemProductButtonsByLineItemId' => [
+            'application/json',
+        ],
+        'getApiExternalV2CampaignPreferredLineItemsByCampaignId' => [
             'application/json',
         ],
         'getApiExternalV2CatalogStatusByCatalogId' => [
+            'application/json',
+        ],
+        'getApiExternalV2PreferredLineItemByLineItemId' => [
             'application/json',
         ],
         'getApiV1ExternalRetailerBrandsByRetailerId' => [
@@ -123,12 +129,6 @@ class CampaignApi
             'application/json',
         ],
         'getApiV2ExternalAccountByAccountIdCreativescreativeId' => [
-            'application/json',
-        ],
-        'getApiV2ExternalCampaignPreferredLineItemsByCampaignId' => [
-            'application/json',
-        ],
-        'getApiV2ExternalPreferredLineItemByLineItemId' => [
             'application/json',
         ],
         'getAuctionLineItemV2' => [
@@ -149,16 +149,16 @@ class CampaignApi
         'pausePromotedProducts' => [
             'application/json',
         ],
-        'postApi202110ExternalCampaignPreferredLineItemsByCampaignId' => [
-            'application/json',
-        ],
-        'postApi202210ExternalLineItemProductButtonsCreateByLineItemId' => [
+        'postApiExternalV1LineItemProductButtonsCreateByLineItemId' => [
             'application/json',
         ],
         'postApiExternalV2AccountBrandCatalogExportByAccountId' => [
             'application/json',
         ],
         'postApiExternalV2AccountSellerCatalogExportByAccountId' => [
+            'application/json',
+        ],
+        'postApiExternalV2CampaignPreferredLineItemsByCampaignId' => [
             'application/json',
         ],
         'postApiV1ExternalCatalogsSkuRetrieval' => [
@@ -173,10 +173,10 @@ class CampaignApi
         'postApiV2ExternalAccountCreativesSearchByAccountId' => [
             'application/json',
         ],
-        'putApi202110ExternalPreferredLineItemByLineItemId' => [
+        'putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId' => [
             'application/json',
         ],
-        'putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId' => [
+        'putApiExternalV2PreferredLineItemByLineItemId' => [
             'application/json',
         ],
         'putApiV2ExternalAccountByAccountIdCreativescreativeId' => [
@@ -1347,7 +1347,7 @@ class CampaignApi
             }
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -1382,7 +1382,7 @@ class CampaignApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem',
@@ -1576,35 +1576,36 @@ class CampaignApi
     }
 
     /**
-     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+     * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $product_button_id productButtonId used for delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
      */
-    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $contentType);
+        list($response) = $this->deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, $contentType);
+        return $response;
     }
 
     /**
-     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
+     * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $product_button_id productButtonId used for delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        $request = $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $contentType);
+        $request = $this->deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1641,28 +1642,68 @@ class CampaignApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
+     * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $product_button_id productButtonId used for delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        return $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $contentType)
+        return $this->deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1671,25 +1712,38 @@ class CampaignApi
     }
 
     /**
-     * Operation deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
+     * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $product_button_id productButtonId used for delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        $returnType = '';
-        $request = $this->deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+        $request = $this->deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1709,29 +1763,29 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+     * Create request for operation 'deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $product_button_id productButtonId used for delete (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, string $contentType = self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+                'Missing the required parameter $line_item_id when calling deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
             );
         }
 
         // verify the required parameter 'product_button_id' is set
         if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $product_button_id when calling deleteApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+                'Missing the required parameter $product_button_id when calling deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
             );
         }
 
@@ -1764,7 +1818,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -2740,34 +2794,36 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemId
+     * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $product_button_id productButtonId used for retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemId($line_item_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'][0])
+    public function getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        list($response) = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id, $contentType);
+        list($response) = $this->getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo
+     * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $product_button_id productButtonId used for retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'][0])
+    public function getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id, $contentType);
+        $request = $this->getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2806,23 +2862,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2843,7 +2899,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2854,17 +2910,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdAsync
+     * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $product_button_id productButtonId used for retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'][0])
+    public function getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        return $this->getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
+        return $this->getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2873,18 +2930,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo
+     * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $product_button_id productButtonId used for retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'][0])
+    public function getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
-        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+        $request = $this->getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2923,26 +2981,34 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApi202210ExternalLineItemProductButtonsByLineItemId'
+     * Create request for operation 'getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $product_button_id productButtonId used for retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemId'][0])
+    public function getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getApi202210ExternalLineItemProductButtonsByLineItemId'
+                'Missing the required parameter $line_item_id when calling getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
+            );
+        }
+
+        // verify the required parameter 'product_button_id' is set
+        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_id when calling getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
             );
         }
 
 
-        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2959,10 +3025,18 @@ class CampaignApi
                 $resourcePath
             );
         }
+        // path params
+        if ($product_button_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product-button-id' . '}',
+                ObjectSerializer::toPathValue($product_button_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -3023,36 +3097,34 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
+     * Operation getApiExternalV1LineItemProductButtonsByLineItemId
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function getApiExternalV1LineItemProductButtonsByLineItemId($line_item_id, string $contentType = self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'][0])
     {
-        list($response) = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $contentType);
+        list($response) = $this->getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
+     * Operation getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'][0])
     {
-        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $contentType);
+        $request = $this->getApiExternalV1LineItemProductButtonsByLineItemIdRequest($line_item_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3091,23 +3163,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3128,7 +3200,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3139,18 +3211,17 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
+     * Operation getApiExternalV1LineItemProductButtonsByLineItemIdAsync
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function getApiExternalV1LineItemProductButtonsByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'][0])
     {
-        return $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $contentType)
+        return $this->getApiExternalV1LineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3159,19 +3230,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
+     * Operation getApiExternalV1LineItemProductButtonsByLineItemIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function getApiExternalV1LineItemProductButtonsByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
-        $request = $this->getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+        $request = $this->getApiExternalV1LineItemProductButtonsByLineItemIdRequest($line_item_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3210,34 +3280,26 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+     * Create request for operation 'getApiExternalV1LineItemProductButtonsByLineItemId'
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, string $contentType = self::contentTypes['getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
+    public function getApiExternalV1LineItemProductButtonsByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
-            );
-        }
-
-        // verify the required parameter 'product_button_id' is set
-        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $product_button_id when calling getApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
+                'Missing the required parameter $line_item_id when calling getApiExternalV1LineItemProductButtonsByLineItemId'
             );
         }
 
 
-        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3254,18 +3316,373 @@ class CampaignApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApiExternalV2CampaignPreferredLineItemsByCampaignId
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse
+     */
+    public function getApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        list($response) = $this->getApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        $request = $this->getApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync($campaign_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        return $this->getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $limit_to_id, $page_index, $page_size, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse';
+        $request = $this->getApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApiExternalV2CampaignPreferredLineItemsByCampaignId'
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling getApiExternalV2CampaignPreferredLineItemsByCampaignId'
+            );
+        }
+
+
+        if ($page_index !== null && $page_index > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.getApiExternalV2CampaignPreferredLineItemsByCampaignId, must be smaller than or equal to 2147483647.');
+        }
+        if ($page_index !== null && $page_index < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.getApiExternalV2CampaignPreferredLineItemsByCampaignId, must be bigger than or equal to 0.');
+        }
+        
+        if ($page_size !== null && $page_size > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.getApiExternalV2CampaignPreferredLineItemsByCampaignId, must be smaller than or equal to 2147483647.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.getApiExternalV2CampaignPreferredLineItemsByCampaignId, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/preview/retail-media/campaigns/{campaign-id}/preferred-line-items';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit_to_id,
+            'limitToId', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_index,
+            'pageIndex', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
         // path params
-        if ($product_button_id !== null) {
+        if ($campaign_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'product-button-id' . '}',
-                ObjectSerializer::toPathValue($product_button_id),
+                '{' . 'campaign-id' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
                 $resourcePath
             );
         }
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -3588,6 +4005,312 @@ class CampaignApi
             $resourcePath = str_replace(
                 '{' . 'catalogId' . '}',
                 ObjectSerializer::toPathValue($catalog_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getApiExternalV2PreferredLineItemByLineItemId
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
+     */
+    public function getApiExternalV2PreferredLineItemByLineItemId($line_item_id, string $contentType = self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'][0])
+    {
+        list($response) = $this->getApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'][0])
+    {
+        $request = $this->getApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getApiExternalV2PreferredLineItemByLineItemIdAsync
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2PreferredLineItemByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'][0])
+    {
+        return $this->getApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
+        $request = $this->getApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getApiExternalV2PreferredLineItemByLineItemId'
+     *
+     * @param  string $line_item_id The given line item id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getApiExternalV2PreferredLineItemByLineItemId'][0])
+    {
+
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling getApiExternalV2PreferredLineItemByLineItemId'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/preferred-line-items/{line-item-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
                 $resourcePath
             );
         }
@@ -5095,663 +5818,6 @@ class CampaignApi
 
         $headers = $this->headerSelector->selectHeaders(
             ['text/plain', 'application/json', 'text/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApiV2ExternalCampaignPreferredLineItemsByCampaignId
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse
-     */
-    public function getApiV2ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        list($response) = $this->getApiV2ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiV2ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiV2ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        $request = $this->getApiV2ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiV2ExternalCampaignPreferredLineItemsByCampaignIdAsync
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalCampaignPreferredLineItemsByCampaignIdAsync($campaign_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        return $this->getApiV2ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $limit_to_id, $page_index, $page_size, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiV2ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2PagedListResponse';
-        $request = $this->getApiV2ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiV2ExternalCampaignPreferredLineItemsByCampaignId'
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiV2ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $limit_to_id = null, $page_index = null, $page_size = null, string $contentType = self::contentTypes['getApiV2ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-
-        // verify the required parameter 'campaign_id' is set
-        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign_id when calling getApiV2ExternalCampaignPreferredLineItemsByCampaignId'
-            );
-        }
-
-
-
-
-
-        $resourcePath = '/preview/retail-media/campaigns/{campaign-id}/preferred-line-items';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit_to_id,
-            'limitToId', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_index,
-            'pageIndex', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($campaign_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'campaign-id' . '}',
-                ObjectSerializer::toPathValue($campaign_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApiV2ExternalPreferredLineItemByLineItemId
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
-     */
-    public function getApiV2ExternalPreferredLineItemByLineItemId($line_item_id, string $contentType = self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'][0])
-    {
-        list($response) = $this->getApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiV2ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'][0])
-    {
-        $request = $this->getApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiV2ExternalPreferredLineItemByLineItemIdAsync
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalPreferredLineItemByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'][0])
-    {
-        return $this->getApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
-        $request = $this->getApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiV2ExternalPreferredLineItemByLineItemId'
-     *
-     * @param  string $line_item_id The given line item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiV2ExternalPreferredLineItemByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getApiV2ExternalPreferredLineItemByLineItemId'][0])
-    {
-
-        // verify the required parameter 'line_item_id' is set
-        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getApiV2ExternalPreferredLineItemByLineItemId'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/preferred-line-items/{line-item-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($line_item_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'line-item-id' . '}',
-                ObjectSerializer::toPathValue($line_item_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -7360,361 +7426,36 @@ class CampaignApi
     }
 
     /**
-     * Operation postApi202110ExternalCampaignPreferredLineItemsByCampaignId
+     * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemId
      *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
      */
-    public function postApi202110ExternalCampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'][0])
+    public function postApiExternalV1LineItemProductButtonsCreateByLineItemId($line_item_id, $product_button_request_list_request = null, string $contentType = self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'][0])
     {
-        list($response) = $this->postApi202110ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+        list($response) = $this->postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_request_list_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation postApi202110ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo
+     * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo
      *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApi202110ExternalCampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        $request = $this->postApi202110ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postApi202110ExternalCampaignPreferredLineItemsByCampaignIdAsync
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApi202110ExternalCampaignPreferredLineItemsByCampaignIdAsync($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        return $this->postApi202110ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postApi202110ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApi202110ExternalCampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
-        $request = $this->postApi202110ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postApi202110ExternalCampaignPreferredLineItemsByCampaignId'
-     *
-     * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postApi202110ExternalCampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['postApi202110ExternalCampaignPreferredLineItemsByCampaignId'][0])
-    {
-
-        // verify the required parameter 'campaign_id' is set
-        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign_id when calling postApi202110ExternalCampaignPreferredLineItemsByCampaignId'
-            );
-        }
-
-        // verify the required parameter 'preferred_line_item_create_model_v2_request' is set
-        if ($preferred_line_item_create_model_v2_request === null || (is_array($preferred_line_item_create_model_v2_request) && count($preferred_line_item_create_model_v2_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $preferred_line_item_create_model_v2_request when calling postApi202110ExternalCampaignPreferredLineItemsByCampaignId'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/campaigns/{campaign-id}/preferred-line-items';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($campaign_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'campaign-id' . '}',
-                ObjectSerializer::toPathValue($campaign_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($preferred_line_item_create_model_v2_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_create_model_v2_request));
-            } else {
-                $httpBody = $preferred_line_item_create_model_v2_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemId
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemId($line_item_id, $product_button_list_request = null, string $contentType = self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'][0])
+    public function postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_request_list_request = null, string $contentType = self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'][0])
     {
-        list($response) = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_list_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdWithHttpInfo($line_item_id, $product_button_list_request = null, string $contentType = self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'][0])
-    {
-        $request = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request, $contentType);
+        $request = $this->postApiExternalV1LineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_request_list_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7753,23 +7494,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -7790,7 +7531,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7801,18 +7542,18 @@ class CampaignApi
     }
 
     /**
-     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsync
+     * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsync
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsync($line_item_id, $product_button_list_request = null, string $contentType = self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'][0])
+    public function postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsync($line_item_id, $product_button_request_list_request = null, string $contentType = self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'][0])
     {
-        return $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_list_request, $contentType)
+        return $this->postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_request_list_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7821,19 +7562,19 @@ class CampaignApi
     }
 
     /**
-     * Operation postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo
+     * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_list_request = null, string $contentType = self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'][0])
+    public function postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo($line_item_id, $product_button_request_list_request = null, string $contentType = self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
-        $request = $this->postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+        $request = $this->postApiExternalV1LineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_request_list_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7872,22 +7613,22 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'postApi202210ExternalLineItemProductButtonsCreateByLineItemId'
+     * Create request for operation 'postApiExternalV1LineItemProductButtonsCreateByLineItemId'
      *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonListRequest $product_button_list_request List of product buttons to append to the specified line item (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApi202210ExternalLineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_list_request = null, string $contentType = self::contentTypes['postApi202210ExternalLineItemProductButtonsCreateByLineItemId'][0])
+    public function postApiExternalV1LineItemProductButtonsCreateByLineItemIdRequest($line_item_id, $product_button_request_list_request = null, string $contentType = self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling postApi202210ExternalLineItemProductButtonsCreateByLineItemId'
+                'Missing the required parameter $line_item_id when calling postApiExternalV1LineItemProductButtonsCreateByLineItemId'
             );
         }
 
@@ -7913,18 +7654,18 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($product_button_list_request)) {
+        if (isset($product_button_request_list_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_button_list_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_button_request_list_request));
             } else {
-                $httpBody = $product_button_list_request;
+                $httpBody = $product_button_request_list_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -8609,6 +8350,256 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_seller_catalog_request_v2));
             } else {
                 $httpBody = $value_resource_input_of_seller_catalog_request_v2;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postApiExternalV2CampaignPreferredLineItemsByCampaignId
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+    }
+
+    /**
+     * Operation postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        $request = $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsync($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        return $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+        $returnType = '';
+        $request = $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postApiExternalV2CampaignPreferredLineItemsByCampaignId'
+     *
+     * @param  string $campaign_id The given campaign id (required)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling postApiExternalV2CampaignPreferredLineItemsByCampaignId'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/campaigns/{campaign-id}/preferred-line-items';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaign-id' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($preferred_line_item_create_model_v2_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_create_model_v2_request));
+            } else {
+                $httpBody = $preferred_line_item_create_model_v2_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -9895,36 +9886,352 @@ class CampaignApi
     }
 
     /**
-     * Operation putApi202110ExternalPreferredLineItemByLineItemId
+     * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
+     *
+     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $product_button_id productButtonId used for update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
+     */
+    public function putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
+    {
+        list($response) = $this->putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
+     *
+     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $product_button_id productButtonId used for update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
+    {
+        $request = $this->putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
+     *
+     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $product_button_id productButtonId used for update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
+    {
+        return $this->putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
+     *
+     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $product_button_id productButtonId used for update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
+        $request = $this->putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
+     *
+     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $product_button_id productButtonId used for update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'][0])
+    {
+
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
+            );
+        }
+
+        // verify the required parameter 'product_button_id' is set
+        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_id when calling putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($product_button_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'product-button-id' . '}',
+                ObjectSerializer::toPathValue($product_button_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['text/plain', 'application/json', 'text/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($product_button_request_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_button_request_request));
+            } else {
+                $httpBody = $product_button_request_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation putApiExternalV2PreferredLineItemByLineItemId
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
      */
-    public function putApi202110ExternalPreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'][0])
+    public function putApiExternalV2PreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'][0])
     {
-        list($response) = $this->putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
+        list($response) = $this->putApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo
+     * Operation putApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putApi202110ExternalPreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'][0])
+    public function putApiExternalV2PreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'][0])
     {
-        $request = $this->putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
+        $request = $this->putApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10034,18 +10341,18 @@ class CampaignApi
     }
 
     /**
-     * Operation putApi202110ExternalPreferredLineItemByLineItemIdAsync
+     * Operation putApiExternalV2PreferredLineItemByLineItemIdAsync
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putApi202110ExternalPreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'][0])
+    public function putApiExternalV2PreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'][0])
     {
-        return $this->putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType)
+        return $this->putApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10054,19 +10361,19 @@ class CampaignApi
     }
 
     /**
-     * Operation putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo
+     * Operation putApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putApi202110ExternalPreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'][0])
+    public function putApiExternalV2PreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
-        $request = $this->putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
+        $request = $this->putApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10105,31 +10412,25 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'putApi202110ExternalPreferredLineItemByLineItemId'
+     * Create request for operation 'putApiExternalV2PreferredLineItemByLineItemId'
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putApi202110ExternalPreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['putApi202110ExternalPreferredLineItemByLineItemId'][0])
+    public function putApiExternalV2PreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['putApiExternalV2PreferredLineItemByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling putApi202110ExternalPreferredLineItemByLineItemId'
+                'Missing the required parameter $line_item_id when calling putApiExternalV2PreferredLineItemByLineItemId'
             );
         }
 
-        // verify the required parameter 'preferred_line_item_update_model_v2_request' is set
-        if ($preferred_line_item_update_model_v2_request === null || (is_array($preferred_line_item_update_model_v2_request) && count($preferred_line_item_update_model_v2_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $preferred_line_item_update_model_v2_request when calling putApi202110ExternalPreferredLineItemByLineItemId'
-            );
-        }
 
 
         $resourcePath = '/preview/retail-media/preferred-line-items/{line-item-id}';
@@ -10152,7 +10453,7 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', 'application/json', 'text/json', ],
             $contentType,
             $multipart
         );
@@ -10164,322 +10465,6 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_update_model_v2_request));
             } else {
                 $httpBody = $preferred_line_item_update_model_v2_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ProductButtonListResponse
-     */
-    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId($line_item_id, $product_button_id, $product_button_request = null, string $contentType = self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
-    {
-        list($response) = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request = null, string $contentType = self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
-    {
-        $request = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ProductButtonListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsync($line_item_id, $product_button_id, $product_button_request = null, string $contentType = self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
-    {
-        return $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request = null, string $contentType = self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonListResponse';
-        $request = $this->putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
-     *
-     * @param  string $line_item_id Long external id of the associated line item (required)
-     * @param  string $product_button_id Sequential id of the product button (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequest $product_button_request Details of the updated product button (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request = null, string $contentType = self::contentTypes['putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'][0])
-    {
-
-        // verify the required parameter 'line_item_id' is set
-        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
-            );
-        }
-
-        // verify the required parameter 'product_button_id' is set
-        if ($product_button_id === null || (is_array($product_button_id) && count($product_button_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $product_button_id when calling putApi202210ExternalLineItemProductButtonsByLineItemIdProductButtonId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($line_item_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'line-item-id' . '}',
-                ObjectSerializer::toPathValue($line_item_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($product_button_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'product-button-id' . '}',
-                ObjectSerializer::toPathValue($product_button_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($product_button_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($product_button_request));
-            } else {
-                $httpBody = $product_button_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -12068,7 +12053,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2
      *
-     * @param  string $line_item_id The line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12085,7 +12070,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2WithHttpInfo
      *
-     * @param  string $line_item_id The line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12184,7 +12169,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2Async
      *
-     * @param  string $line_item_id The line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12204,7 +12189,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2AsyncWithHttpInfo
      *
-     * @param  string $line_item_id The line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12255,7 +12240,7 @@ class CampaignApi
     /**
      * Create request for operation 'updateAuctionLineItemV2'
      *
-     * @param  string $line_item_id The line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *

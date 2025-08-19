@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalProductButtonRequest
+ * LineItemCappingV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalProductButtonRequest Class Doc Comment
+ * LineItemCappingV2 Class Doc Comment
  *
  * @category Class
- * @description The Product Button entity used for input
+ * @description Frequency Capping for a Preferred Line Item
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemCappingV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalProductButtonRequest';
+    protected static $openAPIModelName = 'LineItemCappingV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'background_image' => 'string',
-        'is_mandatory' => 'int',
-        'name' => 'string',
-        'skus' => 'string[]'
+        'count' => 'int',
+        'type' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'background_image' => null,
-        'is_mandatory' => 'int32',
-        'name' => null,
-        'skus' => null
+        'count' => 'int32',
+        'type' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'background_image' => false,
-		'is_mandatory' => false,
-		'name' => false,
-		'skus' => false
+        'count' => false,
+		'type' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'background_image' => 'backgroundImage',
-        'is_mandatory' => 'isMandatory',
-        'name' => 'name',
-        'skus' => 'skus'
+        'count' => 'count',
+        'type' => 'type'
     ];
 
     /**
@@ -188,10 +180,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'background_image' => 'setBackgroundImage',
-        'is_mandatory' => 'setIsMandatory',
-        'name' => 'setName',
-        'skus' => 'setSkus'
+        'count' => 'setCount',
+        'type' => 'setType'
     ];
 
     /**
@@ -200,10 +190,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'background_image' => 'getBackgroundImage',
-        'is_mandatory' => 'getIsMandatory',
-        'name' => 'getName',
-        'skus' => 'getSkus'
+        'count' => 'getCount',
+        'type' => 'getType'
     ];
 
     /**
@@ -247,6 +235,23 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
+    public const TYPE_UNKNOWN = 'unknown';
+    public const TYPE_DAY = 'day';
+    public const TYPE_SESSION = 'session';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UNKNOWN,
+            self::TYPE_DAY,
+            self::TYPE_SESSION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +268,8 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('background_image', $data ?? [], null);
-        $this->setIfExists('is_mandatory', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('skus', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -296,18 +299,21 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['background_image'] === null) {
-            $invalidProperties[] = "'background_image' can't be null";
+        if ($this->container['count'] === null) {
+            $invalidProperties[] = "'count' can't be null";
         }
-        if ($this->container['is_mandatory'] === null) {
-            $invalidProperties[] = "'is_mandatory' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['skus'] === null) {
-            $invalidProperties[] = "'skus' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -324,109 +330,65 @@ class ExternalProductButtonRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets background_image
-     *
-     * @return string
-     */
-    public function getBackgroundImage()
-    {
-        return $this->container['background_image'];
-    }
-
-    /**
-     * Sets background_image
-     *
-     * @param string $background_image URL of the background image
-     *
-     * @return self
-     */
-    public function setBackgroundImage($background_image)
-    {
-        if (is_null($background_image)) {
-            throw new \InvalidArgumentException('non-nullable background_image cannot be null');
-        }
-        $this->container['background_image'] = $background_image;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_mandatory
+     * Gets count
      *
      * @return int
      */
-    public function getIsMandatory()
+    public function getCount()
     {
-        return $this->container['is_mandatory'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets is_mandatory
+     * Sets count
      *
-     * @param int $is_mandatory If the Product Button is Mandatory
+     * @param int $count count
      *
      * @return self
      */
-    public function setIsMandatory($is_mandatory)
+    public function setCount($count)
     {
-        if (is_null($is_mandatory)) {
-            throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['is_mandatory'] = $is_mandatory;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets type
      *
      * @return string
      */
-    public function getName()
+    public function getType()
     {
-        return $this->container['name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets name
+     * Sets type
      *
-     * @param string $name Name of the Product Button
+     * @param string $type Line Item Capping Type Enum
      *
      * @return self
      */
-    public function setName($name)
+    public function setType($type)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets skus
-     *
-     * @return string[]
-     */
-    public function getSkus()
-    {
-        return $this->container['skus'];
-    }
-
-    /**
-     * Sets skus
-     *
-     * @param string[] $skus List of skus on the Product Button
-     *
-     * @return self
-     */
-    public function setSkus($skus)
-    {
-        if (is_null($skus)) {
-            throw new \InvalidArgumentException('non-nullable skus cannot be null');
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['skus'] = $skus;
+        $this->container['type'] = $type;
 
         return $this;
     }

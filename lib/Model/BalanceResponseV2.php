@@ -61,7 +61,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'balance_type' => 'string',
         'created_at' => '\DateTime',
         'deposited' => 'float',
-        'end_date' => '\DateTime',
+        'end_date' => 'string',
         'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
@@ -69,7 +69,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
         'remaining' => 'float',
         'spend_type' => 'string',
         'spent' => 'float',
-        'start_date' => '\DateTime',
+        'start_date' => 'string',
         'status' => 'string',
         'updated_at' => '\DateTime'
     ];
@@ -84,16 +84,16 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPIFormats = [
         'balance_type' => null,
         'created_at' => 'date-time',
-        'deposited' => 'decimal',
-        'end_date' => 'date',
+        'deposited' => 'double',
+        'end_date' => null,
         'memo' => null,
         'name' => null,
         'po_number' => null,
         'private_market_billing_type' => null,
-        'remaining' => 'decimal',
+        'remaining' => 'double',
         'spend_type' => null,
-        'spent' => 'decimal',
-        'start_date' => 'date',
+        'spent' => 'double',
+        'start_date' => null,
         'status' => null,
         'updated_at' => 'date-time'
     ];
@@ -605,7 +605,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets end_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getEndDate()
     {
@@ -615,7 +615,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
+     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
@@ -876,7 +876,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartDate()
     {
@@ -886,7 +886,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
+     * @param string $start_date Start date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */

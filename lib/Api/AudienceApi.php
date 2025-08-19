@@ -3765,7 +3765,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -3784,7 +3784,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -3885,7 +3885,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -3907,7 +3907,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -3960,7 +3960,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -3984,8 +3984,8 @@ class AudienceApi
             );
         }
 
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be smaller than or equal to 100.');
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 0) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be bigger than or equal to 0.');
@@ -4103,7 +4103,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -4122,7 +4122,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -4223,7 +4223,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -4245,7 +4245,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -4298,7 +4298,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -4322,8 +4322,8 @@ class AudienceApi
             );
         }
 
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be smaller than or equal to 100.');
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 0) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be bigger than or equal to 0.');

@@ -313,10 +313,10 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_UNKNOWN = 'Unknown';
-    public const BID_STRATEGY_CONVERSION = 'Conversion';
-    public const BID_STRATEGY_CLICKS = 'Clicks';
-    public const BID_STRATEGY_REVENUE = 'Revenue';
+    public const BID_STRATEGY_UNKNOWN = 'unknown';
+    public const BID_STRATEGY_CONVERSION = 'conversion';
+    public const BID_STRATEGY_CLICKS = 'clicks';
+    public const BID_STRATEGY_REVENUE = 'revenue';
 
     /**
      * Gets allowable values of the enum
@@ -348,7 +348,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('bid_strategy', $data ?? [], 'Conversion');
+        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('conquesting_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('daily_pacing', $data ?? [], null);

@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceComputeSizesEntityV1
+ * BalanceResponseV2PagedListResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RmAudienceComputeSizesEntityV1 Class Doc Comment
+ * BalanceResponseV2PagedListResponse Class Doc Comment
  *
  * @category Class
- * @description Audience of people of interest for a marketer.
+ * @description Data model for a paged list of response resources
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceComputeSizesEntityV1';
+    protected static $openAPIModelName = 'BalanceResponseV2PagedListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'channel' => 'string',
-        'ids' => 'string[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\PageMetadata',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'channel' => null,
-        'ids' => null
+        'data' => null,
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'channel' => false,
-		'ids' => false
+        'data' => false,
+		'errors' => false,
+		'metadata' => true,
+		'warnings' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'channel' => 'channel',
-        'ids' => 'ids'
+        'data' => 'data',
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -180,8 +188,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'channel' => 'setChannel',
-        'ids' => 'setIds'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -190,8 +200,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'channel' => 'getChannel',
-        'ids' => 'getIds'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -235,23 +247,6 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const CHANNEL_UNKNOWN = 'Unknown';
-    public const CHANNEL_ONSITE = 'Onsite';
-    public const CHANNEL_OFFSITE = 'Offsite';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getChannelAllowableValues()
-    {
-        return [
-            self::CHANNEL_UNKNOWN,
-            self::CHANNEL_ONSITE,
-            self::CHANNEL_OFFSITE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -268,8 +263,10 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('channel', $data ?? [], null);
-        $this->setIfExists('ids', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -299,21 +296,6 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['channel'] === null) {
-            $invalidProperties[] = "'channel' can't be null";
-        }
-        $allowedValues = $this->getChannelAllowableValues();
-        if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'channel', must be one of '%s'",
-                $this->container['channel'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['ids'] === null) {
-            $invalidProperties[] = "'ids' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -330,65 +312,116 @@ class RmAudienceComputeSizesEntityV1 implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets channel
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null
      */
-    public function getChannel()
+    public function getData()
     {
-        return $this->container['channel'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets channel
+     * Sets data
      *
-     * @param string $channel Channel to compute the sizes for.
+     * @param \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null $data data
      *
      * @return self
      */
-    public function setChannel($channel)
+    public function setData($data)
     {
-        if (is_null($channel)) {
-            throw new \InvalidArgumentException('non-nullable channel cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $allowedValues = $this->getChannelAllowableValues();
-        if (!in_array($channel, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'channel', must be one of '%s'",
-                    $channel,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['channel'] = $channel;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets ids
+     * Gets errors
      *
-     * @return string[]
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
      */
-    public function getIds()
+    public function getErrors()
     {
-        return $this->container['ids'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets ids
+     * Sets errors
      *
-     * @param string[] $ids List of ids of the segments whose size is requested.
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
-    public function setIds($ids)
+    public function setErrors($errors)
     {
-        if (is_null($ids)) {
-            throw new \InvalidArgumentException('non-nullable ids cannot be null');
+        if (is_null($errors)) {
+            throw new \InvalidArgumentException('non-nullable errors cannot be null');
         }
-        $this->container['ids'] = $ids;
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\preview\Model\PageMetadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\preview\Model\PageMetadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

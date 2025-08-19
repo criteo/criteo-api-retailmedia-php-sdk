@@ -59,8 +59,8 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'day_of_week' => 'string',
-        'end_time' => 'string',
-        'start_time' => 'string'
+        'end_time' => '\DateTime',
+        'start_time' => '\DateTime'
     ];
 
     /**
@@ -72,8 +72,8 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'day_of_week' => null,
-        'end_time' => null,
-        'start_time' => null
+        'end_time' => 'date-time',
+        'start_time' => 'date-time'
     ];
 
     /**
@@ -393,7 +393,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_time
      *
-     * @return string
+     * @return \DateTime
      */
     public function getEndTime()
     {
@@ -403,7 +403,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_time
      *
-     * @param string $end_time end_time
+     * @param \DateTime $end_time end_time
      *
      * @return self
      */
@@ -420,7 +420,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_time
      *
-     * @return string
+     * @return \DateTime
      */
     public function getStartTime()
     {
@@ -430,7 +430,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_time
      *
-     * @param string $start_time start_time
+     * @param \DateTime $start_time start_time
      *
      * @return self
      */

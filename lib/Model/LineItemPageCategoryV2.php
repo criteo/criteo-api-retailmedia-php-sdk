@@ -1,6 +1,6 @@
 <?php
 /**
- * RmAudienceComputeSizesEntityV1Resource
+ * LineItemPageCategoryV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RmAudienceComputeSizesEntityV1Resource Class Doc Comment
+ * LineItemPageCategoryV2 Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value
+ * @description Category information for a preferred line item page
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemPageCategoryV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RmAudienceComputeSizesEntityV1Resource';
+    protected static $openAPIModelName = 'LineItemPageCategoryV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1',
-        'type' => 'string'
+        'category_id' => 'string',
+        'include_children' => 'bool'
     ];
 
     /**
@@ -70,8 +70,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'category_id' => null,
+        'include_children' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'type' => false
+        'category_id' => false,
+		'include_children' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'category_id' => 'categoryId',
+        'include_children' => 'includeChildren'
     ];
 
     /**
@@ -180,8 +180,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'category_id' => 'setCategoryId',
+        'include_children' => 'setIncludeChildren'
     ];
 
     /**
@@ -190,8 +190,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'category_id' => 'getCategoryId',
+        'include_children' => 'getIncludeChildren'
     ];
 
     /**
@@ -251,8 +251,8 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('category_id', $data ?? [], null);
+        $this->setIfExists('include_children', $data ?? [], true);
     }
 
     /**
@@ -282,6 +282,9 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['category_id'] === null) {
+            $invalidProperties[] = "'category_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,55 +301,55 @@ class RmAudienceComputeSizesEntityV1Resource implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets attributes
+     * Gets category_id
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1|null
+     * @return string
      */
-    public function getAttributes()
+    public function getCategoryId()
     {
-        return $this->container['attributes'];
+        return $this->container['category_id'];
     }
 
     /**
-     * Sets attributes
+     * Sets category_id
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1|null $attributes attributes
+     * @param string $category_id category_id
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setCategoryId($category_id)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($category_id)) {
+            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['category_id'] = $category_id;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets include_children
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getType()
+    public function getIncludeChildren()
     {
-        return $this->container['type'];
+        return $this->container['include_children'];
     }
 
     /**
-     * Sets type
+     * Sets include_children
      *
-     * @param string|null $type type
+     * @param bool|null $include_children include_children
      *
      * @return self
      */
-    public function setType($type)
+    public function setIncludeChildren($include_children)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($include_children)) {
+            throw new \InvalidArgumentException('non-nullable include_children cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['include_children'] = $include_children;
 
         return $this;
     }

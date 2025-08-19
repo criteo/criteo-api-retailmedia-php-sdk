@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalPreferredLineItemV2
+ * PreferredLineItemUpdateModelV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalPreferredLineItemV2 Class Doc Comment
+ * PreferredLineItemUpdateModelV2 Class Doc Comment
  *
  * @category Class
- * @description A Retail Media Preferred Line Item used to hold bid settings for one or many promoted products on a single retailer
+ * @description Model used to update a preferred line item
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class PreferredLineItemUpdateModelV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalPreferredLineItemV2';
+    protected static $openAPIModelName = 'PreferredLineItemUpdateModelV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,21 +59,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'budget' => 'float',
-        'budget_remaining' => 'float',
-        'budget_spent' => 'float',
-        'campaign_id' => 'string',
-        'capping' => '\criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2',
-        'created_at' => '\DateTime',
+        'capping' => '\criteo\api\retailmedia\preview\Model\LineItemCappingV2',
         'creative_id' => 'string',
         'end_date' => '\DateTime',
-        'id' => 'string',
         'name' => 'string',
         'pacing' => 'string',
-        'page' => '\criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2',
+        'page' => '\criteo\api\retailmedia\preview\Model\LineItemPageV2',
         'start_date' => '\DateTime',
-        'status' => 'string',
-        'target_retailer_id' => 'string',
-        'updated_at' => '\DateTime'
+        'status' => 'string'
     ];
 
     /**
@@ -84,22 +77,15 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => 'decimal',
-        'budget_remaining' => 'decimal',
-        'budget_spent' => 'decimal',
-        'campaign_id' => 'long-id',
+        'budget' => 'double',
         'capping' => null,
-        'created_at' => 'date-time',
         'creative_id' => 'long-id',
         'end_date' => 'date',
-        'id' => null,
         'name' => null,
         'pacing' => null,
         'page' => null,
         'start_date' => 'date',
-        'status' => null,
-        'target_retailer_id' => 'long-id',
-        'updated_at' => 'date-time'
+        'status' => null
     ];
 
     /**
@@ -108,22 +94,15 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'budget' => true,
-		'budget_remaining' => true,
-		'budget_spent' => true,
-		'campaign_id' => false,
-		'capping' => true,
-		'created_at' => false,
-		'creative_id' => true,
+        'budget' => false,
+		'capping' => false,
+		'creative_id' => false,
 		'end_date' => false,
-		'id' => true,
 		'name' => false,
-		'pacing' => true,
-		'page' => false,
+		'pacing' => false,
+		'page' => true,
 		'start_date' => false,
-		'status' => false,
-		'target_retailer_id' => false,
-		'updated_at' => false
+		'status' => false
     ];
 
     /**
@@ -213,21 +192,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'budget' => 'budget',
-        'budget_remaining' => 'budgetRemaining',
-        'budget_spent' => 'budgetSpent',
-        'campaign_id' => 'campaignId',
         'capping' => 'capping',
-        'created_at' => 'createdAt',
         'creative_id' => 'creativeId',
         'end_date' => 'endDate',
-        'id' => 'id',
         'name' => 'name',
         'pacing' => 'pacing',
         'page' => 'page',
         'start_date' => 'startDate',
-        'status' => 'status',
-        'target_retailer_id' => 'targetRetailerId',
-        'updated_at' => 'updatedAt'
+        'status' => 'status'
     ];
 
     /**
@@ -237,21 +209,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'budget' => 'setBudget',
-        'budget_remaining' => 'setBudgetRemaining',
-        'budget_spent' => 'setBudgetSpent',
-        'campaign_id' => 'setCampaignId',
         'capping' => 'setCapping',
-        'created_at' => 'setCreatedAt',
         'creative_id' => 'setCreativeId',
         'end_date' => 'setEndDate',
-        'id' => 'setId',
         'name' => 'setName',
         'pacing' => 'setPacing',
         'page' => 'setPage',
         'start_date' => 'setStartDate',
-        'status' => 'setStatus',
-        'target_retailer_id' => 'setTargetRetailerId',
-        'updated_at' => 'setUpdatedAt'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -261,21 +226,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'budget' => 'getBudget',
-        'budget_remaining' => 'getBudgetRemaining',
-        'budget_spent' => 'getBudgetSpent',
-        'campaign_id' => 'getCampaignId',
         'capping' => 'getCapping',
-        'created_at' => 'getCreatedAt',
         'creative_id' => 'getCreativeId',
         'end_date' => 'getEndDate',
-        'id' => 'getId',
         'name' => 'getName',
         'pacing' => 'getPacing',
         'page' => 'getPage',
         'start_date' => 'getStartDate',
-        'status' => 'getStatus',
-        'target_retailer_id' => 'getTargetRetailerId',
-        'updated_at' => 'getUpdatedAt'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -382,21 +340,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('budget_remaining', $data ?? [], null);
-        $this->setIfExists('budget_spent', $data ?? [], null);
-        $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('capping', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('pacing', $data ?? [], null);
+        $this->setIfExists('pacing', $data ?? [], 'accelerated');
         $this->setIfExists('page', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('target_retailer_id', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -426,12 +377,6 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['campaign_id'] === null) {
-            $invalidProperties[] = "'campaign_id' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
-        }
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
         }
@@ -470,12 +415,6 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
             );
         }
 
-        if ($this->container['target_retailer_id'] === null) {
-            $invalidProperties[] = "'target_retailer_id' can't be null";
-        }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -511,14 +450,7 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     public function setBudget($budget)
     {
         if (is_null($budget)) {
-            array_push($this->openAPINullablesSetToNull, 'budget');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
         $this->container['budget'] = $budget;
 
@@ -526,104 +458,9 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets budget_remaining
-     *
-     * @return float|null
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float|null $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        if (is_null($budget_remaining)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_remaining', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return float|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param float|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        if (is_null($budget_spent)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_spent');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_spent', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_spent'] = $budget_spent;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_id
-     *
-     * @return string
-     */
-    public function getCampaignId()
-    {
-        return $this->container['campaign_id'];
-    }
-
-    /**
-     * Sets campaign_id
-     *
-     * @param string $campaign_id campaign_id
-     *
-     * @return self
-     */
-    public function setCampaignId($campaign_id)
-    {
-        if (is_null($campaign_id)) {
-            throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
-        }
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
      * Gets capping
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2|null
+     * @return \criteo\api\retailmedia\preview\Model\LineItemCappingV2|null
      */
     public function getCapping()
     {
@@ -633,50 +470,16 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets capping
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalLineItemCappingV2|null $capping capping
+     * @param \criteo\api\retailmedia\preview\Model\LineItemCappingV2|null $capping capping
      *
      * @return self
      */
     public function setCapping($capping)
     {
         if (is_null($capping)) {
-            array_push($this->openAPINullablesSetToNull, 'capping');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('capping', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable capping cannot be null');
         }
         $this->container['capping'] = $capping;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
 
         return $this;
     }
@@ -694,21 +497,14 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets creative_id
      *
-     * @param string|null $creative_id External creative Id
+     * @param string|null $creative_id creative_id
      *
      * @return self
      */
     public function setCreativeId($creative_id)
     {
         if (is_null($creative_id)) {
-            array_push($this->openAPINullablesSetToNull, 'creative_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('creative_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable creative_id cannot be null');
         }
         $this->container['creative_id'] = $creative_id;
 
@@ -743,40 +539,6 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Id of the entity
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -799,10 +561,10 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemV2., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling PreferredLineItemUpdateModelV2., must be smaller than or equal to 255.');
         }
         if ((mb_strlen($name) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling ExternalPreferredLineItemV2., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $name when calling PreferredLineItemUpdateModelV2., must be bigger than or equal to 0.');
         }
 
         $this->container['name'] = $name;
@@ -830,17 +592,10 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     public function setPacing($pacing)
     {
         if (is_null($pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable pacing cannot be null');
         }
         $allowedValues = $this->getPacingAllowableValues();
-        if (!is_null($pacing) && !in_array($pacing, $allowedValues, true)) {
+        if (!in_array($pacing, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'pacing', must be one of '%s'",
@@ -857,7 +612,7 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets page
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2|null
+     * @return \criteo\api\retailmedia\preview\Model\LineItemPageV2|null
      */
     public function getPage()
     {
@@ -867,14 +622,21 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets page
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExternalLineItemPageV2|null $page page
+     * @param \criteo\api\retailmedia\preview\Model\LineItemPageV2|null $page page
      *
      * @return self
      */
     public function setPage($page)
     {
         if (is_null($page)) {
-            throw new \InvalidArgumentException('non-nullable page cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'page');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['page'] = $page;
 
@@ -941,60 +703,6 @@ class ExternalPreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonS
             );
         }
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets target_retailer_id
-     *
-     * @return string
-     */
-    public function getTargetRetailerId()
-    {
-        return $this->container['target_retailer_id'];
-    }
-
-    /**
-     * Sets target_retailer_id
-     *
-     * @param string $target_retailer_id target_retailer_id
-     *
-     * @return self
-     */
-    public function setTargetRetailerId($target_retailer_id)
-    {
-        if (is_null($target_retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable target_retailer_id cannot be null');
-        }
-        $this->container['target_retailer_id'] = $target_retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

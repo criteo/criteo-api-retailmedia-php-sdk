@@ -259,7 +259,6 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const LOOKBACK_DAYS_UNKNOWN = 'Unknown';
     public const LOOKBACK_DAYS_LAST7_DAYS = 'Last7Days';
     public const LOOKBACK_DAYS_LAST14_DAYS = 'Last14Days';
     public const LOOKBACK_DAYS_LAST30_DAYS = 'Last30Days';
@@ -269,7 +268,6 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const LOOKBACK_DAYS_LAST120_DAYS = 'Last120Days';
     public const LOOKBACK_DAYS_LAST150_DAYS = 'Last150Days';
     public const LOOKBACK_DAYS_LAST180_DAYS = 'Last180Days';
-    public const SHOPPER_ACTIVITY_UNKNOWN = 'Unknown';
     public const SHOPPER_ACTIVITY_VIEW = 'View';
     public const SHOPPER_ACTIVITY_BUY = 'Buy';
     public const SHOPPER_ACTIVITY_ADD_TO_CART = 'AddToCart';
@@ -282,7 +280,6 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getLookbackDaysAllowableValues()
     {
         return [
-            self::LOOKBACK_DAYS_UNKNOWN,
             self::LOOKBACK_DAYS_LAST7_DAYS,
             self::LOOKBACK_DAYS_LAST14_DAYS,
             self::LOOKBACK_DAYS_LAST30_DAYS,
@@ -303,7 +300,6 @@ class RmEventsCreateV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getShopperActivityAllowableValues()
     {
         return [
-            self::SHOPPER_ACTIVITY_UNKNOWN,
             self::SHOPPER_ACTIVITY_VIEW,
             self::SHOPPER_ACTIVITY_BUY,
             self::SHOPPER_ACTIVITY_ADD_TO_CART,

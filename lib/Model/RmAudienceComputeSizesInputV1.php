@@ -58,7 +58,7 @@ class RmAudienceComputeSizesInputV1 implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1Resource'
+        'data' => '\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizeEntityV1Resource'
     ];
 
     /**
@@ -293,7 +293,7 @@ class RmAudienceComputeSizesInputV1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1Resource|null
+     * @return \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizeEntityV1Resource|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class RmAudienceComputeSizesInputV1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1Resource|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizeEntityV1Resource|null $data data
      *
      * @return self
      */

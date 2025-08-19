@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductButtonListResponse
+ * RmAudienceComputeSizeEntityV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ProductButtonListResponse Class Doc Comment
+ * RmAudienceComputeSizeEntityV1 Class Doc Comment
  *
  * @category Class
- * @description Data model for a list of response resources
+ * @description Audience of people of interest for a marketer.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class RmAudienceComputeSizeEntityV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductButtonListResponse';
+    protected static $openAPIModelName = 'RmAudienceComputeSizeEntityV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\ProblemDetails[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\ProblemDetails[]'
+        'channel' => 'string',
+        'ids' => 'string[]'
     ];
 
     /**
@@ -71,9 +70,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'channel' => null,
+        'ids' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'errors' => false,
-		'warnings' => false
+        'channel' => false,
+		'ids' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'channel' => 'channel',
+        'ids' => 'ids'
     ];
 
     /**
@@ -184,9 +180,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'channel' => 'setChannel',
+        'ids' => 'setIds'
     ];
 
     /**
@@ -195,9 +190,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'channel' => 'getChannel',
+        'ids' => 'getIds'
     ];
 
     /**
@@ -241,6 +235,21 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const CHANNEL_ONSITE = 'Onsite';
+    public const CHANNEL_OFFSITE = 'Offsite';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getChannelAllowableValues()
+    {
+        return [
+            self::CHANNEL_ONSITE,
+            self::CHANNEL_OFFSITE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +266,8 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('channel', $data ?? [], null);
+        $this->setIfExists('ids', $data ?? [], null);
     }
 
     /**
@@ -289,6 +297,21 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['channel'] === null) {
+            $invalidProperties[] = "'channel' can't be null";
+        }
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!is_null($this->container['channel']) && !in_array($this->container['channel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'channel', must be one of '%s'",
+                $this->container['channel'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['ids'] === null) {
+            $invalidProperties[] = "'ids' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,82 +328,65 @@ class ProductButtonListResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets data
+     * Gets channel
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]|null
+     * @return string
      */
-    public function getData()
+    public function getChannel()
     {
-        return $this->container['data'];
+        return $this->container['channel'];
     }
 
     /**
-     * Sets data
+     * Sets channel
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfProductButtonResponse[]|null $data data
+     * @param string $channel Channel to compute the sizes for.
      *
      * @return self
      */
-    public function setData($data)
+    public function setChannel($channel)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($channel)) {
+            throw new \InvalidArgumentException('non-nullable channel cannot be null');
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getChannelAllowableValues();
+        if (!in_array($channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'channel', must be one of '%s'",
+                    $channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['channel'] = $channel;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets ids
      *
-     * @return \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null
+     * @return string[]
      */
-    public function getErrors()
+    public function getIds()
     {
-        return $this->container['errors'];
+        return $this->container['ids'];
     }
 
     /**
-     * Sets errors
+     * Sets ids
      *
-     * @param \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null $errors errors
+     * @param string[] $ids List of ids of the segments whose size is requested.
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setIds($ids)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($ids)) {
+            throw new \InvalidArgumentException('non-nullable ids cannot be null');
         }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['ids'] = $ids;
 
         return $this;
     }

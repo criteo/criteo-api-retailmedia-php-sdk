@@ -235,7 +235,6 @@ class RmAudienceSegmentComputeSizeEntityV1 implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
-    public const CHANNEL_UNKNOWN = 'Unknown';
     public const CHANNEL_ONSITE = 'Onsite';
     public const CHANNEL_OFFSITE = 'Offsite';
 
@@ -247,7 +246,6 @@ class RmAudienceSegmentComputeSizeEntityV1 implements ModelInterface, ArrayAcces
     public function getChannelAllowableValues()
     {
         return [
-            self::CHANNEL_UNKNOWN,
             self::CHANNEL_ONSITE,
             self::CHANNEL_OFFSITE,
         ];

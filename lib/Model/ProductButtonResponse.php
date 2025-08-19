@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalProductButtonResponse
+ * ProductButtonResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExternalProductButtonResponse Class Doc Comment
+ * ProductButtonResponse Class Doc Comment
  *
  * @category Class
- * @description The Product Button entity used for output
+ * @description The Product Button entity
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalProductButtonResponse implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalProductButtonResponse';
+    protected static $openAPIModelName = 'ProductButtonResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

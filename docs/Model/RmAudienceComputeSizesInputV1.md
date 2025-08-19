@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesEntityV1Resource**](RmAudienceComputeSizesEntityV1Resource.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\preview\Model\RmAudienceComputeSizeEntityV1Resource**](RmAudienceComputeSizeEntityV1Resource.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

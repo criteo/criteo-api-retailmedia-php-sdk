@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_strategy** | **string** |  | [optional] [default to 'Conversion']
+**bid_strategy** | **string** |  | [optional] [default to 'conversion']
 **budget** | **float** |  | [optional]
 **daily_pacing** | **float** |  | [optional]
 **end_date** | **\DateTime** |  | [optional]
