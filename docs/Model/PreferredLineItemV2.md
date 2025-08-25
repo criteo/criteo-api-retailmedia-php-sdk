@@ -10,8 +10,9 @@ Name | Type | Description | Notes
 **campaign_id** | **string** |  |
 **capping** | [**\criteo\api\retailmedia\preview\Model\LineItemCappingV2**](LineItemCappingV2.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
-**creative_id** | **string** | External creative Id | [optional]
+**creative_id** | **string** | creative Id | [optional]
 **end_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
+**id** | **string** |  | [optional]
 **name** | **string** |  |
 **pacing** | **string** |  | [optional]
 **page** | [**\criteo\api\retailmedia\preview\Model\LineItemPageV2**](LineItemPageV2.md) |  | [optional]

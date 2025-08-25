@@ -1445,11 +1445,12 @@ class BalanceApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
     public function postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
     {
-        $this->postApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, $contentType);
+        list($response) = $this->postApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, $contentType);
+        return $response;
     }
 
     /**
@@ -1461,7 +1462,7 @@ class BalanceApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
     {
@@ -1502,10 +1503,50 @@ class BalanceApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1543,14 +1584,27 @@ class BalanceApi
      */
     public function postApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
     {
-        $returnType = '';
+        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
         $request = $this->postApiExternalV2AccountBalancesByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

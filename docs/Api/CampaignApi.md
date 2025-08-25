@@ -340,7 +340,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | External LineItemId for productButton delete
+$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton delete
 $product_button_id = 'product_button_id_example'; // string | productButtonId used for delete
 
 try {
@@ -355,7 +355,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| External LineItemId for productButton delete | |
+| **line_item_id** | **string**| LineItemId for productButton delete | |
 | **product_button_id** | **string**| productButtonId used for delete | |
 
 ### Return type
@@ -601,7 +601,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | External LineItemId for productButton retrieval
+$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
 $product_button_id = 'product_button_id_example'; // string | productButtonId used for retrieval
 
 try {
@@ -616,7 +616,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| External LineItemId for productButton retrieval | |
+| **line_item_id** | **string**| LineItemId for productButton retrieval | |
 | **product_button_id** | **string**| productButtonId used for retrieval | |
 
 ### Return type
@@ -666,7 +666,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | External LineItemId for productButton retrieval
+$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
 
 try {
     $result = $apiInstance->getApiExternalV1LineItemProductButtonsByLineItemId($line_item_id);
@@ -680,7 +680,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| External LineItemId for productButton retrieval | |
+| **line_item_id** | **string**| LineItemId for productButton retrieval | |
 
 ### Return type
 
@@ -1577,7 +1577,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | External LineItemId for productButton retrieval
+$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
 $product_button_request_list_request = new \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest(); // \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest | List of Product Buttons to append
 
 try {
@@ -1592,7 +1592,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| External LineItemId for productButton retrieval | |
+| **line_item_id** | **string**| LineItemId for productButton retrieval | |
 | **product_button_request_list_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest**](../Model/ProductButtonRequestListRequest.md)| List of Product Buttons to append | [optional] |
 
 ### Return type
@@ -2100,7 +2100,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | External LineItemId for productButton update
+$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton update
 $product_button_id = 'product_button_id_example'; // string | productButtonId used for update
 $product_button_request_request = new \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest(); // \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest | Specific Product button update info
 
@@ -2116,7 +2116,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| External LineItemId for productButton update | |
+| **line_item_id** | **string**| LineItemId for productButton update | |
 | **product_button_id** | **string**| productButtonId used for update | |
 | **product_button_request_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest**](../Model/ProductButtonRequestRequest.md)| Specific Product button update info | [optional] |
 

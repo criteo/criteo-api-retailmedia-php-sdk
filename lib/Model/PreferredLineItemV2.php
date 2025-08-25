@@ -66,6 +66,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => '\DateTime',
         'creative_id' => 'string',
         'end_date' => '\DateTime',
+        'id' => 'string',
         'name' => 'string',
         'pacing' => 'string',
         'page' => '\criteo\api\retailmedia\preview\Model\LineItemPageV2',
@@ -91,6 +92,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'date-time',
         'creative_id' => 'long-id',
         'end_date' => 'date',
+        'id' => null,
         'name' => null,
         'pacing' => null,
         'page' => null,
@@ -114,6 +116,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
 		'created_at' => false,
 		'creative_id' => true,
 		'end_date' => false,
+		'id' => true,
 		'name' => false,
 		'pacing' => true,
 		'page' => true,
@@ -217,6 +220,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'createdAt',
         'creative_id' => 'creativeId',
         'end_date' => 'endDate',
+        'id' => 'id',
         'name' => 'name',
         'pacing' => 'pacing',
         'page' => 'page',
@@ -240,6 +244,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'setCreatedAt',
         'creative_id' => 'setCreativeId',
         'end_date' => 'setEndDate',
+        'id' => 'setId',
         'name' => 'setName',
         'pacing' => 'setPacing',
         'page' => 'setPage',
@@ -263,6 +268,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         'created_at' => 'getCreatedAt',
         'creative_id' => 'getCreativeId',
         'end_date' => 'getEndDate',
+        'id' => 'getId',
         'name' => 'getName',
         'pacing' => 'getPacing',
         'page' => 'getPage',
@@ -383,6 +389,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('creative_id', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('pacing', $data ?? [], null);
         $this->setIfExists('page', $data ?? [], null);
@@ -670,7 +677,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets creative_id
      *
-     * @param string|null $creative_id External creative Id
+     * @param string|null $creative_id creative Id
      *
      * @return self
      */
@@ -714,6 +721,40 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
         $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

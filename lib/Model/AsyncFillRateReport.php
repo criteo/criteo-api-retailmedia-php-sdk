@@ -298,8 +298,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_REVENUE = 'revenue';
     public const METRICS_WORKING_MEDIA = 'workingMedia';
     public const METRICS_NET_REVENUE = 'netRevenue';
-    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
-    public const METRICS_FREQUENCY = 'frequency';
 
     /**
      * Gets allowable values of the enum
@@ -364,8 +362,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_REVENUE,
             self::METRICS_WORKING_MEDIA,
             self::METRICS_NET_REVENUE,
-            self::METRICS_UNIQUE_VISITORS,
-            self::METRICS_FREQUENCY,
         ];
     }
 

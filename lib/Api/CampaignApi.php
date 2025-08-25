@@ -1578,7 +1578,7 @@ class CampaignApi
     /**
      * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
      *
-     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -1595,7 +1595,7 @@ class CampaignApi
     /**
      * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -1694,7 +1694,7 @@ class CampaignApi
     /**
      * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
      *
-     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -1714,7 +1714,7 @@ class CampaignApi
     /**
      * Operation deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -1765,7 +1765,7 @@ class CampaignApi
     /**
      * Create request for operation 'deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
      *
-     * @param  string $line_item_id External LineItemId for productButton delete (required)
+     * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -2796,7 +2796,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -2813,7 +2813,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -2912,7 +2912,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -2932,7 +2932,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -2983,7 +2983,7 @@ class CampaignApi
     /**
      * Create request for operation 'getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
      *
@@ -3099,7 +3099,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemProductButtonsByLineItemId
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -3115,7 +3115,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemProductButtonsByLineItemIdWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -3213,7 +3213,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemProductButtonsByLineItemIdAsync
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3232,7 +3232,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1LineItemProductButtonsByLineItemIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3282,7 +3282,7 @@ class CampaignApi
     /**
      * Create request for operation 'getApiExternalV1LineItemProductButtonsByLineItemId'
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1LineItemProductButtonsByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7428,7 +7428,7 @@ class CampaignApi
     /**
      * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemId
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
@@ -7445,7 +7445,7 @@ class CampaignApi
     /**
      * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
@@ -7544,7 +7544,7 @@ class CampaignApi
     /**
      * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsync
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
@@ -7564,7 +7564,7 @@ class CampaignApi
     /**
      * Operation postApiExternalV1LineItemProductButtonsCreateByLineItemIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
@@ -7615,7 +7615,7 @@ class CampaignApi
     /**
      * Create request for operation 'postApiExternalV1LineItemProductButtonsCreateByLineItemId'
      *
-     * @param  string $line_item_id External LineItemId for productButton retrieval (required)
+     * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1LineItemProductButtonsCreateByLineItemId'] to see the possible values for this operation
      *
@@ -9888,7 +9888,7 @@ class CampaignApi
     /**
      * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId
      *
-     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
@@ -9906,7 +9906,7 @@ class CampaignApi
     /**
      * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
@@ -10006,7 +10006,7 @@ class CampaignApi
     /**
      * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsync
      *
-     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
@@ -10027,7 +10027,7 @@ class CampaignApi
     /**
      * Operation putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonIdAsyncWithHttpInfo
      *
-     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation
@@ -10079,7 +10079,7 @@ class CampaignApi
     /**
      * Create request for operation 'putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'
      *
-     * @param  string $line_item_id External LineItemId for productButton update (required)
+     * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiExternalV1LineItemByLineItemIdProductButtonsproductButtonId'] to see the possible values for this operation

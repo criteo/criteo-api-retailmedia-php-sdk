@@ -285,7 +285,7 @@ try {
 ## `postApiExternalV2AccountBalancesByAccountId()`
 
 ```php
-postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request)
+postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request): \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
 ```
 
 
@@ -316,7 +316,8 @@ $account_id = 'account_id_example'; // string | The account to create balances f
 $create_balance_v2_request = new \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request(); // \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
 
 try {
-    $apiInstance->postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request);
+    $result = $apiInstance->postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BalanceApi->postApiExternalV2AccountBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
 }
@@ -331,7 +332,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
 
 ### Authorization
 
