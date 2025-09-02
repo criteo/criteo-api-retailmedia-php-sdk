@@ -58,6 +58,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'ad_server_type' => 'string',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
@@ -75,6 +76,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'ad_server_type' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
@@ -90,7 +92,8 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'dimensions' => false,
+        'ad_server_type' => false,
+		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
 		'metrics' => false,
@@ -185,6 +188,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'ad_server_type' => 'adServerType',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
@@ -200,6 +204,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'ad_server_type' => 'setAdServerType',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
@@ -215,6 +220,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'ad_server_type' => 'getAdServerType',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
@@ -265,6 +271,9 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const AD_SERVER_TYPE_ALL = 'all';
+    public const AD_SERVER_TYPE_GAM = 'gam';
+    public const AD_SERVER_TYPE_CRITEO = 'criteo';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
@@ -275,6 +284,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
     public const DIMENSIONS_RETAILER_CATEGORY_ID = 'retailerCategoryId';
     public const DIMENSIONS_RETAILER_CATEGORY_NAME = 'retailerCategoryName';
+    public const DIMENSIONS_AD_SERVER_TYPE = 'adServerType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
@@ -304,6 +314,20 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getAdServerTypeAllowableValues()
+    {
+        return [
+            self::AD_SERVER_TYPE_ALL,
+            self::AD_SERVER_TYPE_GAM,
+            self::AD_SERVER_TYPE_CRITEO,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getDimensionsAllowableValues()
     {
         return [
@@ -317,6 +341,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_SERVED_CATEGORY,
             self::DIMENSIONS_RETAILER_CATEGORY_ID,
             self::DIMENSIONS_RETAILER_CATEGORY_NAME,
+            self::DIMENSIONS_AD_SERVER_TYPE,
         ];
     }
 
@@ -380,6 +405,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('ad_server_type', $data ?? [], 'all');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json');
@@ -415,6 +441,15 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getAdServerTypeAllowableValues();
+        if (!is_null($this->container['ad_server_type']) && !in_array($this->container['ad_server_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_server_type', must be one of '%s'",
+                $this->container['ad_server_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         if ($this->container['dimensions'] === null) {
             $invalidProperties[] = "'dimensions' can't be null";
@@ -462,6 +497,43 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets ad_server_type
+     *
+     * @return string|null
+     */
+    public function getAdServerType()
+    {
+        return $this->container['ad_server_type'];
+    }
+
+    /**
+     * Sets ad_server_type
+     *
+     * @param string|null $ad_server_type Filter on the type of the ad server: criteo, gam, all
+     *
+     * @return self
+     */
+    public function setAdServerType($ad_server_type)
+    {
+        if (is_null($ad_server_type)) {
+            throw new \InvalidArgumentException('non-nullable ad_server_type cannot be null');
+        }
+        $allowedValues = $this->getAdServerTypeAllowableValues();
+        if (!in_array($ad_server_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_server_type', must be one of '%s'",
+                    $ad_server_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_server_type'] = $ad_server_type;
+
+        return $this;
+    }
 
     /**
      * Gets dimensions

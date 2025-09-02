@@ -65,6 +65,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'line_item_ids' => 'string[]',
+        'media_type' => 'string',
         'metrics' => 'string[]',
         'sales_channel' => 'string',
         'start_date' => '\DateTime',
@@ -87,6 +88,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         'dimensions' => null,
         'end_date' => 'date-time',
         'line_item_ids' => null,
+        'media_type' => null,
         'metrics' => null,
         'sales_channel' => null,
         'start_date' => 'date-time',
@@ -107,6 +109,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
 		'dimensions' => false,
 		'end_date' => false,
 		'line_item_ids' => false,
+		'media_type' => false,
 		'metrics' => false,
 		'sales_channel' => false,
 		'start_date' => false,
@@ -207,6 +210,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'line_item_ids' => 'lineItemIds',
+        'media_type' => 'mediaType',
         'metrics' => 'metrics',
         'sales_channel' => 'salesChannel',
         'start_date' => 'startDate',
@@ -227,6 +231,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'line_item_ids' => 'setLineItemIds',
+        'media_type' => 'setMediaType',
         'metrics' => 'setMetrics',
         'sales_channel' => 'setSalesChannel',
         'start_date' => 'setStartDate',
@@ -247,6 +252,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'line_item_ids' => 'getLineItemIds',
+        'media_type' => 'getMediaType',
         'metrics' => 'getMetrics',
         'sales_channel' => 'getSalesChannel',
         'start_date' => 'getStartDate',
@@ -332,6 +338,10 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_SALE_SELLER_NAME = 'saleSellerName';
     public const DIMENSIONS_ACTIVITY_SELLER_ID = 'activitySellerId';
     public const DIMENSIONS_ACTIVITY_SELLER_NAME = 'activitySellerName';
+    public const MEDIA_TYPE_UNKNOWN = 'unknown';
+    public const MEDIA_TYPE_VIDEO = 'video';
+    public const MEDIA_TYPE_DISPLAY = 'display';
+    public const MEDIA_TYPE_ALL = 'all';
     public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
     public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
     public const SALES_CHANNEL_ONLINE = 'online';
@@ -418,6 +428,21 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
      *
      * @return string[]
      */
+    public function getMediaTypeAllowableValues()
+    {
+        return [
+            self::MEDIA_TYPE_UNKNOWN,
+            self::MEDIA_TYPE_VIDEO,
+            self::MEDIA_TYPE_DISPLAY,
+            self::MEDIA_TYPE_ALL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getMetricsAllowableValues()
     {
         return [
@@ -478,6 +503,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('media_type', $data ?? [], 'all');
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('sales_channel', $data ?? [], 'all');
         $this->setIfExists('start_date', $data ?? [], null);
@@ -536,6 +562,15 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
         if ($this->container['end_date'] === null) {
             $invalidProperties[] = "'end_date' can't be null";
         }
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'media_type', must be one of '%s'",
+                $this->container['media_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getSalesChannelAllowableValues();
         if (!is_null($this->container['sales_channel']) && !in_array($this->container['sales_channel'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -786,6 +821,43 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
         }
         $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type Filter on the type of media: unknown, display, video
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+        }
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!in_array($media_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'media_type', must be one of '%s'",
+                    $media_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['media_type'] = $media_type;
 
         return $this;
     }

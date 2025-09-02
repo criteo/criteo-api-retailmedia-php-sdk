@@ -84,7 +84,6 @@ class CampaignApi
             'application/*+json',
         ],
         'createAuctionLineItemV2' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/*+json',
@@ -198,7 +197,6 @@ class CampaignApi
             'application/json',
         ],
         'updateAuctionLineItemV2' => [
-            'application/json-patch+json',
             'application/json',
             'text/json',
             'application/*+json',
@@ -8414,11 +8412,12 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
      */
     public function postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
     {
-        $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+        list($response) = $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
+        return $response;
     }
 
     /**
@@ -8430,7 +8429,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response|\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
     {
@@ -8471,10 +8470,65 @@ class CampaignApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -8520,14 +8574,27 @@ class CampaignApi
      */
     public function postApiExternalV2CampaignPreferredLineItemsByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2CampaignPreferredLineItemsByCampaignId'][0])
     {
-        $returnType = '';
+        $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
         $request = $this->postApiExternalV2CampaignPreferredLineItemsByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -12053,7 +12120,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2
      *
-     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12070,7 +12137,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2WithHttpInfo
      *
-     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12169,7 +12236,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2Async
      *
-     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12189,7 +12256,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemV2AsyncWithHttpInfo
      *
-     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
@@ -12240,7 +12307,7 @@ class CampaignApi
     /**
      * Create request for operation 'updateAuctionLineItemV2'
      *
-     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *

@@ -97,7 +97,7 @@ class PreferredLineItemCreateModelV2 implements ModelInterface, ArrayAccess, \Js
       */
     protected static array $openAPINullables = [
         'budget' => false,
-		'capping' => false,
+		'capping' => true,
 		'creative_id' => false,
 		'end_date' => false,
 		'name' => false,
@@ -493,7 +493,14 @@ class PreferredLineItemCreateModelV2 implements ModelInterface, ArrayAccess, \Js
     public function setCapping($capping)
     {
         if (is_null($capping)) {
-            throw new \InvalidArgumentException('non-nullable capping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capping', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capping'] = $capping;
 

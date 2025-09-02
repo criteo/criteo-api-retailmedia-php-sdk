@@ -65,6 +65,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
+        'media_type' => 'string',
         'metrics' => 'string[]',
         'report_type' => 'string',
         'sales_channel' => 'string',
@@ -91,6 +92,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
+        'media_type' => null,
         'metrics' => null,
         'report_type' => null,
         'sales_channel' => null,
@@ -115,6 +117,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
+		'media_type' => false,
 		'metrics' => false,
 		'report_type' => false,
 		'sales_channel' => false,
@@ -219,6 +222,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
+        'media_type' => 'mediaType',
         'metrics' => 'metrics',
         'report_type' => 'reportType',
         'sales_channel' => 'salesChannel',
@@ -243,6 +247,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
+        'media_type' => 'setMediaType',
         'metrics' => 'setMetrics',
         'report_type' => 'setReportType',
         'sales_channel' => 'setSalesChannel',
@@ -267,6 +272,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
+        'media_type' => 'getMediaType',
         'metrics' => 'getMetrics',
         'report_type' => 'getReportType',
         'sales_channel' => 'getSalesChannel',
@@ -345,6 +351,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_ADV_PRODUCT_ID = 'advProductId';
     public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
+    public const DIMENSIONS_MEDIA_TYPE = 'mediaType';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_PAGE_CATEGORY = 'pageCategory';
@@ -365,6 +372,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
+    public const MEDIA_TYPE_UNKNOWN = 'unknown';
+    public const MEDIA_TYPE_VIDEO = 'video';
+    public const MEDIA_TYPE_DISPLAY = 'display';
+    public const MEDIA_TYPE_ALL = 'all';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
@@ -402,6 +413,9 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS_RATE = 'newToBrandAttributedUnitsRate';
     public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_FREQUENCY = 'frequency';
+    public const METRICS_WIN_RATE = 'winRate';
+    public const METRICS_SAMPLED_BIDS_WON = 'sampledBidsWon';
+    public const METRICS_SAMPLED_BIDS_PARTICIPATED = 'sampledBidsParticipated';
     public const REPORT_TYPE_SUMMARY = 'summary';
     public const REPORT_TYPE_PAGE_TYPE = 'pageType';
     public const REPORT_TYPE_KEYWORD = 'keyword';
@@ -497,6 +511,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_ADV_PRODUCT_ID,
             self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_MEDIA_TYPE,
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_PAGE_CATEGORY,
@@ -528,6 +543,21 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::FORMAT_JSON_COMPACT,
             self::FORMAT_JSON_NEWLINE,
             self::FORMAT_CSV,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMediaTypeAllowableValues()
+    {
+        return [
+            self::MEDIA_TYPE_UNKNOWN,
+            self::MEDIA_TYPE_VIDEO,
+            self::MEDIA_TYPE_DISPLAY,
+            self::MEDIA_TYPE_ALL,
         ];
     }
 
@@ -576,6 +606,9 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_NEW_TO_BRAND_ATTRIBUTED_UNITS_RATE,
             self::METRICS_UNIQUE_VISITORS,
             self::METRICS_FREQUENCY,
+            self::METRICS_WIN_RATE,
+            self::METRICS_SAMPLED_BIDS_WON,
+            self::METRICS_SAMPLED_BIDS_PARTICIPATED,
         ];
     }
 
@@ -694,6 +727,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
+        $this->setIfExists('media_type', $data ?? [], 'all');
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('report_type', $data ?? [], 'summary');
         $this->setIfExists('sales_channel', $data ?? [], 'all');
@@ -770,6 +804,15 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'format', must be one of '%s'",
                 $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'media_type', must be one of '%s'",
+                $this->container['media_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1053,6 +1096,43 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type Filter on the type of media: unknown, display, video
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+        }
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!in_array($media_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'media_type', must be one of '%s'",
+                    $media_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['media_type'] = $media_type;
 
         return $this;
     }

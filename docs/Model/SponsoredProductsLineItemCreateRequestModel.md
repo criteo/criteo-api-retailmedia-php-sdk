@@ -4,20 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_strategy** | **string** |  | [optional] [default to 'conversion']
-**budget** | **float** |  | [optional]
-**conquesting_adstrategy_enabled** | **bool** |  | [optional]
-**daily_pacing** | **float** |  | [optional]
-**defensive_adstrategy_enabled** | **bool** |  | [optional]
-**end_date** | **\DateTime** |  | [optional]
+**bid_strategy** | **string** | The bidding strategy to use for this line item.  Default value is Conversion. | [optional] [default to 'conversion']
+**budget** | **float** | The total budget allocated for this line item. | [optional]
+**daily_pacing** | **float** | The daily pacing limit for budget spending. | [optional]
+**end_date** | **\DateTime** | The date and time when the line item should stop running. | [optional]
 **flight_schedule** | [**\criteo\api\retailmedia\preview\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
-**is_auto_daily_pacing** | **bool** |  | [optional] [default to false]
-**max_bid** | **float** |  | [optional]
-**monthly_pacing** | **float** |  | [optional]
-**name** | **string** |  |
-**neutral_adstrategy_enabled** | **bool** |  | [optional]
-**start_date** | **\DateTime** |  |
-**target_bid** | **float** |  | [optional]
-**target_retailer_id** | **string** |  |
+**is_auto_daily_pacing** | **bool** | Indicates whether automatic daily pacing is enabled.  Default value is false. | [optional] [default to false]
+**keyword_strategy** | **string** | The keyword targeting strategy for this line item. | [optional]
+**max_bid** | **float** | The maximum bid amount allowed for this line item. | [optional]
+**monthly_pacing** | **float** | The monthly pacing limit for budget spending. | [optional]
+**name** | **string** | The name of the line item. |
+**start_date** | **\DateTime** | The date and time when the line item should start running. |
+**target_bid** | **float** | The target bid amount for the line item. | [optional]
+**target_retailer_id** | **string** | The ID of the retailer to target for this line item. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

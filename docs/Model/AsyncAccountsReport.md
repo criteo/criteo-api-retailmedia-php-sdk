@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
+**media_type** | **string** | Filter on the type of media: unknown, display, video | [optional] [default to 'all']
 **metrics** | **string[]** | List of metrics to report on | [optional]
 **report_type** | **string** | Type of report, if no dimensions and metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']

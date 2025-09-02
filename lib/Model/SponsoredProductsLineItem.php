@@ -63,17 +63,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'float',
         'budget_spent' => 'float',
         'campaign_id' => 'string',
-        'conquesting_adstrategy_enabled' => 'bool',
         'created_at' => '\DateTime',
         'daily_pacing' => 'float',
-        'defensive_adstrategy_enabled' => 'bool',
         'end_date' => '\DateTime',
         'flight_schedule' => '\criteo\api\retailmedia\preview\Model\FlightSchedule',
         'is_auto_daily_pacing' => 'bool',
+        'keyword_strategy' => 'string',
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
-        'neutral_adstrategy_enabled' => 'bool',
         'start_date' => '\DateTime',
         'status' => 'string',
         'target_bid' => 'float',
@@ -94,17 +92,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'double',
         'budget_spent' => 'double',
         'campaign_id' => 'long-id',
-        'conquesting_adstrategy_enabled' => null,
         'created_at' => 'date-time',
         'daily_pacing' => 'double',
-        'defensive_adstrategy_enabled' => null,
         'end_date' => 'date-time',
         'flight_schedule' => null,
         'is_auto_daily_pacing' => null,
+        'keyword_strategy' => null,
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
-        'neutral_adstrategy_enabled' => null,
         'start_date' => 'date-time',
         'status' => null,
         'target_bid' => 'double',
@@ -123,17 +119,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
 		'budget_remaining' => true,
 		'budget_spent' => true,
 		'campaign_id' => false,
-		'conquesting_adstrategy_enabled' => true,
 		'created_at' => false,
 		'daily_pacing' => true,
-		'defensive_adstrategy_enabled' => true,
 		'end_date' => true,
 		'flight_schedule' => true,
 		'is_auto_daily_pacing' => true,
+		'keyword_strategy' => true,
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
-		'neutral_adstrategy_enabled' => true,
 		'start_date' => false,
 		'status' => true,
 		'target_bid' => true,
@@ -232,17 +226,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'budgetRemaining',
         'budget_spent' => 'budgetSpent',
         'campaign_id' => 'campaignId',
-        'conquesting_adstrategy_enabled' => 'conquestingAdstrategyEnabled',
         'created_at' => 'createdAt',
         'daily_pacing' => 'dailyPacing',
-        'defensive_adstrategy_enabled' => 'defensiveAdstrategyEnabled',
         'end_date' => 'endDate',
         'flight_schedule' => 'flightSchedule',
         'is_auto_daily_pacing' => 'isAutoDailyPacing',
+        'keyword_strategy' => 'keywordStrategy',
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
-        'neutral_adstrategy_enabled' => 'neutralAdstrategyEnabled',
         'start_date' => 'startDate',
         'status' => 'status',
         'target_bid' => 'targetBid',
@@ -261,17 +253,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'setBudgetRemaining',
         'budget_spent' => 'setBudgetSpent',
         'campaign_id' => 'setCampaignId',
-        'conquesting_adstrategy_enabled' => 'setConquestingAdstrategyEnabled',
         'created_at' => 'setCreatedAt',
         'daily_pacing' => 'setDailyPacing',
-        'defensive_adstrategy_enabled' => 'setDefensiveAdstrategyEnabled',
         'end_date' => 'setEndDate',
         'flight_schedule' => 'setFlightSchedule',
         'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
+        'keyword_strategy' => 'setKeywordStrategy',
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
-        'neutral_adstrategy_enabled' => 'setNeutralAdstrategyEnabled',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'target_bid' => 'setTargetBid',
@@ -290,17 +280,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'budget_remaining' => 'getBudgetRemaining',
         'budget_spent' => 'getBudgetSpent',
         'campaign_id' => 'getCampaignId',
-        'conquesting_adstrategy_enabled' => 'getConquestingAdstrategyEnabled',
         'created_at' => 'getCreatedAt',
         'daily_pacing' => 'getDailyPacing',
-        'defensive_adstrategy_enabled' => 'getDefensiveAdstrategyEnabled',
         'end_date' => 'getEndDate',
         'flight_schedule' => 'getFlightSchedule',
         'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
+        'keyword_strategy' => 'getKeywordStrategy',
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
-        'neutral_adstrategy_enabled' => 'getNeutralAdstrategyEnabled',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'target_bid' => 'getTargetBid',
@@ -353,6 +341,10 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public const BID_STRATEGY_CONVERSION = 'conversion';
     public const BID_STRATEGY_CLICKS = 'clicks';
     public const BID_STRATEGY_REVENUE = 'revenue';
+    public const KEYWORD_STRATEGY_UNKNOWN = 'unknown';
+    public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
+    public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
+    public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -375,6 +367,21 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKeywordStrategyAllowableValues()
+    {
+        return [
+            self::KEYWORD_STRATEGY_UNKNOWN,
+            self::KEYWORD_STRATEGY_CONQUESTING,
+            self::KEYWORD_STRATEGY_GENERIC_AND_BRANDED,
+            self::KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING,
         ];
     }
 
@@ -418,17 +425,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('budget_remaining', $data ?? [], null);
         $this->setIfExists('budget_spent', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('conquesting_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('defensive_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('flight_schedule', $data ?? [], null);
         $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
+        $this->setIfExists('keyword_strategy', $data ?? [], null);
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('neutral_adstrategy_enabled', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
@@ -481,6 +486,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
+        $allowedValues = $this->getKeywordStrategyAllowableValues();
+        if (!is_null($this->container['keyword_strategy']) && !in_array($this->container['keyword_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'keyword_strategy', must be one of '%s'",
+                $this->container['keyword_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -538,7 +552,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy bid_strategy
+     * @param string|null $bid_strategy Optional field.
      *
      * @return self
      */
@@ -582,7 +596,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget
      *
-     * @param float|null $budget budget
+     * @param float|null $budget The total budget allocated for this line item.
      *
      * @return self
      */
@@ -616,7 +630,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_remaining
      *
-     * @param float $budget_remaining budget_remaining
+     * @param float $budget_remaining The amount of the budget that remains available.
      *
      * @return self
      */
@@ -650,7 +664,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_spent
      *
-     * @param float|null $budget_spent budget_spent
+     * @param float|null $budget_spent The amount of the budget that has been spent so far.
      *
      * @return self
      */
@@ -684,7 +698,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets campaign_id
      *
-     * @param string $campaign_id campaign_id
+     * @param string $campaign_id The ID of the campaign this line item belongs to.
      *
      * @return self
      */
@@ -694,40 +708,6 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable campaign_id cannot be null');
         }
         $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets conquesting_adstrategy_enabled
-     *
-     * @return bool|null
-     */
-    public function getConquestingAdstrategyEnabled()
-    {
-        return $this->container['conquesting_adstrategy_enabled'];
-    }
-
-    /**
-     * Sets conquesting_adstrategy_enabled
-     *
-     * @param bool|null $conquesting_adstrategy_enabled conquesting_adstrategy_enabled
-     *
-     * @return self
-     */
-    public function setConquestingAdstrategyEnabled($conquesting_adstrategy_enabled)
-    {
-        if (is_null($conquesting_adstrategy_enabled)) {
-            array_push($this->openAPINullablesSetToNull, 'conquesting_adstrategy_enabled');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('conquesting_adstrategy_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['conquesting_adstrategy_enabled'] = $conquesting_adstrategy_enabled;
 
         return $this;
     }
@@ -745,7 +725,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets created_at
      *
-     * @param \DateTime $created_at created_at
+     * @param \DateTime $created_at The date and time when the line item was created.
      *
      * @return self
      */
@@ -772,7 +752,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets daily_pacing
      *
-     * @param float|null $daily_pacing daily_pacing
+     * @param float|null $daily_pacing The daily pacing limit for budget spending.
      *
      * @return self
      */
@@ -794,40 +774,6 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets defensive_adstrategy_enabled
-     *
-     * @return bool|null
-     */
-    public function getDefensiveAdstrategyEnabled()
-    {
-        return $this->container['defensive_adstrategy_enabled'];
-    }
-
-    /**
-     * Sets defensive_adstrategy_enabled
-     *
-     * @param bool|null $defensive_adstrategy_enabled defensive_adstrategy_enabled
-     *
-     * @return self
-     */
-    public function setDefensiveAdstrategyEnabled($defensive_adstrategy_enabled)
-    {
-        if (is_null($defensive_adstrategy_enabled)) {
-            array_push($this->openAPINullablesSetToNull, 'defensive_adstrategy_enabled');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('defensive_adstrategy_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['defensive_adstrategy_enabled'] = $defensive_adstrategy_enabled;
-
-        return $this;
-    }
-
-    /**
      * Gets end_date
      *
      * @return \DateTime|null
@@ -840,7 +786,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date end_date
+     * @param \DateTime|null $end_date The date and time when the line item stops running.
      *
      * @return self
      */
@@ -908,7 +854,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets is_auto_daily_pacing
      *
-     * @param bool|null $is_auto_daily_pacing is_auto_daily_pacing
+     * @param bool|null $is_auto_daily_pacing Indicates whether automatic daily pacing is enabled.
      *
      * @return self
      */
@@ -930,6 +876,50 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets keyword_strategy
+     *
+     * @return string|null
+     */
+    public function getKeywordStrategy()
+    {
+        return $this->container['keyword_strategy'];
+    }
+
+    /**
+     * Sets keyword_strategy
+     *
+     * @param string|null $keyword_strategy The keyword targeting strategy for this line item.
+     *
+     * @return self
+     */
+    public function setKeywordStrategy($keyword_strategy)
+    {
+        if (is_null($keyword_strategy)) {
+            array_push($this->openAPINullablesSetToNull, 'keyword_strategy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('keyword_strategy', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getKeywordStrategyAllowableValues();
+        if (!is_null($keyword_strategy) && !in_array($keyword_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'keyword_strategy', must be one of '%s'",
+                    $keyword_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['keyword_strategy'] = $keyword_strategy;
+
+        return $this;
+    }
+
+    /**
      * Gets max_bid
      *
      * @return float|null
@@ -942,7 +932,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets max_bid
      *
-     * @param float|null $max_bid max_bid
+     * @param float|null $max_bid The maximum bid amount allowed for this line item.
      *
      * @return self
      */
@@ -976,7 +966,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets monthly_pacing
      *
-     * @param float|null $monthly_pacing monthly_pacing
+     * @param float|null $monthly_pacing The monthly pacing limit for budget spending.
      *
      * @return self
      */
@@ -1010,7 +1000,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of the line item.
      *
      * @return self
      */
@@ -1032,40 +1022,6 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets neutral_adstrategy_enabled
-     *
-     * @return bool|null
-     */
-    public function getNeutralAdstrategyEnabled()
-    {
-        return $this->container['neutral_adstrategy_enabled'];
-    }
-
-    /**
-     * Sets neutral_adstrategy_enabled
-     *
-     * @param bool|null $neutral_adstrategy_enabled neutral_adstrategy_enabled
-     *
-     * @return self
-     */
-    public function setNeutralAdstrategyEnabled($neutral_adstrategy_enabled)
-    {
-        if (is_null($neutral_adstrategy_enabled)) {
-            array_push($this->openAPINullablesSetToNull, 'neutral_adstrategy_enabled');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('neutral_adstrategy_enabled', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['neutral_adstrategy_enabled'] = $neutral_adstrategy_enabled;
-
-        return $this;
-    }
-
-    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -1078,7 +1034,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date start_date
+     * @param \DateTime $start_date The date and time when the line item starts running.
      *
      * @return self
      */
@@ -1105,7 +1061,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param string|null $status Status of a line item.
+     * @param string|null $status The current status of the line item.
      *
      * @return self
      */
@@ -1149,7 +1105,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets target_bid
      *
-     * @param float|null $target_bid target_bid
+     * @param float|null $target_bid The target bid amount for the line item.
      *
      * @return self
      */
@@ -1210,7 +1166,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets updated_at
      *
-     * @param \DateTime $updated_at updated_at
+     * @param \DateTime $updated_at The date and time when the line item was last updated.
      *
      * @return self
      */

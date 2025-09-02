@@ -112,7 +112,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
 		'budget_remaining' => true,
 		'budget_spent' => true,
 		'campaign_id' => false,
-		'capping' => false,
+		'capping' => true,
 		'created_at' => false,
 		'creative_id' => true,
 		'end_date' => false,
@@ -630,7 +630,14 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setCapping($capping)
     {
         if (is_null($capping)) {
-            throw new \InvalidArgumentException('non-nullable capping cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'capping');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('capping', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['capping'] = $capping;
 

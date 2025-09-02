@@ -303,7 +303,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1745,7 +1745,7 @@ try {
 ## `postApiExternalV2CampaignPreferredLineItemsByCampaignId()`
 
 ```php
-postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request)
+postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request): \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
 ```
 
 
@@ -1776,7 +1776,8 @@ $campaign_id = 'campaign_id_example'; // string | The given campaign id
 $preferred_line_item_create_model_v2_request = new \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request(); // \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request | The line item settings to create a line item with
 
 try {
-    $apiInstance->postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request);
+    $result = $apiInstance->postApiExternalV2CampaignPreferredLineItemsByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->postApiExternalV2CampaignPreferredLineItemsByCampaignId: ', $e->getMessage(), PHP_EOL;
 }
@@ -1791,7 +1792,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response**](../Model/PreferredLineItemV2Response.md)
 
 ### Authorization
 
@@ -2560,7 +2561,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | The external line item ID of the sponsored products line item.
+$line_item_id = 56; // int | The external line item ID of the sponsored products line item.
 $value_resource_input_of_sponsored_products_line_item_update_request_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel | An update request containing all details of the requested update.
 
 try {
@@ -2575,7 +2576,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| The external line item ID of the sponsored products line item. | |
+| **line_item_id** | **int**| The external line item ID of the sponsored products line item. | |
 | **value_resource_input_of_sponsored_products_line_item_update_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | [optional] |
 
 ### Return type
@@ -2588,7 +2589,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Content-Type**: `application/json`, `text/json`, `application/*+json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

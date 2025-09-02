@@ -32,6 +32,7 @@ docs/Model/AsyncCampaignsReportResource.md
 docs/Model/AsyncFillRateReport.md
 docs/Model/AsyncFillRateReportRequest.md
 docs/Model/AsyncFillRateReportResource.md
+docs/Model/AsyncJobResponse.md
 docs/Model/AsyncLineItemsReport.md
 docs/Model/AsyncLineItemsReportRequest.md
 docs/Model/AsyncLineItemsReportResource.md
@@ -112,6 +113,7 @@ docs/Model/LineItemKeywordReviewReport.md
 docs/Model/LineItemPageCategoryV2.md
 docs/Model/LineItemPageV2.md
 docs/Model/LineItemProductStatus.md
+docs/Model/LoadSkuOffersRequest.md
 docs/Model/LoyaltyPoints.md
 docs/Model/ManagedServiceFee.md
 docs/Model/MatchTypeModel.md
@@ -122,6 +124,8 @@ docs/Model/MessageError.md
 docs/Model/Metadata.md
 docs/Model/NillableDecimal.md
 docs/Model/NillableString.md
+docs/Model/OfferLoad.md
+docs/Model/OfferUpdate.md
 docs/Model/Outcome.md
 docs/Model/PageMetadata.md
 docs/Model/PageOfBalanceHistoryChangeDataCaptureV1.md
@@ -279,8 +283,11 @@ docs/Model/SetBidModel.md
 docs/Model/SetBidsModel.md
 docs/Model/SetBidsModelRequest.md
 docs/Model/SetBidsModelResource.md
+docs/Model/SetSkuBuyBoxWinnersRequest.md
+docs/Model/SkuBuyBoxWinner.md
 docs/Model/SkuDataPreview.md
 docs/Model/SkuDataPreviewListResponse.md
+docs/Model/SkuOfferLoad.md
 docs/Model/SkuSearchRequestPreview.md
 docs/Model/SkuSearchRequestPreviewRequest.md
 docs/Model/SponsoredProductsLineItem.md
@@ -301,9 +308,11 @@ docs/Model/TemplateVariableValue.md
 docs/Model/TextVariableValue.md
 docs/Model/UpdateBalanceModelV2.md
 docs/Model/UpdateBalanceModelV2Request.md
+docs/Model/UpdateOffersRequest.md
 docs/Model/ValueResourceAccountFeesSearchRequest.md
 docs/Model/ValueResourceAccountFeesUpdateRequest.md
 docs/Model/ValueResourceAccountFeesUpdateResult.md
+docs/Model/ValueResourceAsyncJobResponse.md
 docs/Model/ValueResourceBrandIdSearchRequest.md
 docs/Model/ValueResourceCategoriesSearchRequestV1.md
 docs/Model/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.md
@@ -311,6 +320,7 @@ docs/Model/ValueResourceInputAccountFeesSearchRequest.md
 docs/Model/ValueResourceInputAccountFeesUpdateRequest.md
 docs/Model/ValueResourceInputBrandIdSearchRequest.md
 docs/Model/ValueResourceInputCategoriesSearchRequestV1.md
+docs/Model/ValueResourceInputLoadSkuOffersRequest.md
 docs/Model/ValueResourceInputOfBrandCatalogRequestV2.md
 docs/Model/ValueResourceInputOfSellerCatalogRequestV2.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
@@ -319,11 +329,15 @@ docs/Model/ValueResourceInputPartnerBillingReportRequestV1.md
 docs/Model/ValueResourceInputRecommendedCategoriesRequestV1.md
 docs/Model/ValueResourceInputRecommendedKeywordsRequestV1.md
 docs/Model/ValueResourceInputRetailMediaKeywordsReview.md
+docs/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
+docs/Model/ValueResourceInputUpdateOffersRequest.md
+docs/Model/ValueResourceLoadSkuOffersRequest.md
 docs/Model/ValueResourceOfBrandCatalogRequestV2.md
 docs/Model/ValueResourceOfSellerCatalogRequestV2.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/Model/ValueResourceOutcomeAccountFeesUpdateResult.md
+docs/Model/ValueResourceOutcomeAsyncJobResponse.md
 docs/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
 docs/Model/ValueResourcePartnerBillingReportRequestV1.md
@@ -333,6 +347,8 @@ docs/Model/ValueResourceRecommendedKeywordsRequestV1.md
 docs/Model/ValueResourceRecommendedKeywordsResponseV1.md
 docs/Model/ValueResourceRetailMediaKeywordsReview.md
 docs/Model/ValueResourceRetailMediaKeywordsReviewResult.md
+docs/Model/ValueResourceSetSkuBuyBoxWinnersRequest.md
+docs/Model/ValueResourceUpdateOffersRequest.md
 docs/Model/VideoVariableValue.md
 git_push.sh
 lib/Api/AccountsApi.php
@@ -368,6 +384,7 @@ lib/Model/AsyncCampaignsReportResource.php
 lib/Model/AsyncFillRateReport.php
 lib/Model/AsyncFillRateReportRequest.php
 lib/Model/AsyncFillRateReportResource.php
+lib/Model/AsyncJobResponse.php
 lib/Model/AsyncLineItemsReport.php
 lib/Model/AsyncLineItemsReportRequest.php
 lib/Model/AsyncLineItemsReportResource.php
@@ -448,6 +465,7 @@ lib/Model/LineItemKeywordReviewReport.php
 lib/Model/LineItemPageCategoryV2.php
 lib/Model/LineItemPageV2.php
 lib/Model/LineItemProductStatus.php
+lib/Model/LoadSkuOffersRequest.php
 lib/Model/LoyaltyPoints.php
 lib/Model/ManagedServiceFee.php
 lib/Model/MatchTypeModel.php
@@ -459,6 +477,8 @@ lib/Model/Metadata.php
 lib/Model/ModelInterface.php
 lib/Model/NillableDecimal.php
 lib/Model/NillableString.php
+lib/Model/OfferLoad.php
+lib/Model/OfferUpdate.php
 lib/Model/Outcome.php
 lib/Model/PageMetadata.php
 lib/Model/PageOfBalanceHistoryChangeDataCaptureV1.php
@@ -616,8 +636,11 @@ lib/Model/SetBidModel.php
 lib/Model/SetBidsModel.php
 lib/Model/SetBidsModelRequest.php
 lib/Model/SetBidsModelResource.php
+lib/Model/SetSkuBuyBoxWinnersRequest.php
+lib/Model/SkuBuyBoxWinner.php
 lib/Model/SkuDataPreview.php
 lib/Model/SkuDataPreviewListResponse.php
+lib/Model/SkuOfferLoad.php
 lib/Model/SkuSearchRequestPreview.php
 lib/Model/SkuSearchRequestPreviewRequest.php
 lib/Model/SponsoredProductsLineItem.php
@@ -638,9 +661,11 @@ lib/Model/TemplateVariableValue.php
 lib/Model/TextVariableValue.php
 lib/Model/UpdateBalanceModelV2.php
 lib/Model/UpdateBalanceModelV2Request.php
+lib/Model/UpdateOffersRequest.php
 lib/Model/ValueResourceAccountFeesSearchRequest.php
 lib/Model/ValueResourceAccountFeesUpdateRequest.php
 lib/Model/ValueResourceAccountFeesUpdateResult.php
+lib/Model/ValueResourceAsyncJobResponse.php
 lib/Model/ValueResourceBrandIdSearchRequest.php
 lib/Model/ValueResourceCategoriesSearchRequestV1.php
 lib/Model/ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata.php
@@ -648,6 +673,7 @@ lib/Model/ValueResourceInputAccountFeesSearchRequest.php
 lib/Model/ValueResourceInputAccountFeesUpdateRequest.php
 lib/Model/ValueResourceInputBrandIdSearchRequest.php
 lib/Model/ValueResourceInputCategoriesSearchRequestV1.php
+lib/Model/ValueResourceInputLoadSkuOffersRequest.php
 lib/Model/ValueResourceInputOfBrandCatalogRequestV2.php
 lib/Model/ValueResourceInputOfSellerCatalogRequestV2.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.php
@@ -656,11 +682,15 @@ lib/Model/ValueResourceInputPartnerBillingReportRequestV1.php
 lib/Model/ValueResourceInputRecommendedCategoriesRequestV1.php
 lib/Model/ValueResourceInputRecommendedKeywordsRequestV1.php
 lib/Model/ValueResourceInputRetailMediaKeywordsReview.php
+lib/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.php
+lib/Model/ValueResourceInputUpdateOffersRequest.php
+lib/Model/ValueResourceLoadSkuOffersRequest.php
 lib/Model/ValueResourceOfBrandCatalogRequestV2.php
 lib/Model/ValueResourceOfSellerCatalogRequestV2.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.php
 lib/Model/ValueResourceOutcomeAccountFeesUpdateResult.php
+lib/Model/ValueResourceOutcomeAsyncJobResponse.php
 lib/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.php
 lib/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.php
 lib/Model/ValueResourcePartnerBillingReportRequestV1.php
@@ -670,6 +700,8 @@ lib/Model/ValueResourceRecommendedKeywordsRequestV1.php
 lib/Model/ValueResourceRecommendedKeywordsResponseV1.php
 lib/Model/ValueResourceRetailMediaKeywordsReview.php
 lib/Model/ValueResourceRetailMediaKeywordsReviewResult.php
+lib/Model/ValueResourceSetSkuBuyBoxWinnersRequest.php
+lib/Model/ValueResourceUpdateOffersRequest.php
 lib/Model/VideoVariableValue.php
 lib/OAuthClient.php
 lib/ObjectSerializer.php

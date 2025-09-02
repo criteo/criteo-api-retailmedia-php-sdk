@@ -366,7 +366,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const MEDIA_TYPE_DISPLAY = 'display';
     public const MEDIA_TYPE_ALL = 'all';
     public const METRICS_AUDIENCE = 'audience';
-    public const METRICS_UNIQUE_USERS = 'uniqueUsers';
+    public const METRICS_UNIQUE_VISITORS = 'uniqueVisitors';
     public const METRICS_REACH_RATE = 'reachRate';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_FREQUENCY = 'frequency';
@@ -378,8 +378,8 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const METRICS_ECPM = 'ecpm';
     public const METRICS_CPM = 'cpm';
     public const METRICS_SPEND = 'spend';
-    public const METRICS_UNITS = 'units';
-    public const METRICS_SALES = 'sales';
+    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
+    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
     public const METRICS_ROAS = 'roas';
     public const METRICS_VIDEO_STARTS = 'videoStarts';
     public const METRICS_VIDEOS_PLAYED_TO25 = 'videosPlayedTo25';
@@ -517,7 +517,7 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         return [
             self::METRICS_AUDIENCE,
-            self::METRICS_UNIQUE_USERS,
+            self::METRICS_UNIQUE_VISITORS,
             self::METRICS_REACH_RATE,
             self::METRICS_IMPRESSIONS,
             self::METRICS_FREQUENCY,
@@ -529,8 +529,8 @@ class AsyncOffsiteReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::METRICS_ECPM,
             self::METRICS_CPM,
             self::METRICS_SPEND,
-            self::METRICS_UNITS,
-            self::METRICS_SALES,
+            self::METRICS_ATTRIBUTED_UNITS,
+            self::METRICS_ATTRIBUTED_SALES,
             self::METRICS_ROAS,
             self::METRICS_VIDEO_STARTS,
             self::METRICS_VIDEOS_PLAYED_TO25,

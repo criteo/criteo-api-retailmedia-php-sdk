@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ad_server_type** | **string** | Filter on the type of the ad server: criteo, gam, all | [optional] [default to 'all']
 **dimensions** | **string[]** | List of dimensions to report on |
 **end_date** | **\DateTime** | End date |
 **format** | **string** | Format of the output | [optional] [default to 'json']

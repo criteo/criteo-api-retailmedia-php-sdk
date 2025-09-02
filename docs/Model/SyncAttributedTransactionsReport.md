@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **dimensions** | **string[]** | List of dimensions to report on | [optional]
 **end_date** | **\DateTime** | End date |
 **line_item_ids** | **string[]** | Line item ids to filter | [optional]
+**media_type** | **string** | Filter on the type of media: unknown, display, video | [optional] [default to 'all']
 **metrics** | **string[]** | List of metrics to report on | [optional]
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **start_date** | **\DateTime** | Start date |
