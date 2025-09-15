@@ -89,11 +89,9 @@ docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.md
 docs/Model/EntityResourceOutcomePartnerBillingReportStatusV1.md
 docs/Model/EntityResourcePartnerBillingReportStatusV1.md
-docs/Model/ErrorCodeResponse.md
 docs/Model/ExportReportColumn.md
 docs/Model/ExportReportMetaData.md
 docs/Model/ExternalRetailMediaChildAccount.md
-docs/Model/FailResponse.md
 docs/Model/FilesVariableValue.md
 docs/Model/FlightLeg.md
 docs/Model/FlightSchedule.md
@@ -126,7 +124,6 @@ docs/Model/NillableDecimal.md
 docs/Model/NillableString.md
 docs/Model/OfferLoad.md
 docs/Model/OfferUpdate.md
-docs/Model/Outcome.md
 docs/Model/PageMetadata.md
 docs/Model/PageOfBalanceHistoryChangeDataCaptureV1.md
 docs/Model/PageTypeEnvironment2.md
@@ -152,8 +149,6 @@ docs/Model/ProductButtonRequestListRequest.md
 docs/Model/ProductButtonRequestRequest.md
 docs/Model/ProductButtonResponse.md
 docs/Model/ProductButtonResponseListResponse.md
-docs/Model/ProductImporterError.md
-docs/Model/ProductImporterWarning.md
 docs/Model/ProductMetadata.md
 docs/Model/ProductRecommendation.md
 docs/Model/ProductResourceOutcome.md
@@ -178,7 +173,6 @@ docs/Model/ReportDetailErrors.md
 docs/Model/ReportDetailWarning.md
 docs/Model/ReportDetailWarnings.md
 docs/Model/ReportOkResponse.md
-docs/Model/ReportOutcome.md
 docs/Model/ReportResponse.md
 docs/Model/ResourceOfBalanceResponseV2.md
 docs/Model/ResourceOfBrandPreview.md
@@ -441,11 +435,9 @@ lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
 lib/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.php
 lib/Model/EntityResourceOutcomePartnerBillingReportStatusV1.php
 lib/Model/EntityResourcePartnerBillingReportStatusV1.php
-lib/Model/ErrorCodeResponse.php
 lib/Model/ExportReportColumn.php
 lib/Model/ExportReportMetaData.php
 lib/Model/ExternalRetailMediaChildAccount.php
-lib/Model/FailResponse.php
 lib/Model/FilesVariableValue.php
 lib/Model/FlightLeg.php
 lib/Model/FlightSchedule.php
@@ -479,7 +471,6 @@ lib/Model/NillableDecimal.php
 lib/Model/NillableString.php
 lib/Model/OfferLoad.php
 lib/Model/OfferUpdate.php
-lib/Model/Outcome.php
 lib/Model/PageMetadata.php
 lib/Model/PageOfBalanceHistoryChangeDataCaptureV1.php
 lib/Model/PageTypeEnvironment2.php
@@ -505,8 +496,6 @@ lib/Model/ProductButtonRequestListRequest.php
 lib/Model/ProductButtonRequestRequest.php
 lib/Model/ProductButtonResponse.php
 lib/Model/ProductButtonResponseListResponse.php
-lib/Model/ProductImporterError.php
-lib/Model/ProductImporterWarning.php
 lib/Model/ProductMetadata.php
 lib/Model/ProductRecommendation.php
 lib/Model/ProductResourceOutcome.php
@@ -531,7 +520,6 @@ lib/Model/ReportDetailErrors.php
 lib/Model/ReportDetailWarning.php
 lib/Model/ReportDetailWarnings.php
 lib/Model/ReportOkResponse.php
-lib/Model/ReportOutcome.php
 lib/Model/ReportResponse.php
 lib/Model/ResourceOfBalanceResponseV2.php
 lib/Model/ResourceOfBrandPreview.php

@@ -75,16 +75,10 @@ class AccountsApi
             'application/json',
         ],
         'previewRetailMediaAccountsFeesSearchPost' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'previewRetailMediaAccountsFeesUpdatePost' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
     ];
 
@@ -457,7 +451,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
      */
     public function previewRetailMediaAccountsFeesSearchPost($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesSearchPost'][0])
     {
@@ -475,7 +469,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaAccountsFeesSearchPostWithHttpInfo($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesSearchPost'][0])
     {
@@ -532,21 +526,6 @@ class AccountsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata';
@@ -571,14 +550,6 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -796,7 +767,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult
      */
     public function previewRetailMediaAccountsFeesUpdatePost($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesUpdatePost'][0])
     {
@@ -812,7 +783,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaAccountsFeesUpdatePostWithHttpInfo($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['previewRetailMediaAccountsFeesUpdatePost'][0])
     {
@@ -869,36 +840,6 @@ class AccountsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult';
@@ -923,22 +864,6 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1043,7 +968,7 @@ class AccountsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

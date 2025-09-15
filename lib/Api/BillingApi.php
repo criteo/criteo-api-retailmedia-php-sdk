@@ -136,7 +136,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
      */
     public function previewRetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportPost'][0])
     {
@@ -152,7 +152,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\preview\Model\Outcome|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaBillingPartnerReportPostWithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportPost'][0])
     {
@@ -209,36 +209,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
@@ -263,22 +233,6 @@ class BillingApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -383,7 +337,7 @@ class BillingApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -458,7 +412,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \SplFileObject
      */
     public function previewRetailMediaBillingPartnerReportRequestIdOutputGet($request_id, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportRequestIdOutputGet'][0])
     {
@@ -474,7 +428,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo($request_id, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportRequestIdOutputGet'][0])
     {
@@ -531,21 +485,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 403:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\SplFileObject';
@@ -570,14 +509,6 @@ class BillingApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SplFileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -764,7 +695,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\preview\Model\Outcome
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
      */
     public function previewRetailMediaBillingPartnerReportRequestIdStatusGet($request_id, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportRequestIdStatusGet'][0])
     {
@@ -780,7 +711,7 @@ class BillingApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewRetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo($request_id, string $contentType = self::contentTypes['previewRetailMediaBillingPartnerReportRequestIdStatusGet'][0])
     {
@@ -837,21 +768,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 403:
-                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
@@ -876,14 +792,6 @@ class BillingApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1002,7 +910,7 @@ class BillingApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

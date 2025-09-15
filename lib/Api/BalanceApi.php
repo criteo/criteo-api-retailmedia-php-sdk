@@ -71,22 +71,22 @@ class BalanceApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getApiExternalV2AccountBalancesByAccountId' => [
+        'changeDatesByAccountAndBalanceId' => [
             'application/json',
         ],
-        'getApiExternalV2AccountByAccountIdBalancesbalanceId' => [
+        'createBalanceByAccountId' => [
+            'application/json',
+        ],
+        'getBalanceByAccountAndBalanceId' => [
             'application/json',
         ],
         'getBalanceHistory' => [
             'application/json',
         ],
-        'patchApiExternalV2AccountByAccountIdBalancesbalanceId' => [
+        'getBalancesByAccountId' => [
             'application/json',
         ],
-        'postApiExternalV2AccountBalancesByAccountId' => [
-            'application/json',
-        ],
-        'postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId' => [
+        'modifyBalanceByAccountAndBalanceId' => [
             'application/json',
         ],
     ];
@@ -138,376 +138,38 @@ class BalanceApi
     }
 
     /**
-     * Operation getApiExternalV2AccountBalancesByAccountId
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse
-     */
-    public function getApiExternalV2AccountBalancesByAccountId($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        list($response) = $this->getApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiExternalV2AccountBalancesByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        $request = $this->getApiExternalV2AccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiExternalV2AccountBalancesByAccountIdAsync
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV2AccountBalancesByAccountIdAsync($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        return $this->getApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse';
-        $request = $this->getApiExternalV2AccountBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiExternalV2AccountBalancesByAccountId'
-     *
-     * @param  string $account_id The account to get balances for (required)
-     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
-     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
-     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiExternalV2AccountBalancesByAccountIdRequest($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiExternalV2AccountBalancesByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getApiExternalV2AccountBalancesByAccountId'
-            );
-        }
-
-
-        if ($page_index !== null && $page_index > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling BalanceApi.getApiExternalV2AccountBalancesByAccountId, must be smaller than or equal to 2147483647.');
-        }
-        if ($page_index !== null && $page_index < 0) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling BalanceApi.getApiExternalV2AccountBalancesByAccountId, must be bigger than or equal to 0.');
-        }
-        
-        if ($page_size !== null && $page_size > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling BalanceApi.getApiExternalV2AccountBalancesByAccountId, must be smaller than or equal to 2147483647.');
-        }
-        if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling BalanceApi.getApiExternalV2AccountBalancesByAccountId, must be bigger than or equal to 1.');
-        }
-        
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit_to_id,
-            'limitToId', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_index,
-            'pageIndex', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApiExternalV2AccountByAccountIdBalancesbalanceId
+     * Operation changeDatesByAccountAndBalanceId
      *
      * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $balance_id The balance to change the dates (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
-    public function getApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id, string $contentType = self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function changeDatesByAccountAndBalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
-        list($response) = $this->getApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, $contentType);
+        list($response) = $this->changeDatesByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo
+     * Operation changeDatesByAccountAndBalanceIdWithHttpInfo
      *
      * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $balance_id The balance to change the dates (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, string $contentType = self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
-        $request = $this->getApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $contentType);
+        $request = $this->changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -594,18 +256,19 @@ class BalanceApi
     }
 
     /**
-     * Operation getApiExternalV2AccountByAccountIdBalancesbalanceIdAsync
+     * Operation changeDatesByAccountAndBalanceIdAsync
      *
      * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $balance_id The balance to change the dates (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExternalV2AccountByAccountIdBalancesbalanceIdAsync($account_id, $balance_id, string $contentType = self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdAsync($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
-        return $this->getApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, $contentType)
+        return $this->changeDatesByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -614,19 +277,20 @@ class BalanceApi
     }
 
     /**
-     * Operation getApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo
+     * Operation changeDatesByAccountAndBalanceIdAsyncWithHttpInfo
      *
      * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $balance_id The balance to change the dates (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, string $contentType = self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-        $request = $this->getApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $contentType);
+        $request = $this->changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -665,29 +329,637 @@ class BalanceApi
     }
 
     /**
-     * Create request for operation 'getApiExternalV2AccountByAccountIdBalancesbalanceId'
+     * Create request for operation 'changeDatesByAccountAndBalanceId'
      *
      * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $balance_id The balance to change the dates (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, string $contentType = self::contentTypes['getApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getApiExternalV2AccountByAccountIdBalancesbalanceId'
+                'Missing the required parameter $account_id when calling changeDatesByAccountAndBalanceId'
             );
         }
 
         // verify the required parameter 'balance_id' is set
         if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $balance_id when calling getApiExternalV2AccountByAccountIdBalancesbalanceId'
+                'Missing the required parameter $balance_id when calling changeDatesByAccountAndBalanceId'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($balance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'balance-id' . '}',
+                ObjectSerializer::toPathValue($balance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($change_dates_of_balance_v2_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($change_dates_of_balance_v2_request));
+            } else {
+                $httpBody = $change_dates_of_balance_v2_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createBalanceByAccountId
+     *
+     * @param  string $account_id The account to create balances for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+     */
+    public function createBalanceByAccountId($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    {
+        list($response) = $this->createBalanceByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createBalanceByAccountIdWithHttpInfo
+     *
+     * @param  string $account_id The account to create balances for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createBalanceByAccountIdWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    {
+        $request = $this->createBalanceByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createBalanceByAccountIdAsync
+     *
+     * @param  string $account_id The account to create balances for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createBalanceByAccountIdAsync($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    {
+        return $this->createBalanceByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createBalanceByAccountIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id The account to create balances for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createBalanceByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
+        $request = $this->createBalanceByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createBalanceByAccountId'
+     *
+     * @param  string $account_id The account to create balances for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createBalanceByAccountIdRequest($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createBalanceByAccountId'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_balance_v2_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_balance_v2_request));
+            } else {
+                $httpBody = $create_balance_v2_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getBalanceByAccountAndBalanceId
+     *
+     * @param  string $account_id The account of the balance (required)
+     * @param  string $balance_id The balance id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
+     */
+    public function getBalanceByAccountAndBalanceId($account_id, $balance_id, string $contentType = self::contentTypes['getBalanceByAccountAndBalanceId'][0])
+    {
+        list($response) = $this->getBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getBalanceByAccountAndBalanceIdWithHttpInfo
+     *
+     * @param  string $account_id The account of the balance (required)
+     * @param  string $balance_id The balance id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, string $contentType = self::contentTypes['getBalanceByAccountAndBalanceId'][0])
+    {
+        $request = $this->getBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getBalanceByAccountAndBalanceIdAsync
+     *
+     * @param  string $account_id The account of the balance (required)
+     * @param  string $balance_id The balance id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalanceByAccountAndBalanceIdAsync($account_id, $balance_id, string $contentType = self::contentTypes['getBalanceByAccountAndBalanceId'][0])
+    {
+        return $this->getBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getBalanceByAccountAndBalanceIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id The account of the balance (required)
+     * @param  string $balance_id The balance id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, string $contentType = self::contentTypes['getBalanceByAccountAndBalanceId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
+        $request = $this->getBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getBalanceByAccountAndBalanceId'
+     *
+     * @param  string $account_id The account of the balance (required)
+     * @param  string $balance_id The balance id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, string $contentType = self::contentTypes['getBalanceByAccountAndBalanceId'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getBalanceByAccountAndBalanceId'
+            );
+        }
+
+        // verify the required parameter 'balance_id' is set
+        if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $balance_id when calling getBalanceByAccountAndBalanceId'
             );
         }
 
@@ -720,7 +992,7 @@ class BalanceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1121,38 +1393,378 @@ class BalanceApi
     }
 
     /**
-     * Operation patchApiExternalV2AccountByAccountIdBalancesbalanceId
+     * Operation getBalancesByAccountId
+     *
+     * @param  string $account_id The account to get balances for (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalancesByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse
+     */
+    public function getBalancesByAccountId($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getBalancesByAccountId'][0])
+    {
+        list($response) = $this->getBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getBalancesByAccountIdWithHttpInfo
+     *
+     * @param  string $account_id The account to get balances for (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalancesByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getBalancesByAccountIdWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getBalancesByAccountId'][0])
+    {
+        $request = $this->getBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getBalancesByAccountIdAsync
+     *
+     * @param  string $account_id The account to get balances for (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalancesByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalancesByAccountIdAsync($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getBalancesByAccountId'][0])
+    {
+        return $this->getBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id, $page_index, $page_size, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getBalancesByAccountIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id The account to get balances for (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalancesByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBalancesByAccountIdAsyncWithHttpInfo($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getBalancesByAccountId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2PagedListResponse';
+        $request = $this->getBalancesByAccountIdRequest($account_id, $limit_to_id, $page_index, $page_size, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getBalancesByAccountId'
+     *
+     * @param  string $account_id The account to get balances for (required)
+     * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
+     * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
+     * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalancesByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getBalancesByAccountIdRequest($account_id, $limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getBalancesByAccountId'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getBalancesByAccountId'
+            );
+        }
+
+
+        if ($page_index !== null && $page_index > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling BalanceApi.getBalancesByAccountId, must be smaller than or equal to 2147483647.');
+        }
+        if ($page_index !== null && $page_index < 0) {
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling BalanceApi.getBalancesByAccountId, must be bigger than or equal to 0.');
+        }
+        
+        if ($page_size !== null && $page_size > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling BalanceApi.getBalancesByAccountId, must be smaller than or equal to 2147483647.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling BalanceApi.getBalancesByAccountId, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit_to_id,
+            'limitToId', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_index,
+            'pageIndex', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation modifyBalanceByAccountAndBalanceId
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
-    public function patchApiExternalV2AccountByAccountIdBalancesbalanceId($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceId($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
-        list($response) = $this->patchApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
+        list($response) = $this->modifyBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation patchApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo
+     * Operation modifyBalanceByAccountAndBalanceIdWithHttpInfo
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchApiExternalV2AccountByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
-        $request = $this->patchApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
+        $request = $this->modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1239,19 +1851,19 @@ class BalanceApi
     }
 
     /**
-     * Operation patchApiExternalV2AccountByAccountIdBalancesbalanceIdAsync
+     * Operation modifyBalanceByAccountAndBalanceIdAsync
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchApiExternalV2AccountByAccountIdBalancesbalanceIdAsync($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdAsync($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
-        return $this->patchApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType)
+        return $this->modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1260,20 +1872,20 @@ class BalanceApi
     }
 
     /**
-     * Operation patchApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo
+     * Operation modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchApiExternalV2AccountByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-        $request = $this->patchApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
+        $request = $this->modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1312,30 +1924,30 @@ class BalanceApi
     }
 
     /**
-     * Create request for operation 'patchApiExternalV2AccountByAccountIdBalancesbalanceId'
+     * Create request for operation 'modifyBalanceByAccountAndBalanceId'
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchApiExternalV2AccountByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['patchApiExternalV2AccountByAccountIdBalancesbalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling patchApiExternalV2AccountByAccountIdBalancesbalanceId'
+                'Missing the required parameter $account_id when calling modifyBalanceByAccountAndBalanceId'
             );
         }
 
         // verify the required parameter 'balance_id' is set
         if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $balance_id when calling patchApiExternalV2AccountByAccountIdBalancesbalanceId'
+                'Missing the required parameter $balance_id when calling modifyBalanceByAccountAndBalanceId'
             );
         }
 
@@ -1369,7 +1981,7 @@ class BalanceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1430,618 +2042,6 @@ class BalanceApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postApiExternalV2AccountBalancesByAccountId
-     *
-     * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
-     */
-    public function postApiExternalV2AccountBalancesByAccountId($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        list($response) = $this->postApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation postApiExternalV2AccountBalancesByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApiExternalV2AccountBalancesByAccountIdWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        $request = $this->postApiExternalV2AccountBalancesByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postApiExternalV2AccountBalancesByAccountIdAsync
-     *
-     * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiExternalV2AccountBalancesByAccountIdAsync($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        return $this->postApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiExternalV2AccountBalancesByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-        $request = $this->postApiExternalV2AccountBalancesByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postApiExternalV2AccountBalancesByAccountId'
-     *
-     * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountBalancesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postApiExternalV2AccountBalancesByAccountIdRequest($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountBalancesByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling postApiExternalV2AccountBalancesByAccountId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($create_balance_v2_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_balance_v2_request));
-            } else {
-                $httpBody = $create_balance_v2_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId
-     *
-     * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
-     */
-    public function postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'][0])
-    {
-        list($response) = $this->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdWithHttpInfo
-     *
-     * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'][0])
-    {
-        $request = $this->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdAsync
-     *
-     * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdAsync($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'][0])
-    {
-        return $this->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
-        $request = $this->postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'
-     *
-     * @param  string $account_id The account of the balance (required)
-     * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'
-            );
-        }
-
-        // verify the required parameter 'balance_id' is set
-        if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $balance_id when calling postApiExternalV2AccountChangeDatesByAccountIdBalancesbalanceId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($balance_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'balance-id' . '}',
-                ObjectSerializer::toPathValue($balance_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($change_dates_of_balance_v2_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($change_dates_of_balance_v2_request));
-            } else {
-                $httpBody = $change_dates_of_balance_v2_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
