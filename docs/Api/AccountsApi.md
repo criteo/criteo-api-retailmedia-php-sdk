@@ -7,7 +7,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**addBrands()**](AccountsApi.md#addBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/add |  |
 | [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
 | [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
-| [**getApiV1ExternalAccounts()**](AccountsApi.md#getApiV1ExternalAccounts) | **GET** /2025-01/retail-media/accounts |  |
+| [**getAccounts()**](AccountsApi.md#getAccounts) | **GET** /2025-01/retail-media/accounts |  |
 | [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /2025-01/retail-media/accounts/{accountId}/grant-consent |  |
 | [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /2025-01/retail-media/account-management/accounts/{accountId}/brands/remove |  |
 | [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /2025-01/retail-media/account-management/accounts/{accountId}/sellers |  |
@@ -208,10 +208,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getApiV1ExternalAccounts()`
+## `getAccounts()`
 
 ```php
-getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_01\Model\JsonApiPageResponseOfAccount
+getAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_01\Model\JsonApiPageResponseOfAccount
 ```
 
 
@@ -243,10 +243,10 @@ $page_index = 0; // int | The 0 indexed page index you would like to receive giv
 $page_size = 25; // int | The maximum number of items you would like to receive in this request
 
 try {
-    $result = $apiInstance->getApiV1ExternalAccounts($limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getAccounts($limit_to_id, $page_index, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->getApiV1ExternalAccounts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountsApi->getAccounts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -269,7 +269,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -332,7 +332,7 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
+- **Content-Type**: `application/json`
 - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -91,18 +91,18 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'account_id' => 'long-id',
-        'budget' => 'decimal',
-        'budget_remaining' => 'decimal',
-        'budget_spent' => 'decimal',
+        'budget' => 'double',
+        'budget_remaining' => 'double',
+        'budget_spent' => 'double',
         'click_attribution_scope' => null,
         'click_attribution_window' => null,
         'company_name' => null,
         'created_at' => 'date-time',
-        'daily_pacing' => 'decimal',
+        'daily_pacing' => 'double',
         'drawable_balance_ids' => 'long-id',
         'end_date' => 'date-time',
         'is_auto_daily_pacing' => null,
-        'monthly_pacing' => 'decimal',
+        'monthly_pacing' => 'double',
         'name' => null,
         'on_behalf_company_name' => null,
         'promoted_brand_ids' => 'long-id',
@@ -376,11 +376,11 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
     public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
 
     /**
      * Gets allowable values of the enum
@@ -466,11 +466,11 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
             self::VIEW_ATTRIBUTION_WINDOW__1_D,
             self::VIEW_ATTRIBUTION_WINDOW__7_D,
             self::VIEW_ATTRIBUTION_WINDOW__14_D,
             self::VIEW_ATTRIBUTION_WINDOW__30_D,
+            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
         ];
     }
 
@@ -543,12 +543,6 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
-        if ($this->container['budget_remaining'] === null) {
-            $invalidProperties[] = "'budget_remaining' can't be null";
-        }
-        if ($this->container['budget_spent'] === null) {
-            $invalidProperties[] = "'budget_spent' can't be null";
-        }
         $allowedValues = $this->getClickAttributionScopeAllowableValues();
         if (!is_null($this->container['click_attribution_scope']) && !in_array($this->container['click_attribution_scope'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -570,9 +564,6 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['created_at'] === null) {
             $invalidProperties[] = "'created_at' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         if ($this->container['is_auto_daily_pacing'] === null) {
             $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
         }
@@ -587,12 +578,6 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
-        if ($this->container['promoted_brand_ids'] === null) {
-            $invalidProperties[] = "'promoted_brand_ids' can't be null";
-        }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -711,7 +696,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget_remaining
      *
-     * @return float
+     * @return float|null
      */
     public function getBudgetRemaining()
     {
@@ -721,7 +706,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget_remaining
      *
-     * @param float $budget_remaining budget_remaining
+     * @param float|null $budget_remaining budget_remaining
      *
      * @return self
      */
@@ -745,7 +730,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget_spent
      *
-     * @return float
+     * @return float|null
      */
     public function getBudgetSpent()
     {
@@ -755,7 +740,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget_spent
      *
-     * @param float $budget_spent budget_spent
+     * @param float|null $budget_spent budget_spent
      *
      * @return self
      */
@@ -982,7 +967,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -992,7 +977,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date end_date
+     * @param \DateTime|null $end_date end_date
      *
      * @return self
      */
@@ -1145,7 +1130,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promoted_brand_ids
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getPromotedBrandIds()
     {
@@ -1155,7 +1140,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promoted_brand_ids
      *
-     * @param string[] $promoted_brand_ids promoted_brand_ids
+     * @param string[]|null $promoted_brand_ids promoted_brand_ids
      *
      * @return self
      */
@@ -1172,7 +1157,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getStartDate()
     {
@@ -1182,7 +1167,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date start_date
+     * @param \DateTime|null $start_date start_date
      *
      * @return self
      */

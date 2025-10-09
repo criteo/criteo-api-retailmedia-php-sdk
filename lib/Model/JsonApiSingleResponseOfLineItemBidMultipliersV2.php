@@ -58,7 +58,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2',
+        'data' => '\criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithLineItemBidMultipliersV2',
         'errors' => '\criteo\api\retailmedia\v2025_01\Model\CommonError[]',
         'warnings' => '\criteo\api\retailmedia\v2025_01\Model\CommonWarning[]'
     ];
@@ -310,7 +310,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2
+     * @return \criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithLineItemBidMultipliersV2
      */
     public function getData()
     {
@@ -320,7 +320,7 @@ class JsonApiSingleResponseOfLineItemBidMultipliersV2 implements ModelInterface,
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2 $data data
+     * @param \criteo\api\retailmedia\v2025_01\Model\JsonApiBodyWithLineItemBidMultipliersV2 $data data
      *
      * @return self
      */

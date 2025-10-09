@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **format** | **string** | Format of the output | [optional] [default to 'json-compact']
 **id** | **string** | Campaign id to report on | [optional]
 **ids** | **string[]** | Campaign ids to report on | [optional]
+**media_type** | **string** | Filter on the type of media: unknown, display, video | [optional] [default to 'all']
 **metrics** | **string[]** | List of metrics to report on | [optional]
 **report_type** | **string** | Type of report, if no dimensions and metrics are provided, falls back to summary reportType | [optional] [default to 'summary']
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']

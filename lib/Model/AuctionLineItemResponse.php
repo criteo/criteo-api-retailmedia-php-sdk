@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * AuctionLineItemResponse Class Doc Comment
  *
  * @category Class
- * @description Data model for response resource
+ * @description A top-level object that encapsulates a Criteo API response for a single entity
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_01\Model\ResourceOfAuctionLineItem',
-        'errors' => '\criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]',
-        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]'
+        'errors' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
      */
     public function getErrors()
     {
@@ -344,7 +344,7 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -371,7 +371,7 @@ class AuctionLineItemResponse implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */

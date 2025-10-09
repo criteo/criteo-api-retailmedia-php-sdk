@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * BalanceCampaign202110ListRequest Class Doc Comment
  *
  * @category Class
- * @description A class implementing the request of the Criteo API with a collection of entities as body
+ * @description A top-level object that encapsulates a Criteo API request for several entities
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

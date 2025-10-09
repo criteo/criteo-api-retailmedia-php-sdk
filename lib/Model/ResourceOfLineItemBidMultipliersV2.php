@@ -58,7 +58,7 @@ class ResourceOfLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\ExternalLineItemBidMultipliersV2',
+        'attributes' => '\criteo\api\retailmedia\v2025_01\Model\LineItemBidMultipliersV2',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess,
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ExternalLineItemBidMultipliersV2|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\LineItemBidMultipliersV2|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfLineItemBidMultipliersV2 implements ModelInterface, ArrayAccess,
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ExternalLineItemBidMultipliersV2|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2025_01\Model\LineItemBidMultipliersV2|null $attributes attributes
      *
      * @return self
      */

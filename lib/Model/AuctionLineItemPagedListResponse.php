@@ -59,9 +59,9 @@ class AuctionLineItemPagedListResponse implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_01\Model\ResourceOfAuctionLineItem[]',
-        'errors' => '\criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]',
+        'errors' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]',
         'metadata' => '\criteo\api\retailmedia\v2025_01\Model\PageMetadata',
-        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]'
+        'warnings' => '\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class AuctionLineItemPagedListResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
      */
     public function getErrors()
     {
@@ -351,7 +351,7 @@ class AuctionLineItemPagedListResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class AuctionLineItemPagedListResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -405,7 +405,7 @@ class AuctionLineItemPagedListResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\ProblemDetails[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2025_01\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
