@@ -71,7 +71,7 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'delta_amount' => 'decimal',
+        'delta_amount' => 'double',
         'memo' => null,
         'po_number' => null
     ];
@@ -83,8 +83,8 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'delta_amount' => false,
-		'memo' => true,
-		'po_number' => true
+		'memo' => false,
+		'po_number' => false
     ];
 
     /**
@@ -354,14 +354,7 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setMemo($memo)
     {
         if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable memo cannot be null');
         }
         $this->container['memo'] = $memo;
 
@@ -388,14 +381,7 @@ class AddFundsToBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     public function setPoNumber($po_number)
     {
         if (is_null($po_number)) {
-            array_push($this->openAPINullablesSetToNull, 'po_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('po_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable po_number cannot be null');
         }
         $this->container['po_number'] = $po_number;
 

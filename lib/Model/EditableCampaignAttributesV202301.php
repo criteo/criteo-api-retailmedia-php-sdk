@@ -81,14 +81,14 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => 'decimal',
+        'budget' => 'double',
         'click_attribution_scope' => null,
         'click_attribution_window' => null,
         'company_name' => null,
-        'daily_pacing' => 'decimal',
+        'daily_pacing' => 'double',
         'end_date' => 'date-time',
         'is_auto_daily_pacing' => null,
-        'monthly_pacing' => 'decimal',
+        'monthly_pacing' => 'double',
         'name' => null,
         'on_behalf_company_name' => null,
         'start_date' => 'date-time',
@@ -314,11 +314,11 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY = 'sameSkuCategory';
     public const VIEW_ATTRIBUTION_SCOPE_SAME_SKU_CATEGORY_BRAND = 'sameSkuCategoryBrand';
     public const VIEW_ATTRIBUTION_WINDOW_NONE = 'none';
-    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
     public const VIEW_ATTRIBUTION_WINDOW__1_D = '1D';
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_ATTRIBUTION_WINDOW_UNKNOWN = 'unknown';
 
     /**
      * Gets allowable values of the enum
@@ -374,11 +374,11 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     {
         return [
             self::VIEW_ATTRIBUTION_WINDOW_NONE,
-            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
             self::VIEW_ATTRIBUTION_WINDOW__1_D,
             self::VIEW_ATTRIBUTION_WINDOW__7_D,
             self::VIEW_ATTRIBUTION_WINDOW__14_D,
             self::VIEW_ATTRIBUTION_WINDOW__30_D,
+            self::VIEW_ATTRIBUTION_WINDOW_UNKNOWN,
         ];
     }
 
@@ -460,9 +460,6 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
             );
         }
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         if ($this->container['is_auto_daily_pacing'] === null) {
             $invalidProperties[] = "'is_auto_daily_pacing' can't be null";
         }
@@ -477,9 +474,6 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         $allowedValues = $this->getViewAttributionScopeAllowableValues();
         if (!is_null($this->container['view_attribution_scope']) && !in_array($this->container['view_attribution_scope'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -702,7 +696,7 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -712,7 +706,7 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date end_date
+     * @param \DateTime|null $end_date end_date
      *
      * @return self
      */
@@ -865,7 +859,7 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getStartDate()
     {
@@ -875,7 +869,7 @@ class EditableCampaignAttributesV202301 implements ModelInterface, ArrayAccess, 
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date start_date
+     * @param \DateTime|null $start_date start_date
      *
      * @return self
      */

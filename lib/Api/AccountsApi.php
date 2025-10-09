@@ -80,7 +80,7 @@ class AccountsApi
         'createPrivateMarketDemandSellerAccount' => [
             'application/json',
         ],
-        'getApiV1ExternalAccounts' => [
+        'getAccounts' => [
             'application/json',
         ],
         'removeBrands' => [
@@ -1026,38 +1026,38 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiV1ExternalAccounts
+     * Operation getAccounts
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2024_10\Model\JsonApiPageResponseOfAccount
      */
-    public function getApiV1ExternalAccounts($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccounts($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        list($response) = $this->getApiV1ExternalAccountsWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType);
+        list($response) = $this->getAccountsWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalAccountsWithHttpInfo
+     * Operation getAccountsWithHttpInfo
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2024_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2024_10\Model\JsonApiPageResponseOfAccount, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalAccountsWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        $request = $this->getApiV1ExternalAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1144,19 +1144,19 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiV1ExternalAccountsAsync
+     * Operation getAccountsAsync
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalAccountsAsync($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsAsync($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        return $this->getApiV1ExternalAccountsAsyncWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType)
+        return $this->getAccountsAsyncWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1165,20 +1165,20 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiV1ExternalAccountsAsyncWithHttpInfo
+     * Operation getAccountsAsyncWithHttpInfo
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalAccountsAsyncWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsAsyncWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2024_10\Model\JsonApiPageResponseOfAccount';
-        $request = $this->getApiV1ExternalAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1217,17 +1217,17 @@ class AccountsApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalAccounts'
+     * Create request for operation 'getAccounts'
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalAccountsRequest($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsRequest($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
 
 
@@ -1273,7 +1273,7 @@ class AccountsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

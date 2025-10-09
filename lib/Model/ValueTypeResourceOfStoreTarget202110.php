@@ -58,7 +58,7 @@ class ValueTypeResourceOfStoreTarget202110 implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\ExternalStoreTarget202110',
+        'attributes' => '\criteo\api\retailmedia\v2024_10\Model\StoreTarget202110',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class ValueTypeResourceOfStoreTarget202110 implements ModelInterface, ArrayAcces
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_10\Model\ExternalStoreTarget202110|null
+     * @return \criteo\api\retailmedia\v2024_10\Model\StoreTarget202110|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class ValueTypeResourceOfStoreTarget202110 implements ModelInterface, ArrayAcces
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_10\Model\ExternalStoreTarget202110|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_10\Model\StoreTarget202110|null $attributes attributes
      *
      * @return self
      */

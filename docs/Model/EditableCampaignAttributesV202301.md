@@ -9,12 +9,12 @@ Name | Type | Description | Notes
 **click_attribution_window** | **string** |  |
 **company_name** | **string** |  | [optional]
 **daily_pacing** | **float** |  | [optional]
-**end_date** | **\DateTime** |  |
+**end_date** | **\DateTime** |  | [optional]
 **is_auto_daily_pacing** | **bool** |  |
 **monthly_pacing** | **float** |  | [optional]
 **name** | **string** |  |
 **on_behalf_company_name** | **string** |  | [optional]
-**start_date** | **\DateTime** |  |
+**start_date** | **\DateTime** |  | [optional]
 **view_attribution_scope** | **string** |  | [optional]
 **view_attribution_window** | **string** |  |
 

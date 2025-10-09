@@ -72,8 +72,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -137,8 +137,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -202,8 +202,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -330,7 +330,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -368,7 +368,7 @@ $apiInstance = new criteo\api\retailmedia\v2024_10\Api\AudienceApi(
 );
 $account_id = 'account_id_example'; // string | Account Id
 $rm_audience_segment_search_input_v1 = new \criteo\api\retailmedia\v2024_10\Model\RmAudienceSegmentSearchInputV1(); // \criteo\api\retailmedia\v2024_10\Model\RmAudienceSegmentSearchInputV1 | Segment search filters.
-$limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 100.
+$limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 500.
 $offset = 0; // int | The (zero-based) offset into the collection. The default is 0.
 
 try {
@@ -385,7 +385,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
 | **rm_audience_segment_search_input_v1** | [**\criteo\api\retailmedia\v2024_10\Model\RmAudienceSegmentSearchInputV1**](../Model/RmAudienceSegmentSearchInputV1.md)| Segment search filters. | |
-| **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 500. | [optional] [default to 50] |
 | **offset** | **int**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
@@ -398,8 +398,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -437,7 +437,7 @@ $apiInstance = new criteo\api\retailmedia\v2024_10\Api\AudienceApi(
 );
 $account_id = 'account_id_example'; // string | Account Id
 $rm_audience_search_input_v1 = new \criteo\api\retailmedia\v2024_10\Model\RmAudienceSearchInputV1(); // \criteo\api\retailmedia\v2024_10\Model\RmAudienceSearchInputV1 | Audience search filters.
-$limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 100.
+$limit = 50; // int | The number of elements to be returned. The default is 50 and the maximum is 500.
 $offset = 0; // int | The (zero-based) offset into the collection. The default is 0.
 
 try {
@@ -454,7 +454,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Account Id | |
 | **rm_audience_search_input_v1** | [**\criteo\api\retailmedia\v2024_10\Model\RmAudienceSearchInputV1**](../Model/RmAudienceSearchInputV1.md)| Audience search filters. | |
-| **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 100. | [optional] [default to 50] |
+| **limit** | **int**| The number of elements to be returned. The default is 50 and the maximum is 500. | [optional] [default to 50] |
 | **offset** | **int**| The (zero-based) offset into the collection. The default is 0. | [optional] [default to 0] |
 
 ### Return type
@@ -467,8 +467,8 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json-patch+json`, `application/json`, `text/json`, `application/*+json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

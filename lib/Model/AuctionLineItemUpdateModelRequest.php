@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_10\ObjectSerializer;
  * AuctionLineItemUpdateModelRequest Class Doc Comment
  *
  * @category Class
- * @description Data model for an input resource
+ * @description A top-level object that encapsulates a Criteo API request for a single entity
  * @package  criteo\api\retailmedia\v2024_10
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
