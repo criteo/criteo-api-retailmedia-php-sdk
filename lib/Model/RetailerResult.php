@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel
+ * RetailerResult
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel Class Doc Comment
+ * RetailerResult Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description The result of a query for the configuration of a retailer
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel';
+    protected static $openAPIModelName = 'RetailerResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
+        'campaign_availabilities' => '\criteo\api\retailmedia\preview\Model\CampaignAvailability[]',
+        'name' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'campaign_availabilities' => null,
+        'name' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'campaign_availabilities' => true,
+		'name' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'campaign_availabilities' => 'campaignAvailabilities',
+        'name' => 'name'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'campaign_availabilities' => 'setCampaignAvailabilities',
+        'name' => 'setName'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'campaign_availabilities' => 'getCampaignAvailabilities',
+        'name' => 'getName'
     ];
 
     /**
@@ -245,7 +251,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('campaign_availabilities', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -291,28 +298,69 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
 
 
     /**
-     * Gets data
+     * Gets campaign_availabilities
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null
+     * @return \criteo\api\retailmedia\preview\Model\CampaignAvailability[]|null
      */
-    public function getData()
+    public function getCampaignAvailabilities()
     {
-        return $this->container['data'];
+        return $this->container['campaign_availabilities'];
     }
 
     /**
-     * Sets data
+     * Sets campaign_availabilities
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\CampaignAvailability[]|null $campaign_availabilities A list of campaign availabilities for the retailer, each of which shows the availability of a specific campaign type and buy type combination
      *
      * @return self
      */
-    public function setData($data)
+    public function setCampaignAvailabilities($campaign_availabilities)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($campaign_availabilities)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_availabilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_availabilities', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['campaign_availabilities'] = $campaign_availabilities;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Name of the retailer
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
 
         return $this;
     }

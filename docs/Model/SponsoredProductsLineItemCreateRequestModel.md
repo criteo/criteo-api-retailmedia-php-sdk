@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **max_bid** | **float** | The maximum bid amount allowed for this line item. | [optional]
 **monthly_pacing** | **float** | The monthly pacing limit for budget spending. | [optional]
 **name** | **string** | The name of the line item. |
+**optimization_strategy_enum** | **string** |  | [optional] [default to 'manual']
 **start_date** | **\DateTime** | The date and time when the line item should start running. |
 **target_bid** | **float** | The target bid amount for the line item. | [optional]
 **target_retailer_id** | **string** | The ID of the retailer to target for this line item. |

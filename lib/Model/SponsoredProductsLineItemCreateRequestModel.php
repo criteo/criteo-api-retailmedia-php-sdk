@@ -68,6 +68,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
+        'optimization_strategy_enum' => 'string',
         'start_date' => '\DateTime',
         'target_bid' => 'float',
         'target_retailer_id' => 'string'
@@ -91,6 +92,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
+        'optimization_strategy_enum' => null,
         'start_date' => 'date-time',
         'target_bid' => 'double',
         'target_retailer_id' => 'long-id'
@@ -112,6 +114,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
+		'optimization_strategy_enum' => false,
 		'start_date' => false,
 		'target_bid' => true,
 		'target_retailer_id' => false
@@ -213,6 +216,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
+        'optimization_strategy_enum' => 'optimizationStrategyEnum',
         'start_date' => 'startDate',
         'target_bid' => 'targetBid',
         'target_retailer_id' => 'targetRetailerId'
@@ -234,6 +238,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
+        'optimization_strategy_enum' => 'setOptimizationStrategyEnum',
         'start_date' => 'setStartDate',
         'target_bid' => 'setTargetBid',
         'target_retailer_id' => 'setTargetRetailerId'
@@ -255,6 +260,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
+        'optimization_strategy_enum' => 'getOptimizationStrategyEnum',
         'start_date' => 'getStartDate',
         'target_bid' => 'getTargetBid',
         'target_retailer_id' => 'getTargetRetailerId'
@@ -308,6 +314,8 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
+    public const OPTIMIZATION_STRATEGY_ENUM_MANUAL = 'manual';
+    public const OPTIMIZATION_STRATEGY_ENUM_AUTOMATED = 'automated';
 
     /**
      * Gets allowable values of the enum
@@ -339,6 +347,19 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOptimizationStrategyEnumAllowableValues()
+    {
+        return [
+            self::OPTIMIZATION_STRATEGY_ENUM_MANUAL,
+            self::OPTIMIZATION_STRATEGY_ENUM_AUTOMATED,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -363,6 +384,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('optimization_strategy_enum', $data ?? [], 'manual');
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
         $this->setIfExists('target_retailer_id', $data ?? [], null);
@@ -422,6 +444,15 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
 
         if ((mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getOptimizationStrategyEnumAllowableValues();
+        if (!is_null($this->container['optimization_strategy_enum']) && !in_array($this->container['optimization_strategy_enum'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'optimization_strategy_enum', must be one of '%s'",
+                $this->container['optimization_strategy_enum'],
+                implode("', '", $allowedValues)
+            );
         }
 
         if ($this->container['start_date'] === null) {
@@ -787,6 +818,43 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         }
 
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimization_strategy_enum
+     *
+     * @return string|null
+     */
+    public function getOptimizationStrategyEnum()
+    {
+        return $this->container['optimization_strategy_enum'];
+    }
+
+    /**
+     * Sets optimization_strategy_enum
+     *
+     * @param string|null $optimization_strategy_enum optimization_strategy_enum
+     *
+     * @return self
+     */
+    public function setOptimizationStrategyEnum($optimization_strategy_enum)
+    {
+        if (is_null($optimization_strategy_enum)) {
+            throw new \InvalidArgumentException('non-nullable optimization_strategy_enum cannot be null');
+        }
+        $allowedValues = $this->getOptimizationStrategyEnumAllowableValues();
+        if (!in_array($optimization_strategy_enum, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'optimization_strategy_enum', must be one of '%s'",
+                    $optimization_strategy_enum,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['optimization_strategy_enum'] = $optimization_strategy_enum;
 
         return $this;
     }

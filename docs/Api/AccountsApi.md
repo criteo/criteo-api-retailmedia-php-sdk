@@ -4,82 +4,15 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getApiExternalV1AccountPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
-| [**previewRetailMediaAccountsFeesSearchPost()**](AccountsApi.md#previewRetailMediaAccountsFeesSearchPost) | **POST** /preview/retail-media/accounts/fees/search |  |
-| [**previewRetailMediaAccountsFeesUpdatePost()**](AccountsApi.md#previewRetailMediaAccountsFeesUpdatePost) | **POST** /preview/retail-media/accounts/fees/update |  |
+| [**accountFeesSearch()**](AccountsApi.md#accountFeesSearch) | **POST** /preview/retail-media/accounts/fees/search |  |
+| [**getPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
+| [**updateAccountFees()**](AccountsApi.md#updateAccountFees) | **POST** /preview/retail-media/accounts/fees/update |  |
 
 
-## `getApiExternalV1AccountPrivateMarketChildAccountsByAccountId()`
-
-```php
-getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
-```
-
-
-
-Gets page of private market child accounts that are associated with the given account
-
-### Example
+## `accountFeesSearch()`
 
 ```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | Account Id
-$limit = 25; // int | The number of accounts to be returned. The default is 25.
-$offset = 0; // int | The (zero-based) offset into the collection of accounts. The default is 0.
-
-try {
-    $result = $apiInstance->getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->getApiExternalV1AccountPrivateMarketChildAccountsByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Account Id | |
-| **limit** | **int**| The number of accounts to be returned. The default is 25. | [optional] [default to 25] |
-| **offset** | **int**| The (zero-based) offset into the collection of accounts. The default is 0. | [optional] [default to 0] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `previewRetailMediaAccountsFeesSearchPost()`
-
-```php
-previewRetailMediaAccountsFeesSearchPost($limit, $offset, $value_resource_input_account_fees_search_request): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
+accountFeesSearch($limit, $offset, $value_resource_input_account_fees_search_request): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
 ```
 
 
@@ -111,10 +44,10 @@ $offset = 0; // int | used for paging, number of records to skip
 $value_resource_input_account_fees_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputAccountFeesSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputAccountFeesSearchRequest
 
 try {
-    $result = $apiInstance->previewRetailMediaAccountsFeesSearchPost($limit, $offset, $value_resource_input_account_fees_search_request);
+    $result = $apiInstance->accountFeesSearch($limit, $offset, $value_resource_input_account_fees_search_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->previewRetailMediaAccountsFeesSearchPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountsApi->accountFeesSearch: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -143,10 +76,77 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `previewRetailMediaAccountsFeesUpdatePost()`
+## `getPrivateMarketChildAccountsByAccountId()`
 
 ```php
-previewRetailMediaAccountsFeesUpdatePost($value_resource_input_account_fees_update_request): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult
+getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
+```
+
+
+
+Gets page of private market child accounts that are associated with the given account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Account Id
+$limit = 25; // int | The number of accounts to be returned. The default is 25.
+$offset = 0; // int | The (zero-based) offset into the collection of accounts. The default is 0.
+
+try {
+    $result = $apiInstance->getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getPrivateMarketChildAccountsByAccountId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Account Id | |
+| **limit** | **int**| The number of accounts to be returned. The default is 25. | [optional] [default to 25] |
+| **offset** | **int**| The (zero-based) offset into the collection of accounts. The default is 0. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAccountFees()`
+
+```php
+updateAccountFees($value_resource_input_account_fees_update_request)
 ```
 
 
@@ -176,10 +176,9 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
 $value_resource_input_account_fees_update_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputAccountFeesUpdateRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputAccountFeesUpdateRequest
 
 try {
-    $result = $apiInstance->previewRetailMediaAccountsFeesUpdatePost($value_resource_input_account_fees_update_request);
-    print_r($result);
+    $apiInstance->updateAccountFees($value_resource_input_account_fees_update_request);
 } catch (Exception $e) {
-    echo 'Exception when calling AccountsApi->previewRetailMediaAccountsFeesUpdatePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AccountsApi->updateAccountFees: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -191,7 +190,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAccountFeesUpdateResult**](../Model/ValueResourceOutcomeAccountFeesUpdateResult.md)
+void (empty response body)
 
 ### Authorization
 
@@ -200,7 +199,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

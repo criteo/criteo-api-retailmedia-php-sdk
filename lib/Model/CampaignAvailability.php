@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceOutcomeAccountFeesUpdateResult
+ * CampaignAvailability
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceOutcomeAccountFeesUpdateResult Class Doc Comment
+ * CampaignAvailability Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value object.
+ * @description Information about the availability of a specific campaign type and buy type combination, and page types and environments supported for that combination
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceOutcomeAccountFeesUpdateResult';
+    protected static $openAPIModelName = 'CampaignAvailability';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesUpdateResult',
-        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
+        'buy_type' => 'string',
+        'campaign_type' => 'string',
+        'is_available' => 'bool',
+        'valid_combinations' => '\criteo\api\retailmedia\preview\Model\PageTypeCombination[]'
     ];
 
     /**
@@ -71,9 +72,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'buy_type' => null,
+        'campaign_type' => null,
+        'is_available' => null,
+        'valid_combinations' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'buy_type' => true,
+		'campaign_type' => true,
+		'is_available' => true,
+		'valid_combinations' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'buy_type' => 'buyType',
+        'campaign_type' => 'campaignType',
+        'is_available' => 'isAvailable',
+        'valid_combinations' => 'validCombinations'
     ];
 
     /**
@@ -184,9 +188,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'buy_type' => 'setBuyType',
+        'campaign_type' => 'setCampaignType',
+        'is_available' => 'setIsAvailable',
+        'valid_combinations' => 'setValidCombinations'
     ];
 
     /**
@@ -195,9 +200,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'buy_type' => 'getBuyType',
+        'campaign_type' => 'getCampaignType',
+        'is_available' => 'getIsAvailable',
+        'valid_combinations' => 'getValidCombinations'
     ];
 
     /**
@@ -241,6 +247,46 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
+    public const BUY_TYPE_UNKNOWN = 'unknown';
+    public const BUY_TYPE_AUCTION = 'auction';
+    public const BUY_TYPE_PREFERREDDEALS = 'preferreddeals';
+    public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
+    public const BUY_TYPE_OFFSITE = 'offsite';
+    public const CAMPAIGN_TYPE_UNKNOWN = 'unknown';
+    public const CAMPAIGN_TYPE_SPONSOREDPRODUCTS = 'sponsoredproducts';
+    public const CAMPAIGN_TYPE_ONSITEDISPLAY = 'onsitedisplay';
+    public const CAMPAIGN_TYPE_OFFSITE = 'offsite';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBuyTypeAllowableValues()
+    {
+        return [
+            self::BUY_TYPE_UNKNOWN,
+            self::BUY_TYPE_AUCTION,
+            self::BUY_TYPE_PREFERREDDEALS,
+            self::BUY_TYPE_SPONSORSHIP,
+            self::BUY_TYPE_OFFSITE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignTypeAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_TYPE_UNKNOWN,
+            self::CAMPAIGN_TYPE_SPONSOREDPRODUCTS,
+            self::CAMPAIGN_TYPE_ONSITEDISPLAY,
+            self::CAMPAIGN_TYPE_OFFSITE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +303,10 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('buy_type', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], null);
+        $this->setIfExists('is_available', $data ?? [], null);
+        $this->setIfExists('valid_combinations', $data ?? [], null);
     }
 
     /**
@@ -289,6 +336,24 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBuyTypeAllowableValues();
+        if (!is_null($this->container['buy_type']) && !in_array($this->container['buy_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'buy_type', must be one of '%s'",
+                $this->container['buy_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +370,157 @@ class ValueResourceOutcomeAccountFeesUpdateResult implements ModelInterface, Arr
 
 
     /**
-     * Gets data
+     * Gets buy_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesUpdateResult|null
+     * @return string|null
      */
-    public function getData()
+    public function getBuyType()
     {
-        return $this->container['data'];
+        return $this->container['buy_type'];
     }
 
     /**
-     * Sets data
+     * Sets buy_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesUpdateResult|null $data data
+     * @param string|null $buy_type The buy type this object represents availability for
      *
      * @return self
      */
-    public function setData($data)
+    public function setBuyType($buy_type)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($buy_type)) {
+            array_push($this->openAPINullablesSetToNull, 'buy_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('buy_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getBuyTypeAllowableValues();
+        if (!is_null($buy_type) && !in_array($buy_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'buy_type', must be one of '%s'",
+                    $buy_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['buy_type'] = $buy_type;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets campaign_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return string|null
      */
-    public function getErrors()
+    public function getCampaignType()
     {
-        return $this->container['errors'];
+        return $this->container['campaign_type'];
     }
 
     /**
-     * Sets errors
+     * Sets campaign_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     * @param string|null $campaign_type The type of campaign this object represents availability for
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setCampaignType($campaign_type)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($campaign_type)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('campaign_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($campaign_type) && !in_array($campaign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_type', must be one of '%s'",
+                    $campaign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_type'] = $campaign_type;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets is_available
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return bool|null
      */
-    public function getWarnings()
+    public function getIsAvailable()
     {
-        return $this->container['warnings'];
+        return $this->container['is_available'];
     }
 
     /**
-     * Sets warnings
+     * Sets is_available
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param bool|null $is_available Indicates whether the campaign type and buy type combination is available for the retailer
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setIsAvailable($is_available)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($is_available)) {
+            array_push($this->openAPINullablesSetToNull, 'is_available');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('is_available', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['is_available'] = $is_available;
+
+        return $this;
+    }
+
+    /**
+     * Gets valid_combinations
+     *
+     * @return \criteo\api\retailmedia\preview\Model\PageTypeCombination[]|null
+     */
+    public function getValidCombinations()
+    {
+        return $this->container['valid_combinations'];
+    }
+
+    /**
+     * Sets valid_combinations
+     *
+     * @param \criteo\api\retailmedia\preview\Model\PageTypeCombination[]|null $valid_combinations PageType-PageEnvironmentType pairs which are supported for this campaign-buy type combination
+     *
+     * @return self
+     */
+    public function setValidCombinations($valid_combinations)
+    {
+        if (is_null($valid_combinations)) {
+            array_push($this->openAPINullablesSetToNull, 'valid_combinations');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('valid_combinations', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['valid_combinations'] = $valid_combinations;
 
         return $this;
     }

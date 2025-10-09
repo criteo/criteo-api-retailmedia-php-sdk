@@ -83,6 +83,9 @@ class CampaignApi
         'createAuctionLineItemV2' => [
             'application/json',
         ],
+        'createCreative' => [
+            'application/json',
+        ],
         'createPreferredLineItemByCampaignId' => [
             'application/json',
         ],
@@ -113,13 +116,13 @@ class CampaignApi
         'getApiV1ExternalRetailerPlacementsByRetailerId' => [
             'application/json',
         ],
-        'getApiV2ExternalAccountByAccountIdCreativescreativeId' => [
-            'application/json',
-        ],
         'getAuctionLineItemV2' => [
             'application/json',
         ],
         'getAuctionLineItemsByCampaignIdV2' => [
+            'application/json',
+        ],
+        'getCreative' => [
             'application/json',
         ],
         'getPreferredLineItemsByCampaignId' => [
@@ -155,22 +158,19 @@ class CampaignApi
         'postApiV1ExternalCatalogsSkuSearch' => [
             'application/json',
         ],
-        'postApiV2ExternalAccountCreativesByAccountId' => [
-            'application/json',
-        ],
-        'postApiV2ExternalAccountCreativesSearchByAccountId' => [
-            'application/json',
-        ],
-        'putApiV2ExternalAccountByAccountIdCreativescreativeId' => [
-            'application/json',
-        ],
         'recommendedKeywords' => [
+            'application/json',
+        ],
+        'searchAccountCreatives' => [
             'application/json',
         ],
         'searchBrands' => [
             'application/json',
         ],
         'searchCategory' => [
+            'application/json',
+        ],
+        'searchRetailersV1' => [
             'application/json',
         ],
         'setKeywordBids' => [
@@ -180,6 +180,9 @@ class CampaignApi
             'application/json',
         ],
         'updateAuctionLineItemV2' => [
+            'application/json',
+        ],
+        'updateCreative' => [
             'application/json',
         ],
         'updateKeywordReviewsV1' => [
@@ -1368,6 +1371,302 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_sponsored_products_line_item_create_request_model));
             } else {
                 $httpBody = $value_resource_input_of_sponsored_products_line_item_create_request_model;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createCreative
+     *
+     * @param  string $account_id External account id to create a creative for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
+     */
+    public function createCreative($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    {
+        list($response) = $this->createCreativeWithHttpInfo($account_id, $creative_create_model2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createCreativeWithHttpInfo
+     *
+     * @param  string $account_id External account id to create a creative for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createCreativeWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    {
+        $request = $this->createCreativeRequest($account_id, $creative_create_model2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 201:
+                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createCreativeAsync
+     *
+     * @param  string $account_id External account id to create a creative for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCreativeAsync($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    {
+        return $this->createCreativeAsyncWithHttpInfo($account_id, $creative_create_model2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createCreativeAsyncWithHttpInfo
+     *
+     * @param  string $account_id External account id to create a creative for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCreativeAsyncWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+        $request = $this->createCreativeRequest($account_id, $creative_create_model2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createCreative'
+     *
+     * @param  string $account_id External account id to create a creative for (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createCreativeRequest($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createCreative'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($creative_create_model2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($creative_create_model2));
+            } else {
+                $httpBody = $creative_create_model2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4356,309 +4655,6 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV2ExternalAccountByAccountIdCreativescreativeId
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string $creative_id Creative to get (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
-     */
-    public function getApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, string $contentType = self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        list($response) = $this->getApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo($account_id, $creative_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string $creative_id Creative to get (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo($account_id, $creative_id, string $contentType = self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        $request = $this->getApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiV2ExternalAccountByAccountIdCreativescreativeIdAsync
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string $creative_id Creative to get (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalAccountByAccountIdCreativescreativeIdAsync($account_id, $creative_id, string $contentType = self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        return $this->getApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo($account_id, $creative_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string $creative_id Creative to get (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo($account_id, $creative_id, string $contentType = self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-        $request = $this->getApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiV2ExternalAccountByAccountIdCreativescreativeId'
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string $creative_id Creative to get (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, string $contentType = self::contentTypes['getApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getApiV2ExternalAccountByAccountIdCreativescreativeId'
-            );
-        }
-
-        // verify the required parameter 'creative_id' is set
-        if ($creative_id === null || (is_array($creative_id) && count($creative_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $creative_id when calling getApiV2ExternalAccountByAccountIdCreativescreativeId'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/{creative-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($creative_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'creative-id' . '}',
-                ObjectSerializer::toPathValue($creative_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getAuctionLineItemV2
      *
      * @param  int $line_item_id The id of the line item (required)
@@ -5215,6 +5211,309 @@ class CampaignApi
             $resourcePath = str_replace(
                 '{' . 'campaignId' . '}',
                 ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCreative
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string $creative_id Creative to get (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
+     */
+    public function getCreative($account_id, $creative_id, string $contentType = self::contentTypes['getCreative'][0])
+    {
+        list($response) = $this->getCreativeWithHttpInfo($account_id, $creative_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCreativeWithHttpInfo
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string $creative_id Creative to get (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCreativeWithHttpInfo($account_id, $creative_id, string $contentType = self::contentTypes['getCreative'][0])
+    {
+        $request = $this->getCreativeRequest($account_id, $creative_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCreativeAsync
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string $creative_id Creative to get (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCreativeAsync($account_id, $creative_id, string $contentType = self::contentTypes['getCreative'][0])
+    {
+        return $this->getCreativeAsyncWithHttpInfo($account_id, $creative_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCreativeAsyncWithHttpInfo
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string $creative_id Creative to get (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCreativeAsyncWithHttpInfo($account_id, $creative_id, string $contentType = self::contentTypes['getCreative'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+        $request = $this->getCreativeRequest($account_id, $creative_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCreative'
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string $creative_id Creative to get (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCreativeRequest($account_id, $creative_id, string $contentType = self::contentTypes['getCreative'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getCreative'
+            );
+        }
+
+        // verify the required parameter 'creative_id' is set
+        if ($creative_id === null || (is_array($creative_id) && count($creative_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $creative_id when calling getCreative'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/{creative-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($creative_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'creative-id' . '}',
+                ObjectSerializer::toPathValue($creative_id),
                 $resourcePath
             );
         }
@@ -8582,916 +8881,6 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV2ExternalAccountCreativesByAccountId
-     *
-     * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
-     */
-    public function postApiV2ExternalAccountCreativesByAccountId($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'][0])
-    {
-        list($response) = $this->postApiV2ExternalAccountCreativesByAccountIdWithHttpInfo($account_id, $creative_create_model2, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApiV2ExternalAccountCreativesByAccountIdWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'][0])
-    {
-        $request = $this->postApiV2ExternalAccountCreativesByAccountIdRequest($account_id, $creative_create_model2, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 201:
-                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesByAccountIdAsync
-     *
-     * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiV2ExternalAccountCreativesByAccountIdAsync($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'][0])
-    {
-        return $this->postApiV2ExternalAccountCreativesByAccountIdAsyncWithHttpInfo($account_id, $creative_create_model2, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiV2ExternalAccountCreativesByAccountIdAsyncWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-        $request = $this->postApiV2ExternalAccountCreativesByAccountIdRequest($account_id, $creative_create_model2, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postApiV2ExternalAccountCreativesByAccountId'
-     *
-     * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postApiV2ExternalAccountCreativesByAccountIdRequest($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling postApiV2ExternalAccountCreativesByAccountId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($creative_create_model2)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($creative_create_model2));
-            } else {
-                $httpBody = $creative_create_model2;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesSearchByAccountId
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\Creative2ListResponse
-     */
-    public function postApiV2ExternalAccountCreativesSearchByAccountId($account_id, $creative_ids = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'][0])
-    {
-        list($response) = $this->postApiV2ExternalAccountCreativesSearchByAccountIdWithHttpInfo($account_id, $creative_ids, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesSearchByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\Creative2ListResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function postApiV2ExternalAccountCreativesSearchByAccountIdWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'][0])
-    {
-        $request = $this->postApiV2ExternalAccountCreativesSearchByAccountIdRequest($account_id, $creative_ids, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2ListResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Creative2ListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesSearchByAccountIdAsync
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiV2ExternalAccountCreativesSearchByAccountIdAsync($account_id, $creative_ids = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'][0])
-    {
-        return $this->postApiV2ExternalAccountCreativesSearchByAccountIdAsyncWithHttpInfo($account_id, $creative_ids, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation postApiV2ExternalAccountCreativesSearchByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function postApiV2ExternalAccountCreativesSearchByAccountIdAsyncWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
-        $request = $this->postApiV2ExternalAccountCreativesSearchByAccountIdRequest($account_id, $creative_ids, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'postApiV2ExternalAccountCreativesSearchByAccountId'
-     *
-     * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function postApiV2ExternalAccountCreativesSearchByAccountIdRequest($account_id, $creative_ids = null, string $contentType = self::contentTypes['postApiV2ExternalAccountCreativesSearchByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling postApiV2ExternalAccountCreativesSearchByAccountId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/search';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $creative_ids,
-            'creative-ids', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation putApiV2ExternalAccountByAccountIdCreativescreativeId
-     *
-     * @param  string $account_id External account id containing the creative (required)
-     * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
-     */
-    public function putApiV2ExternalAccountByAccountIdCreativescreativeId($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        list($response) = $this->putApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation putApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo
-     *
-     * @param  string $account_id External account id containing the creative (required)
-     * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function putApiV2ExternalAccountByAccountIdCreativescreativeIdWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        $request = $this->putApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, $creative_update_model2, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation putApiV2ExternalAccountByAccountIdCreativescreativeIdAsync
-     *
-     * @param  string $account_id External account id containing the creative (required)
-     * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApiV2ExternalAccountByAccountIdCreativescreativeIdAsync($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        return $this->putApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation putApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id External account id containing the creative (required)
-     * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function putApiV2ExternalAccountByAccountIdCreativescreativeIdAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
-        $request = $this->putApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, $creative_update_model2, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'putApiV2ExternalAccountByAccountIdCreativescreativeId'
-     *
-     * @param  string $account_id External account id containing the creative (required)
-     * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function putApiV2ExternalAccountByAccountIdCreativescreativeIdRequest($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['putApiV2ExternalAccountByAccountIdCreativescreativeId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling putApiV2ExternalAccountByAccountIdCreativescreativeId'
-            );
-        }
-
-        // verify the required parameter 'creative_id' is set
-        if ($creative_id === null || (is_array($creative_id) && count($creative_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $creative_id when calling putApiV2ExternalAccountByAccountIdCreativescreativeId'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/{creative-id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($creative_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'creative-id' . '}',
-                ObjectSerializer::toPathValue($creative_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($creative_update_model2)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($creative_update_model2));
-            } else {
-                $httpBody = $creative_update_model2;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation recommendedKeywords
      *
      * @param  string $retailer_id Retailer id. (required)
@@ -9734,6 +9123,304 @@ class CampaignApi
                 $httpBody = $value_resource_input_recommended_keywords_request_v1;
             }
         } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchAccountCreatives
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\Creative2ListResponse
+     */
+    public function searchAccountCreatives($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    {
+        list($response) = $this->searchAccountCreativesWithHttpInfo($account_id, $creative_ids, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchAccountCreativesWithHttpInfo
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\Creative2ListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchAccountCreativesWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    {
+        $request = $this->searchAccountCreativesRequest($account_id, $creative_ids, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2ListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\Creative2ListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchAccountCreativesAsync
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountCreativesAsync($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    {
+        return $this->searchAccountCreativesAsyncWithHttpInfo($account_id, $creative_ids, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchAccountCreativesAsyncWithHttpInfo
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountCreativesAsyncWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
+        $request = $this->searchAccountCreativesRequest($account_id, $creative_ids, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchAccountCreatives'
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchAccountCreativesRequest($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling searchAccountCreatives'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $creative_ids,
+            'creative-ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -10388,6 +10075,344 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_categories_search_request_v1));
             } else {
                 $httpBody = $value_resource_input_categories_search_request_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchRetailersV1
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+     */
+    public function searchRetailersV1($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    {
+        list($response) = $this->searchRetailersV1WithHttpInfo($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchRetailersV1WithHttpInfo
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchRetailersV1WithHttpInfo($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    {
+        $request = $this->searchRetailersV1Request($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchRetailersV1Async
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchRetailersV1Async($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    {
+        return $this->searchRetailersV1AsyncWithHttpInfo($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchRetailersV1AsyncWithHttpInfo
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchRetailersV1AsyncWithHttpInfo($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+        $request = $this->searchRetailersV1Request($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchRetailersV1'
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchRetailersV1Request($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling searchRetailersV1'
+            );
+        }
+
+        if ($limit !== null && $limit > 10) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchRetailersV1, must be smaller than or equal to 10.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchRetailersV1, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchRetailersV1, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchRetailersV1, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/preview/retail-media/accounts/{accountId}/retailers/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_of_retailer_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_retailer_search_request));
+            } else {
+                $httpBody = $value_resource_input_of_retailer_search_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -11222,6 +11247,322 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_sponsored_products_line_item_update_request_model));
             } else {
                 $httpBody = $value_resource_input_of_sponsored_products_line_item_update_request_model;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateCreative
+     *
+     * @param  string $account_id External account id containing the creative (required)
+     * @param  string $creative_id Creative to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\Creative2Response
+     */
+    public function updateCreative($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    {
+        list($response) = $this->updateCreativeWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateCreativeWithHttpInfo
+     *
+     * @param  string $account_id External account id containing the creative (required)
+     * @param  string $creative_id Creative to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateCreativeWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    {
+        $request = $this->updateCreativeRequest($account_id, $creative_id, $creative_update_model2, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\Creative2Response' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\Creative2Response' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2Response', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\Creative2Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateCreativeAsync
+     *
+     * @param  string $account_id External account id containing the creative (required)
+     * @param  string $creative_id Creative to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCreativeAsync($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    {
+        return $this->updateCreativeAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateCreativeAsyncWithHttpInfo
+     *
+     * @param  string $account_id External account id containing the creative (required)
+     * @param  string $creative_id Creative to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateCreativeAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
+        $request = $this->updateCreativeRequest($account_id, $creative_id, $creative_update_model2, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateCreative'
+     *
+     * @param  string $account_id External account id containing the creative (required)
+     * @param  string $creative_id Creative to update (required)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateCreativeRequest($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateCreative'
+            );
+        }
+
+        // verify the required parameter 'creative_id' is set
+        if ($creative_id === null || (is_array($creative_id) && count($creative_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $creative_id when calling updateCreative'
+            );
+        }
+
+
+
+        $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/{creative-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($creative_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'creative-id' . '}',
+                ObjectSerializer::toPathValue($creative_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($creative_update_model2)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($creative_update_model2));
+            } else {
+                $httpBody = $creative_update_model2;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

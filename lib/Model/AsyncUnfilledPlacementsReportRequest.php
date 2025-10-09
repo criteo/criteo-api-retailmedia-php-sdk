@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel
+ * AsyncUnfilledPlacementsReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel Class Doc Comment
+ * AsyncUnfilledPlacementsReportRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncUnfilledPlacementsReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel';
+    protected static $openAPIModelName = 'AsyncUnfilledPlacementsReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
+        'data' => '\criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource|null $data data
      *
      * @return self
      */

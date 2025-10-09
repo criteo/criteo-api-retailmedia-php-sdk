@@ -15,7 +15,6 @@ docs/Api/GatewayApi.md
 docs/Api/OnSiteRecommendationApi.md
 docs/Model/AccountFeesSearchRequest.md
 docs/Model/AccountFeesUpdateRequest.md
-docs/Model/AccountFeesUpdateResult.md
 docs/Model/AddRemoveKeywordModel.md
 docs/Model/AddRemoveKeywordsModel.md
 docs/Model/AddRemoveKeywordsModelRequest.md
@@ -40,6 +39,9 @@ docs/Model/AsyncOffsiteReport.md
 docs/Model/AsyncOffsiteReportRequest.md
 docs/Model/AsyncOffsiteReportResource.md
 docs/Model/AsyncReportResponse.md
+docs/Model/AsyncUnfilledPlacementsReport.md
+docs/Model/AsyncUnfilledPlacementsReportRequest.md
+docs/Model/AsyncUnfilledPlacementsReportResource.md
 docs/Model/AudienceError.md
 docs/Model/AudienceWarning.md
 docs/Model/BalanceHistoryChangeDataCaptureV1.md
@@ -53,6 +55,7 @@ docs/Model/BrandIdSearchRequest.md
 docs/Model/BrandIdSearchResult.md
 docs/Model/BrandPreview.md
 docs/Model/BrandPreviewListResponse.md
+docs/Model/CampaignAvailability.md
 docs/Model/CatalogStatusV2.md
 docs/Model/CategoriesSearchRequestV1.md
 docs/Model/Category202204.md
@@ -80,10 +83,12 @@ docs/Model/EntityResourceCollectionOutcomeCategory202204.md
 docs/Model/EntityResourceCollectionOutcomeCategory202204Metadata.md
 docs/Model/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md
+docs/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
 docs/Model/EntityResourceLineItemKeywordReviewReport.md
 docs/Model/EntityResourceOfCatalogStatusV2.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
+docs/Model/EntityResourceOfRetailerResult.md
 docs/Model/EntityResourceOfSponsoredProductsLineItem.md
 docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.md
@@ -126,6 +131,7 @@ docs/Model/OfferLoad.md
 docs/Model/OfferUpdate.md
 docs/Model/PageMetadata.md
 docs/Model/PageOfBalanceHistoryChangeDataCaptureV1.md
+docs/Model/PageTypeCombination.md
 docs/Model/PageTypeEnvironment2.md
 docs/Model/PagingOffsetLimitMetadata.md
 docs/Model/PartnerBillingReportRequestV1.md
@@ -197,6 +203,8 @@ docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
 docs/Model/RetailMediaKeywordsReview.md
 docs/Model/RetailMediaKeywordsReviewResult.md
+docs/Model/RetailerResult.md
+docs/Model/RetailerSearchRequest.md
 docs/Model/ReviewSetState.md
 docs/Model/ReviewStateModel.md
 docs/Model/RmAlgebraNodeV1.md
@@ -305,7 +313,6 @@ docs/Model/UpdateBalanceModelV2Request.md
 docs/Model/UpdateOffersRequest.md
 docs/Model/ValueResourceAccountFeesSearchRequest.md
 docs/Model/ValueResourceAccountFeesUpdateRequest.md
-docs/Model/ValueResourceAccountFeesUpdateResult.md
 docs/Model/ValueResourceAsyncJobResponse.md
 docs/Model/ValueResourceBrandIdSearchRequest.md
 docs/Model/ValueResourceCategoriesSearchRequestV1.md
@@ -316,6 +323,7 @@ docs/Model/ValueResourceInputBrandIdSearchRequest.md
 docs/Model/ValueResourceInputCategoriesSearchRequestV1.md
 docs/Model/ValueResourceInputLoadSkuOffersRequest.md
 docs/Model/ValueResourceInputOfBrandCatalogRequestV2.md
+docs/Model/ValueResourceInputOfRetailerSearchRequest.md
 docs/Model/ValueResourceInputOfSellerCatalogRequestV2.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md
@@ -327,10 +335,10 @@ docs/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
 docs/Model/ValueResourceInputUpdateOffersRequest.md
 docs/Model/ValueResourceLoadSkuOffersRequest.md
 docs/Model/ValueResourceOfBrandCatalogRequestV2.md
+docs/Model/ValueResourceOfRetailerSearchRequest.md
 docs/Model/ValueResourceOfSellerCatalogRequestV2.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
-docs/Model/ValueResourceOutcomeAccountFeesUpdateResult.md
 docs/Model/ValueResourceOutcomeAsyncJobResponse.md
 docs/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
@@ -361,7 +369,6 @@ lib/Configuration.php
 lib/HeaderSelector.php
 lib/Model/AccountFeesSearchRequest.php
 lib/Model/AccountFeesUpdateRequest.php
-lib/Model/AccountFeesUpdateResult.php
 lib/Model/AddRemoveKeywordModel.php
 lib/Model/AddRemoveKeywordsModel.php
 lib/Model/AddRemoveKeywordsModelRequest.php
@@ -386,6 +393,9 @@ lib/Model/AsyncOffsiteReport.php
 lib/Model/AsyncOffsiteReportRequest.php
 lib/Model/AsyncOffsiteReportResource.php
 lib/Model/AsyncReportResponse.php
+lib/Model/AsyncUnfilledPlacementsReport.php
+lib/Model/AsyncUnfilledPlacementsReportRequest.php
+lib/Model/AsyncUnfilledPlacementsReportResource.php
 lib/Model/AudienceError.php
 lib/Model/AudienceWarning.php
 lib/Model/BalanceHistoryChangeDataCaptureV1.php
@@ -399,6 +409,7 @@ lib/Model/BrandIdSearchRequest.php
 lib/Model/BrandIdSearchResult.php
 lib/Model/BrandPreview.php
 lib/Model/BrandPreviewListResponse.php
+lib/Model/CampaignAvailability.php
 lib/Model/CatalogStatusV2.php
 lib/Model/CategoriesSearchRequestV1.php
 lib/Model/Category202204.php
@@ -426,10 +437,12 @@ lib/Model/EntityResourceCollectionOutcomeCategory202204.php
 lib/Model/EntityResourceCollectionOutcomeCategory202204Metadata.php
 lib/Model/EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.php
+lib/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.php
 lib/Model/EntityResourceLineItemKeywordReviewReport.php
 lib/Model/EntityResourceOfCatalogStatusV2.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
+lib/Model/EntityResourceOfRetailerResult.php
 lib/Model/EntityResourceOfSponsoredProductsLineItem.php
 lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
 lib/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.php
@@ -473,6 +486,7 @@ lib/Model/OfferLoad.php
 lib/Model/OfferUpdate.php
 lib/Model/PageMetadata.php
 lib/Model/PageOfBalanceHistoryChangeDataCaptureV1.php
+lib/Model/PageTypeCombination.php
 lib/Model/PageTypeEnvironment2.php
 lib/Model/PagingOffsetLimitMetadata.php
 lib/Model/PartnerBillingReportRequestV1.php
@@ -544,6 +558,8 @@ lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
 lib/Model/RetailMediaKeywordsReview.php
 lib/Model/RetailMediaKeywordsReviewResult.php
+lib/Model/RetailerResult.php
+lib/Model/RetailerSearchRequest.php
 lib/Model/ReviewSetState.php
 lib/Model/ReviewStateModel.php
 lib/Model/RmAlgebraNodeV1.php
@@ -652,7 +668,6 @@ lib/Model/UpdateBalanceModelV2Request.php
 lib/Model/UpdateOffersRequest.php
 lib/Model/ValueResourceAccountFeesSearchRequest.php
 lib/Model/ValueResourceAccountFeesUpdateRequest.php
-lib/Model/ValueResourceAccountFeesUpdateResult.php
 lib/Model/ValueResourceAsyncJobResponse.php
 lib/Model/ValueResourceBrandIdSearchRequest.php
 lib/Model/ValueResourceCategoriesSearchRequestV1.php
@@ -663,6 +678,7 @@ lib/Model/ValueResourceInputBrandIdSearchRequest.php
 lib/Model/ValueResourceInputCategoriesSearchRequestV1.php
 lib/Model/ValueResourceInputLoadSkuOffersRequest.php
 lib/Model/ValueResourceInputOfBrandCatalogRequestV2.php
+lib/Model/ValueResourceInputOfRetailerSearchRequest.php
 lib/Model/ValueResourceInputOfSellerCatalogRequestV2.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.php
@@ -674,10 +690,10 @@ lib/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.php
 lib/Model/ValueResourceInputUpdateOffersRequest.php
 lib/Model/ValueResourceLoadSkuOffersRequest.php
 lib/Model/ValueResourceOfBrandCatalogRequestV2.php
+lib/Model/ValueResourceOfRetailerSearchRequest.php
 lib/Model/ValueResourceOfSellerCatalogRequestV2.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.php
-lib/Model/ValueResourceOutcomeAccountFeesUpdateResult.php
 lib/Model/ValueResourceOutcomeAsyncJobResponse.php
 lib/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.php
 lib/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.php

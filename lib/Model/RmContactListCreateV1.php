@@ -233,6 +233,7 @@ class RmContactListCreateV1 implements ModelInterface, ArrayAccess, \JsonSeriali
     public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
     public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
     public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
 
     /**
      * Gets allowable values of the enum
@@ -246,6 +247,7 @@ class RmContactListCreateV1 implements ModelInterface, ArrayAccess, \JsonSeriali
             self::IDENTIFIER_TYPE_USER_IDENTIFIER,
             self::IDENTIFIER_TYPE_IDENTITY_LINK,
             self::IDENTIFIER_TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_PHONE_NUMBER,
         ];
     }
 

@@ -67,6 +67,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
+        'optimization_strategy' => 'string',
         'start_date' => '\DateTime',
         'status' => 'string',
         'target_bid' => 'float'
@@ -89,6 +90,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
+        'optimization_strategy' => null,
         'start_date' => 'date-time',
         'status' => null,
         'target_bid' => 'double'
@@ -109,9 +111,10 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
+		'optimization_strategy' => false,
 		'start_date' => false,
 		'status' => false,
-		'target_bid' => false
+		'target_bid' => true
     ];
 
     /**
@@ -209,6 +212,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
+        'optimization_strategy' => 'optimizationStrategy',
         'start_date' => 'startDate',
         'status' => 'status',
         'target_bid' => 'targetBid'
@@ -229,6 +233,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
+        'optimization_strategy' => 'setOptimizationStrategy',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'target_bid' => 'setTargetBid'
@@ -249,6 +254,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
+        'optimization_strategy' => 'getOptimizationStrategy',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'target_bid' => 'getTargetBid'
@@ -299,6 +305,8 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     public const BID_STRATEGY_CONVERSION = 'conversion';
     public const BID_STRATEGY_CLICKS = 'clicks';
     public const BID_STRATEGY_REVENUE = 'revenue';
+    public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
+    public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_PAUSED = 'paused';
     public const STATUS_DRAFT = 'draft';
@@ -315,6 +323,19 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOptimizationStrategyAllowableValues()
+    {
+        return [
+            self::OPTIMIZATION_STRATEGY_MANUAL,
+            self::OPTIMIZATION_STRATEGY_AUTOMATED,
         ];
     }
 
@@ -356,6 +377,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('optimization_strategy', $data ?? [], 'manual');
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
@@ -411,6 +433,15 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!is_null($this->container['optimization_strategy']) && !in_array($this->container['optimization_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                $this->container['optimization_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
@@ -426,9 +457,6 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
             );
         }
 
-        if ($this->container['target_bid'] === null) {
-            $invalidProperties[] = "'target_bid' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -457,7 +485,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy bid_strategy
+     * @param string|null $bid_strategy The bidding strategy for the line item.
      *
      * @return self
      */
@@ -494,7 +522,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets budget
      *
-     * @param float|null $budget budget
+     * @param float|null $budget The total budget allocated for this line item.
      *
      * @return self
      */
@@ -528,7 +556,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets daily_pacing
      *
-     * @param float|null $daily_pacing daily_pacing
+     * @param float|null $daily_pacing The daily pacing amount for the line item.
      *
      * @return self
      */
@@ -562,7 +590,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date end_date
+     * @param \DateTime|null $end_date The date and time when the line item stops running.
      *
      * @return self
      */
@@ -630,7 +658,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets is_auto_daily_pacing
      *
-     * @param bool $is_auto_daily_pacing is_auto_daily_pacing
+     * @param bool $is_auto_daily_pacing True if daily pacing is automatic, false if manual.
      *
      * @return self
      */
@@ -657,7 +685,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets max_bid
      *
-     * @param float|null $max_bid max_bid
+     * @param float|null $max_bid The maximum bid amount for the line item.
      *
      * @return self
      */
@@ -691,7 +719,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets monthly_pacing
      *
-     * @param float|null $monthly_pacing monthly_pacing
+     * @param float|null $monthly_pacing The monthly pacing amount for the line item.
      *
      * @return self
      */
@@ -725,7 +753,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The name of this line item.
      *
      * @return self
      */
@@ -747,6 +775,43 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     }
 
     /**
+     * Gets optimization_strategy
+     *
+     * @return string|null
+     */
+    public function getOptimizationStrategy()
+    {
+        return $this->container['optimization_strategy'];
+    }
+
+    /**
+     * Sets optimization_strategy
+     *
+     * @param string|null $optimization_strategy The optimization strategy for the line item.
+     *
+     * @return self
+     */
+    public function setOptimizationStrategy($optimization_strategy)
+    {
+        if (is_null($optimization_strategy)) {
+            throw new \InvalidArgumentException('non-nullable optimization_strategy cannot be null');
+        }
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!in_array($optimization_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                    $optimization_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['optimization_strategy'] = $optimization_strategy;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -759,7 +824,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date start_date
+     * @param \DateTime $start_date The date and time when the line item starts running.
      *
      * @return self
      */
@@ -786,7 +851,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets status
      *
-     * @param string $status Status of a line item.
+     * @param string $status The current status of the line item.
      *
      * @return self
      */
@@ -813,7 +878,7 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Gets target_bid
      *
-     * @return float
+     * @return float|null
      */
     public function getTargetBid()
     {
@@ -823,14 +888,21 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     /**
      * Sets target_bid
      *
-     * @param float $target_bid target_bid
+     * @param float|null $target_bid The target bid amount for the line item.
      *
      * @return self
      */
     public function setTargetBid($target_bid)
     {
         if (is_null($target_bid)) {
-            throw new \InvalidArgumentException('non-nullable target_bid cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'target_bid');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('target_bid', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['target_bid'] = $target_bid;
 

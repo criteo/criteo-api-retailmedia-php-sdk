@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel
+ * AsyncUnfilledPlacementsReportResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel Class Doc Comment
+ * AsyncUnfilledPlacementsReportResource Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description A top-level object that encapsulates a Criteo API response for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncUnfilledPlacementsReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel';
+    protected static $openAPIModelName = 'AsyncUnfilledPlacementsReportResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'attributes' => false,
+		'type' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -245,7 +251,8 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -291,28 +298,55 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
 
 
     /**
-     * Gets data
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport|null
      */
-    public function getData()
+    public function getAttributes()
     {
-        return $this->container['data'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets data
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport|null $attributes attributes
      *
      * @return self
      */
-    public function setData($data)
+    public function setAttributes($attributes)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

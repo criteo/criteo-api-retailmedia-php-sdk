@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel
+ * RetailerSearchRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel Class Doc Comment
+ * RetailerSearchRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description Request model for searching retailers
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel';
+    protected static $openAPIModelName = 'RetailerSearchRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel'
+        'retailer_id_filter' => 'string[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'retailer_id_filter' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'retailer_id_filter' => true
     ];
 
     /**
@@ -167,7 +167,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'retailer_id_filter' => 'retailerIdFilter'
     ];
 
     /**
@@ -176,7 +176,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'retailer_id_filter' => 'setRetailerIdFilter'
     ];
 
     /**
@@ -185,7 +185,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'retailer_id_filter' => 'getRetailerIdFilter'
     ];
 
     /**
@@ -245,7 +245,7 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('retailer_id_filter', $data ?? [], null);
     }
 
     /**
@@ -291,28 +291,35 @@ class ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel implements
 
 
     /**
-     * Gets data
+     * Gets retailer_id_filter
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null
+     * @return string[]|null
      */
-    public function getData()
+    public function getRetailerIdFilter()
     {
-        return $this->container['data'];
+        return $this->container['retailer_id_filter'];
     }
 
     /**
-     * Sets data
+     * Sets retailer_id_filter
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfSponsoredProductsLineItemUpdateRequestModel|null $data data
+     * @param string[]|null $retailer_id_filter Optional list of retailer IDs to filter the results
      *
      * @return self
      */
-    public function setData($data)
+    public function setRetailerIdFilter($retailer_id_filter)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($retailer_id_filter)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_id_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id_filter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['retailer_id_filter'] = $retailer_id_filter;
 
         return $this;
     }

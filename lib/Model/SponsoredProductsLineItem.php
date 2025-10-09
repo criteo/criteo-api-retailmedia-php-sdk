@@ -72,6 +72,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
+        'optimization_strategy' => 'string',
         'start_date' => '\DateTime',
         'status' => 'string',
         'target_bid' => 'float',
@@ -101,6 +102,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
+        'optimization_strategy' => null,
         'start_date' => 'date-time',
         'status' => null,
         'target_bid' => 'double',
@@ -128,6 +130,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
+		'optimization_strategy' => true,
 		'start_date' => false,
 		'status' => true,
 		'target_bid' => true,
@@ -235,6 +238,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
+        'optimization_strategy' => 'optimizationStrategy',
         'start_date' => 'startDate',
         'status' => 'status',
         'target_bid' => 'targetBid',
@@ -262,6 +266,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
+        'optimization_strategy' => 'setOptimizationStrategy',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'target_bid' => 'setTargetBid',
@@ -289,6 +294,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
+        'optimization_strategy' => 'getOptimizationStrategy',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'target_bid' => 'getTargetBid',
@@ -345,6 +351,8 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
+    public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
+    public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -382,6 +390,19 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
             self::KEYWORD_STRATEGY_CONQUESTING,
             self::KEYWORD_STRATEGY_GENERIC_AND_BRANDED,
             self::KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOptimizationStrategyAllowableValues()
+    {
+        return [
+            self::OPTIMIZATION_STRATEGY_MANUAL,
+            self::OPTIMIZATION_STRATEGY_AUTOMATED,
         ];
     }
 
@@ -434,6 +455,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('optimization_strategy', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
@@ -504,6 +526,15 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
 
         if ((mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        }
+
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!is_null($this->container['optimization_strategy']) && !in_array($this->container['optimization_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                $this->container['optimization_strategy'],
+                implode("', '", $allowedValues)
+            );
         }
 
         if ($this->container['start_date'] === null) {
@@ -1022,6 +1053,50 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets optimization_strategy
+     *
+     * @return string|null
+     */
+    public function getOptimizationStrategy()
+    {
+        return $this->container['optimization_strategy'];
+    }
+
+    /**
+     * Sets optimization_strategy
+     *
+     * @param string|null $optimization_strategy optimization_strategy
+     *
+     * @return self
+     */
+    public function setOptimizationStrategy($optimization_strategy)
+    {
+        if (is_null($optimization_strategy)) {
+            array_push($this->openAPINullablesSetToNull, 'optimization_strategy');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('optimization_strategy', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!is_null($optimization_strategy) && !in_array($optimization_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                    $optimization_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['optimization_strategy'] = $optimization_strategy;
+
+        return $this;
+    }
+
+    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -1139,7 +1214,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets target_retailer_id
      *
-     * @param string $target_retailer_id target_retailer_id
+     * @param string $target_retailer_id The ID of the retailer targeted by this line item.
      *
      * @return self
      */

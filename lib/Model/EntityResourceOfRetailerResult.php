@@ -1,6 +1,6 @@
 <?php
 /**
- * AccountFeesUpdateResult
+ * EntityResourceOfRetailerResult
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * AccountFeesUpdateResult Class Doc Comment
+ * EntityResourceOfRetailerResult Class Doc Comment
  *
  * @category Class
- * @description results of the update request, includes any accounts that were not updated successfully
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AccountFeesUpdateResult';
+    protected static $openAPIModelName = 'EntityResourceOfRetailerResult';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'failed_update_account_ids' => 'string[]',
-        'successfully_updated_account_ids' => 'string[]'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailerResult',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'failed_update_account_ids' => null,
-        'successfully_updated_account_ids' => null
+        'attributes' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'failed_update_account_ids' => true,
-		'successfully_updated_account_ids' => true
+        'attributes' => true,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'failed_update_account_ids' => 'failedUpdateAccountIds',
-        'successfully_updated_account_ids' => 'successfullyUpdatedAccountIds'
+        'attributes' => 'attributes',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +184,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'failed_update_account_ids' => 'setFailedUpdateAccountIds',
-        'successfully_updated_account_ids' => 'setSuccessfullyUpdatedAccountIds'
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +195,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'failed_update_account_ids' => 'getFailedUpdateAccountIds',
-        'successfully_updated_account_ids' => 'getSuccessfullyUpdatedAccountIds'
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +257,9 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('failed_update_account_ids', $data ?? [], null);
-        $this->setIfExists('successfully_updated_account_ids', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -298,69 +305,103 @@ class AccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets failed_update_account_ids
+     * Gets attributes
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\RetailerResult|null
      */
-    public function getFailedUpdateAccountIds()
+    public function getAttributes()
     {
-        return $this->container['failed_update_account_ids'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets failed_update_account_ids
+     * Sets attributes
      *
-     * @param string[]|null $failed_update_account_ids account Id that were not updated in the request
+     * @param \criteo\api\retailmedia\preview\Model\RetailerResult|null $attributes attributes
      *
      * @return self
      */
-    public function setFailedUpdateAccountIds($failed_update_account_ids)
+    public function setAttributes($attributes)
     {
-        if (is_null($failed_update_account_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'failed_update_account_ids');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('failed_update_account_ids', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['failed_update_account_ids'] = $failed_update_account_ids;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets successfully_updated_account_ids
+     * Gets id
      *
-     * @return string[]|null
+     * @return string|null
      */
-    public function getSuccessfullyUpdatedAccountIds()
+    public function getId()
     {
-        return $this->container['successfully_updated_account_ids'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets successfully_updated_account_ids
+     * Sets id
      *
-     * @param string[]|null $successfully_updated_account_ids account Ids that were successfully updated in the request
+     * @param string|null $id Unique id of the entity.
      *
      * @return self
      */
-    public function setSuccessfullyUpdatedAccountIds($successfully_updated_account_ids)
+    public function setId($id)
     {
-        if (is_null($successfully_updated_account_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'successfully_updated_account_ids');
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('successfully_updated_account_ids', $nullablesSetToNull);
+            $index = array_search('id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['successfully_updated_account_ids'] = $successfully_updated_account_ids;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type of the resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

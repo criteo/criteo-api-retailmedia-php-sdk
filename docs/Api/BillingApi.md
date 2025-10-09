@@ -4,15 +4,15 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**previewRetailMediaBillingPartnerReportPost()**](BillingApi.md#previewRetailMediaBillingPartnerReportPost) | **POST** /preview/retail-media/billing/partner-report |  |
-| [**previewRetailMediaBillingPartnerReportRequestIdOutputGet()**](BillingApi.md#previewRetailMediaBillingPartnerReportRequestIdOutputGet) | **GET** /preview/retail-media/billing/partner-report/{requestId}/output |  |
-| [**previewRetailMediaBillingPartnerReportRequestIdStatusGet()**](BillingApi.md#previewRetailMediaBillingPartnerReportRequestIdStatusGet) | **GET** /preview/retail-media/billing/partner-report/{requestId}/status |  |
+| [**createPartnerBillingReportRequestV1()**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /preview/retail-media/billing/partner-report |  |
+| [**getPartnerBillingReportOutputV1()**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /preview/retail-media/billing/partner-report/{requestId}/output |  |
+| [**getPartnerBillingReportStatusV1()**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /preview/retail-media/billing/partner-report/{requestId}/status |  |
 
 
-## `previewRetailMediaBillingPartnerReportPost()`
+## `createPartnerBillingReportRequestV1()`
 
 ```php
-previewRetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
+createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
 
@@ -42,10 +42,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\BillingApi(
 $value_resource_input_partner_billing_report_request_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputPartnerBillingReportRequestV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputPartnerBillingReportRequestV1 | Partner Billing Report request object.
 
 try {
-    $result = $apiInstance->previewRetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1);
+    $result = $apiInstance->createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->previewRetailMediaBillingPartnerReportPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->createPartnerBillingReportRequestV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -72,10 +72,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `previewRetailMediaBillingPartnerReportRequestIdOutputGet()`
+## `getPartnerBillingReportOutputV1()`
 
 ```php
-previewRetailMediaBillingPartnerReportRequestIdOutputGet($request_id): \SplFileObject
+getPartnerBillingReportOutputV1($request_id): \SplFileObject
 ```
 
 
@@ -105,10 +105,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\BillingApi(
 $request_id = 'request_id_example'; // string | The id of a Partner Billing Report request.
 
 try {
-    $result = $apiInstance->previewRetailMediaBillingPartnerReportRequestIdOutputGet($request_id);
+    $result = $apiInstance->getPartnerBillingReportOutputV1($request_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->previewRetailMediaBillingPartnerReportRequestIdOutputGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->getPartnerBillingReportOutputV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -135,10 +135,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `previewRetailMediaBillingPartnerReportRequestIdStatusGet()`
+## `getPartnerBillingReportStatusV1()`
 
 ```php
-previewRetailMediaBillingPartnerReportRequestIdStatusGet($request_id): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
+getPartnerBillingReportStatusV1($request_id): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
 
@@ -168,10 +168,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\BillingApi(
 $request_id = 'request_id_example'; // string | The id of a Partner Billing Report request.
 
 try {
-    $result = $apiInstance->previewRetailMediaBillingPartnerReportRequestIdStatusGet($request_id);
+    $result = $apiInstance->getPartnerBillingReportStatusV1($request_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->previewRetailMediaBillingPartnerReportRequestIdStatusGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->getPartnerBillingReportStatusV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

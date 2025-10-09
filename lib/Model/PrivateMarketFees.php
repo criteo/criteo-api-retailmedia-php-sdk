@@ -80,8 +80,8 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'demand_managed' => false,
-		'managed_service' => false
+        'demand_managed' => true,
+		'managed_service' => true
     ];
 
     /**
@@ -282,12 +282,6 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['demand_managed'] === null) {
-            $invalidProperties[] = "'demand_managed' can't be null";
-        }
-        if ($this->container['managed_service'] === null) {
-            $invalidProperties[] = "'managed_service' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -306,7 +300,7 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets demand_managed
      *
-     * @return \criteo\api\retailmedia\preview\Model\DemandManagedFee
+     * @return \criteo\api\retailmedia\preview\Model\DemandManagedFee|null
      */
     public function getDemandManaged()
     {
@@ -316,14 +310,21 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets demand_managed
      *
-     * @param \criteo\api\retailmedia\preview\Model\DemandManagedFee $demand_managed demand_managed
+     * @param \criteo\api\retailmedia\preview\Model\DemandManagedFee|null $demand_managed demand_managed
      *
      * @return self
      */
     public function setDemandManaged($demand_managed)
     {
         if (is_null($demand_managed)) {
-            throw new \InvalidArgumentException('non-nullable demand_managed cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'demand_managed');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('demand_managed', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['demand_managed'] = $demand_managed;
 
@@ -333,7 +334,7 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets managed_service
      *
-     * @return \criteo\api\retailmedia\preview\Model\ManagedServiceFee
+     * @return \criteo\api\retailmedia\preview\Model\ManagedServiceFee|null
      */
     public function getManagedService()
     {
@@ -343,14 +344,21 @@ class PrivateMarketFees implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets managed_service
      *
-     * @param \criteo\api\retailmedia\preview\Model\ManagedServiceFee $managed_service managed_service
+     * @param \criteo\api\retailmedia\preview\Model\ManagedServiceFee|null $managed_service managed_service
      *
      * @return self
      */
     public function setManagedService($managed_service)
     {
         if (is_null($managed_service)) {
-            throw new \InvalidArgumentException('non-nullable managed_service cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'managed_service');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('managed_service', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['managed_service'] = $managed_service;
 

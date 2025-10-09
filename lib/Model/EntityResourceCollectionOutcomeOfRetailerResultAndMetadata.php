@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceAccountFeesUpdateResult
+ * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceAccountFeesUpdateResult Class Doc Comment
+ * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceAccountFeesUpdateResult';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\AccountFeesUpdateResult',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'data' => null,
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'type' => true
+        'data' => true,
+		'errors' => true,
+		'metadata' => true,
+		'warnings' => true
     ];
 
     /**
@@ -170,8 +176,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'data' => 'data',
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -180,8 +188,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -190,8 +200,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -251,8 +263,10 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -298,69 +312,137 @@ class ValueResourceAccountFeesUpdateResult implements ModelInterface, ArrayAcces
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AccountFeesUpdateResult|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AccountFeesUpdateResult|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getType()
+    public function getErrors()
     {
-        return $this->container['type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets type
+     * Sets errors
      *
-     * @param string|null $type Type of the resource.
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setType($type)
+    public function setErrors($errors)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

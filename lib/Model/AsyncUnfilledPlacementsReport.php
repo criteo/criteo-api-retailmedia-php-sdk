@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncFillRateReport
+ * AsyncUnfilledPlacementsReport
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * AsyncFillRateReport Class Doc Comment
+ * AsyncUnfilledPlacementsReport Class Doc Comment
  *
  * @category Class
- * @description Async FillRate report body request
+ * @description Async Unfilled Placements report body request
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncUnfilledPlacementsReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncFillRateReport';
+    protected static $openAPIModelName = 'AsyncUnfilledPlacementsReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,6 +59,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'ad_server_type' => 'string',
+        'campaign_type' => 'string',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
@@ -77,6 +78,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'ad_server_type' => null,
+        'campaign_type' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
@@ -93,6 +95,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'ad_server_type' => false,
+		'campaign_type' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
@@ -189,6 +192,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'ad_server_type' => 'adServerType',
+        'campaign_type' => 'campaignType',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
@@ -205,6 +209,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'ad_server_type' => 'setAdServerType',
+        'campaign_type' => 'setCampaignType',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
@@ -221,6 +226,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'ad_server_type' => 'getAdServerType',
+        'campaign_type' => 'getCampaignType',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
@@ -274,28 +280,55 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const AD_SERVER_TYPE_ALL = 'all';
     public const AD_SERVER_TYPE_GAM = 'gam';
     public const AD_SERVER_TYPE_CRITEO = 'criteo';
+    public const CAMPAIGN_TYPE_ALL = 'all';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const DIMENSIONS_DATE = 'date';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
     public const DIMENSIONS_PLACEMENT_ID = 'placementId';
     public const DIMENSIONS_PLACEMENT_NAME = 'placementName';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
-    public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
+    public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_RETAILER_CATEGORY_ID = 'retailerCategoryId';
     public const DIMENSIONS_RETAILER_CATEGORY_NAME = 'retailerCategoryName';
     public const DIMENSIONS_AD_SERVER_TYPE = 'adServerType';
+    public const DIMENSIONS_CAMPAIGN_TYPE = 'campaignType';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
-    public const METRICS_PAGE_VIEWS = 'pageViews';
+    public const METRICS_TOTAL_UNFILLED_PLACEMENTS = 'totalUnfilledPlacements';
+    public const METRICS_UNFILLED_USER_OPT_OUT = 'unfilledUserOptOut';
+    public const METRICS_UNFILLED_NOT_ENOUGH_DEMAND = 'unfilledNotEnoughDemand';
+    public const METRICS_UNFILLED_TOTAL_AUCTION_SETTINGS = 'unfilledTotalAuctionSettings';
+    public const METRICS_UNFILLED_TOTAL_AUCTION_CONSIDERATIONS = 'unfilledTotalAuctionConsiderations';
+    public const METRICS_UNFILLED_ADVERTISER_AUCTION_SETTINGS = 'unfilledAdvertiserAuctionSettings';
+    public const METRICS_UNFILLED_RETAILER_AUCTION_SETTINGS = 'unfilledRetailerAuctionSettings';
+    public const METRICS_UNFILLED_CRITEO_AUCTION_SETTINGS = 'unfilledCriteoAuctionSettings';
+    public const METRICS_UNFILLED_RETURNED_BUT_NOT_PAINTED = 'unfilledReturnedButNotPainted';
+    public const METRICS_NON_DELIVERABLE_UNMAPPED_CATEGORIES = 'nonDeliverableUnmappedCategories';
+    public const METRICS_NON_DELIVERABLE_PAGES_WITH_UNKNOWN_PRODUCTS = 'nonDeliverablePagesWithUnknownProducts';
+    public const METRICS_NON_DELIVERABLE_BLOCKED_OPT_OUT = 'nonDeliverableBlockedOptOut';
+    public const METRICS_NON_DELIVERABLE_BLOCKED_PAGE_CATEGORY = 'nonDeliverableBlockedPageCategory';
+    public const METRICS_NON_DELIVERABLE_INACTIVE_PLACEMENT = 'nonDeliverableInactivePlacement';
+    public const METRICS_NON_DELIVERABLE_INSUFFICIENT_ORGANIC_RESULTS = 'nonDeliverableInsufficientOrganicResults';
+    public const METRICS_NON_DELIVERABLE_INVALID_TRAFFIC = 'nonDeliverableInvalidTraffic';
+    public const METRICS_NON_DELIVERABLE_TEST_PLACEMENT = 'nonDeliverableTestPlacement';
+    public const METRICS_UNCOVERED_UNUSED_FORMATS = 'uncoveredUnusedFormats';
+    public const METRICS_UNCOVERED_SEARCH_TERM_WITHOUT_CATEGORY = 'uncoveredSearchTermWithoutCategory';
+    public const METRICS_UNCOVERED_NO_DEMAND_BRANDED_KEYWORD_CONQUESTING_ENABLED = 'uncoveredNoDemandBrandedKeywordConquestingEnabled';
+    public const METRICS_UNCOVERED_NO_DEMAND_BRANDED_KEYWORD_CONQUESTING_DISABLED = 'uncoveredNoDemandBrandedKeywordConquestingDisabled';
+    public const METRICS_UNCOVERED_NO_DEMAND_UNBRANDED_INVENTORY = 'uncoveredNoDemandUnbrandedInventory';
+    public const METRICS_UNCOVERED_NO_DEMAND_OPT_OUT = 'uncoveredNoDemandOptOut';
+    public const METRICS_UNCOVERED_FILTERED_OUT_DEMAND = 'uncoveredFilteredOutDemand';
+    public const METRICS_UNCOVERED_BROKEN_PLACEMENT = 'uncoveredBrokenPlacement';
+    public const METRICS_UNCOVERED_NOT_PAINTED = 'uncoveredNotPainted';
     public const METRICS_AVAILABLE_PLACEMENTS = 'availablePlacements';
-    public const METRICS_UNFILLED_PLACEMENTS = 'unfilledPlacements';
     public const METRICS_FILL_RATE = 'fillRate';
     public const METRICS_PLACEMENT_IMPRESSIONS = 'placementImpressions';
     public const METRICS_PRODUCT_IMPRESSIONS = 'productImpressions';
-    public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_PLACEMENT_CLICKS = 'placementClicks';
     public const METRICS_PRODUCT_CLICKS = 'productClicks';
     public const METRICS_CLICKS = 'clicks';
@@ -306,8 +339,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_PLACEMENT_IMPRESSIONS_REVENUE = 'placementImpressionsRevenue';
     public const METRICS_PRODUCT_CLICKS_REVENUE = 'productClicksRevenue';
     public const METRICS_REVENUE = 'revenue';
-    public const METRICS_WORKING_MEDIA = 'workingMedia';
-    public const METRICS_NET_REVENUE = 'netRevenue';
     public const METRICS_NON_DELIVERABLE_PLACEMENTS = 'nonDeliverablePlacements';
     public const METRICS_DELIVERABLE_PLACEMENTS = 'deliverablePlacements';
     public const METRICS_PLACEMENTS_WITH_CANDIDATES = 'placementsWithCandidates';
@@ -333,6 +364,20 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getCampaignTypeAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_TYPE_ALL,
+            self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
+            self::CAMPAIGN_TYPE_ON_SITE_DISPLAYS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getDimensionsAllowableValues()
     {
         return [
@@ -342,11 +387,12 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_PLACEMENT_ID,
             self::DIMENSIONS_PLACEMENT_NAME,
             self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_SERVED_CATEGORY,
+            self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_RETAILER_CATEGORY_ID,
             self::DIMENSIONS_RETAILER_CATEGORY_NAME,
             self::DIMENSIONS_AD_SERVER_TYPE,
+            self::DIMENSIONS_CAMPAIGN_TYPE,
         ];
     }
 
@@ -373,13 +419,36 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getMetricsAllowableValues()
     {
         return [
-            self::METRICS_PAGE_VIEWS,
+            self::METRICS_TOTAL_UNFILLED_PLACEMENTS,
+            self::METRICS_UNFILLED_USER_OPT_OUT,
+            self::METRICS_UNFILLED_NOT_ENOUGH_DEMAND,
+            self::METRICS_UNFILLED_TOTAL_AUCTION_SETTINGS,
+            self::METRICS_UNFILLED_TOTAL_AUCTION_CONSIDERATIONS,
+            self::METRICS_UNFILLED_ADVERTISER_AUCTION_SETTINGS,
+            self::METRICS_UNFILLED_RETAILER_AUCTION_SETTINGS,
+            self::METRICS_UNFILLED_CRITEO_AUCTION_SETTINGS,
+            self::METRICS_UNFILLED_RETURNED_BUT_NOT_PAINTED,
+            self::METRICS_NON_DELIVERABLE_UNMAPPED_CATEGORIES,
+            self::METRICS_NON_DELIVERABLE_PAGES_WITH_UNKNOWN_PRODUCTS,
+            self::METRICS_NON_DELIVERABLE_BLOCKED_OPT_OUT,
+            self::METRICS_NON_DELIVERABLE_BLOCKED_PAGE_CATEGORY,
+            self::METRICS_NON_DELIVERABLE_INACTIVE_PLACEMENT,
+            self::METRICS_NON_DELIVERABLE_INSUFFICIENT_ORGANIC_RESULTS,
+            self::METRICS_NON_DELIVERABLE_INVALID_TRAFFIC,
+            self::METRICS_NON_DELIVERABLE_TEST_PLACEMENT,
+            self::METRICS_UNCOVERED_UNUSED_FORMATS,
+            self::METRICS_UNCOVERED_SEARCH_TERM_WITHOUT_CATEGORY,
+            self::METRICS_UNCOVERED_NO_DEMAND_BRANDED_KEYWORD_CONQUESTING_ENABLED,
+            self::METRICS_UNCOVERED_NO_DEMAND_BRANDED_KEYWORD_CONQUESTING_DISABLED,
+            self::METRICS_UNCOVERED_NO_DEMAND_UNBRANDED_INVENTORY,
+            self::METRICS_UNCOVERED_NO_DEMAND_OPT_OUT,
+            self::METRICS_UNCOVERED_FILTERED_OUT_DEMAND,
+            self::METRICS_UNCOVERED_BROKEN_PLACEMENT,
+            self::METRICS_UNCOVERED_NOT_PAINTED,
             self::METRICS_AVAILABLE_PLACEMENTS,
-            self::METRICS_UNFILLED_PLACEMENTS,
             self::METRICS_FILL_RATE,
             self::METRICS_PLACEMENT_IMPRESSIONS,
             self::METRICS_PRODUCT_IMPRESSIONS,
-            self::METRICS_IMPRESSIONS,
             self::METRICS_PLACEMENT_CLICKS,
             self::METRICS_PRODUCT_CLICKS,
             self::METRICS_CLICKS,
@@ -390,8 +459,6 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_PLACEMENT_IMPRESSIONS_REVENUE,
             self::METRICS_PRODUCT_CLICKS_REVENUE,
             self::METRICS_REVENUE,
-            self::METRICS_WORKING_MEDIA,
-            self::METRICS_NET_REVENUE,
             self::METRICS_NON_DELIVERABLE_PLACEMENTS,
             self::METRICS_DELIVERABLE_PLACEMENTS,
             self::METRICS_PLACEMENTS_WITH_CANDIDATES,
@@ -416,6 +483,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('ad_server_type', $data ?? [], 'all');
+        $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json');
@@ -457,6 +525,15 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'ad_server_type', must be one of '%s'",
                 $this->container['ad_server_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -546,6 +623,43 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets campaign_type
+     *
+     * @return string|null
+     */
+    public function getCampaignType()
+    {
+        return $this->container['campaign_type'];
+    }
+
+    /**
+     * Sets campaign_type
+     *
+     * @param string|null $campaign_type Filter on the type of the campaign: onsite display, onsite sponsored products, all
+     *
+     * @return self
+     */
+    public function setCampaignType($campaign_type)
+    {
+        if (is_null($campaign_type)) {
+            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
+        }
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!in_array($campaign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_type', must be one of '%s'",
+                    $campaign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_type'] = $campaign_type;
+
+        return $this;
+    }
+
+    /**
      * Gets dimensions
      *
      * @return string[]
@@ -579,7 +693,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
         if ((count($dimensions) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $dimensions when calling AsyncFillRateReport., number of items must be greater than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $dimensions when calling AsyncUnfilledPlacementsReport., number of items must be greater than or equal to 1.');
         }
         $this->container['dimensions'] = $dimensions;
 
@@ -684,7 +798,7 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
         if ((count($metrics) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $metrics when calling AsyncFillRateReport., number of items must be greater than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $metrics when calling AsyncUnfilledPlacementsReport., number of items must be greater than or equal to 1.');
         }
         $this->container['metrics'] = $metrics;
 

@@ -246,6 +246,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const IDENTIFIER_TYPE_USER_IDENTIFIER = 'UserIdentifier';
     public const IDENTIFIER_TYPE_IDENTITY_LINK = 'IdentityLink';
     public const IDENTIFIER_TYPE_CUSTOMER_ID = 'CustomerId';
+    public const IDENTIFIER_TYPE_PHONE_NUMBER = 'PhoneNumber';
     public const SHARING_STATUS_UNKNOWN = 'Unknown';
     public const SHARING_STATUS_NOT_SHARED = 'NotShared';
     public const SHARING_STATUS_SHARED_WITH_ALL = 'SharedWithAll';
@@ -264,6 +265,7 @@ class RmContactListV1 implements ModelInterface, ArrayAccess, \JsonSerializable
             self::IDENTIFIER_TYPE_USER_IDENTIFIER,
             self::IDENTIFIER_TYPE_IDENTITY_LINK,
             self::IDENTIFIER_TYPE_CUSTOMER_ID,
+            self::IDENTIFIER_TYPE_PHONE_NUMBER,
         ];
     }
 
