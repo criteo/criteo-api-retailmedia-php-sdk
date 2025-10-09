@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2024_07\ObjectSerializer;
  * ResourceOfAuctionLineItemUpdateModel Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\v2024_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class ResourceOfAuctionLineItemUpdateModel implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemUpdateModel',
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\AuctionLineItemUpdateModel',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfAuctionLineItemUpdateModel implements ModelInterface, ArrayAcces
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemUpdateModel|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\AuctionLineItemUpdateModel|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfAuctionLineItemUpdateModel implements ModelInterface, ArrayAcces
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemUpdateModel|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\AuctionLineItemUpdateModel|null $attributes attributes
      *
      * @return self
      */

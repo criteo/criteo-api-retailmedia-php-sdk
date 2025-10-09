@@ -58,7 +58,7 @@ class ValueTypeResourceOfKeywordTarget202110 implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalKeywordTarget202110',
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\KeywordTarget202110',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class ValueTypeResourceOfKeywordTarget202110 implements ModelInterface, ArrayAcc
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalKeywordTarget202110|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\KeywordTarget202110|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class ValueTypeResourceOfKeywordTarget202110 implements ModelInterface, ArrayAcc
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalKeywordTarget202110|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\KeywordTarget202110|null $attributes attributes
      *
      * @return self
      */

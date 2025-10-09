@@ -59,12 +59,12 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'deposited' => 'float',
-        'end_date' => '\DateTime',
+        'end_date' => 'string',
         'memo' => 'string',
         'name' => 'string',
         'po_number' => 'string',
         'spend_type' => 'string',
-        'start_date' => '\DateTime'
+        'start_date' => 'string'
     ];
 
     /**
@@ -75,13 +75,13 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'deposited' => 'decimal',
-        'end_date' => 'date',
+        'deposited' => 'double',
+        'end_date' => null,
         'memo' => null,
         'name' => null,
         'po_number' => null,
         'spend_type' => null,
-        'start_date' => 'date'
+        'start_date' => null
     ];
 
     /**
@@ -397,7 +397,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_date
      *
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getEndDate()
     {
@@ -407,7 +407,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date End date of the balance in the format YYYY-MM-DD.
+     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
@@ -563,7 +563,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartDate()
     {
@@ -573,7 +573,7 @@ class CreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Start date of the balance in the format YYYY-MM-DD.
+     * @param string $start_date Start date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */

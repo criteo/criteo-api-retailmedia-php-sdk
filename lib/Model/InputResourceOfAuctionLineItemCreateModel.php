@@ -58,7 +58,7 @@ class InputResourceOfAuctionLineItemCreateModel implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemCreateModel',
+        'attributes' => '\criteo\api\retailmedia\v2024_07\Model\AuctionLineItemCreateModel',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class InputResourceOfAuctionLineItemCreateModel implements ModelInterface, Array
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemCreateModel|null
+     * @return \criteo\api\retailmedia\v2024_07\Model\AuctionLineItemCreateModel|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class InputResourceOfAuctionLineItemCreateModel implements ModelInterface, Array
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2024_07\Model\ExternalAuctionLineItemCreateModel|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2024_07\Model\AuctionLineItemCreateModel|null $attributes attributes
      *
      * @return self
      */
