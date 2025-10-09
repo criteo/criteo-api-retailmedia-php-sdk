@@ -71,13 +71,13 @@ class BillingApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'call07RetailMediaBillingPartnerReportPost' => [
+        'createPartnerBillingReportRequestV1' => [
             'application/json',
         ],
-        'call07RetailMediaBillingPartnerReportRequestIdOutputGet' => [
+        'getPartnerBillingReportOutputV1' => [
             'application/json',
         ],
-        'call07RetailMediaBillingPartnerReportRequestIdStatusGet' => [
+        'getPartnerBillingReportStatusV1' => [
             'application/json',
         ],
     ];
@@ -129,34 +129,34 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportPost
+     * Operation createPartnerBillingReportRequestV1
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\v2025_07\Model\Outcome|\criteo\api\retailmedia\v2025_07\Model\Outcome
+     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
      */
-    public function call07RetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportPost'][0])
+    public function createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
-        list($response) = $this->call07RetailMediaBillingPartnerReportPostWithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType);
+        list($response) = $this->createPartnerBillingReportRequestV1WithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType);
         return $response;
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportPostWithHttpInfo
+     * Operation createPartnerBillingReportRequestV1WithHttpInfo
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\v2025_07\Model\Outcome|\criteo\api\retailmedia\v2025_07\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call07RetailMediaBillingPartnerReportPostWithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportPost'][0])
+    public function createPartnerBillingReportRequestV1WithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
-        $request = $this->call07RetailMediaBillingPartnerReportPostRequest($value_resource_input_partner_billing_report_request_v1, $contentType);
+        $request = $this->createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -209,36 +209,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
@@ -267,39 +237,23 @@ class BillingApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportPostAsync
+     * Operation createPartnerBillingReportRequestV1Async
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportPostAsync($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportPost'][0])
+    public function createPartnerBillingReportRequestV1Async($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
-        return $this->call07RetailMediaBillingPartnerReportPostAsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType)
+        return $this->createPartnerBillingReportRequestV1AsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -308,18 +262,18 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportPostAsyncWithHttpInfo
+     * Operation createPartnerBillingReportRequestV1AsyncWithHttpInfo
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportPostAsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportPost'][0])
+    public function createPartnerBillingReportRequestV1AsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
-        $request = $this->call07RetailMediaBillingPartnerReportPostRequest($value_resource_input_partner_billing_report_request_v1, $contentType);
+        $request = $this->createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -358,15 +312,15 @@ class BillingApi
     }
 
     /**
-     * Create request for operation 'call07RetailMediaBillingPartnerReportPost'
+     * Create request for operation 'createPartnerBillingReportRequestV1'
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportPost'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call07RetailMediaBillingPartnerReportPostRequest($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportPost'][0])
+    public function createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
 
 
@@ -383,7 +337,7 @@ class BillingApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -451,34 +405,34 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdOutputGet
+     * Operation getPartnerBillingReportOutputV1
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\criteo\api\retailmedia\v2025_07\Model\Outcome
+     * @return \SplFileObject
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdOutputGet($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'][0])
+    public function getPartnerBillingReportOutputV1($request_id, string $contentType = self::contentTypes['getPartnerBillingReportOutputV1'][0])
     {
-        list($response) = $this->call07RetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo($request_id, $contentType);
+        list($response) = $this->getPartnerBillingReportOutputV1WithHttpInfo($request_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo
+     * Operation getPartnerBillingReportOutputV1WithHttpInfo
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\criteo\api\retailmedia\v2025_07\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdOutputGetWithHttpInfo($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'][0])
+    public function getPartnerBillingReportOutputV1WithHttpInfo($request_id, string $contentType = self::contentTypes['getPartnerBillingReportOutputV1'][0])
     {
-        $request = $this->call07RetailMediaBillingPartnerReportRequestIdOutputGetRequest($request_id, $contentType);
+        $request = $this->getPartnerBillingReportOutputV1Request($request_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -531,21 +485,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\SplFileObject';
@@ -574,31 +513,23 @@ class BillingApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdOutputGetAsync
+     * Operation getPartnerBillingReportOutputV1Async
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdOutputGetAsync($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'][0])
+    public function getPartnerBillingReportOutputV1Async($request_id, string $contentType = self::contentTypes['getPartnerBillingReportOutputV1'][0])
     {
-        return $this->call07RetailMediaBillingPartnerReportRequestIdOutputGetAsyncWithHttpInfo($request_id, $contentType)
+        return $this->getPartnerBillingReportOutputV1AsyncWithHttpInfo($request_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -607,18 +538,18 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdOutputGetAsyncWithHttpInfo
+     * Operation getPartnerBillingReportOutputV1AsyncWithHttpInfo
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdOutputGetAsyncWithHttpInfo($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'][0])
+    public function getPartnerBillingReportOutputV1AsyncWithHttpInfo($request_id, string $contentType = self::contentTypes['getPartnerBillingReportOutputV1'][0])
     {
         $returnType = '\SplFileObject';
-        $request = $this->call07RetailMediaBillingPartnerReportRequestIdOutputGetRequest($request_id, $contentType);
+        $request = $this->getPartnerBillingReportOutputV1Request($request_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -657,21 +588,21 @@ class BillingApi
     }
 
     /**
-     * Create request for operation 'call07RetailMediaBillingPartnerReportRequestIdOutputGet'
+     * Create request for operation 'getPartnerBillingReportOutputV1'
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdOutputGetRequest($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdOutputGet'][0])
+    public function getPartnerBillingReportOutputV1Request($request_id, string $contentType = self::contentTypes['getPartnerBillingReportOutputV1'][0])
     {
 
         // verify the required parameter 'request_id' is set
         if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_id when calling call07RetailMediaBillingPartnerReportRequestIdOutputGet'
+                'Missing the required parameter $request_id when calling getPartnerBillingReportOutputV1'
             );
         }
 
@@ -757,34 +688,34 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdStatusGet
+     * Operation getPartnerBillingReportStatusV1
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\v2025_07\Model\Outcome
+     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdStatusGet($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'][0])
+    public function getPartnerBillingReportStatusV1($request_id, string $contentType = self::contentTypes['getPartnerBillingReportStatusV1'][0])
     {
-        list($response) = $this->call07RetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo($request_id, $contentType);
+        list($response) = $this->getPartnerBillingReportStatusV1WithHttpInfo($request_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo
+     * Operation getPartnerBillingReportStatusV1WithHttpInfo
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1|\criteo\api\retailmedia\v2025_07\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdStatusGetWithHttpInfo($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'][0])
+    public function getPartnerBillingReportStatusV1WithHttpInfo($request_id, string $contentType = self::contentTypes['getPartnerBillingReportStatusV1'][0])
     {
-        $request = $this->call07RetailMediaBillingPartnerReportRequestIdStatusGetRequest($request_id, $contentType);
+        $request = $this->getPartnerBillingReportStatusV1Request($request_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -837,21 +768,6 @@ class BillingApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
@@ -880,31 +796,23 @@ class BillingApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdStatusGetAsync
+     * Operation getPartnerBillingReportStatusV1Async
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdStatusGetAsync($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'][0])
+    public function getPartnerBillingReportStatusV1Async($request_id, string $contentType = self::contentTypes['getPartnerBillingReportStatusV1'][0])
     {
-        return $this->call07RetailMediaBillingPartnerReportRequestIdStatusGetAsyncWithHttpInfo($request_id, $contentType)
+        return $this->getPartnerBillingReportStatusV1AsyncWithHttpInfo($request_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -913,18 +821,18 @@ class BillingApi
     }
 
     /**
-     * Operation call07RetailMediaBillingPartnerReportRequestIdStatusGetAsyncWithHttpInfo
+     * Operation getPartnerBillingReportStatusV1AsyncWithHttpInfo
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdStatusGetAsyncWithHttpInfo($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'][0])
+    public function getPartnerBillingReportStatusV1AsyncWithHttpInfo($request_id, string $contentType = self::contentTypes['getPartnerBillingReportStatusV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
-        $request = $this->call07RetailMediaBillingPartnerReportRequestIdStatusGetRequest($request_id, $contentType);
+        $request = $this->getPartnerBillingReportStatusV1Request($request_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -963,21 +871,21 @@ class BillingApi
     }
 
     /**
-     * Create request for operation 'call07RetailMediaBillingPartnerReportRequestIdStatusGet'
+     * Create request for operation 'getPartnerBillingReportStatusV1'
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function call07RetailMediaBillingPartnerReportRequestIdStatusGetRequest($request_id, string $contentType = self::contentTypes['call07RetailMediaBillingPartnerReportRequestIdStatusGet'][0])
+    public function getPartnerBillingReportStatusV1Request($request_id, string $contentType = self::contentTypes['getPartnerBillingReportStatusV1'][0])
     {
 
         // verify the required parameter 'request_id' is set
         if ($request_id === null || (is_array($request_id) && count($request_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $request_id when calling call07RetailMediaBillingPartnerReportRequestIdStatusGet'
+                'Missing the required parameter $request_id when calling getPartnerBillingReportStatusV1'
             );
         }
 
@@ -1002,7 +910,7 @@ class BillingApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

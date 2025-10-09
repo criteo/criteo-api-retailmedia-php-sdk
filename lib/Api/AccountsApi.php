@@ -80,26 +80,20 @@ class AccountsApi
         'createPrivateMarketDemandSellerAccount' => [
             'application/json',
         ],
-        'getApiExternalV1AccountPrivateMarketChildAccountsByAccountId' => [
+        'getAccounts' => [
             'application/json',
         ],
-        'getApiV1ExternalAccounts' => [
+        'getPrivateMarketChildAccountsByAccountId' => [
             'application/json',
         ],
         'grantConsent' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'removeBrands' => [
             'application/json',
         ],
         'searchSellers' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'updateSellers' => [
             'application/json',
@@ -1041,351 +1035,38 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiExternalV1AccountPrivateMarketChildAccountsByAccountId
-     *
-     * @param  string $account_id Account Id (required)
-     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
-     */
-    public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountId($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
-    {
-        list($response) = $this->getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo($account_id, $limit, $offset, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo
-     *
-     * @param  string $account_id Account Id (required)
-     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdWithHttpInfo($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
-    {
-        $request = $this->getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit, $offset, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsync
-     *
-     * @param  string $account_id Account Id (required)
-     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsync($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
-    {
-        return $this->getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo($account_id, $limit, $offset, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo
-     *
-     * @param  string $account_id Account Id (required)
-     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
-        $request = $this->getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit, $offset, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'
-     *
-     * @param  string $account_id Account Id (required)
-     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
-     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiExternalV1AccountPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getApiExternalV1AccountPrivateMarketChildAccountsByAccountId'
-            );
-        }
-
-
-
-
-        $resourcePath = '/2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApiV1ExternalAccounts
+     * Operation getAccounts
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2025_07\Model\JsonApiPageResponseOfAccount
      */
-    public function getApiV1ExternalAccounts($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccounts($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        list($response) = $this->getApiV1ExternalAccountsWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType);
+        list($response) = $this->getAccountsWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalAccountsWithHttpInfo
+     * Operation getAccountsWithHttpInfo
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2025_07\Model\JsonApiPageResponseOfAccount, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalAccountsWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        $request = $this->getApiV1ExternalAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1472,19 +1153,19 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiV1ExternalAccountsAsync
+     * Operation getAccountsAsync
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalAccountsAsync($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsAsync($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
-        return $this->getApiV1ExternalAccountsAsyncWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType)
+        return $this->getAccountsAsyncWithHttpInfo($limit_to_id, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1493,20 +1174,20 @@ class AccountsApi
     }
 
     /**
-     * Operation getApiV1ExternalAccountsAsyncWithHttpInfo
+     * Operation getAccountsAsyncWithHttpInfo
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalAccountsAsyncWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsAsyncWithHttpInfo($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_07\Model\JsonApiPageResponseOfAccount';
-        $request = $this->getApiV1ExternalAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
+        $request = $this->getAccountsRequest($limit_to_id, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1545,17 +1226,17 @@ class AccountsApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalAccounts'
+     * Create request for operation 'getAccounts'
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalAccounts'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalAccountsRequest($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getApiV1ExternalAccounts'][0])
+    public function getAccountsRequest($limit_to_id = null, $page_index = 0, $page_size = 25, string $contentType = self::contentTypes['getAccounts'][0])
     {
 
 
@@ -1601,7 +1282,320 @@ class AccountsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPrivateMarketChildAccountsByAccountId
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
+     */
+    public function getPrivateMarketChildAccountsByAccountId($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getPrivateMarketChildAccountsByAccountId'][0])
+    {
+        list($response) = $this->getPrivateMarketChildAccountsByAccountIdWithHttpInfo($account_id, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPrivateMarketChildAccountsByAccountIdWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPrivateMarketChildAccountsByAccountIdWithHttpInfo($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getPrivateMarketChildAccountsByAccountId'][0])
+    {
+        $request = $this->getPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPrivateMarketChildAccountsByAccountIdAsync
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPrivateMarketChildAccountsByAccountIdAsync($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getPrivateMarketChildAccountsByAccountId'][0])
+    {
+        return $this->getPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo($account_id, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getPrivateMarketChildAccountsByAccountId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata';
+        $request = $this->getPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPrivateMarketChildAccountsByAccountId'
+     *
+     * @param  string $account_id Account Id (required)
+     * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
+     * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPrivateMarketChildAccountsByAccountId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPrivateMarketChildAccountsByAccountIdRequest($account_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getPrivateMarketChildAccountsByAccountId'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getPrivateMarketChildAccountsByAccountId'
+            );
+        }
+
+
+
+
+        $resourcePath = '/2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -2215,7 +2209,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult|\criteo\api\retailmedia\v2025_07\Model\Outcome|\criteo\api\retailmedia\v2025_07\Model\Outcome
+     * @return \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult
      */
     public function searchSellers($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
     {
@@ -2231,7 +2225,7 @@ class AccountsApi
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult|\criteo\api\retailmedia\v2025_07\Model\Outcome|\criteo\api\retailmedia\v2025_07\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchSellersWithHttpInfo($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
     {
@@ -2288,36 +2282,6 @@ class AccountsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_07\Model\Outcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_07\Model\Outcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult';
@@ -2342,22 +2306,6 @@ class AccountsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_07\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2462,7 +2410,7 @@ class AccountsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

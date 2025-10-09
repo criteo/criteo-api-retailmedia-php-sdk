@@ -82,9 +82,9 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => true,
-		'memo' => true,
-		'start_date' => true
+        'end_date' => false,
+		'memo' => false,
+		'start_date' => false
     ];
 
     /**
@@ -324,14 +324,7 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
         $this->container['end_date'] = $end_date;
 
@@ -358,14 +351,7 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setMemo($memo)
     {
         if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable memo cannot be null');
         }
         $this->container['memo'] = $memo;
 
@@ -392,14 +378,7 @@ class ChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setStartDate($start_date)
     {
         if (is_null($start_date)) {
-            array_push($this->openAPINullablesSetToNull, 'start_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
 

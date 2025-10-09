@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **company_name** | **string** |  | [optional]
 **daily_pacing** | **float** |  | [optional]
 **drawable_balance_ids** | **string[]** |  | [optional]
-**end_date** | **\DateTime** |  |
+**end_date** | **\DateTime** |  | [optional]
 **is_auto_daily_pacing** | **bool** |  |
 **monthly_pacing** | **float** |  | [optional]
 **name** | **string** |  |
 **on_behalf_company_name** | **string** |  | [optional]
-**start_date** | **\DateTime** |  |
+**start_date** | **\DateTime** |  | [optional]
 **type** | **string** |  | [optional] [default to 'auction']
 **view_attribution_scope** | **string** |  | [optional]
 **view_attribution_window** | **string** |  | [optional] [default to 'none']

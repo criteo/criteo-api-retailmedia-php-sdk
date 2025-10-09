@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_07\ObjectSerializer;
  * ResourceOfBalanceCampaign202110 Class Doc Comment
  *
  * @category Class
- * @description A class that represents an entity in a guild compliant way
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\v2025_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

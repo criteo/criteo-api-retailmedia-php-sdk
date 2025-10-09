@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_07\ObjectSerializer;
  * ValueResourceOutcomeOfLineItemBudgetOverrides Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A top-level object that encapsulates a Criteo API response for a single value object.
  * @package  criteo\api\retailmedia\v2025_07
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class ValueResourceOutcomeOfLineItemBudgetOverrides implements ModelInterface, A
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_07\Model\ValueResourceOfLineItemBudgetOverrides',
-        'errors' => '\criteo\api\retailmedia\v2025_07\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\v2025_07\Model\CommonProblem[]'
+        'errors' => '\criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class ValueResourceOutcomeOfLineItemBudgetOverrides implements ModelInterface, A
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -351,7 +351,7 @@ class ValueResourceOutcomeOfLineItemBudgetOverrides implements ModelInterface, A
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class ValueResourceOutcomeOfLineItemBudgetOverrides implements ModelInterface, A
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -385,7 +385,7 @@ class ValueResourceOutcomeOfLineItemBudgetOverrides implements ModelInterface, A
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2025_07\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */

@@ -59,8 +59,8 @@ class AudienceTarget202110Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\v2025_07\Model\ValueTypeResourceOfAudienceTarget202110',
-        'errors' => '\criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]',
-        'warnings' => '\criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]'
+        'errors' => '\criteo\api\retailmedia\v2025_07\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\v2025_07\Model\CommonProblem[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class AudienceTarget202110Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null
      */
     public function getErrors()
     {
@@ -344,7 +344,7 @@ class AudienceTarget202110Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]|null $errors errors
+     * @param \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class AudienceTarget202110Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -371,7 +371,7 @@ class AudienceTarget202110Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\v2025_07\Model\ProblemDetails[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\v2025_07\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */

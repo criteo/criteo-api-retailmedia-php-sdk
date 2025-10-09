@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\v2025_07\Model\JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2**](JsonApiBodyWithIdOfInt64AndLineItemBidMultipliersV2AndLineItemBidMultipliersV2.md) |  |
+**data** | [**\criteo\api\retailmedia\v2025_07\Model\JsonApiBodyWithLineItemBidMultipliersV2**](JsonApiBodyWithLineItemBidMultipliersV2.md) |  |
 **errors** | [**\criteo\api\retailmedia\v2025_07\Model\CommonError[]**](CommonError.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\v2025_07\Model\CommonWarning[]**](CommonWarning.md) |  | [optional]
 

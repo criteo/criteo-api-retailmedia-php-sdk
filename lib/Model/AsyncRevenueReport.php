@@ -71,6 +71,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'string',
         'ids' => 'string[]',
         'line_item_ids' => 'string[]',
+        'media_type' => 'string',
         'metrics' => 'string[]',
         'report_type' => 'string',
         'retailer_ids' => 'string[]',
@@ -106,6 +107,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => null,
         'ids' => null,
         'line_item_ids' => null,
+        'media_type' => null,
         'metrics' => null,
         'report_type' => null,
         'retailer_ids' => null,
@@ -139,6 +141,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
 		'id' => false,
 		'ids' => false,
 		'line_item_ids' => false,
+		'media_type' => false,
 		'metrics' => false,
 		'report_type' => false,
 		'retailer_ids' => false,
@@ -252,6 +255,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'id',
         'ids' => 'ids',
         'line_item_ids' => 'lineItemIds',
+        'media_type' => 'mediaType',
         'metrics' => 'metrics',
         'report_type' => 'reportType',
         'retailer_ids' => 'retailerIds',
@@ -285,6 +289,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'setId',
         'ids' => 'setIds',
         'line_item_ids' => 'setLineItemIds',
+        'media_type' => 'setMediaType',
         'metrics' => 'setMetrics',
         'report_type' => 'setReportType',
         'retailer_ids' => 'setRetailerIds',
@@ -318,6 +323,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         'id' => 'getId',
         'ids' => 'getIds',
         'line_item_ids' => 'getLineItemIds',
+        'media_type' => 'getMediaType',
         'metrics' => 'getMetrics',
         'report_type' => 'getReportType',
         'retailer_ids' => 'getRetailerIds',
@@ -424,6 +430,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_SOLD_BY = 'soldBy';
     public const DIMENSIONS_SALE_CHANNEL = 'saleChannel';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
+    public const DIMENSIONS_MEDIA_TYPE = 'mediaType';
     public const DIMENSIONS_ATTRIBUTION_SETTINGS = 'attributionSettings';
     public const DIMENSIONS_ACTIVITY_TYPE = 'activityType';
     public const DIMENSIONS_KEYWORD = 'keyword';
@@ -450,6 +457,10 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
+    public const MEDIA_TYPE_UNKNOWN = 'unknown';
+    public const MEDIA_TYPE_VIDEO = 'video';
+    public const MEDIA_TYPE_DISPLAY = 'display';
+    public const MEDIA_TYPE_ALL = 'all';
     public const METRICS_NUMBER_OF_CAMPAIGNS = 'numberOfCampaigns';
     public const METRICS_NUMBER_OF_LINE_ITEMS = 'numberOfLineItems';
     public const METRICS_NUMBER_OF_SKUS = 'numberOfSkus';
@@ -640,6 +651,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_SOLD_BY,
             self::DIMENSIONS_SALE_CHANNEL,
             self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_MEDIA_TYPE,
             self::DIMENSIONS_ATTRIBUTION_SETTINGS,
             self::DIMENSIONS_ACTIVITY_TYPE,
             self::DIMENSIONS_KEYWORD,
@@ -677,6 +689,21 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::FORMAT_JSON_COMPACT,
             self::FORMAT_JSON_NEWLINE,
             self::FORMAT_CSV,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMediaTypeAllowableValues()
+    {
+        return [
+            self::MEDIA_TYPE_UNKNOWN,
+            self::MEDIA_TYPE_VIDEO,
+            self::MEDIA_TYPE_DISPLAY,
+            self::MEDIA_TYPE_ALL,
         ];
     }
 
@@ -882,6 +909,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('ids', $data ?? [], null);
         $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('media_type', $data ?? [], 'all');
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('report_type', $data ?? [], null);
         $this->setIfExists('retailer_ids', $data ?? [], null);
@@ -967,6 +995,15 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'format', must be one of '%s'",
                 $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'media_type', must be one of '%s'",
+                $this->container['media_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1458,6 +1495,43 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
         }
         $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type Filter on the type of media: unknown, display, video
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+        }
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!in_array($media_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'media_type', must be one of '%s'",
+                    $media_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['media_type'] = $media_type;
 
         return $this;
     }

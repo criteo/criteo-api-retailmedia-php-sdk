@@ -4,15 +4,15 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**call07RetailMediaBillingPartnerReportPost()**](BillingApi.md#call07RetailMediaBillingPartnerReportPost) | **POST** /2025-07/retail-media/billing/partner-report |  |
-| [**call07RetailMediaBillingPartnerReportRequestIdOutputGet()**](BillingApi.md#call07RetailMediaBillingPartnerReportRequestIdOutputGet) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
-| [**call07RetailMediaBillingPartnerReportRequestIdStatusGet()**](BillingApi.md#call07RetailMediaBillingPartnerReportRequestIdStatusGet) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
+| [**createPartnerBillingReportRequestV1()**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report |  |
+| [**getPartnerBillingReportOutputV1()**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
+| [**getPartnerBillingReportStatusV1()**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
 
 
-## `call07RetailMediaBillingPartnerReportPost()`
+## `createPartnerBillingReportRequestV1()`
 
 ```php
-call07RetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
+createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
 
@@ -42,10 +42,10 @@ $apiInstance = new criteo\api\retailmedia\v2025_07\Api\BillingApi(
 $value_resource_input_partner_billing_report_request_v1 = new \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1(); // \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 | Partner Billing Report request object.
 
 try {
-    $result = $apiInstance->call07RetailMediaBillingPartnerReportPost($value_resource_input_partner_billing_report_request_v1);
+    $result = $apiInstance->createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->call07RetailMediaBillingPartnerReportPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->createPartnerBillingReportRequestV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -66,16 +66,16 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `call07RetailMediaBillingPartnerReportRequestIdOutputGet()`
+## `getPartnerBillingReportOutputV1()`
 
 ```php
-call07RetailMediaBillingPartnerReportRequestIdOutputGet($request_id): \SplFileObject
+getPartnerBillingReportOutputV1($request_id): \SplFileObject
 ```
 
 
@@ -105,10 +105,10 @@ $apiInstance = new criteo\api\retailmedia\v2025_07\Api\BillingApi(
 $request_id = 'request_id_example'; // string | The id of a Partner Billing Report request.
 
 try {
-    $result = $apiInstance->call07RetailMediaBillingPartnerReportRequestIdOutputGet($request_id);
+    $result = $apiInstance->getPartnerBillingReportOutputV1($request_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->call07RetailMediaBillingPartnerReportRequestIdOutputGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->getPartnerBillingReportOutputV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -135,10 +135,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `call07RetailMediaBillingPartnerReportRequestIdStatusGet()`
+## `getPartnerBillingReportStatusV1()`
 
 ```php
-call07RetailMediaBillingPartnerReportRequestIdStatusGet($request_id): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
+getPartnerBillingReportStatusV1($request_id): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
 
@@ -168,10 +168,10 @@ $apiInstance = new criteo\api\retailmedia\v2025_07\Api\BillingApi(
 $request_id = 'request_id_example'; // string | The id of a Partner Billing Report request.
 
 try {
-    $result = $apiInstance->call07RetailMediaBillingPartnerReportRequestIdStatusGet($request_id);
+    $result = $apiInstance->getPartnerBillingReportStatusV1($request_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BillingApi->call07RetailMediaBillingPartnerReportRequestIdStatusGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BillingApi->getPartnerBillingReportStatusV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -192,7 +192,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `text/plain`, `application/json`, `text/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
