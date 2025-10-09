@@ -72,22 +72,13 @@ class AudienceApi
     /** @var string[] $contentTypes **/
     public const contentTypes = [
         'bulkCreateAudienceSegments' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'bulkDeleteAudienceSegments' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'bulkUpdateAudienceSegments' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'deleteContactListIdentifiers' => [
             'application/json',
@@ -96,16 +87,10 @@ class AudienceApi
             'application/json',
         ],
         'searchAudienceSegments' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'searchAudiences' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'updateContactListIdentifiers' => [
             'application/json',
@@ -393,7 +378,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -695,7 +680,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -997,7 +982,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1132,14 +1117,6 @@ class AudienceApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
             }
             throw $e;
         }
@@ -1544,7 +1521,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1609,7 +1586,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -1628,7 +1605,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -1729,7 +1706,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -1751,7 +1728,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -1804,7 +1781,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudienceSegments'] to see the possible values for this operation
      *
@@ -1828,8 +1805,8 @@ class AudienceApi
             );
         }
 
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be smaller than or equal to 100.');
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 0) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudienceSegments, must be bigger than or equal to 0.');
@@ -1875,7 +1852,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1947,7 +1924,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -1966,7 +1943,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -2067,7 +2044,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -2089,7 +2066,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -2142,7 +2119,7 @@ class AudienceApi
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\v2025_04\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
-     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 100. (optional, default to 50)
+     * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
      * @param  int $offset The (zero-based) offset into the collection. The default is 0. (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAudiences'] to see the possible values for this operation
      *
@@ -2166,8 +2143,8 @@ class AudienceApi
             );
         }
 
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be smaller than or equal to 100.');
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 0) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AudienceApi.searchAudiences, must be bigger than or equal to 0.');
@@ -2213,7 +2190,7 @@ class AudienceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -2289,7 +2266,7 @@ class AudienceApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation|\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse
+     * @return \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation
      */
     public function updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
     {
@@ -2306,7 +2283,7 @@ class AudienceApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation|\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateContactListIdentifiersWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
     {
@@ -2363,21 +2340,6 @@ class AudienceApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation';
@@ -2402,14 +2364,6 @@ class AudienceApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_04\Model\RetailMediaContactlistOperation',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ErrorCodeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

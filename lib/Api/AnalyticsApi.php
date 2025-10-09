@@ -72,22 +72,13 @@ class AnalyticsApi
     /** @var string[] $contentTypes **/
     public const contentTypes = [
         'generateAsyncCampaignsReport' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'generateAsyncLineItemsReport' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'generateAsyncRevenueReport' => [
-            'application/json-patch+json',
             'application/json',
-            'text/json',
-            'application/*+json',
         ],
         'getAsyncExportOutput' => [
             'application/json',
@@ -151,7 +142,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome
+     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse
      */
     public function generateAsyncCampaignsReport($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
     {
@@ -167,7 +158,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateAsyncCampaignsReportWithHttpInfo($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
     {
@@ -224,36 +215,6 @@ class AnalyticsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse';
@@ -278,22 +239,6 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -404,7 +349,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -479,7 +424,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome
+     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse
      */
     public function generateAsyncLineItemsReport($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
     {
@@ -495,7 +440,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateAsyncLineItemsReportWithHttpInfo($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
     {
@@ -552,36 +497,6 @@ class AnalyticsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse';
@@ -606,22 +521,6 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -732,7 +631,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -807,7 +706,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome
+     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse
      */
     public function generateAsyncRevenueReport($async_revenue_report_request, string $contentType = self::contentTypes['generateAsyncRevenueReport'][0])
     {
@@ -823,7 +722,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function generateAsyncRevenueReportWithHttpInfo($async_revenue_report_request, string $contentType = self::contentTypes['generateAsyncRevenueReport'][0])
     {
@@ -880,36 +779,6 @@ class AnalyticsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse';
@@ -934,22 +803,6 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1060,7 +913,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1135,7 +988,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \SplFileObject|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome
+     * @return \SplFileObject
      */
     public function getAsyncExportOutput($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -1151,7 +1004,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \SplFileObject|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAsyncExportOutputWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportOutput'][0])
     {
@@ -1208,36 +1061,6 @@ class AnalyticsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\SplFileObject';
@@ -1262,22 +1085,6 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\SplFileObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1396,7 +1203,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1464,7 +1271,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome
+     * @return \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse
      */
     public function getAsyncExportStatus($report_id, string $contentType = self::contentTypes['getAsyncExportStatus'][0])
     {
@@ -1480,7 +1287,7 @@ class AnalyticsApi
      *
      * @throws \criteo\api\retailmedia\v2025_04\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome|\criteo\api\retailmedia\v2025_04\Model\ReportOutcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAsyncExportStatusWithHttpInfo($report_id, string $contentType = self::contentTypes['getAsyncExportStatus'][0])
     {
@@ -1537,36 +1344,6 @@ class AnalyticsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
-                case 400:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                case 403:
-                    if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2025_04\Model\ReportOutcome' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
             }
 
             $returnType = '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse';
@@ -1591,22 +1368,6 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\criteo\api\retailmedia\v2025_04\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2025_04\Model\ReportOutcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1725,7 +1486,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['text/plain', 'application/json', 'text/json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );

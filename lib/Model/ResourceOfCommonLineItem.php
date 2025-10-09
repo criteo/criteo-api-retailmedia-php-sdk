@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * ResourceOfCommonLineItem Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\v2025_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class ResourceOfCommonLineItem implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\ExternalCommonLineItem',
+        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\CommonLineItem',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfCommonLineItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2025_04\Model\ExternalCommonLineItem|null
+     * @return \criteo\api\retailmedia\v2025_04\Model\CommonLineItem|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfCommonLineItem implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2025_04\Model\ExternalCommonLineItem|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2025_04\Model\CommonLineItem|null $attributes attributes
      *
      * @return self
      */

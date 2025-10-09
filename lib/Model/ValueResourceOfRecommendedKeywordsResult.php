@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * ValueResourceOfRecommendedKeywordsResult Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\v2025_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -344,7 +344,7 @@ class ValueResourceOfRecommendedKeywordsResult implements ModelInterface, ArrayA
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * JsonApiBodyWithExternalIdOfEditableCampaignAttributesV202301AndCampaignV202301 Class Doc Comment
  *
  * @category Class
- * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with external Id, Type, and  Attributes properties
+ * @description A JSON:API wrapper class to format a &lt;typeparamref name&#x3D;\&quot;TAttributes\&quot; /&gt; with Id, Type, and  Attributes properties
  * @package  criteo\api\retailmedia\v2025_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

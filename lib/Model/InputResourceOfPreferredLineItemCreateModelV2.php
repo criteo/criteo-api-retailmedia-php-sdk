@@ -58,7 +58,7 @@ class InputResourceOfPreferredLineItemCreateModelV2 implements ModelInterface, A
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemCreateModelV2',
+        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\PreferredLineItemCreateModelV2',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class InputResourceOfPreferredLineItemCreateModelV2 implements ModelInterface, A
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemCreateModelV2|null
+     * @return \criteo\api\retailmedia\v2025_04\Model\PreferredLineItemCreateModelV2|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class InputResourceOfPreferredLineItemCreateModelV2 implements ModelInterface, A
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemCreateModelV2|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2025_04\Model\PreferredLineItemCreateModelV2|null $attributes attributes
      *
      * @return self
      */

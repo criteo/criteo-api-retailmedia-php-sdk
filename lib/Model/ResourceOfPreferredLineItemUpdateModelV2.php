@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * ResourceOfPreferredLineItemUpdateModelV2 Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API
  * @package  criteo\api\retailmedia\v2025_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class ResourceOfPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemUpdateModelV2',
+        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\PreferredLineItemUpdateModelV2',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayA
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemUpdateModelV2|null
+     * @return \criteo\api\retailmedia\v2025_04\Model\PreferredLineItemUpdateModelV2|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfPreferredLineItemUpdateModelV2 implements ModelInterface, ArrayA
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2025_04\Model\ExternalPreferredLineItemUpdateModelV2|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2025_04\Model\PreferredLineItemUpdateModelV2|null $attributes attributes
      *
      * @return self
      */

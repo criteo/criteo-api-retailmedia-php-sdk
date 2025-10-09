@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**\criteo\api\retailmedia\v2025_04\Model\ResourceOfAuctionLineItem[]**](ResourceOfAuctionLineItem.md) |  | [optional]
-**errors** | [**\criteo\api\retailmedia\v2025_04\Model\ProblemDetails[]**](ProblemDetails.md) |  | [optional] [readonly]
+**errors** | [**\criteo\api\retailmedia\v2025_04\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
 **metadata** | [**\criteo\api\retailmedia\v2025_04\Model\PageMetadata**](PageMetadata.md) |  | [optional]
-**warnings** | [**\criteo\api\retailmedia\v2025_04\Model\ProblemDetails[]**](ProblemDetails.md) |  | [optional] [readonly]
+**warnings** | [**\criteo\api\retailmedia\v2025_04\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

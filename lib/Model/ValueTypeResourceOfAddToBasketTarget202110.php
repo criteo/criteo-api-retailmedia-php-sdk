@@ -58,7 +58,7 @@ class ValueTypeResourceOfAddToBasketTarget202110 implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\ExternalAddToBasketTarget202110',
+        'attributes' => '\criteo\api\retailmedia\v2025_04\Model\AddToBasketTarget202110',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class ValueTypeResourceOfAddToBasketTarget202110 implements ModelInterface, Arra
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\v2025_04\Model\ExternalAddToBasketTarget202110|null
+     * @return \criteo\api\retailmedia\v2025_04\Model\AddToBasketTarget202110|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class ValueTypeResourceOfAddToBasketTarget202110 implements ModelInterface, Arra
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\v2025_04\Model\ExternalAddToBasketTarget202110|null $attributes attributes
+     * @param \criteo\api\retailmedia\v2025_04\Model\AddToBasketTarget202110|null $attributes attributes
      *
      * @return self
      */
