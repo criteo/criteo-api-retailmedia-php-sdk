@@ -12,13 +12,13 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
 | [**computeAudienceSegmentsSizes()**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |  |
 | [**computeAudiencesSizes()**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |  |
-| [**deleteContactListIdentifiers()**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**deleteContactListByAudienceSegment()**](AudienceApi.md#deleteContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**estimateAudienceSegmentSize()**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |  |
 | [**estimateAudienceSize()**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size |  |
 | [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListIdentifiers()**](AudienceApi.md#updateContactListIdentifiers) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
+| [**updateContactListByAudienceSegment()**](AudienceApi.md#updateContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
 
 ## `bulkCreateAudience()`
@@ -541,10 +541,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteContactListIdentifiers()`
+## `deleteContactListByAudienceSegment()`
 
 ```php
-deleteContactListIdentifiers($audience_segment_id)
+deleteContactListByAudienceSegment($audience_segment_id)
 ```
 
 
@@ -574,9 +574,9 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
 $audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
 
 try {
-    $apiInstance->deleteContactListIdentifiers($audience_segment_id);
+    $apiInstance->deleteContactListByAudienceSegment($audience_segment_id);
 } catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->deleteContactListIdentifiers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AudienceApi->deleteContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -936,10 +936,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateContactListIdentifiers()`
+## `updateContactListByAudienceSegment()`
 
 ```php
-updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
+updateContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
 ```
 
 
@@ -970,10 +970,10 @@ $audience_segment_id = 56; // int | The id of the contact list audience-segment 
 $retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest
 
 try {
-    $result = $apiInstance->updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request);
+    $result = $apiInstance->updateContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->updateContactListIdentifiers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AudienceApi->updateContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

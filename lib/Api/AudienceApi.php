@@ -95,7 +95,7 @@ class AudienceApi
         'computeAudiencesSizes' => [
             'application/json',
         ],
-        'deleteContactListIdentifiers' => [
+        'deleteContactListByAudienceSegment' => [
             'application/json',
         ],
         'estimateAudienceSegmentSize' => [
@@ -113,7 +113,7 @@ class AudienceApi
         'searchAudiences' => [
             'application/json',
         ],
-        'updateContactListIdentifiers' => [
+        'updateContactListByAudienceSegment' => [
             'application/json',
         ],
     ];
@@ -2581,33 +2581,33 @@ class AudienceApi
     }
 
     /**
-     * Operation deleteContactListIdentifiers
+     * Operation deleteContactListByAudienceSegment
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteContactListIdentifiers($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    public function deleteContactListByAudienceSegment($audience_segment_id, string $contentType = self::contentTypes['deleteContactListByAudienceSegment'][0])
     {
-        $this->deleteContactListIdentifiersWithHttpInfo($audience_segment_id, $contentType);
+        $this->deleteContactListByAudienceSegmentWithHttpInfo($audience_segment_id, $contentType);
     }
 
     /**
-     * Operation deleteContactListIdentifiersWithHttpInfo
+     * Operation deleteContactListByAudienceSegmentWithHttpInfo
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteContactListIdentifiersWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    public function deleteContactListByAudienceSegmentWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListByAudienceSegment'][0])
     {
-        $request = $this->deleteContactListIdentifiersRequest($audience_segment_id, $contentType);
+        $request = $this->deleteContactListByAudienceSegmentRequest($audience_segment_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2654,17 +2654,17 @@ class AudienceApi
     }
 
     /**
-     * Operation deleteContactListIdentifiersAsync
+     * Operation deleteContactListByAudienceSegmentAsync
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContactListIdentifiersAsync($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    public function deleteContactListByAudienceSegmentAsync($audience_segment_id, string $contentType = self::contentTypes['deleteContactListByAudienceSegment'][0])
     {
-        return $this->deleteContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $contentType)
+        return $this->deleteContactListByAudienceSegmentAsyncWithHttpInfo($audience_segment_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2673,18 +2673,18 @@ class AudienceApi
     }
 
     /**
-     * Operation deleteContactListIdentifiersAsyncWithHttpInfo
+     * Operation deleteContactListByAudienceSegmentAsyncWithHttpInfo
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    public function deleteContactListByAudienceSegmentAsyncWithHttpInfo($audience_segment_id, string $contentType = self::contentTypes['deleteContactListByAudienceSegment'][0])
     {
         $returnType = '';
-        $request = $this->deleteContactListIdentifiersRequest($audience_segment_id, $contentType);
+        $request = $this->deleteContactListByAudienceSegmentRequest($audience_segment_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2710,21 +2710,21 @@ class AudienceApi
     }
 
     /**
-     * Create request for operation 'deleteContactListIdentifiers'
+     * Create request for operation 'deleteContactListByAudienceSegment'
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteContactListIdentifiersRequest($audience_segment_id, string $contentType = self::contentTypes['deleteContactListIdentifiers'][0])
+    public function deleteContactListByAudienceSegmentRequest($audience_segment_id, string $contentType = self::contentTypes['deleteContactListByAudienceSegment'][0])
     {
 
         // verify the required parameter 'audience_segment_id' is set
         if ($audience_segment_id === null || (is_array($audience_segment_id) && count($audience_segment_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $audience_segment_id when calling deleteContactListIdentifiers'
+                'Missing the required parameter $audience_segment_id when calling deleteContactListByAudienceSegment'
             );
         }
 
@@ -4393,36 +4393,36 @@ class AudienceApi
     }
 
     /**
-     * Operation updateContactListIdentifiers
+     * Operation updateContactListByAudienceSegment
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request retail_media_contactlist_amendment_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
      */
-    public function updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    public function updateContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListByAudienceSegment'][0])
     {
-        list($response) = $this->updateContactListIdentifiersWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+        list($response) = $this->updateContactListByAudienceSegmentWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateContactListIdentifiersWithHttpInfo
+     * Operation updateContactListByAudienceSegmentWithHttpInfo
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateContactListIdentifiersWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    public function updateContactListByAudienceSegmentWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListByAudienceSegment'][0])
     {
-        $request = $this->updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+        $request = $this->updateContactListByAudienceSegmentRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4509,18 +4509,18 @@ class AudienceApi
     }
 
     /**
-     * Operation updateContactListIdentifiersAsync
+     * Operation updateContactListByAudienceSegmentAsync
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateContactListIdentifiersAsync($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    public function updateContactListByAudienceSegmentAsync($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListByAudienceSegment'][0])
     {
-        return $this->updateContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType)
+        return $this->updateContactListByAudienceSegmentAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4529,19 +4529,19 @@ class AudienceApi
     }
 
     /**
-     * Operation updateContactListIdentifiersAsyncWithHttpInfo
+     * Operation updateContactListByAudienceSegmentAsyncWithHttpInfo
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateContactListIdentifiersAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    public function updateContactListByAudienceSegmentAsyncWithHttpInfo($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListByAudienceSegment'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation';
-        $request = $this->updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
+        $request = $this->updateContactListByAudienceSegmentRequest($audience_segment_id, $retail_media_contactlist_amendment_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4580,29 +4580,29 @@ class AudienceApi
     }
 
     /**
-     * Create request for operation 'updateContactListIdentifiers'
+     * Create request for operation 'updateContactListByAudienceSegment'
      *
      * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListIdentifiers'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateContactListIdentifiersRequest($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListIdentifiers'][0])
+    public function updateContactListByAudienceSegmentRequest($audience_segment_id, $retail_media_contactlist_amendment_request, string $contentType = self::contentTypes['updateContactListByAudienceSegment'][0])
     {
 
         // verify the required parameter 'audience_segment_id' is set
         if ($audience_segment_id === null || (is_array($audience_segment_id) && count($audience_segment_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $audience_segment_id when calling updateContactListIdentifiers'
+                'Missing the required parameter $audience_segment_id when calling updateContactListByAudienceSegment'
             );
         }
 
         // verify the required parameter 'retail_media_contactlist_amendment_request' is set
         if ($retail_media_contactlist_amendment_request === null || (is_array($retail_media_contactlist_amendment_request) && count($retail_media_contactlist_amendment_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $retail_media_contactlist_amendment_request when calling updateContactListIdentifiers'
+                'Missing the required parameter $retail_media_contactlist_amendment_request when calling updateContactListByAudienceSegment'
             );
         }
 
