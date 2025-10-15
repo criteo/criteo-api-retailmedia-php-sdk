@@ -68,7 +68,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'float',
         'monthly_pacing' => 'float',
         'name' => 'string',
-        'optimization_strategy_enum' => 'string',
+        'optimization_strategy' => 'string',
         'start_date' => '\DateTime',
         'target_bid' => 'float',
         'target_retailer_id' => 'string'
@@ -92,7 +92,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'double',
         'monthly_pacing' => 'double',
         'name' => null,
-        'optimization_strategy_enum' => null,
+        'optimization_strategy' => null,
         'start_date' => 'date-time',
         'target_bid' => 'double',
         'target_retailer_id' => 'long-id'
@@ -114,7 +114,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
 		'max_bid' => true,
 		'monthly_pacing' => true,
 		'name' => false,
-		'optimization_strategy_enum' => false,
+		'optimization_strategy' => false,
 		'start_date' => false,
 		'target_bid' => true,
 		'target_retailer_id' => false
@@ -216,7 +216,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'maxBid',
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
-        'optimization_strategy_enum' => 'optimizationStrategyEnum',
+        'optimization_strategy' => 'optimizationStrategy',
         'start_date' => 'startDate',
         'target_bid' => 'targetBid',
         'target_retailer_id' => 'targetRetailerId'
@@ -238,7 +238,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'setMaxBid',
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
-        'optimization_strategy_enum' => 'setOptimizationStrategyEnum',
+        'optimization_strategy' => 'setOptimizationStrategy',
         'start_date' => 'setStartDate',
         'target_bid' => 'setTargetBid',
         'target_retailer_id' => 'setTargetRetailerId'
@@ -260,7 +260,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         'max_bid' => 'getMaxBid',
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
-        'optimization_strategy_enum' => 'getOptimizationStrategyEnum',
+        'optimization_strategy' => 'getOptimizationStrategy',
         'start_date' => 'getStartDate',
         'target_bid' => 'getTargetBid',
         'target_retailer_id' => 'getTargetRetailerId'
@@ -307,15 +307,14 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_UNKNOWN = 'unknown';
     public const BID_STRATEGY_CONVERSION = 'conversion';
     public const BID_STRATEGY_CLICKS = 'clicks';
     public const BID_STRATEGY_REVENUE = 'revenue';
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
-    public const OPTIMIZATION_STRATEGY_ENUM_MANUAL = 'manual';
-    public const OPTIMIZATION_STRATEGY_ENUM_AUTOMATED = 'automated';
+    public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
+    public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
 
     /**
      * Gets allowable values of the enum
@@ -325,7 +324,6 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     public function getBidStrategyAllowableValues()
     {
         return [
-            self::BID_STRATEGY_UNKNOWN,
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,
@@ -351,11 +349,11 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
      *
      * @return string[]
      */
-    public function getOptimizationStrategyEnumAllowableValues()
+    public function getOptimizationStrategyAllowableValues()
     {
         return [
-            self::OPTIMIZATION_STRATEGY_ENUM_MANUAL,
-            self::OPTIMIZATION_STRATEGY_ENUM_AUTOMATED,
+            self::OPTIMIZATION_STRATEGY_MANUAL,
+            self::OPTIMIZATION_STRATEGY_AUTOMATED,
         ];
     }
 
@@ -384,7 +382,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('optimization_strategy_enum', $data ?? [], 'manual');
+        $this->setIfExists('optimization_strategy', $data ?? [], 'manual');
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
         $this->setIfExists('target_retailer_id', $data ?? [], null);
@@ -446,11 +444,11 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
         }
 
-        $allowedValues = $this->getOptimizationStrategyEnumAllowableValues();
-        if (!is_null($this->container['optimization_strategy_enum']) && !in_array($this->container['optimization_strategy_enum'], $allowedValues, true)) {
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!is_null($this->container['optimization_strategy']) && !in_array($this->container['optimization_strategy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'optimization_strategy_enum', must be one of '%s'",
-                $this->container['optimization_strategy_enum'],
+                "invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                $this->container['optimization_strategy'],
                 implode("', '", $allowedValues)
             );
         }
@@ -594,7 +592,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date The date and time when the line item should stop running.
+     * @param \DateTime|null $end_date The date and time when the line item stops running.
      *
      * @return self
      */
@@ -823,38 +821,38 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     }
 
     /**
-     * Gets optimization_strategy_enum
+     * Gets optimization_strategy
      *
      * @return string|null
      */
-    public function getOptimizationStrategyEnum()
+    public function getOptimizationStrategy()
     {
-        return $this->container['optimization_strategy_enum'];
+        return $this->container['optimization_strategy'];
     }
 
     /**
-     * Sets optimization_strategy_enum
+     * Sets optimization_strategy
      *
-     * @param string|null $optimization_strategy_enum optimization_strategy_enum
+     * @param string|null $optimization_strategy optimization_strategy
      *
      * @return self
      */
-    public function setOptimizationStrategyEnum($optimization_strategy_enum)
+    public function setOptimizationStrategy($optimization_strategy)
     {
-        if (is_null($optimization_strategy_enum)) {
-            throw new \InvalidArgumentException('non-nullable optimization_strategy_enum cannot be null');
+        if (is_null($optimization_strategy)) {
+            throw new \InvalidArgumentException('non-nullable optimization_strategy cannot be null');
         }
-        $allowedValues = $this->getOptimizationStrategyEnumAllowableValues();
-        if (!in_array($optimization_strategy_enum, $allowedValues, true)) {
+        $allowedValues = $this->getOptimizationStrategyAllowableValues();
+        if (!in_array($optimization_strategy, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'optimization_strategy_enum', must be one of '%s'",
-                    $optimization_strategy_enum,
+                    "Invalid value '%s' for 'optimization_strategy', must be one of '%s'",
+                    $optimization_strategy,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['optimization_strategy_enum'] = $optimization_strategy_enum;
+        $this->container['optimization_strategy'] = $optimization_strategy;
 
         return $this;
     }
@@ -872,7 +870,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date The date and time when the line item should start running.
+     * @param \DateTime $start_date The date and time when the line item starts running.
      *
      * @return self
      */

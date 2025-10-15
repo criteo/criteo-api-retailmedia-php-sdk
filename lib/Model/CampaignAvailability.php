@@ -249,12 +249,12 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
 
     public const BUY_TYPE_UNKNOWN = 'unknown';
     public const BUY_TYPE_AUCTION = 'auction';
-    public const BUY_TYPE_PREFERREDDEALS = 'preferreddeals';
+    public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
     public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
     public const BUY_TYPE_OFFSITE = 'offsite';
     public const CAMPAIGN_TYPE_UNKNOWN = 'unknown';
-    public const CAMPAIGN_TYPE_SPONSOREDPRODUCTS = 'sponsoredproducts';
-    public const CAMPAIGN_TYPE_ONSITEDISPLAY = 'onsitedisplay';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'onsiteDisplay';
     public const CAMPAIGN_TYPE_OFFSITE = 'offsite';
 
     /**
@@ -267,7 +267,7 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
         return [
             self::BUY_TYPE_UNKNOWN,
             self::BUY_TYPE_AUCTION,
-            self::BUY_TYPE_PREFERREDDEALS,
+            self::BUY_TYPE_PREFERRED_DEALS,
             self::BUY_TYPE_SPONSORSHIP,
             self::BUY_TYPE_OFFSITE,
         ];
@@ -282,8 +282,8 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return [
             self::CAMPAIGN_TYPE_UNKNOWN,
-            self::CAMPAIGN_TYPE_SPONSOREDPRODUCTS,
-            self::CAMPAIGN_TYPE_ONSITEDISPLAY,
+            self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
+            self::CAMPAIGN_TYPE_ONSITE_DISPLAY,
             self::CAMPAIGN_TYPE_OFFSITE,
         ];
     }

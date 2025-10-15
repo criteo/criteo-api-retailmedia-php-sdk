@@ -301,7 +301,6 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_UNKNOWN = 'unknown';
     public const BID_STRATEGY_CONVERSION = 'conversion';
     public const BID_STRATEGY_CLICKS = 'clicks';
     public const BID_STRATEGY_REVENUE = 'revenue';
@@ -319,7 +318,6 @@ class SponsoredProductsLineItemUpdateRequestModel implements ModelInterface, Arr
     public function getBidStrategyAllowableValues()
     {
         return [
-            self::BID_STRATEGY_UNKNOWN,
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,

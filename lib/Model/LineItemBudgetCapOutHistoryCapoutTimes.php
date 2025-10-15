@@ -1,6 +1,6 @@
 <?php
 /**
- * PageTypeCombination
+ * LineItemBudgetCapOutHistoryCapoutTimes
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PageTypeCombination Class Doc Comment
+ * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
  *
  * @category Class
- * @description Represents a combination of page type and page environment type for a specific campaign-buy type.
+ * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PageTypeCombination';
+    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_environment_type' => 'string',
-        'page_type' => 'string'
+        'daily' => '\DateTime[]',
+        'hourly' => '\DateTime[]',
+        'monthly' => '\DateTime[]',
+        'total' => '\DateTime[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_environment_type' => null,
-        'page_type' => null
+        'daily' => 'date-time',
+        'hourly' => 'date-time',
+        'monthly' => 'date-time',
+        'total' => 'date-time'
     ];
 
     /**
@@ -80,8 +84,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'page_environment_type' => true,
-		'page_type' => true
+        'daily' => true,
+		'hourly' => true,
+		'monthly' => true,
+		'total' => true
     ];
 
     /**
@@ -170,8 +176,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_environment_type' => 'pageEnvironmentType',
-        'page_type' => 'pageType'
+        'daily' => 'daily',
+        'hourly' => 'hourly',
+        'monthly' => 'monthly',
+        'total' => 'total'
     ];
 
     /**
@@ -180,8 +188,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'page_environment_type' => 'setPageEnvironmentType',
-        'page_type' => 'setPageType'
+        'daily' => 'setDaily',
+        'hourly' => 'setHourly',
+        'monthly' => 'setMonthly',
+        'total' => 'setTotal'
     ];
 
     /**
@@ -190,8 +200,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'page_environment_type' => 'getPageEnvironmentType',
-        'page_type' => 'getPageType'
+        'daily' => 'getDaily',
+        'hourly' => 'getHourly',
+        'monthly' => 'getMonthly',
+        'total' => 'getTotal'
     ];
 
     /**
@@ -235,68 +247,6 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const PAGE_ENVIRONMENT_TYPE_UNKNOWN = 'unknown';
-    public const PAGE_ENVIRONMENT_TYPE_WEB = 'web';
-    public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'mobile';
-    public const PAGE_ENVIRONMENT_TYPE_APP = 'app';
-    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'lockout';
-    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'mixed';
-    public const PAGE_ENVIRONMENT_TYPE_IOS = 'ios';
-    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'android';
-    public const PAGE_TYPE_UNKNOWN = 'unknown';
-    public const PAGE_TYPE_SEARCH = 'search';
-    public const PAGE_TYPE_HOME = 'home';
-    public const PAGE_TYPE_CHECKOUT = 'checkout';
-    public const PAGE_TYPE_CATEGORY = 'category';
-    public const PAGE_TYPE_PRODUCT_DETAIL = 'productDetail';
-    public const PAGE_TYPE_CONFIRMATION = 'confirmation';
-    public const PAGE_TYPE_MERCHANDISING = 'merchandising';
-    public const PAGE_TYPE_DEALS = 'deals';
-    public const PAGE_TYPE_FAVORITES = 'favorites';
-    public const PAGE_TYPE_SEARCHBAR = 'searchbar';
-    public const PAGE_TYPE_CATEGORY_MENU = 'categoryMenu';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageEnvironmentTypeAllowableValues()
-    {
-        return [
-            self::PAGE_ENVIRONMENT_TYPE_UNKNOWN,
-            self::PAGE_ENVIRONMENT_TYPE_WEB,
-            self::PAGE_ENVIRONMENT_TYPE_MOBILE,
-            self::PAGE_ENVIRONMENT_TYPE_APP,
-            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
-            self::PAGE_ENVIRONMENT_TYPE_MIXED,
-            self::PAGE_ENVIRONMENT_TYPE_IOS,
-            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageTypeAllowableValues()
-    {
-        return [
-            self::PAGE_TYPE_UNKNOWN,
-            self::PAGE_TYPE_SEARCH,
-            self::PAGE_TYPE_HOME,
-            self::PAGE_TYPE_CHECKOUT,
-            self::PAGE_TYPE_CATEGORY,
-            self::PAGE_TYPE_PRODUCT_DETAIL,
-            self::PAGE_TYPE_CONFIRMATION,
-            self::PAGE_TYPE_MERCHANDISING,
-            self::PAGE_TYPE_DEALS,
-            self::PAGE_TYPE_FAVORITES,
-            self::PAGE_TYPE_SEARCHBAR,
-            self::PAGE_TYPE_CATEGORY_MENU,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -313,8 +263,10 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('page_environment_type', $data ?? [], null);
-        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('daily', $data ?? [], null);
+        $this->setIfExists('hourly', $data ?? [], null);
+        $this->setIfExists('monthly', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
     }
 
     /**
@@ -344,24 +296,6 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
-        if (!is_null($this->container['page_environment_type']) && !in_array($this->container['page_environment_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_environment_type', must be one of '%s'",
-                $this->container['page_environment_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -378,89 +312,137 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets page_environment_type
+     * Gets daily
      *
-     * @return string|null
+     * @return \DateTime[]|null
      */
-    public function getPageEnvironmentType()
+    public function getDaily()
     {
-        return $this->container['page_environment_type'];
+        return $this->container['daily'];
     }
 
     /**
-     * Sets page_environment_type
+     * Sets daily
      *
-     * @param string|null $page_environment_type The page types which are supported for this campaign-buy type combination
+     * @param \DateTime[]|null $daily daily
      *
      * @return self
      */
-    public function setPageEnvironmentType($page_environment_type)
+    public function setDaily($daily)
     {
-        if (is_null($page_environment_type)) {
-            array_push($this->openAPINullablesSetToNull, 'page_environment_type');
+        if (is_null($daily)) {
+            array_push($this->openAPINullablesSetToNull, 'daily');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('page_environment_type', $nullablesSetToNull);
+            $index = array_search('daily', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
-        if (!is_null($page_environment_type) && !in_array($page_environment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_environment_type', must be one of '%s'",
-                    $page_environment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_environment_type'] = $page_environment_type;
+        $this->container['daily'] = $daily;
 
         return $this;
     }
 
     /**
-     * Gets page_type
+     * Gets hourly
      *
-     * @return string|null
+     * @return \DateTime[]|null
      */
-    public function getPageType()
+    public function getHourly()
     {
-        return $this->container['page_type'];
+        return $this->container['hourly'];
     }
 
     /**
-     * Sets page_type
+     * Sets hourly
      *
-     * @param string|null $page_type The page types which are supported for this campaign-buy type combination
+     * @param \DateTime[]|null $hourly hourly
      *
      * @return self
      */
-    public function setPageType($page_type)
+    public function setHourly($hourly)
     {
-        if (is_null($page_type)) {
-            array_push($this->openAPINullablesSetToNull, 'page_type');
+        if (is_null($hourly)) {
+            array_push($this->openAPINullablesSetToNull, 'hourly');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('page_type', $nullablesSetToNull);
+            $index = array_search('hourly', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($page_type) && !in_array($page_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_type', must be one of '%s'",
-                    $page_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['hourly'] = $hourly;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly
+     *
+     * @return \DateTime[]|null
+     */
+    public function getMonthly()
+    {
+        return $this->container['monthly'];
+    }
+
+    /**
+     * Sets monthly
+     *
+     * @param \DateTime[]|null $monthly monthly
+     *
+     * @return self
+     */
+    public function setMonthly($monthly)
+    {
+        if (is_null($monthly)) {
+            array_push($this->openAPINullablesSetToNull, 'monthly');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('monthly', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['page_type'] = $page_type;
+        $this->container['monthly'] = $monthly;
+
+        return $this;
+    }
+
+    /**
+     * Gets total
+     *
+     * @return \DateTime[]|null
+     */
+    public function getTotal()
+    {
+        return $this->container['total'];
+    }
+
+    /**
+     * Sets total
+     *
+     * @param \DateTime[]|null $total total
+     *
+     * @return self
+     */
+    public function setTotal($total)
+    {
+        if (is_null($total)) {
+            array_push($this->openAPINullablesSetToNull, 'total');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['total'] = $total;
 
         return $this;
     }

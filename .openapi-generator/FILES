@@ -111,6 +111,10 @@ docs/Model/KeywordDataModel.md
 docs/Model/KeywordsModel.md
 docs/Model/KeywordsModelResource.md
 docs/Model/KeywordsModelResponse.md
+docs/Model/LineItemBudgetCapOutHistory.md
+docs/Model/LineItemBudgetCapOutHistoryCapoutTimes.md
+docs/Model/LineItemBudgetCapOutHistoryRequest.md
+docs/Model/LineItemBudgetCapOutHistoryResponse.md
 docs/Model/LineItemCappingV2.md
 docs/Model/LineItemKeywordReviewReport.md
 docs/Model/LineItemPageCategoryV2.md
@@ -321,6 +325,7 @@ docs/Model/ValueResourceInputAccountFeesSearchRequest.md
 docs/Model/ValueResourceInputAccountFeesUpdateRequest.md
 docs/Model/ValueResourceInputBrandIdSearchRequest.md
 docs/Model/ValueResourceInputCategoriesSearchRequestV1.md
+docs/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md
 docs/Model/ValueResourceInputLoadSkuOffersRequest.md
 docs/Model/ValueResourceInputOfBrandCatalogRequestV2.md
 docs/Model/ValueResourceInputOfRetailerSearchRequest.md
@@ -333,6 +338,8 @@ docs/Model/ValueResourceInputRecommendedKeywordsRequestV1.md
 docs/Model/ValueResourceInputRetailMediaKeywordsReview.md
 docs/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.md
 docs/Model/ValueResourceInputUpdateOffersRequest.md
+docs/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.md
+docs/Model/ValueResourceLineItemBudgetCapOutHistoryResponse.md
 docs/Model/ValueResourceLoadSkuOffersRequest.md
 docs/Model/ValueResourceOfBrandCatalogRequestV2.md
 docs/Model/ValueResourceOfRetailerSearchRequest.md
@@ -340,6 +347,7 @@ docs/Model/ValueResourceOfSellerCatalogRequestV2.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/Model/ValueResourceOutcomeAsyncJobResponse.md
+docs/Model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md
 docs/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.md
 docs/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.md
 docs/Model/ValueResourcePartnerBillingReportRequestV1.md
@@ -465,6 +473,10 @@ lib/Model/KeywordDataModel.php
 lib/Model/KeywordsModel.php
 lib/Model/KeywordsModelResource.php
 lib/Model/KeywordsModelResponse.php
+lib/Model/LineItemBudgetCapOutHistory.php
+lib/Model/LineItemBudgetCapOutHistoryCapoutTimes.php
+lib/Model/LineItemBudgetCapOutHistoryRequest.php
+lib/Model/LineItemBudgetCapOutHistoryResponse.php
 lib/Model/LineItemCappingV2.php
 lib/Model/LineItemKeywordReviewReport.php
 lib/Model/LineItemPageCategoryV2.php
@@ -676,6 +688,7 @@ lib/Model/ValueResourceInputAccountFeesSearchRequest.php
 lib/Model/ValueResourceInputAccountFeesUpdateRequest.php
 lib/Model/ValueResourceInputBrandIdSearchRequest.php
 lib/Model/ValueResourceInputCategoriesSearchRequestV1.php
+lib/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.php
 lib/Model/ValueResourceInputLoadSkuOffersRequest.php
 lib/Model/ValueResourceInputOfBrandCatalogRequestV2.php
 lib/Model/ValueResourceInputOfRetailerSearchRequest.php
@@ -688,6 +701,8 @@ lib/Model/ValueResourceInputRecommendedKeywordsRequestV1.php
 lib/Model/ValueResourceInputRetailMediaKeywordsReview.php
 lib/Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.php
 lib/Model/ValueResourceInputUpdateOffersRequest.php
+lib/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.php
+lib/Model/ValueResourceLineItemBudgetCapOutHistoryResponse.php
 lib/Model/ValueResourceLoadSkuOffersRequest.php
 lib/Model/ValueResourceOfBrandCatalogRequestV2.php
 lib/Model/ValueResourceOfRetailerSearchRequest.php
@@ -695,6 +710,7 @@ lib/Model/ValueResourceOfSellerCatalogRequestV2.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.php
 lib/Model/ValueResourceOutcomeAsyncJobResponse.php
+lib/Model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.php
 lib/Model/ValueResourceOutcomeRecommendedKeywordsResponseV1.php
 lib/Model/ValueResourceOutcomeRetailMediaKeywordsReviewResult.php
 lib/Model/ValueResourcePartnerBillingReportRequestV1.php

@@ -21,6 +21,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getApiV1ExternalRetailerPlacementsByRetailerId()**](CampaignApi.md#getApiV1ExternalRetailerPlacementsByRetailerId) | **GET** /preview/retail-media/retailers/{retailer-id}/placements |  |
 | [**getAuctionLineItemV2()**](CampaignApi.md#getAuctionLineItemV2) | **GET** /preview/retail-media/auction-line-items/{lineItemId} |  |
 | [**getAuctionLineItemsByCampaignIdV2()**](CampaignApi.md#getAuctionLineItemsByCampaignIdV2) | **GET** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
+| [**getCapoutHistory()**](CampaignApi.md#getCapoutHistory) | **POST** /preview/retail-media/accounts/{account-id}/line-items/cap-out-history |  |
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
 | [**getPreferredLineItemsByCampaignId()**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**getPreferredLineItemsByLineItemId()**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} |  |
@@ -1087,7 +1088,7 @@ try {
 ## `getAuctionLineItemsByCampaignIdV2()`
 
 ```php
-getAuctionLineItemsByCampaignIdV2($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
+getAuctionLineItemsByCampaignIdV2($campaign_id, $limit, $limit_to_ids, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
 ```
 
 
@@ -1115,12 +1116,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $campaign_id = 'campaign_id_example'; // string | The id of the campaign
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 0; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 25; // int | The maximum number of items you would like to receive in this request
+$limit = 25; // int | The number of elements to be returned on a page.
+$limit_to_ids = array('limit_to_ids_example'); // string[] | The ids to limit the auction line item results to
+$offset = 0; // int | The (zero-based) starting offset into the collection.
 
 try {
-    $result = $apiInstance->getAuctionLineItemsByCampaignIdV2($campaign_id, $limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getAuctionLineItemsByCampaignIdV2($campaign_id, $limit, $limit_to_ids, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getAuctionLineItemsByCampaignIdV2: ', $e->getMessage(), PHP_EOL;
@@ -1132,9 +1133,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| The id of the campaign | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
-| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+| **limit** | **int**| The number of elements to be returned on a page. | [optional] [default to 25] |
+| **limit_to_ids** | [**string[]**](../Model/string.md)| The ids to limit the auction line item results to | [optional] |
+| **offset** | **int**| The (zero-based) starting offset into the collection. | [optional] [default to 0] |
 
 ### Return type
 
@@ -1147,6 +1148,71 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCapoutHistory()`
+
+```php
+getCapoutHistory($account_id, $value_resource_input_line_item_budget_cap_out_history_request): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse
+```
+
+
+
+Get the cap out history for line items
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | account id that own the lineitem
+$value_resource_input_line_item_budget_cap_out_history_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest | lineitem budgetcapout history  object
+
+try {
+    $result = $apiInstance->getCapoutHistory($account_id, $value_resource_input_line_item_budget_cap_out_history_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getCapoutHistory: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| account id that own the lineitem | |
+| **value_resource_input_line_item_budget_cap_out_history_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest**](../Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md)| lineitem budgetcapout history  object | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse**](../Model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

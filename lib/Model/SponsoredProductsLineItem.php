@@ -343,16 +343,17 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_UNKNOWN = 'unknown';
     public const BID_STRATEGY_CONVERSION = 'conversion';
     public const BID_STRATEGY_CLICKS = 'clicks';
     public const BID_STRATEGY_REVENUE = 'revenue';
+    public const BID_STRATEGY_UNKNOWN = 'unknown';
     public const KEYWORD_STRATEGY_UNKNOWN = 'unknown';
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
     public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
     public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
+    public const OPTIMIZATION_STRATEGY_UNKNOWN = 'unknown';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SCHEDULED = 'scheduled';
@@ -371,10 +372,10 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public function getBidStrategyAllowableValues()
     {
         return [
-            self::BID_STRATEGY_UNKNOWN,
             self::BID_STRATEGY_CONVERSION,
             self::BID_STRATEGY_CLICKS,
             self::BID_STRATEGY_REVENUE,
+            self::BID_STRATEGY_UNKNOWN,
         ];
     }
 
@@ -403,6 +404,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::OPTIMIZATION_STRATEGY_MANUAL,
             self::OPTIMIZATION_STRATEGY_AUTOMATED,
+            self::OPTIMIZATION_STRATEGY_UNKNOWN,
         ];
     }
 
@@ -1065,7 +1067,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets optimization_strategy
      *
-     * @param string|null $optimization_strategy optimization_strategy
+     * @param string|null $optimization_strategy Optimization strategy for the line item.
      *
      * @return self
      */

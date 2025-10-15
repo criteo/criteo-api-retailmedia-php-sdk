@@ -1,6 +1,6 @@
 <?php
 /**
- * PageTypeCombination
+ * ValueResourceInputLineItemBudgetCapOutHistoryRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PageTypeCombination Class Doc Comment
+ * ValueResourceInputLineItemBudgetCapOutHistoryRequest Class Doc Comment
  *
  * @category Class
- * @description Represents a combination of page type and page environment type for a specific campaign-buy type.
+ * @description A top-level object that encapsulates a Criteo API request for a single value object.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputLineItemBudgetCapOutHistoryRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PageTypeCombination';
+    protected static $openAPIModelName = 'ValueResourceInputLineItemBudgetCapOutHistoryRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'page_environment_type' => 'string',
-        'page_type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceLineItemBudgetCapOutHistoryRequest'
     ];
 
     /**
@@ -70,8 +69,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'page_environment_type' => null,
-        'page_type' => null
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'page_environment_type' => true,
-		'page_type' => true
+        'data' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'page_environment_type' => 'pageEnvironmentType',
-        'page_type' => 'pageType'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'page_environment_type' => 'setPageEnvironmentType',
-        'page_type' => 'setPageType'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'page_environment_type' => 'getPageEnvironmentType',
-        'page_type' => 'getPageType'
+        'data' => 'getData'
     ];
 
     /**
@@ -235,68 +229,6 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const PAGE_ENVIRONMENT_TYPE_UNKNOWN = 'unknown';
-    public const PAGE_ENVIRONMENT_TYPE_WEB = 'web';
-    public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'mobile';
-    public const PAGE_ENVIRONMENT_TYPE_APP = 'app';
-    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'lockout';
-    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'mixed';
-    public const PAGE_ENVIRONMENT_TYPE_IOS = 'ios';
-    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'android';
-    public const PAGE_TYPE_UNKNOWN = 'unknown';
-    public const PAGE_TYPE_SEARCH = 'search';
-    public const PAGE_TYPE_HOME = 'home';
-    public const PAGE_TYPE_CHECKOUT = 'checkout';
-    public const PAGE_TYPE_CATEGORY = 'category';
-    public const PAGE_TYPE_PRODUCT_DETAIL = 'productDetail';
-    public const PAGE_TYPE_CONFIRMATION = 'confirmation';
-    public const PAGE_TYPE_MERCHANDISING = 'merchandising';
-    public const PAGE_TYPE_DEALS = 'deals';
-    public const PAGE_TYPE_FAVORITES = 'favorites';
-    public const PAGE_TYPE_SEARCHBAR = 'searchbar';
-    public const PAGE_TYPE_CATEGORY_MENU = 'categoryMenu';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageEnvironmentTypeAllowableValues()
-    {
-        return [
-            self::PAGE_ENVIRONMENT_TYPE_UNKNOWN,
-            self::PAGE_ENVIRONMENT_TYPE_WEB,
-            self::PAGE_ENVIRONMENT_TYPE_MOBILE,
-            self::PAGE_ENVIRONMENT_TYPE_APP,
-            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
-            self::PAGE_ENVIRONMENT_TYPE_MIXED,
-            self::PAGE_ENVIRONMENT_TYPE_IOS,
-            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageTypeAllowableValues()
-    {
-        return [
-            self::PAGE_TYPE_UNKNOWN,
-            self::PAGE_TYPE_SEARCH,
-            self::PAGE_TYPE_HOME,
-            self::PAGE_TYPE_CHECKOUT,
-            self::PAGE_TYPE_CATEGORY,
-            self::PAGE_TYPE_PRODUCT_DETAIL,
-            self::PAGE_TYPE_CONFIRMATION,
-            self::PAGE_TYPE_MERCHANDISING,
-            self::PAGE_TYPE_DEALS,
-            self::PAGE_TYPE_FAVORITES,
-            self::PAGE_TYPE_SEARCHBAR,
-            self::PAGE_TYPE_CATEGORY_MENU,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -313,8 +245,7 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('page_environment_type', $data ?? [], null);
-        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -344,24 +275,6 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
-        if (!is_null($this->container['page_environment_type']) && !in_array($this->container['page_environment_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_environment_type', must be one of '%s'",
-                $this->container['page_environment_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -378,89 +291,28 @@ class PageTypeCombination implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets page_environment_type
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceLineItemBudgetCapOutHistoryRequest|null
      */
-    public function getPageEnvironmentType()
+    public function getData()
     {
-        return $this->container['page_environment_type'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets page_environment_type
+     * Sets data
      *
-     * @param string|null $page_environment_type The page types which are supported for this campaign-buy type combination
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceLineItemBudgetCapOutHistoryRequest|null $data data
      *
      * @return self
      */
-    public function setPageEnvironmentType($page_environment_type)
+    public function setData($data)
     {
-        if (is_null($page_environment_type)) {
-            array_push($this->openAPINullablesSetToNull, 'page_environment_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('page_environment_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
-        if (!is_null($page_environment_type) && !in_array($page_environment_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_environment_type', must be one of '%s'",
-                    $page_environment_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_environment_type'] = $page_environment_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_type
-     *
-     * @return string|null
-     */
-    public function getPageType()
-    {
-        return $this->container['page_type'];
-    }
-
-    /**
-     * Sets page_type
-     *
-     * @param string|null $page_type The page types which are supported for this campaign-buy type combination
-     *
-     * @return self
-     */
-    public function setPageType($page_type)
-    {
-        if (is_null($page_type)) {
-            array_push($this->openAPINullablesSetToNull, 'page_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('page_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($page_type) && !in_array($page_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_type', must be one of '%s'",
-                    $page_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_type'] = $page_type;
+        $this->container['data'] = $data;
 
         return $this;
     }
