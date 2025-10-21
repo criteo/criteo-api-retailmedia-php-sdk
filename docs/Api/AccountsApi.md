@@ -84,7 +84,7 @@ getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\
 
 
 
-Gets page of private market child accounts that are associated with the given account
+Gets Private Market child accounts that are associated with the given account
 
 ### Example
 
