@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * DisplayAuctionMinBidRequest Class Doc Comment
  *
  * @category Class
- * @description represents the list of creatives and respective product IDs to compute min bid for.
+ * @description Represents the list of creatives and respective product IDs to compute min bid for.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -81,7 +81,7 @@ class DisplayAuctionMinBidRequest implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'creative_ids' => false,
-		'product_ids' => false
+		'product_ids' => true
     ];
 
     /**
@@ -363,10 +363,17 @@ class DisplayAuctionMinBidRequest implements ModelInterface, ArrayAccess, \JsonS
     public function setProductIds($product_ids)
     {
         if (is_null($product_ids)) {
-            throw new \InvalidArgumentException('non-nullable product_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'product_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('product_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
 
-        if ((count($product_ids) > 50)) {
+        if (!is_null($product_ids) && (count($product_ids) > 50)) {
             throw new \InvalidArgumentException('invalid value for $product_ids when calling DisplayAuctionMinBidRequest., number of items must be less than or equal to 50.');
         }
         $this->container['product_ids'] = $product_ids;

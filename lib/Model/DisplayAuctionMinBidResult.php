@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * DisplayAuctionMinBidResult Class Doc Comment
  *
  * @category Class
- * @description represents the min bid for a pagtype type and creative combination.
+ * @description Represents the min bid for a pageType and creative combination.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
