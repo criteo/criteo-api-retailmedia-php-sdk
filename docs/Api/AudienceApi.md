@@ -4,22 +4,87 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addRemoveContactListByAudienceSegment()**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 | [**bulkCreateAudience()**](AudienceApi.md#bulkCreateAudience) | **POST** /preview/retail-media/accounts/{account-id}/audiences/create |  |
 | [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/create |  |
 | [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/delete |  |
 | [**bulkDeleteAudiences()**](AudienceApi.md#bulkDeleteAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/delete |  |
 | [**bulkUpdateAudience()**](AudienceApi.md#bulkUpdateAudience) | **PATCH** /preview/retail-media/accounts/{account-id}/audiences |  |
 | [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /preview/retail-media/accounts/{account-id}/audience-segments |  |
+| [**clearContactListByAudienceSegment()**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**computeAudienceSegmentsSizes()**](AudienceApi.md#computeAudienceSegmentsSizes) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes |  |
 | [**computeAudiencesSizes()**](AudienceApi.md#computeAudiencesSizes) | **POST** /preview/retail-media/accounts/{account-id}/audiences/compute-sizes |  |
-| [**deleteContactListByAudienceSegment()**](AudienceApi.md#deleteContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**estimateAudienceSegmentSize()**](AudienceApi.md#estimateAudienceSegmentSize) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size |  |
 | [**estimateAudienceSize()**](AudienceApi.md#estimateAudienceSize) | **POST** /preview/retail-media/accounts/{account-id}/audiences/estimate-size |  |
 | [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /preview/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListByAudienceSegment()**](AudienceApi.md#updateContactListByAudienceSegment) | **POST** /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
+
+## `addRemoveContactListByAudienceSegment()`
+
+```php
+addRemoveContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
+```
+
+
+
+Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
+$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest
+
+try {
+    $result = $apiInstance->addRemoveContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->addRemoveContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `bulkCreateAudience()`
 
@@ -411,6 +476,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `clearContactListByAudienceSegment()`
+
+```php
+clearContactListByAudienceSegment($audience_segment_id)
+```
+
+
+
+Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
+
+try {
+    $apiInstance->clearContactListByAudienceSegment($audience_segment_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->clearContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `computeAudienceSegmentsSizes()`
 
 ```php
@@ -535,68 +662,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteContactListByAudienceSegment()`
-
-```php
-deleteContactListByAudienceSegment($audience_segment_id)
-```
-
-
-
-Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
-
-try {
-    $apiInstance->deleteContactListByAudienceSegment($audience_segment_id);
-} catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->deleteContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -922,71 +987,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse**](../Model/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateContactListByAudienceSegment()`
-
-```php
-updateContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation
-```
-
-
-
-Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AudienceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
-$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest
-
-try {
-    $result = $apiInstance->updateContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->updateContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
-| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
 
 ### Authorization
 
