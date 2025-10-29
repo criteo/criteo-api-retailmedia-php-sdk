@@ -4,15 +4,80 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addRemoveContactListByAudienceSegment()**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /2024-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 | [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /2024-10/retail-media/accounts/{account-id}/audience-segments/create |  |
 | [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /2024-10/retail-media/accounts/{account-id}/audience-segments/delete |  |
 | [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /2024-10/retail-media/accounts/{account-id}/audience-segments |  |
-| [**deleteContactListIdentifiers()**](AudienceApi.md#deleteContactListIdentifiers) | **POST** /2024-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
+| [**clearContactListByAudienceSegment()**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /2024-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
 | [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /2024-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
 | [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /2024-10/retail-media/accounts/{account-id}/audience-segments/search |  |
 | [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /2024-10/retail-media/accounts/{account-id}/audiences/search |  |
-| [**updateContactListIdentifiers()**](AudienceApi.md#updateContactListIdentifiers) | **POST** /2024-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
 
+
+## `addRemoveContactListByAudienceSegment()`
+
+```php
+addRemoveContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperation
+```
+
+
+
+Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2024_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2024_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2024_10\Api\AudienceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
+$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest
+
+try {
+    $result = $apiInstance->addRemoveContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AudienceApi->addRemoveContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `bulkCreateAudienceSegments()`
 
@@ -209,10 +274,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteContactListIdentifiers()`
+## `clearContactListByAudienceSegment()`
 
 ```php
-deleteContactListIdentifiers($audience_segment_id)
+clearContactListByAudienceSegment($audience_segment_id)
 ```
 
 
@@ -242,9 +307,9 @@ $apiInstance = new criteo\api\retailmedia\v2024_10\Api\AudienceApi(
 $audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
 
 try {
-    $apiInstance->deleteContactListIdentifiers($audience_segment_id);
+    $apiInstance->clearContactListByAudienceSegment($audience_segment_id);
 } catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->deleteContactListIdentifiers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AudienceApi->clearContactListByAudienceSegment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -460,71 +525,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\v2024_10\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse**](../Model/RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateContactListIdentifiers()`
-
-```php
-updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperation
-```
-
-
-
-Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2024_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2024_10\Api\AudienceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
-$retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest
-
-try {
-    $result = $apiInstance->updateContactListIdentifiers($audience_segment_id, $retail_media_contactlist_amendment_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AudienceApi->updateContactListIdentifiers: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
-| **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2024_10\Model\RetailMediaContactlistOperation**](../Model/RetailMediaContactlistOperation.md)
 
 ### Authorization
 

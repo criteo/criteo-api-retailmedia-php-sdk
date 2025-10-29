@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**code** | **string** | (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kabab-case. | [optional]
+**code** | **string** | (REQUIRED) A machine-readable unique error code, expressed as a string value. The format used must be kebab-case. | [optional]
 **detail** | **string** | (RECOMMENDED) A human-readable explanation specific to this occurrence of the problem. | [optional]
 **instance** | **string** | (REQUIRED) A URI reference that identifies the specific occurrence of the problem. | [optional]
 **source** | **array<string,string>** | (OPTIONAL) A machine-readable structure to reference to the exact location(s) causing the error(s) | [optional]
