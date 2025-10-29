@@ -86,7 +86,7 @@ createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_reta
 
 
 
-Creates a new child Demand Brand Account for the provided parent private market account
+Creates a new child Demand Brand account for the provided parent Private Market account
 
 ### Example
 
@@ -151,7 +151,7 @@ createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_ret
 
 
 
-Creates a new child Demand Seller Account for the provided parent private market account
+Creates a new child Demand Seller account for the provided parent Private Market account
 
 ### Example
 
