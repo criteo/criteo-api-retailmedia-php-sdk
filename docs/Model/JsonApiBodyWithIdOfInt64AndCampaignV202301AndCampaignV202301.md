@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2024_10\Model\CampaignV202301**](CampaignV202301.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2025_10\Model\CampaignV202301**](CampaignV202301.md) |  | [optional]
 **id** | **string** |  |
 **type** | **string** |  |
 

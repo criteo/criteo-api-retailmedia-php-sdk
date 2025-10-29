@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**choice_variable_specification** | [**\criteo\api\retailmedia\v2024_10\Model\ChoiceVariableSpecification**](ChoiceVariableSpecification.md) |  | [optional]
-**files_variables_specification** | [**\criteo\api\retailmedia\v2024_10\Model\FilesVariablesSpecification**](FilesVariablesSpecification.md) |  | [optional]
+**choice_variable_specification** | [**\criteo\api\retailmedia\v2025_10\Model\ChoiceVariableSpecification**](ChoiceVariableSpecification.md) |  | [optional]
+**files_variables_specification** | [**\criteo\api\retailmedia\v2025_10\Model\FilesVariablesSpecification**](FilesVariablesSpecification.md) |  | [optional]
 **id** | **string** | The id of the variable |
 **required** | **bool** | Whether the variable is required |
-**text_variable_specification** | [**\criteo\api\retailmedia\v2024_10\Model\TextVariableSpecification**](TextVariableSpecification.md) |  | [optional]
+**text_variable_specification** | [**\criteo\api\retailmedia\v2025_10\Model\TextVariableSpecification**](TextVariableSpecification.md) |  | [optional]
 **type** | **string** | The type of the variable |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

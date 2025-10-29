@@ -1,10 +1,10 @@
 <?php
-namespace criteo\api\retailmedia\v2024_10;
+namespace criteo\api\retailmedia\v2025_10;
 
-use criteo\api\retailmedia\v2024_10\ApiException;
-use criteo\api\retailmedia\v2024_10\Configuration;
-use criteo\api\retailmedia\v2024_10\ObjectSerializer;
-use criteo\api\retailmedia\v2024_10\ClientCredentialsClient\Token;
+use criteo\api\retailmedia\v2025_10\ApiException;
+use criteo\api\retailmedia\v2025_10\Configuration;
+use criteo\api\retailmedia\v2025_10\ObjectSerializer;
+use criteo\api\retailmedia\v2025_10\ClientCredentialsClient\Token;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Request;

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **creative_format** | **string** | The kind of creative this template can be used to build. |
 **displayable_skus_max** | **int** | Maximum number of displayable skus | [optional]
 **name** | **string** | The name of the template |
-**sections** | [**\criteo\api\retailmedia\v2024_10\Model\Section[]**](Section.md) | The sections holding various template variables |
+**sections** | [**\criteo\api\retailmedia\v2025_10\Model\Section[]**](Section.md) | The sections holding various template variables |
 **sku_collection_max** | **int** | Maximum number of skus in the collection | [optional]
 **sku_collection_min** | **int** | Minimum number of skus in the collection |
 **sku_per_collection_max** | **int** | Maximum number of skus per collection | [optional]
