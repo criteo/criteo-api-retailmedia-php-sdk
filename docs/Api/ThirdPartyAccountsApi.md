@@ -4,12 +4,77 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**grantThirdPartyConsent()**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost()**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost()**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdBrandsBrandIdRemovePost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost()**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateBrandAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost()**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdCreateSellerAccountPost) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
 | [**previewRetailMediaThirdPartyAccountsAccountIdSellersPut()**](ThirdPartyAccountsApi.md#previewRetailMediaThirdPartyAccountsAccountIdSellersPut) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
 
+
+## `grantThirdPartyConsent()`
+
+```php
+grantThirdPartyConsent($account_id, $grant_consent_input)
+```
+
+
+
+Grant third-party consent to a business application on behalf of a Private Market demand account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\ThirdPartyAccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The demand account ID on which to grant consent
+$grant_consent_input = new \criteo\api\retailmedia\preview\Model\GrantConsentInput(); // \criteo\api\retailmedia\preview\Model\GrantConsentInput | The request input containing clientId, callbackURL, and callbackState
+
+try {
+    $apiInstance->grantThirdPartyConsent($account_id, $grant_consent_input);
+} catch (Exception $e) {
+    echo 'Exception when calling ThirdPartyAccountsApi->grantThirdPartyConsent: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The demand account ID on which to grant consent | |
+| **grant_consent_input** | [**\criteo\api\retailmedia\preview\Model\GrantConsentInput**](../Model/GrantConsentInput.md)| The request input containing clientId, callbackURL, and callbackState | [optional] |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `previewRetailMediaThirdPartyAccountsAccountIdBrandsAddPost()`
 

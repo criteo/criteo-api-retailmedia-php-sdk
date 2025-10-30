@@ -103,6 +103,9 @@ docs/Model/ExternalRetailMediaSellerAccountCreationV2.md
 docs/Model/FilesVariableValue.md
 docs/Model/FlightLeg.md
 docs/Model/FlightSchedule.md
+docs/Model/GrantConsentInput.md
+docs/Model/GrantConsentModel.md
+docs/Model/GrantConsentModelValueResource.md
 docs/Model/HyperlinkVariableValue.md
 docs/Model/InbotDiscussion.md
 docs/Model/InbotDiscussionBodyModel.md
@@ -456,6 +459,9 @@ lib/Model/ExternalRetailMediaSellerAccountCreationV2.php
 lib/Model/FilesVariableValue.php
 lib/Model/FlightLeg.php
 lib/Model/FlightSchedule.php
+lib/Model/GrantConsentInput.php
+lib/Model/GrantConsentModel.php
+lib/Model/GrantConsentModelValueResource.php
 lib/Model/HyperlinkVariableValue.php
 lib/Model/InbotDiscussion.php
 lib/Model/InbotDiscussionBodyModel.php
