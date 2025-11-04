@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_strategy** | **string** | The bidding strategy to use for this line item.  Default value is Conversion. | [optional] [default to 'conversion']
+**bid_strategy** | **string** | The bidding strategy for this line item.  Default value is manual. | [optional] [default to 'manual']
 **budget** | **float** | The total budget allocated for this line item. | [optional]
 **daily_pacing** | **float** | The daily pacing limit for budget spending. | [optional]
 **end_date** | **\DateTime** | The date and time when the line item stops running. | [optional]
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **max_bid** | **float** | The maximum bid amount allowed for this line item. | [optional]
 **monthly_pacing** | **float** | The monthly pacing limit for budget spending. | [optional]
 **name** | **string** | The name of the line item. |
-**optimization_strategy** | **string** |  | [optional] [default to 'manual']
+**optimization_strategy** | **string** | The optimization strategy to use for this line item.  Default value is Conversion. | [optional] [default to 'conversion']
 **start_date** | **\DateTime** | The date and time when the line item starts running. |
 **target_bid** | **float** | The target bid amount for the line item. | [optional]
 **target_retailer_id** | **string** | The ID of the retailer to target for this line item. |

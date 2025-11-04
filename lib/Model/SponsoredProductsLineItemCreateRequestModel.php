@@ -307,14 +307,14 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_CONVERSION = 'conversion';
-    public const BID_STRATEGY_CLICKS = 'clicks';
-    public const BID_STRATEGY_REVENUE = 'revenue';
+    public const BID_STRATEGY_MANUAL = 'manual';
+    public const BID_STRATEGY_AUTOMATED = 'automated';
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
-    public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
-    public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
+    public const OPTIMIZATION_STRATEGY_CONVERSION = 'conversion';
+    public const OPTIMIZATION_STRATEGY_CLICKS = 'clicks';
+    public const OPTIMIZATION_STRATEGY_REVENUE = 'revenue';
 
     /**
      * Gets allowable values of the enum
@@ -324,9 +324,8 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     public function getBidStrategyAllowableValues()
     {
         return [
-            self::BID_STRATEGY_CONVERSION,
-            self::BID_STRATEGY_CLICKS,
-            self::BID_STRATEGY_REVENUE,
+            self::BID_STRATEGY_MANUAL,
+            self::BID_STRATEGY_AUTOMATED,
         ];
     }
 
@@ -352,8 +351,9 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     public function getOptimizationStrategyAllowableValues()
     {
         return [
-            self::OPTIMIZATION_STRATEGY_MANUAL,
-            self::OPTIMIZATION_STRATEGY_AUTOMATED,
+            self::OPTIMIZATION_STRATEGY_CONVERSION,
+            self::OPTIMIZATION_STRATEGY_CLICKS,
+            self::OPTIMIZATION_STRATEGY_REVENUE,
         ];
     }
 
@@ -372,7 +372,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('bid_strategy', $data ?? [], 'conversion');
+        $this->setIfExists('bid_strategy', $data ?? [], 'manual');
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('daily_pacing', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
@@ -382,7 +382,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
         $this->setIfExists('max_bid', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('optimization_strategy', $data ?? [], 'manual');
+        $this->setIfExists('optimization_strategy', $data ?? [], 'conversion');
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('target_bid', $data ?? [], null);
         $this->setIfExists('target_retailer_id', $data ?? [], null);
@@ -487,7 +487,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy The bidding strategy to use for this line item.  Default value is Conversion.
+     * @param string|null $bid_strategy The bidding strategy for this line item.  Default value is manual.
      *
      * @return self
      */
@@ -833,7 +833,7 @@ class SponsoredProductsLineItemCreateRequestModel implements ModelInterface, Arr
     /**
      * Sets optimization_strategy
      *
-     * @param string|null $optimization_strategy optimization_strategy
+     * @param string|null $optimization_strategy The optimization strategy to use for this line item.  Default value is Conversion.
      *
      * @return self
      */

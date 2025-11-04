@@ -343,16 +343,16 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const BID_STRATEGY_CONVERSION = 'conversion';
-    public const BID_STRATEGY_CLICKS = 'clicks';
-    public const BID_STRATEGY_REVENUE = 'revenue';
+    public const BID_STRATEGY_MANUAL = 'manual';
+    public const BID_STRATEGY_AUTOMATED = 'automated';
     public const BID_STRATEGY_UNKNOWN = 'unknown';
     public const KEYWORD_STRATEGY_UNKNOWN = 'unknown';
     public const KEYWORD_STRATEGY_CONQUESTING = 'conquesting';
     public const KEYWORD_STRATEGY_GENERIC_AND_BRANDED = 'genericAndBranded';
     public const KEYWORD_STRATEGY_GENERIC_BRANDED_AND_CONQUESTING = 'genericBrandedAndConquesting';
-    public const OPTIMIZATION_STRATEGY_MANUAL = 'manual';
-    public const OPTIMIZATION_STRATEGY_AUTOMATED = 'automated';
+    public const OPTIMIZATION_STRATEGY_CONVERSION = 'conversion';
+    public const OPTIMIZATION_STRATEGY_CLICKS = 'clicks';
+    public const OPTIMIZATION_STRATEGY_REVENUE = 'revenue';
     public const OPTIMIZATION_STRATEGY_UNKNOWN = 'unknown';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_ACTIVE = 'active';
@@ -372,9 +372,8 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public function getBidStrategyAllowableValues()
     {
         return [
-            self::BID_STRATEGY_CONVERSION,
-            self::BID_STRATEGY_CLICKS,
-            self::BID_STRATEGY_REVENUE,
+            self::BID_STRATEGY_MANUAL,
+            self::BID_STRATEGY_AUTOMATED,
             self::BID_STRATEGY_UNKNOWN,
         ];
     }
@@ -402,8 +401,9 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public function getOptimizationStrategyAllowableValues()
     {
         return [
-            self::OPTIMIZATION_STRATEGY_MANUAL,
-            self::OPTIMIZATION_STRATEGY_AUTOMATED,
+            self::OPTIMIZATION_STRATEGY_CONVERSION,
+            self::OPTIMIZATION_STRATEGY_CLICKS,
+            self::OPTIMIZATION_STRATEGY_REVENUE,
             self::OPTIMIZATION_STRATEGY_UNKNOWN,
         ];
     }
@@ -585,7 +585,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy Optional field.
+     * @param string|null $bid_strategy Bid strategy for the line item.
      *
      * @return self
      */
@@ -1067,7 +1067,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets optimization_strategy
      *
-     * @param string|null $optimization_strategy Optimization strategy for the line item.
+     * @param string|null $optimization_strategy The optimization strategy for this line item.
      *
      * @return self
      */

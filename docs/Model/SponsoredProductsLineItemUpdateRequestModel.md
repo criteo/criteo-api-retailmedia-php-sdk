@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bid_strategy** | **string** | The bidding strategy for the line item. | [optional] [default to 'conversion']
+**bid_strategy** | **string** | The bid strategy for the line item. | [optional] [default to 'manual']
 **budget** | **float** | The total budget allocated for this line item. | [optional]
 **daily_pacing** | **float** | The daily pacing amount for the line item. | [optional]
 **end_date** | **\DateTime** | The date and time when the line item stops running. | [optional]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **max_bid** | **float** | The maximum bid amount for the line item. | [optional]
 **monthly_pacing** | **float** | The monthly pacing amount for the line item. | [optional]
 **name** | **string** | The name of this line item. |
-**optimization_strategy** | **string** | The optimization strategy for the line item. | [optional] [default to 'manual']
+**optimization_strategy** | **string** | The optimization strategy for the line item. | [optional] [default to 'conversion']
 **start_date** | **\DateTime** | The date and time when the line item starts running. |
 **status** | **string** | The current status of the line item. |
 **target_bid** | **float** | The target bid amount for the line item. | [optional]
