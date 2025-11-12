@@ -122,7 +122,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **retailer_id** | **int**| The retailer for which these buy box winners will be set | |
-| **value_resource_input_set_sku_buy_box_winners_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest**](../Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.md)|  | [optional] |
+| **value_resource_input_set_sku_buy_box_winners_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest**](../Model/ValueResourceInputSetSkuBuyBoxWinnersRequest.md)|  | |
 
 ### Return type
 

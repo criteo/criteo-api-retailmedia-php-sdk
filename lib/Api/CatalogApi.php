@@ -434,14 +434,14 @@ class CatalogApi
      * Operation offerSetBbwV1
      *
      * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request value_resource_input_set_sku_buy_box_winners_request (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request value_resource_input_set_sku_buy_box_winners_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse
      */
-    public function offerSetBbwV1($retailer_id, $value_resource_input_set_sku_buy_box_winners_request = null, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
         list($response) = $this->offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
         return $response;
@@ -451,14 +451,14 @@ class CatalogApi
      * Operation offerSetBbwV1WithHttpInfo
      *
      * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request = null, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
         $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
 
@@ -550,13 +550,13 @@ class CatalogApi
      * Operation offerSetBbwV1Async
      *
      * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerSetBbwV1Async($retailer_id, $value_resource_input_set_sku_buy_box_winners_request = null, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1Async($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
         return $this->offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType)
             ->then(
@@ -570,13 +570,13 @@ class CatalogApi
      * Operation offerSetBbwV1AsyncWithHttpInfo
      *
      * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request = null, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
         $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
@@ -621,13 +621,13 @@ class CatalogApi
      * Create request for operation 'offerSetBbwV1'
      *
      * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request = null, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
@@ -637,6 +637,12 @@ class CatalogApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_set_sku_buy_box_winners_request' is set
+        if ($value_resource_input_set_sku_buy_box_winners_request === null || (is_array($value_resource_input_set_sku_buy_box_winners_request) && count($value_resource_input_set_sku_buy_box_winners_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_set_sku_buy_box_winners_request when calling offerSetBbwV1'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners';

@@ -283,7 +283,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| The given campaign id | |
-| **value_resource_input_of_sponsored_products_line_item_create_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md)| The line item settings to create a line item with | [optional] |
+| **value_resource_input_of_sponsored_products_line_item_create_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -348,7 +348,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| External account id to create a creative for | |
-| **creative_create_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeCreateModel2**](../Model/CreativeCreateModel2.md)| The creative to create | [optional] |
+| **creative_create_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeCreateModel2**](../Model/CreativeCreateModel2.md)| The creative to create | |
 
 ### Return type
 
@@ -413,7 +413,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **campaign_id** | **string**| The given campaign id | |
-| **preferred_line_item_create_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request**](../Model/PreferredLineItemCreateModelV2Request.md)| The line item settings to create a line item with | [optional] |
+| **preferred_line_item_create_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request**](../Model/PreferredLineItemCreateModelV2Request.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -1521,7 +1521,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **retailer_id** | **int**| Retailer id. | |
-| **value_resource_input_recommended_categories_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1**](../Model/ValueResourceInputRecommendedCategoriesRequestV1.md)| Request of recommended categories. | [optional] |
+| **value_resource_input_recommended_categories_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1**](../Model/ValueResourceInputRecommendedCategoriesRequestV1.md)| Request of recommended categories. | |
 
 ### Return type
 
@@ -1784,7 +1784,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **retailer_id** | **string**| Retailer id. | |
-| **value_resource_input_recommended_keywords_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1**](../Model/ValueResourceInputRecommendedKeywordsRequestV1.md)| Request of recommended keywords. | [optional] |
+| **value_resource_input_recommended_keywords_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1**](../Model/ValueResourceInputRecommendedKeywordsRequestV1.md)| Request of recommended keywords. | |
 
 ### Return type
 
@@ -2183,7 +2183,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **int**| The external line item ID of the sponsored products line item. | |
-| **value_resource_input_of_sponsored_products_line_item_update_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | [optional] |
+| **value_resource_input_of_sponsored_products_line_item_update_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | |
 
 ### Return type
 
@@ -2250,7 +2250,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| External account id containing the creative | |
 | **creative_id** | **string**| Creative to update | |
-| **creative_update_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeUpdateModel2**](../Model/CreativeUpdateModel2.md)| The creative to create | [optional] |
+| **creative_update_model2** | [**\criteo\api\retailmedia\preview\Model\CreativeUpdateModel2**](../Model/CreativeUpdateModel2.md)| The creative to create | |
 
 ### Return type
 
@@ -2315,7 +2315,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The given line item id | |
-| **preferred_line_item_update_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request**](../Model/PreferredLineItemUpdateModelV2Request.md)| The line item settings to create a line item with | [optional] |
+| **preferred_line_item_update_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request**](../Model/PreferredLineItemUpdateModelV2Request.md)| The line item settings to create a line item with | |
 
 ### Return type
 
@@ -2382,7 +2382,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| LineItemId for productButton update | |
 | **product_button_id** | **string**| productButtonId used for update | |
-| **product_button_request_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest**](../Model/ProductButtonRequestRequest.md)| Specific Product button update info | [optional] |
+| **product_button_request_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest**](../Model/ProductButtonRequestRequest.md)| Specific Product button update info | |
 
 ### Return type
 

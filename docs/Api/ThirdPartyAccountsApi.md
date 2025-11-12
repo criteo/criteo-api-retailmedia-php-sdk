@@ -382,7 +382,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| accountId to update sellers for | |
-| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
+| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | |
 
 ### Return type
 

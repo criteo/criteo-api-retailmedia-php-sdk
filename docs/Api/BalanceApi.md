@@ -60,7 +60,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | [optional] |
+| **change_dates_of_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request**](../Model/ChangeDatesOfBalanceV2Request.md)| An object that represents the available options to modify schedule of a balance. | |
 
 ### Return type
 
@@ -125,7 +125,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to create balances for | |
-| **create_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | [optional] |
+| **create_balance_v2_request** | [**\criteo\api\retailmedia\preview\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
 
 ### Return type
 
@@ -395,7 +395,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | [optional] |
+| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
 
 ### Return type
 

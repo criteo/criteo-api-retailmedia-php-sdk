@@ -1119,14 +1119,14 @@ class CampaignApi
      * Operation createAuctionLineItemV2
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem
      */
-    public function createAuctionLineItemV2($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model = null, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemV2($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
     {
         list($response) = $this->createAuctionLineItemV2WithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
         return $response;
@@ -1136,14 +1136,14 @@ class CampaignApi
      * Operation createAuctionLineItemV2WithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAuctionLineItemV2WithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model = null, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemV2WithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
     {
         $request = $this->createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
 
@@ -1235,13 +1235,13 @@ class CampaignApi
      * Operation createAuctionLineItemV2Async
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuctionLineItemV2Async($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model = null, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemV2Async($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
     {
         return $this->createAuctionLineItemV2AsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType)
             ->then(
@@ -1255,13 +1255,13 @@ class CampaignApi
      * Operation createAuctionLineItemV2AsyncWithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuctionLineItemV2AsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model = null, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemV2AsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem';
         $request = $this->createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
@@ -1306,13 +1306,13 @@ class CampaignApi
      * Create request for operation 'createAuctionLineItemV2'
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model = null, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
@@ -1322,6 +1322,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_of_sponsored_products_line_item_create_request_model' is set
+        if ($value_resource_input_of_sponsored_products_line_item_create_request_model === null || (is_array($value_resource_input_of_sponsored_products_line_item_create_request_model) && count($value_resource_input_of_sponsored_products_line_item_create_request_model) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_create_request_model when calling createAuctionLineItemV2'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/campaigns/{campaignId}/auction-line-items';
@@ -1415,14 +1421,14 @@ class CampaignApi
      * Operation createCreative
      *
      * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\Creative2Response
      */
-    public function createCreative($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    public function createCreative($account_id, $creative_create_model2, string $contentType = self::contentTypes['createCreative'][0])
     {
         list($response) = $this->createCreativeWithHttpInfo($account_id, $creative_create_model2, $contentType);
         return $response;
@@ -1432,14 +1438,14 @@ class CampaignApi
      * Operation createCreativeWithHttpInfo
      *
      * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCreativeWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    public function createCreativeWithHttpInfo($account_id, $creative_create_model2, string $contentType = self::contentTypes['createCreative'][0])
     {
         $request = $this->createCreativeRequest($account_id, $creative_create_model2, $contentType);
 
@@ -1531,13 +1537,13 @@ class CampaignApi
      * Operation createCreativeAsync
      *
      * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCreativeAsync($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    public function createCreativeAsync($account_id, $creative_create_model2, string $contentType = self::contentTypes['createCreative'][0])
     {
         return $this->createCreativeAsyncWithHttpInfo($account_id, $creative_create_model2, $contentType)
             ->then(
@@ -1551,13 +1557,13 @@ class CampaignApi
      * Operation createCreativeAsyncWithHttpInfo
      *
      * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCreativeAsyncWithHttpInfo($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    public function createCreativeAsyncWithHttpInfo($account_id, $creative_create_model2, string $contentType = self::contentTypes['createCreative'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
         $request = $this->createCreativeRequest($account_id, $creative_create_model2, $contentType);
@@ -1602,13 +1608,13 @@ class CampaignApi
      * Create request for operation 'createCreative'
      *
      * @param  string $account_id External account id to create a creative for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCreativeRequest($account_id, $creative_create_model2 = null, string $contentType = self::contentTypes['createCreative'][0])
+    public function createCreativeRequest($account_id, $creative_create_model2, string $contentType = self::contentTypes['createCreative'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1618,6 +1624,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'creative_create_model2' is set
+        if ($creative_create_model2 === null || (is_array($creative_create_model2) && count($creative_create_model2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $creative_create_model2 when calling createCreative'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives';
@@ -1711,14 +1723,14 @@ class CampaignApi
      * Operation createPreferredLineItemByCampaignId
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
      */
-    public function createPreferredLineItemByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
+    public function createPreferredLineItemByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
     {
         list($response) = $this->createPreferredLineItemByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
         return $response;
@@ -1728,14 +1740,14 @@ class CampaignApi
      * Operation createPreferredLineItemByCampaignIdWithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPreferredLineItemByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
+    public function createPreferredLineItemByCampaignIdWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
     {
         $request = $this->createPreferredLineItemByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
 
@@ -1827,13 +1839,13 @@ class CampaignApi
      * Operation createPreferredLineItemByCampaignIdAsync
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPreferredLineItemByCampaignIdAsync($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
+    public function createPreferredLineItemByCampaignIdAsync($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
     {
         return $this->createPreferredLineItemByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, $contentType)
             ->then(
@@ -1847,13 +1859,13 @@ class CampaignApi
      * Operation createPreferredLineItemByCampaignIdAsyncWithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPreferredLineItemByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
+    public function createPreferredLineItemByCampaignIdAsyncWithHttpInfo($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
         $request = $this->createPreferredLineItemByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, $contentType);
@@ -1898,13 +1910,13 @@ class CampaignApi
      * Create request for operation 'createPreferredLineItemByCampaignId'
      *
      * @param  string $campaign_id The given campaign id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPreferredLineItemByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request = null, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
+    public function createPreferredLineItemByCampaignIdRequest($campaign_id, $preferred_line_item_create_model_v2_request, string $contentType = self::contentTypes['createPreferredLineItemByCampaignId'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
@@ -1914,6 +1926,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'preferred_line_item_create_model_v2_request' is set
+        if ($preferred_line_item_create_model_v2_request === null || (is_array($preferred_line_item_create_model_v2_request) && count($preferred_line_item_create_model_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $preferred_line_item_create_model_v2_request when calling createPreferredLineItemByCampaignId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/campaigns/{campaign-id}/preferred-line-items';
@@ -6797,14 +6815,14 @@ class CampaignApi
      * Operation getRecommendedCategories
      *
      * @param  int $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCategory202204
      */
-    public function getRecommendedCategories($retailer_id, $value_resource_input_recommended_categories_request_v1 = null, string $contentType = self::contentTypes['getRecommendedCategories'][0])
+    public function getRecommendedCategories($retailer_id, $value_resource_input_recommended_categories_request_v1, string $contentType = self::contentTypes['getRecommendedCategories'][0])
     {
         list($response) = $this->getRecommendedCategoriesWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1, $contentType);
         return $response;
@@ -6814,14 +6832,14 @@ class CampaignApi
      * Operation getRecommendedCategoriesWithHttpInfo
      *
      * @param  int $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCategory202204, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecommendedCategoriesWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1 = null, string $contentType = self::contentTypes['getRecommendedCategories'][0])
+    public function getRecommendedCategoriesWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1, string $contentType = self::contentTypes['getRecommendedCategories'][0])
     {
         $request = $this->getRecommendedCategoriesRequest($retailer_id, $value_resource_input_recommended_categories_request_v1, $contentType);
 
@@ -6913,13 +6931,13 @@ class CampaignApi
      * Operation getRecommendedCategoriesAsync
      *
      * @param  int $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecommendedCategoriesAsync($retailer_id, $value_resource_input_recommended_categories_request_v1 = null, string $contentType = self::contentTypes['getRecommendedCategories'][0])
+    public function getRecommendedCategoriesAsync($retailer_id, $value_resource_input_recommended_categories_request_v1, string $contentType = self::contentTypes['getRecommendedCategories'][0])
     {
         return $this->getRecommendedCategoriesAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1, $contentType)
             ->then(
@@ -6933,13 +6951,13 @@ class CampaignApi
      * Operation getRecommendedCategoriesAsyncWithHttpInfo
      *
      * @param  int $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecommendedCategoriesAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1 = null, string $contentType = self::contentTypes['getRecommendedCategories'][0])
+    public function getRecommendedCategoriesAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_categories_request_v1, string $contentType = self::contentTypes['getRecommendedCategories'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCategory202204';
         $request = $this->getRecommendedCategoriesRequest($retailer_id, $value_resource_input_recommended_categories_request_v1, $contentType);
@@ -6984,13 +7002,13 @@ class CampaignApi
      * Create request for operation 'getRecommendedCategories'
      *
      * @param  int $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRecommendedCategoriesRequest($retailer_id, $value_resource_input_recommended_categories_request_v1 = null, string $contentType = self::contentTypes['getRecommendedCategories'][0])
+    public function getRecommendedCategoriesRequest($retailer_id, $value_resource_input_recommended_categories_request_v1, string $contentType = self::contentTypes['getRecommendedCategories'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
@@ -7000,6 +7018,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_recommended_categories_request_v1' is set
+        if ($value_resource_input_recommended_categories_request_v1 === null || (is_array($value_resource_input_recommended_categories_request_v1) && count($value_resource_input_recommended_categories_request_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_recommended_categories_request_v1 when calling getRecommendedCategories'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/retailers/{retailerId}/recommend-categories';
@@ -7971,14 +7995,14 @@ class CampaignApi
      * Operation recommendedKeywords
      *
      * @param  string $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRecommendedKeywordsResponseV1
      */
-    public function recommendedKeywords($retailer_id, $value_resource_input_recommended_keywords_request_v1 = null, string $contentType = self::contentTypes['recommendedKeywords'][0])
+    public function recommendedKeywords($retailer_id, $value_resource_input_recommended_keywords_request_v1, string $contentType = self::contentTypes['recommendedKeywords'][0])
     {
         list($response) = $this->recommendedKeywordsWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1, $contentType);
         return $response;
@@ -7988,14 +8012,14 @@ class CampaignApi
      * Operation recommendedKeywordsWithHttpInfo
      *
      * @param  string $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRecommendedKeywordsResponseV1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function recommendedKeywordsWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1 = null, string $contentType = self::contentTypes['recommendedKeywords'][0])
+    public function recommendedKeywordsWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1, string $contentType = self::contentTypes['recommendedKeywords'][0])
     {
         $request = $this->recommendedKeywordsRequest($retailer_id, $value_resource_input_recommended_keywords_request_v1, $contentType);
 
@@ -8087,13 +8111,13 @@ class CampaignApi
      * Operation recommendedKeywordsAsync
      *
      * @param  string $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recommendedKeywordsAsync($retailer_id, $value_resource_input_recommended_keywords_request_v1 = null, string $contentType = self::contentTypes['recommendedKeywords'][0])
+    public function recommendedKeywordsAsync($retailer_id, $value_resource_input_recommended_keywords_request_v1, string $contentType = self::contentTypes['recommendedKeywords'][0])
     {
         return $this->recommendedKeywordsAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1, $contentType)
             ->then(
@@ -8107,13 +8131,13 @@ class CampaignApi
      * Operation recommendedKeywordsAsyncWithHttpInfo
      *
      * @param  string $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recommendedKeywordsAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1 = null, string $contentType = self::contentTypes['recommendedKeywords'][0])
+    public function recommendedKeywordsAsyncWithHttpInfo($retailer_id, $value_resource_input_recommended_keywords_request_v1, string $contentType = self::contentTypes['recommendedKeywords'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeRecommendedKeywordsResponseV1';
         $request = $this->recommendedKeywordsRequest($retailer_id, $value_resource_input_recommended_keywords_request_v1, $contentType);
@@ -8158,13 +8182,13 @@ class CampaignApi
      * Create request for operation 'recommendedKeywords'
      *
      * @param  string $retailer_id Retailer id. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function recommendedKeywordsRequest($retailer_id, $value_resource_input_recommended_keywords_request_v1 = null, string $contentType = self::contentTypes['recommendedKeywords'][0])
+    public function recommendedKeywordsRequest($retailer_id, $value_resource_input_recommended_keywords_request_v1, string $contentType = self::contentTypes['recommendedKeywords'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
@@ -8174,6 +8198,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_recommended_keywords_request_v1' is set
+        if ($value_resource_input_recommended_keywords_request_v1 === null || (is_array($value_resource_input_recommended_keywords_request_v1) && count($value_resource_input_recommended_keywords_request_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_recommended_keywords_request_v1 when calling recommendedKeywords'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/retailers/{retailerId}/recommend-keywords';
@@ -9801,14 +9831,14 @@ class CampaignApi
      * Operation updateAuctionLineItemV2
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem
      */
-    public function updateAuctionLineItemV2($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model = null, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemV2($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
     {
         list($response) = $this->updateAuctionLineItemV2WithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
         return $response;
@@ -9818,14 +9848,14 @@ class CampaignApi
      * Operation updateAuctionLineItemV2WithHttpInfo
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAuctionLineItemV2WithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model = null, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemV2WithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
     {
         $request = $this->updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
 
@@ -9917,13 +9947,13 @@ class CampaignApi
      * Operation updateAuctionLineItemV2Async
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAuctionLineItemV2Async($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model = null, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemV2Async($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
     {
         return $this->updateAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType)
             ->then(
@@ -9937,13 +9967,13 @@ class CampaignApi
      * Operation updateAuctionLineItemV2AsyncWithHttpInfo
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model = null, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem';
         $request = $this->updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
@@ -9988,13 +10018,13 @@ class CampaignApi
      * Create request for operation 'updateAuctionLineItemV2'
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model = null, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -10004,6 +10034,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_of_sponsored_products_line_item_update_request_model' is set
+        if ($value_resource_input_of_sponsored_products_line_item_update_request_model === null || (is_array($value_resource_input_of_sponsored_products_line_item_update_request_model) && count($value_resource_input_of_sponsored_products_line_item_update_request_model) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_update_request_model when calling updateAuctionLineItemV2'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/auction-line-items/{lineItemId}';
@@ -10098,14 +10134,14 @@ class CampaignApi
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\Creative2Response
      */
-    public function updateCreative($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    public function updateCreative($account_id, $creative_id, $creative_update_model2, string $contentType = self::contentTypes['updateCreative'][0])
     {
         list($response) = $this->updateCreativeWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType);
         return $response;
@@ -10116,14 +10152,14 @@ class CampaignApi
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\Creative2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCreativeWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    public function updateCreativeWithHttpInfo($account_id, $creative_id, $creative_update_model2, string $contentType = self::contentTypes['updateCreative'][0])
     {
         $request = $this->updateCreativeRequest($account_id, $creative_id, $creative_update_model2, $contentType);
 
@@ -10216,13 +10252,13 @@ class CampaignApi
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCreativeAsync($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    public function updateCreativeAsync($account_id, $creative_id, $creative_update_model2, string $contentType = self::contentTypes['updateCreative'][0])
     {
         return $this->updateCreativeAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2, $contentType)
             ->then(
@@ -10237,13 +10273,13 @@ class CampaignApi
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCreativeAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    public function updateCreativeAsyncWithHttpInfo($account_id, $creative_id, $creative_update_model2, string $contentType = self::contentTypes['updateCreative'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\Creative2Response';
         $request = $this->updateCreativeRequest($account_id, $creative_id, $creative_update_model2, $contentType);
@@ -10289,13 +10325,13 @@ class CampaignApi
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreative'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCreativeRequest($account_id, $creative_id, $creative_update_model2 = null, string $contentType = self::contentTypes['updateCreative'][0])
+    public function updateCreativeRequest($account_id, $creative_id, $creative_update_model2, string $contentType = self::contentTypes['updateCreative'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -10312,6 +10348,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'creative_update_model2' is set
+        if ($creative_update_model2 === null || (is_array($creative_update_model2) && count($creative_update_model2) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $creative_update_model2 when calling updateCreative'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/{creative-id}';
@@ -10413,14 +10455,14 @@ class CampaignApi
      * Operation updatePreferredLineItemByLineItemId
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response
      */
-    public function updatePreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
+    public function updatePreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
     {
         list($response) = $this->updatePreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
         return $response;
@@ -10430,14 +10472,14 @@ class CampaignApi
      * Operation updatePreferredLineItemByLineItemIdWithHttpInfo
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updatePreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
+    public function updatePreferredLineItemByLineItemIdWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
     {
         $request = $this->updatePreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
 
@@ -10529,13 +10571,13 @@ class CampaignApi
      * Operation updatePreferredLineItemByLineItemIdAsync
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
+    public function updatePreferredLineItemByLineItemIdAsync($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
     {
         return $this->updatePreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, $contentType)
             ->then(
@@ -10549,13 +10591,13 @@ class CampaignApi
      * Operation updatePreferredLineItemByLineItemIdAsyncWithHttpInfo
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updatePreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
+    public function updatePreferredLineItemByLineItemIdAsyncWithHttpInfo($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response';
         $request = $this->updatePreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, $contentType);
@@ -10600,13 +10642,13 @@ class CampaignApi
      * Create request for operation 'updatePreferredLineItemByLineItemId'
      *
      * @param  string $line_item_id The given line item id (required)
-     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updatePreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request = null, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
+    public function updatePreferredLineItemByLineItemIdRequest($line_item_id, $preferred_line_item_update_model_v2_request, string $contentType = self::contentTypes['updatePreferredLineItemByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -10616,6 +10658,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'preferred_line_item_update_model_v2_request' is set
+        if ($preferred_line_item_update_model_v2_request === null || (is_array($preferred_line_item_update_model_v2_request) && count($preferred_line_item_update_model_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $preferred_line_item_update_model_v2_request when calling updatePreferredLineItemByLineItemId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/preferred-line-items/{line-item-id}';
@@ -10710,14 +10758,14 @@ class CampaignApi
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
      */
-    public function updateProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
+    public function updateProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id, $product_button_request_request, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
     {
         list($response) = $this->updateProductButtonByLineItemAndProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, $contentType);
         return $response;
@@ -10728,14 +10776,14 @@ class CampaignApi
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductButtonByLineItemAndProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
+    public function updateProductButtonByLineItemAndProductButtonIdWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
     {
         $request = $this->updateProductButtonByLineItemAndProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request, $contentType);
 
@@ -10828,13 +10876,13 @@ class CampaignApi
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductButtonByLineItemAndProductButtonIdAsync($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
+    public function updateProductButtonByLineItemAndProductButtonIdAsync($line_item_id, $product_button_id, $product_button_request_request, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
     {
         return $this->updateProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, $contentType)
             ->then(
@@ -10849,13 +10897,13 @@ class CampaignApi
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
+    public function updateProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo($line_item_id, $product_button_id, $product_button_request_request, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse';
         $request = $this->updateProductButtonByLineItemAndProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request, $contentType);
@@ -10901,13 +10949,13 @@ class CampaignApi
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateProductButtonByLineItemAndProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request = null, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
+    public function updateProductButtonByLineItemAndProductButtonIdRequest($line_item_id, $product_button_id, $product_button_request_request, string $contentType = self::contentTypes['updateProductButtonByLineItemAndProductButtonId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -10924,6 +10972,12 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'product_button_request_request' is set
+        if ($product_button_request_request === null || (is_array($product_button_request_request) && count($product_button_request_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $product_button_request_request when calling updateProductButtonByLineItemAndProductButtonId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}';

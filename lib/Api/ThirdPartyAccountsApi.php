@@ -1582,14 +1582,14 @@ class ThirdPartyAccountsApi
      * Operation previewRetailMediaThirdPartyAccountsAccountIdSellersPut
      *
      * @param  string $account_id accountId to update sellers for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
      */
-    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPut($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
+    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPut($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
     {
         list($response) = $this->previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
         return $response;
@@ -1599,14 +1599,14 @@ class ThirdPartyAccountsApi
      * Operation previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo
      *
      * @param  string $account_id accountId to update sellers for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller, HTTP status code, HTTP response headers (array of strings)
      */
-    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
+    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
     {
         $request = $this->previewRetailMediaThirdPartyAccountsAccountIdSellersPutRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
 
@@ -1698,13 +1698,13 @@ class ThirdPartyAccountsApi
      * Operation previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsync
      *
      * @param  string $account_id accountId to update sellers for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsync($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
+    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsync($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
     {
         return $this->previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType)
             ->then(
@@ -1718,13 +1718,13 @@ class ThirdPartyAccountsApi
      * Operation previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsyncWithHttpInfo
      *
      * @param  string $account_id accountId to update sellers for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
+    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
         $request = $this->previewRetailMediaThirdPartyAccountsAccountIdSellersPutRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
@@ -1769,13 +1769,13 @@ class ThirdPartyAccountsApi
      * Create request for operation 'previewRetailMediaThirdPartyAccountsAccountIdSellersPut'
      *
      * @param  string $account_id accountId to update sellers for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutRequest($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
+    public function previewRetailMediaThirdPartyAccountsAccountIdSellersPutRequest($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['previewRetailMediaThirdPartyAccountsAccountIdSellersPut'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1785,6 +1785,12 @@ class ThirdPartyAccountsApi
             );
         }
 
+        // verify the required parameter 'value_resource_collection_input_of_retail_media_seller' is set
+        if ($value_resource_collection_input_of_retail_media_seller === null || (is_array($value_resource_collection_input_of_retail_media_seller) && count($value_resource_collection_input_of_retail_media_seller) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_collection_input_of_retail_media_seller when calling previewRetailMediaThirdPartyAccountsAccountIdSellersPut'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/third-party-accounts/{accountId}/sellers';

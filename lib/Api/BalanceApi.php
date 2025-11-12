@@ -142,14 +142,14 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
-    public function changeDatesByAccountAndBalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
+    public function changeDatesByAccountAndBalanceId($account_id, $balance_id, $change_dates_of_balance_v2_request, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
         list($response) = $this->changeDatesByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
         return $response;
@@ -160,14 +160,14 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function changeDatesByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
         $request = $this->changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
 
@@ -260,13 +260,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeDatesByAccountAndBalanceIdAsync($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdAsync($account_id, $balance_id, $change_dates_of_balance_v2_request, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
         return $this->changeDatesByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType)
             ->then(
@@ -281,13 +281,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function changeDatesByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $change_dates_of_balance_v2_request, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
         $request = $this->changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, $contentType);
@@ -333,13 +333,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['changeDatesByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request = null, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
+    public function changeDatesByAccountAndBalanceIdRequest($account_id, $balance_id, $change_dates_of_balance_v2_request, string $contentType = self::contentTypes['changeDatesByAccountAndBalanceId'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -356,6 +356,12 @@ class BalanceApi
             );
         }
 
+        // verify the required parameter 'change_dates_of_balance_v2_request' is set
+        if ($change_dates_of_balance_v2_request === null || (is_array($change_dates_of_balance_v2_request) && count($change_dates_of_balance_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $change_dates_of_balance_v2_request when calling changeDatesByAccountAndBalanceId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates';
@@ -457,14 +463,14 @@ class BalanceApi
      * Operation createBalanceByAccountId
      *
      * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
-    public function createBalanceByAccountId($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    public function createBalanceByAccountId($account_id, $create_balance_v2_request, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
     {
         list($response) = $this->createBalanceByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, $contentType);
         return $response;
@@ -474,14 +480,14 @@ class BalanceApi
      * Operation createBalanceByAccountIdWithHttpInfo
      *
      * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBalanceByAccountIdWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    public function createBalanceByAccountIdWithHttpInfo($account_id, $create_balance_v2_request, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
     {
         $request = $this->createBalanceByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
 
@@ -573,13 +579,13 @@ class BalanceApi
      * Operation createBalanceByAccountIdAsync
      *
      * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBalanceByAccountIdAsync($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    public function createBalanceByAccountIdAsync($account_id, $create_balance_v2_request, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
     {
         return $this->createBalanceByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request, $contentType)
             ->then(
@@ -593,13 +599,13 @@ class BalanceApi
      * Operation createBalanceByAccountIdAsyncWithHttpInfo
      *
      * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBalanceByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    public function createBalanceByAccountIdAsyncWithHttpInfo($account_id, $create_balance_v2_request, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
         $request = $this->createBalanceByAccountIdRequest($account_id, $create_balance_v2_request, $contentType);
@@ -644,13 +650,13 @@ class BalanceApi
      * Create request for operation 'createBalanceByAccountId'
      *
      * @param  string $account_id The account to create balances for (required)
-     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createBalanceByAccountIdRequest($account_id, $create_balance_v2_request = null, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
+    public function createBalanceByAccountIdRequest($account_id, $create_balance_v2_request, string $contentType = self::contentTypes['createBalanceByAccountId'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -660,6 +666,12 @@ class BalanceApi
             );
         }
 
+        // verify the required parameter 'create_balance_v2_request' is set
+        if ($create_balance_v2_request === null || (is_array($create_balance_v2_request) && count($create_balance_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_balance_v2_request when calling createBalanceByAccountId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/balances';
@@ -1737,14 +1749,14 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response
      */
-    public function modifyBalanceByAccountAndBalanceId($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceId($account_id, $balance_id, $update_balance_model_v2_request, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
         list($response) = $this->modifyBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
         return $response;
@@ -1755,14 +1767,14 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BalanceResponseV2Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function modifyBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
         $request = $this->modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
 
@@ -1855,13 +1867,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function modifyBalanceByAccountAndBalanceIdAsync($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdAsync($account_id, $balance_id, $update_balance_model_v2_request, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
         return $this->modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, $contentType)
             ->then(
@@ -1876,13 +1888,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo($account_id, $balance_id, $update_balance_model_v2_request, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BalanceResponseV2Response';
         $request = $this->modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, $contentType);
@@ -1928,13 +1940,13 @@ class BalanceApi
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
-     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['modifyBalanceByAccountAndBalanceId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request = null, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
+    public function modifyBalanceByAccountAndBalanceIdRequest($account_id, $balance_id, $update_balance_model_v2_request, string $contentType = self::contentTypes['modifyBalanceByAccountAndBalanceId'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1951,6 +1963,12 @@ class BalanceApi
             );
         }
 
+        // verify the required parameter 'update_balance_model_v2_request' is set
+        if ($update_balance_model_v2_request === null || (is_array($update_balance_model_v2_request) && count($update_balance_model_v2_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_balance_model_v2_request when calling modifyBalanceByAccountAndBalanceId'
+            );
+        }
 
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/balances/{balance-id}';
