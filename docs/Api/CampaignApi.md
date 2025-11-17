@@ -2007,7 +2007,7 @@ try {
 ## `searchRetailersV1()`
 
 ```php
-searchRetailersV1($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+searchRetailersV1($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
 ```
 
 
@@ -2035,12 +2035,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The external account identifier
+$value_resource_input_of_retailer_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
 $limit = 5; // int | The maximum number of items to return. Must be between 1 and 10. Default is 5.
 $offset = 0; // int | The number of items to skip before starting to collect the result set. Default is 0.
-$value_resource_input_of_retailer_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
 
 try {
-    $result = $apiInstance->searchRetailersV1($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request);
+    $result = $apiInstance->searchRetailersV1($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->searchRetailersV1: ', $e->getMessage(), PHP_EOL;
@@ -2052,9 +2052,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The external account identifier | |
+| **value_resource_input_of_retailer_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest**](../Model/ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
 | **limit** | **int**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **int**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
-| **value_resource_input_of_retailer_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest**](../Model/ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | [optional] |
 
 ### Return type
 

@@ -359,7 +359,10 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     public const STATUS_SCHEDULED = 'scheduled';
     public const STATUS_DRAFT = 'draft';
     public const STATUS_PAUSED = 'paused';
-    public const STATUS_BUDGET_HIT = 'budgetHit';
+    public const STATUS_BUDGET_HIT_DAILY = 'budgetHitDaily';
+    public const STATUS_BUDGET_HIT_HOURLY = 'budgetHitHourly';
+    public const STATUS_BUDGET_HIT_MONTHLY = 'budgetHitMonthly';
+    public const STATUS_BUDGET_HIT_TOTAL = 'budgetHitTotal';
     public const STATUS_ENDED = 'ended';
     public const STATUS_ARCHIVED = 'archived';
     public const STATUS_NO_FUNDS = 'noFunds';
@@ -421,7 +424,10 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
             self::STATUS_SCHEDULED,
             self::STATUS_DRAFT,
             self::STATUS_PAUSED,
-            self::STATUS_BUDGET_HIT,
+            self::STATUS_BUDGET_HIT_DAILY,
+            self::STATUS_BUDGET_HIT_HOURLY,
+            self::STATUS_BUDGET_HIT_MONTHLY,
+            self::STATUS_BUDGET_HIT_TOTAL,
             self::STATUS_ENDED,
             self::STATUS_ARCHIVED,
             self::STATUS_NO_FUNDS,

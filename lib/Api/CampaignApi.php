@@ -9251,18 +9251,18 @@ class CampaignApi
      * Operation searchRetailersV1
      *
      * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
      */
-    public function searchRetailersV1($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    public function searchRetailersV1($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
     {
-        list($response) = $this->searchRetailersV1WithHttpInfo($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+        list($response) = $this->searchRetailersV1WithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -9270,18 +9270,18 @@ class CampaignApi
      * Operation searchRetailersV1WithHttpInfo
      *
      * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchRetailersV1WithHttpInfo($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    public function searchRetailersV1WithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
     {
-        $request = $this->searchRetailersV1Request($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+        $request = $this->searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9371,17 +9371,17 @@ class CampaignApi
      * Operation searchRetailersV1Async
      *
      * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchRetailersV1Async($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    public function searchRetailersV1Async($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
     {
-        return $this->searchRetailersV1AsyncWithHttpInfo($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType)
+        return $this->searchRetailersV1AsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9393,18 +9393,18 @@ class CampaignApi
      * Operation searchRetailersV1AsyncWithHttpInfo
      *
      * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchRetailersV1AsyncWithHttpInfo($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    public function searchRetailersV1AsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
-        $request = $this->searchRetailersV1Request($account_id, $limit, $offset, $value_resource_input_of_retailer_search_request, $contentType);
+        $request = $this->searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9446,21 +9446,28 @@ class CampaignApi
      * Create request for operation 'searchRetailersV1'
      *
      * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
      * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchRetailersV1Request($account_id, $limit = 5, $offset = 0, $value_resource_input_of_retailer_search_request = null, string $contentType = self::contentTypes['searchRetailersV1'][0])
+    public function searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $account_id when calling searchRetailersV1'
+            );
+        }
+
+        // verify the required parameter 'value_resource_input_of_retailer_search_request' is set
+        if ($value_resource_input_of_retailer_search_request === null || (is_array($value_resource_input_of_retailer_search_request) && count($value_resource_input_of_retailer_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_of_retailer_search_request when calling searchRetailersV1'
             );
         }
 
@@ -9478,7 +9485,6 @@ class CampaignApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchRetailersV1, must be bigger than or equal to 0.');
         }
         
-
 
         $resourcePath = '/preview/retail-media/accounts/{accountId}/retailers/search';
         $formParams = [];
