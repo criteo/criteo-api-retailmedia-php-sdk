@@ -64,6 +64,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'category_id' => 'string',
         'description' => 'string',
         'gtin' => 'string',
+        'id' => 'string',
         'image_url' => 'string',
         'is_buybox' => 'bool',
         'is_in_stock' => 'bool',
@@ -74,11 +75,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_id' => 'string',
         'price' => 'float',
         'product_page' => 'string',
+        'retailer_brand_id' => 'string',
+        'retailer_brand_name' => 'string',
         'retailer_id' => 'string',
         'retailer_name' => 'string',
         'seller_id' => 'string',
         'seller_name' => 'string',
         'sku_key' => 'string',
+        'uc_golbal_category_id' => 'string',
         'updated_at' => '\DateTime'
     ];
 
@@ -96,6 +100,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'category_id' => null,
         'description' => null,
         'gtin' => null,
+        'id' => null,
         'image_url' => null,
         'is_buybox' => null,
         'is_in_stock' => null,
@@ -106,11 +111,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_id' => null,
         'price' => 'double',
         'product_page' => null,
+        'retailer_brand_id' => null,
+        'retailer_brand_name' => null,
         'retailer_id' => null,
         'retailer_name' => null,
         'seller_id' => null,
         'seller_name' => null,
         'sku_key' => null,
+        'uc_golbal_category_id' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -123,24 +131,28 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'brand_id' => false,
 		'brand_name' => false,
 		'category' => true,
-		'category_id' => false,
+		'category_id' => true,
 		'description' => true,
 		'gtin' => true,
-		'image_url' => false,
-		'is_buybox' => false,
+		'id' => false,
+		'image_url' => true,
+		'is_buybox' => true,
 		'is_in_stock' => false,
-		'is_seller_sku' => false,
+		'is_seller_sku' => true,
 		'model_number' => true,
 		'mpn' => true,
-		'name' => false,
+		'name' => true,
 		'parent_id' => true,
 		'price' => false,
 		'product_page' => true,
+		'retailer_brand_id' => true,
+		'retailer_brand_name' => true,
 		'retailer_id' => false,
 		'retailer_name' => false,
 		'seller_id' => true,
 		'seller_name' => true,
 		'sku_key' => false,
+		'uc_golbal_category_id' => true,
 		'updated_at' => false
     ];
 
@@ -236,6 +248,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'category_id' => 'categoryId',
         'description' => 'description',
         'gtin' => 'gtin',
+        'id' => 'id',
         'image_url' => 'imageUrl',
         'is_buybox' => 'isBuybox',
         'is_in_stock' => 'isInStock',
@@ -246,11 +259,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_id' => 'parentId',
         'price' => 'price',
         'product_page' => 'productPage',
+        'retailer_brand_id' => 'retailerBrandId',
+        'retailer_brand_name' => 'retailerBrandName',
         'retailer_id' => 'retailerId',
         'retailer_name' => 'retailerName',
         'seller_id' => 'sellerId',
         'seller_name' => 'sellerName',
         'sku_key' => 'skuKey',
+        'uc_golbal_category_id' => 'ucGolbalCategoryId',
         'updated_at' => 'updatedAt'
     ];
 
@@ -266,6 +282,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'category_id' => 'setCategoryId',
         'description' => 'setDescription',
         'gtin' => 'setGtin',
+        'id' => 'setId',
         'image_url' => 'setImageUrl',
         'is_buybox' => 'setIsBuybox',
         'is_in_stock' => 'setIsInStock',
@@ -276,11 +293,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_id' => 'setParentId',
         'price' => 'setPrice',
         'product_page' => 'setProductPage',
+        'retailer_brand_id' => 'setRetailerBrandId',
+        'retailer_brand_name' => 'setRetailerBrandName',
         'retailer_id' => 'setRetailerId',
         'retailer_name' => 'setRetailerName',
         'seller_id' => 'setSellerId',
         'seller_name' => 'setSellerName',
         'sku_key' => 'setSkuKey',
+        'uc_golbal_category_id' => 'setUcGolbalCategoryId',
         'updated_at' => 'setUpdatedAt'
     ];
 
@@ -296,6 +316,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'category_id' => 'getCategoryId',
         'description' => 'getDescription',
         'gtin' => 'getGtin',
+        'id' => 'getId',
         'image_url' => 'getImageUrl',
         'is_buybox' => 'getIsBuybox',
         'is_in_stock' => 'getIsInStock',
@@ -306,11 +327,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         'parent_id' => 'getParentId',
         'price' => 'getPrice',
         'product_page' => 'getProductPage',
+        'retailer_brand_id' => 'getRetailerBrandId',
+        'retailer_brand_name' => 'getRetailerBrandName',
         'retailer_id' => 'getRetailerId',
         'retailer_name' => 'getRetailerName',
         'seller_id' => 'getSellerId',
         'seller_name' => 'getSellerName',
         'sku_key' => 'getSkuKey',
+        'uc_golbal_category_id' => 'getUcGolbalCategoryId',
         'updated_at' => 'getUpdatedAt'
     ];
 
@@ -377,6 +401,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('category_id', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('gtin', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('is_buybox', $data ?? [], null);
         $this->setIfExists('is_in_stock', $data ?? [], null);
@@ -387,11 +412,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('parent_id', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
         $this->setIfExists('product_page', $data ?? [], null);
+        $this->setIfExists('retailer_brand_id', $data ?? [], null);
+        $this->setIfExists('retailer_brand_name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('retailer_name', $data ?? [], null);
         $this->setIfExists('seller_id', $data ?? [], null);
         $this->setIfExists('seller_name', $data ?? [], null);
         $this->setIfExists('sku_key', $data ?? [], null);
+        $this->setIfExists('uc_golbal_category_id', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
 
@@ -444,9 +472,17 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'category', the character length must be bigger than or equal to 0.";
         }
 
-        if ($this->container['category_id'] === null) {
-            $invalidProperties[] = "'category_id' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
+        if ((mb_strlen($this->container['id']) > 500)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be smaller than or equal to 500.";
+        }
+
+        if ((mb_strlen($this->container['id']) < 0)) {
+            $invalidProperties[] = "invalid value for 'id', the character length must be bigger than or equal to 0.";
+        }
+
         if ($this->container['is_in_stock'] === null) {
             $invalidProperties[] = "'is_in_stock' can't be null";
         }
@@ -461,6 +497,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
         }
+        if (!is_null($this->container['retailer_brand_name']) && (mb_strlen($this->container['retailer_brand_name']) > 120)) {
+            $invalidProperties[] = "invalid value for 'retailer_brand_name', the character length must be smaller than or equal to 120.";
+        }
+
+        if (!is_null($this->container['retailer_brand_name']) && (mb_strlen($this->container['retailer_brand_name']) < 0)) {
+            $invalidProperties[] = "invalid value for 'retailer_brand_name', the character length must be bigger than or equal to 0.";
+        }
+
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
         }
@@ -601,7 +645,7 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category_id
      *
-     * @return string
+     * @return string|null
      */
     public function getCategoryId()
     {
@@ -611,14 +655,21 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_id
      *
-     * @param string $category_id The category Id.
+     * @param string|null $category_id The category Id.
      *
      * @return self
      */
     public function setCategoryId($category_id)
     {
         if (is_null($category_id)) {
-            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'category_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('category_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['category_id'] = $category_id;
 
@@ -694,6 +745,40 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The product identifier.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        if ((mb_strlen($id) > 500)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling SkuDataPreview., must be smaller than or equal to 500.');
+        }
+        if ((mb_strlen($id) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $id when calling SkuDataPreview., must be bigger than or equal to 0.');
+        }
+
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets image_url
      *
      * @return string|null
@@ -713,7 +798,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setImageUrl($image_url)
     {
         if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'image_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('image_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['image_url'] = $image_url;
 
@@ -733,14 +825,21 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_buybox
      *
-     * @param bool|null $is_buybox Whether the Sku is a Buybox Winner.
+     * @param bool|null $is_buybox whether the Sku is a Buybox Winner
      *
      * @return self
      */
     public function setIsBuybox($is_buybox)
     {
         if (is_null($is_buybox)) {
-            throw new \InvalidArgumentException('non-nullable is_buybox cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_buybox');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_buybox', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_buybox'] = $is_buybox;
 
@@ -794,7 +893,14 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setIsSellerSku($is_seller_sku)
     {
         if (is_null($is_seller_sku)) {
-            throw new \InvalidArgumentException('non-nullable is_seller_sku cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'is_seller_sku');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_seller_sku', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['is_seller_sku'] = $is_seller_sku;
 
@@ -889,12 +995,19 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        if ((mb_strlen($name) > 1000)) {
+        if (!is_null($name) && (mb_strlen($name) > 1000)) {
             throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be smaller than or equal to 1000.');
         }
-        if ((mb_strlen($name) < 0)) {
+        if (!is_null($name) && (mb_strlen($name) < 0)) {
             throw new \InvalidArgumentException('invalid length for $name when calling SkuDataPreview., must be bigger than or equal to 0.');
         }
 
@@ -994,6 +1107,81 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['product_page'] = $product_page;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_brand_id
+     *
+     * @return string|null
+     */
+    public function getRetailerBrandId()
+    {
+        return $this->container['retailer_brand_id'];
+    }
+
+    /**
+     * Sets retailer_brand_id
+     *
+     * @param string|null $retailer_brand_id The retailer brand id associated to the product.
+     *
+     * @return self
+     */
+    public function setRetailerBrandId($retailer_brand_id)
+    {
+        if (is_null($retailer_brand_id)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['retailer_brand_id'] = $retailer_brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_brand_name
+     *
+     * @return string|null
+     */
+    public function getRetailerBrandName()
+    {
+        return $this->container['retailer_brand_name'];
+    }
+
+    /**
+     * Sets retailer_brand_name
+     *
+     * @param string|null $retailer_brand_name The name of the retailer brand.
+     *
+     * @return self
+     */
+    public function setRetailerBrandName($retailer_brand_name)
+    {
+        if (is_null($retailer_brand_name)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_brand_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_brand_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        if (!is_null($retailer_brand_name) && (mb_strlen($retailer_brand_name) > 120)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_brand_name when calling SkuDataPreview., must be smaller than or equal to 120.');
+        }
+        if (!is_null($retailer_brand_name) && (mb_strlen($retailer_brand_name) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_brand_name when calling SkuDataPreview., must be bigger than or equal to 0.');
+        }
+
+        $this->container['retailer_brand_name'] = $retailer_brand_name;
 
         return $this;
     }
@@ -1150,6 +1338,40 @@ class SkuDataPreview implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable sku_key cannot be null');
         }
         $this->container['sku_key'] = $sku_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets uc_golbal_category_id
+     *
+     * @return string|null
+     */
+    public function getUcGolbalCategoryId()
+    {
+        return $this->container['uc_golbal_category_id'];
+    }
+
+    /**
+     * Sets uc_golbal_category_id
+     *
+     * @param string|null $uc_golbal_category_id The global category Id.
+     *
+     * @return self
+     */
+    public function setUcGolbalCategoryId($uc_golbal_category_id)
+    {
+        if (is_null($uc_golbal_category_id)) {
+            array_push($this->openAPINullablesSetToNull, 'uc_golbal_category_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('uc_golbal_category_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['uc_golbal_category_id'] = $uc_golbal_category_id;
 
         return $this;
     }

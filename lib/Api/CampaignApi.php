@@ -80,7 +80,7 @@ class CampaignApi
         'computeDisplayMinBidByRetailerId' => [
             'application/json',
         ],
-        'createAuctionLineItemV2' => [
+        'createAuctionLineItem' => [
             'application/json',
         ],
         'createCreative' => [
@@ -98,28 +98,28 @@ class CampaignApi
         'fetchPromotedProducts' => [
             'application/json',
         ],
-        'getApiExternalV2CatalogStatusByCatalogId' => [
+        'getApiExternalV1RetailerBrandsByRetailerId' => [
             'application/json',
         ],
-        'getApiV1ExternalRetailerBrandsByRetailerId' => [
+        'getApiExternalV1RetailerByRetailerIdSellersseller' => [
             'application/json',
         ],
-        'getApiV1ExternalRetailerByRetailerIdSellerBySeller' => [
+        'getApiExternalV1RetailerCpcRatesByRetailerId' => [
             'application/json',
         ],
-        'getApiV1ExternalRetailerCategoryCpcRatesByRetailerId' => [
+        'getApiExternalV1RetailerPlacementsByRetailerId' => [
             'application/json',
         ],
-        'getApiV1ExternalRetailerPlacementsByRetailerId' => [
+        'getAuctionLineItem' => [
             'application/json',
         ],
-        'getAuctionLineItemV2' => [
-            'application/json',
-        ],
-        'getAuctionLineItemsByCampaignIdV2' => [
+        'getAuctionLineItemsByCampaign' => [
             'application/json',
         ],
         'getCapoutHistory' => [
+            'application/json',
+        ],
+        'getCatalogStatus' => [
             'application/json',
         ],
         'getCreative' => [
@@ -143,10 +143,10 @@ class CampaignApi
         'pausePromotedProducts' => [
             'application/json',
         ],
-        'postApiV1ExternalCatalogsSkuRetrieval' => [
+        'postApiExternalV1CatalogsSkuRetrieval' => [
             'application/json',
         ],
-        'postApiV1ExternalCatalogsSkuSearch' => [
+        'postApiExternalV1CatalogsSkuSearch' => [
             'application/json',
         ],
         'recommendedKeywords' => [
@@ -155,19 +155,19 @@ class CampaignApi
         'searchAccountCreatives' => [
             'application/json',
         ],
+        'searchAccountRetailers' => [
+            'application/json',
+        ],
         'searchBrands' => [
             'application/json',
         ],
         'searchCategory' => [
             'application/json',
         ],
-        'searchRetailersV1' => [
-            'application/json',
-        ],
         'unpausePromotedProducts' => [
             'application/json',
         ],
-        'updateAuctionLineItemV2' => [
+        'updateAuctionLineItem' => [
             'application/json',
         ],
         'updateCreative' => [
@@ -1116,36 +1116,36 @@ class CampaignApi
     }
 
     /**
-     * Operation createAuctionLineItemV2
+     * Operation createAuctionLineItem
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem
      */
-    public function createAuctionLineItemV2($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItem($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItem'][0])
     {
-        list($response) = $this->createAuctionLineItemV2WithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
+        list($response) = $this->createAuctionLineItemWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
         return $response;
     }
 
     /**
-     * Operation createAuctionLineItemV2WithHttpInfo
+     * Operation createAuctionLineItemWithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAuctionLineItemV2WithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItem'][0])
     {
-        $request = $this->createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
+        $request = $this->createAuctionLineItemRequest($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1232,18 +1232,18 @@ class CampaignApi
     }
 
     /**
-     * Operation createAuctionLineItemV2Async
+     * Operation createAuctionLineItemAsync
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuctionLineItemV2Async($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemAsync($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItem'][0])
     {
-        return $this->createAuctionLineItemV2AsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType)
+        return $this->createAuctionLineItemAsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1252,19 +1252,19 @@ class CampaignApi
     }
 
     /**
-     * Operation createAuctionLineItemV2AsyncWithHttpInfo
+     * Operation createAuctionLineItemAsyncWithHttpInfo
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAuctionLineItemV2AsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemAsyncWithHttpInfo($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItem'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem';
-        $request = $this->createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
+        $request = $this->createAuctionLineItemRequest($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1303,29 +1303,29 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'createAuctionLineItemV2'
+     * Create request for operation 'createAuctionLineItem'
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAuctionLineItemV2Request($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItemV2'][0])
+    public function createAuctionLineItemRequest($campaign_id, $value_resource_input_of_sponsored_products_line_item_create_request_model, string $contentType = self::contentTypes['createAuctionLineItem'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
         if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign_id when calling createAuctionLineItemV2'
+                'Missing the required parameter $campaign_id when calling createAuctionLineItem'
             );
         }
 
         // verify the required parameter 'value_resource_input_of_sponsored_products_line_item_create_request_model' is set
         if ($value_resource_input_of_sponsored_products_line_item_create_request_model === null || (is_array($value_resource_input_of_sponsored_products_line_item_create_request_model) && count($value_resource_input_of_sponsored_products_line_item_create_request_model) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_create_request_model when calling createAuctionLineItemV2'
+                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_create_request_model when calling createAuctionLineItem'
             );
         }
 
@@ -2895,321 +2895,38 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiExternalV2CatalogStatusByCatalogId
-     *
-     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2
-     */
-    public function getApiExternalV2CatalogStatusByCatalogId($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
-    {
-        list($response) = $this->getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo($catalog_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo
-     *
-     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getApiExternalV2CatalogStatusByCatalogIdWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
-    {
-        $request = $this->getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getApiExternalV2CatalogStatusByCatalogIdAsync
-     *
-     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV2CatalogStatusByCatalogIdAsync($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
-    {
-        return $this->getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo($catalog_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo
-     *
-     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getApiExternalV2CatalogStatusByCatalogIdAsyncWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2';
-        $request = $this->getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getApiExternalV2CatalogStatusByCatalogId'
-     *
-     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getApiExternalV2CatalogStatusByCatalogIdRequest($catalog_id, string $contentType = self::contentTypes['getApiExternalV2CatalogStatusByCatalogId'][0])
-    {
-
-        // verify the required parameter 'catalog_id' is set
-        if ($catalog_id === null || (is_array($catalog_id) && count($catalog_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $catalog_id when calling getApiExternalV2CatalogStatusByCatalogId'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/catalogs/{catalogId}/status';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($catalog_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'catalogId' . '}',
-                ObjectSerializer::toPathValue($catalog_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getApiV1ExternalRetailerBrandsByRetailerId
+     * Operation getApiExternalV1RetailerBrandsByRetailerId
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
-     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
-     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'] to see the possible values for this operation
+     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerId($retailer_id, $brand_type = null, $sku_stock_type_filter = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'][0])
+    public function getApiExternalV1RetailerBrandsByRetailerId($retailer_id, $brand_type = 'uc', $sku_stock_type_filter = 'first-and-third-party', string $contentType = self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'][0])
     {
-        list($response) = $this->getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
+        list($response) = $this->getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo
+     * Operation getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
-     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
-     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'] to see the possible values for this operation
+     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\BrandPreviewListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $brand_type = null, $sku_stock_type_filter = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'][0])
+    public function getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo($retailer_id, $brand_type = 'uc', $sku_stock_type_filter = 'first-and-third-party', string $contentType = self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'][0])
     {
-        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
+        $request = $this->getApiExternalV1RetailerBrandsByRetailerIdRequest($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3296,19 +3013,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerBrandsByRetailerIdAsync
+     * Operation getApiExternalV1RetailerBrandsByRetailerIdAsync
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
-     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
-     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'] to see the possible values for this operation
+     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdAsync($retailer_id, $brand_type = null, $sku_stock_type_filter = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'][0])
+    public function getApiExternalV1RetailerBrandsByRetailerIdAsync($retailer_id, $brand_type = 'uc', $sku_stock_type_filter = 'first-and-third-party', string $contentType = self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'][0])
     {
-        return $this->getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $brand_type, $sku_stock_type_filter, $contentType)
+        return $this->getApiExternalV1RetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $brand_type, $sku_stock_type_filter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3317,20 +3034,20 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo
+     * Operation getApiExternalV1RetailerBrandsByRetailerIdAsyncWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
-     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
-     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'] to see the possible values for this operation
+     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $brand_type = null, $sku_stock_type_filter = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'][0])
+    public function getApiExternalV1RetailerBrandsByRetailerIdAsyncWithHttpInfo($retailer_id, $brand_type = 'uc', $sku_stock_type_filter = 'first-and-third-party', string $contentType = self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\BrandPreviewListResponse';
-        $request = $this->getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
+        $request = $this->getApiExternalV1RetailerBrandsByRetailerIdRequest($retailer_id, $brand_type, $sku_stock_type_filter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3369,23 +3086,23 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalRetailerBrandsByRetailerId'
+     * Create request for operation 'getApiExternalV1RetailerBrandsByRetailerId'
      *
      * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
-     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional)
-     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'] to see the possible values for this operation
+     * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
+     * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalRetailerBrandsByRetailerIdRequest($retailer_id, $brand_type = null, $sku_stock_type_filter = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerBrandsByRetailerId'][0])
+    public function getApiExternalV1RetailerBrandsByRetailerIdRequest($retailer_id, $brand_type = 'uc', $sku_stock_type_filter = 'first-and-third-party', string $contentType = self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
         if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $retailer_id when calling getApiV1ExternalRetailerBrandsByRetailerId'
+                'Missing the required parameter $retailer_id when calling getApiExternalV1RetailerBrandsByRetailerId'
             );
         }
 
@@ -3491,36 +3208,36 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerByRetailerIdSellerBySeller
+     * Operation getApiExternalV1RetailerByRetailerIdSellersseller
      *
      * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\SellerPreviewResponse
      */
-    public function getApiV1ExternalRetailerByRetailerIdSellerBySeller($retailer_id, $seller, string $contentType = self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'][0])
+    public function getApiExternalV1RetailerByRetailerIdSellersseller($retailer_id, $seller, string $contentType = self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'][0])
     {
-        list($response) = $this->getApiV1ExternalRetailerByRetailerIdSellerBySellerWithHttpInfo($retailer_id, $seller, $contentType);
+        list($response) = $this->getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo($retailer_id, $seller, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalRetailerByRetailerIdSellerBySellerWithHttpInfo
+     * Operation getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\SellerPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalRetailerByRetailerIdSellerBySellerWithHttpInfo($retailer_id, $seller, string $contentType = self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'][0])
+    public function getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo($retailer_id, $seller, string $contentType = self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'][0])
     {
-        $request = $this->getApiV1ExternalRetailerByRetailerIdSellerBySellerRequest($retailer_id, $seller, $contentType);
+        $request = $this->getApiExternalV1RetailerByRetailerIdSellerssellerRequest($retailer_id, $seller, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3607,18 +3324,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerByRetailerIdSellerBySellerAsync
+     * Operation getApiExternalV1RetailerByRetailerIdSellerssellerAsync
      *
      * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerByRetailerIdSellerBySellerAsync($retailer_id, $seller, string $contentType = self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'][0])
+    public function getApiExternalV1RetailerByRetailerIdSellerssellerAsync($retailer_id, $seller, string $contentType = self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'][0])
     {
-        return $this->getApiV1ExternalRetailerByRetailerIdSellerBySellerAsyncWithHttpInfo($retailer_id, $seller, $contentType)
+        return $this->getApiExternalV1RetailerByRetailerIdSellerssellerAsyncWithHttpInfo($retailer_id, $seller, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3627,19 +3344,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerByRetailerIdSellerBySellerAsyncWithHttpInfo
+     * Operation getApiExternalV1RetailerByRetailerIdSellerssellerAsyncWithHttpInfo
      *
      * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerByRetailerIdSellerBySellerAsyncWithHttpInfo($retailer_id, $seller, string $contentType = self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'][0])
+    public function getApiExternalV1RetailerByRetailerIdSellerssellerAsyncWithHttpInfo($retailer_id, $seller, string $contentType = self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\SellerPreviewResponse';
-        $request = $this->getApiV1ExternalRetailerByRetailerIdSellerBySellerRequest($retailer_id, $seller, $contentType);
+        $request = $this->getApiExternalV1RetailerByRetailerIdSellerssellerRequest($retailer_id, $seller, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3678,29 +3395,29 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalRetailerByRetailerIdSellerBySeller'
+     * Create request for operation 'getApiExternalV1RetailerByRetailerIdSellersseller'
      *
      * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalRetailerByRetailerIdSellerBySellerRequest($retailer_id, $seller, string $contentType = self::contentTypes['getApiV1ExternalRetailerByRetailerIdSellerBySeller'][0])
+    public function getApiExternalV1RetailerByRetailerIdSellerssellerRequest($retailer_id, $seller, string $contentType = self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
         if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $retailer_id when calling getApiV1ExternalRetailerByRetailerIdSellerBySeller'
+                'Missing the required parameter $retailer_id when calling getApiExternalV1RetailerByRetailerIdSellersseller'
             );
         }
 
         // verify the required parameter 'seller' is set
         if ($seller === null || (is_array($seller) && count($seller) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $seller when calling getApiV1ExternalRetailerByRetailerIdSellerBySeller'
+                'Missing the required parameter $seller when calling getApiExternalV1RetailerByRetailerIdSellersseller'
             );
         }
 
@@ -3794,36 +3511,36 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerCategoryCpcRatesByRetailerId
+     * Operation getApiExternalV1RetailerCpcRatesByRetailerId
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  string[] $fields The fields in the response that is to be included (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\CpcRateCardPreviewResponse
      */
-    public function getApiV1ExternalRetailerCategoryCpcRatesByRetailerId($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'][0])
+    public function getApiExternalV1RetailerCpcRatesByRetailerId($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'][0])
     {
-        list($response) = $this->getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdWithHttpInfo($retailer_id, $fields, $contentType);
+        list($response) = $this->getApiExternalV1RetailerCpcRatesByRetailerIdWithHttpInfo($retailer_id, $fields, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdWithHttpInfo
+     * Operation getApiExternalV1RetailerCpcRatesByRetailerIdWithHttpInfo
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  string[] $fields The fields in the response that is to be included (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\CpcRateCardPreviewResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdWithHttpInfo($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'][0])
+    public function getApiExternalV1RetailerCpcRatesByRetailerIdWithHttpInfo($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'][0])
     {
-        $request = $this->getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdRequest($retailer_id, $fields, $contentType);
+        $request = $this->getApiExternalV1RetailerCpcRatesByRetailerIdRequest($retailer_id, $fields, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3910,18 +3627,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsync
+     * Operation getApiExternalV1RetailerCpcRatesByRetailerIdAsync
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  string[] $fields The fields in the response that is to be included (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsync($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'][0])
+    public function getApiExternalV1RetailerCpcRatesByRetailerIdAsync($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'][0])
     {
-        return $this->getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsyncWithHttpInfo($retailer_id, $fields, $contentType)
+        return $this->getApiExternalV1RetailerCpcRatesByRetailerIdAsyncWithHttpInfo($retailer_id, $fields, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3930,19 +3647,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsyncWithHttpInfo
+     * Operation getApiExternalV1RetailerCpcRatesByRetailerIdAsyncWithHttpInfo
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  string[] $fields The fields in the response that is to be included (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdAsyncWithHttpInfo($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'][0])
+    public function getApiExternalV1RetailerCpcRatesByRetailerIdAsyncWithHttpInfo($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\CpcRateCardPreviewResponse';
-        $request = $this->getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdRequest($retailer_id, $fields, $contentType);
+        $request = $this->getApiExternalV1RetailerCpcRatesByRetailerIdRequest($retailer_id, $fields, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3981,22 +3698,22 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'
+     * Create request for operation 'getApiExternalV1RetailerCpcRatesByRetailerId'
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  string[] $fields The fields in the response that is to be included (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalRetailerCategoryCpcRatesByRetailerIdRequest($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'][0])
+    public function getApiExternalV1RetailerCpcRatesByRetailerIdRequest($retailer_id, $fields = null, string $contentType = self::contentTypes['getApiExternalV1RetailerCpcRatesByRetailerId'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
         if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $retailer_id when calling getApiV1ExternalRetailerCategoryCpcRatesByRetailerId'
+                'Missing the required parameter $retailer_id when calling getApiExternalV1RetailerCpcRatesByRetailerId'
             );
         }
 
@@ -4092,34 +3809,34 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerPlacementsByRetailerId
+     * Operation getApiExternalV1RetailerPlacementsByRetailerId
      *
      * @param  string $retailer_id The retailer id for which placements should be fetched. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\PlacementPreviewListResponse
      */
-    public function getApiV1ExternalRetailerPlacementsByRetailerId($retailer_id, string $contentType = self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'][0])
+    public function getApiExternalV1RetailerPlacementsByRetailerId($retailer_id, string $contentType = self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'][0])
     {
-        list($response) = $this->getApiV1ExternalRetailerPlacementsByRetailerIdWithHttpInfo($retailer_id, $contentType);
+        list($response) = $this->getApiExternalV1RetailerPlacementsByRetailerIdWithHttpInfo($retailer_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getApiV1ExternalRetailerPlacementsByRetailerIdWithHttpInfo
+     * Operation getApiExternalV1RetailerPlacementsByRetailerIdWithHttpInfo
      *
      * @param  string $retailer_id The retailer id for which placements should be fetched. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\PlacementPreviewListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getApiV1ExternalRetailerPlacementsByRetailerIdWithHttpInfo($retailer_id, string $contentType = self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'][0])
+    public function getApiExternalV1RetailerPlacementsByRetailerIdWithHttpInfo($retailer_id, string $contentType = self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'][0])
     {
-        $request = $this->getApiV1ExternalRetailerPlacementsByRetailerIdRequest($retailer_id, $contentType);
+        $request = $this->getApiExternalV1RetailerPlacementsByRetailerIdRequest($retailer_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4206,17 +3923,17 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerPlacementsByRetailerIdAsync
+     * Operation getApiExternalV1RetailerPlacementsByRetailerIdAsync
      *
      * @param  string $retailer_id The retailer id for which placements should be fetched. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerPlacementsByRetailerIdAsync($retailer_id, string $contentType = self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'][0])
+    public function getApiExternalV1RetailerPlacementsByRetailerIdAsync($retailer_id, string $contentType = self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'][0])
     {
-        return $this->getApiV1ExternalRetailerPlacementsByRetailerIdAsyncWithHttpInfo($retailer_id, $contentType)
+        return $this->getApiExternalV1RetailerPlacementsByRetailerIdAsyncWithHttpInfo($retailer_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4225,18 +3942,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getApiV1ExternalRetailerPlacementsByRetailerIdAsyncWithHttpInfo
+     * Operation getApiExternalV1RetailerPlacementsByRetailerIdAsyncWithHttpInfo
      *
      * @param  string $retailer_id The retailer id for which placements should be fetched. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getApiV1ExternalRetailerPlacementsByRetailerIdAsyncWithHttpInfo($retailer_id, string $contentType = self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'][0])
+    public function getApiExternalV1RetailerPlacementsByRetailerIdAsyncWithHttpInfo($retailer_id, string $contentType = self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\PlacementPreviewListResponse';
-        $request = $this->getApiV1ExternalRetailerPlacementsByRetailerIdRequest($retailer_id, $contentType);
+        $request = $this->getApiExternalV1RetailerPlacementsByRetailerIdRequest($retailer_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4275,21 +3992,21 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getApiV1ExternalRetailerPlacementsByRetailerId'
+     * Create request for operation 'getApiExternalV1RetailerPlacementsByRetailerId'
      *
      * @param  string $retailer_id The retailer id for which placements should be fetched. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getApiV1ExternalRetailerPlacementsByRetailerIdRequest($retailer_id, string $contentType = self::contentTypes['getApiV1ExternalRetailerPlacementsByRetailerId'][0])
+    public function getApiExternalV1RetailerPlacementsByRetailerIdRequest($retailer_id, string $contentType = self::contentTypes['getApiExternalV1RetailerPlacementsByRetailerId'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
         if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $retailer_id when calling getApiV1ExternalRetailerPlacementsByRetailerId'
+                'Missing the required parameter $retailer_id when calling getApiExternalV1RetailerPlacementsByRetailerId'
             );
         }
 
@@ -4375,34 +4092,34 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemV2
+     * Operation getAuctionLineItem
      *
      * @param  int $line_item_id The id of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem
      */
-    public function getAuctionLineItemV2($line_item_id, string $contentType = self::contentTypes['getAuctionLineItemV2'][0])
+    public function getAuctionLineItem($line_item_id, string $contentType = self::contentTypes['getAuctionLineItem'][0])
     {
-        list($response) = $this->getAuctionLineItemV2WithHttpInfo($line_item_id, $contentType);
+        list($response) = $this->getAuctionLineItemWithHttpInfo($line_item_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAuctionLineItemV2WithHttpInfo
+     * Operation getAuctionLineItemWithHttpInfo
      *
      * @param  int $line_item_id The id of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuctionLineItemV2WithHttpInfo($line_item_id, string $contentType = self::contentTypes['getAuctionLineItemV2'][0])
+    public function getAuctionLineItemWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getAuctionLineItem'][0])
     {
-        $request = $this->getAuctionLineItemV2Request($line_item_id, $contentType);
+        $request = $this->getAuctionLineItemRequest($line_item_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4489,17 +4206,17 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemV2Async
+     * Operation getAuctionLineItemAsync
      *
      * @param  int $line_item_id The id of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuctionLineItemV2Async($line_item_id, string $contentType = self::contentTypes['getAuctionLineItemV2'][0])
+    public function getAuctionLineItemAsync($line_item_id, string $contentType = self::contentTypes['getAuctionLineItem'][0])
     {
-        return $this->getAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $contentType)
+        return $this->getAuctionLineItemAsyncWithHttpInfo($line_item_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4508,18 +4225,18 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemV2AsyncWithHttpInfo
+     * Operation getAuctionLineItemAsyncWithHttpInfo
      *
      * @param  int $line_item_id The id of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuctionLineItemV2AsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getAuctionLineItemV2'][0])
+    public function getAuctionLineItemAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getAuctionLineItem'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem';
-        $request = $this->getAuctionLineItemV2Request($line_item_id, $contentType);
+        $request = $this->getAuctionLineItemRequest($line_item_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4558,21 +4275,21 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getAuctionLineItemV2'
+     * Create request for operation 'getAuctionLineItem'
      *
      * @param  int $line_item_id The id of the line item (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAuctionLineItemV2Request($line_item_id, string $contentType = self::contentTypes['getAuctionLineItemV2'][0])
+    public function getAuctionLineItemRequest($line_item_id, string $contentType = self::contentTypes['getAuctionLineItem'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getAuctionLineItemV2'
+                'Missing the required parameter $line_item_id when calling getAuctionLineItem'
             );
         }
 
@@ -4658,40 +4375,40 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemsByCampaignIdV2
+     * Operation getAuctionLineItemsByCampaign
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
      * @param  int $offset The (zero-based) starting offset into the collection. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaignIdV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaign'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
      */
-    public function getAuctionLineItemsByCampaignIdV2($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaignIdV2'][0])
+    public function getAuctionLineItemsByCampaign($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaign'][0])
     {
-        list($response) = $this->getAuctionLineItemsByCampaignIdV2WithHttpInfo($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
+        list($response) = $this->getAuctionLineItemsByCampaignWithHttpInfo($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAuctionLineItemsByCampaignIdV2WithHttpInfo
+     * Operation getAuctionLineItemsByCampaignWithHttpInfo
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
      * @param  int $offset The (zero-based) starting offset into the collection. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaignIdV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaign'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuctionLineItemsByCampaignIdV2WithHttpInfo($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaignIdV2'][0])
+    public function getAuctionLineItemsByCampaignWithHttpInfo($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaign'][0])
     {
-        $request = $this->getAuctionLineItemsByCampaignIdV2Request($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
+        $request = $this->getAuctionLineItemsByCampaignRequest($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4778,20 +4495,20 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemsByCampaignIdV2Async
+     * Operation getAuctionLineItemsByCampaignAsync
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
      * @param  int $offset The (zero-based) starting offset into the collection. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaignIdV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuctionLineItemsByCampaignIdV2Async($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaignIdV2'][0])
+    public function getAuctionLineItemsByCampaignAsync($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaign'][0])
     {
-        return $this->getAuctionLineItemsByCampaignIdV2AsyncWithHttpInfo($campaign_id, $limit, $limit_to_ids, $offset, $contentType)
+        return $this->getAuctionLineItemsByCampaignAsyncWithHttpInfo($campaign_id, $limit, $limit_to_ids, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4800,21 +4517,21 @@ class CampaignApi
     }
 
     /**
-     * Operation getAuctionLineItemsByCampaignIdV2AsyncWithHttpInfo
+     * Operation getAuctionLineItemsByCampaignAsyncWithHttpInfo
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
      * @param  int $offset The (zero-based) starting offset into the collection. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaignIdV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuctionLineItemsByCampaignIdV2AsyncWithHttpInfo($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaignIdV2'][0])
+    public function getAuctionLineItemsByCampaignAsyncWithHttpInfo($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaign'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata';
-        $request = $this->getAuctionLineItemsByCampaignIdV2Request($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
+        $request = $this->getAuctionLineItemsByCampaignRequest($campaign_id, $limit, $limit_to_ids, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4853,40 +4570,40 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getAuctionLineItemsByCampaignIdV2'
+     * Create request for operation 'getAuctionLineItemsByCampaign'
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
      * @param  int $offset The (zero-based) starting offset into the collection. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaignIdV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItemsByCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAuctionLineItemsByCampaignIdV2Request($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaignIdV2'][0])
+    public function getAuctionLineItemsByCampaignRequest($campaign_id, $limit = 25, $limit_to_ids = null, $offset = 0, string $contentType = self::contentTypes['getAuctionLineItemsByCampaign'][0])
     {
 
         // verify the required parameter 'campaign_id' is set
         if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $campaign_id when calling getAuctionLineItemsByCampaignIdV2'
+                'Missing the required parameter $campaign_id when calling getAuctionLineItemsByCampaign'
             );
         }
 
         if ($limit !== null && $limit > 500) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.getAuctionLineItemsByCampaignIdV2, must be smaller than or equal to 500.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.getAuctionLineItemsByCampaign, must be smaller than or equal to 500.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.getAuctionLineItemsByCampaignIdV2, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.getAuctionLineItemsByCampaign, must be bigger than or equal to 1.');
         }
         
 
         if ($offset !== null && $offset > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.getAuctionLineItemsByCampaignIdV2, must be smaller than or equal to 2147483647.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.getAuctionLineItemsByCampaign, must be smaller than or equal to 2147483647.');
         }
         if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.getAuctionLineItemsByCampaignIdV2, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.getAuctionLineItemsByCampaign, must be bigger than or equal to 0.');
         }
         
 
@@ -5293,6 +5010,289 @@ class CampaignApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCatalogStatus
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2
+     */
+    public function getCatalogStatus($catalog_id, string $contentType = self::contentTypes['getCatalogStatus'][0])
+    {
+        list($response) = $this->getCatalogStatusWithHttpInfo($catalog_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCatalogStatusWithHttpInfo
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCatalogStatusWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getCatalogStatus'][0])
+    {
+        $request = $this->getCatalogStatusRequest($catalog_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCatalogStatusAsync
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCatalogStatusAsync($catalog_id, string $contentType = self::contentTypes['getCatalogStatus'][0])
+    {
+        return $this->getCatalogStatusAsyncWithHttpInfo($catalog_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCatalogStatusAsyncWithHttpInfo
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCatalogStatusAsyncWithHttpInfo($catalog_id, string $contentType = self::contentTypes['getCatalogStatus'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfCatalogStatusV2';
+        $request = $this->getCatalogStatusRequest($catalog_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCatalogStatus'
+     *
+     * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCatalogStatusRequest($catalog_id, string $contentType = self::contentTypes['getCatalogStatus'][0])
+    {
+
+        // verify the required parameter 'catalog_id' is set
+        if ($catalog_id === null || (is_array($catalog_id) && count($catalog_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $catalog_id when calling getCatalogStatus'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/catalogs/{catalogId}/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($catalog_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'catalogId' . '}',
+                ObjectSerializer::toPathValue($catalog_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -7356,38 +7356,38 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuRetrieval
+     * Operation postApiExternalV1CatalogsSkuRetrieval
      *
+     * @param  string[] $request_body The list of SKU keys to retrieve sku information (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  string[] $request_body The list of SKU keys to retrieve sku information (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse
      */
-    public function postApiV1ExternalCatalogsSkuRetrieval($page_index = 0, $page_size = 100, $request_body = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'][0])
+    public function postApiExternalV1CatalogsSkuRetrieval($request_body, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'][0])
     {
-        list($response) = $this->postApiV1ExternalCatalogsSkuRetrievalWithHttpInfo($page_index, $page_size, $request_body, $contentType);
+        list($response) = $this->postApiExternalV1CatalogsSkuRetrievalWithHttpInfo($request_body, $page_index, $page_size, $contentType);
         return $response;
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuRetrievalWithHttpInfo
+     * Operation postApiExternalV1CatalogsSkuRetrievalWithHttpInfo
      *
+     * @param  string[] $request_body The list of SKU keys to retrieve sku information (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  string[] $request_body The list of SKU keys to retrieve sku information (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiV1ExternalCatalogsSkuRetrievalWithHttpInfo($page_index = 0, $page_size = 100, $request_body = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'][0])
+    public function postApiExternalV1CatalogsSkuRetrievalWithHttpInfo($request_body, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'][0])
     {
-        $request = $this->postApiV1ExternalCatalogsSkuRetrievalRequest($page_index, $page_size, $request_body, $contentType);
+        $request = $this->postApiExternalV1CatalogsSkuRetrievalRequest($request_body, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7474,19 +7474,19 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuRetrievalAsync
+     * Operation postApiExternalV1CatalogsSkuRetrievalAsync
      *
+     * @param  string[] $request_body The list of SKU keys to retrieve sku information (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  string[] $request_body The list of SKU keys to retrieve sku information (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalCatalogsSkuRetrievalAsync($page_index = 0, $page_size = 100, $request_body = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'][0])
+    public function postApiExternalV1CatalogsSkuRetrievalAsync($request_body, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'][0])
     {
-        return $this->postApiV1ExternalCatalogsSkuRetrievalAsyncWithHttpInfo($page_index, $page_size, $request_body, $contentType)
+        return $this->postApiExternalV1CatalogsSkuRetrievalAsyncWithHttpInfo($request_body, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7495,20 +7495,20 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuRetrievalAsyncWithHttpInfo
+     * Operation postApiExternalV1CatalogsSkuRetrievalAsyncWithHttpInfo
      *
+     * @param  string[] $request_body The list of SKU keys to retrieve sku information (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  string[] $request_body The list of SKU keys to retrieve sku information (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalCatalogsSkuRetrievalAsyncWithHttpInfo($page_index = 0, $page_size = 100, $request_body = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'][0])
+    public function postApiExternalV1CatalogsSkuRetrievalAsyncWithHttpInfo($request_body, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse';
-        $request = $this->postApiV1ExternalCatalogsSkuRetrievalRequest($page_index, $page_size, $request_body, $contentType);
+        $request = $this->postApiExternalV1CatalogsSkuRetrievalRequest($request_body, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7547,33 +7547,39 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'postApiV1ExternalCatalogsSkuRetrieval'
+     * Create request for operation 'postApiExternalV1CatalogsSkuRetrieval'
      *
+     * @param  string[] $request_body The list of SKU keys to retrieve sku information (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  string[] $request_body The list of SKU keys to retrieve sku information (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiV1ExternalCatalogsSkuRetrievalRequest($page_index = 0, $page_size = 100, $request_body = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuRetrieval'][0])
+    public function postApiExternalV1CatalogsSkuRetrievalRequest($request_body, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuRetrieval'][0])
     {
 
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling postApiExternalV1CatalogsSkuRetrieval'
+            );
+        }
+
         if ($page_index !== null && $page_index > 500) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiV1ExternalCatalogsSkuRetrieval, must be smaller than or equal to 500.');
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiExternalV1CatalogsSkuRetrieval, must be smaller than or equal to 500.');
         }
         if ($page_index !== null && $page_index < 0) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiV1ExternalCatalogsSkuRetrieval, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiExternalV1CatalogsSkuRetrieval, must be bigger than or equal to 0.');
         }
         
         if ($page_size !== null && $page_size > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiV1ExternalCatalogsSkuRetrieval, must be smaller than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiExternalV1CatalogsSkuRetrieval, must be smaller than or equal to 1000.');
         }
         if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiV1ExternalCatalogsSkuRetrieval, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiExternalV1CatalogsSkuRetrieval, must be bigger than or equal to 1.');
         }
-        
         
 
         $resourcePath = '/preview/retail-media/catalogs/sku-retrieval';
@@ -7674,38 +7680,38 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuSearch
+     * Operation postApiExternalV1CatalogsSkuSearch
      *
+     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuSearch'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse
      */
-    public function postApiV1ExternalCatalogsSkuSearch($page_index = 0, $page_size = 100, $sku_search_request_preview_request = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuSearch'][0])
+    public function postApiExternalV1CatalogsSkuSearch($sku_search_request_preview_request, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuSearch'][0])
     {
-        list($response) = $this->postApiV1ExternalCatalogsSkuSearchWithHttpInfo($page_index, $page_size, $sku_search_request_preview_request, $contentType);
+        list($response) = $this->postApiExternalV1CatalogsSkuSearchWithHttpInfo($sku_search_request_preview_request, $page_index, $page_size, $contentType);
         return $response;
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuSearchWithHttpInfo
+     * Operation postApiExternalV1CatalogsSkuSearchWithHttpInfo
      *
+     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuSearch'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postApiV1ExternalCatalogsSkuSearchWithHttpInfo($page_index = 0, $page_size = 100, $sku_search_request_preview_request = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuSearch'][0])
+    public function postApiExternalV1CatalogsSkuSearchWithHttpInfo($sku_search_request_preview_request, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuSearch'][0])
     {
-        $request = $this->postApiV1ExternalCatalogsSkuSearchRequest($page_index, $page_size, $sku_search_request_preview_request, $contentType);
+        $request = $this->postApiExternalV1CatalogsSkuSearchRequest($sku_search_request_preview_request, $page_index, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7792,19 +7798,19 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuSearchAsync
+     * Operation postApiExternalV1CatalogsSkuSearchAsync
      *
+     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalCatalogsSkuSearchAsync($page_index = 0, $page_size = 100, $sku_search_request_preview_request = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuSearch'][0])
+    public function postApiExternalV1CatalogsSkuSearchAsync($sku_search_request_preview_request, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuSearch'][0])
     {
-        return $this->postApiV1ExternalCatalogsSkuSearchAsyncWithHttpInfo($page_index, $page_size, $sku_search_request_preview_request, $contentType)
+        return $this->postApiExternalV1CatalogsSkuSearchAsyncWithHttpInfo($sku_search_request_preview_request, $page_index, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7813,20 +7819,20 @@ class CampaignApi
     }
 
     /**
-     * Operation postApiV1ExternalCatalogsSkuSearchAsyncWithHttpInfo
+     * Operation postApiExternalV1CatalogsSkuSearchAsyncWithHttpInfo
      *
+     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postApiV1ExternalCatalogsSkuSearchAsyncWithHttpInfo($page_index = 0, $page_size = 100, $sku_search_request_preview_request = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuSearch'][0])
+    public function postApiExternalV1CatalogsSkuSearchAsyncWithHttpInfo($sku_search_request_preview_request, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuSearch'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\SkuDataPreviewListResponse';
-        $request = $this->postApiV1ExternalCatalogsSkuSearchRequest($page_index, $page_size, $sku_search_request_preview_request, $contentType);
+        $request = $this->postApiExternalV1CatalogsSkuSearchRequest($sku_search_request_preview_request, $page_index, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7865,34 +7871,40 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'postApiV1ExternalCatalogsSkuSearch'
+     * Create request for operation 'postApiExternalV1CatalogsSkuSearch'
      *
+     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (required)
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
-     * @param  \criteo\api\retailmedia\preview\Model\SkuSearchRequestPreviewRequest $sku_search_request_preview_request  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalCatalogsSkuSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1CatalogsSkuSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postApiV1ExternalCatalogsSkuSearchRequest($page_index = 0, $page_size = 100, $sku_search_request_preview_request = null, string $contentType = self::contentTypes['postApiV1ExternalCatalogsSkuSearch'][0])
+    public function postApiExternalV1CatalogsSkuSearchRequest($sku_search_request_preview_request, $page_index = 0, $page_size = 100, string $contentType = self::contentTypes['postApiExternalV1CatalogsSkuSearch'][0])
     {
 
+        // verify the required parameter 'sku_search_request_preview_request' is set
+        if ($sku_search_request_preview_request === null || (is_array($sku_search_request_preview_request) && count($sku_search_request_preview_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $sku_search_request_preview_request when calling postApiExternalV1CatalogsSkuSearch'
+            );
+        }
+
         if ($page_index !== null && $page_index > 500) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiV1ExternalCatalogsSkuSearch, must be smaller than or equal to 500.');
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiExternalV1CatalogsSkuSearch, must be smaller than or equal to 500.');
         }
         if ($page_index !== null && $page_index < 0) {
-            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiV1ExternalCatalogsSkuSearch, must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for "$page_index" when calling CampaignApi.postApiExternalV1CatalogsSkuSearch, must be bigger than or equal to 0.');
         }
         
         if ($page_size !== null && $page_size > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiV1ExternalCatalogsSkuSearch, must be smaller than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiExternalV1CatalogsSkuSearch, must be smaller than or equal to 1000.');
         }
         if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiV1ExternalCatalogsSkuSearch, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling CampaignApi.postApiExternalV1CatalogsSkuSearch, must be bigger than or equal to 1.');
         }
         
-
 
         $resourcePath = '/preview/retail-media/catalogs/sku-search';
         $formParams = [];
@@ -8297,16 +8309,18 @@ class CampaignApi
      * Operation searchAccountCreatives
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\Creative2ListResponse
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse
      */
-    public function searchAccountCreatives($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    public function searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        list($response) = $this->searchAccountCreativesWithHttpInfo($account_id, $creative_ids, $contentType);
+        list($response) = $this->searchAccountCreativesWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType);
         return $response;
     }
 
@@ -8314,16 +8328,18 @@ class CampaignApi
      * Operation searchAccountCreativesWithHttpInfo
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\Creative2ListResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAccountCreativesWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    public function searchAccountCreativesWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        $request = $this->searchAccountCreativesRequest($account_id, $creative_ids, $contentType);
+        $request = $this->searchAccountCreativesRequest($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8362,23 +8378,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\Creative2ListResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Creative2ListResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -8399,7 +8415,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\Creative2ListResponse',
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8413,15 +8429,17 @@ class CampaignApi
      * Operation searchAccountCreativesAsync
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountCreativesAsync($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    public function searchAccountCreativesAsync($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        return $this->searchAccountCreativesAsyncWithHttpInfo($account_id, $creative_ids, $contentType)
+        return $this->searchAccountCreativesAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8433,16 +8451,18 @@ class CampaignApi
      * Operation searchAccountCreativesAsyncWithHttpInfo
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountCreativesAsyncWithHttpInfo($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    public function searchAccountCreativesAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\Creative2ListResponse';
-        $request = $this->searchAccountCreativesRequest($account_id, $creative_ids, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
+        $request = $this->searchAccountCreativesRequest($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8484,13 +8504,15 @@ class CampaignApi
      * Create request for operation 'searchAccountCreatives'
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
-     * @param  string[] $creative_ids Creatives to filter by (optional)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAccountCreativesRequest($account_id, $creative_ids = null, string $contentType = self::contentTypes['searchAccountCreatives'][0])
+    public function searchAccountCreativesRequest($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -8500,7 +8522,27 @@ class CampaignApi
             );
         }
 
+        // verify the required parameter 'entity_resource_input_creative_search_request' is set
+        if ($entity_resource_input_creative_search_request === null || (is_array($entity_resource_input_creative_search_request) && count($entity_resource_input_creative_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $entity_resource_input_creative_search_request when calling searchAccountCreatives'
+            );
+        }
 
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountCreatives, must be smaller than or equal to 500.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountCreatives, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountCreatives, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountCreatives, must be bigger than or equal to 0.');
+        }
+        
 
         $resourcePath = '/preview/retail-media/accounts/{account-id}/creatives/search';
         $formParams = [];
@@ -8511,9 +8553,18 @@ class CampaignApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $creative_ids,
-            'creative-ids', // param base name
-            'array', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -8537,7 +8588,358 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($entity_resource_input_creative_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($entity_resource_input_creative_search_request));
+            } else {
+                $httpBody = $entity_resource_input_creative_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchAccountRetailers
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountRetailers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+     */
+    public function searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchAccountRetailers'][0])
+    {
+        list($response) = $this->searchAccountRetailersWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchAccountRetailersWithHttpInfo
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountRetailers'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchAccountRetailersWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchAccountRetailers'][0])
+    {
+        $request = $this->searchAccountRetailersRequest($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchAccountRetailersAsync
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountRetailers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountRetailersAsync($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchAccountRetailers'][0])
+    {
+        return $this->searchAccountRetailersAsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchAccountRetailersAsyncWithHttpInfo
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountRetailers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountRetailersAsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchAccountRetailers'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+        $request = $this->searchAccountRetailersRequest($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchAccountRetailers'
+     *
+     * @param  string $account_id The external account identifier (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
+     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
+     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountRetailers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchAccountRetailersRequest($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchAccountRetailers'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling searchAccountRetailers'
+            );
+        }
+
+        // verify the required parameter 'value_resource_input_of_retailer_search_request' is set
+        if ($value_resource_input_of_retailer_search_request === null || (is_array($value_resource_input_of_retailer_search_request) && count($value_resource_input_of_retailer_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_of_retailer_search_request when calling searchAccountRetailers'
+            );
+        }
+
+        if ($limit !== null && $limit > 10) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountRetailers, must be smaller than or equal to 10.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountRetailers, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountRetailers, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountRetailers, must be bigger than or equal to 0.');
+        }
+        
+
+        $resourcePath = '/preview/retail-media/accounts/{accountId}/retailers/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_of_retailer_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_retailer_search_request));
+            } else {
+                $httpBody = $value_resource_input_of_retailer_search_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -9248,350 +9650,6 @@ class CampaignApi
     }
 
     /**
-     * Operation searchRetailersV1
-     *
-     * @param  string $account_id The external account identifier (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
-     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
-     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
-     */
-    public function searchRetailersV1($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
-    {
-        list($response) = $this->searchRetailersV1WithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation searchRetailersV1WithHttpInfo
-     *
-     * @param  string $account_id The external account identifier (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
-     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
-     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function searchRetailersV1WithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
-    {
-        $request = $this->searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation searchRetailersV1Async
-     *
-     * @param  string $account_id The external account identifier (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
-     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
-     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function searchRetailersV1Async($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
-    {
-        return $this->searchRetailersV1AsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation searchRetailersV1AsyncWithHttpInfo
-     *
-     * @param  string $account_id The external account identifier (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
-     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
-     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function searchRetailersV1AsyncWithHttpInfo($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
-        $request = $this->searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'searchRetailersV1'
-     *
-     * @param  string $account_id The external account identifier (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
-     * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
-     * @param  int $offset The number of items to skip before starting to collect the result set. Default is 0. (optional, default to 0)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchRetailersV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function searchRetailersV1Request($account_id, $value_resource_input_of_retailer_search_request, $limit = 5, $offset = 0, string $contentType = self::contentTypes['searchRetailersV1'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling searchRetailersV1'
-            );
-        }
-
-        // verify the required parameter 'value_resource_input_of_retailer_search_request' is set
-        if ($value_resource_input_of_retailer_search_request === null || (is_array($value_resource_input_of_retailer_search_request) && count($value_resource_input_of_retailer_search_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $value_resource_input_of_retailer_search_request when calling searchRetailersV1'
-            );
-        }
-
-        if ($limit !== null && $limit > 10) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchRetailersV1, must be smaller than or equal to 10.');
-        }
-        if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchRetailersV1, must be bigger than or equal to 1.');
-        }
-        
-        if ($offset !== null && $offset > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchRetailersV1, must be smaller than or equal to 2147483647.');
-        }
-        if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchRetailersV1, must be bigger than or equal to 0.');
-        }
-        
-
-        $resourcePath = '/preview/retail-media/accounts/{accountId}/retailers/search';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($value_resource_input_of_retailer_search_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_of_retailer_search_request));
-            } else {
-                $httpBody = $value_resource_input_of_retailer_search_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation unpausePromotedProducts
      *
      * @param  string $line_item_id ID of the line item (required)
@@ -9834,36 +9892,36 @@ class CampaignApi
     }
 
     /**
-     * Operation updateAuctionLineItemV2
+     * Operation updateAuctionLineItem
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem
      */
-    public function updateAuctionLineItemV2($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItem($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItem'][0])
     {
-        list($response) = $this->updateAuctionLineItemV2WithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
+        list($response) = $this->updateAuctionLineItemWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateAuctionLineItemV2WithHttpInfo
+     * Operation updateAuctionLineItemWithHttpInfo
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAuctionLineItemV2WithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItem'][0])
     {
-        $request = $this->updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
+        $request = $this->updateAuctionLineItemRequest($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9950,18 +10008,18 @@ class CampaignApi
     }
 
     /**
-     * Operation updateAuctionLineItemV2Async
+     * Operation updateAuctionLineItemAsync
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAuctionLineItemV2Async($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemAsync($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItem'][0])
     {
-        return $this->updateAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType)
+        return $this->updateAuctionLineItemAsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9970,19 +10028,19 @@ class CampaignApi
     }
 
     /**
-     * Operation updateAuctionLineItemV2AsyncWithHttpInfo
+     * Operation updateAuctionLineItemAsyncWithHttpInfo
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAuctionLineItemV2AsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemAsyncWithHttpInfo($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItem'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfSponsoredProductsLineItem';
-        $request = $this->updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
+        $request = $this->updateAuctionLineItemRequest($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10021,29 +10079,29 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'updateAuctionLineItemV2'
+     * Create request for operation 'updateAuctionLineItem'
      *
      * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItemV2'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAuctionLineItemV2Request($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItemV2'][0])
+    public function updateAuctionLineItemRequest($line_item_id, $value_resource_input_of_sponsored_products_line_item_update_request_model, string $contentType = self::contentTypes['updateAuctionLineItem'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling updateAuctionLineItemV2'
+                'Missing the required parameter $line_item_id when calling updateAuctionLineItem'
             );
         }
 
         // verify the required parameter 'value_resource_input_of_sponsored_products_line_item_update_request_model' is set
         if ($value_resource_input_of_sponsored_products_line_item_update_request_model === null || (is_array($value_resource_input_of_sponsored_products_line_item_update_request_model) && count($value_resource_input_of_sponsored_products_line_item_update_request_model) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_update_request_model when calling updateAuctionLineItemV2'
+                'Missing the required parameter $value_resource_input_of_sponsored_products_line_item_update_request_model when calling updateAuctionLineItem'
             );
         }
 

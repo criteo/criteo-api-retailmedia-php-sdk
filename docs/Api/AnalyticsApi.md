@@ -25,7 +25,7 @@ generateAsyncAccountsReport($async_accounts_report_request): \criteo\api\retailm
 
 
 
-Returns an asynchronous Accounts Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -88,7 +88,7 @@ generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retai
 
 
 
-Return an asynchronous Campaigns Report This endpoint is subject to specific rate limits.
+Return an asynchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -151,7 +151,7 @@ generateAsyncFillRateReport($async_fill_rate_report_request): \criteo\api\retail
 
 
 
-Returns an asynchronous Fill Rate Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Fill Rate Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -214,7 +214,7 @@ generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\reta
 
 
 
-Returns an asynchronous Line Items Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -277,7 +277,7 @@ generateAsyncOffsiteReport($async_offsite_report_request): \criteo\api\retailmed
 
 
 
-Returns an asynchronous Offsite Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Offsite Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -340,7 +340,7 @@ generateAsyncUnfilledPlacementsReport($async_unfilled_placements_report_request)
 
 
 
-Returns an asynchronous Unfilled Placements Report This endpoint is subject to specific rate limits.
+Returns an asynchronous Unfilled Placements Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 

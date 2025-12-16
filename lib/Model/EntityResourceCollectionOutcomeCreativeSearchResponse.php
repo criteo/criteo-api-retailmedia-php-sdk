@@ -1,6 +1,6 @@
 <?php
 /**
- * Creative2ListResponse
+ * EntityResourceCollectionOutcomeCreativeSearchResponse
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * Creative2ListResponse Class Doc Comment
+ * EntityResourceCollectionOutcomeCreativeSearchResponse Class Doc Comment
  *
  * @category Class
  * @description A top-level object that encapsulates a Criteo API response for several entities.
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Creative2ListResponse';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeCreativeSearchResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfCreative2[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchResponse[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -307,7 +307,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfCreative2[]|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchResponse[]|null
      */
     public function getData()
     {
@@ -317,7 +317,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfCreative2[]|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchResponse[]|null $data data
      *
      * @return self
      */
@@ -341,7 +341,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getErrors()
     {
@@ -351,7 +351,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -385,7 +385,7 @@ class Creative2ListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */

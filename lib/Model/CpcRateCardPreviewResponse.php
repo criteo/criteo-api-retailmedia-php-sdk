@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * CpcRateCardPreviewResponse Class Doc Comment
  *
  * @category Class
- * @description Data model for response resource
+ * @description A top-level object that encapsulates a Criteo API response for a single entity.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,8 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfCpcRateCardPreview',
-        'errors' => '\criteo\api\retailmedia\preview\Model\ProblemDetails[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\ProblemDetails[]'
+        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
     ];
 
     /**
@@ -82,9 +82,9 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'errors' => false,
-		'warnings' => false
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -324,7 +324,14 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -334,7 +341,7 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets errors
      *
-     * @return \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
      */
     public function getErrors()
     {
@@ -344,14 +351,21 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets errors
      *
-     * @param \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null $errors errors
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
      *
      * @return self
      */
     public function setErrors($errors)
     {
         if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['errors'] = $errors;
 
@@ -361,7 +375,7 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets warnings
      *
-     * @return \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null
+     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
      */
     public function getWarnings()
     {
@@ -371,14 +385,21 @@ class CpcRateCardPreviewResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets warnings
      *
-     * @param \criteo\api\retailmedia\preview\Model\ProblemDetails[]|null $warnings warnings
+     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
      *
      * @return self
      */
     public function setWarnings($warnings)
     {
         if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['warnings'] = $warnings;
 

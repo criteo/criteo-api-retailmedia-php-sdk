@@ -86,7 +86,7 @@ class PreferredLineItemV2PagedListResponse implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'data' => false,
 		'errors' => false,
-		'metadata' => true,
+		'metadata' => false,
 		'warnings' => false
     ];
 
@@ -385,14 +385,7 @@ class PreferredLineItemV2PagedListResponse implements ModelInterface, ArrayAcces
     public function setMetadata($metadata)
     {
         if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
 

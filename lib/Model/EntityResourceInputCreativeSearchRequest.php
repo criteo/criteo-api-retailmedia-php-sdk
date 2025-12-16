@@ -1,6 +1,6 @@
 <?php
 /**
- * TextVariableValue
+ * EntityResourceInputCreativeSearchRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * TextVariableValue Class Doc Comment
+ * EntityResourceInputCreativeSearchRequest Class Doc Comment
  *
  * @category Class
- * @description A value of a template text variable
+ * @description A top-level object that encapsulates a Criteo API request for a single entity.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceInputCreativeSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TextVariableValue';
+    protected static $openAPIModelName = 'EntityResourceInputCreativeSearchRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'text' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchRequest'
     ];
 
     /**
@@ -69,7 +69,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'text' => null
+        'data' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'text' => true
+        'data' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'text' => 'text'
+        'data' => 'data'
     ];
 
     /**
@@ -176,7 +176,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'text' => 'setText'
+        'data' => 'setData'
     ];
 
     /**
@@ -185,7 +185,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'text' => 'getText'
+        'data' => 'getData'
     ];
 
     /**
@@ -245,7 +245,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -275,9 +275,6 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -294,35 +291,28 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets text
+     * Gets data
      *
-     * @return string
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchRequest|null
      */
-    public function getText()
+    public function getData()
     {
-        return $this->container['text'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets text
+     * Sets data
      *
-     * @param string $text The displayed text
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchRequest|null $data data
      *
      * @return self
      */
-    public function setText($text)
+    public function setData($data)
     {
-        if (is_null($text)) {
-            array_push($this->openAPINullablesSetToNull, 'text');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('text', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['text'] = $text;
+        $this->container['data'] = $data;
 
         return $this;
     }

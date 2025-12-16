@@ -1,6 +1,6 @@
 <?php
 /**
- * Creative2
+ * CreativeSearchResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * Creative2 Class Doc Comment
+ * CreativeSearchResponse Class Doc Comment
  *
  * @category Class
- * @description A creative entity
+ * @description Creative search response model
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreativeSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Creative2';
+    protected static $openAPIModelName = 'CreativeSearchResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,19 +58,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'associated_line_item_ids' => 'string[]',
-        'brand_id' => 'int',
-        'creative_format_v2_type' => 'string',
-        'environments' => '\criteo\api\retailmedia\preview\Model\PageTypeEnvironment2[]',
-        'format_id' => 'int',
-        'id' => 'string',
+        'brand_id' => 'string',
+        'created_at' => '\DateTime',
+        'creative_type' => 'string',
+        'line_items' => 'string[]',
+        'modified_at' => '\DateTime',
         'name' => 'string',
-        'retailer_id' => 'int',
+        'page_type' => 'string[]',
+        'preview' => 'string',
+        'retailer_id' => 'string',
         'status' => 'string',
-        'template_id' => 'int',
-        'template_name' => 'string',
-        'template_variable_values' => '\criteo\api\retailmedia\preview\Model\TemplateVariableValue[]',
-        'updated_at' => '\DateTime'
+        'template_id' => 'string'
     ];
 
     /**
@@ -81,19 +79,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'associated_line_item_ids' => null,
-        'brand_id' => 'int64',
-        'creative_format_v2_type' => null,
-        'environments' => null,
-        'format_id' => 'int32',
-        'id' => null,
+        'brand_id' => null,
+        'created_at' => 'date-time',
+        'creative_type' => null,
+        'line_items' => null,
+        'modified_at' => 'date-time',
         'name' => null,
-        'retailer_id' => 'int32',
+        'page_type' => null,
+        'preview' => null,
+        'retailer_id' => null,
         'status' => null,
-        'template_id' => 'int32',
-        'template_name' => null,
-        'template_variable_values' => null,
-        'updated_at' => 'date-time'
+        'template_id' => null
     ];
 
     /**
@@ -102,19 +98,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'associated_line_item_ids' => true,
-		'brand_id' => true,
-		'creative_format_v2_type' => false,
-		'environments' => false,
-		'format_id' => false,
-		'id' => true,
-		'name' => false,
-		'retailer_id' => false,
-		'status' => false,
-		'template_id' => false,
-		'template_name' => false,
-		'template_variable_values' => false,
-		'updated_at' => true
+        'brand_id' => true,
+		'created_at' => true,
+		'creative_type' => true,
+		'line_items' => true,
+		'modified_at' => true,
+		'name' => true,
+		'page_type' => true,
+		'preview' => true,
+		'retailer_id' => true,
+		'status' => true,
+		'template_id' => true
     ];
 
     /**
@@ -203,19 +197,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'associated_line_item_ids' => 'associatedLineItemIds',
         'brand_id' => 'brandId',
-        'creative_format_v2_type' => 'creativeFormatV2Type',
-        'environments' => 'environments',
-        'format_id' => 'formatId',
-        'id' => 'id',
+        'created_at' => 'createdAt',
+        'creative_type' => 'creativeType',
+        'line_items' => 'lineItems',
+        'modified_at' => 'modifiedAt',
         'name' => 'name',
+        'page_type' => 'pageType',
+        'preview' => 'preview',
         'retailer_id' => 'retailerId',
         'status' => 'status',
-        'template_id' => 'templateId',
-        'template_name' => 'templateName',
-        'template_variable_values' => 'templateVariableValues',
-        'updated_at' => 'updatedAt'
+        'template_id' => 'templateId'
     ];
 
     /**
@@ -224,19 +216,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'associated_line_item_ids' => 'setAssociatedLineItemIds',
         'brand_id' => 'setBrandId',
-        'creative_format_v2_type' => 'setCreativeFormatV2Type',
-        'environments' => 'setEnvironments',
-        'format_id' => 'setFormatId',
-        'id' => 'setId',
+        'created_at' => 'setCreatedAt',
+        'creative_type' => 'setCreativeType',
+        'line_items' => 'setLineItems',
+        'modified_at' => 'setModifiedAt',
         'name' => 'setName',
+        'page_type' => 'setPageType',
+        'preview' => 'setPreview',
         'retailer_id' => 'setRetailerId',
         'status' => 'setStatus',
-        'template_id' => 'setTemplateId',
-        'template_name' => 'setTemplateName',
-        'template_variable_values' => 'setTemplateVariableValues',
-        'updated_at' => 'setUpdatedAt'
+        'template_id' => 'setTemplateId'
     ];
 
     /**
@@ -245,19 +235,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'associated_line_item_ids' => 'getAssociatedLineItemIds',
         'brand_id' => 'getBrandId',
-        'creative_format_v2_type' => 'getCreativeFormatV2Type',
-        'environments' => 'getEnvironments',
-        'format_id' => 'getFormatId',
-        'id' => 'getId',
+        'created_at' => 'getCreatedAt',
+        'creative_type' => 'getCreativeType',
+        'line_items' => 'getLineItems',
+        'modified_at' => 'getModifiedAt',
         'name' => 'getName',
+        'page_type' => 'getPageType',
+        'preview' => 'getPreview',
         'retailer_id' => 'getRetailerId',
         'status' => 'getStatus',
-        'template_id' => 'getTemplateId',
-        'template_name' => 'getTemplateName',
-        'template_variable_values' => 'getTemplateVariableValues',
-        'updated_at' => 'getUpdatedAt'
+        'template_id' => 'getTemplateId'
     ];
 
     /**
@@ -301,39 +289,65 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const CREATIVE_FORMAT_V2_TYPE_UNKNOWN = 'Unknown';
-    public const CREATIVE_FORMAT_V2_TYPE_FLAG_SHIP = 'FlagShip';
-    public const CREATIVE_FORMAT_V2_TYPE_SHOWCASE = 'Showcase';
-    public const CREATIVE_FORMAT_V2_TYPE_SPONSORED_PRODUCTS = 'SponsoredProducts';
-    public const CREATIVE_FORMAT_V2_TYPE_BUTTERFLY = 'Butterfly';
-    public const CREATIVE_FORMAT_V2_TYPE_BUNDLE_BOOST = 'BundleBoost';
-    public const CREATIVE_FORMAT_V2_TYPE_IAB = 'IAB';
-    public const CREATIVE_FORMAT_V2_TYPE_CUSTOM = 'Custom';
-    public const CREATIVE_FORMAT_V2_TYPE_DISPLAY_PANEL = 'DisplayPanel';
-    public const CREATIVE_FORMAT_V2_TYPE_DIGITAL_SHELF_TALKER = 'DigitalShelfTalker';
+    public const CREATIVE_TYPE_UNKNOWN = 'Unknown';
+    public const CREATIVE_TYPE_COMMERCE_DISPLAY = 'CommerceDisplay';
+    public const CREATIVE_TYPE_COMMERCE_VIDEO = 'CommerceVideo';
+    public const CREATIVE_TYPE_STANDARD_VIDEO = 'StandardVideo';
+    public const CREATIVE_TYPE_STANDARD_DISPLAY = 'StandardDisplay';
+    public const PAGE_TYPE_UNKNOWN = 'Unknown';
+    public const PAGE_TYPE_SEARCH = 'Search';
+    public const PAGE_TYPE_HOME = 'Home';
+    public const PAGE_TYPE_BROWSE = 'Browse';
+    public const PAGE_TYPE_CHECKOUT = 'Checkout';
+    public const PAGE_TYPE_CATEGORY = 'Category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
+    public const PAGE_TYPE_DEALS = 'Deals';
+    public const PAGE_TYPE_FAVORITES = 'Favorites';
+    public const PAGE_TYPE_SEARCH_BAR = 'SearchBar';
+    public const PAGE_TYPE_CATEGORY_MENU = 'CategoryMenu';
     public const STATUS_READY = 'Ready';
-    public const STATUS_IN_USE = 'InUse';
+    public const STATUS_IN_USE = 'In Use';
     public const STATUS_ARCHIVED = 'Archived';
-    public const STATUS_DELETED = 'Deleted';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getCreativeFormatV2TypeAllowableValues()
+    public function getCreativeTypeAllowableValues()
     {
         return [
-            self::CREATIVE_FORMAT_V2_TYPE_UNKNOWN,
-            self::CREATIVE_FORMAT_V2_TYPE_FLAG_SHIP,
-            self::CREATIVE_FORMAT_V2_TYPE_SHOWCASE,
-            self::CREATIVE_FORMAT_V2_TYPE_SPONSORED_PRODUCTS,
-            self::CREATIVE_FORMAT_V2_TYPE_BUTTERFLY,
-            self::CREATIVE_FORMAT_V2_TYPE_BUNDLE_BOOST,
-            self::CREATIVE_FORMAT_V2_TYPE_IAB,
-            self::CREATIVE_FORMAT_V2_TYPE_CUSTOM,
-            self::CREATIVE_FORMAT_V2_TYPE_DISPLAY_PANEL,
-            self::CREATIVE_FORMAT_V2_TYPE_DIGITAL_SHELF_TALKER,
+            self::CREATIVE_TYPE_UNKNOWN,
+            self::CREATIVE_TYPE_COMMERCE_DISPLAY,
+            self::CREATIVE_TYPE_COMMERCE_VIDEO,
+            self::CREATIVE_TYPE_STANDARD_VIDEO,
+            self::CREATIVE_TYPE_STANDARD_DISPLAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_UNKNOWN,
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_BROWSE,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+            self::PAGE_TYPE_FAVORITES,
+            self::PAGE_TYPE_SEARCH_BAR,
+            self::PAGE_TYPE_CATEGORY_MENU,
         ];
     }
 
@@ -348,7 +362,6 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_READY,
             self::STATUS_IN_USE,
             self::STATUS_ARCHIVED,
-            self::STATUS_DELETED,
         ];
     }
 
@@ -367,19 +380,17 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('associated_line_item_ids', $data ?? [], null);
         $this->setIfExists('brand_id', $data ?? [], null);
-        $this->setIfExists('creative_format_v2_type', $data ?? [], null);
-        $this->setIfExists('environments', $data ?? [], null);
-        $this->setIfExists('format_id', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('creative_type', $data ?? [], null);
+        $this->setIfExists('line_items', $data ?? [], null);
+        $this->setIfExists('modified_at', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('preview', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
-        $this->setIfExists('template_name', $data ?? [], null);
-        $this->setIfExists('template_variable_values', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -409,33 +420,15 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['creative_format_v2_type'] === null) {
-            $invalidProperties[] = "'creative_format_v2_type' can't be null";
-        }
-        $allowedValues = $this->getCreativeFormatV2TypeAllowableValues();
-        if (!is_null($this->container['creative_format_v2_type']) && !in_array($this->container['creative_format_v2_type'], $allowedValues, true)) {
+        $allowedValues = $this->getCreativeTypeAllowableValues();
+        if (!is_null($this->container['creative_type']) && !in_array($this->container['creative_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'creative_format_v2_type', must be one of '%s'",
-                $this->container['creative_format_v2_type'],
+                "invalid value '%s' for 'creative_type', must be one of '%s'",
+                $this->container['creative_type'],
                 implode("', '", $allowedValues)
             );
         }
 
-        if ($this->container['environments'] === null) {
-            $invalidProperties[] = "'environments' can't be null";
-        }
-        if ($this->container['format_id'] === null) {
-            $invalidProperties[] = "'format_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        if ($this->container['status'] === null) {
-            $invalidProperties[] = "'status' can't be null";
-        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -445,15 +438,6 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if ($this->container['template_id'] === null) {
-            $invalidProperties[] = "'template_id' can't be null";
-        }
-        if ($this->container['template_name'] === null) {
-            $invalidProperties[] = "'template_name' can't be null";
-        }
-        if ($this->container['template_variable_values'] === null) {
-            $invalidProperties[] = "'template_variable_values' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -470,43 +454,9 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets associated_line_item_ids
-     *
-     * @return string[]|null
-     */
-    public function getAssociatedLineItemIds()
-    {
-        return $this->container['associated_line_item_ids'];
-    }
-
-    /**
-     * Sets associated_line_item_ids
-     *
-     * @param string[]|null $associated_line_item_ids Associated Line Item Ids
-     *
-     * @return self
-     */
-    public function setAssociatedLineItemIds($associated_line_item_ids)
-    {
-        if (is_null($associated_line_item_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['associated_line_item_ids'] = $associated_line_item_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets brand_id
      *
-     * @return int|null
+     * @return string|null
      */
     public function getBrandId()
     {
@@ -516,7 +466,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets brand_id
      *
-     * @param int|null $brand_id Brand Id
+     * @param string|null $brand_id Brand Id of the search filter
      *
      * @return self
      */
@@ -538,126 +488,147 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets creative_format_v2_type
+     * Gets created_at
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getCreativeFormatV2Type()
+    public function getCreatedAt()
     {
-        return $this->container['creative_format_v2_type'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets creative_format_v2_type
+     * Sets created_at
      *
-     * @param string $creative_format_v2_type Creative format type
+     * @param \DateTime|null $created_at Time search is created
      *
      * @return self
      */
-    public function setCreativeFormatV2Type($creative_format_v2_type)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($creative_format_v2_type)) {
-            throw new \InvalidArgumentException('non-nullable creative_format_v2_type cannot be null');
-        }
-        $allowedValues = $this->getCreativeFormatV2TypeAllowableValues();
-        if (!in_array($creative_format_v2_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'creative_format_v2_type', must be one of '%s'",
-                    $creative_format_v2_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['creative_format_v2_type'] = $creative_format_v2_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets environments
-     *
-     * @return \criteo\api\retailmedia\preview\Model\PageTypeEnvironment2[]
-     */
-    public function getEnvironments()
-    {
-        return $this->container['environments'];
-    }
-
-    /**
-     * Sets environments
-     *
-     * @param \criteo\api\retailmedia\preview\Model\PageTypeEnvironment2[] $environments Environment type (e.g. mobile, web, app)
-     *
-     * @return self
-     */
-    public function setEnvironments($environments)
-    {
-        if (is_null($environments)) {
-            throw new \InvalidArgumentException('non-nullable environments cannot be null');
-        }
-        $this->container['environments'] = $environments;
-
-        return $this;
-    }
-
-    /**
-     * Gets format_id
-     *
-     * @return int
-     */
-    public function getFormatId()
-    {
-        return $this->container['format_id'];
-    }
-
-    /**
-     * Sets format_id
-     *
-     * @param int $format_id Format Id
-     *
-     * @return self
-     */
-    public function setFormatId($format_id)
-    {
-        if (is_null($format_id)) {
-            throw new \InvalidArgumentException('non-nullable format_id cannot be null');
-        }
-        $this->container['format_id'] = $format_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($created_at)) {
+            array_push($this->openAPINullablesSetToNull, 'created_at');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('created_at', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets creative_type
+     *
+     * @return string|null
+     */
+    public function getCreativeType()
+    {
+        return $this->container['creative_type'];
+    }
+
+    /**
+     * Sets creative_type
+     *
+     * @param string|null $creative_type Creative type
+     *
+     * @return self
+     */
+    public function setCreativeType($creative_type)
+    {
+        if (is_null($creative_type)) {
+            array_push($this->openAPINullablesSetToNull, 'creative_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creative_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getCreativeTypeAllowableValues();
+        if (!is_null($creative_type) && !in_array($creative_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'creative_type', must be one of '%s'",
+                    $creative_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_type'] = $creative_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_items
+     *
+     * @return string[]|null
+     */
+    public function getLineItems()
+    {
+        return $this->container['line_items'];
+    }
+
+    /**
+     * Sets line_items
+     *
+     * @param string[]|null $line_items The list of lineitems
+     *
+     * @return self
+     */
+    public function setLineItems($line_items)
+    {
+        if (is_null($line_items)) {
+            array_push($this->openAPINullablesSetToNull, 'line_items');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_items', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['line_items'] = $line_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets modified_at
+     *
+     * @return \DateTime|null
+     */
+    public function getModifiedAt()
+    {
+        return $this->container['modified_at'];
+    }
+
+    /**
+     * Sets modified_at
+     *
+     * @param \DateTime|null $modified_at Time it's modified
+     *
+     * @return self
+     */
+    public function setModifiedAt($modified_at)
+    {
+        if (is_null($modified_at)) {
+            array_push($this->openAPINullablesSetToNull, 'modified_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('modified_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['modified_at'] = $modified_at;
 
         return $this;
     }
@@ -665,7 +636,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -675,14 +646,21 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name Name
+     * @param string|null $name Name of the creative
      *
      * @return self
      */
     public function setName($name)
     {
         if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['name'] = $name;
 
@@ -690,9 +668,86 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets page_type
+     *
+     * @return string[]|null
+     */
+    public function getPageType()
+    {
+        return $this->container['page_type'];
+    }
+
+    /**
+     * Sets page_type
+     *
+     * @param string[]|null $page_type Page type
+     *
+     * @return self
+     */
+    public function setPageType($page_type)
+    {
+        if (is_null($page_type)) {
+            array_push($this->openAPINullablesSetToNull, 'page_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($page_type) && array_diff($page_type, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'page_type', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_type'] = $page_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets preview
+     *
+     * @return string|null
+     */
+    public function getPreview()
+    {
+        return $this->container['preview'];
+    }
+
+    /**
+     * Sets preview
+     *
+     * @param string|null $preview Preview url of the creative
+     *
+     * @return self
+     */
+    public function setPreview($preview)
+    {
+        if (is_null($preview)) {
+            array_push($this->openAPINullablesSetToNull, 'preview');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('preview', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['preview'] = $preview;
+
+        return $this;
+    }
+
+    /**
      * Gets retailer_id
      *
-     * @return int
+     * @return string|null
      */
     public function getRetailerId()
     {
@@ -702,14 +757,21 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retailer_id
      *
-     * @param int $retailer_id Retailer Id
+     * @param string|null $retailer_id RetailerId of the search filter
      *
      * @return self
      */
     public function setRetailerId($retailer_id)
     {
         if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retailer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retailer_id'] = $retailer_id;
 
@@ -719,7 +781,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string
+     * @return string|null
      */
     public function getStatus()
     {
@@ -729,17 +791,24 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string $status Creative Status
+     * @param string|null $status The search status
      *
      * @return self
      */
     public function setStatus($status)
     {
         if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'status', must be one of '%s'",
@@ -756,7 +825,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets template_id
      *
-     * @return int
+     * @return string|null
      */
     public function getTemplateId()
     {
@@ -766,104 +835,23 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets template_id
      *
-     * @param int $template_id Template Id
+     * @param string|null $template_id Template Id
      *
      * @return self
      */
     public function setTemplateId($template_id)
     {
         if (is_null($template_id)) {
-            throw new \InvalidArgumentException('non-nullable template_id cannot be null');
-        }
-        $this->container['template_id'] = $template_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets template_name
-     *
-     * @return string
-     */
-    public function getTemplateName()
-    {
-        return $this->container['template_name'];
-    }
-
-    /**
-     * Sets template_name
-     *
-     * @param string $template_name Template Name
-     *
-     * @return self
-     */
-    public function setTemplateName($template_name)
-    {
-        if (is_null($template_name)) {
-            throw new \InvalidArgumentException('non-nullable template_name cannot be null');
-        }
-        $this->container['template_name'] = $template_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets template_variable_values
-     *
-     * @return \criteo\api\retailmedia\preview\Model\TemplateVariableValue[]
-     */
-    public function getTemplateVariableValues()
-    {
-        return $this->container['template_variable_values'];
-    }
-
-    /**
-     * Sets template_variable_values
-     *
-     * @param \criteo\api\retailmedia\preview\Model\TemplateVariableValue[] $template_variable_values The template chosen values
-     *
-     * @return self
-     */
-    public function setTemplateVariableValues($template_variable_values)
-    {
-        if (is_null($template_variable_values)) {
-            throw new \InvalidArgumentException('non-nullable template_variable_values cannot be null');
-        }
-        $this->container['template_variable_values'] = $template_variable_values;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at Updated at time
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            array_push($this->openAPINullablesSetToNull, 'updated_at');
+            array_push($this->openAPINullablesSetToNull, 'template_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('updated_at', $nullablesSetToNull);
+            $index = array_search('template_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['template_id'] = $template_id;
 
         return $this;
     }

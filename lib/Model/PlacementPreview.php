@@ -58,6 +58,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'name' => 'string',
         'page_environment_type' => 'string',
         'page_type' => 'string',
@@ -72,6 +73,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'name' => null,
         'page_environment_type' => null,
         'page_type' => null,
@@ -84,7 +86,8 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
+        'id' => true,
+		'name' => false,
 		'page_environment_type' => false,
 		'page_type' => false,
 		'retailer_id' => false
@@ -176,6 +179,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'name' => 'name',
         'page_environment_type' => 'pageEnvironmentType',
         'page_type' => 'pageType',
@@ -188,6 +192,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'name' => 'setName',
         'page_environment_type' => 'setPageEnvironmentType',
         'page_type' => 'setPageType',
@@ -200,6 +205,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'name' => 'getName',
         'page_environment_type' => 'getPageEnvironmentType',
         'page_type' => 'getPageType',
@@ -321,6 +327,7 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('page_environment_type', $data ?? [], null);
         $this->setIfExists('page_type', $data ?? [], null);
@@ -398,6 +405,40 @@ class PlacementPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets name

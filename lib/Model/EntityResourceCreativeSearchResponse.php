@@ -1,6 +1,6 @@
 <?php
 /**
- * ProblemDetails
+ * EntityResourceCreativeSearchResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ProblemDetails Class Doc Comment
+ * EntityResourceCreativeSearchResponse Class Doc Comment
  *
  * @category Class
- * @description Data model for common error or warning
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCreativeSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProblemDetails';
+    protected static $openAPIModelName = 'EntityResourceCreativeSearchResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
-        'detail' => 'string',
-        'instance' => 'string',
-        'source' => 'array<string,string>',
-        'stack_trace' => 'string',
-        'title' => 'string',
-        'trace_id' => 'string',
-        'trace_identifier' => 'string',
+        'attributes' => '\criteo\api\retailmedia\preview\Model\CreativeSearchResponse',
+        'id' => 'string',
         'type' => 'string'
     ];
 
@@ -77,14 +71,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
-        'detail' => null,
-        'instance' => null,
-        'source' => null,
-        'stack_trace' => null,
-        'title' => null,
-        'trace_id' => null,
-        'trace_identifier' => null,
+        'attributes' => null,
+        'id' => null,
         'type' => null
     ];
 
@@ -94,15 +82,9 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => false,
-		'detail' => false,
-		'instance' => false,
-		'source' => false,
-		'stack_trace' => false,
-		'title' => false,
-		'trace_id' => true,
-		'trace_identifier' => true,
-		'type' => false
+        'attributes' => true,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -191,14 +173,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
-        'detail' => 'detail',
-        'instance' => 'instance',
-        'source' => 'source',
-        'stack_trace' => 'stackTrace',
-        'title' => 'title',
-        'trace_id' => 'traceId',
-        'trace_identifier' => 'traceIdentifier',
+        'attributes' => 'attributes',
+        'id' => 'id',
         'type' => 'type'
     ];
 
@@ -208,14 +184,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
-        'detail' => 'setDetail',
-        'instance' => 'setInstance',
-        'source' => 'setSource',
-        'stack_trace' => 'setStackTrace',
-        'title' => 'setTitle',
-        'trace_id' => 'setTraceId',
-        'trace_identifier' => 'setTraceIdentifier',
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
         'type' => 'setType'
     ];
 
@@ -225,14 +195,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
-        'detail' => 'getDetail',
-        'instance' => 'getInstance',
-        'source' => 'getSource',
-        'stack_trace' => 'getStackTrace',
-        'title' => 'getTitle',
-        'trace_id' => 'getTraceId',
-        'trace_identifier' => 'getTraceIdentifier',
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
         'type' => 'getType'
     ];
 
@@ -277,33 +241,6 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'unknown';
-    public const TYPE_ACCESS_CONTROL = 'access-control';
-    public const TYPE_AUTHENTICATION = 'authentication';
-    public const TYPE_AUTHORIZATION = 'authorization';
-    public const TYPE_AVAILABILITY = 'availability';
-    public const TYPE_DEPRECATION = 'deprecation';
-    public const TYPE_QUOTA = 'quota';
-    public const TYPE_VALIDATION = 'validation';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_UNKNOWN,
-            self::TYPE_ACCESS_CONTROL,
-            self::TYPE_AUTHENTICATION,
-            self::TYPE_AUTHORIZATION,
-            self::TYPE_AVAILABILITY,
-            self::TYPE_DEPRECATION,
-            self::TYPE_QUOTA,
-            self::TYPE_VALIDATION,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -320,14 +257,8 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
-        $this->setIfExists('detail', $data ?? [], null);
-        $this->setIfExists('instance', $data ?? [], null);
-        $this->setIfExists('source', $data ?? [], null);
-        $this->setIfExists('stack_trace', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('trace_id', $data ?? [], null);
-        $this->setIfExists('trace_identifier', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -358,15 +289,6 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -383,231 +305,69 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets attributes
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\CreativeSearchResponse|null
      */
-    public function getCode()
+    public function getAttributes()
     {
-        return $this->container['code'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets code
+     * Sets attributes
      *
-     * @param string|null $code A machine-readable  error code, expressed as a string value.
+     * @param \criteo\api\retailmedia\preview\Model\CreativeSearchResponse|null $attributes attributes
      *
      * @return self
      */
-    public function setCode($code)
+    public function setAttributes($attributes)
     {
-        if (is_null($code)) {
-            throw new \InvalidArgumentException('non-nullable code cannot be null');
-        }
-        $this->container['code'] = $code;
-
-        return $this;
-    }
-
-    /**
-     * Gets detail
-     *
-     * @return string|null
-     */
-    public function getDetail()
-    {
-        return $this->container['detail'];
-    }
-
-    /**
-     * Sets detail
-     *
-     * @param string|null $detail A human-readable explanation specific to this occurrence of the problem
-     *
-     * @return self
-     */
-    public function setDetail($detail)
-    {
-        if (is_null($detail)) {
-            throw new \InvalidArgumentException('non-nullable detail cannot be null');
-        }
-        $this->container['detail'] = $detail;
-
-        return $this;
-    }
-
-    /**
-     * Gets instance
-     *
-     * @return string|null
-     */
-    public function getInstance()
-    {
-        return $this->container['instance'];
-    }
-
-    /**
-     * Sets instance
-     *
-     * @param string|null $instance A URI that identifies the specific occurrence of the problem.
-     *
-     * @return self
-     */
-    public function setInstance($instance)
-    {
-        if (is_null($instance)) {
-            throw new \InvalidArgumentException('non-nullable instance cannot be null');
-        }
-        $this->container['instance'] = $instance;
-
-        return $this;
-    }
-
-    /**
-     * Gets source
-     *
-     * @return array<string,string>|null
-     */
-    public function getSource()
-    {
-        return $this->container['source'];
-    }
-
-    /**
-     * Sets source
-     *
-     * @param array<string,string>|null $source A machine-readable structure to reference to the exact location(s) causing the error(s)
-     *
-     * @return self
-     */
-    public function setSource($source)
-    {
-        if (is_null($source)) {
-            throw new \InvalidArgumentException('non-nullable source cannot be null');
-        }
-        $this->container['source'] = $source;
-
-        return $this;
-    }
-
-    /**
-     * Gets stack_trace
-     *
-     * @return string|null
-     */
-    public function getStackTrace()
-    {
-        return $this->container['stack_trace'];
-    }
-
-    /**
-     * Sets stack_trace
-     *
-     * @param string|null $stack_trace Technical information, only used in non-prod environments
-     *
-     * @return self
-     */
-    public function setStackTrace($stack_trace)
-    {
-        if (is_null($stack_trace)) {
-            throw new \InvalidArgumentException('non-nullable stack_trace cannot be null');
-        }
-        $this->container['stack_trace'] = $stack_trace;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title A short human-readable description of the problem type
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
-        }
-        $this->container['title'] = $title;
-
-        return $this;
-    }
-
-    /**
-     * Gets trace_id
-     *
-     * @return string|null
-     */
-    public function getTraceId()
-    {
-        return $this->container['trace_id'];
-    }
-
-    /**
-     * Sets trace_id
-     *
-     * @param string|null $trace_id The request correlation ID this problem comes from.
-     *
-     * @return self
-     */
-    public function setTraceId($trace_id)
-    {
-        if (is_null($trace_id)) {
-            array_push($this->openAPINullablesSetToNull, 'trace_id');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trace_id', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['trace_id'] = $trace_id;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets trace_identifier
+     * Gets id
      *
      * @return string|null
      */
-    public function getTraceIdentifier()
+    public function getId()
     {
-        return $this->container['trace_identifier'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets trace_identifier
+     * Sets id
      *
-     * @param string|null $trace_identifier The request correlation ID this problem comes from. (deprecated, use traceId instead)
+     * @param string|null $id Unique id of the entity.
      *
      * @return self
      */
-    public function setTraceIdentifier($trace_identifier)
+    public function setId($id)
     {
-        if (is_null($trace_identifier)) {
-            array_push($this->openAPINullablesSetToNull, 'trace_identifier');
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('trace_identifier', $nullablesSetToNull);
+            $index = array_search('id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['trace_identifier'] = $trace_identifier;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -625,24 +385,21 @@ class ProblemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type The problem's category.
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
     public function setType($type)
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 

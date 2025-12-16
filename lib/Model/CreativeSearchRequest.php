@@ -1,6 +1,6 @@
 <?php
 /**
- * SkuSearchRequestPreview
+ * CreativeSearchRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SkuSearchRequestPreview Class Doc Comment
+ * CreativeSearchRequest Class Doc Comment
  *
  * @category Class
- * @description A request for sku by sellers or brands.
+ * @description Creative search request model
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreativeSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SkuSearchRequestPreview';
+    protected static $openAPIModelName = 'CreativeSearchRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'brand_ids' => 'string[]',
-        'brand_type' => 'string',
-        'id' => 'string',
-        'product_ids' => 'string[]',
-        'product_id_type' => 'string',
-        'query_string' => 'string',
-        'retailer_id' => 'string',
-        'sellers' => 'string[]',
-        'sku_type' => 'string'
+        'creative_ids' => 'string[]',
+        'creative_name' => 'string',
+        'creative_types' => 'string[]',
+        'page_types' => 'string[]',
+        'retailer_ids' => 'string[]',
+        'template_ids' => 'string[]'
     ];
 
     /**
@@ -77,15 +75,13 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'brand_ids' => 'long-id',
-        'brand_type' => null,
-        'id' => null,
-        'product_ids' => null,
-        'product_id_type' => null,
-        'query_string' => null,
-        'retailer_id' => 'long-id',
-        'sellers' => null,
-        'sku_type' => null
+        'brand_ids' => null,
+        'creative_ids' => null,
+        'creative_name' => null,
+        'creative_types' => null,
+        'page_types' => null,
+        'retailer_ids' => null,
+        'template_ids' => null
     ];
 
     /**
@@ -95,14 +91,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'brand_ids' => true,
-		'brand_type' => false,
-		'id' => true,
-		'product_ids' => true,
-		'product_id_type' => false,
-		'query_string' => false,
-		'retailer_id' => false,
-		'sellers' => true,
-		'sku_type' => false
+		'creative_ids' => true,
+		'creative_name' => true,
+		'creative_types' => true,
+		'page_types' => true,
+		'retailer_ids' => true,
+		'template_ids' => true
     ];
 
     /**
@@ -192,14 +186,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'brand_ids' => 'brandIds',
-        'brand_type' => 'brandType',
-        'id' => 'id',
-        'product_ids' => 'productIds',
-        'product_id_type' => 'productIdType',
-        'query_string' => 'queryString',
-        'retailer_id' => 'retailerId',
-        'sellers' => 'sellers',
-        'sku_type' => 'skuType'
+        'creative_ids' => 'creativeIds',
+        'creative_name' => 'creativeName',
+        'creative_types' => 'creativeTypes',
+        'page_types' => 'pageTypes',
+        'retailer_ids' => 'retailerIds',
+        'template_ids' => 'templateIds'
     ];
 
     /**
@@ -209,14 +201,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'brand_ids' => 'setBrandIds',
-        'brand_type' => 'setBrandType',
-        'id' => 'setId',
-        'product_ids' => 'setProductIds',
-        'product_id_type' => 'setProductIdType',
-        'query_string' => 'setQueryString',
-        'retailer_id' => 'setRetailerId',
-        'sellers' => 'setSellers',
-        'sku_type' => 'setSkuType'
+        'creative_ids' => 'setCreativeIds',
+        'creative_name' => 'setCreativeName',
+        'creative_types' => 'setCreativeTypes',
+        'page_types' => 'setPageTypes',
+        'retailer_ids' => 'setRetailerIds',
+        'template_ids' => 'setTemplateIds'
     ];
 
     /**
@@ -226,14 +216,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'brand_ids' => 'getBrandIds',
-        'brand_type' => 'getBrandType',
-        'id' => 'getId',
-        'product_ids' => 'getProductIds',
-        'product_id_type' => 'getProductIdType',
-        'query_string' => 'getQueryString',
-        'retailer_id' => 'getRetailerId',
-        'sellers' => 'getSellers',
-        'sku_type' => 'getSkuType'
+        'creative_ids' => 'getCreativeIds',
+        'creative_name' => 'getCreativeName',
+        'creative_types' => 'getCreativeTypes',
+        'page_types' => 'getPageTypes',
+        'retailer_ids' => 'getRetailerIds',
+        'template_ids' => 'getTemplateIds'
     ];
 
     /**
@@ -277,28 +265,36 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const BRAND_TYPE_U_C = 'uC';
-    public const BRAND_TYPE_RETAILER = 'retailer';
-    public const PRODUCT_ID_TYPE_SKU_KEY = 'skuKey';
-    public const PRODUCT_ID_TYPE_GTIN = 'gtin';
-    public const PRODUCT_ID_TYPE_MPN = 'mpn';
-    public const PRODUCT_ID_TYPE_MODEL = 'model';
-    public const PRODUCT_ID_TYPE_SKU_ID = 'skuId';
-    public const PRODUCT_ID_TYPE_PARENT_ID = 'parentId';
-    public const SKU_TYPE_BRAND = 'brand';
-    public const SKU_TYPE_SELLER = 'seller';
-    public const SKU_TYPE_ALL = 'all';
+    public const CREATIVE_TYPES_COMMERCE_DISPLAY = 'CommerceDisplay';
+    public const CREATIVE_TYPES_COMMERCE_VIDEO = 'CommerceVideo';
+    public const CREATIVE_TYPES_STANDARD_VIDEO = 'StandardVideo';
+    public const CREATIVE_TYPES_STANDARD_DISPLAY = 'StandardDisplay';
+    public const PAGE_TYPES_UNKNOWN = 'Unknown';
+    public const PAGE_TYPES_SEARCH = 'Search';
+    public const PAGE_TYPES_HOME = 'Home';
+    public const PAGE_TYPES_BROWSE = 'Browse';
+    public const PAGE_TYPES_CHECKOUT = 'Checkout';
+    public const PAGE_TYPES_CATEGORY = 'Category';
+    public const PAGE_TYPES_PRODUCT_DETAIL = 'ProductDetail';
+    public const PAGE_TYPES_CONFIRMATION = 'Confirmation';
+    public const PAGE_TYPES_MERCHANDISING = 'Merchandising';
+    public const PAGE_TYPES_DEALS = 'Deals';
+    public const PAGE_TYPES_FAVORITES = 'Favorites';
+    public const PAGE_TYPES_SEARCH_BAR = 'SearchBar';
+    public const PAGE_TYPES_CATEGORY_MENU = 'CategoryMenu';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getBrandTypeAllowableValues()
+    public function getCreativeTypesAllowableValues()
     {
         return [
-            self::BRAND_TYPE_U_C,
-            self::BRAND_TYPE_RETAILER,
+            self::CREATIVE_TYPES_COMMERCE_DISPLAY,
+            self::CREATIVE_TYPES_COMMERCE_VIDEO,
+            self::CREATIVE_TYPES_STANDARD_VIDEO,
+            self::CREATIVE_TYPES_STANDARD_DISPLAY,
         ];
     }
 
@@ -307,29 +303,22 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
      *
      * @return string[]
      */
-    public function getProductIdTypeAllowableValues()
+    public function getPageTypesAllowableValues()
     {
         return [
-            self::PRODUCT_ID_TYPE_SKU_KEY,
-            self::PRODUCT_ID_TYPE_GTIN,
-            self::PRODUCT_ID_TYPE_MPN,
-            self::PRODUCT_ID_TYPE_MODEL,
-            self::PRODUCT_ID_TYPE_SKU_ID,
-            self::PRODUCT_ID_TYPE_PARENT_ID,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSkuTypeAllowableValues()
-    {
-        return [
-            self::SKU_TYPE_BRAND,
-            self::SKU_TYPE_SELLER,
-            self::SKU_TYPE_ALL,
+            self::PAGE_TYPES_UNKNOWN,
+            self::PAGE_TYPES_SEARCH,
+            self::PAGE_TYPES_HOME,
+            self::PAGE_TYPES_BROWSE,
+            self::PAGE_TYPES_CHECKOUT,
+            self::PAGE_TYPES_CATEGORY,
+            self::PAGE_TYPES_PRODUCT_DETAIL,
+            self::PAGE_TYPES_CONFIRMATION,
+            self::PAGE_TYPES_MERCHANDISING,
+            self::PAGE_TYPES_DEALS,
+            self::PAGE_TYPES_FAVORITES,
+            self::PAGE_TYPES_SEARCH_BAR,
+            self::PAGE_TYPES_CATEGORY_MENU,
         ];
     }
 
@@ -349,14 +338,12 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->setIfExists('brand_ids', $data ?? [], null);
-        $this->setIfExists('brand_type', $data ?? [], 'uC');
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('product_ids', $data ?? [], null);
-        $this->setIfExists('product_id_type', $data ?? [], 'skuKey');
-        $this->setIfExists('query_string', $data ?? [], null);
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('sellers', $data ?? [], null);
-        $this->setIfExists('sku_type', $data ?? [], 'brand');
+        $this->setIfExists('creative_ids', $data ?? [], null);
+        $this->setIfExists('creative_name', $data ?? [], null);
+        $this->setIfExists('creative_types', $data ?? [], null);
+        $this->setIfExists('page_types', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
+        $this->setIfExists('template_ids', $data ?? [], null);
     }
 
     /**
@@ -386,37 +373,20 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!is_null($this->container['brand_type']) && !in_array($this->container['brand_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'brand_type', must be one of '%s'",
-                $this->container['brand_type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['brand_ids']) && (count($this->container['brand_ids']) > 100)) {
+            $invalidProperties[] = "invalid value for 'brand_ids', number of items must be less than or equal to 100.";
         }
 
-        $allowedValues = $this->getProductIdTypeAllowableValues();
-        if (!is_null($this->container['product_id_type']) && !in_array($this->container['product_id_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'product_id_type', must be one of '%s'",
-                $this->container['product_id_type'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['creative_ids']) && (count($this->container['creative_ids']) > 500)) {
+            $invalidProperties[] = "invalid value for 'creative_ids', number of items must be less than or equal to 500.";
         }
 
-        if ($this->container['query_string'] === null) {
-            $invalidProperties[] = "'query_string' can't be null";
+        if (!is_null($this->container['retailer_ids']) && (count($this->container['retailer_ids']) > 100)) {
+            $invalidProperties[] = "invalid value for 'retailer_ids', number of items must be less than or equal to 100.";
         }
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        $allowedValues = $this->getSkuTypeAllowableValues();
-        if (!is_null($this->container['sku_type']) && !in_array($this->container['sku_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sku_type', must be one of '%s'",
-                $this->container['sku_type'],
-                implode("', '", $allowedValues)
-            );
+
+        if (!is_null($this->container['template_ids']) && (count($this->container['template_ids']) > 100)) {
+            $invalidProperties[] = "invalid value for 'template_ids', number of items must be less than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -447,7 +417,7 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets brand_ids
      *
-     * @param string[]|null $brand_ids A list of brand Id's
+     * @param string[]|null $brand_ids Brand Id of the search filter
      *
      * @return self
      */
@@ -463,274 +433,245 @@ class SkuSearchRequestPreview implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
+
+        if (!is_null($brand_ids) && (count($brand_ids) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $brand_ids when calling CreativeSearchRequest., number of items must be less than or equal to 100.');
+        }
         $this->container['brand_ids'] = $brand_ids;
 
         return $this;
     }
 
     /**
-     * Gets brand_type
-     *
-     * @return string|null
-     */
-    public function getBrandType()
-    {
-        return $this->container['brand_type'];
-    }
-
-    /**
-     * Sets brand_type
-     *
-     * @param string|null $brand_type Enum to set type of brand id's to filter by
-     *
-     * @return self
-     */
-    public function setBrandType($brand_type)
-    {
-        if (is_null($brand_type)) {
-            throw new \InvalidArgumentException('non-nullable brand_type cannot be null');
-        }
-        $allowedValues = $this->getBrandTypeAllowableValues();
-        if (!in_array($brand_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'brand_type', must be one of '%s'",
-                    $brand_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['brand_type'] = $brand_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_ids
+     * Gets creative_ids
      *
      * @return string[]|null
      */
-    public function getProductIds()
+    public function getCreativeIds()
     {
-        return $this->container['product_ids'];
+        return $this->container['creative_ids'];
     }
 
     /**
-     * Sets product_ids
+     * Sets creative_ids
      *
-     * @param string[]|null $product_ids A list of product Id's, if not passed ignore and search by QueryString
+     * @param string[]|null $creative_ids Search Id
      *
      * @return self
      */
-    public function setProductIds($product_ids)
+    public function setCreativeIds($creative_ids)
     {
-        if (is_null($product_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'product_ids');
+        if (is_null($creative_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'creative_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_ids', $nullablesSetToNull);
+            $index = array_search('creative_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['product_ids'] = $product_ids;
+
+        if (!is_null($creative_ids) && (count($creative_ids) > 500)) {
+            throw new \InvalidArgumentException('invalid value for $creative_ids when calling CreativeSearchRequest., number of items must be less than or equal to 500.');
+        }
+        $this->container['creative_ids'] = $creative_ids;
 
         return $this;
     }
 
     /**
-     * Gets product_id_type
+     * Gets creative_name
      *
      * @return string|null
      */
-    public function getProductIdType()
+    public function getCreativeName()
     {
-        return $this->container['product_id_type'];
+        return $this->container['creative_name'];
     }
 
     /**
-     * Sets product_id_type
+     * Sets creative_name
      *
-     * @param string|null $product_id_type Type of Product Ids to search for.
+     * @param string|null $creative_name Name to search
      *
      * @return self
      */
-    public function setProductIdType($product_id_type)
+    public function setCreativeName($creative_name)
     {
-        if (is_null($product_id_type)) {
-            throw new \InvalidArgumentException('non-nullable product_id_type cannot be null');
+        if (is_null($creative_name)) {
+            array_push($this->openAPINullablesSetToNull, 'creative_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('creative_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getProductIdTypeAllowableValues();
-        if (!in_array($product_id_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_id_type', must be one of '%s'",
-                    $product_id_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_id_type'] = $product_id_type;
+        $this->container['creative_name'] = $creative_name;
 
         return $this;
     }
 
     /**
-     * Gets query_string
-     *
-     * @return string
-     */
-    public function getQueryString()
-    {
-        return $this->container['query_string'];
-    }
-
-    /**
-     * Sets query_string
-     *
-     * @param string $query_string Query string to search for across SKU's properties (gtin, mpn, feed ID, Title, and Description)
-     *
-     * @return self
-     */
-    public function setQueryString($query_string)
-    {
-        if (is_null($query_string)) {
-            throw new \InvalidArgumentException('non-nullable query_string cannot be null');
-        }
-        $this->container['query_string'] = $query_string;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_id
-     *
-     * @return string
-     */
-    public function getRetailerId()
-    {
-        return $this->container['retailer_id'];
-    }
-
-    /**
-     * Sets retailer_id
-     *
-     * @param string $retailer_id Retailer Id
-     *
-     * @return self
-     */
-    public function setRetailerId($retailer_id)
-    {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
-        }
-        $this->container['retailer_id'] = $retailer_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets sellers
+     * Gets creative_types
      *
      * @return string[]|null
      */
-    public function getSellers()
+    public function getCreativeTypes()
     {
-        return $this->container['sellers'];
+        return $this->container['creative_types'];
     }
 
     /**
-     * Sets sellers
+     * Sets creative_types
      *
-     * @param string[]|null $sellers A list of seller names and/or seller Id's
+     * @param string[]|null $creative_types Creative type
      *
      * @return self
      */
-    public function setSellers($sellers)
+    public function setCreativeTypes($creative_types)
     {
-        if (is_null($sellers)) {
-            array_push($this->openAPINullablesSetToNull, 'sellers');
+        if (is_null($creative_types)) {
+            array_push($this->openAPINullablesSetToNull, 'creative_types');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sellers', $nullablesSetToNull);
+            $index = array_search('creative_types', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['sellers'] = $sellers;
+        $allowedValues = $this->getCreativeTypesAllowableValues();
+        if (!is_null($creative_types) && array_diff($creative_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'creative_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['creative_types'] = $creative_types;
 
         return $this;
     }
 
     /**
-     * Gets sku_type
+     * Gets page_types
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getSkuType()
+    public function getPageTypes()
     {
-        return $this->container['sku_type'];
+        return $this->container['page_types'];
     }
 
     /**
-     * Sets sku_type
+     * Sets page_types
      *
-     * @param string|null $sku_type Enum to set isSellerSku field
+     * @param string[]|null $page_types Page type
      *
      * @return self
      */
-    public function setSkuType($sku_type)
+    public function setPageTypes($page_types)
     {
-        if (is_null($sku_type)) {
-            throw new \InvalidArgumentException('non-nullable sku_type cannot be null');
+        if (is_null($page_types)) {
+            array_push($this->openAPINullablesSetToNull, 'page_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getSkuTypeAllowableValues();
-        if (!in_array($sku_type, $allowedValues, true)) {
+        $allowedValues = $this->getPageTypesAllowableValues();
+        if (!is_null($page_types) && array_diff($page_types, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'sku_type', must be one of '%s'",
-                    $sku_type,
+                    "Invalid value for 'page_types', must be one of '%s'",
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['sku_type'] = $sku_type;
+        $this->container['page_types'] = $page_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_ids
+     *
+     * @return string[]|null
+     */
+    public function getRetailerIds()
+    {
+        return $this->container['retailer_ids'];
+    }
+
+    /**
+     * Sets retailer_ids
+     *
+     * @param string[]|null $retailer_ids RetailerId of the search filter
+     *
+     * @return self
+     */
+    public function setRetailerIds($retailer_ids)
+    {
+        if (is_null($retailer_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($retailer_ids) && (count($retailer_ids) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $retailer_ids when calling CreativeSearchRequest., number of items must be less than or equal to 100.');
+        }
+        $this->container['retailer_ids'] = $retailer_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_ids
+     *
+     * @return string[]|null
+     */
+    public function getTemplateIds()
+    {
+        return $this->container['template_ids'];
+    }
+
+    /**
+     * Sets template_ids
+     *
+     * @param string[]|null $template_ids Id of the template this creative was created on
+     *
+     * @return self
+     */
+    public function setTemplateIds($template_ids)
+    {
+        if (is_null($template_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'template_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('template_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+
+        if (!is_null($template_ids) && (count($template_ids) > 100)) {
+            throw new \InvalidArgumentException('invalid value for $template_ids when calling CreativeSearchRequest., number of items must be less than or equal to 100.');
+        }
+        $this->container['template_ids'] = $template_ids;
 
         return $this;
     }

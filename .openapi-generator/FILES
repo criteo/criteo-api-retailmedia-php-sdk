@@ -66,9 +66,10 @@ docs/Model/CpcRateCardPreviewResponse.md
 docs/Model/CreateBalanceV2.md
 docs/Model/CreateBalanceV2Request.md
 docs/Model/Creative2.md
-docs/Model/Creative2ListResponse.md
 docs/Model/Creative2Response.md
 docs/Model/CreativeCreateModel2.md
+docs/Model/CreativeSearchRequest.md
+docs/Model/CreativeSearchResponse.md
 docs/Model/CreativeUpdateModel2.md
 docs/Model/CustomAttribute.md
 docs/Model/DemandManagedFee.md
@@ -79,9 +80,13 @@ docs/Model/EntityResourceCategory202204.md
 docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/Model/EntityResourceCollectionOutcomeCategory202204.md
 docs/Model/EntityResourceCollectionOutcomeCategory202204Metadata.md
+docs/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md
 docs/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
+docs/Model/EntityResourceCreativeSearchRequest.md
+docs/Model/EntityResourceCreativeSearchResponse.md
+docs/Model/EntityResourceInputCreativeSearchRequest.md
 docs/Model/EntityResourceOfCatalogStatusV2.md
 docs/Model/EntityResourceOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
@@ -151,7 +156,6 @@ docs/Model/PreferredLineItemV2Response.md
 docs/Model/Price.md
 docs/Model/PrivateMarketAccountFees.md
 docs/Model/PrivateMarketFees.md
-docs/Model/ProblemDetails.md
 docs/Model/Product.md
 docs/Model/ProductButtonRequest.md
 docs/Model/ProductButtonRequestListRequest.md
@@ -422,9 +426,10 @@ lib/Model/CpcRateCardPreviewResponse.php
 lib/Model/CreateBalanceV2.php
 lib/Model/CreateBalanceV2Request.php
 lib/Model/Creative2.php
-lib/Model/Creative2ListResponse.php
 lib/Model/Creative2Response.php
 lib/Model/CreativeCreateModel2.php
+lib/Model/CreativeSearchRequest.php
+lib/Model/CreativeSearchResponse.php
 lib/Model/CreativeUpdateModel2.php
 lib/Model/CustomAttribute.php
 lib/Model/DemandManagedFee.php
@@ -435,9 +440,13 @@ lib/Model/EntityResourceCategory202204.php
 lib/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.php
 lib/Model/EntityResourceCollectionOutcomeCategory202204.php
 lib/Model/EntityResourceCollectionOutcomeCategory202204Metadata.php
+lib/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.php
 lib/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.php
+lib/Model/EntityResourceCreativeSearchRequest.php
+lib/Model/EntityResourceCreativeSearchResponse.php
+lib/Model/EntityResourceInputCreativeSearchRequest.php
 lib/Model/EntityResourceOfCatalogStatusV2.php
 lib/Model/EntityResourceOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
@@ -508,7 +517,6 @@ lib/Model/PreferredLineItemV2Response.php
 lib/Model/Price.php
 lib/Model/PrivateMarketAccountFees.php
 lib/Model/PrivateMarketFees.php
-lib/Model/ProblemDetails.php
 lib/Model/Product.php
 lib/Model/ProductButtonRequest.php
 lib/Model/ProductButtonRequestListRequest.php

@@ -4,12 +4,75 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**getCatalogProductsBatchReport()**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
 | [**offerLoadV1()**](CatalogApi.md#offerLoadV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/load |  |
 | [**offerSetBbwV1()**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners |  |
 | [**offerUpdateV1()**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailerId}/offers/update |  |
-| [**previewRetailMediaCatalogProductsBatchPost()**](CatalogApi.md#previewRetailMediaCatalogProductsBatchPost) | **POST** /preview/retail-media/catalog/products/batch |  |
-| [**previewRetailMediaCatalogProductsBatchReportOperationTokenGet()**](CatalogApi.md#previewRetailMediaCatalogProductsBatchReportOperationTokenGet) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
+| [**submitCatalogProductsBatch()**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
 
+
+## `getCatalogProductsBatchReport()`
+
+```php
+getCatalogProductsBatchReport($operation_token): \criteo\api\retailmedia\preview\Model\ReportOkResponse
+```
+
+
+
+Get the report of an asynchronous batch operation previously requested
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$operation_token = 'operation_token_example'; // string | The token returned by the batch endpoint.
+
+try {
+    $result = $apiInstance->getCatalogProductsBatchReport($operation_token);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->getCatalogProductsBatchReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **operation_token** | **string**| The token returned by the batch endpoint. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ReportOkResponse**](../Model/ReportOkResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `offerLoadV1()`
 
@@ -206,10 +269,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `previewRetailMediaCatalogProductsBatchPost()`
+## `submitCatalogProductsBatch()`
 
 ```php
-previewRetailMediaCatalogProductsBatchPost($products_custom_batch_request): \criteo\api\retailmedia\preview\Model\BatchAcceptedResponse
+submitCatalogProductsBatch($products_custom_batch_request): \criteo\api\retailmedia\preview\Model\BatchAcceptedResponse
 ```
 
 
@@ -239,10 +302,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CatalogApi(
 $products_custom_batch_request = new \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest(); // \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest
 
 try {
-    $result = $apiInstance->previewRetailMediaCatalogProductsBatchPost($products_custom_batch_request);
+    $result = $apiInstance->submitCatalogProductsBatch($products_custom_batch_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CatalogApi->previewRetailMediaCatalogProductsBatchPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CatalogApi->submitCatalogProductsBatch: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -263,69 +326,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `previewRetailMediaCatalogProductsBatchReportOperationTokenGet()`
-
-```php
-previewRetailMediaCatalogProductsBatchReportOperationTokenGet($operation_token): \criteo\api\retailmedia\preview\Model\ReportOkResponse
-```
-
-
-
-Get the report of an asynchronous batch operation previously requested
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CatalogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$operation_token = 'operation_token_example'; // string | The token returned by the batch endpoint.
-
-try {
-    $result = $apiInstance->previewRetailMediaCatalogProductsBatchReportOperationTokenGet($operation_token);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CatalogApi->previewRetailMediaCatalogProductsBatchReportOperationTokenGet: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **operation_token** | **string**| The token returned by the batch endpoint. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ReportOkResponse**](../Model/ReportOkResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -59,6 +59,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'brand_id' => 'int',
+        'id' => 'string',
         'name' => 'string',
         'retailer_id' => 'int',
         'template_id' => 'int',
@@ -74,6 +75,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'brand_id' => 'int64',
+        'id' => null,
         'name' => null,
         'retailer_id' => 'int32',
         'template_id' => 'int32',
@@ -87,6 +89,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'brand_id' => true,
+		'id' => true,
 		'name' => false,
 		'retailer_id' => false,
 		'template_id' => false,
@@ -180,6 +183,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'brand_id' => 'brandId',
+        'id' => 'id',
         'name' => 'name',
         'retailer_id' => 'retailerId',
         'template_id' => 'templateId',
@@ -193,6 +197,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'brand_id' => 'setBrandId',
+        'id' => 'setId',
         'name' => 'setName',
         'retailer_id' => 'setRetailerId',
         'template_id' => 'setTemplateId',
@@ -206,6 +211,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'brand_id' => 'getBrandId',
+        'id' => 'getId',
         'name' => 'getName',
         'retailer_id' => 'getRetailerId',
         'template_id' => 'getTemplateId',
@@ -270,6 +276,7 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->setIfExists('brand_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('template_id', $data ?? [], null);
@@ -360,6 +367,40 @@ class CreativeCreateModel2 implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['brand_id'] = $brand_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

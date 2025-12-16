@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * ResourceOfSkuSearchRequestPreview Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -83,8 +83,8 @@ class ResourceOfSkuSearchRequestPreview implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'attributes' => false,
-		'id' => false,
-		'type' => false
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -344,14 +344,21 @@ class ResourceOfSkuSearchRequestPreview implements ModelInterface, ArrayAccess, 
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id Unique identifier of this resource.
      *
      * @return self
      */
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -371,14 +378,21 @@ class ResourceOfSkuSearchRequestPreview implements ModelInterface, ArrayAccess, 
     /**
      * Sets type
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param string|null $type type
      *
      * @return self
      */
     public function setType($type)
     {
         if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['type'] = $type;
 

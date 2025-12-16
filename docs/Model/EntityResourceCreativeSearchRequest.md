@@ -1,10 +1,10 @@
-# # EntityResourceOfCatalogStatusV2
+# # EntityResourceCreativeSearchRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\CatalogStatusV2**](CatalogStatusV2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\preview\Model\CreativeSearchRequest**](CreativeSearchRequest.md) |  | [optional]
 **id** | **string** | Unique id of the entity. | [optional]
 **type** | **string** | Type of the resource. | [optional]
 

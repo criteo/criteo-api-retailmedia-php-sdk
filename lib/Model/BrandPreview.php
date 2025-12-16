@@ -58,6 +58,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'brand_type' => 'string',
+        'id' => 'string',
         'name' => 'string'
     ];
 
@@ -69,6 +71,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'brand_type' => null,
+        'id' => null,
         'name' => null
     ];
 
@@ -78,7 +82,9 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false
+        'brand_type' => true,
+		'id' => true,
+		'name' => false
     ];
 
     /**
@@ -167,6 +173,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'brand_type' => 'brandType',
+        'id' => 'id',
         'name' => 'name'
     ];
 
@@ -176,6 +184,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'brand_type' => 'setBrandType',
+        'id' => 'setId',
         'name' => 'setName'
     ];
 
@@ -185,6 +195,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'brand_type' => 'getBrandType',
+        'id' => 'getId',
         'name' => 'getName'
     ];
 
@@ -245,6 +257,8 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('brand_type', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
     }
 
@@ -292,6 +306,74 @@ class BrandPreview implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets brand_type
+     *
+     * @return string|null
+     */
+    public function getBrandType()
+    {
+        return $this->container['brand_type'];
+    }
+
+    /**
+     * Sets brand_type
+     *
+     * @param string|null $brand_type Brand Type
+     *
+     * @return self
+     */
+    public function setBrandType($brand_type)
+    {
+        if (is_null($brand_type)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['brand_type'] = $brand_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets name

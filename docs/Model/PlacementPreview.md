@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
 **name** | **string** | Name of the placement |
 **page_environment_type** | **string** | Page Environment |
 **page_type** | **string** | Page Type |
