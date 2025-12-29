@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfBalanceResponseV2
+ * EntityResourceOfBalanceCampaignV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ResourceOfBalanceResponseV2 Class Doc Comment
+ * EntityResourceOfBalanceCampaignV1 Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfBalanceCampaignV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfBalanceResponseV2';
+    protected static $openAPIModelName = 'EntityResourceOfBalanceCampaignV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\BalanceResponseV2',
+        'attributes' => 'object',
         'id' => 'string',
         'type' => 'string'
     ];
@@ -307,7 +307,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\BalanceResponseV2|null
+     * @return object|null
      */
     public function getAttributes()
     {
@@ -317,7 +317,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\BalanceResponseV2|null $attributes attributes
+     * @param object|null $attributes Campaigns related to the balance
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id Unique id of the entity.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class ResourceOfBalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets type
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceResponseV2
+ * BalanceResponseV1
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * BalanceResponseV2 Class Doc Comment
+ * BalanceResponseV1 Class Doc Comment
  *
  * @category Class
  * @description A Retail Media Balance used to determine the funds available for any or all campaigns in an account
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class BalanceResponseV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceResponseV2';
+    protected static $openAPIModelName = 'BalanceResponseV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -314,9 +314,10 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_RETAILER = 'billByRetailer';
     public const PRIVATE_MARKET_BILLING_TYPE_BILL_BY_CRITEO = 'billByCriteo';
     public const PRIVATE_MARKET_BILLING_TYPE_UNKNOWN = 'unknown';
-    public const SPEND_TYPE_ONSITE = 'Onsite';
-    public const SPEND_TYPE_OFFSITE = 'Offsite';
-    public const SPEND_TYPE_OFFSITE_AWARENESS = 'OffsiteAwareness';
+    public const SPEND_TYPE_UNKNOWN = 'unknown';
+    public const SPEND_TYPE_ONSITE = 'onsite';
+    public const SPEND_TYPE_OFFSITE = 'offsite';
+    public const SPEND_TYPE_OFFSITE_AWARENESS = 'offsiteAwareness';
     public const STATUS_UNKNOWN = 'unknown';
     public const STATUS_SCHEDULED = 'scheduled';
     public const STATUS_ACTIVE = 'active';
@@ -359,6 +360,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function getSpendTypeAllowableValues()
     {
         return [
+            self::SPEND_TYPE_UNKNOWN,
             self::SPEND_TYPE_ONSITE,
             self::SPEND_TYPE_OFFSITE,
             self::SPEND_TYPE_OFFSITE_AWARENESS,
@@ -450,8 +452,23 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
 
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['deposited'] === null) {
+            $invalidProperties[] = "'deposited' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['po_number'] === null) {
+            $invalidProperties[] = "'po_number' can't be null";
         }
         if ($this->container['private_market_billing_type'] === null) {
             $invalidProperties[] = "'private_market_billing_type' can't be null";
@@ -465,6 +482,9 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
 
+        if ($this->container['remaining'] === null) {
+            $invalidProperties[] = "'remaining' can't be null";
+        }
         if ($this->container['spend_type'] === null) {
             $invalidProperties[] = "'spend_type' can't be null";
         }
@@ -477,8 +497,14 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
 
+        if ($this->container['spent'] === null) {
+            $invalidProperties[] = "'spent' can't be null";
+        }
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
         }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
@@ -489,6 +515,9 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
             );
         }
 
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -544,7 +573,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -554,7 +583,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at Creation time of the balance.
+     * @param \DateTime $created_at Creation time of the balance.
      *
      * @return self
      */
@@ -571,7 +600,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets deposited
      *
-     * @return float|null
+     * @return float
      */
     public function getDeposited()
     {
@@ -581,7 +610,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets deposited
      *
-     * @param float|null $deposited Amount of billable funds allotted to the balance.
+     * @param float $deposited Amount of billable funds allotted to the balance.
      *
      * @return self
      */
@@ -605,7 +634,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets end_date
      *
-     * @return string|null
+     * @return string
      */
     public function getEndDate()
     {
@@ -615,7 +644,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets end_date
      *
-     * @param string|null $end_date End date of the balance in the format YYYY-MM-DD.
+     * @param string $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
@@ -639,7 +668,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets memo
      *
-     * @return string|null
+     * @return string
      */
     public function getMemo()
     {
@@ -649,7 +678,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets memo
      *
-     * @param string|null $memo Memo.
+     * @param string $memo Memo.
      *
      * @return self
      */
@@ -700,7 +729,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets po_number
      *
-     * @return string|null
+     * @return string
      */
     public function getPoNumber()
     {
@@ -710,7 +739,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets po_number
      *
-     * @param string|null $po_number Purchase Order number.
+     * @param string $po_number Purchase Order number.
      *
      * @return self
      */
@@ -771,7 +800,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets remaining
      *
-     * @return float|null
+     * @return float
      */
     public function getRemaining()
     {
@@ -781,7 +810,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets remaining
      *
-     * @param float|null $remaining Amount of remaining funds of the balance.
+     * @param float $remaining Amount of remaining funds of the balance.
      *
      * @return self
      */
@@ -842,7 +871,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets spent
      *
-     * @return float|null
+     * @return float
      */
     public function getSpent()
     {
@@ -852,7 +881,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets spent
      *
-     * @param float|null $spent Amount of spent funds of the balance.
+     * @param float $spent Amount of spent funds of the balance.
      *
      * @return self
      */
@@ -903,7 +932,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -913,7 +942,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets status
      *
-     * @param string|null $status Status of the balance.
+     * @param string $status Status of the balance.
      *
      * @return self
      */
@@ -940,7 +969,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -950,7 +979,7 @@ class BalanceResponseV2 implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at Update time of the balance.
+     * @param \DateTime $updated_at Update time of the balance.
      *
      * @return self
      */

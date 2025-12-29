@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateBalanceV2Request
+ * EntityResourceCollectionInputOfBalanceCampaignV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * CreateBalanceV2Request Class Doc Comment
+ * EntityResourceCollectionInputOfBalanceCampaignV1 Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single entity
+ * @description A top-level object that encapsulates a Criteo API request for several entities.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionInputOfBalanceCampaignV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateBalanceV2Request';
+    protected static $openAPIModelName = 'EntityResourceCollectionInputOfBalanceCampaignV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfCreateBalanceV2'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]'
     ];
 
     /**
@@ -78,7 +78,7 @@ class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'data' => true
     ];
 
     /**
@@ -293,7 +293,7 @@ class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfCreateBalanceV2|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null
      */
     public function getData()
     {
@@ -303,14 +303,21 @@ class CreateBalanceV2Request implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfCreateBalanceV2|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 

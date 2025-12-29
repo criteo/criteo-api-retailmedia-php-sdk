@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfChangeDatesOfBalanceV2
+ * EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ResourceOfChangeDatesOfBalanceV2 Class Doc Comment
+ * EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfChangeDatesOfBalanceV2';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2',
-        'id' => 'string',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\PageMeta',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -71,9 +72,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'data' => null,
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => false,
-		'type' => false
+        'data' => true,
+		'errors' => true,
+		'metadata' => true,
+		'warnings' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'data' => 'data',
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -184,9 +188,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -195,9 +200,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -257,9 +263,10 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -305,82 +312,137 @@ class ResourceOfChangeDatesOfBalanceV2 implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ChangeDatesOfBalanceV2|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getId()
+    public function getErrors()
     {
-        return $this->container['id'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets id
+     * Sets errors
      *
-     * @param string|null $id Id of the entity
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setId($id)
+    public function setErrors($errors)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets metadata
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\PageMeta|null
      */
-    public function getType()
+    public function getMetadata()
     {
-        return $this->container['type'];
+        return $this->container['metadata'];
     }
 
     /**
-     * Sets type
+     * Sets metadata
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param \criteo\api\retailmedia\preview\Model\PageMeta|null $metadata metadata
      *
      * @return self
      */
-    public function setType($type)
+    public function setMetadata($metadata)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

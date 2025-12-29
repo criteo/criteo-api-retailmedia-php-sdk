@@ -1,12 +1,12 @@
-# # CreateBalanceV2
+# # CreateBalanceV1
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**deposited** | **float** | Amount of billable funds allotted to the balance. | [optional]
-**end_date** | **string** | End date of the balance in the format YYYY-MM-DD. | [optional]
-**memo** | **string** | Memo | [optional]
+**deposited** | **float** | Amount of billable funds allotted to the balance. |
+**end_date** | **string** | End date of the balance in the format YYYY-MM-DD. |
+**memo** | **string** | Memo |
 **name** | **string** | Name of the balance. |
 **po_number** | **string** | Purchase Order number. | [optional]
 **spend_type** | **string** | Type of the balance spend. |

@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceResponseV2PagedListResponse
+ * CreateBalanceV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * BalanceResponseV2PagedListResponse Class Doc Comment
+ * CreateBalanceV1 Class Doc Comment
  *
  * @category Class
- * @description Data model for a paged list of response resources
+ * @description An object that represents the available options to set when creating a Retail Media Balance
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateBalanceV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceResponseV2PagedListResponse';
+    protected static $openAPIModelName = 'CreateBalanceV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'metadata' => '\criteo\api\retailmedia\preview\Model\PageMetadata',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'deposited' => 'float',
+        'end_date' => 'string',
+        'memo' => 'string',
+        'name' => 'string',
+        'po_number' => 'string',
+        'spend_type' => 'string',
+        'start_date' => 'string'
     ];
 
     /**
@@ -72,10 +75,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'metadata' => null,
-        'warnings' => null
+        'deposited' => 'double',
+        'end_date' => null,
+        'memo' => null,
+        'name' => null,
+        'po_number' => null,
+        'spend_type' => null,
+        'start_date' => null
     ];
 
     /**
@@ -84,10 +90,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'errors' => false,
-		'metadata' => false,
-		'warnings' => false
+        'deposited' => true,
+		'end_date' => true,
+		'memo' => true,
+		'name' => false,
+		'po_number' => true,
+		'spend_type' => false,
+		'start_date' => false
     ];
 
     /**
@@ -176,10 +185,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'metadata' => 'metadata',
-        'warnings' => 'warnings'
+        'deposited' => 'deposited',
+        'end_date' => 'endDate',
+        'memo' => 'memo',
+        'name' => 'name',
+        'po_number' => 'poNumber',
+        'spend_type' => 'spendType',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -188,10 +200,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'metadata' => 'setMetadata',
-        'warnings' => 'setWarnings'
+        'deposited' => 'setDeposited',
+        'end_date' => 'setEndDate',
+        'memo' => 'setMemo',
+        'name' => 'setName',
+        'po_number' => 'setPoNumber',
+        'spend_type' => 'setSpendType',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -200,10 +215,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'metadata' => 'getMetadata',
-        'warnings' => 'getWarnings'
+        'deposited' => 'getDeposited',
+        'end_date' => 'getEndDate',
+        'memo' => 'getMemo',
+        'name' => 'getName',
+        'po_number' => 'getPoNumber',
+        'spend_type' => 'getSpendType',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -247,6 +265,25 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const SPEND_TYPE_UNKNOWN = 'unknown';
+    public const SPEND_TYPE_ONSITE = 'onsite';
+    public const SPEND_TYPE_OFFSITE = 'offsite';
+    public const SPEND_TYPE_OFFSITE_AWARENESS = 'offsiteAwareness';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSpendTypeAllowableValues()
+    {
+        return [
+            self::SPEND_TYPE_UNKNOWN,
+            self::SPEND_TYPE_ONSITE,
+            self::SPEND_TYPE_OFFSITE,
+            self::SPEND_TYPE_OFFSITE_AWARENESS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +300,13 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('deposited', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('memo', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('po_number', $data ?? [], null);
+        $this->setIfExists('spend_type', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -296,6 +336,33 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['deposited'] === null) {
+            $invalidProperties[] = "'deposited' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['spend_type'] === null) {
+            $invalidProperties[] = "'spend_type' can't be null";
+        }
+        $allowedValues = $this->getSpendTypeAllowableValues();
+        if (!is_null($this->container['spend_type']) && !in_array($this->container['spend_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'spend_type', must be one of '%s'",
+                $this->container['spend_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -312,109 +379,228 @@ class BalanceResponseV2PagedListResponse implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets data
+     * Gets deposited
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null
+     * @return float
      */
-    public function getData()
+    public function getDeposited()
     {
-        return $this->container['data'];
+        return $this->container['deposited'];
     }
 
     /**
-     * Sets data
+     * Sets deposited
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2[]|null $data data
+     * @param float $deposited Amount of billable funds allotted to the balance.
      *
      * @return self
      */
-    public function setData($data)
+    public function setDeposited($deposited)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($deposited)) {
+            array_push($this->openAPINullablesSetToNull, 'deposited');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('deposited', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['deposited'] = $deposited;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets end_date
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return string
      */
-    public function getErrors()
+    public function getEndDate()
     {
-        return $this->container['errors'];
+        return $this->container['end_date'];
     }
 
     /**
-     * Sets errors
+     * Sets end_date
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     * @param string $end_date End date of the balance in the format YYYY-MM-DD.
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setEndDate($end_date)
     {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['errors'] = $errors;
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets memo
      *
-     * @return \criteo\api\retailmedia\preview\Model\PageMetadata|null
+     * @return string
      */
-    public function getMetadata()
+    public function getMemo()
     {
-        return $this->container['metadata'];
+        return $this->container['memo'];
     }
 
     /**
-     * Sets metadata
+     * Sets memo
      *
-     * @param \criteo\api\retailmedia\preview\Model\PageMetadata|null $metadata metadata
+     * @param string $memo Memo
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setMemo($memo)
     {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        if (is_null($memo)) {
+            array_push($this->openAPINullablesSetToNull, 'memo');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('memo', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['metadata'] = $metadata;
+        $this->container['memo'] = $memo;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets name
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return string
      */
-    public function getWarnings()
+    public function getName()
     {
-        return $this->container['warnings'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets warnings
+     * Sets name
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
+     * @param string $name Name of the balance.
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setName($name)
     {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets po_number
+     *
+     * @return string|null
+     */
+    public function getPoNumber()
+    {
+        return $this->container['po_number'];
+    }
+
+    /**
+     * Sets po_number
+     *
+     * @param string|null $po_number Purchase Order number.
+     *
+     * @return self
+     */
+    public function setPoNumber($po_number)
+    {
+        if (is_null($po_number)) {
+            array_push($this->openAPINullablesSetToNull, 'po_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('po_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['po_number'] = $po_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets spend_type
+     *
+     * @return string
+     */
+    public function getSpendType()
+    {
+        return $this->container['spend_type'];
+    }
+
+    /**
+     * Sets spend_type
+     *
+     * @param string $spend_type Type of the balance spend.
+     *
+     * @return self
+     */
+    public function setSpendType($spend_type)
+    {
+        if (is_null($spend_type)) {
+            throw new \InvalidArgumentException('non-nullable spend_type cannot be null');
+        }
+        $allowedValues = $this->getSpendTypeAllowableValues();
+        if (!in_array($spend_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'spend_type', must be one of '%s'",
+                    $spend_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['spend_type'] = $spend_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return string
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param string $start_date Start date of the balance in the format YYYY-MM-DD.
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }

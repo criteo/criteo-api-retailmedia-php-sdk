@@ -71,6 +71,9 @@ class CampaignApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'appendCampaignsByBalanceId' => [
+            'application/json',
+        ],
         'appendProductButtonByLineItemId' => [
             'application/json',
         ],
@@ -225,6 +228,308 @@ class CampaignApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation appendCampaignsByBalanceId
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 $entity_resource_collection_input_of_balance_campaign_v1 The campaigns to append (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1
+     */
+    public function appendCampaignsByBalanceId($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, string $contentType = self::contentTypes['appendCampaignsByBalanceId'][0])
+    {
+        list($response) = $this->appendCampaignsByBalanceIdWithHttpInfo($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation appendCampaignsByBalanceIdWithHttpInfo
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 $entity_resource_collection_input_of_balance_campaign_v1 The campaigns to append (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function appendCampaignsByBalanceIdWithHttpInfo($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, string $contentType = self::contentTypes['appendCampaignsByBalanceId'][0])
+    {
+        $request = $this->appendCampaignsByBalanceIdRequest($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation appendCampaignsByBalanceIdAsync
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 $entity_resource_collection_input_of_balance_campaign_v1 The campaigns to append (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function appendCampaignsByBalanceIdAsync($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, string $contentType = self::contentTypes['appendCampaignsByBalanceId'][0])
+    {
+        return $this->appendCampaignsByBalanceIdAsyncWithHttpInfo($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation appendCampaignsByBalanceIdAsyncWithHttpInfo
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 $entity_resource_collection_input_of_balance_campaign_v1 The campaigns to append (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function appendCampaignsByBalanceIdAsyncWithHttpInfo($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, string $contentType = self::contentTypes['appendCampaignsByBalanceId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1';
+        $request = $this->appendCampaignsByBalanceIdRequest($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'appendCampaignsByBalanceId'
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 $entity_resource_collection_input_of_balance_campaign_v1 The campaigns to append (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function appendCampaignsByBalanceIdRequest($balance_id, $entity_resource_collection_input_of_balance_campaign_v1, string $contentType = self::contentTypes['appendCampaignsByBalanceId'][0])
+    {
+
+        // verify the required parameter 'balance_id' is set
+        if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $balance_id when calling appendCampaignsByBalanceId'
+            );
+        }
+
+        // verify the required parameter 'entity_resource_collection_input_of_balance_campaign_v1' is set
+        if ($entity_resource_collection_input_of_balance_campaign_v1 === null || (is_array($entity_resource_collection_input_of_balance_campaign_v1) && count($entity_resource_collection_input_of_balance_campaign_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $entity_resource_collection_input_of_balance_campaign_v1 when calling appendCampaignsByBalanceId'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/balances/{balance-id}/campaigns/append';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($balance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'balance-id' . '}',
+                ObjectSerializer::toPathValue($balance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($entity_resource_collection_input_of_balance_campaign_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($entity_resource_collection_input_of_balance_campaign_v1));
+            } else {
+                $httpBody = $entity_resource_collection_input_of_balance_campaign_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**

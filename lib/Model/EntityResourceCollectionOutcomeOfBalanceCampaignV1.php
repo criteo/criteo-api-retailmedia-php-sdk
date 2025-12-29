@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfUpdateBalanceModelV2
+ * EntityResourceCollectionOutcomeOfBalanceCampaignV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ResourceOfUpdateBalanceModelV2 Class Doc Comment
+ * EntityResourceCollectionOutcomeOfBalanceCampaignV1 Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description A top-level object that encapsulates a Criteo API response for several entities.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeOfBalanceCampaignV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfUpdateBalanceModelV2';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfBalanceCampaignV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2',
-        'id' => 'string',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'data' => null,
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => false,
-		'type' => false
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'data' => 'data',
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -184,9 +184,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -195,9 +195,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -257,9 +257,9 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -305,82 +305,103 @@ class ResourceOfUpdateBalanceModelV2 implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2|null
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\UpdateBalanceModelV2|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfBalanceCampaignV1[]|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getId()
+    public function getErrors()
     {
-        return $this->container['id'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets id
+     * Sets errors
      *
-     * @param string|null $id Id of the entity
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setId($id)
+    public function setErrors($errors)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets warnings
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getType()
+    public function getWarnings()
     {
-        return $this->container['type'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets type
+     * Sets warnings
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setType($type)
+    public function setWarnings($warnings)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceResponseV2Response
+ * ValueResourceInputOfCreateBalanceV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * BalanceResponseV2Response Class Doc Comment
+ * ValueResourceInputOfCreateBalanceV1 Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single entity
+ * @description A top-level object that encapsulates a Criteo API request for a single value object.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputOfCreateBalanceV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceResponseV2Response';
+    protected static $openAPIModelName = 'ValueResourceInputOfCreateBalanceV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceOfCreateBalanceV1'
     ];
 
     /**
@@ -71,9 +69,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => false,
-		'warnings' => false
+        'data' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'data' => 'getData'
     ];
 
     /**
@@ -258,8 +246,6 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -307,7 +293,7 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOfCreateBalanceV1|null
      */
     public function getData()
     {
@@ -317,77 +303,16 @@ class BalanceResponseV2Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfBalanceResponseV2|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceOfCreateBalanceV1|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            throw new \InvalidArgumentException('non-nullable errors cannot be null');
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            throw new \InvalidArgumentException('non-nullable warnings cannot be null');
-        }
-        $this->container['warnings'] = $warnings;
 
         return $this;
     }

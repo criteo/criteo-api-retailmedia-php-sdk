@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfCreateBalanceV2
+ * PageMeta
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ResourceOfCreateBalanceV2 Class Doc Comment
+ * PageMeta Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description Represents metadata for paginated data, including information about the current page, page size,  total items, and  total pages in a search result.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class PageMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfCreateBalanceV2';
+    protected static $openAPIModelName = 'PageMeta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\CreateBalanceV2',
-        'id' => 'string',
-        'type' => 'string'
+        'current_page_index' => 'int',
+        'current_page_size' => 'int',
+        'total_items_across_all_pages' => 'int',
+        'total_pages' => 'int'
     ];
 
     /**
@@ -71,9 +72,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'current_page_index' => 'int32',
+        'current_page_size' => 'int32',
+        'total_items_across_all_pages' => 'int64',
+        'total_pages' => 'int64'
     ];
 
     /**
@@ -82,9 +84,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => false,
-		'type' => false
+        'current_page_index' => true,
+		'current_page_size' => true,
+		'total_items_across_all_pages' => true,
+		'total_pages' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'current_page_index' => 'currentPageIndex',
+        'current_page_size' => 'currentPageSize',
+        'total_items_across_all_pages' => 'totalItemsAcrossAllPages',
+        'total_pages' => 'totalPages'
     ];
 
     /**
@@ -184,9 +188,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'current_page_index' => 'setCurrentPageIndex',
+        'current_page_size' => 'setCurrentPageSize',
+        'total_items_across_all_pages' => 'setTotalItemsAcrossAllPages',
+        'total_pages' => 'setTotalPages'
     ];
 
     /**
@@ -195,9 +200,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'current_page_index' => 'getCurrentPageIndex',
+        'current_page_size' => 'getCurrentPageSize',
+        'total_items_across_all_pages' => 'getTotalItemsAcrossAllPages',
+        'total_pages' => 'getTotalPages'
     ];
 
     /**
@@ -257,9 +263,10 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('current_page_index', $data ?? [], 0);
+        $this->setIfExists('current_page_size', $data ?? [], 25);
+        $this->setIfExists('total_items_across_all_pages', $data ?? [], null);
+        $this->setIfExists('total_pages', $data ?? [], null);
     }
 
     /**
@@ -289,6 +296,22 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['current_page_index']) && ($this->container['current_page_index'] > 2147483647)) {
+            $invalidProperties[] = "invalid value for 'current_page_index', must be smaller than or equal to 2147483647.";
+        }
+
+        if (!is_null($this->container['current_page_index']) && ($this->container['current_page_index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'current_page_index', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['current_page_size']) && ($this->container['current_page_size'] > 2147483647)) {
+            $invalidProperties[] = "invalid value for 'current_page_size', must be smaller than or equal to 2147483647.";
+        }
+
+        if (!is_null($this->container['current_page_size']) && ($this->container['current_page_size'] < 1)) {
+            $invalidProperties[] = "invalid value for 'current_page_size', must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,82 +328,153 @@ class ResourceOfCreateBalanceV2 implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets attributes
+     * Gets current_page_index
      *
-     * @return \criteo\api\retailmedia\preview\Model\CreateBalanceV2|null
+     * @return int|null
      */
-    public function getAttributes()
+    public function getCurrentPageIndex()
     {
-        return $this->container['attributes'];
+        return $this->container['current_page_index'];
     }
 
     /**
-     * Sets attributes
+     * Sets current_page_index
      *
-     * @param \criteo\api\retailmedia\preview\Model\CreateBalanceV2|null $attributes attributes
+     * @param int|null $current_page_index The 0 indexed page index you would like to receive given the page size
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setCurrentPageIndex($current_page_index)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($current_page_index)) {
+            array_push($this->openAPINullablesSetToNull, 'current_page_index');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('current_page_index', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
+
+        if (!is_null($current_page_index) && ($current_page_index > 2147483647)) {
+            throw new \InvalidArgumentException('invalid value for $current_page_index when calling PageMeta., must be smaller than or equal to 2147483647.');
+        }
+        if (!is_null($current_page_index) && ($current_page_index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $current_page_index when calling PageMeta., must be bigger than or equal to 0.');
+        }
+
+        $this->container['current_page_index'] = $current_page_index;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets current_page_size
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getId()
+    public function getCurrentPageSize()
     {
-        return $this->container['id'];
+        return $this->container['current_page_size'];
     }
 
     /**
-     * Sets id
+     * Sets current_page_size
      *
-     * @param string|null $id Id of the entity
+     * @param int|null $current_page_size The maximum number of items you would like to receive in this request
      *
      * @return self
      */
-    public function setId($id)
+    public function setCurrentPageSize($current_page_size)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($current_page_size)) {
+            array_push($this->openAPINullablesSetToNull, 'current_page_size');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('current_page_size', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['id'] = $id;
+
+        if (!is_null($current_page_size) && ($current_page_size > 2147483647)) {
+            throw new \InvalidArgumentException('invalid value for $current_page_size when calling PageMeta., must be smaller than or equal to 2147483647.');
+        }
+        if (!is_null($current_page_size) && ($current_page_size < 1)) {
+            throw new \InvalidArgumentException('invalid value for $current_page_size when calling PageMeta., must be bigger than or equal to 1.');
+        }
+
+        $this->container['current_page_size'] = $current_page_size;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets total_items_across_all_pages
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getTotalItemsAcrossAllPages()
     {
-        return $this->container['type'];
+        return $this->container['total_items_across_all_pages'];
     }
 
     /**
-     * Sets type
+     * Sets total_items_across_all_pages
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param int|null $total_items_across_all_pages Total Items in search result across all pages
      *
      * @return self
      */
-    public function setType($type)
+    public function setTotalItemsAcrossAllPages($total_items_across_all_pages)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($total_items_across_all_pages)) {
+            array_push($this->openAPINullablesSetToNull, 'total_items_across_all_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_items_across_all_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['type'] = $type;
+        $this->container['total_items_across_all_pages'] = $total_items_across_all_pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_pages
+     *
+     * @return int|null
+     */
+    public function getTotalPages()
+    {
+        return $this->container['total_pages'];
+    }
+
+    /**
+     * Sets total_pages
+     *
+     * @param int|null $total_pages total pages in search result
+     *
+     * @return self
+     */
+    public function setTotalPages($total_pages)
+    {
+        if (is_null($total_pages)) {
+            array_push($this->openAPINullablesSetToNull, 'total_pages');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('total_pages', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['total_pages'] = $total_pages;
 
         return $this;
     }
