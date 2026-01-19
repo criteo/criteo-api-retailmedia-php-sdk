@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputAccountFeesSearchRequest
+ * ValueResourceInputSetProductBuyBoxWinnersRequest
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputAccountFeesSearchRequest Class Doc Comment
+ * ValueResourceInputSetProductBuyBoxWinnersRequest Class Doc Comment
  *
  * @category Class
  * @description A top-level object that encapsulates a Criteo API request for a single value object.
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputAccountFeesSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputSetProductBuyBoxWinnersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputAccountFeesSearchRequest implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputAccountFeesSearchRequest';
+    protected static $openAPIModelName = 'ValueResourceInputSetProductBuyBoxWinnersRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ValueResourceInputAccountFeesSearchRequest implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesSearchRequest'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceSetProductBuyBoxWinnersRequest'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ValueResourceInputAccountFeesSearchRequest implements ModelInterface, Arra
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesSearchRequest|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceSetProductBuyBoxWinnersRequest|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class ValueResourceInputAccountFeesSearchRequest implements ModelInterface, Arra
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourceAccountFeesSearchRequest|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceSetProductBuyBoxWinnersRequest|null $data data
      *
      * @return self
      */

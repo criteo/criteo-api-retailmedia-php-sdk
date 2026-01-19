@@ -74,9 +74,6 @@ class CatalogApi
         'getCatalogProductsBatchReport' => [
             'application/json',
         ],
-        'offerLoadV1' => [
-            'application/json',
-        ],
         'offerSetBbwV1' => [
             'application/json',
         ],
@@ -418,332 +415,36 @@ class CatalogApi
     }
 
     /**
-     * Operation offerLoadV1
-     *
-     * @param  int $retailer_id The retailer for which these offers will be loaded (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLoadSkuOffersRequest $value_resource_input_load_sku_offers_request value_resource_input_load_sku_offers_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerLoadV1'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse
-     */
-    public function offerLoadV1($retailer_id, $value_resource_input_load_sku_offers_request = null, string $contentType = self::contentTypes['offerLoadV1'][0])
-    {
-        list($response) = $this->offerLoadV1WithHttpInfo($retailer_id, $value_resource_input_load_sku_offers_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation offerLoadV1WithHttpInfo
-     *
-     * @param  int $retailer_id The retailer for which these offers will be loaded (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLoadSkuOffersRequest $value_resource_input_load_sku_offers_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerLoadV1'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function offerLoadV1WithHttpInfo($retailer_id, $value_resource_input_load_sku_offers_request = null, string $contentType = self::contentTypes['offerLoadV1'][0])
-    {
-        $request = $this->offerLoadV1Request($retailer_id, $value_resource_input_load_sku_offers_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation offerLoadV1Async
-     *
-     * @param  int $retailer_id The retailer for which these offers will be loaded (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLoadSkuOffersRequest $value_resource_input_load_sku_offers_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerLoadV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function offerLoadV1Async($retailer_id, $value_resource_input_load_sku_offers_request = null, string $contentType = self::contentTypes['offerLoadV1'][0])
-    {
-        return $this->offerLoadV1AsyncWithHttpInfo($retailer_id, $value_resource_input_load_sku_offers_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation offerLoadV1AsyncWithHttpInfo
-     *
-     * @param  int $retailer_id The retailer for which these offers will be loaded (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLoadSkuOffersRequest $value_resource_input_load_sku_offers_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerLoadV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function offerLoadV1AsyncWithHttpInfo($retailer_id, $value_resource_input_load_sku_offers_request = null, string $contentType = self::contentTypes['offerLoadV1'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
-        $request = $this->offerLoadV1Request($retailer_id, $value_resource_input_load_sku_offers_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'offerLoadV1'
-     *
-     * @param  int $retailer_id The retailer for which these offers will be loaded (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLoadSkuOffersRequest $value_resource_input_load_sku_offers_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerLoadV1'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function offerLoadV1Request($retailer_id, $value_resource_input_load_sku_offers_request = null, string $contentType = self::contentTypes['offerLoadV1'][0])
-    {
-
-        // verify the required parameter 'retailer_id' is set
-        if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $retailer_id when calling offerLoadV1'
-            );
-        }
-
-
-
-        $resourcePath = '/preview/retail-media/retailers/{retailerId}/offers/load';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($retailer_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'retailerId' . '}',
-                ObjectSerializer::toPathValue($retailer_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($value_resource_input_load_sku_offers_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_load_sku_offers_request));
-            } else {
-                $httpBody = $value_resource_input_load_sku_offers_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation offerSetBbwV1
      *
-     * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request value_resource_input_set_sku_buy_box_winners_request (required)
+     * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse
+     * @return \criteo\api\retailmedia\preview\Model\Outcome
      */
-    public function offerSetBbwV1($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1($retailer_id, $value_resource_input_set_product_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
-        list($response) = $this->offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
+        list($response) = $this->offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_product_buy_box_winners_request, $contentType);
         return $response;
     }
 
     /**
      * Operation offerSetBbwV1WithHttpInfo
      *
-     * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
+     * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1WithHttpInfo($retailer_id, $value_resource_input_set_product_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
-        $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
+        $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_product_buy_box_winners_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -782,23 +483,23 @@ class CatalogApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\Outcome';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -819,7 +520,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse',
+                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -832,16 +533,16 @@ class CatalogApi
     /**
      * Operation offerSetBbwV1Async
      *
-     * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
+     * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerSetBbwV1Async($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1Async($retailer_id, $value_resource_input_set_product_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
-        return $this->offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType)
+        return $this->offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_product_buy_box_winners_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -852,17 +553,17 @@ class CatalogApi
     /**
      * Operation offerSetBbwV1AsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
+     * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1AsyncWithHttpInfo($retailer_id, $value_resource_input_set_product_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
-        $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\preview\Model\Outcome';
+        $request = $this->offerSetBbwV1Request($retailer_id, $value_resource_input_set_product_buy_box_winners_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -903,14 +604,14 @@ class CatalogApi
     /**
      * Create request for operation 'offerSetBbwV1'
      *
-     * @param  int $retailer_id The retailer for which these buy box winners will be set (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetSkuBuyBoxWinnersRequest $value_resource_input_set_sku_buy_box_winners_request (required)
+     * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offerSetBbwV1Request($retailer_id, $value_resource_input_set_sku_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
+    public function offerSetBbwV1Request($retailer_id, $value_resource_input_set_product_buy_box_winners_request, string $contentType = self::contentTypes['offerSetBbwV1'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
@@ -920,15 +621,15 @@ class CatalogApi
             );
         }
 
-        // verify the required parameter 'value_resource_input_set_sku_buy_box_winners_request' is set
-        if ($value_resource_input_set_sku_buy_box_winners_request === null || (is_array($value_resource_input_set_sku_buy_box_winners_request) && count($value_resource_input_set_sku_buy_box_winners_request) === 0)) {
+        // verify the required parameter 'value_resource_input_set_product_buy_box_winners_request' is set
+        if ($value_resource_input_set_product_buy_box_winners_request === null || (is_array($value_resource_input_set_product_buy_box_winners_request) && count($value_resource_input_set_product_buy_box_winners_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $value_resource_input_set_sku_buy_box_winners_request when calling offerSetBbwV1'
+                'Missing the required parameter $value_resource_input_set_product_buy_box_winners_request when calling offerSetBbwV1'
             );
         }
 
 
-        $resourcePath = '/preview/retail-media/retailers/{retailerId}/offers/set-buy-box-winners';
+        $resourcePath = '/preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -940,7 +641,7 @@ class CatalogApi
         // path params
         if ($retailer_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'retailerId' . '}',
+                '{' . 'retailer-id' . '}',
                 ObjectSerializer::toPathValue($retailer_id),
                 $resourcePath
             );
@@ -954,12 +655,12 @@ class CatalogApi
         );
 
         // for model (json/xml)
-        if (isset($value_resource_input_set_sku_buy_box_winners_request)) {
+        if (isset($value_resource_input_set_product_buy_box_winners_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_set_sku_buy_box_winners_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_set_product_buy_box_winners_request));
             } else {
-                $httpBody = $value_resource_input_set_sku_buy_box_winners_request;
+                $httpBody = $value_resource_input_set_product_buy_box_winners_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1018,15 +719,15 @@ class CatalogApi
     /**
      * Operation offerUpdateV1
      *
-     * @param  int $retailer_id The retailer for which these offers will be updated (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request value_resource_input_update_offers_request (optional)
+     * @param  string $retailer_id The retailer for which these offers will be updated (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse
+     * @return \criteo\api\retailmedia\preview\Model\Outcome
      */
-    public function offerUpdateV1($retailer_id, $value_resource_input_update_offers_request = null, string $contentType = self::contentTypes['offerUpdateV1'][0])
+    public function offerUpdateV1($retailer_id, $value_resource_input_update_offers_request, string $contentType = self::contentTypes['offerUpdateV1'][0])
     {
         list($response) = $this->offerUpdateV1WithHttpInfo($retailer_id, $value_resource_input_update_offers_request, $contentType);
         return $response;
@@ -1035,15 +736,15 @@ class CatalogApi
     /**
      * Operation offerUpdateV1WithHttpInfo
      *
-     * @param  int $retailer_id The retailer for which these offers will be updated (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request (optional)
+     * @param  string $retailer_id The retailer for which these offers will be updated (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function offerUpdateV1WithHttpInfo($retailer_id, $value_resource_input_update_offers_request = null, string $contentType = self::contentTypes['offerUpdateV1'][0])
+    public function offerUpdateV1WithHttpInfo($retailer_id, $value_resource_input_update_offers_request, string $contentType = self::contentTypes['offerUpdateV1'][0])
     {
         $request = $this->offerUpdateV1Request($retailer_id, $value_resource_input_update_offers_request, $contentType);
 
@@ -1084,23 +785,23 @@ class CatalogApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\Outcome' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\Outcome' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\Outcome', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\Outcome';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1121,7 +822,7 @@ class CatalogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse',
+                        '\criteo\api\retailmedia\preview\Model\Outcome',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1134,14 +835,14 @@ class CatalogApi
     /**
      * Operation offerUpdateV1Async
      *
-     * @param  int $retailer_id The retailer for which these offers will be updated (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request (optional)
+     * @param  string $retailer_id The retailer for which these offers will be updated (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerUpdateV1Async($retailer_id, $value_resource_input_update_offers_request = null, string $contentType = self::contentTypes['offerUpdateV1'][0])
+    public function offerUpdateV1Async($retailer_id, $value_resource_input_update_offers_request, string $contentType = self::contentTypes['offerUpdateV1'][0])
     {
         return $this->offerUpdateV1AsyncWithHttpInfo($retailer_id, $value_resource_input_update_offers_request, $contentType)
             ->then(
@@ -1154,16 +855,16 @@ class CatalogApi
     /**
      * Operation offerUpdateV1AsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer for which these offers will be updated (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request (optional)
+     * @param  string $retailer_id The retailer for which these offers will be updated (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function offerUpdateV1AsyncWithHttpInfo($retailer_id, $value_resource_input_update_offers_request = null, string $contentType = self::contentTypes['offerUpdateV1'][0])
+    public function offerUpdateV1AsyncWithHttpInfo($retailer_id, $value_resource_input_update_offers_request, string $contentType = self::contentTypes['offerUpdateV1'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeAsyncJobResponse';
+        $returnType = '\criteo\api\retailmedia\preview\Model\Outcome';
         $request = $this->offerUpdateV1Request($retailer_id, $value_resource_input_update_offers_request, $contentType);
 
         return $this->client
@@ -1205,14 +906,14 @@ class CatalogApi
     /**
      * Create request for operation 'offerUpdateV1'
      *
-     * @param  int $retailer_id The retailer for which these offers will be updated (required)
-     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request (optional)
+     * @param  string $retailer_id The retailer for which these offers will be updated (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function offerUpdateV1Request($retailer_id, $value_resource_input_update_offers_request = null, string $contentType = self::contentTypes['offerUpdateV1'][0])
+    public function offerUpdateV1Request($retailer_id, $value_resource_input_update_offers_request, string $contentType = self::contentTypes['offerUpdateV1'][0])
     {
 
         // verify the required parameter 'retailer_id' is set
@@ -1222,9 +923,15 @@ class CatalogApi
             );
         }
 
+        // verify the required parameter 'value_resource_input_update_offers_request' is set
+        if ($value_resource_input_update_offers_request === null || (is_array($value_resource_input_update_offers_request) && count($value_resource_input_update_offers_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_update_offers_request when calling offerUpdateV1'
+            );
+        }
 
 
-        $resourcePath = '/preview/retail-media/retailers/{retailerId}/offers/update';
+        $resourcePath = '/preview/retail-media/retailers/{retailer-id}/offers/update';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1236,7 +943,7 @@ class CatalogApi
         // path params
         if ($retailer_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'retailerId' . '}',
+                '{' . 'retailer-id' . '}',
                 ObjectSerializer::toPathValue($retailer_id),
                 $resourcePath
             );

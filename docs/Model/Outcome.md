@@ -1,10 +1,9 @@
-# # EntityResourceOutcomePartnerBillingReportStatusV1
+# # Outcome
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\preview\Model\EntityResourcePartnerBillingReportStatusV1**](EntityResourcePartnerBillingReportStatusV1.md) |  | [optional]
 **errors** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Errors that occured during this call. | [optional] [readonly]
 **warnings** | [**\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Warnings that occured during this call. | [optional] [readonly]
 

@@ -59,9 +59,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'availability' => 'string',
-        'price' => 'float',
-        'seller_id' => 'string',
-        'sku_id' => 'string'
+        'offer_id' => 'string',
+        'price' => 'float'
     ];
 
     /**
@@ -73,9 +72,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'availability' => null,
-        'price' => 'double',
-        'seller_id' => null,
-        'sku_id' => null
+        'offer_id' => null,
+        'price' => 'double'
     ];
 
     /**
@@ -85,9 +83,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'availability' => false,
-		'price' => false,
-		'seller_id' => false,
-		'sku_id' => false
+		'offer_id' => false,
+		'price' => false
     ];
 
     /**
@@ -177,9 +174,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'availability' => 'availability',
-        'price' => 'price',
-        'seller_id' => 'sellerId',
-        'sku_id' => 'skuId'
+        'offer_id' => 'offerId',
+        'price' => 'price'
     ];
 
     /**
@@ -189,9 +185,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'availability' => 'setAvailability',
-        'price' => 'setPrice',
-        'seller_id' => 'setSellerId',
-        'sku_id' => 'setSkuId'
+        'offer_id' => 'setOfferId',
+        'price' => 'setPrice'
     ];
 
     /**
@@ -201,9 +196,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'availability' => 'getAvailability',
-        'price' => 'getPrice',
-        'seller_id' => 'getSellerId',
-        'sku_id' => 'getSkuId'
+        'offer_id' => 'getOfferId',
+        'price' => 'getPrice'
     ];
 
     /**
@@ -247,10 +241,10 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const AVAILABILITY_OUT_OF_STOCK = 'OutOfStock';
-    public const AVAILABILITY_PRE_ORDER = 'PreOrder';
-    public const AVAILABILITY_IN_STOCK = 'InStock';
-    public const AVAILABILITY_BACK_ORDER = 'BackOrder';
+    public const AVAILABILITY_OUT_OF_STOCK = 'outOfStock';
+    public const AVAILABILITY_PRE_ORDER = 'preOrder';
+    public const AVAILABILITY_IN_STOCK = 'inStock';
+    public const AVAILABILITY_BACK_ORDER = 'backOrder';
 
     /**
      * Gets allowable values of the enum
@@ -283,9 +277,8 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->setIfExists('availability', $data ?? [], null);
+        $this->setIfExists('offer_id', $data ?? [], null);
         $this->setIfExists('price', $data ?? [], null);
-        $this->setIfExists('seller_id', $data ?? [], null);
-        $this->setIfExists('sku_id', $data ?? [], null);
     }
 
     /**
@@ -327,14 +320,11 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['offer_id'] === null) {
+            $invalidProperties[] = "'offer_id' can't be null";
+        }
         if ($this->container['price'] === null) {
             $invalidProperties[] = "'price' can't be null";
-        }
-        if ($this->container['seller_id'] === null) {
-            $invalidProperties[] = "'seller_id' can't be null";
-        }
-        if ($this->container['sku_id'] === null) {
-            $invalidProperties[] = "'sku_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -389,6 +379,33 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets offer_id
+     *
+     * @return string
+     */
+    public function getOfferId()
+    {
+        return $this->container['offer_id'];
+    }
+
+    /**
+     * Sets offer_id
+     *
+     * @param string $offer_id offer_id
+     *
+     * @return self
+     */
+    public function setOfferId($offer_id)
+    {
+        if (is_null($offer_id)) {
+            throw new \InvalidArgumentException('non-nullable offer_id cannot be null');
+        }
+        $this->container['offer_id'] = $offer_id;
+
+        return $this;
+    }
+
+    /**
      * Gets price
      *
      * @return float
@@ -411,60 +428,6 @@ class OfferUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable price cannot be null');
         }
         $this->container['price'] = $price;
-
-        return $this;
-    }
-
-    /**
-     * Gets seller_id
-     *
-     * @return string
-     */
-    public function getSellerId()
-    {
-        return $this->container['seller_id'];
-    }
-
-    /**
-     * Sets seller_id
-     *
-     * @param string $seller_id seller_id
-     *
-     * @return self
-     */
-    public function setSellerId($seller_id)
-    {
-        if (is_null($seller_id)) {
-            throw new \InvalidArgumentException('non-nullable seller_id cannot be null');
-        }
-        $this->container['seller_id'] = $seller_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_id
-     *
-     * @return string
-     */
-    public function getSkuId()
-    {
-        return $this->container['sku_id'];
-    }
-
-    /**
-     * Sets sku_id
-     *
-     * @param string $sku_id sku_id
-     *
-     * @return self
-     */
-    public function setSkuId($sku_id)
-    {
-        if (is_null($sku_id)) {
-            throw new \InvalidArgumentException('non-nullable sku_id cannot be null');
-        }
-        $this->container['sku_id'] = $sku_id;
 
         return $this;
     }

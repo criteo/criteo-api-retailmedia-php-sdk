@@ -1,10 +1,9 @@
-# # PrivateMarketAccountFees
+# # ProductBuyBoxWinner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | The account Id | [optional]
-**fees** | [**\criteo\api\retailmedia\preview\Model\PrivateMarketFees**](PrivateMarketFees.md) |  | [optional]
+**offer_id** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

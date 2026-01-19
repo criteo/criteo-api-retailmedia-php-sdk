@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceLoadSkuOffersRequest
+ * ProductBuyBoxWinner
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceLoadSkuOffersRequest Class Doc Comment
+ * ProductBuyBoxWinner Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description The new buy box winner for a product after it is updated as part of a SetBuyBoxWinner operation
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProductBuyBoxWinner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceLoadSkuOffersRequest';
+    protected static $openAPIModelName = 'ProductBuyBoxWinner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\LoadSkuOffersRequest',
-        'type' => 'string'
+        'offer_id' => 'string'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'offer_id' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'type' => true
+        'offer_id' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'offer_id' => 'offerId'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'offer_id' => 'setOfferId'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'offer_id' => 'getOfferId'
     ];
 
     /**
@@ -251,8 +245,7 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('offer_id', $data ?? [], null);
     }
 
     /**
@@ -282,6 +275,9 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
+        if ($this->container['offer_id'] === null) {
+            $invalidProperties[] = "'offer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,62 +294,28 @@ class ValueResourceLoadSkuOffersRequest implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets attributes
+     * Gets offer_id
      *
-     * @return \criteo\api\retailmedia\preview\Model\LoadSkuOffersRequest|null
+     * @return string
      */
-    public function getAttributes()
+    public function getOfferId()
     {
-        return $this->container['attributes'];
+        return $this->container['offer_id'];
     }
 
     /**
-     * Sets attributes
+     * Sets offer_id
      *
-     * @param \criteo\api\retailmedia\preview\Model\LoadSkuOffersRequest|null $attributes attributes
+     * @param string $offer_id offer_id
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setOfferId($offer_id)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($offer_id)) {
+            throw new \InvalidArgumentException('non-nullable offer_id cannot be null');
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
+        $this->container['offer_id'] = $offer_id;
 
         return $this;
     }

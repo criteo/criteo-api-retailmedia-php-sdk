@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourcePartnerBillingReportStatusV1
+ * SetProductBuyBoxWinnersRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourcePartnerBillingReportStatusV1 Class Doc Comment
+ * SetProductBuyBoxWinnersRequest Class Doc Comment
  *
  * @category Class
- * @description A domain entity exposed by the API, identified by a unique id.
+ * @description The request passed by the caller of the SetBuyBoxWinners endpoint
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class SetProductBuyBoxWinnersRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourcePartnerBillingReportStatusV1';
+    protected static $openAPIModelName = 'SetProductBuyBoxWinnersRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\PartnerBillingReportStatusV1',
-        'id' => 'string',
-        'type' => 'string'
+        'product_buy_box_winners' => '\criteo\api\retailmedia\preview\Model\ProductBuyBoxWinner[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'product_buy_box_winners' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'id' => true,
-		'type' => true
+        'product_buy_box_winners' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'product_buy_box_winners' => 'productBuyBoxWinners'
     ];
 
     /**
@@ -184,9 +176,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'product_buy_box_winners' => 'setProductBuyBoxWinners'
     ];
 
     /**
@@ -195,9 +185,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'product_buy_box_winners' => 'getProductBuyBoxWinners'
     ];
 
     /**
@@ -257,9 +245,7 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('product_buy_box_winners', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,17 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
+        if ($this->container['product_buy_box_winners'] === null) {
+            $invalidProperties[] = "'product_buy_box_winners' can't be null";
+        }
+        if ((count($this->container['product_buy_box_winners']) > 5000)) {
+            $invalidProperties[] = "invalid value for 'product_buy_box_winners', number of items must be less than or equal to 5000.";
+        }
+
+        if ((count($this->container['product_buy_box_winners']) < 1)) {
+            $invalidProperties[] = "invalid value for 'product_buy_box_winners', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +302,35 @@ class EntityResourcePartnerBillingReportStatusV1 implements ModelInterface, Arra
 
 
     /**
-     * Gets attributes
+     * Gets product_buy_box_winners
      *
-     * @return \criteo\api\retailmedia\preview\Model\PartnerBillingReportStatusV1|null
+     * @return \criteo\api\retailmedia\preview\Model\ProductBuyBoxWinner[]
      */
-    public function getAttributes()
+    public function getProductBuyBoxWinners()
     {
-        return $this->container['attributes'];
+        return $this->container['product_buy_box_winners'];
     }
 
     /**
-     * Sets attributes
+     * Sets product_buy_box_winners
      *
-     * @param \criteo\api\retailmedia\preview\Model\PartnerBillingReportStatusV1|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\ProductBuyBoxWinner[] $product_buy_box_winners product_buy_box_winners
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setProductBuyBoxWinners($product_buy_box_winners)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($product_buy_box_winners)) {
+            throw new \InvalidArgumentException('non-nullable product_buy_box_winners cannot be null');
         }
-        $this->container['attributes'] = $attributes;
 
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Unique id of the entity.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if ((count($product_buy_box_winners) > 5000)) {
+            throw new \InvalidArgumentException('invalid value for $product_buy_box_winners when calling SetProductBuyBoxWinnersRequest., number of items must be less than or equal to 5000.');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if ((count($product_buy_box_winners) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $product_buy_box_winners when calling SetProductBuyBoxWinnersRequest., number of items must be greater than or equal to 1.');
         }
-        $this->container['type'] = $type;
+        $this->container['product_buy_box_winners'] = $product_buy_box_winners;
 
         return $this;
     }

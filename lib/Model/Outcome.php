@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceInputPartnerBillingReportRequestV1
+ * Outcome
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ValueResourceInputPartnerBillingReportRequestV1 Class Doc Comment
+ * Outcome Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description The outcome of an API call.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class Outcome implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceInputPartnerBillingReportRequestV1';
+    protected static $openAPIModelName = 'Outcome';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourcePartnerBillingReportRequestV1'
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -245,7 +251,8 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -291,28 +298,69 @@ class ValueResourceInputPartnerBillingReportRequestV1 implements ModelInterface,
 
 
     /**
-     * Gets data
+     * Gets errors
      *
-     * @return \criteo\api\retailmedia\preview\Model\ValueResourcePartnerBillingReportRequestV1|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getData()
+    public function getErrors()
     {
-        return $this->container['data'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets data
+     * Sets errors
      *
-     * @param \criteo\api\retailmedia\preview\Model\ValueResourcePartnerBillingReportRequestV1|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setData($data)
+    public function setErrors($errors)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['data'] = $data;
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }
