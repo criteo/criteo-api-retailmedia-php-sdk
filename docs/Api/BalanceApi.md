@@ -8,6 +8,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
 | [**getBalancesByAccountId()**](BalanceApi.md#getBalancesByAccountId) | **GET** /preview/retail-media/accounts/{account-id}/balances |  |
 | [**getCampaignsByBalanceId()**](BalanceApi.md#getCampaignsByBalanceId) | **GET** /preview/retail-media/balances/{balance-id}/campaigns |  |
+| [**updateBalanceV2()**](BalanceApi.md#updateBalanceV2) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 
 
 ## `createBalanceByAccountId()`
@@ -276,6 +277,72 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateBalanceV2()`
+
+```php
+updateBalanceV2($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1)
+```
+
+
+
+Modify a balance for the given account id
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The account of the balance
+$balance_id = 'balance_id_example'; // string | The balance to change the dates
+$value_resource_input_of_update_balance_model_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
+
+try {
+    $apiInstance->updateBalanceV2($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1);
+} catch (Exception $e) {
+    echo 'Exception when calling BalanceApi->updateBalanceV2: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The account of the balance | |
+| **balance_id** | **string**| The balance to change the dates | |
+| **value_resource_input_of_update_balance_model_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1**](../Model/ValueResourceInputOfUpdateBalanceModelV1.md)| An object that represents the available options to modify a balance. | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

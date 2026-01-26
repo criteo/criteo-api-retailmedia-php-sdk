@@ -122,6 +122,7 @@ docs/Model/MessageDataInstanceModel.md
 docs/Model/MessageError.md
 docs/Model/Metadata.md
 docs/Model/NillableDecimal.md
+docs/Model/NillableOfNullableOfDateOnly.md
 docs/Model/NillableString.md
 docs/Model/OfferUpdate.md
 docs/Model/Outcome.md
@@ -281,6 +282,7 @@ docs/Model/SyncLineItemsReportRequest.md
 docs/Model/SyncLineItemsReportResource.md
 docs/Model/TemplateVariableValue.md
 docs/Model/TextVariableValue.md
+docs/Model/UpdateBalanceModelV1.md
 docs/Model/UpdateOffersRequest.md
 docs/Model/ValueResourceBrandIdSearchRequest.md
 docs/Model/ValueResourceCollectionInputOfRetailMediaSeller.md
@@ -298,6 +300,7 @@ docs/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md
 docs/Model/ValueResourceInputOfRetailerSearchRequest.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md
+docs/Model/ValueResourceInputOfUpdateBalanceModelV1.md
 docs/Model/ValueResourceInputSetProductBuyBoxWinnersRequest.md
 docs/Model/ValueResourceInputUpdateOffersRequest.md
 docs/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.md
@@ -310,6 +313,7 @@ docs/Model/ValueResourceOfRetailMediaSellerAccountCreationV2.md
 docs/Model/ValueResourceOfRetailerSearchRequest.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
+docs/Model/ValueResourceOfUpdateBalanceModelV1.md
 docs/Model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.md
 docs/Model/ValueResourceOutcomeOfRetailMediaBrands.md
 docs/Model/ValueResourceSetProductBuyBoxWinnersRequest.md
@@ -440,6 +444,7 @@ lib/Model/MessageError.php
 lib/Model/Metadata.php
 lib/Model/ModelInterface.php
 lib/Model/NillableDecimal.php
+lib/Model/NillableOfNullableOfDateOnly.php
 lib/Model/NillableString.php
 lib/Model/OfferUpdate.php
 lib/Model/Outcome.php
@@ -599,6 +604,7 @@ lib/Model/SyncLineItemsReportRequest.php
 lib/Model/SyncLineItemsReportResource.php
 lib/Model/TemplateVariableValue.php
 lib/Model/TextVariableValue.php
+lib/Model/UpdateBalanceModelV1.php
 lib/Model/UpdateOffersRequest.php
 lib/Model/ValueResourceBrandIdSearchRequest.php
 lib/Model/ValueResourceCollectionInputOfRetailMediaSeller.php
@@ -616,6 +622,7 @@ lib/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.php
 lib/Model/ValueResourceInputOfRetailerSearchRequest.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.php
+lib/Model/ValueResourceInputOfUpdateBalanceModelV1.php
 lib/Model/ValueResourceInputSetProductBuyBoxWinnersRequest.php
 lib/Model/ValueResourceInputUpdateOffersRequest.php
 lib/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.php
@@ -628,6 +635,7 @@ lib/Model/ValueResourceOfRetailMediaSellerAccountCreationV2.php
 lib/Model/ValueResourceOfRetailerSearchRequest.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.php
+lib/Model/ValueResourceOfUpdateBalanceModelV1.php
 lib/Model/ValueResourceOutcomeLineItemBudgetCapOutHistoryResponse.php
 lib/Model/ValueResourceOutcomeOfRetailMediaBrands.php
 lib/Model/ValueResourceSetProductBuyBoxWinnersRequest.php
