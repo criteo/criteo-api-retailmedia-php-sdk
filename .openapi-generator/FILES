@@ -102,7 +102,6 @@ docs/Model/ExternalRetailMediaBrands.md
 docs/Model/ExternalRetailMediaSeller.md
 docs/Model/ExternalRetailMediaSellerAccountCreation.md
 docs/Model/ExternalRetailer.md
-docs/Model/ExternalRetailerPages202110.md
 docs/Model/FilesVariableValue.md
 docs/Model/FilesVariablesSpecification.md
 docs/Model/GrantConsentInput.md
@@ -133,9 +132,6 @@ docs/Model/JsonApiSingleResponseOfCampaignV202301.md
 docs/Model/JsonApiSingleResponseOfCatalogStatus.md
 docs/Model/JsonApiSingleResponseOfLineItemBidMultipliersV2.md
 docs/Model/KeywordDataModel.md
-docs/Model/KeywordTarget202110.md
-docs/Model/KeywordTarget202110Request.md
-docs/Model/KeywordTarget202110Response.md
 docs/Model/Keywords.md
 docs/Model/KeywordsModel.md
 docs/Model/KeywordsModelResource.md
@@ -165,7 +161,6 @@ docs/Model/PreferredLineItemUpdateModelV2Request.md
 docs/Model/PreferredLineItemV2.md
 docs/Model/PreferredLineItemV2PagedListResponse.md
 docs/Model/PreferredLineItemV2Response.md
-docs/Model/ProblemDetails.md
 docs/Model/ProductMetadata.md
 docs/Model/ProductResourceOutcome.md
 docs/Model/PromotedProduct.md
@@ -197,6 +192,7 @@ docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
+docs/Model/RetailerPages202110.md
 docs/Model/ReviewStateModel.md
 docs/Model/RmAlgebraNodeV1.md
 docs/Model/RmAudienceEntityV1.md
@@ -279,7 +275,6 @@ docs/Model/ValueTypeResourceOfAddToBasketIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfAddToBasketTarget202110.md
 docs/Model/ValueTypeResourceOfAudienceIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfAudienceTarget202110.md
-docs/Model/ValueTypeResourceOfKeywordTarget202110.md
 docs/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.md
 docs/Model/ValueTypeResourceOfStoreTarget202110.md
 docs/Model/VideoVariableValue.md
@@ -387,7 +382,6 @@ lib/Model/ExternalRetailMediaBrands.php
 lib/Model/ExternalRetailMediaSeller.php
 lib/Model/ExternalRetailMediaSellerAccountCreation.php
 lib/Model/ExternalRetailer.php
-lib/Model/ExternalRetailerPages202110.php
 lib/Model/FilesVariableValue.php
 lib/Model/FilesVariablesSpecification.php
 lib/Model/GrantConsentInput.php
@@ -418,9 +412,6 @@ lib/Model/JsonApiSingleResponseOfCampaignV202301.php
 lib/Model/JsonApiSingleResponseOfCatalogStatus.php
 lib/Model/JsonApiSingleResponseOfLineItemBidMultipliersV2.php
 lib/Model/KeywordDataModel.php
-lib/Model/KeywordTarget202110.php
-lib/Model/KeywordTarget202110Request.php
-lib/Model/KeywordTarget202110Response.php
 lib/Model/Keywords.php
 lib/Model/KeywordsModel.php
 lib/Model/KeywordsModelResource.php
@@ -451,7 +442,6 @@ lib/Model/PreferredLineItemUpdateModelV2Request.php
 lib/Model/PreferredLineItemV2.php
 lib/Model/PreferredLineItemV2PagedListResponse.php
 lib/Model/PreferredLineItemV2Response.php
-lib/Model/ProblemDetails.php
 lib/Model/ProductMetadata.php
 lib/Model/ProductResourceOutcome.php
 lib/Model/PromotedProduct.php
@@ -483,6 +473,7 @@ lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
+lib/Model/RetailerPages202110.php
 lib/Model/ReviewStateModel.php
 lib/Model/RmAlgebraNodeV1.php
 lib/Model/RmAudienceEntityV1.php
@@ -565,7 +556,6 @@ lib/Model/ValueTypeResourceOfAddToBasketIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfAddToBasketTarget202110.php
 lib/Model/ValueTypeResourceOfAudienceIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfAudienceTarget202110.php
-lib/Model/ValueTypeResourceOfKeywordTarget202110.php
 lib/Model/ValueTypeResourceOfStoreIdsUpdateModel202110.php
 lib/Model/ValueTypeResourceOfStoreTarget202110.php
 lib/Model/VideoVariableValue.php

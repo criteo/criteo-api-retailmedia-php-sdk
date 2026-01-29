@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **capping** | [**\criteo\api\retailmedia\v2025_01\Model\LineItemCappingV2**](LineItemCappingV2.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **creative_id** | **string** | creative Id | [optional]
-**end_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
+**end_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD | [optional]
 **id** | **string** |  | [optional]
 **name** | **string** |  |
 **pacing** | **string** |  | [optional]

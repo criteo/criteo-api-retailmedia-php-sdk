@@ -1,6 +1,6 @@
 <?php
 /**
- * KeywordTarget202110
+ * RetailerPages202110
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
 
 /**
- * KeywordTarget202110 Class Doc Comment
+ * RetailerPages202110 Class Doc Comment
  *
  * @category Class
- * @description Identifies keyword targeting for a line item
+ * @description Wraps a list of valid pages for a retailer
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerPages202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'KeywordTarget202110';
+    protected static $openAPIModelName = 'RetailerPages202110';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'keywords' => 'array<string,string>'
+        'page_types' => 'string[]'
     ];
 
     /**
@@ -69,7 +69,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'keywords' => null
+        'page_types' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'keywords' => false
+        'page_types' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'keywords' => 'keywords'
+        'page_types' => 'pageTypes'
     ];
 
     /**
@@ -176,7 +176,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'keywords' => 'setKeywords'
+        'page_types' => 'setPageTypes'
     ];
 
     /**
@@ -185,7 +185,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'keywords' => 'getKeywords'
+        'page_types' => 'getPageTypes'
     ];
 
     /**
@@ -229,23 +229,6 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const KEYWORDS_UNKNOWN = 'unknown';
-    public const KEYWORDS_NEGATIVE_EXACT = 'negativeExact';
-    public const KEYWORDS_NEGATIVE_BROAD = 'negativeBroad';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getKeywordsAllowableValues()
-    {
-        return [
-            self::KEYWORDS_UNKNOWN,
-            self::KEYWORDS_NEGATIVE_EXACT,
-            self::KEYWORDS_NEGATIVE_BROAD,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -262,7 +245,7 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('keywords', $data ?? [], null);
+        $this->setIfExists('page_types', $data ?? [], null);
     }
 
     /**
@@ -292,8 +275,8 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['keywords'] === null) {
-            $invalidProperties[] = "'keywords' can't be null";
+        if ($this->container['page_types'] === null) {
+            $invalidProperties[] = "'page_types' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,37 +294,28 @@ class KeywordTarget202110 implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets keywords
+     * Gets page_types
      *
-     * @return array<string,string>
+     * @return string[]
      */
-    public function getKeywords()
+    public function getPageTypes()
     {
-        return $this->container['keywords'];
+        return $this->container['page_types'];
     }
 
     /**
-     * Sets keywords
+     * Sets page_types
      *
-     * @param array<string,string> $keywords Keywords that targeting specifications exist for
+     * @param string[] $page_types List of valid pages for a retailer
      *
      * @return self
      */
-    public function setKeywords($keywords)
+    public function setPageTypes($page_types)
     {
-        if (is_null($keywords)) {
-            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
+        if (is_null($page_types)) {
+            throw new \InvalidArgumentException('non-nullable page_types cannot be null');
         }
-        $allowedValues = $this->getKeywordsAllowableValues();
-        if (array_diff($keywords, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'keywords', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['keywords'] = $keywords;
+        $this->container['page_types'] = $page_types;
 
         return $this;
     }

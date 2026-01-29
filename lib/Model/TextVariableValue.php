@@ -275,6 +275,9 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -303,7 +306,7 @@ class TextVariableValue implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets text
      *
-     * @param string|null $text The displayed text
+     * @param string $text The displayed text
      *
      * @return self
      */

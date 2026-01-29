@@ -1,10 +1,9 @@
-# # ValueTypeResourceOfKeywordTarget202110
+# # RetailerPages202110
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\KeywordTarget202110**](KeywordTarget202110.md) |  | [optional]
-**type** | **string** |  | [optional]
+**page_types** | **string[]** | List of valid pages for a retailer |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

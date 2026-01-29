@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **brand_id** | **int** | The brand associated to the creative | [optional]
+**id** | **string** |  | [optional]
 **name** | **string** | The name of the creative |
 **retailer_id** | **int** | The retailer associated to the creative |
 **template_id** | **int** | The creative template used for this creative |

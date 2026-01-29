@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_01\ObjectSerializer;
  * SellerCatalogRequest Class Doc Comment
  *
  * @category Class
- * @description Used to requst a catalog of seller SKUs
+ * @description Used to request a catalog of seller SKUs
  * @package  criteo\api\retailmedia\v2025_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -275,6 +275,9 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['sellers'] === null) {
+            $invalidProperties[] = "'sellers' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets sellers
      *
-     * @return \criteo\api\retailmedia\v2025_01\Model\SellerIdentifier[]|null
+     * @return \criteo\api\retailmedia\v2025_01\Model\SellerIdentifier[]
      */
     public function getSellers()
     {
@@ -303,7 +306,7 @@ class SellerCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets sellers
      *
-     * @param \criteo\api\retailmedia\v2025_01\Model\SellerIdentifier[]|null $sellers A list of sellers to restict the catalog to.
+     * @param \criteo\api\retailmedia\v2025_01\Model\SellerIdentifier[] $sellers A list of sellers to restrict the catalog to.
      *
      * @return self
      */

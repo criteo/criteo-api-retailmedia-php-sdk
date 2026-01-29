@@ -72,7 +72,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'extensions' => 'string',
+        'extensions' => null,
         'max_bytes' => 'int32',
         'max_file' => 'int32',
         'min_files' => 'int32'
@@ -252,6 +252,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
     public const EXTENSIONS_PNG = 'Png';
     public const EXTENSIONS_GIF = 'Gif';
     public const EXTENSIONS_PDF = 'Pdf';
+    public const EXTENSIONS_MP4 = 'Mp4';
 
     /**
      * Gets allowable values of the enum
@@ -266,6 +267,7 @@ class FilesVariablesSpecification implements ModelInterface, ArrayAccess, \JsonS
             self::EXTENSIONS_PNG,
             self::EXTENSIONS_GIF,
             self::EXTENSIONS_PDF,
+            self::EXTENSIONS_MP4,
         ];
     }
 

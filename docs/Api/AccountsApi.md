@@ -450,7 +450,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
-| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
+| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2025_01\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | |
 
 ### Return type
 
