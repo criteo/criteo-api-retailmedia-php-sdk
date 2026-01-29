@@ -83,13 +83,13 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'associated_line_item_ids' => null,
         'brand_id' => 'int64',
-        'creative_format_v2_type' => 'string',
+        'creative_format_v2_type' => null,
         'environments' => null,
         'format_id' => 'int32',
         'id' => null,
         'name' => null,
         'retailer_id' => 'int32',
-        'status' => 'string',
+        'status' => null,
         'template_id' => 'int32',
         'template_name' => null,
         'template_variable_values' => null,
@@ -102,8 +102,8 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'associated_line_item_ids' => false,
-		'brand_id' => false,
+        'associated_line_item_ids' => true,
+		'brand_id' => true,
 		'creative_format_v2_type' => false,
 		'environments' => false,
 		'format_id' => false,
@@ -114,7 +114,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'template_id' => false,
 		'template_name' => false,
 		'template_variable_values' => false,
-		'updated_at' => false
+		'updated_at' => true
     ];
 
     /**
@@ -409,12 +409,6 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['associated_line_item_ids'] === null) {
-            $invalidProperties[] = "'associated_line_item_ids' can't be null";
-        }
-        if ($this->container['brand_id'] === null) {
-            $invalidProperties[] = "'brand_id' can't be null";
-        }
         if ($this->container['creative_format_v2_type'] === null) {
             $invalidProperties[] = "'creative_format_v2_type' can't be null";
         }
@@ -460,9 +454,6 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['template_variable_values'] === null) {
             $invalidProperties[] = "'template_variable_values' can't be null";
         }
-        if ($this->container['updated_at'] === null) {
-            $invalidProperties[] = "'updated_at' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -481,7 +472,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets associated_line_item_ids
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getAssociatedLineItemIds()
     {
@@ -491,14 +482,21 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets associated_line_item_ids
      *
-     * @param string[] $associated_line_item_ids Associated Line Item Ids
+     * @param string[]|null $associated_line_item_ids Associated Line Item Ids
      *
      * @return self
      */
     public function setAssociatedLineItemIds($associated_line_item_ids)
     {
         if (is_null($associated_line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable associated_line_item_ids cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'associated_line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('associated_line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['associated_line_item_ids'] = $associated_line_item_ids;
 
@@ -508,7 +506,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets brand_id
      *
-     * @return int
+     * @return int|null
      */
     public function getBrandId()
     {
@@ -518,14 +516,21 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets brand_id
      *
-     * @param int $brand_id Brand Id
+     * @param int|null $brand_id Brand Id
      *
      * @return self
      */
     public function setBrandId($brand_id)
     {
         if (is_null($brand_id)) {
-            throw new \InvalidArgumentException('non-nullable brand_id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_id'] = $brand_id;
 
@@ -636,7 +641,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id id
      *
      * @return self
      */
@@ -832,7 +837,7 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getUpdatedAt()
     {
@@ -842,14 +847,21 @@ class Creative2 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime $updated_at Updated at time
+     * @param \DateTime|null $updated_at Updated at time
      *
      * @return self
      */
     public function setUpdatedAt($updated_at)
     {
         if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'updated_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('updated_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['updated_at'] = $updated_at;
 

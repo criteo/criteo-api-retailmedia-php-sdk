@@ -80,7 +80,7 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'name' => null,
         'retailer_id' => 'int32',
-        'status' => 'string',
+        'status' => null,
         'updated_at' => 'date-time'
     ];
 
@@ -450,7 +450,7 @@ class Creative202110 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id id
      *
      * @return self
      */

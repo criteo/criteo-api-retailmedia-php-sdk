@@ -84,10 +84,10 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'brand_id_filter' => false,
-		'include_fields' => false,
-		'modified_after' => false,
-		'retailer_id_filter' => false
+        'brand_id_filter' => true,
+		'include_fields' => true,
+		'modified_after' => true,
+		'retailer_id_filter' => true
     ];
 
     /**
@@ -356,7 +356,14 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setBrandIdFilter($brand_id_filter)
     {
         if (is_null($brand_id_filter)) {
-            throw new \InvalidArgumentException('non-nullable brand_id_filter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_id_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id_filter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_id_filter'] = $brand_id_filter;
 
@@ -383,10 +390,17 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setIncludeFields($include_fields)
     {
         if (is_null($include_fields)) {
-            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_fields');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_fields', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getIncludeFieldsAllowableValues();
-        if (array_diff($include_fields, $allowedValues)) {
+        if (!is_null($include_fields) && array_diff($include_fields, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'include_fields', must be one of '%s'",
@@ -419,7 +433,14 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setModifiedAfter($modified_after)
     {
         if (is_null($modified_after)) {
-            throw new \InvalidArgumentException('non-nullable modified_after cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'modified_after');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('modified_after', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['modified_after'] = $modified_after;
 
@@ -446,7 +467,14 @@ class BrandCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setRetailerIdFilter($retailer_id_filter)
     {
         if (is_null($retailer_id_filter)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id_filter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'retailer_id_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id_filter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['retailer_id_filter'] = $retailer_id_filter;
 

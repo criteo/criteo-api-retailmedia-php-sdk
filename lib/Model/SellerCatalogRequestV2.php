@@ -82,9 +82,9 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'include_fields' => false,
-		'modified_after' => false,
-		'sellers' => false
+        'include_fields' => true,
+		'modified_after' => true,
+		'sellers' => true
     ];
 
     /**
@@ -244,7 +244,7 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public const INCLUDE_FIELDS_UNKNOWN = 'Unknown';
     public const INCLUDE_FIELDS_DESCRIPTION = 'Description';
     public const INCLUDE_FIELDS_IMAGE_URL = 'ImageUrl';
-    public const INCLUDE_FIELDS_GLOBAL_CATEGORY_ID = 'GlobalCategoryId';
+    public const INCLUDE_FIELDS_GOOGLE_CATEGORY = 'GoogleCategory';
     public const INCLUDE_FIELDS_RETAILER_NAME = 'RetailerName';
     public const INCLUDE_FIELDS_CATEGORY = 'Category';
     public const INCLUDE_FIELDS_BRAND_NAME = 'BrandName';
@@ -260,7 +260,7 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
             self::INCLUDE_FIELDS_UNKNOWN,
             self::INCLUDE_FIELDS_DESCRIPTION,
             self::INCLUDE_FIELDS_IMAGE_URL,
-            self::INCLUDE_FIELDS_GLOBAL_CATEGORY_ID,
+            self::INCLUDE_FIELDS_GOOGLE_CATEGORY,
             self::INCLUDE_FIELDS_RETAILER_NAME,
             self::INCLUDE_FIELDS_CATEGORY,
             self::INCLUDE_FIELDS_BRAND_NAME,
@@ -349,10 +349,17 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setIncludeFields($include_fields)
     {
         if (is_null($include_fields)) {
-            throw new \InvalidArgumentException('non-nullable include_fields cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'include_fields');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('include_fields', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getIncludeFieldsAllowableValues();
-        if (array_diff($include_fields, $allowedValues)) {
+        if (!is_null($include_fields) && array_diff($include_fields, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'include_fields', must be one of '%s'",
@@ -385,7 +392,14 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setModifiedAfter($modified_after)
     {
         if (is_null($modified_after)) {
-            throw new \InvalidArgumentException('non-nullable modified_after cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'modified_after');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('modified_after', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['modified_after'] = $modified_after;
 
@@ -412,7 +426,14 @@ class SellerCatalogRequestV2 implements ModelInterface, ArrayAccess, \JsonSerial
     public function setSellers($sellers)
     {
         if (is_null($sellers)) {
-            throw new \InvalidArgumentException('non-nullable sellers cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sellers');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sellers', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sellers'] = $sellers;
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **associated_line_item_ids** | **string[]** |  | [optional]
 **brand_id** | **int** |  | [optional]
-**id** | **string** | Id of the entity | [optional]
+**id** | **string** |  | [optional]
 **name** | **string** |  |
 **retailer_id** | **int** |  |
 **status** | **string** |  |

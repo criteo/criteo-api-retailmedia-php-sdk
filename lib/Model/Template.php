@@ -62,6 +62,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'creative_format' => 'string',
         'displayable_skus_max' => 'int',
+        'id' => 'string',
         'name' => 'string',
         'sections' => '\criteo\api\retailmedia\v2025_10\Model\Section[]',
         'sku_collection_max' => 'int',
@@ -81,8 +82,9 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'all_collections_mandatory' => null,
         'created_at' => 'date-time',
-        'creative_format' => 'string',
+        'creative_format' => null,
         'displayable_skus_max' => 'int32',
+        'id' => null,
         'name' => null,
         'sections' => null,
         'sku_collection_max' => 'int32',
@@ -102,6 +104,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
 		'created_at' => false,
 		'creative_format' => false,
 		'displayable_skus_max' => true,
+		'id' => true,
 		'name' => false,
 		'sections' => false,
 		'sku_collection_max' => true,
@@ -201,6 +204,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'createdAt',
         'creative_format' => 'creativeFormat',
         'displayable_skus_max' => 'displayableSkusMax',
+        'id' => 'id',
         'name' => 'name',
         'sections' => 'sections',
         'sku_collection_max' => 'skuCollectionMax',
@@ -220,6 +224,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'setCreatedAt',
         'creative_format' => 'setCreativeFormat',
         'displayable_skus_max' => 'setDisplayableSkusMax',
+        'id' => 'setId',
         'name' => 'setName',
         'sections' => 'setSections',
         'sku_collection_max' => 'setSkuCollectionMax',
@@ -239,6 +244,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => 'getCreatedAt',
         'creative_format' => 'getCreativeFormat',
         'displayable_skus_max' => 'getDisplayableSkusMax',
+        'id' => 'getId',
         'name' => 'getName',
         'sections' => 'getSections',
         'sku_collection_max' => 'getSkuCollectionMax',
@@ -340,6 +346,7 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('creative_format', $data ?? [], null);
         $this->setIfExists('displayable_skus_max', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('sections', $data ?? [], null);
         $this->setIfExists('sku_collection_max', $data ?? [], null);
@@ -545,6 +552,40 @@ class Template implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['displayable_skus_max'] = $displayable_skus_max;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

@@ -586,7 +586,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **value_resource_input_of_seller_search** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputOfSellerSearch**](../Model/ValueResourceInputOfSellerSearch.md)|  | [optional] |
+| **value_resource_input_of_seller_search** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputOfSellerSearch**](../Model/ValueResourceInputOfSellerSearch.md)|  | |
 
 ### Return type
 
@@ -713,7 +713,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The given account id | |
-| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | [optional] |
+| **value_resource_collection_input_of_retail_media_seller** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionInputOfRetailMediaSeller**](../Model/ValueResourceCollectionInputOfRetailMediaSeller.md)|  | |
 
 ### Return type
 

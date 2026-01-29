@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attributes** | [**\criteo\api\retailmedia\v2025_10\Model\SellerCatalogRequestV2**](SellerCatalogRequestV2.md) |  | [optional]
-**type** | **string** | The Type of the resource. | [optional]
+**type** | **string** | Type of the resource. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

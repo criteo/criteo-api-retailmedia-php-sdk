@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **creative_format_type** | **string** | Creative format type |
 **environments** | [**\criteo\api\retailmedia\v2025_10\Model\PageTypeEnvironment202210[]**](PageTypeEnvironment202210.md) | Environment type (e.g. mobile, web, app) |
 **format_id** | **int** | Format Id |
-**id** | **string** | Id of the entity | [optional]
+**id** | **string** |  | [optional]
 **name** | **string** | Name |
 **retailer_id** | **int** | Retailer Id |
 **status** | **string** | Creative Status |
