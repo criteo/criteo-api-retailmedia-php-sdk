@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\ExternalRetailMediaBrands**](ExternalRetailMediaBrands.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2026_01\Model\ExternalRetailMediaBrands**](ExternalRetailMediaBrands.md) |  | [optional]
 **type** | **string** | Type of the resource. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

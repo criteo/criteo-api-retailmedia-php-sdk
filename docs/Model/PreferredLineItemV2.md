@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 **budget_remaining** | **float** |  | [optional]
 **budget_spent** | **float** |  | [optional]
 **campaign_id** | **string** |  |
-**capping** | [**\criteo\api\retailmedia\v2025_01\Model\LineItemCappingV2**](LineItemCappingV2.md) |  | [optional]
+**capping** | [**\criteo\api\retailmedia\v2026_01\Model\LineItemCappingV2**](LineItemCappingV2.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **creative_id** | **string** | creative Id | [optional]
 **end_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD | [optional]
 **id** | **string** |  | [optional]
 **name** | **string** |  |
 **pacing** | **string** |  | [optional]
-**page** | [**\criteo\api\retailmedia\v2025_01\Model\LineItemPageV2**](LineItemPageV2.md) |  | [optional]
+**page** | [**\criteo\api\retailmedia\v2026_01\Model\LineItemPageV2**](LineItemPageV2.md) |  | [optional]
 **start_date** | **\DateTime** | Represents the Date as a year, month, and day in the format YYYY-MM-DD |
 **status** | **string** | Line Item Status Enum |
 **target_retailer_id** | **string** |  |

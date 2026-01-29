@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\ChangeDatesOfBalanceV2**](ChangeDatesOfBalanceV2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2026_01\Model\ChangeDatesOfBalanceV2**](ChangeDatesOfBalanceV2.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 
