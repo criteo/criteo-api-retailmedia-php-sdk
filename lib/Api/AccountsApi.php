@@ -2204,14 +2204,14 @@ class AccountsApi
     /**
      * Operation searchSellers
      *
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult
      */
-    public function searchSellers($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
+    public function searchSellers($value_resource_input_of_seller_search, string $contentType = self::contentTypes['searchSellers'][0])
     {
         list($response) = $this->searchSellersWithHttpInfo($value_resource_input_of_seller_search, $contentType);
         return $response;
@@ -2220,14 +2220,14 @@ class AccountsApi
     /**
      * Operation searchSellersWithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchSellersWithHttpInfo($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
+    public function searchSellersWithHttpInfo($value_resource_input_of_seller_search, string $contentType = self::contentTypes['searchSellers'][0])
     {
         $request = $this->searchSellersRequest($value_resource_input_of_seller_search, $contentType);
 
@@ -2318,13 +2318,13 @@ class AccountsApi
     /**
      * Operation searchSellersAsync
      *
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSellersAsync($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
+    public function searchSellersAsync($value_resource_input_of_seller_search, string $contentType = self::contentTypes['searchSellers'][0])
     {
         return $this->searchSellersAsyncWithHttpInfo($value_resource_input_of_seller_search, $contentType)
             ->then(
@@ -2337,13 +2337,13 @@ class AccountsApi
     /**
      * Operation searchSellersAsyncWithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSellersAsyncWithHttpInfo($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
+    public function searchSellersAsyncWithHttpInfo($value_resource_input_of_seller_search, string $contentType = self::contentTypes['searchSellers'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult';
         $request = $this->searchSellersRequest($value_resource_input_of_seller_search, $contentType);
@@ -2387,15 +2387,21 @@ class AccountsApi
     /**
      * Create request for operation 'searchSellers'
      *
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchSellersRequest($value_resource_input_of_seller_search = null, string $contentType = self::contentTypes['searchSellers'][0])
+    public function searchSellersRequest($value_resource_input_of_seller_search, string $contentType = self::contentTypes['searchSellers'][0])
     {
 
+        // verify the required parameter 'value_resource_input_of_seller_search' is set
+        if ($value_resource_input_of_seller_search === null || (is_array($value_resource_input_of_seller_search) && count($value_resource_input_of_seller_search) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_of_seller_search when calling searchSellers'
+            );
+        }
 
 
         $resourcePath = '/2025-07/retail-media/accounts/sellers/search';
@@ -2481,14 +2487,14 @@ class AccountsApi
      * Operation updateSellers
      *
      * @param  string $account_id The given account id (required)
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller value_resource_collection_input_of_retail_media_seller (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
      */
-    public function updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    public function updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['updateSellers'][0])
     {
         list($response) = $this->updateSellersWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
         return $response;
@@ -2498,14 +2504,14 @@ class AccountsApi
      * Operation updateSellersWithHttpInfo
      *
      * @param  string $account_id The given account id (required)
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_07\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateSellersWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    public function updateSellersWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['updateSellers'][0])
     {
         $request = $this->updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
 
@@ -2597,13 +2603,13 @@ class AccountsApi
      * Operation updateSellersAsync
      *
      * @param  string $account_id The given account id (required)
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSellersAsync($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    public function updateSellersAsync($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['updateSellers'][0])
     {
         return $this->updateSellersAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType)
             ->then(
@@ -2617,13 +2623,13 @@ class AccountsApi
      * Operation updateSellersAsyncWithHttpInfo
      *
      * @param  string $account_id The given account id (required)
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSellersAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    public function updateSellersAsyncWithHttpInfo($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['updateSellers'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller';
         $request = $this->updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller, $contentType);
@@ -2668,13 +2674,13 @@ class AccountsApi
      * Create request for operation 'updateSellers'
      *
      * @param  string $account_id The given account id (required)
-     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (optional)
+     * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller = null, string $contentType = self::contentTypes['updateSellers'][0])
+    public function updateSellersRequest($account_id, $value_resource_collection_input_of_retail_media_seller, string $contentType = self::contentTypes['updateSellers'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2684,6 +2690,12 @@ class AccountsApi
             );
         }
 
+        // verify the required parameter 'value_resource_collection_input_of_retail_media_seller' is set
+        if ($value_resource_collection_input_of_retail_media_seller === null || (is_array($value_resource_collection_input_of_retail_media_seller) && count($value_resource_collection_input_of_retail_media_seller) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_collection_input_of_retail_media_seller when calling updateSellers'
+            );
+        }
 
 
         $resourcePath = '/2025-07/retail-media/account-management/accounts/{accountId}/sellers';

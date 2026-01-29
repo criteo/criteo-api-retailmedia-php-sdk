@@ -115,7 +115,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
 		'capping' => true,
 		'created_at' => false,
 		'creative_id' => true,
-		'end_date' => false,
+		'end_date' => true,
 		'id' => true,
 		'name' => false,
 		'pacing' => true,
@@ -432,9 +432,6 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['campaign_id'] === null) {
             $invalidProperties[] = "'campaign_id' can't be null";
         }
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -708,7 +705,7 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return \DateTime|null
      */
     public function getEndDate()
     {
@@ -718,14 +715,21 @@ class PreferredLineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
+     * @param \DateTime|null $end_date Represents the Date as a year, month, and day in the format YYYY-MM-DD
      *
      * @return self
      */
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_date'] = $end_date;
 

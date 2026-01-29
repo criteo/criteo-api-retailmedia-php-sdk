@@ -275,7 +275,10 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['color']) && !preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $this->container['color'])) {
+        if ($this->container['color'] === null) {
+            $invalidProperties[] = "'color' can't be null";
+        }
+        if (!preg_match("/^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/", $this->container['color'])) {
             $invalidProperties[] = "invalid value for 'color', must be conform to the pattern /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/.";
         }
 
@@ -297,7 +300,7 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets color
      *
-     * @return string|null
+     * @return string
      */
     public function getColor()
     {
@@ -307,7 +310,7 @@ class ColorVariableValue implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets color
      *
-     * @param string|null $color The displayed color (HEX format)
+     * @param string $color The displayed color (HEX format)
      *
      * @return self
      */

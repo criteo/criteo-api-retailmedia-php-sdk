@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** | The time at which the template was created |
 **creative_format** | **string** | The kind of creative this template can be used to build. |
 **displayable_skus_max** | **int** | Maximum number of displayable skus | [optional]
+**id** | **string** |  | [optional]
 **name** | **string** | The name of the template |
 **sections** | [**\criteo\api\retailmedia\v2025_07\Model\Section[]**](Section.md) | The sections holding various template variables |
 **sku_collection_max** | **int** | Maximum number of skus in the collection | [optional]

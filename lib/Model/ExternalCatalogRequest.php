@@ -80,7 +80,7 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'brand_id_filter' => false,
+        'brand_id_filter' => true,
 		'format' => false
     ];
 
@@ -235,6 +235,7 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
+    public const FORMAT_UNKNOWN = 'unknown';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
 
     /**
@@ -245,6 +246,7 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function getFormatAllowableValues()
     {
         return [
+            self::FORMAT_UNKNOWN,
             self::FORMAT_JSON_NEWLINE,
         ];
     }
@@ -339,7 +341,14 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function setBrandIdFilter($brand_id_filter)
     {
         if (is_null($brand_id_filter)) {
-            throw new \InvalidArgumentException('non-nullable brand_id_filter cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'brand_id_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_id_filter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['brand_id_filter'] = $brand_id_filter;
 
@@ -359,7 +368,7 @@ class ExternalCatalogRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets format
      *
-     * @param string|null $format format
+     * @param string|null $format An enumeration of Catalog formats
      *
      * @return self
      */

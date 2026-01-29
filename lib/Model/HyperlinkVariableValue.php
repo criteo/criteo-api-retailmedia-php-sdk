@@ -275,6 +275,9 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets url
      *
-     * @return string|null
+     * @return string
      */
     public function getUrl()
     {
@@ -303,7 +306,7 @@ class HyperlinkVariableValue implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets url
      *
-     * @param string|null $url The url to redirect to
+     * @param string $url The url to redirect to
      *
      * @return self
      */
