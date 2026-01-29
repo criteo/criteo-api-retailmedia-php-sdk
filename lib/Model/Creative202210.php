@@ -83,13 +83,13 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'associated_line_item_ids' => null,
         'brand_id' => 'int64',
-        'creative_format_type' => 'string',
+        'creative_format_type' => null,
         'environments' => null,
         'format_id' => 'int32',
         'id' => null,
         'name' => null,
         'retailer_id' => 'int32',
-        'status' => 'string',
+        'status' => null,
         'template_id' => 'int32',
         'template_name' => null,
         'template_variable_values' => null,
@@ -641,7 +641,7 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id id
      *
      * @return self
      */

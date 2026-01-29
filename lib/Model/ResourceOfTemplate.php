@@ -351,7 +351,7 @@ class ResourceOfTemplate implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id Unique identifier of this resource.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class ResourceOfTemplate implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets type
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param string|null $type type
      *
      * @return self
      */

@@ -107,7 +107,6 @@ docs/Model/ExternalRetailMediaChildAccount.md
 docs/Model/ExternalRetailMediaSeller.md
 docs/Model/ExternalRetailMediaSellerAccountCreation.md
 docs/Model/ExternalRetailer.md
-docs/Model/ExternalRetailerPages202110.md
 docs/Model/FilesVariableValue.md
 docs/Model/FilesVariablesSpecification.md
 docs/Model/GrantConsentInput.md
@@ -167,7 +166,6 @@ docs/Model/PreferredLineItemUpdateModelV2Request.md
 docs/Model/PreferredLineItemV2.md
 docs/Model/PreferredLineItemV2PagedListResponse.md
 docs/Model/PreferredLineItemV2Response.md
-docs/Model/ProblemDetails.md
 docs/Model/ProductMetadata.md
 docs/Model/ProductResourceOutcome.md
 docs/Model/PromotedProduct.md
@@ -200,6 +198,7 @@ docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
 docs/Model/RetailMediaSeller.md
+docs/Model/RetailerPages202110.md
 docs/Model/ReviewStateModel.md
 docs/Model/RmAlgebraNodeV1.md
 docs/Model/RmAudienceEntityV1.md
@@ -405,7 +404,6 @@ lib/Model/ExternalRetailMediaChildAccount.php
 lib/Model/ExternalRetailMediaSeller.php
 lib/Model/ExternalRetailMediaSellerAccountCreation.php
 lib/Model/ExternalRetailer.php
-lib/Model/ExternalRetailerPages202110.php
 lib/Model/FilesVariableValue.php
 lib/Model/FilesVariablesSpecification.php
 lib/Model/GrantConsentInput.php
@@ -466,7 +464,6 @@ lib/Model/PreferredLineItemUpdateModelV2Request.php
 lib/Model/PreferredLineItemV2.php
 lib/Model/PreferredLineItemV2PagedListResponse.php
 lib/Model/PreferredLineItemV2Response.php
-lib/Model/ProblemDetails.php
 lib/Model/ProductMetadata.php
 lib/Model/ProductResourceOutcome.php
 lib/Model/PromotedProduct.php
@@ -499,6 +496,7 @@ lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
 lib/Model/RetailMediaSeller.php
+lib/Model/RetailerPages202110.php
 lib/Model/ReviewStateModel.php
 lib/Model/RmAlgebraNodeV1.php
 lib/Model/RmAudienceEntityV1.php

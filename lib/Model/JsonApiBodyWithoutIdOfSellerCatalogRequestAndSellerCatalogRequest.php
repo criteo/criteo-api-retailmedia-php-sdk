@@ -80,7 +80,7 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
+        'attributes' => false,
 		'type' => false
     ];
 
@@ -320,14 +320,7 @@ class JsonApiBodyWithoutIdOfSellerCatalogRequestAndSellerCatalogRequest implemen
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
         $this->container['attributes'] = $attributes;
 

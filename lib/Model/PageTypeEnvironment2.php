@@ -70,8 +70,8 @@ class PageTypeEnvironment2 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'environments' => 'string',
-        'page_type' => 'string'
+        'environments' => null,
+        'page_type' => null
     ];
 
     /**

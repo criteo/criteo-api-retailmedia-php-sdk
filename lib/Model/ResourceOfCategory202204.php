@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * ResourceOfCategory202204 Class Doc Comment
  *
  * @category Class
- * @description Data model for a Resource
+ * @description A class that represents a domain entity exposed by an API.
  * @package  criteo\api\retailmedia\v2025_04
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -82,7 +82,7 @@ class ResourceOfCategory202204 implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
+        'attributes' => true,
 		'id' => true,
 		'type' => true
     ];
@@ -324,7 +324,14 @@ class ResourceOfCategory202204 implements ModelInterface, ArrayAccess, \JsonSeri
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
 
@@ -344,7 +351,7 @@ class ResourceOfCategory202204 implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets id
      *
-     * @param string|null $id Id of the entity
+     * @param string|null $id Unique identifier of this resource.
      *
      * @return self
      */
@@ -378,7 +385,7 @@ class ResourceOfCategory202204 implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets type
      *
-     * @param string|null $type Canonical type name of the entity
+     * @param string|null $type type
      *
      * @return self
      */

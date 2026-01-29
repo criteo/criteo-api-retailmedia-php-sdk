@@ -79,7 +79,7 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => null,
         'required' => null,
         'text_variable_specification' => null,
-        'type' => 'string'
+        'type' => null
     ];
 
     /**
@@ -264,6 +264,7 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TYPE_COLOR = 'Color';
     public const TYPE_FILES = 'Files';
     public const TYPE_HYPERLINK = 'Hyperlink';
+    public const TYPE_VIDEO = 'Video';
 
     /**
      * Gets allowable values of the enum
@@ -278,6 +279,7 @@ class TemplateVariable implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TYPE_COLOR,
             self::TYPE_FILES,
             self::TYPE_HYPERLINK,
+            self::TYPE_VIDEO,
         ];
     }
 

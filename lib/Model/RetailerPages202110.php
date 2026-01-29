@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalRetailerPages202110
+ * RetailerPages202110
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
 
 /**
- * ExternalRetailerPages202110 Class Doc Comment
+ * RetailerPages202110 Class Doc Comment
  *
  * @category Class
  * @description Wraps a list of valid pages for a retailer
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\v2025_04\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalRetailerPages202110 implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerPages202110 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalRetailerPages202110 implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalRetailerPages202110';
+    protected static $openAPIModelName = 'RetailerPages202110';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -275,6 +275,9 @@ class ExternalRetailerPages202110 implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['page_types'] === null) {
+            $invalidProperties[] = "'page_types' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class ExternalRetailerPages202110 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets page_types
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getPageTypes()
     {
@@ -303,7 +306,7 @@ class ExternalRetailerPages202110 implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets page_types
      *
-     * @param string[]|null $page_types List of valid pages for a retailer
+     * @param string[] $page_types List of valid pages for a retailer
      *
      * @return self
      */
