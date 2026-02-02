@@ -125,7 +125,7 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendations
      *
-     * @param  int $catalogid the identifier of the catalog to query (required)
+     * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
      *
@@ -142,7 +142,7 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendationsWithHttpInfo
      *
-     * @param  int $catalogid the identifier of the catalog to query (required)
+     * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
      *
@@ -241,7 +241,7 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendationsAsync
      *
-     * @param  int $catalogid the identifier of the catalog to query (required)
+     * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
      *
@@ -261,7 +261,7 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendationsAsyncWithHttpInfo
      *
-     * @param  int $catalogid the identifier of the catalog to query (required)
+     * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
      *
@@ -312,7 +312,7 @@ class OnSiteRecommendationApi
     /**
      * Create request for operation 'chatbotProductRecommendations'
      *
-     * @param  int $catalogid the identifier of the catalog to query (required)
+     * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
      *

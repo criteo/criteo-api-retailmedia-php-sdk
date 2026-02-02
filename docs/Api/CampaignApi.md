@@ -265,7 +265,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | The retailer id
+$retailer_id = 'retailer_id_example'; // string | The retailer id
 $value_resource_input_display_auction_min_bid_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest | The details for what creatives and product ids to use to compute the min bids
 
 try {
@@ -280,7 +280,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailer id | |
+| **retailer_id** | **string**| The retailer id | |
 | **value_resource_input_display_auction_min_bid_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest**](../Model/ValueResourceInputDisplayAuctionMinBidRequest.md)| The details for what creatives and product ids to use to compute the min bids | [optional] |
 
 ### Return type
@@ -723,7 +723,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | The retailer id for which brands should be fetched.
+$retailer_id = 'retailer_id_example'; // string | The retailer id for which brands should be fetched.
 $brand_type = 'uc'; // string | Filter to narrow down brands [all|uc|retailer]. Defaults to uc
 $sku_stock_type_filter = 'first-and-third-party'; // string | Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party
 
@@ -739,7 +739,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailer id for which brands should be fetched. | |
+| **retailer_id** | **string**| The retailer id for which brands should be fetched. | |
 | **brand_type** | **string**| Filter to narrow down brands [all|uc|retailer]. Defaults to uc | [optional] [default to &#39;uc&#39;] |
 | **sku_stock_type_filter** | **string**| Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party | [optional] [default to &#39;first-and-third-party&#39;] |
 
@@ -790,7 +790,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | The retailer id for which seller should be fetched.
+$retailer_id = 'retailer_id_example'; // string | The retailer id for which seller should be fetched.
 $seller = 'seller_example'; // string | The seller id or seller name which should be validated.
 
 try {
@@ -805,7 +805,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailer id for which seller should be fetched. | |
+| **retailer_id** | **string**| The retailer id for which seller should be fetched. | |
 | **seller** | **string**| The seller id or seller name which should be validated. | |
 
 ### Return type
@@ -983,7 +983,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 56; // int | The id of the line item
+$line_item_id = 'line_item_id_example'; // string | The id of the line item
 
 try {
     $result = $apiInstance->getAuctionLineItem($line_item_id);
@@ -997,7 +997,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **int**| The id of the line item | |
+| **line_item_id** | **string**| The id of the line item | |
 
 ### Return type
 
@@ -2035,7 +2035,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 56; // int | The external line item ID of the sponsored products line item.
+$line_item_id = 'line_item_id_example'; // string | The external line item ID of the sponsored products line item.
 $value_resource_input_of_sponsored_products_line_item_update_request_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel | An update request containing all details of the requested update.
 
 try {
@@ -2050,7 +2050,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **int**| The external line item ID of the sponsored products line item. | |
+| **line_item_id** | **string**| The external line item ID of the sponsored products line item. | |
 | **value_resource_input_of_sponsored_products_line_item_update_request_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel**](../Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md)| An update request containing all details of the requested update. | |
 
 ### Return type

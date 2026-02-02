@@ -37,7 +37,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\OnSiteRecommendationApi(
     new GuzzleHttp\Client(),
     $config
 );
-$catalogid = 56; // int | the identifier of the catalog to query
+$catalogid = 'catalogid_example'; // string | the identifier of the catalog to query
 $inbot_discussion_body_model = new \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel(); // \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel
 
 try {
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **catalogid** | **int**| the identifier of the catalog to query | |
+| **catalogid** | **string**| the identifier of the catalog to query | |
 | **inbot_discussion_body_model** | [**\criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel**](../Model/InbotDiscussionBodyModel.md)|  | |
 
 ### Return type

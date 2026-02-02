@@ -25,6 +25,7 @@ docs/Model/AsyncCampaignsReportResource.md
 docs/Model/AsyncFillRateReport.md
 docs/Model/AsyncFillRateReportRequest.md
 docs/Model/AsyncFillRateReportResource.md
+docs/Model/AsyncInsightResponse.md
 docs/Model/AsyncLineItemsReport.md
 docs/Model/AsyncLineItemsReportRequest.md
 docs/Model/AsyncLineItemsReportResource.md
@@ -106,6 +107,8 @@ docs/Model/InbotDiscussion.md
 docs/Model/InbotDiscussionBodyModel.md
 docs/Model/InbotDiscussionDataInstanceModel.md
 docs/Model/InputResourceOfPreferredLineItemCreateModelV2.md
+docs/Model/InsightStatusResponse.md
+docs/Model/InsightStatusResponseResource.md
 docs/Model/Installment.md
 docs/Model/LineItemBudgetCapOutHistory.md
 docs/Model/LineItemBudgetCapOutHistoryCapoutTimes.md
@@ -261,7 +264,11 @@ docs/Model/RmcaCommonProblem.md
 docs/Model/SdkApiRestCommonProblem.md
 docs/Model/SellerPreview.md
 docs/Model/SellerPreviewResponse.md
+docs/Model/ServedCategoryFilter.md
 docs/Model/SetProductBuyBoxWinnersRequest.md
+docs/Model/ShareOfVoiceInsight.md
+docs/Model/ShareOfVoiceInsightRequest.md
+docs/Model/ShareOfVoiceInsightResource.md
 docs/Model/SkuDataPreview.md
 docs/Model/SkuDataPreviewListResponse.md
 docs/Model/SkuSearchRequestPreview.md
@@ -346,6 +353,7 @@ lib/Model/AsyncCampaignsReportResource.php
 lib/Model/AsyncFillRateReport.php
 lib/Model/AsyncFillRateReportRequest.php
 lib/Model/AsyncFillRateReportResource.php
+lib/Model/AsyncInsightResponse.php
 lib/Model/AsyncLineItemsReport.php
 lib/Model/AsyncLineItemsReportRequest.php
 lib/Model/AsyncLineItemsReportResource.php
@@ -427,6 +435,8 @@ lib/Model/InbotDiscussion.php
 lib/Model/InbotDiscussionBodyModel.php
 lib/Model/InbotDiscussionDataInstanceModel.php
 lib/Model/InputResourceOfPreferredLineItemCreateModelV2.php
+lib/Model/InsightStatusResponse.php
+lib/Model/InsightStatusResponseResource.php
 lib/Model/Installment.php
 lib/Model/LineItemBudgetCapOutHistory.php
 lib/Model/LineItemBudgetCapOutHistoryCapoutTimes.php
@@ -583,7 +593,11 @@ lib/Model/RmcaCommonProblem.php
 lib/Model/SdkApiRestCommonProblem.php
 lib/Model/SellerPreview.php
 lib/Model/SellerPreviewResponse.php
+lib/Model/ServedCategoryFilter.php
 lib/Model/SetProductBuyBoxWinnersRequest.php
+lib/Model/ShareOfVoiceInsight.php
+lib/Model/ShareOfVoiceInsightRequest.php
+lib/Model/ShareOfVoiceInsightResource.php
 lib/Model/SkuDataPreview.php
 lib/Model/SkuDataPreviewListResponse.php
 lib/Model/SkuSearchRequestPreview.php

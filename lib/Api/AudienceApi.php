@@ -167,7 +167,7 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegment
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -184,7 +184,7 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegmentWithHttpInfo
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -283,7 +283,7 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegmentAsync
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -303,7 +303,7 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegmentAsyncWithHttpInfo
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -354,7 +354,7 @@ class AudienceApi
     /**
      * Create request for operation 'addRemoveContactListByAudienceSegment'
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -2281,7 +2281,7 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegment
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -2296,7 +2296,7 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegmentWithHttpInfo
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -2354,7 +2354,7 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegmentAsync
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2373,7 +2373,7 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegmentAsyncWithHttpInfo
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2410,7 +2410,7 @@ class AudienceApi
     /**
      * Create request for operation 'clearContactListByAudienceSegment'
      *
-     * @param  int $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
+     * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

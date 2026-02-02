@@ -1118,7 +1118,7 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerId
      *
-     * @param  int $retailer_id The retailer id (required)
+     * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
      *
@@ -1135,7 +1135,7 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerIdWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id (required)
+     * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
      *
@@ -1234,7 +1234,7 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerIdAsync
      *
-     * @param  int $retailer_id The retailer id (required)
+     * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
      *
@@ -1254,7 +1254,7 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerIdAsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id (required)
+     * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
      *
@@ -1305,7 +1305,7 @@ class CampaignApi
     /**
      * Create request for operation 'computeDisplayMinBidByRetailerId'
      *
-     * @param  int $retailer_id The retailer id (required)
+     * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
      *
@@ -3193,7 +3193,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerBrandsByRetailerId
      *
-     * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which brands should be fetched. (required)
      * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
      * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
@@ -3211,7 +3211,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerBrandsByRetailerIdWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which brands should be fetched. (required)
      * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
      * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
@@ -3311,7 +3311,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerBrandsByRetailerIdAsync
      *
-     * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which brands should be fetched. (required)
      * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
      * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
@@ -3332,7 +3332,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerBrandsByRetailerIdAsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which brands should be fetched. (required)
      * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
      * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
@@ -3384,7 +3384,7 @@ class CampaignApi
     /**
      * Create request for operation 'getApiExternalV1RetailerBrandsByRetailerId'
      *
-     * @param  int $retailer_id The retailer id for which brands should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which brands should be fetched. (required)
      * @param  string $brand_type Filter to narrow down brands [all|uc|retailer]. Defaults to uc (optional, default to 'uc')
      * @param  string $sku_stock_type_filter Filter to narrow down brands [first-party|third-party|first-and-third-party]. Defaults to first-and-third-party (optional, default to 'first-and-third-party')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerBrandsByRetailerId'] to see the possible values for this operation
@@ -3506,7 +3506,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerByRetailerIdSellersseller
      *
-     * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
@@ -3523,7 +3523,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerByRetailerIdSellerssellerWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
@@ -3622,7 +3622,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerByRetailerIdSellerssellerAsync
      *
-     * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
@@ -3642,7 +3642,7 @@ class CampaignApi
     /**
      * Operation getApiExternalV1RetailerByRetailerIdSellerssellerAsyncWithHttpInfo
      *
-     * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
@@ -3693,7 +3693,7 @@ class CampaignApi
     /**
      * Create request for operation 'getApiExternalV1RetailerByRetailerIdSellersseller'
      *
-     * @param  int $retailer_id The retailer id for which seller should be fetched. (required)
+     * @param  string $retailer_id The retailer id for which seller should be fetched. (required)
      * @param  string $seller The seller id or seller name which should be validated. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApiExternalV1RetailerByRetailerIdSellersseller'] to see the possible values for this operation
      *
@@ -4390,7 +4390,7 @@ class CampaignApi
     /**
      * Operation getAuctionLineItem
      *
-     * @param  int $line_item_id The id of the line item (required)
+     * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -4406,7 +4406,7 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemWithHttpInfo
      *
-     * @param  int $line_item_id The id of the line item (required)
+     * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
@@ -4504,7 +4504,7 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemAsync
      *
-     * @param  int $line_item_id The id of the line item (required)
+     * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4523,7 +4523,7 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemAsyncWithHttpInfo
      *
-     * @param  int $line_item_id The id of the line item (required)
+     * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4573,7 +4573,7 @@ class CampaignApi
     /**
      * Create request for operation 'getAuctionLineItem'
      *
-     * @param  int $line_item_id The id of the line item (required)
+     * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9248,7 +9248,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItem
      *
-     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
@@ -9265,7 +9265,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemWithHttpInfo
      *
-     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
@@ -9364,7 +9364,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemAsync
      *
-     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
@@ -9384,7 +9384,7 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemAsyncWithHttpInfo
      *
-     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
@@ -9435,7 +9435,7 @@ class CampaignApi
     /**
      * Create request for operation 'updateAuctionLineItem'
      *
-     * @param  int $line_item_id The external line item ID of the sponsored products line item. (required)
+     * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
      *
