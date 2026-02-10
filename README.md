@@ -98,10 +98,7 @@ Class | Method | HTTP request | Description
 *AudienceApi* | [**searchAudiences**](docs/Api/AudienceApi.md#searchaudiences) | **POST** /preview/retail-media/accounts/{account-id}/audiences/search | 
 *BalanceApi* | [**createBalanceByAccountId**](docs/Api/BalanceApi.md#createbalancebyaccountid) | **POST** /preview/retail-media/accounts/{account-id}/balances | 
 *BalanceApi* | [**getBalanceHistory**](docs/Api/BalanceApi.md#getbalancehistory) | **GET** /preview/retail-media/balances/{balanceId}/history | 
-*BalanceApi* | [**getBalancesByAccountId**](docs/Api/BalanceApi.md#getbalancesbyaccountid) | **GET** /preview/retail-media/accounts/{account-id}/balances | 
-*BalanceApi* | [**getCampaignsByBalanceId**](docs/Api/BalanceApi.md#getcampaignsbybalanceid) | **GET** /preview/retail-media/balances/{balance-id}/campaigns | 
-*BalanceApi* | [**updateBalanceV2**](docs/Api/BalanceApi.md#updatebalancev2) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} | 
-*CampaignApi* | [**appendCampaignsByBalanceId**](docs/Api/CampaignApi.md#appendcampaignsbybalanceid) | **POST** /preview/retail-media/balances/{balance-id}/campaigns/append | 
+*BalanceApi* | [**updateBalanceV1**](docs/Api/BalanceApi.md#updatebalancev1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} | 
 *CampaignApi* | [**appendProductButtonByLineItemId**](docs/Api/CampaignApi.md#appendproductbuttonbylineitemid) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create | 
 *CampaignApi* | [**appendPromotedProducts**](docs/Api/CampaignApi.md#appendpromotedproducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append | 
 *CampaignApi* | [**computeDisplayMinBidByRetailerId**](docs/Api/CampaignApi.md#computedisplayminbidbyretailerid) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid | 
@@ -177,7 +174,6 @@ Class | Method | HTTP request | Description
  - [AudienceError](docs/Model/AudienceError.md)
  - [AudienceWarning](docs/Model/AudienceWarning.md)
  - [BalanceHistoryChangeDataCaptureV1](docs/Model/BalanceHistoryChangeDataCaptureV1.md)
- - [BalanceResponseV1](docs/Model/BalanceResponseV1.md)
  - [BatchAcceptedResponse](docs/Model/BatchAcceptedResponse.md)
  - [BotMessage](docs/Model/BotMessage.md)
  - [BrandIdSearchRequest](docs/Model/BrandIdSearchRequest.md)
@@ -204,20 +200,14 @@ Class | Method | HTTP request | Description
  - [DisplayAuctionMinBidRequest](docs/Model/DisplayAuctionMinBidRequest.md)
  - [DisplayAuctionMinBidResult](docs/Model/DisplayAuctionMinBidResult.md)
  - [EntityResourceBrandIdSearchResult](docs/Model/EntityResourceBrandIdSearchResult.md)
- - [EntityResourceCollectionInputOfBalanceCampaignV1](docs/Model/EntityResourceCollectionInputOfBalanceCampaignV1.md)
  - [EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata](docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
  - [EntityResourceCollectionOutcomeCreativeSearchResponse](docs/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md)
- - [EntityResourceCollectionOutcomeOfBalanceCampaignV1](docs/Model/EntityResourceCollectionOutcomeOfBalanceCampaignV1.md)
- - [EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta](docs/Model/EntityResourceCollectionOutcomeOfBalanceCampaignV1AndPageMeta.md)
- - [EntityResourceCollectionOutcomeOfBalanceResponseV1AndPageMeta](docs/Model/EntityResourceCollectionOutcomeOfBalanceResponseV1AndPageMeta.md)
  - [EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata](docs/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
  - [EntityResourceCollectionOutcomeOfRetailerResultAndMetadata](docs/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
  - [EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata](docs/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md)
  - [EntityResourceCreativeSearchRequest](docs/Model/EntityResourceCreativeSearchRequest.md)
  - [EntityResourceCreativeSearchResponse](docs/Model/EntityResourceCreativeSearchResponse.md)
  - [EntityResourceInputCreativeSearchRequest](docs/Model/EntityResourceInputCreativeSearchRequest.md)
- - [EntityResourceOfBalanceCampaignV1](docs/Model/EntityResourceOfBalanceCampaignV1.md)
- - [EntityResourceOfBalanceResponseV1](docs/Model/EntityResourceOfBalanceResponseV1.md)
  - [EntityResourceOfCatalogStatusV2](docs/Model/EntityResourceOfCatalogStatusV2.md)
  - [EntityResourceOfRetailMediaAccountV2](docs/Model/EntityResourceOfRetailMediaAccountV2.md)
  - [EntityResourceOfRetailMediaChildAccount](docs/Model/EntityResourceOfRetailMediaChildAccount.md)
@@ -267,7 +257,6 @@ Class | Method | HTTP request | Description
  - [NillableString](docs/Model/NillableString.md)
  - [OfferUpdate](docs/Model/OfferUpdate.md)
  - [Outcome](docs/Model/Outcome.md)
- - [PageMeta](docs/Model/PageMeta.md)
  - [PageMetadata](docs/Model/PageMetadata.md)
  - [PageOfBalanceHistoryChangeDataCaptureV1](docs/Model/PageOfBalanceHistoryChangeDataCaptureV1.md)
  - [PageTypeCombination](docs/Model/PageTypeCombination.md)

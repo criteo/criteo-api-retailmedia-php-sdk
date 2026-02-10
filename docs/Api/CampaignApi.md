@@ -4,7 +4,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**appendCampaignsByBalanceId()**](CampaignApi.md#appendCampaignsByBalanceId) | **POST** /preview/retail-media/balances/{balance-id}/campaigns/append |  |
 | [**appendProductButtonByLineItemId()**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append |  |
 | [**computeDisplayMinBidByRetailerId()**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |  |
@@ -39,71 +38,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**updateProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 
-
-## `appendCampaignsByBalanceId()`
-
-```php
-appendCampaignsByBalanceId($balance_id, $entity_resource_collection_input_of_balance_campaign_v1): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1
-```
-
-
-
-appends one or more campaigns to the specified balance
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$balance_id = 'balance_id_example'; // string | The balance to add campaigns from
-$entity_resource_collection_input_of_balance_campaign_v1 = new \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1(); // \criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1 | The campaigns to append
-
-try {
-    $result = $apiInstance->appendCampaignsByBalanceId($balance_id, $entity_resource_collection_input_of_balance_campaign_v1);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->appendCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **balance_id** | **string**| The balance to add campaigns from | |
-| **entity_resource_collection_input_of_balance_campaign_v1** | [**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionInputOfBalanceCampaignV1**](../Model/EntityResourceCollectionInputOfBalanceCampaignV1.md)| The campaigns to append | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfBalanceCampaignV1**](../Model/EntityResourceCollectionOutcomeOfBalanceCampaignV1.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `appendProductButtonByLineItemId()`
 
