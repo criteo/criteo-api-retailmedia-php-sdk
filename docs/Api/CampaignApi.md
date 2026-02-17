@@ -1327,7 +1327,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | The retailers to fetch pages for
+$retailer_id = 'retailer_id_example'; // string | The retailers to fetch pages for
 
 try {
     $result = $apiInstance->getApi202110ExternalRetailerPagesByRetailerId($retailer_id);
@@ -1341,7 +1341,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| The retailers to fetch pages for | |
+| **retailer_id** | **string**| The retailers to fetch pages for | |
 
 ### Return type
 
@@ -1786,7 +1786,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | Campaign id.
+$campaign_id = 'campaign_id_example'; // string | Campaign id.
 
 try {
     $result = $apiInstance->getCampaignBudgetOverrides($campaign_id);
@@ -1800,7 +1800,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| Campaign id. | |
+| **campaign_id** | **string**| Campaign id. | |
 
 ### Return type
 
@@ -2107,7 +2107,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$category_id = 56; // int | ID of the desired category
+$category_id = 'category_id_example'; // string | ID of the desired category
 
 try {
     $result = $apiInstance->getCategory($category_id);
@@ -2121,7 +2121,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **category_id** | **int**| ID of the desired category | |
+| **category_id** | **string**| ID of the desired category | |
 
 ### Return type
 
@@ -2170,7 +2170,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | Retailer Id.
+$retailer_id = 'retailer_id_example'; // string | Retailer Id.
 $value_resource_input_cpc_min_bids_request = new \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputCpcMinBidsRequest(); // \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputCpcMinBidsRequest | Cpc minimum bid amount request object.
 
 try {
@@ -2185,7 +2185,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| Retailer Id. | |
+| **retailer_id** | **string**| Retailer Id. | |
 | **value_resource_input_cpc_min_bids_request** | [**\criteo\api\retailmedia\v2025_04\Model\ValueResourceInputCpcMinBidsRequest**](../Model/ValueResourceInputCpcMinBidsRequest.md)| Cpc minimum bid amount request object. | |
 
 ### Return type
@@ -2300,8 +2300,8 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | Retailer Id
-$template_id = 56; // int | Template Id
+$retailer_id = 'retailer_id_example'; // string | Retailer Id
+$template_id = 'template_id_example'; // string | Template Id
 
 try {
     $result = $apiInstance->getCreativeTemplate($retailer_id, $template_id);
@@ -2315,8 +2315,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| Retailer Id | |
-| **template_id** | **int**| Template Id | |
+| **retailer_id** | **string**| Retailer Id | |
+| **template_id** | **string**| Template Id | |
 
 ### Return type
 
@@ -2759,7 +2759,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$retailer_id = 56; // int | External retailer id to retrieve creative templates for
+$retailer_id = 'retailer_id_example'; // string | External retailer id to retrieve creative templates for
 
 try {
     $result = $apiInstance->getRetailerCreativeTemplates($retailer_id);
@@ -2773,7 +2773,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **int**| External retailer id to retrieve creative templates for | |
+| **retailer_id** | **string**| External retailer id to retrieve creative templates for | |
 
 ### Return type
 
@@ -3732,7 +3732,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_04\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$campaign_id = 56; // int | Campaign id.
+$campaign_id = 'campaign_id_example'; // string | Campaign id.
 $value_resource_input_of_campaign_budget_overrides = new \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides(); // \criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides | New campaign budget overrides settings value resource input.
 
 try {
@@ -3747,7 +3747,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **campaign_id** | **int**| Campaign id. | |
+| **campaign_id** | **string**| Campaign id. | |
 | **value_resource_input_of_campaign_budget_overrides** | [**\criteo\api\retailmedia\v2025_04\Model\ValueResourceInputOfCampaignBudgetOverrides**](../Model/ValueResourceInputOfCampaignBudgetOverrides.md)| New campaign budget overrides settings value resource input. | |
 
 ### Return type
