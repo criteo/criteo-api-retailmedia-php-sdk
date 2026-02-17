@@ -44,7 +44,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_10\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
+$audience_segment_id = 'audience_segment_id_example'; // string | The id of the contact list audience-segment to amend, we only accept external Id here
 $retail_media_contactlist_amendment_request = new \criteo\api\retailmedia\v2025_10\Model\RetailMediaContactlistAmendmentRequest(); // \criteo\api\retailmedia\v2025_10\Model\RetailMediaContactlistAmendmentRequest
 
 try {
@@ -59,7 +59,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **audience_segment_id** | **string**| The id of the contact list audience-segment to amend, we only accept external Id here | |
 | **retail_media_contactlist_amendment_request** | [**\criteo\api\retailmedia\v2025_10\Model\RetailMediaContactlistAmendmentRequest**](../Model/RetailMediaContactlistAmendmentRequest.md)|  | |
 
 ### Return type
@@ -304,7 +304,7 @@ $apiInstance = new criteo\api\retailmedia\v2025_10\Api\AudienceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$audience_segment_id = 56; // int | The id of the contact list audience-segment to amend, we only accept external Id here
+$audience_segment_id = 'audience_segment_id_example'; // string | The id of the contact list audience-segment to amend, we only accept external Id here
 
 try {
     $apiInstance->clearContactListByAudienceSegment($audience_segment_id);
@@ -317,7 +317,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **audience_segment_id** | **int**| The id of the contact list audience-segment to amend, we only accept external Id here | |
+| **audience_segment_id** | **string**| The id of the contact list audience-segment to amend, we only accept external Id here | |
 
 ### Return type
 
