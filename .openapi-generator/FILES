@@ -54,7 +54,6 @@ docs/Model/ColorVariableValue.md
 docs/Model/CommonProblem.md
 docs/Model/CpcRateCardPreview.md
 docs/Model/CpcRateCardPreviewResponse.md
-docs/Model/CreateBalanceV1.md
 docs/Model/Creative2.md
 docs/Model/Creative2Response.md
 docs/Model/CreativeCreateModel2.md
@@ -292,7 +291,6 @@ docs/Model/ValueResourceDisplayAuctionMinBidResult.md
 docs/Model/ValueResourceInputBrandIdSearchRequest.md
 docs/Model/ValueResourceInputDisplayAuctionMinBidRequest.md
 docs/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md
-docs/Model/ValueResourceInputOfCreateBalanceV1.md
 docs/Model/ValueResourceInputOfRetailMediaBrandAccountCreationV2.md
 docs/Model/ValueResourceInputOfRetailMediaBrands.md
 docs/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md
@@ -304,7 +302,6 @@ docs/Model/ValueResourceInputSetProductBuyBoxWinnersRequest.md
 docs/Model/ValueResourceInputUpdateOffersRequest.md
 docs/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.md
 docs/Model/ValueResourceLineItemBudgetCapOutHistoryResponse.md
-docs/Model/ValueResourceOfCreateBalanceV1.md
 docs/Model/ValueResourceOfRetailMediaBrandAccountCreationV2.md
 docs/Model/ValueResourceOfRetailMediaBrands.md
 docs/Model/ValueResourceOfRetailMediaSeller.md
@@ -374,7 +371,6 @@ lib/Model/ColorVariableValue.php
 lib/Model/CommonProblem.php
 lib/Model/CpcRateCardPreview.php
 lib/Model/CpcRateCardPreviewResponse.php
-lib/Model/CreateBalanceV1.php
 lib/Model/Creative2.php
 lib/Model/Creative2Response.php
 lib/Model/CreativeCreateModel2.php
@@ -613,7 +609,6 @@ lib/Model/ValueResourceDisplayAuctionMinBidResult.php
 lib/Model/ValueResourceInputBrandIdSearchRequest.php
 lib/Model/ValueResourceInputDisplayAuctionMinBidRequest.php
 lib/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.php
-lib/Model/ValueResourceInputOfCreateBalanceV1.php
 lib/Model/ValueResourceInputOfRetailMediaBrandAccountCreationV2.php
 lib/Model/ValueResourceInputOfRetailMediaBrands.php
 lib/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.php
@@ -625,7 +620,6 @@ lib/Model/ValueResourceInputSetProductBuyBoxWinnersRequest.php
 lib/Model/ValueResourceInputUpdateOffersRequest.php
 lib/Model/ValueResourceLineItemBudgetCapOutHistoryRequest.php
 lib/Model/ValueResourceLineItemBudgetCapOutHistoryResponse.php
-lib/Model/ValueResourceOfCreateBalanceV1.php
 lib/Model/ValueResourceOfRetailMediaBrandAccountCreationV2.php
 lib/Model/ValueResourceOfRetailMediaBrands.php
 lib/Model/ValueResourceOfRetailMediaSeller.php

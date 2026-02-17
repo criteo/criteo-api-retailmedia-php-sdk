@@ -4,74 +4,9 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createBalanceByAccountId()**](BalanceApi.md#createBalanceByAccountId) | **POST** /preview/retail-media/accounts/{account-id}/balances |  |
 | [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
 | [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
 
-
-## `createBalanceByAccountId()`
-
-```php
-createBalanceByAccountId($account_id, $value_resource_input_of_create_balance_v1)
-```
-
-
-
-Create balance for the given account id
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | The account to create balances for
-$value_resource_input_of_create_balance_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCreateBalanceV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfCreateBalanceV1 | An object that represents the available options to set when creating a Retail Media Balance
-
-try {
-    $apiInstance->createBalanceByAccountId($account_id, $value_resource_input_of_create_balance_v1);
-} catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->createBalanceByAccountId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account to create balances for | |
-| **value_resource_input_of_create_balance_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfCreateBalanceV1**](../Model/ValueResourceInputOfCreateBalanceV1.md)| An object that represents the available options to set when creating a Retail Media Balance | |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: Not defined
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `getBalanceHistory()`
 
