@@ -71,6 +71,9 @@ class CatalogApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'deleteStoreInventoryPerMerchantId' => [
+            'application/json',
+        ],
         'getCatalogProductsBatchReport' => [
             'application/json',
         ],
@@ -81,6 +84,9 @@ class CatalogApi
             'application/json',
         ],
         'submitCatalogProductsBatch' => [
+            'application/json',
+        ],
+        'upsertStoreInventoryPerMerchantId' => [
             'application/json',
         ],
     ];
@@ -129,6 +135,254 @@ class CatalogApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation deleteStoreInventoryPerMerchantId
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request batch_store_inventory_delete_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    {
+        $this->deleteStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, $contentType);
+    }
+
+    /**
+     * Operation deleteStoreInventoryPerMerchantIdWithHttpInfo
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    {
+        $request = $this->deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteStoreInventoryPerMerchantIdAsync
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteStoreInventoryPerMerchantIdAsync($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    {
+        return $this->deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteStoreInventoryPerMerchantId'
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    {
+
+        // verify the required parameter 'merchant_id' is set
+        if ($merchant_id === null || (is_array($merchant_id) && count($merchant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $merchant_id when calling deleteStoreInventoryPerMerchantId'
+            );
+        }
+
+        // verify the required parameter 'batch_store_inventory_delete_request' is set
+        if ($batch_store_inventory_delete_request === null || (is_array($batch_store_inventory_delete_request) && count($batch_store_inventory_delete_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_store_inventory_delete_request when calling deleteStoreInventoryPerMerchantId'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($merchant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'merchantId' . '}',
+                ObjectSerializer::toPathValue($merchant_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_store_inventory_delete_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_store_inventory_delete_request));
+            } else {
+                $httpBody = $batch_store_inventory_delete_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -1245,6 +1499,254 @@ class CatalogApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_custom_batch_request));
             } else {
                 $httpBody = $products_custom_batch_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation upsertStoreInventoryPerMerchantId
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request batch_store_inventory_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
+    {
+        $this->upsertStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_request, $contentType);
+    }
+
+    /**
+     * Operation upsertStoreInventoryPerMerchantIdWithHttpInfo
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function upsertStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
+    {
+        $request = $this->upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation upsertStoreInventoryPerMerchantIdAsync
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function upsertStoreInventoryPerMerchantIdAsync($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
+    {
+        return $this->upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
+    {
+        $returnType = '';
+        $request = $this->upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'upsertStoreInventoryPerMerchantId'
+     *
+     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
+     * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
+    {
+
+        // verify the required parameter 'merchant_id' is set
+        if ($merchant_id === null || (is_array($merchant_id) && count($merchant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $merchant_id when calling upsertStoreInventoryPerMerchantId'
+            );
+        }
+
+        // verify the required parameter 'batch_store_inventory_request' is set
+        if ($batch_store_inventory_request === null || (is_array($batch_store_inventory_request) && count($batch_store_inventory_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_store_inventory_request when calling upsertStoreInventoryPerMerchantId'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($merchant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'merchantId' . '}',
+                ObjectSerializer::toPathValue($merchant_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_store_inventory_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_store_inventory_request));
+            } else {
+                $httpBody = $batch_store_inventory_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

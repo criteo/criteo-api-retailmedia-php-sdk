@@ -4,11 +4,77 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**deleteStoreInventoryPerMerchantId()**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |  |
 | [**getCatalogProductsBatchReport()**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
 | [**offerSetBbwV1()**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |  |
 | [**offerUpdateV1()**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailer-id}/offers/update |  |
 | [**submitCatalogProductsBatch()**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
+| [**upsertStoreInventoryPerMerchantId()**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |  |
 
+
+## `deleteStoreInventoryPerMerchantId()`
+
+```php
+deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request)
+```
+
+
+
+Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Identifies the merchant, can also be called partnerId
+$batch_store_inventory_delete_request = new \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest(); // \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest
+
+try {
+    $apiInstance->deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->deleteStoreInventoryPerMerchantId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Identifies the merchant, can also be called partnerId | |
+| **batch_store_inventory_delete_request** | [**\criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest**](../Model/BatchStoreInventoryDeleteRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getCatalogProductsBatchReport()`
 
@@ -252,6 +318,70 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\BatchAcceptedResponse**](../Model/BatchAcceptedResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `upsertStoreInventoryPerMerchantId()`
+
+```php
+upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request)
+```
+
+
+
+Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Identifies the merchant, can also be called partnerId
+$batch_store_inventory_request = new \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest(); // \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest
+
+try {
+    $apiInstance->upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->upsertStoreInventoryPerMerchantId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Identifies the merchant, can also be called partnerId | |
+| **batch_store_inventory_request** | [**\criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest**](../Model/BatchStoreInventoryRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

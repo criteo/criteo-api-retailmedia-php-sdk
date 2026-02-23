@@ -40,6 +40,8 @@ docs/Model/AudienceError.md
 docs/Model/AudienceWarning.md
 docs/Model/BalanceHistoryChangeDataCaptureV1.md
 docs/Model/BatchAcceptedResponse.md
+docs/Model/BatchStoreInventoryDeleteRequest.md
+docs/Model/BatchStoreInventoryRequest.md
 docs/Model/BotMessage.md
 docs/Model/BrandIdSearchRequest.md
 docs/Model/BrandIdSearchResult.md
@@ -61,6 +63,7 @@ docs/Model/CreativeSearchRequest.md
 docs/Model/CreativeSearchResponse.md
 docs/Model/CreativeUpdateModel2.md
 docs/Model/CustomAttribute.md
+docs/Model/DeleteEntry.md
 docs/Model/DisplayAuctionMinBidRequest.md
 docs/Model/DisplayAuctionMinBidResult.md
 docs/Model/EntityResourceBrandIdSearchResult.md
@@ -80,6 +83,7 @@ docs/Model/EntityResourceOfSponsoredProductsLineItem.md
 docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/Model/EntityResourceOutcomeOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.md
+docs/Model/Entry.md
 docs/Model/ExportReportColumn.md
 docs/Model/ExportReportMetaData.md
 docs/Model/ExternalRetailMediaAccountV2.md
@@ -269,6 +273,8 @@ docs/Model/SponsoredProductsLineItemCreateRequestModel.md
 docs/Model/SponsoredProductsLineItemUpdateRequestModel.md
 docs/Model/StatusResponse.md
 docs/Model/StatusResponseResource.md
+docs/Model/StoreInventoryDelete.md
+docs/Model/StoreInventoryUpsert.md
 docs/Model/SyncAttributedTransactionsReport.md
 docs/Model/SyncAttributedTransactionsReportRequest.md
 docs/Model/SyncAttributedTransactionsReportResource.md
@@ -357,6 +363,8 @@ lib/Model/AudienceError.php
 lib/Model/AudienceWarning.php
 lib/Model/BalanceHistoryChangeDataCaptureV1.php
 lib/Model/BatchAcceptedResponse.php
+lib/Model/BatchStoreInventoryDeleteRequest.php
+lib/Model/BatchStoreInventoryRequest.php
 lib/Model/BotMessage.php
 lib/Model/BrandIdSearchRequest.php
 lib/Model/BrandIdSearchResult.php
@@ -378,6 +386,7 @@ lib/Model/CreativeSearchRequest.php
 lib/Model/CreativeSearchResponse.php
 lib/Model/CreativeUpdateModel2.php
 lib/Model/CustomAttribute.php
+lib/Model/DeleteEntry.php
 lib/Model/DisplayAuctionMinBidRequest.php
 lib/Model/DisplayAuctionMinBidResult.php
 lib/Model/EntityResourceBrandIdSearchResult.php
@@ -397,6 +406,7 @@ lib/Model/EntityResourceOfSponsoredProductsLineItem.php
 lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
 lib/Model/EntityResourceOutcomeOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.php
+lib/Model/Entry.php
 lib/Model/ExportReportColumn.php
 lib/Model/ExportReportMetaData.php
 lib/Model/ExternalRetailMediaAccountV2.php
@@ -587,6 +597,8 @@ lib/Model/SponsoredProductsLineItemCreateRequestModel.php
 lib/Model/SponsoredProductsLineItemUpdateRequestModel.php
 lib/Model/StatusResponse.php
 lib/Model/StatusResponseResource.php
+lib/Model/StoreInventoryDelete.php
+lib/Model/StoreInventoryUpsert.php
 lib/Model/SyncAttributedTransactionsReport.php
 lib/Model/SyncAttributedTransactionsReportRequest.php
 lib/Model/SyncAttributedTransactionsReportResource.php
