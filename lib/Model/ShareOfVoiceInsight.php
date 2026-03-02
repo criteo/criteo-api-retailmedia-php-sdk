@@ -59,11 +59,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'aggregation_level' => 'string',
         'brand_ids' => 'string[]',
         'campaign_type' => 'string',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
+        'keywords' => 'string[]',
+        'keyword_types' => 'string[]',
         'metrics' => 'string[]',
         'retailer_ids' => 'string[]',
         'served_categories' => '\criteo\api\retailmedia\preview\Model\ServedCategoryFilter[]',
@@ -79,11 +82,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'aggregation_level' => null,
         'brand_ids' => null,
         'campaign_type' => null,
         'dimensions' => null,
         'end_date' => 'date-time',
         'format' => null,
+        'keywords' => null,
+        'keyword_types' => null,
         'metrics' => null,
         'retailer_ids' => null,
         'served_categories' => null,
@@ -97,11 +103,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+		'aggregation_level' => false,
 		'brand_ids' => true,
 		'campaign_type' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
+		'keywords' => true,
+		'keyword_types' => true,
 		'metrics' => false,
 		'retailer_ids' => true,
 		'served_categories' => true,
@@ -195,11 +204,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'aggregation_level' => 'aggregationLevel',
         'brand_ids' => 'brandIds',
         'campaign_type' => 'campaignType',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'format' => 'format',
+        'keywords' => 'keywords',
+        'keyword_types' => 'keywordTypes',
         'metrics' => 'metrics',
         'retailer_ids' => 'retailerIds',
         'served_categories' => 'servedCategories',
@@ -213,11 +225,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'aggregation_level' => 'setAggregationLevel',
         'brand_ids' => 'setBrandIds',
         'campaign_type' => 'setCampaignType',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
+        'keywords' => 'setKeywords',
+        'keyword_types' => 'setKeywordTypes',
         'metrics' => 'setMetrics',
         'retailer_ids' => 'setRetailerIds',
         'served_categories' => 'setServedCategories',
@@ -231,11 +246,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'aggregation_level' => 'getAggregationLevel',
         'brand_ids' => 'getBrandIds',
         'campaign_type' => 'getCampaignType',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
+        'keywords' => 'getKeywords',
+        'keyword_types' => 'getKeywordTypes',
         'metrics' => 'getMetrics',
         'retailer_ids' => 'getRetailerIds',
         'served_categories' => 'getServedCategories',
@@ -283,6 +301,8 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const AGGREGATION_LEVEL_CATEGORY = 'category';
+    public const AGGREGATION_LEVEL_KEYWORD = 'keyword';
     public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_ONSITE_SPONSORED_PRODUCTS = 'onsiteSponsoredProducts';
     public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'onsiteDisplay';
@@ -306,6 +326,8 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_PRODUCT_MPN = 'productMpn';
     public const DIMENSIONS_PRODUCT_CATEGORY = 'productCategory';
     public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
+    public const DIMENSIONS_KEYWORD = 'keyword';
+    public const DIMENSIONS_KEYWORD_TYPE = 'keywordType';
     public const DIMENSIONS_CAMPAIGN_TYPE = 'campaignType';
     public const DIMENSIONS_CREATIVE_TYPE = 'creativeType';
     public const DIMENSIONS_AD_FORMAT = 'adFormat';
@@ -315,6 +337,10 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
+    public const KEYWORD_TYPES_UNKNOWN = 'unknown';
+    public const KEYWORD_TYPES_GENERIC = 'generic';
+    public const KEYWORD_TYPES_BRANDED = 'branded';
+    public const KEYWORD_TYPES_CONQUESTING = 'conquesting';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
     public const METRICS_GROSS_CLICKS = 'grossClicks';
@@ -331,6 +357,19 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_IMPRESSION_SHARE = 'impressionShare';
     public const METRICS_CLICK_SHARE = 'clickShare';
     public const METRICS_INVALID_CLICKS = 'invalidClicks';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAggregationLevelAllowableValues()
+    {
+        return [
+            self::AGGREGATION_LEVEL_CATEGORY,
+            self::AGGREGATION_LEVEL_KEYWORD,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -374,6 +413,8 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_PRODUCT_MPN,
             self::DIMENSIONS_PRODUCT_CATEGORY,
             self::DIMENSIONS_SERVED_CATEGORY,
+            self::DIMENSIONS_KEYWORD,
+            self::DIMENSIONS_KEYWORD_TYPE,
             self::DIMENSIONS_CAMPAIGN_TYPE,
             self::DIMENSIONS_CREATIVE_TYPE,
             self::DIMENSIONS_AD_FORMAT,
@@ -394,6 +435,21 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             self::FORMAT_JSON_COMPACT,
             self::FORMAT_JSON_NEWLINE,
             self::FORMAT_CSV,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKeywordTypesAllowableValues()
+    {
+        return [
+            self::KEYWORD_TYPES_UNKNOWN,
+            self::KEYWORD_TYPES_GENERIC,
+            self::KEYWORD_TYPES_BRANDED,
+            self::KEYWORD_TYPES_CONQUESTING,
         ];
     }
 
@@ -440,11 +496,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('aggregation_level', $data ?? [], 'category');
         $this->setIfExists('brand_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
+        $this->setIfExists('keywords', $data ?? [], null);
+        $this->setIfExists('keyword_types', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('served_categories', $data ?? [], null);
@@ -481,6 +540,15 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        $allowedValues = $this->getAggregationLevelAllowableValues();
+        if (!is_null($this->container['aggregation_level']) && !in_array($this->container['aggregation_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'aggregation_level', must be one of '%s'",
+                $this->container['aggregation_level'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getCampaignTypeAllowableValues();
         if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -497,6 +565,9 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'dimensions', number of items must be greater than or equal to 1.";
         }
 
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
         $allowedValues = $this->getFormatAllowableValues();
         if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -513,6 +584,9 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'metrics', number of items must be greater than or equal to 1.";
         }
 
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -551,6 +625,43 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
         $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets aggregation_level
+     *
+     * @return string|null
+     */
+    public function getAggregationLevel()
+    {
+        return $this->container['aggregation_level'];
+    }
+
+    /**
+     * Sets aggregation_level
+     *
+     * @param string|null $aggregation_level aggregation_level
+     *
+     * @return self
+     */
+    public function setAggregationLevel($aggregation_level)
+    {
+        if (is_null($aggregation_level)) {
+            throw new \InvalidArgumentException('non-nullable aggregation_level cannot be null');
+        }
+        $allowedValues = $this->getAggregationLevelAllowableValues();
+        if (!in_array($aggregation_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'aggregation_level', must be one of '%s'",
+                    $aggregation_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['aggregation_level'] = $aggregation_level;
 
         return $this;
     }
@@ -670,7 +781,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets end_date
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -680,7 +791,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date end_date
+     * @param \DateTime $end_date end_date
      *
      * @return self
      */
@@ -727,6 +838,83 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets keywords
+     *
+     * @return string[]|null
+     */
+    public function getKeywords()
+    {
+        return $this->container['keywords'];
+    }
+
+    /**
+     * Sets keywords
+     *
+     * @param string[]|null $keywords keywords
+     *
+     * @return self
+     */
+    public function setKeywords($keywords)
+    {
+        if (is_null($keywords)) {
+            array_push($this->openAPINullablesSetToNull, 'keywords');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('keywords', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['keywords'] = $keywords;
+
+        return $this;
+    }
+
+    /**
+     * Gets keyword_types
+     *
+     * @return string[]|null
+     */
+    public function getKeywordTypes()
+    {
+        return $this->container['keyword_types'];
+    }
+
+    /**
+     * Sets keyword_types
+     *
+     * @param string[]|null $keyword_types keyword_types
+     *
+     * @return self
+     */
+    public function setKeywordTypes($keyword_types)
+    {
+        if (is_null($keyword_types)) {
+            array_push($this->openAPINullablesSetToNull, 'keyword_types');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('keyword_types', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getKeywordTypesAllowableValues();
+        if (!is_null($keyword_types) && array_diff($keyword_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'keyword_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['keyword_types'] = $keyword_types;
 
         return $this;
     }
@@ -843,7 +1031,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets start_date
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -853,7 +1041,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets start_date
      *
-     * @param \DateTime|null $start_date start_date
+     * @param \DateTime $start_date start_date
      *
      * @return self
      */
