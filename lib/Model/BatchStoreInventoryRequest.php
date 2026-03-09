@@ -58,7 +58,7 @@ class BatchStoreInventoryRequest implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\Entry[]'
+        'data' => '\criteo\api\retailmedia\preview\Model\InsertEntry[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class BatchStoreInventoryRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\Entry[]
+     * @return \criteo\api\retailmedia\preview\Model\InsertEntry[]
      */
     public function getData()
     {
@@ -306,7 +306,7 @@ class BatchStoreInventoryRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\Entry[] $data data
+     * @param \criteo\api\retailmedia\preview\Model\InsertEntry[] $data data
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * BrandPreviewListResponse
+ * InsertEntry
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * BrandPreviewListResponse Class Doc Comment
+ * InsertEntry Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities.
+ * @description Defines a pack of inventories
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class InsertEntry implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BrandPreviewListResponse';
+    protected static $openAPIModelName = 'InsertEntry';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\ResourceOfBrandPreview[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\CommonProblem[]'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\StoreInventoryUpsert',
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'attributes' => false,
+		'type' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +180,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +190,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -241,6 +235,19 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const TYPE_UPSERT = 'Upsert';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_UPSERT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +264,8 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -289,6 +295,21 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +326,65 @@ class BrandPreviewListResponse implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets data
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ResourceOfBrandPreview[]|null
+     * @return \criteo\api\retailmedia\preview\Model\StoreInventoryUpsert
      */
-    public function getData()
+    public function getAttributes()
     {
-        return $this->container['data'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets data
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ResourceOfBrandPreview[]|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\StoreInventoryUpsert $attributes attributes
      *
      * @return self
      */
-    public function setData($data)
+    public function setAttributes($attributes)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
+     * @return string
      */
-    public function getErrors()
+    public function getType()
     {
-        return $this->container['errors'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets errors
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $errors errors
+     * @param string $type type
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setType($type)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\preview\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\preview\Model\CommonProblem[]|null $warnings warnings
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['type'] = $type;
 
         return $this;
     }
