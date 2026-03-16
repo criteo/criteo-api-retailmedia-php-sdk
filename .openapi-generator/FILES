@@ -39,6 +39,7 @@ docs/Model/AsyncUnfilledPlacementsReportResource.md
 docs/Model/AudienceError.md
 docs/Model/AudienceWarning.md
 docs/Model/BalanceHistoryChangeDataCaptureV1.md
+docs/Model/BalanceV1.md
 docs/Model/BatchAcceptedResponse.md
 docs/Model/BatchStoreInventoryDeleteRequest.md
 docs/Model/BatchStoreInventoryRequest.md
@@ -61,6 +62,7 @@ docs/Model/CustomAttribute.md
 docs/Model/DeleteEntry.md
 docs/Model/DisplayAuctionMinBidRequest.md
 docs/Model/DisplayAuctionMinBidResult.md
+docs/Model/EntityResourceBalanceV1.md
 docs/Model/EntityResourceBrandIdSearchResult.md
 docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md
@@ -75,6 +77,7 @@ docs/Model/EntityResourceOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
 docs/Model/EntityResourceOfRetailerResult.md
 docs/Model/EntityResourceOfSponsoredProductsLineItem.md
+docs/Model/EntityResourceOutcomeBalanceV1.md
 docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/Model/EntityResourceOutcomeOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.md
@@ -343,6 +346,7 @@ lib/Model/AsyncUnfilledPlacementsReportResource.php
 lib/Model/AudienceError.php
 lib/Model/AudienceWarning.php
 lib/Model/BalanceHistoryChangeDataCaptureV1.php
+lib/Model/BalanceV1.php
 lib/Model/BatchAcceptedResponse.php
 lib/Model/BatchStoreInventoryDeleteRequest.php
 lib/Model/BatchStoreInventoryRequest.php
@@ -365,6 +369,7 @@ lib/Model/CustomAttribute.php
 lib/Model/DeleteEntry.php
 lib/Model/DisplayAuctionMinBidRequest.php
 lib/Model/DisplayAuctionMinBidResult.php
+lib/Model/EntityResourceBalanceV1.php
 lib/Model/EntityResourceBrandIdSearchResult.php
 lib/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.php
 lib/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.php
@@ -379,6 +384,7 @@ lib/Model/EntityResourceOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
 lib/Model/EntityResourceOfRetailerResult.php
 lib/Model/EntityResourceOfSponsoredProductsLineItem.php
+lib/Model/EntityResourceOutcomeBalanceV1.php
 lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
 lib/Model/EntityResourceOutcomeOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.php
