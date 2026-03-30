@@ -4,12 +4,14 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**appendCampaignsToBalanceV1()**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/append |  |
 | [**appendProductButtonByLineItemId()**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append |  |
 | [**computeDisplayMinBidByRetailerId()**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |  |
 | [**createAuctionLineItem()**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives |  |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
+| [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete |  |
 | [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/delete |  |
 | [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products |  |
@@ -32,6 +34,71 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**updateProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 
+
+## `appendCampaignsToBalanceV1()`
+
+```php
+appendCampaignsToBalanceV1($balance_id, $value_resource_input_append_campaigns_request_v1): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1
+```
+
+
+
+Appends one or more campaigns to the specified balance
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$balance_id = 'balance_id_example'; // string | The balance to add campaigns from
+$value_resource_input_append_campaigns_request_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 | The balance campaign appending request.
+
+try {
+    $result = $apiInstance->appendCampaignsToBalanceV1($balance_id, $value_resource_input_append_campaigns_request_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->appendCampaignsToBalanceV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **balance_id** | **string**| The balance to add campaigns from | |
+| **value_resource_input_append_campaigns_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1**](../Model/ValueResourceInputAppendCampaignsRequestV1.md)| The balance campaign appending request. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1**](../Model/ValueResourceOutcomeBalanceCampaignsV1.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `appendProductButtonByLineItemId()`
 
@@ -409,6 +476,71 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response**](../Model/PreferredLineItemV2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteCampaignsFromBalanceV1()`
+
+```php
+deleteCampaignsFromBalanceV1($balance_id, $value_resource_input_delete_campaigns_request_v1): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1
+```
+
+
+
+Deletes one or more campaigns on the specified balance
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$balance_id = 'balance_id_example'; // string | The balance to remove campaigns from
+$value_resource_input_delete_campaigns_request_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 | The balance campaign deleting request.
+
+try {
+    $result = $apiInstance->deleteCampaignsFromBalanceV1($balance_id, $value_resource_input_delete_campaigns_request_v1);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->deleteCampaignsFromBalanceV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **balance_id** | **string**| The balance to remove campaigns from | |
+| **value_resource_input_delete_campaigns_request_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1**](../Model/ValueResourceInputDeleteCampaignsRequestV1.md)| The balance campaign deleting request. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1**](../Model/ValueResourceOutcomeBalanceCampaignsV1.md)
 
 ### Authorization
 

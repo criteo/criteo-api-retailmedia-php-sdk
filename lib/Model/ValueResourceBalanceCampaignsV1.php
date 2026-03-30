@@ -1,6 +1,6 @@
 <?php
 /**
- * PageOfBalanceHistoryChangeDataCaptureV1
+ * ValueResourceBalanceCampaignsV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * PageOfBalanceHistoryChangeDataCaptureV1 Class Doc Comment
+ * ValueResourceBalanceCampaignsV1 Class Doc Comment
  *
  * @category Class
- * @description A wrapper class to return a single page of items with metadata for offset and limit based paging.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceBalanceCampaignsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PageOfBalanceHistoryChangeDataCaptureV1';
+    protected static $openAPIModelName = 'ValueResourceBalanceCampaignsV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\BalanceHistoryChangeDataCaptureV1[]',
-        'meta' => '\criteo\api\retailmedia\preview\Model\Metadata'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\BalanceCampaignsV1',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'meta' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false,
-		'meta' => true
+        'attributes' => true,
+		'type' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'meta' => 'meta'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'meta' => 'setMeta'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'meta' => 'getMeta'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -251,8 +251,8 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('meta', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -282,12 +282,6 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -304,62 +298,69 @@ class PageOfBalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets data
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\BalanceHistoryChangeDataCaptureV1[]
+     * @return \criteo\api\retailmedia\preview\Model\BalanceCampaignsV1|null
      */
-    public function getData()
+    public function getAttributes()
     {
-        return $this->container['data'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets data
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\BalanceHistoryChangeDataCaptureV1[] $data data
+     * @param \criteo\api\retailmedia\preview\Model\BalanceCampaignsV1|null $attributes attributes
      *
      * @return self
      */
-    public function setData($data)
+    public function setAttributes($attributes)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
-        }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets meta
-     *
-     * @return \criteo\api\retailmedia\preview\Model\Metadata
-     */
-    public function getMeta()
-    {
-        return $this->container['meta'];
-    }
-
-    /**
-     * Sets meta
-     *
-     * @param \criteo\api\retailmedia\preview\Model\Metadata $meta meta
-     *
-     * @return self
-     */
-    public function setMeta($meta)
-    {
-        if (is_null($meta)) {
-            array_push($this->openAPINullablesSetToNull, 'meta');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('meta', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['meta'] = $meta;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type of the resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

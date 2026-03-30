@@ -1,6 +1,6 @@
 <?php
 /**
- * ChangeDetailsV1
+ * ValueResourceInputAppendCampaignsRequestV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ChangeDetailsV1 Class Doc Comment
+ * ValueResourceInputAppendCampaignsRequestV1 Class Doc Comment
  *
  * @category Class
- * @description Change details of a property of the balance.
+ * @description A top-level object that encapsulates a Criteo API request for a single value object.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputAppendCampaignsRequestV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ChangeDetailsV1';
+    protected static $openAPIModelName = 'ValueResourceInputAppendCampaignsRequestV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_value' => 'string',
-        'current_value' => 'string',
-        'previous_value' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceAppendCampaignsRequestV1'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_value' => null,
-        'current_value' => null,
-        'previous_value' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_value' => true,
-		'current_value' => true,
-		'previous_value' => true
+        'data' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_value' => 'changeValue',
-        'current_value' => 'currentValue',
-        'previous_value' => 'previousValue'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'change_value' => 'setChangeValue',
-        'current_value' => 'setCurrentValue',
-        'previous_value' => 'setPreviousValue'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'change_value' => 'getChangeValue',
-        'current_value' => 'getCurrentValue',
-        'previous_value' => 'getPreviousValue'
+        'data' => 'getData'
     ];
 
     /**
@@ -257,9 +245,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_value', $data ?? [], null);
-        $this->setIfExists('current_value', $data ?? [], null);
-        $this->setIfExists('previous_value', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -305,103 +291,28 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets change_value
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceAppendCampaignsRequestV1|null
      */
-    public function getChangeValue()
+    public function getData()
     {
-        return $this->container['change_value'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets change_value
+     * Sets data
      *
-     * @param string|null $change_value Change amount of a property of the insertion order.
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceAppendCampaignsRequestV1|null $data data
      *
      * @return self
      */
-    public function setChangeValue($change_value)
+    public function setData($data)
     {
-        if (is_null($change_value)) {
-            array_push($this->openAPINullablesSetToNull, 'change_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('change_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['change_value'] = $change_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets current_value
-     *
-     * @return string|null
-     */
-    public function getCurrentValue()
-    {
-        return $this->container['current_value'];
-    }
-
-    /**
-     * Sets current_value
-     *
-     * @param string|null $current_value Current value of a property of the insertion order.
-     *
-     * @return self
-     */
-    public function setCurrentValue($current_value)
-    {
-        if (is_null($current_value)) {
-            array_push($this->openAPINullablesSetToNull, 'current_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('current_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['current_value'] = $current_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets previous_value
-     *
-     * @return string|null
-     */
-    public function getPreviousValue()
-    {
-        return $this->container['previous_value'];
-    }
-
-    /**
-     * Sets previous_value
-     *
-     * @param string|null $previous_value Previous value of a property of the insertion order.
-     *
-     * @return self
-     */
-    public function setPreviousValue($previous_value)
-    {
-        if (is_null($previous_value)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['previous_value'] = $previous_value;
+        $this->container['data'] = $data;
 
         return $this;
     }

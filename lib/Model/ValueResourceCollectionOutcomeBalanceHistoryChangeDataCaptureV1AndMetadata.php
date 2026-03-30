@@ -1,6 +1,6 @@
 <?php
 /**
- * ChangeDetailsV1
+ * ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ChangeDetailsV1 Class Doc Comment
+ * ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata Class Doc Comment
  *
  * @category Class
- * @description Change details of a property of the balance.
+ * @description A top-level object that encapsulates a Criteo API response for several value objects and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ChangeDetailsV1';
+    protected static $openAPIModelName = 'ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_value' => 'string',
-        'current_value' => 'string',
-        'previous_value' => 'string'
+        'data' => '\criteo\api\retailmedia\preview\Model\ValueResourceBalanceHistoryChangeDataCaptureV1[]',
+        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
+        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -71,9 +72,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_value' => null,
-        'current_value' => null,
-        'previous_value' => null
+        'data' => null,
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_value' => true,
-		'current_value' => true,
-		'previous_value' => true
+        'data' => true,
+		'errors' => true,
+		'metadata' => true,
+		'warnings' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_value' => 'changeValue',
-        'current_value' => 'currentValue',
-        'previous_value' => 'previousValue'
+        'data' => 'data',
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -184,9 +188,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'change_value' => 'setChangeValue',
-        'current_value' => 'setCurrentValue',
-        'previous_value' => 'setPreviousValue'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -195,9 +200,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'change_value' => 'getChangeValue',
-        'current_value' => 'getCurrentValue',
-        'previous_value' => 'getPreviousValue'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -257,9 +263,10 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_value', $data ?? [], null);
-        $this->setIfExists('current_value', $data ?? [], null);
-        $this->setIfExists('previous_value', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -305,103 +312,137 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets change_value
+     * Gets data
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceBalanceHistoryChangeDataCaptureV1[]|null
      */
-    public function getChangeValue()
+    public function getData()
     {
-        return $this->container['change_value'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets change_value
+     * Sets data
      *
-     * @param string|null $change_value Change amount of a property of the insertion order.
+     * @param \criteo\api\retailmedia\preview\Model\ValueResourceBalanceHistoryChangeDataCaptureV1[]|null $data data
      *
      * @return self
      */
-    public function setChangeValue($change_value)
+    public function setData($data)
     {
-        if (is_null($change_value)) {
-            array_push($this->openAPINullablesSetToNull, 'change_value');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('change_value', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['change_value'] = $change_value;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets current_value
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
      */
-    public function getCurrentValue()
+    public function getErrors()
     {
-        return $this->container['current_value'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets current_value
+     * Sets errors
      *
-     * @param string|null $current_value Current value of a property of the insertion order.
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setCurrentValue($current_value)
+    public function setErrors($errors)
     {
-        if (is_null($current_value)) {
-            array_push($this->openAPINullablesSetToNull, 'current_value');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('current_value', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['current_value'] = $current_value;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets previous_value
+     * Gets metadata
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
      */
-    public function getPreviousValue()
+    public function getMetadata()
     {
-        return $this->container['previous_value'];
+        return $this->container['metadata'];
     }
 
     /**
-     * Sets previous_value
+     * Sets metadata
      *
-     * @param string|null $previous_value Previous value of a property of the insertion order.
+     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
      *
      * @return self
      */
-    public function setPreviousValue($previous_value)
+    public function setMetadata($metadata)
     {
-        if (is_null($previous_value)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_value');
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_value', $nullablesSetToNull);
+            $index = array_search('metadata', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['previous_value'] = $previous_value;
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

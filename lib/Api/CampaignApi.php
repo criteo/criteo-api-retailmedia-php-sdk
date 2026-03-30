@@ -71,6 +71,9 @@ class CampaignApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'appendCampaignsToBalanceV1' => [
+            'application/json',
+        ],
         'appendProductButtonByLineItemId' => [
             'application/json',
         ],
@@ -87,6 +90,9 @@ class CampaignApi
             'application/json',
         ],
         'createPreferredLineItemByCampaignId' => [
+            'application/json',
+        ],
+        'deleteCampaignsFromBalanceV1' => [
             'application/json',
         ],
         'deleteProductButtonByLineItemAndProductButtonId' => [
@@ -198,6 +204,308 @@ class CampaignApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation appendCampaignsToBalanceV1
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1
+     */
+    public function appendCampaignsToBalanceV1($balance_id, $value_resource_input_append_campaigns_request_v1, string $contentType = self::contentTypes['appendCampaignsToBalanceV1'][0])
+    {
+        list($response) = $this->appendCampaignsToBalanceV1WithHttpInfo($balance_id, $value_resource_input_append_campaigns_request_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation appendCampaignsToBalanceV1WithHttpInfo
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function appendCampaignsToBalanceV1WithHttpInfo($balance_id, $value_resource_input_append_campaigns_request_v1, string $contentType = self::contentTypes['appendCampaignsToBalanceV1'][0])
+    {
+        $request = $this->appendCampaignsToBalanceV1Request($balance_id, $value_resource_input_append_campaigns_request_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation appendCampaignsToBalanceV1Async
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function appendCampaignsToBalanceV1Async($balance_id, $value_resource_input_append_campaigns_request_v1, string $contentType = self::contentTypes['appendCampaignsToBalanceV1'][0])
+    {
+        return $this->appendCampaignsToBalanceV1AsyncWithHttpInfo($balance_id, $value_resource_input_append_campaigns_request_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation appendCampaignsToBalanceV1AsyncWithHttpInfo
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function appendCampaignsToBalanceV1AsyncWithHttpInfo($balance_id, $value_resource_input_append_campaigns_request_v1, string $contentType = self::contentTypes['appendCampaignsToBalanceV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1';
+        $request = $this->appendCampaignsToBalanceV1Request($balance_id, $value_resource_input_append_campaigns_request_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'appendCampaignsToBalanceV1'
+     *
+     * @param  string $balance_id The balance to add campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function appendCampaignsToBalanceV1Request($balance_id, $value_resource_input_append_campaigns_request_v1, string $contentType = self::contentTypes['appendCampaignsToBalanceV1'][0])
+    {
+
+        // verify the required parameter 'balance_id' is set
+        if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $balance_id when calling appendCampaignsToBalanceV1'
+            );
+        }
+
+        // verify the required parameter 'value_resource_input_append_campaigns_request_v1' is set
+        if ($value_resource_input_append_campaigns_request_v1 === null || (is_array($value_resource_input_append_campaigns_request_v1) && count($value_resource_input_append_campaigns_request_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_append_campaigns_request_v1 when calling appendCampaignsToBalanceV1'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/balances/{balanceId}/campaigns/append';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($balance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'balanceId' . '}',
+                ObjectSerializer::toPathValue($balance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_append_campaigns_request_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_append_campaigns_request_v1));
+            } else {
+                $httpBody = $value_resource_input_append_campaigns_request_v1;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -1939,6 +2247,308 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($preferred_line_item_create_model_v2_request));
             } else {
                 $httpBody = $preferred_line_item_create_model_v2_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteCampaignsFromBalanceV1
+     *
+     * @param  string $balance_id The balance to remove campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1
+     */
+    public function deleteCampaignsFromBalanceV1($balance_id, $value_resource_input_delete_campaigns_request_v1, string $contentType = self::contentTypes['deleteCampaignsFromBalanceV1'][0])
+    {
+        list($response) = $this->deleteCampaignsFromBalanceV1WithHttpInfo($balance_id, $value_resource_input_delete_campaigns_request_v1, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteCampaignsFromBalanceV1WithHttpInfo
+     *
+     * @param  string $balance_id The balance to remove campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteCampaignsFromBalanceV1WithHttpInfo($balance_id, $value_resource_input_delete_campaigns_request_v1, string $contentType = self::contentTypes['deleteCampaignsFromBalanceV1'][0])
+    {
+        $request = $this->deleteCampaignsFromBalanceV1Request($balance_id, $value_resource_input_delete_campaigns_request_v1, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteCampaignsFromBalanceV1Async
+     *
+     * @param  string $balance_id The balance to remove campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCampaignsFromBalanceV1Async($balance_id, $value_resource_input_delete_campaigns_request_v1, string $contentType = self::contentTypes['deleteCampaignsFromBalanceV1'][0])
+    {
+        return $this->deleteCampaignsFromBalanceV1AsyncWithHttpInfo($balance_id, $value_resource_input_delete_campaigns_request_v1, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteCampaignsFromBalanceV1AsyncWithHttpInfo
+     *
+     * @param  string $balance_id The balance to remove campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteCampaignsFromBalanceV1AsyncWithHttpInfo($balance_id, $value_resource_input_delete_campaigns_request_v1, string $contentType = self::contentTypes['deleteCampaignsFromBalanceV1'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1';
+        $request = $this->deleteCampaignsFromBalanceV1Request($balance_id, $value_resource_input_delete_campaigns_request_v1, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteCampaignsFromBalanceV1'
+     *
+     * @param  string $balance_id The balance to remove campaigns from (required)
+     * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteCampaignsFromBalanceV1Request($balance_id, $value_resource_input_delete_campaigns_request_v1, string $contentType = self::contentTypes['deleteCampaignsFromBalanceV1'][0])
+    {
+
+        // verify the required parameter 'balance_id' is set
+        if ($balance_id === null || (is_array($balance_id) && count($balance_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $balance_id when calling deleteCampaignsFromBalanceV1'
+            );
+        }
+
+        // verify the required parameter 'value_resource_input_delete_campaigns_request_v1' is set
+        if ($value_resource_input_delete_campaigns_request_v1 === null || (is_array($value_resource_input_delete_campaigns_request_v1) && count($value_resource_input_delete_campaigns_request_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_delete_campaigns_request_v1 when calling deleteCampaignsFromBalanceV1'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/balances/{balanceId}/campaigns/delete';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($balance_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'balanceId' . '}',
+                ObjectSerializer::toPathValue($balance_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_delete_campaigns_request_v1)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_delete_campaigns_request_v1));
+            } else {
+                $httpBody = $value_resource_input_delete_campaigns_request_v1;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

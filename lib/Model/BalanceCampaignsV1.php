@@ -1,6 +1,6 @@
 <?php
 /**
- * ChangeDetailsV1
+ * BalanceCampaignsV1
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ChangeDetailsV1 Class Doc Comment
+ * BalanceCampaignsV1 Class Doc Comment
  *
  * @category Class
- * @description Change details of a property of the balance.
+ * @description Balance campaigns mapping object.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class BalanceCampaignsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ChangeDetailsV1';
+    protected static $openAPIModelName = 'BalanceCampaignsV1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_value' => 'string',
-        'current_value' => 'string',
-        'previous_value' => 'string'
+        'ids' => 'string[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_value' => null,
-        'current_value' => null,
-        'previous_value' => null
+        'ids' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_value' => true,
-		'current_value' => true,
-		'previous_value' => true
+        'ids' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_value' => 'changeValue',
-        'current_value' => 'currentValue',
-        'previous_value' => 'previousValue'
+        'ids' => 'ids'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'change_value' => 'setChangeValue',
-        'current_value' => 'setCurrentValue',
-        'previous_value' => 'setPreviousValue'
+        'ids' => 'setIds'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'change_value' => 'getChangeValue',
-        'current_value' => 'getCurrentValue',
-        'previous_value' => 'getPreviousValue'
+        'ids' => 'getIds'
     ];
 
     /**
@@ -257,9 +245,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_value', $data ?? [], null);
-        $this->setIfExists('current_value', $data ?? [], null);
-        $this->setIfExists('previous_value', $data ?? [], null);
+        $this->setIfExists('ids', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,9 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['ids'] === null) {
+            $invalidProperties[] = "'ids' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -305,103 +294,28 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets change_value
+     * Gets ids
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getChangeValue()
+    public function getIds()
     {
-        return $this->container['change_value'];
+        return $this->container['ids'];
     }
 
     /**
-     * Sets change_value
+     * Sets ids
      *
-     * @param string|null $change_value Change amount of a property of the insertion order.
+     * @param string[] $ids The ids of the campaigns that are mapped to the balance.
      *
      * @return self
      */
-    public function setChangeValue($change_value)
+    public function setIds($ids)
     {
-        if (is_null($change_value)) {
-            array_push($this->openAPINullablesSetToNull, 'change_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('change_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($ids)) {
+            throw new \InvalidArgumentException('non-nullable ids cannot be null');
         }
-        $this->container['change_value'] = $change_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets current_value
-     *
-     * @return string|null
-     */
-    public function getCurrentValue()
-    {
-        return $this->container['current_value'];
-    }
-
-    /**
-     * Sets current_value
-     *
-     * @param string|null $current_value Current value of a property of the insertion order.
-     *
-     * @return self
-     */
-    public function setCurrentValue($current_value)
-    {
-        if (is_null($current_value)) {
-            array_push($this->openAPINullablesSetToNull, 'current_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('current_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['current_value'] = $current_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets previous_value
-     *
-     * @return string|null
-     */
-    public function getPreviousValue()
-    {
-        return $this->container['previous_value'];
-    }
-
-    /**
-     * Sets previous_value
-     *
-     * @param string|null $previous_value Previous value of a property of the insertion order.
-     *
-     * @return self
-     */
-    public function setPreviousValue($previous_value)
-    {
-        if (is_null($previous_value)) {
-            array_push($this->openAPINullablesSetToNull, 'previous_value');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('previous_value', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['previous_value'] = $previous_value;
+        $this->container['ids'] = $ids;
 
         return $this;
     }
