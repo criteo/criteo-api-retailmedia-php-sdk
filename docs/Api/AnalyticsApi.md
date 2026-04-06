@@ -14,6 +14,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**generateSyncAttributedTransactionsReport()**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions |  |
 | [**generateSyncCampaignsReport()**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns |  |
 | [**generateSyncLineItemsReport()**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items |  |
+| [**generateSyncRealTimePerformanceReport()**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /preview/retail-media/reports/sync/real-time-performance |  |
 | [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output |  |
 | [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status |  |
 
@@ -630,6 +631,69 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **sync_line_items_report_request** | [**\criteo\api\retailmedia\preview\Model\SyncLineItemsReportRequest**](../Model/SyncLineItemsReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\ReportResponse**](../Model/ReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateSyncRealTimePerformanceReport()`
+
+```php
+generateSyncRealTimePerformanceReport($sync_real_time_performance_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
+```
+
+
+
+Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  <br />  This endpoint is subject to specific rate limits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$sync_real_time_performance_report_request = new \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest(); // \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest
+
+try {
+    $result = $apiInstance->generateSyncRealTimePerformanceReport($sync_real_time_performance_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateSyncRealTimePerformanceReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **sync_real_time_performance_report_request** | [**\criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest**](../Model/SyncRealTimePerformanceReportRequest.md)|  | |
 
 ### Return type
 

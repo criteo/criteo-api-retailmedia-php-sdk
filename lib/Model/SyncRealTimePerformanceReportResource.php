@@ -1,6 +1,6 @@
 <?php
 /**
- * ExportReportMetaData
+ * SyncRealTimePerformanceReportResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExportReportMetaData Class Doc Comment
+ * SyncRealTimePerformanceReportResource Class Doc Comment
  *
  * @category Class
- * @description Metadata for a report response: data freshness, column descriptions, and row count.
+ * @description A top-level object that encapsulates a Criteo API response for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
+class SyncRealTimePerformanceReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExportReportMetaData';
+    protected static $openAPIModelName = 'SyncRealTimePerformanceReportResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'columns' => '\criteo\api\retailmedia\preview\Model\ExportReportColumn[]',
-        'data_complete_through' => '\criteo\api\retailmedia\preview\Model\DataCompleteThrough',
-        'rows' => 'int'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReport',
+        'type' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'columns' => null,
-        'data_complete_through' => null,
-        'rows' => 'int32'
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'columns' => true,
-		'data_complete_through' => true,
-		'rows' => true
+        'attributes' => false,
+		'type' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'columns' => 'columns',
-        'data_complete_through' => 'dataCompleteThrough',
-        'rows' => 'rows'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -184,9 +180,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'columns' => 'setColumns',
-        'data_complete_through' => 'setDataCompleteThrough',
-        'rows' => 'setRows'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -195,9 +190,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'columns' => 'getColumns',
-        'data_complete_through' => 'getDataCompleteThrough',
-        'rows' => 'getRows'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -257,9 +251,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('columns', $data ?? [], null);
-        $this->setIfExists('data_complete_through', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -305,103 +298,55 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets columns
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExportReportColumn[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReport|null
      */
-    public function getColumns()
+    public function getAttributes()
     {
-        return $this->container['columns'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets columns
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExportReportColumn[]|null $columns columns
+     * @param \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReport|null $attributes attributes
      *
      * @return self
      */
-    public function setColumns($columns)
+    public function setAttributes($attributes)
     {
-        if (is_null($columns)) {
-            array_push($this->openAPINullablesSetToNull, 'columns');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('columns', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['columns'] = $columns;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets data_complete_through
+     * Gets type
      *
-     * @return \criteo\api\retailmedia\preview\Model\DataCompleteThrough|null
+     * @return string|null
      */
-    public function getDataCompleteThrough()
+    public function getType()
     {
-        return $this->container['data_complete_through'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets data_complete_through
+     * Sets type
      *
-     * @param \criteo\api\retailmedia\preview\Model\DataCompleteThrough|null $data_complete_through data_complete_through
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setDataCompleteThrough($data_complete_through)
+    public function setType($type)
     {
-        if (is_null($data_complete_through)) {
-            array_push($this->openAPINullablesSetToNull, 'data_complete_through');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data_complete_through', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['data_complete_through'] = $data_complete_through;
-
-        return $this;
-    }
-
-    /**
-     * Gets rows
-     *
-     * @return int|null
-     */
-    public function getRows()
-    {
-        return $this->container['rows'];
-    }
-
-    /**
-     * Sets rows
-     *
-     * @param int|null $rows rows
-     *
-     * @return self
-     */
-    public function setRows($rows)
-    {
-        if (is_null($rows)) {
-            array_push($this->openAPINullablesSetToNull, 'rows');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('rows', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['rows'] = $rows;
+        $this->container['type'] = $type;
 
         return $this;
     }

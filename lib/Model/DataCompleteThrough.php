@@ -1,6 +1,6 @@
 <?php
 /**
- * ExportReportMetaData
+ * DataCompleteThrough
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ExportReportMetaData Class Doc Comment
+ * DataCompleteThrough Class Doc Comment
  *
  * @category Class
- * @description Metadata for a report response: data freshness, column descriptions, and row count.
+ * @description Data freshness: the instant through which report data is complete, expressed in the report&#39;s request timezone.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializable
+class DataCompleteThrough implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExportReportMetaData';
+    protected static $openAPIModelName = 'DataCompleteThrough';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'columns' => '\criteo\api\retailmedia\preview\Model\ExportReportColumn[]',
-        'data_complete_through' => '\criteo\api\retailmedia\preview\Model\DataCompleteThrough',
-        'rows' => 'int'
+        'date_time' => 'string',
+        'timezone' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'columns' => null,
-        'data_complete_through' => null,
-        'rows' => 'int32'
+        'date_time' => null,
+        'timezone' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'columns' => true,
-		'data_complete_through' => true,
-		'rows' => true
+        'date_time' => true,
+		'timezone' => true
     ];
 
     /**
@@ -173,9 +170,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'columns' => 'columns',
-        'data_complete_through' => 'dataCompleteThrough',
-        'rows' => 'rows'
+        'date_time' => 'dateTime',
+        'timezone' => 'timezone'
     ];
 
     /**
@@ -184,9 +180,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'columns' => 'setColumns',
-        'data_complete_through' => 'setDataCompleteThrough',
-        'rows' => 'setRows'
+        'date_time' => 'setDateTime',
+        'timezone' => 'setTimezone'
     ];
 
     /**
@@ -195,9 +190,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'columns' => 'getColumns',
-        'data_complete_through' => 'getDataCompleteThrough',
-        'rows' => 'getRows'
+        'date_time' => 'getDateTime',
+        'timezone' => 'getTimezone'
     ];
 
     /**
@@ -257,9 +251,8 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('columns', $data ?? [], null);
-        $this->setIfExists('data_complete_through', $data ?? [], null);
-        $this->setIfExists('rows', $data ?? [], null);
+        $this->setIfExists('date_time', $data ?? [], null);
+        $this->setIfExists('timezone', $data ?? [], null);
     }
 
     /**
@@ -305,103 +298,69 @@ class ExportReportMetaData implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets columns
+     * Gets date_time
      *
-     * @return \criteo\api\retailmedia\preview\Model\ExportReportColumn[]|null
+     * @return string|null
      */
-    public function getColumns()
+    public function getDateTime()
     {
-        return $this->container['columns'];
+        return $this->container['date_time'];
     }
 
     /**
-     * Sets columns
+     * Sets date_time
      *
-     * @param \criteo\api\retailmedia\preview\Model\ExportReportColumn[]|null $columns columns
+     * @param string|null $date_time The instant through which data is complete, in the format \"yyyy-MM-dd HH:mm:ss\" in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone.
      *
      * @return self
      */
-    public function setColumns($columns)
+    public function setDateTime($date_time)
     {
-        if (is_null($columns)) {
-            array_push($this->openAPINullablesSetToNull, 'columns');
+        if (is_null($date_time)) {
+            array_push($this->openAPINullablesSetToNull, 'date_time');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('columns', $nullablesSetToNull);
+            $index = array_search('date_time', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['columns'] = $columns;
+        $this->container['date_time'] = $date_time;
 
         return $this;
     }
 
     /**
-     * Gets data_complete_through
+     * Gets timezone
      *
-     * @return \criteo\api\retailmedia\preview\Model\DataCompleteThrough|null
+     * @return string|null
      */
-    public function getDataCompleteThrough()
+    public function getTimezone()
     {
-        return $this->container['data_complete_through'];
+        return $this->container['timezone'];
     }
 
     /**
-     * Sets data_complete_through
+     * Sets timezone
      *
-     * @param \criteo\api\retailmedia\preview\Model\DataCompleteThrough|null $data_complete_through data_complete_through
+     * @param string|null $timezone IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime (e.g. \"UTC\", \"America/New_York\"). Matches the query timezone.
      *
      * @return self
      */
-    public function setDataCompleteThrough($data_complete_through)
+    public function setTimezone($timezone)
     {
-        if (is_null($data_complete_through)) {
-            array_push($this->openAPINullablesSetToNull, 'data_complete_through');
+        if (is_null($timezone)) {
+            array_push($this->openAPINullablesSetToNull, 'timezone');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data_complete_through', $nullablesSetToNull);
+            $index = array_search('timezone', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data_complete_through'] = $data_complete_through;
-
-        return $this;
-    }
-
-    /**
-     * Gets rows
-     *
-     * @return int|null
-     */
-    public function getRows()
-    {
-        return $this->container['rows'];
-    }
-
-    /**
-     * Sets rows
-     *
-     * @param int|null $rows rows
-     *
-     * @return self
-     */
-    public function setRows($rows)
-    {
-        if (is_null($rows)) {
-            array_push($this->openAPINullablesSetToNull, 'rows');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('rows', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['rows'] = $rows;
+        $this->container['timezone'] = $timezone;
 
         return $this;
     }

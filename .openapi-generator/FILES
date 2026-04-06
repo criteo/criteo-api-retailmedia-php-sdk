@@ -61,6 +61,7 @@ docs/Model/CreativeSearchRequest.md
 docs/Model/CreativeSearchResponse.md
 docs/Model/CreativeUpdateModel2.md
 docs/Model/CustomAttribute.md
+docs/Model/DataCompleteThrough.md
 docs/Model/DeleteCampaignsRequestV1.md
 docs/Model/DeleteEntry.md
 docs/Model/DisplayAuctionMinBidRequest.md
@@ -271,6 +272,9 @@ docs/Model/SyncCampaignsReportResource.md
 docs/Model/SyncLineItemsReport.md
 docs/Model/SyncLineItemsReportRequest.md
 docs/Model/SyncLineItemsReportResource.md
+docs/Model/SyncRealTimePerformanceReport.md
+docs/Model/SyncRealTimePerformanceReportRequest.md
+docs/Model/SyncRealTimePerformanceReportResource.md
 docs/Model/TemplateVariableValue.md
 docs/Model/TextVariableValue.md
 docs/Model/UpdateBalanceModelV1.md
@@ -379,6 +383,7 @@ lib/Model/CreativeSearchRequest.php
 lib/Model/CreativeSearchResponse.php
 lib/Model/CreativeUpdateModel2.php
 lib/Model/CustomAttribute.php
+lib/Model/DataCompleteThrough.php
 lib/Model/DeleteCampaignsRequestV1.php
 lib/Model/DeleteEntry.php
 lib/Model/DisplayAuctionMinBidRequest.php
@@ -590,6 +595,9 @@ lib/Model/SyncCampaignsReportResource.php
 lib/Model/SyncLineItemsReport.php
 lib/Model/SyncLineItemsReportRequest.php
 lib/Model/SyncLineItemsReportResource.php
+lib/Model/SyncRealTimePerformanceReport.php
+lib/Model/SyncRealTimePerformanceReportRequest.php
+lib/Model/SyncRealTimePerformanceReportResource.php
 lib/Model/TemplateVariableValue.php
 lib/Model/TextVariableValue.php
 lib/Model/UpdateBalanceModelV1.php
