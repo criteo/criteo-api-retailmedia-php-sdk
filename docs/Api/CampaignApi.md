@@ -8,8 +8,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**appendProductButtonByLineItemId()**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create |  |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append |  |
 | [**computeDisplayMinBidByRetailerId()**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |  |
+| [**createAuctionDisplayLineItem()**](CampaignApi.md#createAuctionDisplayLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-display-line-items |  |
 | [**createAuctionLineItem()**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items |  |
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives |  |
+| [**createDisplayCampaign()**](CampaignApi.md#createDisplayCampaign) | **POST** /preview/retail-media/accounts/{accountId}/display-campaigns |  |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
 | [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete |  |
 | [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
@@ -25,12 +27,18 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 | [**getProductButtonsByLineItemId()**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons |  |
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause |  |
+| [**recallProposal()**](CampaignApi.md#recallProposal) | **POST** /preview/retail-media/auction-display-line-items/{lineItemId}/recall-proposal |  |
 | [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search |  |
 | [**searchAccountRetailers()**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search |  |
+| [**searchAuctionDisplayLineItems()**](CampaignApi.md#searchAuctionDisplayLineItems) | **POST** /preview/retail-media/accounts/{accountId}/auction-display-line-items/search |  |
 | [**searchBrands()**](CampaignApi.md#searchBrands) | **POST** /preview/retail-media/brands/search |  |
+| [**searchDisplayCampaigns()**](CampaignApi.md#searchDisplayCampaigns) | **POST** /preview/retail-media/accounts/{accountId}/display-campaigns/search |  |
+| [**submitProposal()**](CampaignApi.md#submitProposal) | **POST** /preview/retail-media/auction-display-line-items/{lineItemId}/submit-proposal |  |
 | [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause |  |
+| [**updateAuctionDisplayLineItem()**](CampaignApi.md#updateAuctionDisplayLineItem) | **PATCH** /preview/retail-media/auction-display-line-items/{lineItemId} |  |
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} |  |
 | [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
+| [**updateDisplayCampaign()**](CampaignApi.md#updateDisplayCampaign) | **PATCH** /preview/retail-media/display-campaigns/{campaignId} |  |
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} |  |
 | [**updateProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |  |
 
@@ -295,6 +303,71 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createAuctionDisplayLineItem()`
+
+```php
+createAuctionDisplayLineItem($campaign_id, $value_resource_input_of_auction_display_line_item_create_model): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfAuctionDisplayLineItem
+```
+
+
+
+Creates a new auction display line item with the specified settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | The id of the campaign to which the line item belongs
+$value_resource_input_of_auction_display_line_item_create_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemCreateModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemCreateModel | The line item settings to create a line item with
+
+try {
+    $result = $apiInstance->createAuctionDisplayLineItem($campaign_id, $value_resource_input_of_auction_display_line_item_create_model);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->createAuctionDisplayLineItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The id of the campaign to which the line item belongs | |
+| **value_resource_input_of_auction_display_line_item_create_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemCreateModel**](../Model/ValueResourceInputOfAuctionDisplayLineItemCreateModel.md)| The line item settings to create a line item with | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfAuctionDisplayLineItem**](../Model/EntityResourceOutcomeOfAuctionDisplayLineItem.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createAuctionLineItem()`
 
 ```php
@@ -411,6 +484,71 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createDisplayCampaign()`
+
+```php
+createDisplayCampaign($account_id, $value_resource_input_of_display_campaign_create_model): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfDisplayCampaign
+```
+
+
+
+Creates a new display campaign with the specified settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The id of the account to which the campaign belongs
+$value_resource_input_of_display_campaign_create_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignCreateModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignCreateModel | The campaign settings to create a campaign with
+
+try {
+    $result = $apiInstance->createDisplayCampaign($account_id, $value_resource_input_of_display_campaign_create_model);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->createDisplayCampaign: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The id of the account to which the campaign belongs | |
+| **value_resource_input_of_display_campaign_create_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignCreateModel**](../Model/ValueResourceInputOfDisplayCampaignCreateModel.md)| The campaign settings to create a campaign with | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfDisplayCampaign**](../Model/EntityResourceOutcomeOfDisplayCampaign.md)
 
 ### Authorization
 
@@ -1402,6 +1540,70 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `recallProposal()`
+
+```php
+recallProposal($line_item_id, $entity_resource_input_of_auction_display_line_item_recall_proposal_request)
+```
+
+
+
+Recalls an auction display line item from approval.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The id of the line item to recall from approval
+$entity_resource_input_of_auction_display_line_item_recall_proposal_request = new \criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest(); // \criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest | Additional optional recall information
+
+try {
+    $apiInstance->recallProposal($line_item_id, $entity_resource_input_of_auction_display_line_item_recall_proposal_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->recallProposal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The id of the line item to recall from approval | |
+| **entity_resource_input_of_auction_display_line_item_recall_proposal_request** | [**\criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest**](../Model/EntityResourceInputOfAuctionDisplayLineItemRecallProposalRequest.md)| Additional optional recall information | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `searchAccountCreatives()`
 
 ```php
@@ -1540,6 +1742,77 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchAuctionDisplayLineItems()`
+
+```php
+searchAuctionDisplayLineItems($account_id, $value_resource_input_of_auction_display_line_item_search_model, $fields, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata
+```
+
+
+
+Searches for auction display line items based on various filters.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The id of the account to search line items for.
+$value_resource_input_of_auction_display_line_item_search_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemSearchModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemSearchModel | The search filters to apply, including line item IDs and proposal filter.
+$fields = array('fields_example'); // string[] | Optional list of field names to include in the response (e.g. \"proposalStatus\").
+$limit = 2; // int | The maximum number of items to return. Must be between 1 and 5. Default is 2.
+$offset = 0; // int | The number of items to skip before starting to collect the result set. Default is 0.
+
+try {
+    $result = $apiInstance->searchAuctionDisplayLineItems($account_id, $value_resource_input_of_auction_display_line_item_search_model, $fields, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->searchAuctionDisplayLineItems: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The id of the account to search line items for. | |
+| **value_resource_input_of_auction_display_line_item_search_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemSearchModel**](../Model/ValueResourceInputOfAuctionDisplayLineItemSearchModel.md)| The search filters to apply, including line item IDs and proposal filter. | |
+| **fields** | [**string[]**](../Model/string.md)| Optional list of field names to include in the response (e.g. \&quot;proposalStatus\&quot;). | [optional] |
+| **limit** | **int**| The maximum number of items to return. Must be between 1 and 5. Default is 2. | [optional] [default to 2] |
+| **offset** | **int**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata**](../Model/EntityResourceCollectionOutcomeOfAuctionDisplayLineItemSearchResultAndMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `searchBrands()`
 
 ```php
@@ -1607,6 +1880,139 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchDisplayCampaigns()`
+
+```php
+searchDisplayCampaigns($account_id, $value_resource_input_of_display_campaign_search_model, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata
+```
+
+
+
+Searches for display campaigns based on various filters.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The id of the account to search campaigns for.
+$value_resource_input_of_display_campaign_search_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignSearchModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignSearchModel | The search filters to apply, including campaign IDs and other criteria.
+$limit = 25; // int | The maximum number of items to return. Must be between 1 and 1000. Default is 100.
+$offset = 0; // int | The number of items to skip before starting to collect the result set. Default is 0.
+
+try {
+    $result = $apiInstance->searchDisplayCampaigns($account_id, $value_resource_input_of_display_campaign_search_model, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->searchDisplayCampaigns: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The id of the account to search campaigns for. | |
+| **value_resource_input_of_display_campaign_search_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignSearchModel**](../Model/ValueResourceInputOfDisplayCampaignSearchModel.md)| The search filters to apply, including campaign IDs and other criteria. | |
+| **limit** | **int**| The maximum number of items to return. Must be between 1 and 1000. Default is 100. | [optional] [default to 25] |
+| **offset** | **int**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata**](../Model/EntityResourceCollectionOutcomeOfDisplayCampaignAndMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `submitProposal()`
+
+```php
+submitProposal($line_item_id, $entity_resource_input_of_auction_display_line_item_submit_proposal_request)
+```
+
+
+
+Submits an auction display line item for approval.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The id of the line item to submit for approval
+$entity_resource_input_of_auction_display_line_item_submit_proposal_request = new \criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest(); // \criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest | Additional optional submission information
+
+try {
+    $apiInstance->submitProposal($line_item_id, $entity_resource_input_of_auction_display_line_item_submit_proposal_request);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->submitProposal: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The id of the line item to submit for approval | |
+| **entity_resource_input_of_auction_display_line_item_submit_proposal_request** | [**\criteo\api\retailmedia\preview\Model\EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest**](../Model/EntityResourceInputOfAuctionDisplayLineItemSubmitProposalRequest.md)| Additional optional submission information | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `unpausePromotedProducts()`
 
 ```php
@@ -1666,6 +2072,71 @@ void (empty response body)
 
 - **Content-Type**: `application/json`
 - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAuctionDisplayLineItem()`
+
+```php
+updateAuctionDisplayLineItem($line_item_id, $value_resource_input_of_auction_display_line_item_patch_model): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfAuctionDisplayLineItem
+```
+
+
+
+Updates an auction display line item with the specified settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The id of the line item to update
+$value_resource_input_of_auction_display_line_item_patch_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemPatchModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemPatchModel | The line item settings to update
+
+try {
+    $result = $apiInstance->updateAuctionDisplayLineItem($line_item_id, $value_resource_input_of_auction_display_line_item_patch_model);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->updateAuctionDisplayLineItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The id of the line item to update | |
+| **value_resource_input_of_auction_display_line_item_patch_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfAuctionDisplayLineItemPatchModel**](../Model/ValueResourceInputOfAuctionDisplayLineItemPatchModel.md)| The line item settings to update | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfAuctionDisplayLineItem**](../Model/EntityResourceOutcomeOfAuctionDisplayLineItem.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -1789,6 +2260,71 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateDisplayCampaign()`
+
+```php
+updateDisplayCampaign($campaign_id, $value_resource_input_of_display_campaign_patch_model): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfDisplayCampaign
+```
+
+
+
+Updates a display campaign with the specified settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | The id of the campaign to update
+$value_resource_input_of_display_campaign_patch_model = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignPatchModel(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignPatchModel | The campaign settings to update
+
+try {
+    $result = $apiInstance->updateDisplayCampaign($campaign_id, $value_resource_input_of_display_campaign_patch_model);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->updateDisplayCampaign: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| The id of the campaign to update | |
+| **value_resource_input_of_display_campaign_patch_model** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfDisplayCampaignPatchModel**](../Model/ValueResourceInputOfDisplayCampaignPatchModel.md)| The campaign settings to update | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfDisplayCampaign**](../Model/EntityResourceOutcomeOfDisplayCampaign.md)
 
 ### Authorization
 
