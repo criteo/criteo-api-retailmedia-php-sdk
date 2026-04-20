@@ -20,7 +20,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 ## `accountFeesSearch()`
 
 ```php
-accountFeesSearch($limit, $offset, $value_resource_input_account_fees_search_request): \criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
+accountFeesSearch($value_resource_input_account_fees_search_request, $limit, $offset): \criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
 ```
 
 
@@ -47,12 +47,12 @@ $apiInstance = new criteo\api\retailmedia\v2025_10\Api\AccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$value_resource_input_account_fees_search_request = new \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest(); // \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest
 $limit = 50; // int | used for paging, number of results returned per request, Maximum of 500
 $offset = 0; // int | used for paging, number of records to skip
-$value_resource_input_account_fees_search_request = new \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest(); // \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest
 
 try {
-    $result = $apiInstance->accountFeesSearch($limit, $offset, $value_resource_input_account_fees_search_request);
+    $result = $apiInstance->accountFeesSearch($value_resource_input_account_fees_search_request, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->accountFeesSearch: ', $e->getMessage(), PHP_EOL;
@@ -63,9 +63,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **value_resource_input_account_fees_search_request** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest**](../Model/ValueResourceInputAccountFeesSearchRequest.md)|  | |
 | **limit** | **int**| used for paging, number of results returned per request, Maximum of 500 | [optional] [default to 50] |
 | **offset** | **int**| used for paging, number of records to skip | [optional] [default to 0] |
-| **value_resource_input_account_fees_search_request** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest**](../Model/ValueResourceInputAccountFeesSearchRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -648,7 +648,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **value_resource_input_account_fees_update_request** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest**](../Model/ValueResourceInputAccountFeesUpdateRequest.md)|  | [optional] |
+| **value_resource_input_account_fees_update_request** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest**](../Model/ValueResourceInputAccountFeesUpdateRequest.md)|  | |
 
 ### Return type
 

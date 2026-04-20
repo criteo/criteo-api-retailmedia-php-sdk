@@ -155,36 +155,36 @@ class AccountsApi
     /**
      * Operation accountFeesSearch
      *
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request value_resource_input_account_fees_search_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['accountFeesSearch'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata
      */
-    public function accountFeesSearch($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['accountFeesSearch'][0])
+    public function accountFeesSearch($value_resource_input_account_fees_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['accountFeesSearch'][0])
     {
-        list($response) = $this->accountFeesSearchWithHttpInfo($limit, $offset, $value_resource_input_account_fees_search_request, $contentType);
+        list($response) = $this->accountFeesSearchWithHttpInfo($value_resource_input_account_fees_search_request, $limit, $offset, $contentType);
         return $response;
     }
 
     /**
      * Operation accountFeesSearchWithHttpInfo
      *
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['accountFeesSearch'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
-    public function accountFeesSearchWithHttpInfo($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['accountFeesSearch'][0])
+    public function accountFeesSearchWithHttpInfo($value_resource_input_account_fees_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['accountFeesSearch'][0])
     {
-        $request = $this->accountFeesSearchRequest($limit, $offset, $value_resource_input_account_fees_search_request, $contentType);
+        $request = $this->accountFeesSearchRequest($value_resource_input_account_fees_search_request, $limit, $offset, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -273,17 +273,17 @@ class AccountsApi
     /**
      * Operation accountFeesSearchAsync
      *
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['accountFeesSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function accountFeesSearchAsync($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['accountFeesSearch'][0])
+    public function accountFeesSearchAsync($value_resource_input_account_fees_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['accountFeesSearch'][0])
     {
-        return $this->accountFeesSearchAsyncWithHttpInfo($limit, $offset, $value_resource_input_account_fees_search_request, $contentType)
+        return $this->accountFeesSearchAsyncWithHttpInfo($value_resource_input_account_fees_search_request, $limit, $offset, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -294,18 +294,18 @@ class AccountsApi
     /**
      * Operation accountFeesSearchAsyncWithHttpInfo
      *
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['accountFeesSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function accountFeesSearchAsyncWithHttpInfo($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['accountFeesSearch'][0])
+    public function accountFeesSearchAsyncWithHttpInfo($value_resource_input_account_fees_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['accountFeesSearch'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2025_10\Model\ValueResourceCollectionOutcomePrivateMarketAccountFeesAndMetadata';
-        $request = $this->accountFeesSearchRequest($limit, $offset, $value_resource_input_account_fees_search_request, $contentType);
+        $request = $this->accountFeesSearchRequest($value_resource_input_account_fees_search_request, $limit, $offset, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -346,16 +346,23 @@ class AccountsApi
     /**
      * Create request for operation 'accountFeesSearch'
      *
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['accountFeesSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function accountFeesSearchRequest($limit = 50, $offset = 0, $value_resource_input_account_fees_search_request = null, string $contentType = self::contentTypes['accountFeesSearch'][0])
+    public function accountFeesSearchRequest($value_resource_input_account_fees_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['accountFeesSearch'][0])
     {
+
+        // verify the required parameter 'value_resource_input_account_fees_search_request' is set
+        if ($value_resource_input_account_fees_search_request === null || (is_array($value_resource_input_account_fees_search_request) && count($value_resource_input_account_fees_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_account_fees_search_request when calling accountFeesSearch'
+            );
+        }
 
         if ($limit !== null && $limit > 500) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AccountsApi.accountFeesSearch, must be smaller than or equal to 500.');
@@ -371,7 +378,6 @@ class AccountsApi
             throw new \InvalidArgumentException('invalid value for "$offset" when calling AccountsApi.accountFeesSearch, must be bigger than or equal to 0.');
         }
         
-
 
         $resourcePath = '/2025-10/retail-media/accounts/fees/search';
         $formParams = [];
@@ -2810,14 +2816,14 @@ class AccountsApi
     /**
      * Operation updateAccountFees
      *
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request value_resource_input_account_fees_update_request (optional)
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateAccountFees($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['updateAccountFees'][0])
+    public function updateAccountFees($value_resource_input_account_fees_update_request, string $contentType = self::contentTypes['updateAccountFees'][0])
     {
         $this->updateAccountFeesWithHttpInfo($value_resource_input_account_fees_update_request, $contentType);
     }
@@ -2825,14 +2831,14 @@ class AccountsApi
     /**
      * Operation updateAccountFeesWithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (optional)
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2025_10\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAccountFeesWithHttpInfo($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['updateAccountFees'][0])
+    public function updateAccountFeesWithHttpInfo($value_resource_input_account_fees_update_request, string $contentType = self::contentTypes['updateAccountFees'][0])
     {
         $request = $this->updateAccountFeesRequest($value_resource_input_account_fees_update_request, $contentType);
 
@@ -2883,13 +2889,13 @@ class AccountsApi
     /**
      * Operation updateAccountFeesAsync
      *
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (optional)
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAccountFeesAsync($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['updateAccountFees'][0])
+    public function updateAccountFeesAsync($value_resource_input_account_fees_update_request, string $contentType = self::contentTypes['updateAccountFees'][0])
     {
         return $this->updateAccountFeesAsyncWithHttpInfo($value_resource_input_account_fees_update_request, $contentType)
             ->then(
@@ -2902,13 +2908,13 @@ class AccountsApi
     /**
      * Operation updateAccountFeesAsyncWithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (optional)
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAccountFeesAsyncWithHttpInfo($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['updateAccountFees'][0])
+    public function updateAccountFeesAsyncWithHttpInfo($value_resource_input_account_fees_update_request, string $contentType = self::contentTypes['updateAccountFees'][0])
     {
         $returnType = '';
         $request = $this->updateAccountFeesRequest($value_resource_input_account_fees_update_request, $contentType);
@@ -2939,15 +2945,21 @@ class AccountsApi
     /**
      * Create request for operation 'updateAccountFees'
      *
-     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (optional)
+     * @param  \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAccountFeesRequest($value_resource_input_account_fees_update_request = null, string $contentType = self::contentTypes['updateAccountFees'][0])
+    public function updateAccountFeesRequest($value_resource_input_account_fees_update_request, string $contentType = self::contentTypes['updateAccountFees'][0])
     {
 
+        // verify the required parameter 'value_resource_input_account_fees_update_request' is set
+        if ($value_resource_input_account_fees_update_request === null || (is_array($value_resource_input_account_fees_update_request) && count($value_resource_input_account_fees_update_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_account_fees_update_request when calling updateAccountFees'
+            );
+        }
 
 
         $resourcePath = '/2025-10/retail-media/accounts/fees/update';
