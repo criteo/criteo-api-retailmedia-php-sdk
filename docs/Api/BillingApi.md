@@ -53,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **value_resource_input_partner_billing_report_request_v1** | [**\criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1**](../Model/ValueResourceInputPartnerBillingReportRequestV1.md)| Partner Billing Report request object. | [optional] |
+| **value_resource_input_partner_billing_report_request_v1** | [**\criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1**](../Model/ValueResourceInputPartnerBillingReportRequestV1.md)| Partner Billing Report request object. | |
 
 ### Return type
 

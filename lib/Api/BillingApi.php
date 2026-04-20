@@ -131,14 +131,14 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1
      *
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2026_01\Model\EntityResourceOutcomePartnerBillingReportStatusV1
      */
-    public function createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
+    public function createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
         list($response) = $this->createPartnerBillingReportRequestV1WithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType);
         return $response;
@@ -147,14 +147,14 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1WithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2026_01\Model\EntityResourceOutcomePartnerBillingReportStatusV1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPartnerBillingReportRequestV1WithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
+    public function createPartnerBillingReportRequestV1WithHttpInfo($value_resource_input_partner_billing_report_request_v1, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
         $request = $this->createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1, $contentType);
 
@@ -245,13 +245,13 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1Async
      *
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPartnerBillingReportRequestV1Async($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
+    public function createPartnerBillingReportRequestV1Async($value_resource_input_partner_billing_report_request_v1, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
         return $this->createPartnerBillingReportRequestV1AsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1, $contentType)
             ->then(
@@ -264,13 +264,13 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1AsyncWithHttpInfo
      *
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPartnerBillingReportRequestV1AsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
+    public function createPartnerBillingReportRequestV1AsyncWithHttpInfo($value_resource_input_partner_billing_report_request_v1, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
         $returnType = '\criteo\api\retailmedia\v2026_01\Model\EntityResourceOutcomePartnerBillingReportStatusV1';
         $request = $this->createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1, $contentType);
@@ -314,15 +314,21 @@ class BillingApi
     /**
      * Create request for operation 'createPartnerBillingReportRequestV1'
      *
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (optional)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1 = null, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
+    public function createPartnerBillingReportRequestV1Request($value_resource_input_partner_billing_report_request_v1, string $contentType = self::contentTypes['createPartnerBillingReportRequestV1'][0])
     {
 
+        // verify the required parameter 'value_resource_input_partner_billing_report_request_v1' is set
+        if ($value_resource_input_partner_billing_report_request_v1 === null || (is_array($value_resource_input_partner_billing_report_request_v1) && count($value_resource_input_partner_billing_report_request_v1) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $value_resource_input_partner_billing_report_request_v1 when calling createPartnerBillingReportRequestV1'
+            );
+        }
 
 
         $resourcePath = '/2026-01/retail-media/billing/partner-report';
