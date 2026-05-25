@@ -405,7 +405,7 @@ generateShareOfVoiceInsight($share_of_voice_insight_request): \criteo\api\retail
 
 
 
-Generate a share of voice by category insight
+Generate a share of voice insight
 
 ### Example
 

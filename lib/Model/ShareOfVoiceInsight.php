@@ -59,6 +59,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'account_ids' => 'string[]',
         'aggregation_level' => 'string',
         'brand_ids' => 'string[]',
         'campaign_type' => 'string',
@@ -82,6 +83,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'account_ids' => null,
         'aggregation_level' => null,
         'brand_ids' => null,
         'campaign_type' => null,
@@ -103,6 +105,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+		'account_ids' => true,
 		'aggregation_level' => false,
 		'brand_ids' => true,
 		'campaign_type' => false,
@@ -204,6 +207,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'account_ids' => 'accountIds',
         'aggregation_level' => 'aggregationLevel',
         'brand_ids' => 'brandIds',
         'campaign_type' => 'campaignType',
@@ -225,6 +229,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'account_ids' => 'setAccountIds',
         'aggregation_level' => 'setAggregationLevel',
         'brand_ids' => 'setBrandIds',
         'campaign_type' => 'setCampaignType',
@@ -246,6 +251,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'account_ids' => 'getAccountIds',
         'aggregation_level' => 'getAggregationLevel',
         'brand_ids' => 'getBrandIds',
         'campaign_type' => 'getCampaignType',
@@ -496,6 +502,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
         $this->setIfExists('aggregation_level', $data ?? [], 'category');
         $this->setIfExists('brand_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
@@ -625,6 +632,40 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
         $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_ids
+     *
+     * @return string[]|null
+     */
+    public function getAccountIds()
+    {
+        return $this->container['account_ids'];
+    }
+
+    /**
+     * Sets account_ids
+     *
+     * @param string[]|null $account_ids account_ids
+     *
+     * @return self
+     */
+    public function setAccountIds($account_ids)
+    {
+        if (is_null($account_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'account_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('account_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['account_ids'] = $account_ids;
 
         return $this;
     }

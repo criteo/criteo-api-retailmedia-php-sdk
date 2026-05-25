@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** |  |
+**account_ids** | **string[]** |  | [optional]
 **aggregation_level** | **string** |  | [optional] [default to 'category']
 **brand_ids** | **string[]** |  | [optional]
 **campaign_type** | **string** |  | [optional] [default to 'all']
