@@ -140,6 +140,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation addThirdPartyAccountBrands
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
+     *
      * @param  string $account_id account to add brands to (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands list of bands to add to an account (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addThirdPartyAccountBrands'] to see the possible values for this operation
@@ -156,6 +158,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation addThirdPartyAccountBrandsWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
      *
      * @param  string $account_id account to add brands to (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands list of bands to add to an account (optional)
@@ -256,6 +260,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation addThirdPartyAccountBrandsAsync
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
+     *
      * @param  string $account_id account to add brands to (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands list of bands to add to an account (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addThirdPartyAccountBrands'] to see the possible values for this operation
@@ -275,6 +281,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation addThirdPartyAccountBrandsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/add
      *
      * @param  string $account_id account to add brands to (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands list of bands to add to an account (optional)
@@ -436,6 +444,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation createThirdPartyBrandAccount
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
+     *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreationV2 $value_resource_input_of_retail_media_brand_account_creation_v2  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createThirdPartyBrandAccount'] to see the possible values for this operation
@@ -452,6 +462,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation createThirdPartyBrandAccountWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
      *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreationV2 $value_resource_input_of_retail_media_brand_account_creation_v2  (optional)
@@ -552,6 +564,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation createThirdPartyBrandAccountAsync
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
+     *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreationV2 $value_resource_input_of_retail_media_brand_account_creation_v2  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createThirdPartyBrandAccount'] to see the possible values for this operation
@@ -571,6 +585,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation createThirdPartyBrandAccountAsyncWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-brand-account
      *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaBrandAccountCreationV2 $value_resource_input_of_retail_media_brand_account_creation_v2  (optional)
@@ -732,6 +748,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation createThirdPartySellerAccount
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
+     *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreationV2 $value_resource_input_of_retail_media_seller_account_creation_v2  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createThirdPartySellerAccount'] to see the possible values for this operation
@@ -748,6 +766,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation createThirdPartySellerAccountWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
      *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreationV2 $value_resource_input_of_retail_media_seller_account_creation_v2  (optional)
@@ -848,6 +868,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation createThirdPartySellerAccountAsync
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
+     *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreationV2 $value_resource_input_of_retail_media_seller_account_creation_v2  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createThirdPartySellerAccount'] to see the possible values for this operation
@@ -867,6 +889,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation createThirdPartySellerAccountAsyncWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/create-seller-account
      *
      * @param  string $account_id parent supply account to create account under (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailMediaSellerAccountCreationV2 $value_resource_input_of_retail_media_seller_account_creation_v2  (optional)
@@ -1028,7 +1052,7 @@ class ThirdPartyAccountsApi
     /**
      * Operation grantThirdPartyConsent
      *
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input The request input containing clientId, callbackURL, and callbackState (optional)
@@ -1046,7 +1070,7 @@ class ThirdPartyAccountsApi
     /**
      * Operation grantThirdPartyConsentWithHttpInfo
      *
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input The request input containing clientId, callbackURL, and callbackState (optional)
@@ -1107,7 +1131,7 @@ class ThirdPartyAccountsApi
     /**
      * Operation grantThirdPartyConsentAsync
      *
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input The request input containing clientId, callbackURL, and callbackState (optional)
@@ -1129,7 +1153,7 @@ class ThirdPartyAccountsApi
     /**
      * Operation grantThirdPartyConsentAsyncWithHttpInfo
      *
-     * 
+     * /preview/retail-media/accounts/{accountId}/grant-third-party-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\preview\Model\GrantConsentInput $grant_consent_input The request input containing clientId, callbackURL, and callbackState (optional)
@@ -1278,6 +1302,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation removeThirdPartyAccountBrand
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
+     *
      * @param  string $account_id account id to remove brand from (required)
      * @param  string $brand_id brand to remove (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeThirdPartyAccountBrand'] to see the possible values for this operation
@@ -1294,6 +1320,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation removeThirdPartyAccountBrandWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
      *
      * @param  string $account_id account id to remove brand from (required)
      * @param  string $brand_id brand to remove (required)
@@ -1394,6 +1422,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation removeThirdPartyAccountBrandAsync
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
+     *
      * @param  string $account_id account id to remove brand from (required)
      * @param  string $brand_id brand to remove (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeThirdPartyAccountBrand'] to see the possible values for this operation
@@ -1413,6 +1443,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation removeThirdPartyAccountBrandAsyncWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
      *
      * @param  string $account_id account id to remove brand from (required)
      * @param  string $brand_id brand to remove (required)
@@ -1581,6 +1613,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation updateThirdPartyAccountSellers
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
+     *
      * @param  string $account_id accountId to update sellers for (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateThirdPartyAccountSellers'] to see the possible values for this operation
@@ -1597,6 +1631,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation updateThirdPartyAccountSellersWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
      *
      * @param  string $account_id accountId to update sellers for (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
@@ -1697,6 +1733,8 @@ class ThirdPartyAccountsApi
     /**
      * Operation updateThirdPartyAccountSellersAsync
      *
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
+     *
      * @param  string $account_id accountId to update sellers for (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateThirdPartyAccountSellers'] to see the possible values for this operation
@@ -1716,6 +1754,8 @@ class ThirdPartyAccountsApi
 
     /**
      * Operation updateThirdPartyAccountSellersAsyncWithHttpInfo
+     *
+     * /preview/retail-media/third-party-accounts/{accountId}/sellers
      *
      * @param  string $account_id accountId to update sellers for (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller  (required)

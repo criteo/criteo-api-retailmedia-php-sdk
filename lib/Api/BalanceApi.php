@@ -134,6 +134,8 @@ class BalanceApi
     /**
      * Operation getBalanceHistoryV1
      *
+     * /preview/retail-media/balances/{balanceId}/history
+     *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
@@ -152,6 +154,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceHistoryV1WithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/history
      *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -254,6 +258,8 @@ class BalanceApi
     /**
      * Operation getBalanceHistoryV1Async
      *
+     * /preview/retail-media/balances/{balanceId}/history
+     *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
@@ -275,6 +281,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceHistoryV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/history
      *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -474,6 +482,8 @@ class BalanceApi
     /**
      * Operation getBalanceV1
      *
+     * /preview/retail-media/balances/{balanceId}
+     *
      * @param  string $balance_id The balance id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceV1'] to see the possible values for this operation
      *
@@ -489,6 +499,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceV1WithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}
      *
      * @param  string $balance_id The balance id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceV1'] to see the possible values for this operation
@@ -588,6 +600,8 @@ class BalanceApi
     /**
      * Operation getBalanceV1Async
      *
+     * /preview/retail-media/balances/{balanceId}
+     *
      * @param  string $balance_id The balance id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceV1'] to see the possible values for this operation
      *
@@ -606,6 +620,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}
      *
      * @param  string $balance_id The balance id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceV1'] to see the possible values for this operation
@@ -757,6 +773,8 @@ class BalanceApi
     /**
      * Operation getPageOfBalancesV1
      *
+     * /preview/retail-media/accounts/{accountId}/balances
+     *
      * @param  string $account_id The account to get balances for. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string[] $limit_to_id The balance ids which the result is limited to. (optional)
@@ -775,6 +793,8 @@ class BalanceApi
 
     /**
      * Operation getPageOfBalancesV1WithHttpInfo
+     *
+     * /preview/retail-media/accounts/{accountId}/balances
      *
      * @param  string $account_id The account to get balances for. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -877,6 +897,8 @@ class BalanceApi
     /**
      * Operation getPageOfBalancesV1Async
      *
+     * /preview/retail-media/accounts/{accountId}/balances
+     *
      * @param  string $account_id The account to get balances for. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string[] $limit_to_id The balance ids which the result is limited to. (optional)
@@ -898,6 +920,8 @@ class BalanceApi
 
     /**
      * Operation getPageOfBalancesV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{accountId}/balances
      *
      * @param  string $account_id The account to get balances for. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -1100,6 +1124,8 @@ class BalanceApi
     /**
      * Operation updateBalanceV1
      *
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1 $value_resource_input_of_update_balance_model_v1 An object that represents the available options to modify a balance. (required)
@@ -1116,6 +1142,8 @@ class BalanceApi
 
     /**
      * Operation updateBalanceV1WithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
@@ -1177,6 +1205,8 @@ class BalanceApi
     /**
      * Operation updateBalanceV1Async
      *
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1 $value_resource_input_of_update_balance_model_v1 An object that represents the available options to modify a balance. (required)
@@ -1197,6 +1227,8 @@ class BalanceApi
 
     /**
      * Operation updateBalanceV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)

@@ -4,10 +4,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getBalanceHistoryV1()**](BalanceApi.md#getBalanceHistoryV1) | **GET** /preview/retail-media/balances/{balanceId}/history |  |
-| [**getBalanceV1()**](BalanceApi.md#getBalanceV1) | **GET** /preview/retail-media/balances/{balanceId} |  |
-| [**getPageOfBalancesV1()**](BalanceApi.md#getPageOfBalancesV1) | **GET** /preview/retail-media/accounts/{accountId}/balances |  |
-| [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} |  |
+| [**getBalanceHistoryV1()**](BalanceApi.md#getBalanceHistoryV1) | **GET** /preview/retail-media/balances/{balanceId}/history | /preview/retail-media/balances/{balanceId}/history |
+| [**getBalanceV1()**](BalanceApi.md#getBalanceV1) | **GET** /preview/retail-media/balances/{balanceId} | /preview/retail-media/balances/{balanceId} |
+| [**getPageOfBalancesV1()**](BalanceApi.md#getPageOfBalancesV1) | **GET** /preview/retail-media/accounts/{accountId}/balances | /preview/retail-media/accounts/{accountId}/balances |
+| [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} | /preview/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 ## `getBalanceHistoryV1()`
@@ -16,7 +16,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 getBalanceHistoryV1($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
 ```
 
-
+/preview/retail-media/balances/{balanceId}/history
 
 Gets the balance's historical change data.
 
@@ -85,7 +85,7 @@ try {
 getBalanceV1($balance_id): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeBalanceV1
 ```
 
-
+/preview/retail-media/balances/{balanceId}
 
 Get a balance for the given balance id.
 
@@ -148,7 +148,7 @@ try {
 getPageOfBalancesV1($account_id, $limit, $limit_to_id, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata
 ```
 
-
+/preview/retail-media/accounts/{accountId}/balances
 
 Gets page of balance objects for the given account id.
 
@@ -217,7 +217,7 @@ try {
 updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1)
 ```
 
-
+/preview/retail-media/accounts/{account-id}/balances/{balance-id}
 
 Modify a balance for the given account id
 

@@ -125,6 +125,8 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendations
      *
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
+     *
      * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
@@ -141,6 +143,8 @@ class OnSiteRecommendationApi
 
     /**
      * Operation chatbotProductRecommendationsWithHttpInfo
+     *
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
      *
      * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
@@ -241,6 +245,8 @@ class OnSiteRecommendationApi
     /**
      * Operation chatbotProductRecommendationsAsync
      *
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
+     *
      * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['chatbotProductRecommendations'] to see the possible values for this operation
@@ -260,6 +266,8 @@ class OnSiteRecommendationApi
 
     /**
      * Operation chatbotProductRecommendationsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
      *
      * @param  string $catalogid the identifier of the catalog to query (required)
      * @param  \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel $inbot_discussion_body_model (required)

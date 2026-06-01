@@ -125,6 +125,8 @@ class AccountsApi
     /**
      * Operation getPrivateMarketChildAccountsByAccountId
      *
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
+     *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -142,6 +144,8 @@ class AccountsApi
 
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdWithHttpInfo
+     *
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -243,6 +247,8 @@ class AccountsApi
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdAsync
      *
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
+     *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -263,6 +269,8 @@ class AccountsApi
 
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)

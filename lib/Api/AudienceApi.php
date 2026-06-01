@@ -167,6 +167,8 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegment
      *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
+     *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
@@ -183,6 +185,8 @@ class AudienceApi
 
     /**
      * Operation addRemoveContactListByAudienceSegmentWithHttpInfo
+     *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
      *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
@@ -283,6 +287,8 @@ class AudienceApi
     /**
      * Operation addRemoveContactListByAudienceSegmentAsync
      *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
+     *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveContactListByAudienceSegment'] to see the possible values for this operation
@@ -302,6 +308,8 @@ class AudienceApi
 
     /**
      * Operation addRemoveContactListByAudienceSegmentAsyncWithHttpInfo
+     *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
      *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  \criteo\api\retailmedia\preview\Model\RetailMediaContactlistAmendmentRequest $retail_media_contactlist_amendment_request (required)
@@ -469,6 +477,8 @@ class AudienceApi
     /**
      * Operation bulkCreateAudience
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/create
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
@@ -485,6 +495,8 @@ class AudienceApi
 
     /**
      * Operation bulkCreateAudienceWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/create
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
@@ -585,6 +597,8 @@ class AudienceApi
     /**
      * Operation bulkCreateAudienceAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/create
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudience'] to see the possible values for this operation
@@ -604,6 +618,8 @@ class AudienceApi
 
     /**
      * Operation bulkCreateAudienceAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/create
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkCreateInputV1 $rm_audience_bulk_create_input_v1 Audience creation parameter (required)
@@ -771,6 +787,8 @@ class AudienceApi
     /**
      * Operation bulkCreateAudienceSegments
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/create
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1 $rm_audience_segment_bulk_create_input_v1 Segment creation parameter (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudienceSegments'] to see the possible values for this operation
@@ -787,6 +805,8 @@ class AudienceApi
 
     /**
      * Operation bulkCreateAudienceSegmentsWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/create
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1 $rm_audience_segment_bulk_create_input_v1 Segment creation parameter (required)
@@ -887,6 +907,8 @@ class AudienceApi
     /**
      * Operation bulkCreateAudienceSegmentsAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/create
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1 $rm_audience_segment_bulk_create_input_v1 Segment creation parameter (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateAudienceSegments'] to see the possible values for this operation
@@ -906,6 +928,8 @@ class AudienceApi
 
     /**
      * Operation bulkCreateAudienceSegmentsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/create
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkCreateInputV1 $rm_audience_segment_bulk_create_input_v1 Segment creation parameter (required)
@@ -1073,6 +1097,8 @@ class AudienceApi
     /**
      * Operation bulkDeleteAudienceSegments
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/delete
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1 $rm_audience_segment_bulk_delete_input_v1 Segment delete request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudienceSegments'] to see the possible values for this operation
@@ -1089,6 +1115,8 @@ class AudienceApi
 
     /**
      * Operation bulkDeleteAudienceSegmentsWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/delete
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1 $rm_audience_segment_bulk_delete_input_v1 Segment delete request. (required)
@@ -1189,6 +1217,8 @@ class AudienceApi
     /**
      * Operation bulkDeleteAudienceSegmentsAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/delete
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1 $rm_audience_segment_bulk_delete_input_v1 Segment delete request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudienceSegments'] to see the possible values for this operation
@@ -1208,6 +1238,8 @@ class AudienceApi
 
     /**
      * Operation bulkDeleteAudienceSegmentsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/delete
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkDeleteInputV1 $rm_audience_segment_bulk_delete_input_v1 Segment delete request. (required)
@@ -1375,6 +1407,8 @@ class AudienceApi
     /**
      * Operation bulkDeleteAudiences
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/delete
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
@@ -1391,6 +1425,8 @@ class AudienceApi
 
     /**
      * Operation bulkDeleteAudiencesWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/delete
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
@@ -1491,6 +1527,8 @@ class AudienceApi
     /**
      * Operation bulkDeleteAudiencesAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/delete
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkDeleteAudiences'] to see the possible values for this operation
@@ -1510,6 +1548,8 @@ class AudienceApi
 
     /**
      * Operation bulkDeleteAudiencesAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/delete
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkDeleteInputV1 $rm_audience_bulk_delete_input_v1  (required)
@@ -1677,6 +1717,8 @@ class AudienceApi
     /**
      * Operation bulkUpdateAudience
      *
+     * /preview/retail-media/accounts/{account-id}/audiences
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
@@ -1693,6 +1735,8 @@ class AudienceApi
 
     /**
      * Operation bulkUpdateAudienceWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
@@ -1793,6 +1837,8 @@ class AudienceApi
     /**
      * Operation bulkUpdateAudienceAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudience'] to see the possible values for this operation
@@ -1812,6 +1858,8 @@ class AudienceApi
 
     /**
      * Operation bulkUpdateAudienceAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceBulkUpdateInputV1 $rm_audience_bulk_update_input_v1  (required)
@@ -1979,6 +2027,8 @@ class AudienceApi
     /**
      * Operation bulkUpdateAudienceSegments
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1 $rm_audience_segment_bulk_update_input_v1 Segment Update request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudienceSegments'] to see the possible values for this operation
@@ -1995,6 +2045,8 @@ class AudienceApi
 
     /**
      * Operation bulkUpdateAudienceSegmentsWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1 $rm_audience_segment_bulk_update_input_v1 Segment Update request (required)
@@ -2095,6 +2147,8 @@ class AudienceApi
     /**
      * Operation bulkUpdateAudienceSegmentsAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1 $rm_audience_segment_bulk_update_input_v1 Segment Update request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAudienceSegments'] to see the possible values for this operation
@@ -2114,6 +2168,8 @@ class AudienceApi
 
     /**
      * Operation bulkUpdateAudienceSegmentsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentBulkUpdateInputV1 $rm_audience_segment_bulk_update_input_v1 Segment Update request (required)
@@ -2281,6 +2337,8 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegment
      *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
+     *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -2295,6 +2353,8 @@ class AudienceApi
 
     /**
      * Operation clearContactListByAudienceSegmentWithHttpInfo
+     *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
      *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
@@ -2354,6 +2414,8 @@ class AudienceApi
     /**
      * Operation clearContactListByAudienceSegmentAsync
      *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
+     *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
      *
@@ -2372,6 +2434,8 @@ class AudienceApi
 
     /**
      * Operation clearContactListByAudienceSegmentAsyncWithHttpInfo
+     *
+     * /preview/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
      *
      * @param  string $audience_segment_id The id of the contact list audience-segment to amend, we only accept external Id here (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactListByAudienceSegment'] to see the possible values for this operation
@@ -2510,6 +2574,8 @@ class AudienceApi
     /**
      * Operation computeAudienceSegmentsSizes
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
@@ -2526,6 +2592,8 @@ class AudienceApi
 
     /**
      * Operation computeAudienceSegmentsSizesWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
@@ -2626,6 +2694,8 @@ class AudienceApi
     /**
      * Operation computeAudienceSegmentsSizesAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes
+     *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudienceSegmentsSizes'] to see the possible values for this operation
@@ -2645,6 +2715,8 @@ class AudienceApi
 
     /**
      * Operation computeAudienceSegmentsSizesAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/compute-sizes
      *
      * @param  string $account_id Account id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentComputeSizesInputV1 $rm_audience_segment_compute_sizes_input_v1  (required)
@@ -2812,6 +2884,8 @@ class AudienceApi
     /**
      * Operation computeAudiencesSizes
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/compute-sizes
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
@@ -2828,6 +2902,8 @@ class AudienceApi
 
     /**
      * Operation computeAudiencesSizesWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/compute-sizes
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
@@ -2928,6 +3004,8 @@ class AudienceApi
     /**
      * Operation computeAudiencesSizesAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/compute-sizes
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeAudiencesSizes'] to see the possible values for this operation
@@ -2947,6 +3025,8 @@ class AudienceApi
 
     /**
      * Operation computeAudiencesSizesAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/compute-sizes
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceComputeSizesInputV1 $rm_audience_compute_sizes_input_v1  (required)
@@ -3114,6 +3194,8 @@ class AudienceApi
     /**
      * Operation estimateAudienceSegmentSize
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
@@ -3130,6 +3212,8 @@ class AudienceApi
 
     /**
      * Operation estimateAudienceSegmentSizeWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
@@ -3230,6 +3314,8 @@ class AudienceApi
     /**
      * Operation estimateAudienceSegmentSizeAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSegmentSize'] to see the possible values for this operation
@@ -3249,6 +3335,8 @@ class AudienceApi
 
     /**
      * Operation estimateAudienceSegmentSizeAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/estimate-size
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentEstimateSizeInputV1 $rm_audience_segment_estimate_size_input_v1  (required)
@@ -3416,6 +3504,8 @@ class AudienceApi
     /**
      * Operation estimateAudienceSize
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/estimate-size
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
@@ -3432,6 +3522,8 @@ class AudienceApi
 
     /**
      * Operation estimateAudienceSizeWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/estimate-size
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
@@ -3532,6 +3624,8 @@ class AudienceApi
     /**
      * Operation estimateAudienceSizeAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/estimate-size
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAudienceSize'] to see the possible values for this operation
@@ -3551,6 +3645,8 @@ class AudienceApi
 
     /**
      * Operation estimateAudienceSizeAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/estimate-size
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceEstimateSizeInputV1 $rm_audience_estimate_size_input_v1  (required)
@@ -3718,6 +3814,8 @@ class AudienceApi
     /**
      * Operation getAudienceSegmentContactListStatistics
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
+     *
      * @param  string $account_id Account Id (required)
      * @param  string $audience_segment_id Segment Id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceSegmentContactListStatistics'] to see the possible values for this operation
@@ -3734,6 +3832,8 @@ class AudienceApi
 
     /**
      * Operation getAudienceSegmentContactListStatisticsWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
      *
      * @param  string $account_id Account Id (required)
      * @param  string $audience_segment_id Segment Id. (required)
@@ -3834,6 +3934,8 @@ class AudienceApi
     /**
      * Operation getAudienceSegmentContactListStatisticsAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
+     *
      * @param  string $account_id Account Id (required)
      * @param  string $audience_segment_id Segment Id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceSegmentContactListStatistics'] to see the possible values for this operation
@@ -3853,6 +3955,8 @@ class AudienceApi
 
     /**
      * Operation getAudienceSegmentContactListStatisticsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
      *
      * @param  string $account_id Account Id (required)
      * @param  string $audience_segment_id Segment Id. (required)
@@ -4021,6 +4125,8 @@ class AudienceApi
     /**
      * Operation searchAudienceSegments
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/search
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
@@ -4039,6 +4145,8 @@ class AudienceApi
 
     /**
      * Operation searchAudienceSegmentsWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/search
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
@@ -4141,6 +4249,8 @@ class AudienceApi
     /**
      * Operation searchAudienceSegmentsAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/search
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
@@ -4162,6 +4272,8 @@ class AudienceApi
 
     /**
      * Operation searchAudienceSegmentsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audience-segments/search
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSegmentSearchInputV1 $rm_audience_segment_search_input_v1 Segment search filters. (required)
@@ -4359,6 +4471,8 @@ class AudienceApi
     /**
      * Operation searchAudiences
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/search
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
@@ -4377,6 +4491,8 @@ class AudienceApi
 
     /**
      * Operation searchAudiencesWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/search
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
@@ -4479,6 +4595,8 @@ class AudienceApi
     /**
      * Operation searchAudiencesAsync
      *
+     * /preview/retail-media/accounts/{account-id}/audiences/search
+     *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)
      * @param  int $limit The number of elements to be returned. The default is 50 and the maximum is 500. (optional, default to 50)
@@ -4500,6 +4618,8 @@ class AudienceApi
 
     /**
      * Operation searchAudiencesAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/audiences/search
      *
      * @param  string $account_id Account Id (required)
      * @param  \criteo\api\retailmedia\preview\Model\RmAudienceSearchInputV1 $rm_audience_search_input_v1 Audience search filters. (required)

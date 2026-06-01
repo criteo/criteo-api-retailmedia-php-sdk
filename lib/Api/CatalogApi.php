@@ -140,6 +140,8 @@ class CatalogApi
     /**
      * Operation deleteStoreInventoryPerMerchantId
      *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request batch_store_inventory_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
@@ -155,6 +157,8 @@ class CatalogApi
 
     /**
      * Operation deleteStoreInventoryPerMerchantIdWithHttpInfo
+     *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
      *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
@@ -215,6 +219,8 @@ class CatalogApi
     /**
      * Operation deleteStoreInventoryPerMerchantIdAsync
      *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
@@ -234,6 +240,8 @@ class CatalogApi
 
     /**
      * Operation deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
      *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
@@ -388,6 +396,8 @@ class CatalogApi
     /**
      * Operation getCatalogProductsBatchReport
      *
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
+     *
      * @param  string $operation_token The token returned by the batch endpoint. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogProductsBatchReport'] to see the possible values for this operation
      *
@@ -403,6 +413,8 @@ class CatalogApi
 
     /**
      * Operation getCatalogProductsBatchReportWithHttpInfo
+     *
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
      *
      * @param  string $operation_token The token returned by the batch endpoint. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogProductsBatchReport'] to see the possible values for this operation
@@ -502,6 +514,8 @@ class CatalogApi
     /**
      * Operation getCatalogProductsBatchReportAsync
      *
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
+     *
      * @param  string $operation_token The token returned by the batch endpoint. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogProductsBatchReport'] to see the possible values for this operation
      *
@@ -520,6 +534,8 @@ class CatalogApi
 
     /**
      * Operation getCatalogProductsBatchReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/catalog/products/batch/report/{operation-token}
      *
      * @param  string $operation_token The token returned by the batch endpoint. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogProductsBatchReport'] to see the possible values for this operation
@@ -671,6 +687,8 @@ class CatalogApi
     /**
      * Operation offerSetBbwV1
      *
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
+     *
      * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
@@ -687,6 +705,8 @@ class CatalogApi
 
     /**
      * Operation offerSetBbwV1WithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
      *
      * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
@@ -787,6 +807,8 @@ class CatalogApi
     /**
      * Operation offerSetBbwV1Async
      *
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
+     *
      * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerSetBbwV1'] to see the possible values for this operation
@@ -806,6 +828,8 @@ class CatalogApi
 
     /**
      * Operation offerSetBbwV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
      *
      * @param  string $retailer_id The retailer for which these buy box winners will be set (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputSetProductBuyBoxWinnersRequest $value_resource_input_set_product_buy_box_winners_request Updated buy box winners for one or more products (required)
@@ -973,6 +997,8 @@ class CatalogApi
     /**
      * Operation offerUpdateV1
      *
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
+     *
      * @param  string $retailer_id The retailer for which these offers will be updated (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
@@ -989,6 +1015,8 @@ class CatalogApi
 
     /**
      * Operation offerUpdateV1WithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
      *
      * @param  string $retailer_id The retailer for which these offers will be updated (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
@@ -1089,6 +1117,8 @@ class CatalogApi
     /**
      * Operation offerUpdateV1Async
      *
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
+     *
      * @param  string $retailer_id The retailer for which these offers will be updated (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['offerUpdateV1'] to see the possible values for this operation
@@ -1108,6 +1138,8 @@ class CatalogApi
 
     /**
      * Operation offerUpdateV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailer-id}/offers/update
      *
      * @param  string $retailer_id The retailer for which these offers will be updated (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputUpdateOffersRequest $value_resource_input_update_offers_request Collection of offer price and availability updates to be applied. (required)
@@ -1275,6 +1307,8 @@ class CatalogApi
     /**
      * Operation submitCatalogProductsBatch
      *
+     * /preview/retail-media/catalog/products/batch
+     *
      * @param  \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest $products_custom_batch_request products_custom_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCatalogProductsBatch'] to see the possible values for this operation
      *
@@ -1290,6 +1324,8 @@ class CatalogApi
 
     /**
      * Operation submitCatalogProductsBatchWithHttpInfo
+     *
+     * /preview/retail-media/catalog/products/batch
      *
      * @param  \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest $products_custom_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCatalogProductsBatch'] to see the possible values for this operation
@@ -1389,6 +1425,8 @@ class CatalogApi
     /**
      * Operation submitCatalogProductsBatchAsync
      *
+     * /preview/retail-media/catalog/products/batch
+     *
      * @param  \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest $products_custom_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCatalogProductsBatch'] to see the possible values for this operation
      *
@@ -1407,6 +1445,8 @@ class CatalogApi
 
     /**
      * Operation submitCatalogProductsBatchAsyncWithHttpInfo
+     *
+     * /preview/retail-media/catalog/products/batch
      *
      * @param  \criteo\api\retailmedia\preview\Model\ProductsCustomBatchRequest $products_custom_batch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['submitCatalogProductsBatch'] to see the possible values for this operation
@@ -1557,6 +1597,8 @@ class CatalogApi
     /**
      * Operation upsertStoreInventoryPerMerchantId
      *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
+     *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request batch_store_inventory_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
@@ -1572,6 +1614,8 @@ class CatalogApi
 
     /**
      * Operation upsertStoreInventoryPerMerchantIdWithHttpInfo
+     *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
      *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
@@ -1632,6 +1676,8 @@ class CatalogApi
     /**
      * Operation upsertStoreInventoryPerMerchantIdAsync
      *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
+     *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
@@ -1651,6 +1697,8 @@ class CatalogApi
 
     /**
      * Operation upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
      *
      * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
      * @param  \criteo\api\retailmedia\preview\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)

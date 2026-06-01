@@ -4,12 +4,12 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteStoreInventoryPerMerchantId()**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |  |
-| [**getCatalogProductsBatchReport()**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} |  |
-| [**offerSetBbwV1()**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |  |
-| [**offerUpdateV1()**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailer-id}/offers/update |  |
-| [**submitCatalogProductsBatch()**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch |  |
-| [**upsertStoreInventoryPerMerchantId()**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |  |
+| [**deleteStoreInventoryPerMerchantId()**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete | /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |
+| [**getCatalogProductsBatchReport()**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /preview/retail-media/catalog/products/batch/report/{operation-token} | /preview/retail-media/catalog/products/batch/report/{operation-token} |
+| [**offerSetBbwV1()**](CatalogApi.md#offerSetBbwV1) | **POST** /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners | /preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |
+| [**offerUpdateV1()**](CatalogApi.md#offerUpdateV1) | **POST** /preview/retail-media/retailers/{retailer-id}/offers/update | /preview/retail-media/retailers/{retailer-id}/offers/update |
+| [**submitCatalogProductsBatch()**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /preview/retail-media/catalog/products/batch | /preview/retail-media/catalog/products/batch |
+| [**upsertStoreInventoryPerMerchantId()**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert | /preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |
 
 
 ## `deleteStoreInventoryPerMerchantId()`
@@ -18,7 +18,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request)
 ```
 
-
+/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
 
 Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
 
@@ -82,7 +82,7 @@ void (empty response body)
 getCatalogProductsBatchReport($operation_token): \criteo\api\retailmedia\preview\Model\ReportOkResponse
 ```
 
-
+/preview/retail-media/catalog/products/batch/report/{operation-token}
 
 Get the report of an asynchronous batch operation previously requested
 
@@ -145,7 +145,7 @@ try {
 offerSetBbwV1($retailer_id, $value_resource_input_set_product_buy_box_winners_request): \criteo\api\retailmedia\preview\Model\Outcome
 ```
 
-
+/preview/retail-media/retailers/{retailer-id}/products/set-buy-box-winners
 
 Update the buy box winner for one or more products
 
@@ -210,7 +210,7 @@ try {
 offerUpdateV1($retailer_id, $value_resource_input_update_offers_request): \criteo\api\retailmedia\preview\Model\Outcome
 ```
 
-
+/preview/retail-media/retailers/{retailer-id}/offers/update
 
 Update one or more offers by replacing each offer's price and availability with the given values
 
@@ -275,7 +275,7 @@ try {
 submitCatalogProductsBatch($products_custom_batch_request): \criteo\api\retailmedia\preview\Model\BatchAcceptedResponse
 ```
 
-
+/preview/retail-media/catalog/products/batch
 
 Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
 
@@ -338,7 +338,7 @@ try {
 upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request)
 ```
 
-
+/preview/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
 
 Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
 

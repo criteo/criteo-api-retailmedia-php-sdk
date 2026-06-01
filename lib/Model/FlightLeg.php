@@ -59,8 +59,8 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'day_of_week' => 'string',
-        'end_time' => '\DateTime',
-        'start_time' => '\DateTime'
+        'end_time' => 'string',
+        'start_time' => 'string'
     ];
 
     /**
@@ -72,8 +72,8 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'day_of_week' => null,
-        'end_time' => 'date-time',
-        'start_time' => 'date-time'
+        'end_time' => null,
+        'start_time' => null
     ];
 
     /**
@@ -335,9 +335,17 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['end_time'] === null) {
             $invalidProperties[] = "'end_time' can't be null";
         }
+        if (!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $this->container['end_time'])) {
+            $invalidProperties[] = "invalid value for 'end_time', must be conform to the pattern /^([01][0-9]|2[0-3]):[0-5][0-9]$/.";
+        }
+
         if ($this->container['start_time'] === null) {
             $invalidProperties[] = "'start_time' can't be null";
         }
+        if (!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $this->container['start_time'])) {
+            $invalidProperties[] = "invalid value for 'start_time', must be conform to the pattern /^([01][0-9]|2[0-3]):[0-5][0-9]$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -393,7 +401,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets end_time
      *
-     * @return \DateTime
+     * @return string
      */
     public function getEndTime()
     {
@@ -403,7 +411,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_time
      *
-     * @param \DateTime $end_time end_time
+     * @param string $end_time Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 23:59.
      *
      * @return self
      */
@@ -412,6 +420,11 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($end_time)) {
             throw new \InvalidArgumentException('non-nullable end_time cannot be null');
         }
+
+        if ((!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $end_time))) {
+            throw new \InvalidArgumentException("invalid value for \$end_time when calling FlightLeg., must conform to the pattern /^([01][0-9]|2[0-3]):[0-5][0-9]$/.");
+        }
+
         $this->container['end_time'] = $end_time;
 
         return $this;
@@ -420,7 +433,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets start_time
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartTime()
     {
@@ -430,7 +443,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_time
      *
-     * @param \DateTime $start_time start_time
+     * @param string $start_time Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 08:00.
      *
      * @return self
      */
@@ -439,6 +452,11 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($start_time)) {
             throw new \InvalidArgumentException('non-nullable start_time cannot be null');
         }
+
+        if ((!preg_match("/^([01][0-9]|2[0-3]):[0-5][0-9]$/", $start_time))) {
+            throw new \InvalidArgumentException("invalid value for \$start_time when calling FlightLeg., must conform to the pattern /^([01][0-9]|2[0-3]):[0-5][0-9]$/.");
+        }
+
         $this->container['start_time'] = $start_time;
 
         return $this;

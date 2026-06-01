@@ -209,6 +209,8 @@ class CampaignApi
     /**
      * Operation appendCampaignsToBalanceV1
      *
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
+     *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
@@ -225,6 +227,8 @@ class CampaignApi
 
     /**
      * Operation appendCampaignsToBalanceV1WithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
      *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
@@ -325,6 +329,8 @@ class CampaignApi
     /**
      * Operation appendCampaignsToBalanceV1Async
      *
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
+     *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsToBalanceV1'] to see the possible values for this operation
@@ -344,6 +350,8 @@ class CampaignApi
 
     /**
      * Operation appendCampaignsToBalanceV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/campaigns/append
      *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputAppendCampaignsRequestV1 $value_resource_input_append_campaigns_request_v1 The balance campaign appending request. (required)
@@ -511,6 +519,8 @@ class CampaignApi
     /**
      * Operation appendProductButtonByLineItemId
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendProductButtonByLineItemId'] to see the possible values for this operation
@@ -527,6 +537,8 @@ class CampaignApi
 
     /**
      * Operation appendProductButtonByLineItemIdWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
@@ -627,6 +639,8 @@ class CampaignApi
     /**
      * Operation appendProductButtonByLineItemIdAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendProductButtonByLineItemId'] to see the possible values for this operation
@@ -646,6 +660,8 @@ class CampaignApi
 
     /**
      * Operation appendProductButtonByLineItemIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/create
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest $product_button_request_list_request List of Product Buttons to append (optional)
@@ -807,6 +823,8 @@ class CampaignApi
     /**
      * Operation appendPromotedProducts
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/append
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendPromotedProducts'] to see the possible values for this operation
@@ -823,6 +841,8 @@ class CampaignApi
 
     /**
      * Operation appendPromotedProductsWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/append
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -923,6 +943,8 @@ class CampaignApi
     /**
      * Operation appendPromotedProductsAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/append
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendPromotedProducts'] to see the possible values for this operation
@@ -942,6 +964,8 @@ class CampaignApi
 
     /**
      * Operation appendPromotedProductsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/append
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -1103,6 +1127,8 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerId
      *
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
+     *
      * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
@@ -1119,6 +1145,8 @@ class CampaignApi
 
     /**
      * Operation computeDisplayMinBidByRetailerIdWithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
@@ -1219,6 +1247,8 @@ class CampaignApi
     /**
      * Operation computeDisplayMinBidByRetailerIdAsync
      *
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
+     *
      * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['computeDisplayMinBidByRetailerId'] to see the possible values for this operation
@@ -1238,6 +1268,8 @@ class CampaignApi
 
     /**
      * Operation computeDisplayMinBidByRetailerIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/retailers/{retailerId}/compute-display-min-bid
      *
      * @param  string $retailer_id The retailer id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest $value_resource_input_display_auction_min_bid_request The details for what creatives and product ids to use to compute the min bids (optional)
@@ -1399,6 +1431,8 @@ class CampaignApi
     /**
      * Operation createAuctionLineItem
      *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
@@ -1415,6 +1449,8 @@ class CampaignApi
 
     /**
      * Operation createAuctionLineItemWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
@@ -1515,6 +1551,8 @@ class CampaignApi
     /**
      * Operation createAuctionLineItemAsync
      *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
@@ -1534,6 +1572,8 @@ class CampaignApi
 
     /**
      * Operation createAuctionLineItemAsyncWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
@@ -1701,6 +1741,8 @@ class CampaignApi
     /**
      * Operation createCreative
      *
+     * /preview/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
@@ -1717,6 +1759,8 @@ class CampaignApi
 
     /**
      * Operation createCreativeWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
@@ -1817,6 +1861,8 @@ class CampaignApi
     /**
      * Operation createCreativeAsync
      *
+     * /preview/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
@@ -1836,6 +1882,8 @@ class CampaignApi
 
     /**
      * Operation createCreativeAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeCreateModel2 $creative_create_model2 The creative to create (required)
@@ -2003,6 +2051,8 @@ class CampaignApi
     /**
      * Operation createPreferredLineItemByCampaignId
      *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
@@ -2019,6 +2069,8 @@ class CampaignApi
 
     /**
      * Operation createPreferredLineItemByCampaignIdWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
@@ -2119,6 +2171,8 @@ class CampaignApi
     /**
      * Operation createPreferredLineItemByCampaignIdAsync
      *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
@@ -2138,6 +2192,8 @@ class CampaignApi
 
     /**
      * Operation createPreferredLineItemByCampaignIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
@@ -2305,6 +2361,8 @@ class CampaignApi
     /**
      * Operation deleteCampaignsFromBalanceV1
      *
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
+     *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
@@ -2321,6 +2379,8 @@ class CampaignApi
 
     /**
      * Operation deleteCampaignsFromBalanceV1WithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
      *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
@@ -2421,6 +2481,8 @@ class CampaignApi
     /**
      * Operation deleteCampaignsFromBalanceV1Async
      *
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
+     *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsFromBalanceV1'] to see the possible values for this operation
@@ -2440,6 +2502,8 @@ class CampaignApi
 
     /**
      * Operation deleteCampaignsFromBalanceV1AsyncWithHttpInfo
+     *
+     * /preview/retail-media/balances/{balanceId}/campaigns/delete
      *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputDeleteCampaignsRequestV1 $value_resource_input_delete_campaigns_request_v1 The balance campaign deleting request. (required)
@@ -2607,6 +2671,8 @@ class CampaignApi
     /**
      * Operation deleteProductButtonByLineItemAndProductButtonId
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
@@ -2623,6 +2689,8 @@ class CampaignApi
 
     /**
      * Operation deleteProductButtonByLineItemAndProductButtonIdWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
@@ -2723,6 +2791,8 @@ class CampaignApi
     /**
      * Operation deleteProductButtonByLineItemAndProductButtonIdAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
@@ -2742,6 +2812,8 @@ class CampaignApi
 
     /**
      * Operation deleteProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton delete (required)
      * @param  string $product_button_id productButtonId used for delete (required)
@@ -2910,6 +2982,8 @@ class CampaignApi
     /**
      * Operation deletePromotedProducts
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
@@ -2925,6 +2999,8 @@ class CampaignApi
 
     /**
      * Operation deletePromotedProductsWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -2985,6 +3061,8 @@ class CampaignApi
     /**
      * Operation deletePromotedProductsAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
@@ -3004,6 +3082,8 @@ class CampaignApi
 
     /**
      * Operation deletePromotedProductsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -3152,6 +3232,8 @@ class CampaignApi
     /**
      * Operation fetchPromotedProducts
      *
+     * /preview/retail-media/line-items/{line-item-id}/products
+     *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
      * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
@@ -3170,6 +3252,8 @@ class CampaignApi
 
     /**
      * Operation fetchPromotedProductsWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products
      *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -3272,6 +3356,8 @@ class CampaignApi
     /**
      * Operation fetchPromotedProductsAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/products
+     *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
      * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
@@ -3293,6 +3379,8 @@ class CampaignApi
 
     /**
      * Operation fetchPromotedProductsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products
      *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -3480,6 +3568,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItem
      *
+     * /preview/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
@@ -3495,6 +3585,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemWithHttpInfo
+     *
+     * /preview/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
@@ -3594,6 +3686,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemAsync
      *
+     * /preview/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
@@ -3612,6 +3706,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemAsyncWithHttpInfo
+     *
+     * /preview/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
@@ -3763,6 +3859,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemsByCampaign
      *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
@@ -3781,6 +3879,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemsByCampaignWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
@@ -3883,6 +3983,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemsByCampaignAsync
      *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
@@ -3904,6 +4006,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemsByCampaignAsyncWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
@@ -4103,6 +4207,8 @@ class CampaignApi
     /**
      * Operation getCapoutHistory
      *
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
+     *
      * @param  string $account_id account id that own the lineitem (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest $value_resource_input_line_item_budget_cap_out_history_request lineitem budgetcapout history  object (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCapoutHistory'] to see the possible values for this operation
@@ -4119,6 +4225,8 @@ class CampaignApi
 
     /**
      * Operation getCapoutHistoryWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
      *
      * @param  string $account_id account id that own the lineitem (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest $value_resource_input_line_item_budget_cap_out_history_request lineitem budgetcapout history  object (required)
@@ -4219,6 +4327,8 @@ class CampaignApi
     /**
      * Operation getCapoutHistoryAsync
      *
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
+     *
      * @param  string $account_id account id that own the lineitem (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest $value_resource_input_line_item_budget_cap_out_history_request lineitem budgetcapout history  object (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCapoutHistory'] to see the possible values for this operation
@@ -4238,6 +4348,8 @@ class CampaignApi
 
     /**
      * Operation getCapoutHistoryAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/line-items/cap-out-history
      *
      * @param  string $account_id account id that own the lineitem (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputLineItemBudgetCapOutHistoryRequest $value_resource_input_line_item_budget_cap_out_history_request lineitem budgetcapout history  object (required)
@@ -4405,6 +4517,8 @@ class CampaignApi
     /**
      * Operation getCatalogStatus
      *
+     * /preview/retail-media/catalogs/{catalogId}/status
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
      *
@@ -4420,6 +4534,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogStatusWithHttpInfo
+     *
+     * /preview/retail-media/catalogs/{catalogId}/status
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
@@ -4519,6 +4635,8 @@ class CampaignApi
     /**
      * Operation getCatalogStatusAsync
      *
+     * /preview/retail-media/catalogs/{catalogId}/status
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
      *
@@ -4537,6 +4655,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogStatusAsyncWithHttpInfo
+     *
+     * /preview/retail-media/catalogs/{catalogId}/status
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
@@ -4688,6 +4808,8 @@ class CampaignApi
     /**
      * Operation getCreative
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
@@ -4704,6 +4826,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
@@ -4804,6 +4928,8 @@ class CampaignApi
     /**
      * Operation getCreativeAsync
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
@@ -4823,6 +4949,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
@@ -4991,6 +5119,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByCampaignId
      *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -5009,6 +5139,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByCampaignIdWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -5111,6 +5243,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByCampaignIdAsync
      *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -5132,6 +5266,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByCampaignIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -5331,6 +5467,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByLineItemId
      *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
      *
@@ -5346,6 +5484,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByLineItemIdWithHttpInfo
+     *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
@@ -5445,6 +5585,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByLineItemIdAsync
      *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
      *
@@ -5463,6 +5605,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByLineItemIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
@@ -5614,6 +5758,8 @@ class CampaignApi
     /**
      * Operation getProductButtonByLineItemAndProductButtonId
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
@@ -5630,6 +5776,8 @@ class CampaignApi
 
     /**
      * Operation getProductButtonByLineItemAndProductButtonIdWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
@@ -5730,6 +5878,8 @@ class CampaignApi
     /**
      * Operation getProductButtonByLineItemAndProductButtonIdAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonByLineItemAndProductButtonId'] to see the possible values for this operation
@@ -5749,6 +5899,8 @@ class CampaignApi
 
     /**
      * Operation getProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $product_button_id productButtonId used for retrieval (required)
@@ -5917,6 +6069,8 @@ class CampaignApi
     /**
      * Operation getProductButtonsByLineItemId
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonsByLineItemId'] to see the possible values for this operation
      *
@@ -5932,6 +6086,8 @@ class CampaignApi
 
     /**
      * Operation getProductButtonsByLineItemIdWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonsByLineItemId'] to see the possible values for this operation
@@ -6031,6 +6187,8 @@ class CampaignApi
     /**
      * Operation getProductButtonsByLineItemIdAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
+     *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonsByLineItemId'] to see the possible values for this operation
      *
@@ -6049,6 +6207,8 @@ class CampaignApi
 
     /**
      * Operation getProductButtonsByLineItemIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons
      *
      * @param  string $line_item_id LineItemId for productButton retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProductButtonsByLineItemId'] to see the possible values for this operation
@@ -6200,6 +6360,8 @@ class CampaignApi
     /**
      * Operation pausePromotedProducts
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pausePromotedProducts'] to see the possible values for this operation
@@ -6215,6 +6377,8 @@ class CampaignApi
 
     /**
      * Operation pausePromotedProductsWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -6275,6 +6439,8 @@ class CampaignApi
     /**
      * Operation pausePromotedProductsAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pausePromotedProducts'] to see the possible values for this operation
@@ -6294,6 +6460,8 @@ class CampaignApi
 
     /**
      * Operation pausePromotedProductsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/pause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -6442,6 +6610,8 @@ class CampaignApi
     /**
      * Operation searchAccountCreatives
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/search
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
      * @param  int $limit limit to paginated result (optional, default to 50)
@@ -6460,6 +6630,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountCreativesWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/search
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
@@ -6562,6 +6734,8 @@ class CampaignApi
     /**
      * Operation searchAccountCreativesAsync
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/search
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
      * @param  int $limit limit to paginated result (optional, default to 50)
@@ -6583,6 +6757,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountCreativesAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/search
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  \criteo\api\retailmedia\preview\Model\EntityResourceInputCreativeSearchRequest $entity_resource_input_creative_search_request search request filter (required)
@@ -6786,6 +6962,8 @@ class CampaignApi
     /**
      * Operation searchAccountRetailers
      *
+     * /preview/retail-media/accounts/{accountId}/retailers/search
+     *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
@@ -6804,6 +6982,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountRetailersWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{accountId}/retailers/search
      *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
@@ -6906,6 +7086,8 @@ class CampaignApi
     /**
      * Operation searchAccountRetailersAsync
      *
+     * /preview/retail-media/accounts/{accountId}/retailers/search
+     *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
@@ -6927,6 +7109,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountRetailersAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{accountId}/retailers/search
      *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
@@ -7130,6 +7314,8 @@ class CampaignApi
     /**
      * Operation searchBrands
      *
+     * /preview/retail-media/brands/search
+     *
      * @param  int $limit the number of brands to return (optional, default to 25)
      * @param  int $offset offset of paginated results (optional, default to 0)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
@@ -7147,6 +7333,8 @@ class CampaignApi
 
     /**
      * Operation searchBrandsWithHttpInfo
+     *
+     * /preview/retail-media/brands/search
      *
      * @param  int $limit the number of brands to return (optional, default to 25)
      * @param  int $offset offset of paginated results (optional, default to 0)
@@ -7248,6 +7436,8 @@ class CampaignApi
     /**
      * Operation searchBrandsAsync
      *
+     * /preview/retail-media/brands/search
+     *
      * @param  int $limit the number of brands to return (optional, default to 25)
      * @param  int $offset offset of paginated results (optional, default to 0)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
@@ -7268,6 +7458,8 @@ class CampaignApi
 
     /**
      * Operation searchBrandsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/brands/search
      *
      * @param  int $limit the number of brands to return (optional, default to 25)
      * @param  int $offset offset of paginated results (optional, default to 0)
@@ -7448,6 +7640,8 @@ class CampaignApi
     /**
      * Operation unpausePromotedProducts
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpausePromotedProducts'] to see the possible values for this operation
@@ -7463,6 +7657,8 @@ class CampaignApi
 
     /**
      * Operation unpausePromotedProductsWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -7523,6 +7719,8 @@ class CampaignApi
     /**
      * Operation unpausePromotedProductsAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpausePromotedProducts'] to see the possible values for this operation
@@ -7542,6 +7740,8 @@ class CampaignApi
 
     /**
      * Operation unpausePromotedProductsAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/products/unpause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\preview\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -7690,6 +7890,8 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItem
      *
+     * /preview/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
@@ -7706,6 +7908,8 @@ class CampaignApi
 
     /**
      * Operation updateAuctionLineItemWithHttpInfo
+     *
+     * /preview/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
@@ -7806,6 +8010,8 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemAsync
      *
+     * /preview/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
@@ -7825,6 +8031,8 @@ class CampaignApi
 
     /**
      * Operation updateAuctionLineItemAsyncWithHttpInfo
+     *
+     * /preview/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\preview\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
@@ -7992,6 +8200,8 @@ class CampaignApi
     /**
      * Operation updateCreative
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
@@ -8009,6 +8219,8 @@ class CampaignApi
 
     /**
      * Operation updateCreativeWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
@@ -8110,6 +8322,8 @@ class CampaignApi
     /**
      * Operation updateCreativeAsync
      *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
      * @param  \criteo\api\retailmedia\preview\Model\CreativeUpdateModel2 $creative_update_model2 The creative to create (required)
@@ -8130,6 +8344,8 @@ class CampaignApi
 
     /**
      * Operation updateCreativeAsyncWithHttpInfo
+     *
+     * /preview/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
@@ -8314,6 +8530,8 @@ class CampaignApi
     /**
      * Operation updatePreferredLineItemByLineItemId
      *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
@@ -8330,6 +8548,8 @@ class CampaignApi
 
     /**
      * Operation updatePreferredLineItemByLineItemIdWithHttpInfo
+     *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
@@ -8430,6 +8650,8 @@ class CampaignApi
     /**
      * Operation updatePreferredLineItemByLineItemIdAsync
      *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
@@ -8449,6 +8671,8 @@ class CampaignApi
 
     /**
      * Operation updatePreferredLineItemByLineItemIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\preview\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
@@ -8616,6 +8840,8 @@ class CampaignApi
     /**
      * Operation updateProductButtonByLineItemAndProductButtonId
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
@@ -8633,6 +8859,8 @@ class CampaignApi
 
     /**
      * Operation updateProductButtonByLineItemAndProductButtonIdWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
@@ -8734,6 +8962,8 @@ class CampaignApi
     /**
      * Operation updateProductButtonByLineItemAndProductButtonIdAsync
      *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
+     *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)
      * @param  \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest $product_button_request_request Specific Product button update info (required)
@@ -8754,6 +8984,8 @@ class CampaignApi
 
     /**
      * Operation updateProductButtonByLineItemAndProductButtonIdAsyncWithHttpInfo
+     *
+     * /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
      *
      * @param  string $line_item_id LineItemId for productButton update (required)
      * @param  string $product_button_id productButtonId used for update (required)

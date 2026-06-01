@@ -4,12 +4,12 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addThirdPartyAccountBrands()**](ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add |  |
-| [**createThirdPartyBrandAccount()**](ThirdPartyAccountsApi.md#createThirdPartyBrandAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |  |
-| [**createThirdPartySellerAccount()**](ThirdPartyAccountsApi.md#createThirdPartySellerAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |  |
-| [**grantThirdPartyConsent()**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent |  |
-| [**removeThirdPartyAccountBrand()**](ThirdPartyAccountsApi.md#removeThirdPartyAccountBrand) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |  |
-| [**updateThirdPartyAccountSellers()**](ThirdPartyAccountsApi.md#updateThirdPartyAccountSellers) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers |  |
+| [**addThirdPartyAccountBrands()**](ThirdPartyAccountsApi.md#addThirdPartyAccountBrands) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/add | /preview/retail-media/third-party-accounts/{accountId}/brands/add |
+| [**createThirdPartyBrandAccount()**](ThirdPartyAccountsApi.md#createThirdPartyBrandAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-brand-account | /preview/retail-media/third-party-accounts/{accountId}/create-brand-account |
+| [**createThirdPartySellerAccount()**](ThirdPartyAccountsApi.md#createThirdPartySellerAccount) | **POST** /preview/retail-media/third-party-accounts/{accountId}/create-seller-account | /preview/retail-media/third-party-accounts/{accountId}/create-seller-account |
+| [**grantThirdPartyConsent()**](ThirdPartyAccountsApi.md#grantThirdPartyConsent) | **POST** /preview/retail-media/accounts/{accountId}/grant-third-party-consent | /preview/retail-media/accounts/{accountId}/grant-third-party-consent |
+| [**removeThirdPartyAccountBrand()**](ThirdPartyAccountsApi.md#removeThirdPartyAccountBrand) | **POST** /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove | /preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove |
+| [**updateThirdPartyAccountSellers()**](ThirdPartyAccountsApi.md#updateThirdPartyAccountSellers) | **PUT** /preview/retail-media/third-party-accounts/{accountId}/sellers | /preview/retail-media/third-party-accounts/{accountId}/sellers |
 
 
 ## `addThirdPartyAccountBrands()`
@@ -18,7 +18,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 addThirdPartyAccountBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
-
+/preview/retail-media/third-party-accounts/{accountId}/brands/add
 
 add the provided brands to an account. This will not remove any existing brands.
 
@@ -83,7 +83,7 @@ try {
 createThirdPartyBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation_v2): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfRetailMediaAccountV2
 ```
 
-
+/preview/retail-media/third-party-accounts/{accountId}/create-brand-account
 
 Create a private market demand brand account under a given parent account.
 
@@ -148,7 +148,7 @@ try {
 createThirdPartySellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation_v2): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfRetailMediaAccountV2
 ```
 
-
+/preview/retail-media/third-party-accounts/{accountId}/create-seller-account
 
 Create a private market demand seller account under a given parent account.
 
@@ -213,7 +213,7 @@ try {
 grantThirdPartyConsent($account_id, $grant_consent_input)
 ```
 
-
+/preview/retail-media/accounts/{accountId}/grant-third-party-consent
 
 Grant third-party consent to a business application on behalf of a Private Market demand account
 
@@ -277,7 +277,7 @@ void (empty response body)
 removeThirdPartyAccountBrand($account_id, $brand_id): \criteo\api\retailmedia\preview\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
-
+/preview/retail-media/third-party-accounts/{accountId}/brands/{brandId}/remove
 
 Attempt to remove the provided brand from the account.
 
@@ -342,7 +342,7 @@ try {
 updateThirdPartyAccountSellers($account_id, $value_resource_collection_input_of_retail_media_seller): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
 ```
 
-
+/preview/retail-media/third-party-accounts/{accountId}/sellers
 
 Update the list of sellers mapped to the account. This will override any existing mappings.
 

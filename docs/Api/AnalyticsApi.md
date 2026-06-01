@@ -4,19 +4,19 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**generateAsyncAccountsReport()**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /preview/retail-media/reports/accounts |  |
-| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns |  |
-| [**generateAsyncFillRateReport()**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate |  |
-| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items |  |
-| [**generateAsyncOffsiteReport()**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite |  |
-| [**generateAsyncUnfilledPlacementsReport()**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /preview/retail-media/reports/unfilled-placements |  |
-| [**generateShareOfVoiceInsight()**](AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /preview/retail-media/insights/share-of-voice |  |
-| [**generateSyncAttributedTransactionsReport()**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions |  |
-| [**generateSyncCampaignsReport()**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns |  |
-| [**generateSyncLineItemsReport()**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items |  |
-| [**generateSyncRealTimePerformanceReport()**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /preview/retail-media/reports/sync/real-time-performance |  |
-| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output |  |
-| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status |  |
+| [**generateAsyncAccountsReport()**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /preview/retail-media/reports/accounts | /preview/retail-media/reports/accounts |
+| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns | /preview/retail-media/reports/campaigns |
+| [**generateAsyncFillRateReport()**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate | /preview/retail-media/reports/fillrate |
+| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items | /preview/retail-media/reports/line-items |
+| [**generateAsyncOffsiteReport()**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite | /preview/retail-media/reports/offsite |
+| [**generateAsyncUnfilledPlacementsReport()**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /preview/retail-media/reports/unfilled-placements | /preview/retail-media/reports/unfilled-placements |
+| [**generateShareOfVoiceInsight()**](AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /preview/retail-media/insights/share-of-voice | /preview/retail-media/insights/share-of-voice |
+| [**generateSyncAttributedTransactionsReport()**](AnalyticsApi.md#generateSyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/sync/attributed-transactions | /preview/retail-media/reports/sync/attributed-transactions |
+| [**generateSyncCampaignsReport()**](AnalyticsApi.md#generateSyncCampaignsReport) | **POST** /preview/retail-media/reports/sync/campaigns | /preview/retail-media/reports/sync/campaigns |
+| [**generateSyncLineItemsReport()**](AnalyticsApi.md#generateSyncLineItemsReport) | **POST** /preview/retail-media/reports/sync/line-items | /preview/retail-media/reports/sync/line-items |
+| [**generateSyncRealTimePerformanceReport()**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /preview/retail-media/reports/sync/real-time-performance | /preview/retail-media/reports/sync/real-time-performance |
+| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /preview/retail-media/reports/{reportId}/output | /preview/retail-media/reports/{reportId}/output |
+| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /preview/retail-media/reports/{reportId}/status | /preview/retail-media/reports/{reportId}/status |
 
 
 ## `generateAsyncAccountsReport()`
@@ -25,7 +25,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 generateAsyncAccountsReport($async_accounts_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/accounts
 
 Returns an asynchronous Accounts Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -88,7 +88,7 @@ try {
 generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/campaigns
 
 Return an asynchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -151,7 +151,7 @@ try {
 generateAsyncFillRateReport($async_fill_rate_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/fillrate
 
 Returns an asynchronous Fill Rate Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -214,7 +214,7 @@ try {
 generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/line-items
 
 Returns an asynchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -277,7 +277,7 @@ try {
 generateAsyncOffsiteReport($async_offsite_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/offsite
 
 Returns an asynchronous Offsite Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -340,7 +340,7 @@ try {
 generateAsyncUnfilledPlacementsReport($async_unfilled_placements_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/unfilled-placements
 
 Returns an asynchronous Unfilled Placements Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -403,7 +403,7 @@ try {
 generateShareOfVoiceInsight($share_of_voice_insight_request): \criteo\api\retailmedia\preview\Model\AsyncInsightResponse
 ```
 
-
+/preview/retail-media/insights/share-of-voice
 
 Generate a share of voice insight
 
@@ -466,7 +466,7 @@ try {
 generateSyncAttributedTransactionsReport($sync_attributed_transactions_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
-
+/preview/retail-media/reports/sync/attributed-transactions
 
 Returns a synchronous Attributed Transactions Report
 
@@ -529,7 +529,7 @@ try {
 generateSyncCampaignsReport($sync_campaigns_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
-
+/preview/retail-media/reports/sync/campaigns
 
 Returns a synchronous Campaigns Report
 
@@ -592,7 +592,7 @@ try {
 generateSyncLineItemsReport($sync_line_items_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
-
+/preview/retail-media/reports/sync/line-items
 
 Returns a synchronous Line Items Report
 
@@ -655,7 +655,7 @@ try {
 generateSyncRealTimePerformanceReport($sync_real_time_performance_report_request): \criteo\api\retailmedia\preview\Model\ReportResponse
 ```
 
-
+/preview/retail-media/reports/sync/real-time-performance
 
 Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  <br />  This endpoint is subject to specific rate limits.
 
@@ -718,7 +718,7 @@ try {
 getAsyncExportOutput($report_id): \SplFileObject
 ```
 
-
+/preview/retail-media/reports/{reportId}/output
 
 Returns the output of an async report
 
@@ -781,7 +781,7 @@ try {
 getAsyncExportStatus($report_id): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
-
+/preview/retail-media/reports/{reportId}/status
 
 Returns the status of an async report
 

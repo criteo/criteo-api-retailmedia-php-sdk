@@ -161,6 +161,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncAccountsReport
      *
+     * /preview/retail-media/reports/accounts
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request async_accounts_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
      *
@@ -176,6 +178,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncAccountsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
@@ -275,6 +279,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncAccountsReportAsync
      *
+     * /preview/retail-media/reports/accounts
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
      *
@@ -293,6 +299,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncAccountsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
@@ -443,6 +451,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncCampaignsReport
      *
+     * /preview/retail-media/reports/campaigns
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request async_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
      *
@@ -458,6 +468,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncCampaignsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/campaigns
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
@@ -557,6 +569,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncCampaignsReportAsync
      *
+     * /preview/retail-media/reports/campaigns
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
      *
@@ -575,6 +589,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncCampaignsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/campaigns
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
@@ -725,6 +741,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncFillRateReport
      *
+     * /preview/retail-media/reports/fillrate
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncFillRateReportRequest $async_fill_rate_report_request async_fill_rate_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncFillRateReport'] to see the possible values for this operation
      *
@@ -740,6 +758,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncFillRateReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/fillrate
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncFillRateReportRequest $async_fill_rate_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncFillRateReport'] to see the possible values for this operation
@@ -839,6 +859,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncFillRateReportAsync
      *
+     * /preview/retail-media/reports/fillrate
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncFillRateReportRequest $async_fill_rate_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncFillRateReport'] to see the possible values for this operation
      *
@@ -857,6 +879,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncFillRateReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/fillrate
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncFillRateReportRequest $async_fill_rate_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncFillRateReport'] to see the possible values for this operation
@@ -1007,6 +1031,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncLineItemsReport
      *
+     * /preview/retail-media/reports/line-items
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request async_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
      *
@@ -1022,6 +1048,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncLineItemsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
@@ -1121,6 +1149,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncLineItemsReportAsync
      *
+     * /preview/retail-media/reports/line-items
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
      *
@@ -1139,6 +1169,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncLineItemsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
@@ -1289,6 +1321,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncOffsiteReport
      *
+     * /preview/retail-media/reports/offsite
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request async_offsite_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
      *
@@ -1304,6 +1338,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncOffsiteReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/offsite
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
@@ -1403,6 +1439,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncOffsiteReportAsync
      *
+     * /preview/retail-media/reports/offsite
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
      *
@@ -1421,6 +1459,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncOffsiteReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/offsite
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest $async_offsite_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncOffsiteReport'] to see the possible values for this operation
@@ -1571,6 +1611,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncUnfilledPlacementsReport
      *
+     * /preview/retail-media/reports/unfilled-placements
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportRequest $async_unfilled_placements_report_request async_unfilled_placements_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncUnfilledPlacementsReport'] to see the possible values for this operation
      *
@@ -1586,6 +1628,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncUnfilledPlacementsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/unfilled-placements
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportRequest $async_unfilled_placements_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncUnfilledPlacementsReport'] to see the possible values for this operation
@@ -1685,6 +1729,8 @@ class AnalyticsApi
     /**
      * Operation generateAsyncUnfilledPlacementsReportAsync
      *
+     * /preview/retail-media/reports/unfilled-placements
+     *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportRequest $async_unfilled_placements_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncUnfilledPlacementsReport'] to see the possible values for this operation
      *
@@ -1703,6 +1749,8 @@ class AnalyticsApi
 
     /**
      * Operation generateAsyncUnfilledPlacementsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/unfilled-placements
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportRequest $async_unfilled_placements_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncUnfilledPlacementsReport'] to see the possible values for this operation
@@ -1853,6 +1901,8 @@ class AnalyticsApi
     /**
      * Operation generateShareOfVoiceInsight
      *
+     * /preview/retail-media/insights/share-of-voice
+     *
      * @param  \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request share_of_voice_insight_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
@@ -1868,6 +1918,8 @@ class AnalyticsApi
 
     /**
      * Operation generateShareOfVoiceInsightWithHttpInfo
+     *
+     * /preview/retail-media/insights/share-of-voice
      *
      * @param  \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
@@ -1967,6 +2019,8 @@ class AnalyticsApi
     /**
      * Operation generateShareOfVoiceInsightAsync
      *
+     * /preview/retail-media/insights/share-of-voice
+     *
      * @param  \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
@@ -1985,6 +2039,8 @@ class AnalyticsApi
 
     /**
      * Operation generateShareOfVoiceInsightAsyncWithHttpInfo
+     *
+     * /preview/retail-media/insights/share-of-voice
      *
      * @param  \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
@@ -2129,6 +2185,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncAttributedTransactionsReport
      *
+     * /preview/retail-media/reports/sync/attributed-transactions
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncAttributedTransactionsReportRequest $sync_attributed_transactions_report_request sync_attributed_transactions_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncAttributedTransactionsReport'] to see the possible values for this operation
      *
@@ -2144,6 +2202,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncAttributedTransactionsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/attributed-transactions
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncAttributedTransactionsReportRequest $sync_attributed_transactions_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncAttributedTransactionsReport'] to see the possible values for this operation
@@ -2243,6 +2303,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncAttributedTransactionsReportAsync
      *
+     * /preview/retail-media/reports/sync/attributed-transactions
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncAttributedTransactionsReportRequest $sync_attributed_transactions_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncAttributedTransactionsReport'] to see the possible values for this operation
      *
@@ -2261,6 +2323,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncAttributedTransactionsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/attributed-transactions
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncAttributedTransactionsReportRequest $sync_attributed_transactions_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncAttributedTransactionsReport'] to see the possible values for this operation
@@ -2411,6 +2475,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncCampaignsReport
      *
+     * /preview/retail-media/reports/sync/campaigns
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncCampaignsReportRequest $sync_campaigns_report_request sync_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncCampaignsReport'] to see the possible values for this operation
      *
@@ -2426,6 +2492,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncCampaignsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/campaigns
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncCampaignsReportRequest $sync_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncCampaignsReport'] to see the possible values for this operation
@@ -2525,6 +2593,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncCampaignsReportAsync
      *
+     * /preview/retail-media/reports/sync/campaigns
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncCampaignsReportRequest $sync_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncCampaignsReport'] to see the possible values for this operation
      *
@@ -2543,6 +2613,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncCampaignsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/campaigns
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncCampaignsReportRequest $sync_campaigns_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncCampaignsReport'] to see the possible values for this operation
@@ -2693,6 +2765,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncLineItemsReport
      *
+     * /preview/retail-media/reports/sync/line-items
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncLineItemsReportRequest $sync_line_items_report_request sync_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncLineItemsReport'] to see the possible values for this operation
      *
@@ -2708,6 +2782,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncLineItemsReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncLineItemsReportRequest $sync_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncLineItemsReport'] to see the possible values for this operation
@@ -2807,6 +2883,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncLineItemsReportAsync
      *
+     * /preview/retail-media/reports/sync/line-items
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncLineItemsReportRequest $sync_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncLineItemsReport'] to see the possible values for this operation
      *
@@ -2825,6 +2903,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncLineItemsReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncLineItemsReportRequest $sync_line_items_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncLineItemsReport'] to see the possible values for this operation
@@ -2975,6 +3055,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncRealTimePerformanceReport
      *
+     * /preview/retail-media/reports/sync/real-time-performance
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest $sync_real_time_performance_report_request sync_real_time_performance_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncRealTimePerformanceReport'] to see the possible values for this operation
      *
@@ -2990,6 +3072,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncRealTimePerformanceReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/real-time-performance
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest $sync_real_time_performance_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncRealTimePerformanceReport'] to see the possible values for this operation
@@ -3089,6 +3173,8 @@ class AnalyticsApi
     /**
      * Operation generateSyncRealTimePerformanceReportAsync
      *
+     * /preview/retail-media/reports/sync/real-time-performance
+     *
      * @param  \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest $sync_real_time_performance_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncRealTimePerformanceReport'] to see the possible values for this operation
      *
@@ -3107,6 +3193,8 @@ class AnalyticsApi
 
     /**
      * Operation generateSyncRealTimePerformanceReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/sync/real-time-performance
      *
      * @param  \criteo\api\retailmedia\preview\Model\SyncRealTimePerformanceReportRequest $sync_real_time_performance_report_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateSyncRealTimePerformanceReport'] to see the possible values for this operation
@@ -3257,6 +3345,8 @@ class AnalyticsApi
     /**
      * Operation getAsyncExportOutput
      *
+     * /preview/retail-media/reports/{reportId}/output
+     *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportOutput'] to see the possible values for this operation
      *
@@ -3272,6 +3362,8 @@ class AnalyticsApi
 
     /**
      * Operation getAsyncExportOutputWithHttpInfo
+     *
+     * /preview/retail-media/reports/{reportId}/output
      *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportOutput'] to see the possible values for this operation
@@ -3371,6 +3463,8 @@ class AnalyticsApi
     /**
      * Operation getAsyncExportOutputAsync
      *
+     * /preview/retail-media/reports/{reportId}/output
+     *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportOutput'] to see the possible values for this operation
      *
@@ -3389,6 +3483,8 @@ class AnalyticsApi
 
     /**
      * Operation getAsyncExportOutputAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/{reportId}/output
      *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportOutput'] to see the possible values for this operation
@@ -3540,6 +3636,8 @@ class AnalyticsApi
     /**
      * Operation getAsyncExportStatus
      *
+     * /preview/retail-media/reports/{reportId}/status
+     *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportStatus'] to see the possible values for this operation
      *
@@ -3555,6 +3653,8 @@ class AnalyticsApi
 
     /**
      * Operation getAsyncExportStatusWithHttpInfo
+     *
+     * /preview/retail-media/reports/{reportId}/status
      *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportStatus'] to see the possible values for this operation
@@ -3654,6 +3754,8 @@ class AnalyticsApi
     /**
      * Operation getAsyncExportStatusAsync
      *
+     * /preview/retail-media/reports/{reportId}/status
+     *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportStatus'] to see the possible values for this operation
      *
@@ -3672,6 +3774,8 @@ class AnalyticsApi
 
     /**
      * Operation getAsyncExportStatusAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/{reportId}/status
      *
      * @param  string $report_id The ID of the report to retrieve (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAsyncExportStatus'] to see the possible values for this operation
