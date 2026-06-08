@@ -27,7 +27,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause | /preview/retail-media/line-items/{line-item-id}/products/pause |
 | [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search | /preview/retail-media/accounts/{account-id}/creatives/search |
 | [**searchAccountRetailers()**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search | /preview/retail-media/accounts/{accountId}/retailers/search |
-| [**searchBrands()**](CampaignApi.md#searchBrands) | **POST** /preview/retail-media/brands/search | /preview/retail-media/brands/search |
 | [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/unpause | /preview/retail-media/line-items/{line-item-id}/products/unpause |
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} | /preview/retail-media/auction-line-items/{lineItemId} |
 | [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} | /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |
@@ -1526,73 +1525,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `searchBrands()`
-
-```php
-searchBrands($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
-```
-
-/preview/retail-media/brands/search
-
-Search for brands given a retailer ID and search term.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$limit = 25; // int | the number of brands to return
-$offset = 0; // int | offset of paginated results
-$value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
-
-try {
-    $result = $apiInstance->searchBrands($limit, $offset, $value_resource_input_brand_id_search_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->searchBrands: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| the number of brands to return | [optional] [default to 25] |
-| **offset** | **int**| offset of paginated results | [optional] [default to 0] |
-| **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
 
 ### Authorization
 

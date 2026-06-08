@@ -411,7 +411,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets end_time
      *
-     * @param string $end_time Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 23:59.
+     * @param string $end_time Wall-clock time of day in HH:mm, 24-hour. No timezone.
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class FlightLeg implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets start_time
      *
-     * @param string $start_time Wall-clock time of day in HH:mm, 24-hour. No timezone. Example: 08:00.
+     * @param string $start_time Wall-clock time of day in HH:mm, 24-hour. No timezone.
      *
      * @return self
      */
