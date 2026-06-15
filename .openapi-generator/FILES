@@ -251,7 +251,6 @@ docs/Model/RmEventsUpdateV1.md
 docs/Model/RmEventsV1.md
 docs/Model/RmcaCommonProblem.md
 docs/Model/SdkApiRestCommonProblem.md
-docs/Model/ServedCategoryFilter.md
 docs/Model/SetProductBuyBoxWinnersRequest.md
 docs/Model/ShareOfVoiceInsight.md
 docs/Model/ShareOfVoiceInsightRequest.md
@@ -574,7 +573,6 @@ lib/Model/RmEventsUpdateV1.php
 lib/Model/RmEventsV1.php
 lib/Model/RmcaCommonProblem.php
 lib/Model/SdkApiRestCommonProblem.php
-lib/Model/ServedCategoryFilter.php
 lib/Model/SetProductBuyBoxWinnersRequest.php
 lib/Model/ShareOfVoiceInsight.php
 lib/Model/ShareOfVoiceInsightRequest.php
