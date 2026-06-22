@@ -64,6 +64,9 @@ docs/Model/CustomAttribute.md
 docs/Model/DataCompleteThrough.md
 docs/Model/DeleteCampaignsRequestV1.md
 docs/Model/DeleteEntry.md
+docs/Model/DigitalShelfIntelligenceInsight.md
+docs/Model/DigitalShelfIntelligenceInsightRequest.md
+docs/Model/DigitalShelfIntelligenceInsightResource.md
 docs/Model/DisplayAuctionMinBidRequest.md
 docs/Model/DisplayAuctionMinBidResult.md
 docs/Model/EntityResourceBalanceV1.md
@@ -255,6 +258,7 @@ docs/Model/SetProductBuyBoxWinnersRequest.md
 docs/Model/ShareOfVoiceInsight.md
 docs/Model/ShareOfVoiceInsightRequest.md
 docs/Model/ShareOfVoiceInsightResource.md
+docs/Model/SkuFilter.md
 docs/Model/SponsoredProductsLineItem.md
 docs/Model/SponsoredProductsLineItemCreateRequestModel.md
 docs/Model/SponsoredProductsLineItemUpdateRequestModel.md
@@ -385,6 +389,9 @@ lib/Model/CustomAttribute.php
 lib/Model/DataCompleteThrough.php
 lib/Model/DeleteCampaignsRequestV1.php
 lib/Model/DeleteEntry.php
+lib/Model/DigitalShelfIntelligenceInsight.php
+lib/Model/DigitalShelfIntelligenceInsightRequest.php
+lib/Model/DigitalShelfIntelligenceInsightResource.php
 lib/Model/DisplayAuctionMinBidRequest.php
 lib/Model/DisplayAuctionMinBidResult.php
 lib/Model/EntityResourceBalanceV1.php
@@ -577,6 +584,7 @@ lib/Model/SetProductBuyBoxWinnersRequest.php
 lib/Model/ShareOfVoiceInsight.php
 lib/Model/ShareOfVoiceInsightRequest.php
 lib/Model/ShareOfVoiceInsightResource.php
+lib/Model/SkuFilter.php
 lib/Model/SponsoredProductsLineItem.php
 lib/Model/SponsoredProductsLineItemCreateRequestModel.php
 lib/Model/SponsoredProductsLineItemUpdateRequestModel.php

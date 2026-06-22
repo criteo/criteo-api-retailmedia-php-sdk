@@ -1,6 +1,6 @@
 <?php
 /**
- * ShareOfVoiceInsight
+ * DigitalShelfIntelligenceInsight
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * ShareOfVoiceInsight Class Doc Comment
+ * DigitalShelfIntelligenceInsight Class Doc Comment
  *
  * @category Class
- * @description Description of a Share of voice insight
+ * @description Description of a Digital Shelf Intelligence insight
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializable
+class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ShareOfVoiceInsight';
+    protected static $openAPIModelName = 'DigitalShelfIntelligenceInsight';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,20 +59,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'account_ids' => 'string[]',
-        'activation_platforms' => 'string[]',
         'aggregation_level' => 'string',
         'brand_ids' => 'string[]',
-        'budget_models' => 'string[]',
-        'campaign_type' => 'string',
-        'dimensions' => 'string[]',
+        'categories' => 'string[]',
         'end_date' => '\DateTime',
         'format' => 'string',
-        'keywords' => 'string[]',
-        'keyword_types' => 'string[]',
         'metrics' => 'string[]',
         'retailer_ids' => 'string[]',
-        'served_categories' => 'string[]',
+        'sku_ids' => '\criteo\api\retailmedia\preview\Model\SkuFilter[]',
         'start_date' => '\DateTime'
     ];
 
@@ -85,20 +79,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'account_id' => null,
-        'account_ids' => null,
-        'activation_platforms' => null,
         'aggregation_level' => null,
         'brand_ids' => null,
-        'budget_models' => null,
-        'campaign_type' => null,
-        'dimensions' => null,
+        'categories' => null,
         'end_date' => 'date-time',
         'format' => null,
-        'keywords' => null,
-        'keyword_types' => null,
         'metrics' => null,
         'retailer_ids' => null,
-        'served_categories' => null,
+        'sku_ids' => null,
         'start_date' => 'date-time'
     ];
 
@@ -109,20 +97,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_id' => false,
-		'account_ids' => true,
-		'activation_platforms' => true,
 		'aggregation_level' => false,
 		'brand_ids' => true,
-		'budget_models' => true,
-		'campaign_type' => false,
-		'dimensions' => false,
+		'categories' => true,
 		'end_date' => false,
 		'format' => false,
-		'keywords' => true,
-		'keyword_types' => true,
 		'metrics' => false,
 		'retailer_ids' => true,
-		'served_categories' => true,
+		'sku_ids' => true,
 		'start_date' => false
     ];
 
@@ -213,20 +195,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
-        'account_ids' => 'accountIds',
-        'activation_platforms' => 'activationPlatforms',
         'aggregation_level' => 'aggregationLevel',
         'brand_ids' => 'brandIds',
-        'budget_models' => 'budgetModels',
-        'campaign_type' => 'campaignType',
-        'dimensions' => 'dimensions',
+        'categories' => 'categories',
         'end_date' => 'endDate',
         'format' => 'format',
-        'keywords' => 'keywords',
-        'keyword_types' => 'keywordTypes',
         'metrics' => 'metrics',
         'retailer_ids' => 'retailerIds',
-        'served_categories' => 'servedCategories',
+        'sku_ids' => 'skuIds',
         'start_date' => 'startDate'
     ];
 
@@ -237,20 +213,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
-        'account_ids' => 'setAccountIds',
-        'activation_platforms' => 'setActivationPlatforms',
         'aggregation_level' => 'setAggregationLevel',
         'brand_ids' => 'setBrandIds',
-        'budget_models' => 'setBudgetModels',
-        'campaign_type' => 'setCampaignType',
-        'dimensions' => 'setDimensions',
+        'categories' => 'setCategories',
         'end_date' => 'setEndDate',
         'format' => 'setFormat',
-        'keywords' => 'setKeywords',
-        'keyword_types' => 'setKeywordTypes',
         'metrics' => 'setMetrics',
         'retailer_ids' => 'setRetailerIds',
-        'served_categories' => 'setServedCategories',
+        'sku_ids' => 'setSkuIds',
         'start_date' => 'setStartDate'
     ];
 
@@ -261,20 +231,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
-        'account_ids' => 'getAccountIds',
-        'activation_platforms' => 'getActivationPlatforms',
         'aggregation_level' => 'getAggregationLevel',
         'brand_ids' => 'getBrandIds',
-        'budget_models' => 'getBudgetModels',
-        'campaign_type' => 'getCampaignType',
-        'dimensions' => 'getDimensions',
+        'categories' => 'getCategories',
         'end_date' => 'getEndDate',
         'format' => 'getFormat',
-        'keywords' => 'getKeywords',
-        'keyword_types' => 'getKeywordTypes',
         'metrics' => 'getMetrics',
         'retailer_ids' => 'getRetailerIds',
-        'served_categories' => 'getServedCategories',
+        'sku_ids' => 'getSkuIds',
         'start_date' => 'getStartDate'
     ];
 
@@ -319,81 +283,20 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const ACTIVATION_PLATFORMS_COMMERCE_MAX = 'commerceMax';
-    public const ACTIVATION_PLATFORMS_PRIVATE_MARKET = 'privateMarket';
-    public const AGGREGATION_LEVEL_CATEGORY = 'category';
-    public const AGGREGATION_LEVEL_KEYWORD = 'keyword';
-    public const BUDGET_MODELS_CRITEO_BUDGET = 'criteoBudget';
-    public const BUDGET_MODELS_RETAILER_BUDGET = 'retailerBudget';
-    public const CAMPAIGN_TYPE_ALL = 'all';
-    public const CAMPAIGN_TYPE_ONSITE_SPONSORED_PRODUCTS = 'onsiteSponsoredProducts';
-    public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'onsiteDisplay';
-    public const DIMENSIONS_DATE = 'date';
-    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
-    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
-    public const DIMENSIONS_RETAILER_ID = 'retailerId';
-    public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const DIMENSIONS_BRAND_ID = 'brandId';
-    public const DIMENSIONS_BRAND_NAME = 'brandName';
-    public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
-    public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
-    public const DIMENSIONS_BUY_TYPE = 'buyType';
-    public const DIMENSIONS_SKU_ID = 'skuId';
-    public const DIMENSIONS_SKU_NAME = 'skuName';
-    public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
-    public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
-    public const DIMENSIONS_PAGE_TYPE_ID = 'pageTypeId';
-    public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
-    public const DIMENSIONS_PRODUCT_GTIN = 'productGtin';
-    public const DIMENSIONS_PRODUCT_MPN = 'productMpn';
-    public const DIMENSIONS_PRODUCT_CATEGORY = 'productCategory';
-    public const DIMENSIONS_SERVED_CATEGORY = 'servedCategory';
-    public const DIMENSIONS_KEYWORD = 'keyword';
-    public const DIMENSIONS_KEYWORD_TYPE = 'keywordType';
-    public const DIMENSIONS_CAMPAIGN_TYPE = 'campaignType';
-    public const DIMENSIONS_CREATIVE_TYPE = 'creativeType';
-    public const DIMENSIONS_AD_FORMAT = 'adFormat';
-    public const DIMENSIONS_CREATIVE_NAME = 'creativeName';
-    public const DIMENSIONS_ENVIRONMENT = 'environment';
-    public const DIMENSIONS_BUDGET_MODEL = 'budgetModel';
-    public const DIMENSIONS_ACTIVATION_PLATFORM = 'activationPlatform';
+    public const AGGREGATION_LEVEL_BRAND = 'brand';
+    public const AGGREGATION_LEVEL_SKU = 'sku';
     public const FORMAT_JSON = 'json';
     public const FORMAT_JSON_COMPACT = 'json-compact';
     public const FORMAT_JSON_NEWLINE = 'json-newline';
     public const FORMAT_CSV = 'csv';
-    public const KEYWORD_TYPES_UNKNOWN = 'unknown';
-    public const KEYWORD_TYPES_GENERIC = 'generic';
-    public const KEYWORD_TYPES_BRANDED = 'branded';
-    public const KEYWORD_TYPES_CONQUESTING = 'conquesting';
-    public const METRICS_IMPRESSIONS = 'impressions';
-    public const METRICS_CLICKS = 'clicks';
-    public const METRICS_GROSS_CLICKS = 'grossClicks';
-    public const METRICS_SPEND = 'spend';
-    public const METRICS_CPC = 'cpc';
-    public const METRICS_CTR = 'ctr';
-    public const METRICS_CPM = 'cpm';
-    public const METRICS_ROAS = 'roas';
-    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
-    public const METRICS_ATTRIBUTED_UNITS = 'attributedUnits';
-    public const METRICS_ASSISTED_UNITS = 'assistedUnits';
-    public const METRICS_ASSISTED_SALES = 'assistedSales';
-    public const METRICS_EXPOSED_USERS = 'exposedUsers';
-    public const METRICS_IMPRESSION_SHARE = 'impressionShare';
-    public const METRICS_CLICK_SHARE = 'clickShare';
-    public const METRICS_INVALID_CLICKS = 'invalidClicks';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getActivationPlatformsAllowableValues()
-    {
-        return [
-            self::ACTIVATION_PLATFORMS_COMMERCE_MAX,
-            self::ACTIVATION_PLATFORMS_PRIVATE_MARKET,
-        ];
-    }
+    public const METRICS_CONSIDERATION_INDEX = 'considerationIndex';
+    public const METRICS_LISTING_PRICE = 'listingPrice';
+    public const METRICS_PDP_VIEW_RANK = 'pdpViewRank';
+    public const METRICS_SALES_INDEX = 'salesIndex';
+    public const METRICS_SALES_RANK = 'salesRank';
+    public const METRICS_TOTAL_PDP_PAGE_VIEWS = 'totalPdpPageViews';
+    public const METRICS_TOTAL_SALES_ONLINE = 'totalSalesOnline';
+    public const METRICS_TOTAL_SOLD_UNITS_ONLINE = 'totalSoldUnitsOnline';
 
     /**
      * Gets allowable values of the enum
@@ -403,75 +306,8 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public function getAggregationLevelAllowableValues()
     {
         return [
-            self::AGGREGATION_LEVEL_CATEGORY,
-            self::AGGREGATION_LEVEL_KEYWORD,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getBudgetModelsAllowableValues()
-    {
-        return [
-            self::BUDGET_MODELS_CRITEO_BUDGET,
-            self::BUDGET_MODELS_RETAILER_BUDGET,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCampaignTypeAllowableValues()
-    {
-        return [
-            self::CAMPAIGN_TYPE_ALL,
-            self::CAMPAIGN_TYPE_ONSITE_SPONSORED_PRODUCTS,
-            self::CAMPAIGN_TYPE_ONSITE_DISPLAY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDimensionsAllowableValues()
-    {
-        return [
-            self::DIMENSIONS_DATE,
-            self::DIMENSIONS_ACCOUNT_ID,
-            self::DIMENSIONS_ACCOUNT_NAME,
-            self::DIMENSIONS_RETAILER_ID,
-            self::DIMENSIONS_RETAILER_NAME,
-            self::DIMENSIONS_BRAND_ID,
-            self::DIMENSIONS_BRAND_NAME,
-            self::DIMENSIONS_CAMPAIGN_ID,
-            self::DIMENSIONS_CAMPAIGN_NAME,
-            self::DIMENSIONS_BUY_TYPE,
-            self::DIMENSIONS_SKU_ID,
-            self::DIMENSIONS_SKU_NAME,
-            self::DIMENSIONS_LINE_ITEM_ID,
-            self::DIMENSIONS_LINE_ITEM_NAME,
-            self::DIMENSIONS_PAGE_TYPE_ID,
-            self::DIMENSIONS_PAGE_TYPE_NAME,
-            self::DIMENSIONS_PRODUCT_GTIN,
-            self::DIMENSIONS_PRODUCT_MPN,
-            self::DIMENSIONS_PRODUCT_CATEGORY,
-            self::DIMENSIONS_SERVED_CATEGORY,
-            self::DIMENSIONS_KEYWORD,
-            self::DIMENSIONS_KEYWORD_TYPE,
-            self::DIMENSIONS_CAMPAIGN_TYPE,
-            self::DIMENSIONS_CREATIVE_TYPE,
-            self::DIMENSIONS_AD_FORMAT,
-            self::DIMENSIONS_CREATIVE_NAME,
-            self::DIMENSIONS_ENVIRONMENT,
-            self::DIMENSIONS_BUDGET_MODEL,
-            self::DIMENSIONS_ACTIVATION_PLATFORM,
+            self::AGGREGATION_LEVEL_BRAND,
+            self::AGGREGATION_LEVEL_SKU,
         ];
     }
 
@@ -495,40 +331,17 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
-    public function getKeywordTypesAllowableValues()
-    {
-        return [
-            self::KEYWORD_TYPES_UNKNOWN,
-            self::KEYWORD_TYPES_GENERIC,
-            self::KEYWORD_TYPES_BRANDED,
-            self::KEYWORD_TYPES_CONQUESTING,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
     public function getMetricsAllowableValues()
     {
         return [
-            self::METRICS_IMPRESSIONS,
-            self::METRICS_CLICKS,
-            self::METRICS_GROSS_CLICKS,
-            self::METRICS_SPEND,
-            self::METRICS_CPC,
-            self::METRICS_CTR,
-            self::METRICS_CPM,
-            self::METRICS_ROAS,
-            self::METRICS_ATTRIBUTED_SALES,
-            self::METRICS_ATTRIBUTED_UNITS,
-            self::METRICS_ASSISTED_UNITS,
-            self::METRICS_ASSISTED_SALES,
-            self::METRICS_EXPOSED_USERS,
-            self::METRICS_IMPRESSION_SHARE,
-            self::METRICS_CLICK_SHARE,
-            self::METRICS_INVALID_CLICKS,
+            self::METRICS_CONSIDERATION_INDEX,
+            self::METRICS_LISTING_PRICE,
+            self::METRICS_PDP_VIEW_RANK,
+            self::METRICS_SALES_INDEX,
+            self::METRICS_SALES_RANK,
+            self::METRICS_TOTAL_PDP_PAGE_VIEWS,
+            self::METRICS_TOTAL_SALES_ONLINE,
+            self::METRICS_TOTAL_SOLD_UNITS_ONLINE,
         ];
     }
 
@@ -548,20 +361,14 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('account_ids', $data ?? [], null);
-        $this->setIfExists('activation_platforms', $data ?? [], null);
-        $this->setIfExists('aggregation_level', $data ?? [], 'category');
+        $this->setIfExists('aggregation_level', $data ?? [], null);
         $this->setIfExists('brand_ids', $data ?? [], null);
-        $this->setIfExists('budget_models', $data ?? [], null);
-        $this->setIfExists('campaign_type', $data ?? [], 'all');
-        $this->setIfExists('dimensions', $data ?? [], null);
+        $this->setIfExists('categories', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
-        $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('keyword_types', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('served_categories', $data ?? [], null);
+        $this->setIfExists('sku_ids', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
     }
 
@@ -595,6 +402,9 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        if ($this->container['aggregation_level'] === null) {
+            $invalidProperties[] = "'aggregation_level' can't be null";
+        }
         $allowedValues = $this->getAggregationLevelAllowableValues();
         if (!is_null($this->container['aggregation_level']) && !in_array($this->container['aggregation_level'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -602,22 +412,6 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->container['aggregation_level'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'campaign_type', must be one of '%s'",
-                $this->container['campaign_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['dimensions'] === null) {
-            $invalidProperties[] = "'dimensions' can't be null";
-        }
-        if ((count($this->container['dimensions']) < 1)) {
-            $invalidProperties[] = "invalid value for 'dimensions', number of items must be greater than or equal to 1.";
         }
 
         if ($this->container['end_date'] === null) {
@@ -685,86 +479,9 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets account_ids
-     *
-     * @return string[]|null
-     */
-    public function getAccountIds()
-    {
-        return $this->container['account_ids'];
-    }
-
-    /**
-     * Sets account_ids
-     *
-     * @param string[]|null $account_ids account_ids
-     *
-     * @return self
-     */
-    public function setAccountIds($account_ids)
-    {
-        if (is_null($account_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'account_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('account_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['account_ids'] = $account_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets activation_platforms
-     *
-     * @return string[]|null
-     */
-    public function getActivationPlatforms()
-    {
-        return $this->container['activation_platforms'];
-    }
-
-    /**
-     * Sets activation_platforms
-     *
-     * @param string[]|null $activation_platforms activation_platforms
-     *
-     * @return self
-     */
-    public function setActivationPlatforms($activation_platforms)
-    {
-        if (is_null($activation_platforms)) {
-            array_push($this->openAPINullablesSetToNull, 'activation_platforms');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('activation_platforms', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getActivationPlatformsAllowableValues();
-        if (!is_null($activation_platforms) && array_diff($activation_platforms, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'activation_platforms', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['activation_platforms'] = $activation_platforms;
-
-        return $this;
-    }
-
-    /**
      * Gets aggregation_level
      *
-     * @return string|null
+     * @return string
      */
     public function getAggregationLevel()
     {
@@ -774,7 +491,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets aggregation_level
      *
-     * @param string|null $aggregation_level aggregation_level
+     * @param string $aggregation_level aggregation_level
      *
      * @return self
      */
@@ -833,122 +550,35 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets budget_models
+     * Gets categories
      *
      * @return string[]|null
      */
-    public function getBudgetModels()
+    public function getCategories()
     {
-        return $this->container['budget_models'];
+        return $this->container['categories'];
     }
 
     /**
-     * Sets budget_models
+     * Sets categories
      *
-     * @param string[]|null $budget_models budget_models
+     * @param string[]|null $categories categories
      *
      * @return self
      */
-    public function setBudgetModels($budget_models)
+    public function setCategories($categories)
     {
-        if (is_null($budget_models)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_models');
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_models', $nullablesSetToNull);
+            $index = array_search('categories', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getBudgetModelsAllowableValues();
-        if (!is_null($budget_models) && array_diff($budget_models, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'budget_models', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['budget_models'] = $budget_models;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_type
-     *
-     * @return string|null
-     */
-    public function getCampaignType()
-    {
-        return $this->container['campaign_type'];
-    }
-
-    /**
-     * Sets campaign_type
-     *
-     * @param string|null $campaign_type campaign_type
-     *
-     * @return self
-     */
-    public function setCampaignType($campaign_type)
-    {
-        if (is_null($campaign_type)) {
-            throw new \InvalidArgumentException('non-nullable campaign_type cannot be null');
-        }
-        $allowedValues = $this->getCampaignTypeAllowableValues();
-        if (!in_array($campaign_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'campaign_type', must be one of '%s'",
-                    $campaign_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['campaign_type'] = $campaign_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets dimensions
-     *
-     * @return string[]
-     */
-    public function getDimensions()
-    {
-        return $this->container['dimensions'];
-    }
-
-    /**
-     * Sets dimensions
-     *
-     * @param string[] $dimensions dimensions
-     *
-     * @return self
-     */
-    public function setDimensions($dimensions)
-    {
-        if (is_null($dimensions)) {
-            throw new \InvalidArgumentException('non-nullable dimensions cannot be null');
-        }
-        $allowedValues = $this->getDimensionsAllowableValues();
-        if (array_diff($dimensions, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'dimensions', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($dimensions) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $dimensions when calling ShareOfVoiceInsight., number of items must be greater than or equal to 1.');
-        }
-        $this->container['dimensions'] = $dimensions;
+        $this->container['categories'] = $categories;
 
         return $this;
     }
@@ -1018,83 +648,6 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets keywords
-     *
-     * @return string[]|null
-     */
-    public function getKeywords()
-    {
-        return $this->container['keywords'];
-    }
-
-    /**
-     * Sets keywords
-     *
-     * @param string[]|null $keywords keywords
-     *
-     * @return self
-     */
-    public function setKeywords($keywords)
-    {
-        if (is_null($keywords)) {
-            array_push($this->openAPINullablesSetToNull, 'keywords');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('keywords', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['keywords'] = $keywords;
-
-        return $this;
-    }
-
-    /**
-     * Gets keyword_types
-     *
-     * @return string[]|null
-     */
-    public function getKeywordTypes()
-    {
-        return $this->container['keyword_types'];
-    }
-
-    /**
-     * Sets keyword_types
-     *
-     * @param string[]|null $keyword_types keyword_types
-     *
-     * @return self
-     */
-    public function setKeywordTypes($keyword_types)
-    {
-        if (is_null($keyword_types)) {
-            array_push($this->openAPINullablesSetToNull, 'keyword_types');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('keyword_types', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getKeywordTypesAllowableValues();
-        if (!is_null($keyword_types) && array_diff($keyword_types, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'keyword_types', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['keyword_types'] = $keyword_types;
-
-        return $this;
-    }
-
-    /**
      * Gets metrics
      *
      * @return string[]
@@ -1128,7 +681,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
         if ((count($metrics) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $metrics when calling ShareOfVoiceInsight., number of items must be greater than or equal to 1.');
+            throw new \InvalidArgumentException('invalid length for $metrics when calling DigitalShelfIntelligenceInsight., number of items must be greater than or equal to 1.');
         }
         $this->container['metrics'] = $metrics;
 
@@ -1170,35 +723,35 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets served_categories
+     * Gets sku_ids
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\SkuFilter[]|null
      */
-    public function getServedCategories()
+    public function getSkuIds()
     {
-        return $this->container['served_categories'];
+        return $this->container['sku_ids'];
     }
 
     /**
-     * Sets served_categories
+     * Sets sku_ids
      *
-     * @param string[]|null $served_categories served_categories
+     * @param \criteo\api\retailmedia\preview\Model\SkuFilter[]|null $sku_ids sku_ids
      *
      * @return self
      */
-    public function setServedCategories($served_categories)
+    public function setSkuIds($sku_ids)
     {
-        if (is_null($served_categories)) {
-            array_push($this->openAPINullablesSetToNull, 'served_categories');
+        if (is_null($sku_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('served_categories', $nullablesSetToNull);
+            $index = array_search('sku_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['served_categories'] = $served_categories;
+        $this->container['sku_ids'] = $sku_ids;
 
         return $this;
     }

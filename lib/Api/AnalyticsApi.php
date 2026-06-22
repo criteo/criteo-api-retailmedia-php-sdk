@@ -89,6 +89,9 @@ class AnalyticsApi
         'generateAsyncUnfilledPlacementsReport' => [
             'application/json',
         ],
+        'generateDigitalShelfIntelligenceInsight' => [
+            'application/json',
+        ],
         'generateShareOfVoiceInsight' => [
             'application/json',
         ],
@@ -108,6 +111,12 @@ class AnalyticsApi
             'application/json',
         ],
         'getAsyncExportStatus' => [
+            'application/json',
+        ],
+        'getInsightReportOutput' => [
+            'application/json',
+        ],
+        'getInsightReportStatus' => [
             'application/json',
         ],
     ];
@@ -1843,6 +1852,296 @@ class AnalyticsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_unfilled_placements_report_request));
             } else {
                 $httpBody = $async_unfilled_placements_report_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation generateDigitalShelfIntelligenceInsight
+     *
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightRequest $digital_shelf_intelligence_insight_request digital_shelf_intelligence_insight_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateDigitalShelfIntelligenceInsight'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncInsightResponse
+     */
+    public function generateDigitalShelfIntelligenceInsight($digital_shelf_intelligence_insight_request, string $contentType = self::contentTypes['generateDigitalShelfIntelligenceInsight'][0])
+    {
+        list($response) = $this->generateDigitalShelfIntelligenceInsightWithHttpInfo($digital_shelf_intelligence_insight_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateDigitalShelfIntelligenceInsightWithHttpInfo
+     *
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightRequest $digital_shelf_intelligence_insight_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateDigitalShelfIntelligenceInsight'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncInsightResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateDigitalShelfIntelligenceInsightWithHttpInfo($digital_shelf_intelligence_insight_request, string $contentType = self::contentTypes['generateDigitalShelfIntelligenceInsight'][0])
+    {
+        $request = $this->generateDigitalShelfIntelligenceInsightRequest($digital_shelf_intelligence_insight_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncInsightResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncInsightResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateDigitalShelfIntelligenceInsightAsync
+     *
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightRequest $digital_shelf_intelligence_insight_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateDigitalShelfIntelligenceInsight'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateDigitalShelfIntelligenceInsightAsync($digital_shelf_intelligence_insight_request, string $contentType = self::contentTypes['generateDigitalShelfIntelligenceInsight'][0])
+    {
+        return $this->generateDigitalShelfIntelligenceInsightAsyncWithHttpInfo($digital_shelf_intelligence_insight_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateDigitalShelfIntelligenceInsightAsyncWithHttpInfo
+     *
+     * /preview/retail-media/insights/digital-shelf-intelligence
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightRequest $digital_shelf_intelligence_insight_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateDigitalShelfIntelligenceInsight'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateDigitalShelfIntelligenceInsightAsyncWithHttpInfo($digital_shelf_intelligence_insight_request, string $contentType = self::contentTypes['generateDigitalShelfIntelligenceInsight'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse';
+        $request = $this->generateDigitalShelfIntelligenceInsightRequest($digital_shelf_intelligence_insight_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateDigitalShelfIntelligenceInsight'
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightRequest $digital_shelf_intelligence_insight_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateDigitalShelfIntelligenceInsight'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateDigitalShelfIntelligenceInsightRequest($digital_shelf_intelligence_insight_request, string $contentType = self::contentTypes['generateDigitalShelfIntelligenceInsight'][0])
+    {
+
+        // verify the required parameter 'digital_shelf_intelligence_insight_request' is set
+        if ($digital_shelf_intelligence_insight_request === null || (is_array($digital_shelf_intelligence_insight_request) && count($digital_shelf_intelligence_insight_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $digital_shelf_intelligence_insight_request when calling generateDigitalShelfIntelligenceInsight'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/insights/digital-shelf-intelligence';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($digital_shelf_intelligence_insight_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($digital_shelf_intelligence_insight_request));
+            } else {
+                $httpBody = $digital_shelf_intelligence_insight_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3858,6 +4157,588 @@ class AnalyticsApi
             $resourcePath = str_replace(
                 '{' . 'reportId' . '}',
                 ObjectSerializer::toPathValue($report_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getInsightReportOutput
+     *
+     * /preview/retail-media/insights/{insightId}/output
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \SplFileObject
+     */
+    public function getInsightReportOutput($insight_id, string $contentType = self::contentTypes['getInsightReportOutput'][0])
+    {
+        list($response) = $this->getInsightReportOutputWithHttpInfo($insight_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getInsightReportOutputWithHttpInfo
+     *
+     * /preview/retail-media/insights/{insightId}/output
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInsightReportOutputWithHttpInfo($insight_id, string $contentType = self::contentTypes['getInsightReportOutput'][0])
+    {
+        $request = $this->getInsightReportOutputRequest($insight_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\SplFileObject' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\SplFileObject' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\SplFileObject', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\SplFileObject';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\SplFileObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInsightReportOutputAsync
+     *
+     * /preview/retail-media/insights/{insightId}/output
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInsightReportOutputAsync($insight_id, string $contentType = self::contentTypes['getInsightReportOutput'][0])
+    {
+        return $this->getInsightReportOutputAsyncWithHttpInfo($insight_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInsightReportOutputAsyncWithHttpInfo
+     *
+     * /preview/retail-media/insights/{insightId}/output
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInsightReportOutputAsyncWithHttpInfo($insight_id, string $contentType = self::contentTypes['getInsightReportOutput'][0])
+    {
+        $returnType = '\SplFileObject';
+        $request = $this->getInsightReportOutputRequest($insight_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInsightReportOutput'
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInsightReportOutputRequest($insight_id, string $contentType = self::contentTypes['getInsightReportOutput'][0])
+    {
+
+        // verify the required parameter 'insight_id' is set
+        if ($insight_id === null || (is_array($insight_id) && count($insight_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $insight_id when calling getInsightReportOutput'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/insights/{insightId}/output';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($insight_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'insightId' . '}',
+                ObjectSerializer::toPathValue($insight_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getInsightReportStatus
+     *
+     * /preview/retail-media/insights/{insightId}/status
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncInsightResponse
+     */
+    public function getInsightReportStatus($insight_id, string $contentType = self::contentTypes['getInsightReportStatus'][0])
+    {
+        list($response) = $this->getInsightReportStatusWithHttpInfo($insight_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getInsightReportStatusWithHttpInfo
+     *
+     * /preview/retail-media/insights/{insightId}/status
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncInsightResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInsightReportStatusWithHttpInfo($insight_id, string $contentType = self::contentTypes['getInsightReportStatus'][0])
+    {
+        $request = $this->getInsightReportStatusRequest($insight_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncInsightResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncInsightResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInsightReportStatusAsync
+     *
+     * /preview/retail-media/insights/{insightId}/status
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInsightReportStatusAsync($insight_id, string $contentType = self::contentTypes['getInsightReportStatus'][0])
+    {
+        return $this->getInsightReportStatusAsyncWithHttpInfo($insight_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInsightReportStatusAsyncWithHttpInfo
+     *
+     * /preview/retail-media/insights/{insightId}/status
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInsightReportStatusAsyncWithHttpInfo($insight_id, string $contentType = self::contentTypes['getInsightReportStatus'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncInsightResponse';
+        $request = $this->getInsightReportStatusRequest($insight_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInsightReportStatus'
+     *
+     * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInsightReportStatusRequest($insight_id, string $contentType = self::contentTypes['getInsightReportStatus'][0])
+    {
+
+        // verify the required parameter 'insight_id' is set
+        if ($insight_id === null || (is_array($insight_id) && count($insight_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $insight_id when calling getInsightReportStatus'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/insights/{insightId}/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($insight_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'insightId' . '}',
+                ObjectSerializer::toPathValue($insight_id),
                 $resourcePath
             );
         }

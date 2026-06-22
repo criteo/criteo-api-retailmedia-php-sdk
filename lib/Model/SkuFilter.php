@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateBalanceModelV1
+ * SkuFilter
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * UpdateBalanceModelV1 Class Doc Comment
+ * SkuFilter Class Doc Comment
  *
  * @category Class
- * @description An object that represents the available options to set when updating a Retail Media Balance.
+ * @description The filters to apply
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UpdateBalanceModelV1';
+    protected static $openAPIModelName = 'SkuFilter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\criteo\api\retailmedia\preview\Model\NillableOfNullableOfDateOnly',
-        'memo' => 'string',
-        'name' => 'string',
-        'retailer_po_number' => 'string',
-        'start_date' => 'string'
+        'retailer_id' => 'string',
+        'retailer_sku_ids' => 'string[]'
     ];
 
     /**
@@ -73,11 +70,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => null,
-        'memo' => null,
-        'name' => null,
-        'retailer_po_number' => null,
-        'start_date' => null
+        'retailer_id' => null,
+        'retailer_sku_ids' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => true,
-		'memo' => true,
-		'name' => true,
-		'retailer_po_number' => true,
-		'start_date' => true
+        'retailer_id' => false,
+		'retailer_sku_ids' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'memo' => 'memo',
-        'name' => 'name',
-        'retailer_po_number' => 'retailerPoNumber',
-        'start_date' => 'startDate'
+        'retailer_id' => 'retailerId',
+        'retailer_sku_ids' => 'retailerSkuIds'
     ];
 
     /**
@@ -192,11 +180,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'memo' => 'setMemo',
-        'name' => 'setName',
-        'retailer_po_number' => 'setRetailerPoNumber',
-        'start_date' => 'setStartDate'
+        'retailer_id' => 'setRetailerId',
+        'retailer_sku_ids' => 'setRetailerSkuIds'
     ];
 
     /**
@@ -205,11 +190,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'memo' => 'getMemo',
-        'name' => 'getName',
-        'retailer_po_number' => 'getRetailerPoNumber',
-        'start_date' => 'getStartDate'
+        'retailer_id' => 'getRetailerId',
+        'retailer_sku_ids' => 'getRetailerSkuIds'
     ];
 
     /**
@@ -269,11 +251,8 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('retailer_po_number', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('retailer_sku_ids', $data ?? [], null);
     }
 
     /**
@@ -303,6 +282,16 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
+        if ($this->container['retailer_sku_ids'] === null) {
+            $invalidProperties[] = "'retailer_sku_ids' can't be null";
+        }
+        if ((count($this->container['retailer_sku_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'retailer_sku_ids', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -319,171 +308,60 @@ class UpdateBalanceModelV1 implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets end_date
+     * Gets retailer_id
      *
-     * @return \criteo\api\retailmedia\preview\Model\NillableOfNullableOfDateOnly|null
+     * @return string
      */
-    public function getEndDate()
+    public function getRetailerId()
     {
-        return $this->container['end_date'];
+        return $this->container['retailer_id'];
     }
 
     /**
-     * Sets end_date
+     * Sets retailer_id
      *
-     * @param \criteo\api\retailmedia\preview\Model\NillableOfNullableOfDateOnly|null $end_date end_date
+     * @param string $retailer_id retailer_id
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setRetailerId($retailer_id)
     {
-        if (is_null($end_date)) {
-            array_push($this->openAPINullablesSetToNull, 'end_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('end_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
         }
-        $this->container['end_date'] = $end_date;
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }
 
     /**
-     * Gets memo
+     * Gets retailer_sku_ids
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getMemo()
+    public function getRetailerSkuIds()
     {
-        return $this->container['memo'];
+        return $this->container['retailer_sku_ids'];
     }
 
     /**
-     * Sets memo
+     * Sets retailer_sku_ids
      *
-     * @param string|null $memo Memo.
+     * @param string[] $retailer_sku_ids retailer_sku_ids
      *
      * @return self
      */
-    public function setMemo($memo)
+    public function setRetailerSkuIds($retailer_sku_ids)
     {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($retailer_sku_ids)) {
+            throw new \InvalidArgumentException('non-nullable retailer_sku_ids cannot be null');
         }
-        $this->container['memo'] = $memo;
 
-        return $this;
-    }
 
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name of the balance.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if ((count($retailer_sku_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $retailer_sku_ids when calling SkuFilter., number of items must be greater than or equal to 1.');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets retailer_po_number
-     *
-     * @return string|null
-     */
-    public function getRetailerPoNumber()
-    {
-        return $this->container['retailer_po_number'];
-    }
-
-    /**
-     * Sets retailer_po_number
-     *
-     * @param string|null $retailer_po_number Purchase Order number.
-     *
-     * @return self
-     */
-    public function setRetailerPoNumber($retailer_po_number)
-    {
-        if (is_null($retailer_po_number)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_po_number');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_po_number', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['retailer_po_number'] = $retailer_po_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return string|null
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param string|null $start_date Start date of the balance in the format YYYY-MM-DD.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            array_push($this->openAPINullablesSetToNull, 'start_date');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('start_date', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['start_date'] = $start_date;
+        $this->container['retailer_sku_ids'] = $retailer_sku_ids;
 
         return $this;
     }

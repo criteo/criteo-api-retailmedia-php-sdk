@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * InsightStatusResponse Class Doc Comment
  *
  * @category Class
- * @description Status of an async report request
+ * @description Status of an async insight request
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -581,7 +581,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param string|null $status Status of an async report request
+     * @param string|null $status Status of an async insight request
      *
      * @return self
      */
