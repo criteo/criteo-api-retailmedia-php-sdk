@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\SetBidsModel**](SetBidsModel.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2026_07\Model\SetBidsModel**](SetBidsModel.md) |  | [optional]
 **id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 

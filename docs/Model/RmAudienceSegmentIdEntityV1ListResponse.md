@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\v2025_01\Model\RmAudienceSegmentIdEntityV1Resource[]**](RmAudienceSegmentIdEntityV1Resource.md) |  | [optional]
-**errors** | [**\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
-**warnings** | [**\criteo\api\retailmedia\v2025_01\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
+**data** | [**\criteo\api\retailmedia\v2026_07\Model\RmAudienceSegmentIdEntityV1Resource[]**](RmAudienceSegmentIdEntityV1Resource.md) |  | [optional]
+**errors** | [**\criteo\api\retailmedia\v2026_07\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
+**warnings** | [**\criteo\api\retailmedia\v2026_07\Model\CommonProblem[]**](CommonProblem.md) |  | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

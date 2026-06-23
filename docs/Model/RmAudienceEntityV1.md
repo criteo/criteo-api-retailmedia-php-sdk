@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** | Account associated to the audience | [optional]
-**algebra** | [**\criteo\api\retailmedia\v2025_01\Model\RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  | [optional]
+**algebra** | [**\criteo\api\retailmedia\v2026_07\Model\RmAlgebraNodeV1**](RmAlgebraNodeV1.md) |  | [optional]
 **channels** | **string[]** | Channels associated to the audience (read-only) | [optional]
 **created_at** | **\DateTime** | ISO-8601 timestamp in UTC of audience creation (read-only) | [optional]
 **created_by_id** | **string** | User that created the audience | [optional]

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\Category202204**](Category202204.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2026_07\Model\Category202204**](Category202204.md) |  | [optional]
 **id** | **string** | Unique identifier of this resource. | [optional]
 **type** | **string** |  | [optional]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\v2025_01\Model\ExternalAccount**](ExternalAccount.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2026_07\Model\ExternalAccount**](ExternalAccount.md) |  | [optional]
 **id** | **string** |  |
 **type** | **string** |  |
 
