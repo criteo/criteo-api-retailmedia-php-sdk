@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\RmAudienceSegmentEntityV1**](RmAudienceSegmentEntityV1.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\experimental\Model\RmAudienceSegmentEntityV1**](RmAudienceSegmentEntityV1.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** |  | [optional]
 

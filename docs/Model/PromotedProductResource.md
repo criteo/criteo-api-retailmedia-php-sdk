@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\PromotedProduct**](PromotedProduct.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\experimental\Model\PromotedProduct**](PromotedProduct.md) |  | [optional]
 **id** | **string** |  | [optional]
 **type** | **string** |  | [optional]
 

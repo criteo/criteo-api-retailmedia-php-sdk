@@ -1,19 +1,19 @@
-# criteo\api\retailmedia\preview\GatewayApi
+# criteo\api\retailmedia\experimental\GatewayApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getCurrentApplication()**](GatewayApi.md#getCurrentApplication) | **GET** /preview/retail-media/me | /preview/retail-media/me |
+| [**getCurrentApplication()**](GatewayApi.md#getCurrentApplication) | **GET** /experimental/retail-media/me | /experimental/retail-media/me |
 
 
 ## `getCurrentApplication()`
 
 ```php
-getCurrentApplication(): \criteo\api\retailmedia\preview\Model\ApplicationSummaryModelResponse
+getCurrentApplication(): \criteo\api\retailmedia\experimental\Model\ApplicationSummaryModelResponse
 ```
 
-/preview/retail-media/me
+/experimental/retail-media/me
 
 Get information about the currently logged application
 
@@ -25,13 +25,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\GatewayApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\GatewayApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -52,7 +52,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\ApplicationSummaryModelResponse**](../Model/ApplicationSummaryModelResponse.md)
 
 ### Authorization
 

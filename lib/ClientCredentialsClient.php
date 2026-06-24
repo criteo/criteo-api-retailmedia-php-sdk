@@ -1,8 +1,8 @@
 <?php
-namespace criteo\api\retailmedia\preview;
+namespace criteo\api\retailmedia\experimental;
 
-use criteo\api\retailmedia\preview\ApiException;
-use criteo\api\retailmedia\preview\ClientCredentialsClient\Token;
+use criteo\api\retailmedia\experimental\ApiException;
+use criteo\api\retailmedia\experimental\ClientCredentialsClient\Token;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;

@@ -1,22 +1,22 @@
-# criteo\api\retailmedia\preview\BalanceApi
+# criteo\api\retailmedia\experimental\BalanceApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getBalanceHistoryV1()**](BalanceApi.md#getBalanceHistoryV1) | **GET** /preview/retail-media/balances/{balanceId}/history | /preview/retail-media/balances/{balanceId}/history |
-| [**getBalanceV1()**](BalanceApi.md#getBalanceV1) | **GET** /preview/retail-media/balances/{balanceId} | /preview/retail-media/balances/{balanceId} |
-| [**getPageOfBalancesV1()**](BalanceApi.md#getPageOfBalancesV1) | **GET** /preview/retail-media/accounts/{accountId}/balances | /preview/retail-media/accounts/{accountId}/balances |
-| [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /preview/retail-media/accounts/{account-id}/balances/{balance-id} | /preview/retail-media/accounts/{account-id}/balances/{balance-id} |
+| [**getBalanceHistoryV1()**](BalanceApi.md#getBalanceHistoryV1) | **GET** /experimental/retail-media/balances/{balanceId}/history | /experimental/retail-media/balances/{balanceId}/history |
+| [**getBalanceV1()**](BalanceApi.md#getBalanceV1) | **GET** /experimental/retail-media/balances/{balanceId} | /experimental/retail-media/balances/{balanceId} |
+| [**getPageOfBalancesV1()**](BalanceApi.md#getPageOfBalancesV1) | **GET** /experimental/retail-media/accounts/{accountId}/balances | /experimental/retail-media/accounts/{accountId}/balances |
+| [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /experimental/retail-media/accounts/{account-id}/balances/{balance-id} | /experimental/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 ## `getBalanceHistoryV1()`
 
 ```php
-getBalanceHistoryV1($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
+getBalanceHistoryV1($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\experimental\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
 ```
 
-/preview/retail-media/balances/{balanceId}/history
+/experimental/retail-media/balances/{balanceId}/history
 
 Gets the balance's historical change data.
 
@@ -28,13 +28,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -64,7 +64,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata**](../Model/ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata.md)
+[**\criteo\api\retailmedia\experimental\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata**](../Model/ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata.md)
 
 ### Authorization
 
@@ -82,10 +82,10 @@ try {
 ## `getBalanceV1()`
 
 ```php
-getBalanceV1($balance_id): \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeBalanceV1
+getBalanceV1($balance_id): \criteo\api\retailmedia\experimental\Model\EntityResourceOutcomeBalanceV1
 ```
 
-/preview/retail-media/balances/{balanceId}
+/experimental/retail-media/balances/{balanceId}
 
 Get a balance for the given balance id.
 
@@ -97,13 +97,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -127,7 +127,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeBalanceV1**](../Model/EntityResourceOutcomeBalanceV1.md)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceOutcomeBalanceV1**](../Model/EntityResourceOutcomeBalanceV1.md)
 
 ### Authorization
 
@@ -145,10 +145,10 @@ try {
 ## `getPageOfBalancesV1()`
 
 ```php
-getPageOfBalancesV1($account_id, $limit, $limit_to_id, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata
+getPageOfBalancesV1($account_id, $limit, $limit_to_id, $offset): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata
 ```
 
-/preview/retail-media/accounts/{accountId}/balances
+/experimental/retail-media/accounts/{accountId}/balances
 
 Gets page of balance objects for the given account id.
 
@@ -160,13 +160,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -196,7 +196,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata**](../Model/EntityResourceCollectionOutcomeBalanceV1AndMetadata.md)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata**](../Model/EntityResourceCollectionOutcomeBalanceV1AndMetadata.md)
 
 ### Authorization
 
@@ -217,7 +217,7 @@ try {
 updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1)
 ```
 
-/preview/retail-media/accounts/{account-id}/balances/{balance-id}
+/experimental/retail-media/accounts/{account-id}/balances/{balance-id}
 
 Modify a balance for the given account id
 
@@ -229,13 +229,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\BalanceApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -243,7 +243,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to change the dates
-$value_resource_input_of_update_balance_model_v1 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
+$value_resource_input_of_update_balance_model_v1 = new \criteo\api\retailmedia\experimental\Model\ValueResourceInputOfUpdateBalanceModelV1(); // \criteo\api\retailmedia\experimental\Model\ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
 
 try {
     $apiInstance->updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1);
@@ -258,7 +258,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **value_resource_input_of_update_balance_model_v1** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfUpdateBalanceModelV1**](../Model/ValueResourceInputOfUpdateBalanceModelV1.md)| An object that represents the available options to modify a balance. | |
+| **value_resource_input_of_update_balance_model_v1** | [**\criteo\api\retailmedia\experimental\Model\ValueResourceInputOfUpdateBalanceModelV1**](../Model/ValueResourceInputOfUpdateBalanceModelV1.md)| An object that represents the available options to modify a balance. | |
 
 ### Return type
 

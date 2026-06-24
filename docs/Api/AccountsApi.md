@@ -1,20 +1,20 @@
-# criteo\api\retailmedia\preview\AccountsApi
+# criteo\api\retailmedia\experimental\AccountsApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts | /preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |
-| [**searchBrands()**](AccountsApi.md#searchBrands) | **POST** /preview/retail-media/brands/search | /preview/retail-media/brands/search |
+| [**getPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /experimental/retail-media/account-management/accounts/{accountId}/private-market-child-accounts | /experimental/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |
+| [**searchBrands()**](AccountsApi.md#searchBrands) | **POST** /experimental/retail-media/brands/search | /experimental/retail-media/brands/search |
 
 
 ## `getPrivateMarketChildAccountsByAccountId()`
 
 ```php
-getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
+getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 ```
 
-/preview/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
+/experimental/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
 
 Gets Private Market child accounts that are associated with the given account
 
@@ -26,13 +26,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md)
 
 ### Authorization
 
@@ -78,10 +78,10 @@ try {
 ## `searchBrands()`
 
 ```php
-searchBrands($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+searchBrands($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
 ```
 
-/preview/retail-media/brands/search
+/experimental/retail-media/brands/search
 
 Search for brands given a retailer ID and search term.
 
@@ -93,13 +93,13 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -107,7 +107,7 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AccountsApi(
 );
 $limit = 25; // int | the number of brands to return
 $offset = 0; // int | offset of paginated results
-$value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
+$value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\experimental\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\experimental\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
 
 try {
     $result = $apiInstance->searchBrands($limit, $offset, $value_resource_input_brand_id_search_request);
@@ -123,11 +123,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **limit** | **int**| the number of brands to return | [optional] [default to 25] |
 | **offset** | **int**| offset of paginated results | [optional] [default to 0] |
-| **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
+| **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\experimental\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
 
 ### Authorization
 

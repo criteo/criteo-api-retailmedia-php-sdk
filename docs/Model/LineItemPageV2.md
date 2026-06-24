@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**categories** | [**\criteo\api\retailmedia\preview\Model\LineItemPageCategoryV2[]**](LineItemPageCategoryV2.md) |  | [optional]
+**categories** | [**\criteo\api\retailmedia\experimental\Model\LineItemPageCategoryV2[]**](LineItemPageCategoryV2.md) |  | [optional]
 **page_type** | **string** | Page Type Enum |
 **search_keywords** | **string[]** |  | [optional]
 

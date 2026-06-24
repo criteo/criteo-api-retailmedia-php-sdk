@@ -1,19 +1,19 @@
-# criteo\api\retailmedia\preview\OnSiteRecommendationApi
+# criteo\api\retailmedia\experimental\OnSiteRecommendationApi
 
 All URIs are relative to https://api.criteo.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**chatbotProductRecommendations()**](OnSiteRecommendationApi.md#chatbotProductRecommendations) | **POST** /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations | /preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations |
+| [**chatbotProductRecommendations()**](OnSiteRecommendationApi.md#chatbotProductRecommendations) | **POST** /experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations | /experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations |
 
 
 ## `chatbotProductRecommendations()`
 
 ```php
-chatbotProductRecommendations($catalogid, $inbot_discussion_body_model): \criteo\api\retailmedia\preview\Model\MessageBodyModel
+chatbotProductRecommendations($catalogid, $inbot_discussion_body_model): \criteo\api\retailmedia\experimental\Model\MessageBodyModel
 ```
 
-/preview/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
+/experimental/retail-media/chatbot-catalogs/{catalogid}/product-recommendations
 
 Ask a chatbot for a product recommendation
 
@@ -25,20 +25,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 // Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new criteo\api\retailmedia\preview\Api\OnSiteRecommendationApi(
+$apiInstance = new criteo\api\retailmedia\experimental\Api\OnSiteRecommendationApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $catalogid = 'catalogid_example'; // string | the identifier of the catalog to query
-$inbot_discussion_body_model = new \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel(); // \criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel
+$inbot_discussion_body_model = new \criteo\api\retailmedia\experimental\Model\InbotDiscussionBodyModel(); // \criteo\api\retailmedia\experimental\Model\InbotDiscussionBodyModel
 
 try {
     $result = $apiInstance->chatbotProductRecommendations($catalogid, $inbot_discussion_body_model);
@@ -53,11 +53,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **catalogid** | **string**| the identifier of the catalog to query | |
-| **inbot_discussion_body_model** | [**\criteo\api\retailmedia\preview\Model\InbotDiscussionBodyModel**](../Model/InbotDiscussionBodyModel.md)|  | |
+| **inbot_discussion_body_model** | [**\criteo\api\retailmedia\experimental\Model\InbotDiscussionBodyModel**](../Model/InbotDiscussionBodyModel.md)|  | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\MessageBodyModel**](../Model/MessageBodyModel.md)
+[**\criteo\api\retailmedia\experimental\Model\MessageBodyModel**](../Model/MessageBodyModel.md)
 
 ### Authorization
 

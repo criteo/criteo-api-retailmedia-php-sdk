@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\Creative2**](Creative2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\experimental\Model\Creative2**](Creative2.md) |  | [optional]
 **id** | **string** | Unique identifier of this resource. | [optional]
 **type** | **string** |  | [optional]
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**end_date** | [**\criteo\api\retailmedia\preview\Model\NillableOfNullableOfDateOnly**](NillableOfNullableOfDateOnly.md) |  | [optional]
+**end_date** | [**\criteo\api\retailmedia\experimental\Model\NillableOfNullableOfDateOnly**](NillableOfNullableOfDateOnly.md) |  | [optional]
 **memo** | **string** | Memo. | [optional]
 **name** | **string** | Name of the balance. | [optional]
 **retailer_po_number** | **string** | Purchase Order number. | [optional]

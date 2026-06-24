@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\ProductButtonResponse**](ProductButtonResponse.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\experimental\Model\ProductButtonResponse**](ProductButtonResponse.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 

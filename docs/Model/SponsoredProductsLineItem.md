@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** | The date and time when the line item was created. |
 **daily_pacing** | **float** | The daily pacing limit for budget spending. | [optional]
 **end_date** | **\DateTime** | The date and time when the line item stops running. | [optional]
-**flight_schedule** | [**\criteo\api\retailmedia\preview\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
+**flight_schedule** | [**\criteo\api\retailmedia\experimental\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
 **is_auto_daily_pacing** | **bool** | Indicates whether automatic daily pacing is enabled. | [optional]
 **keyword_strategy** | **string** | The keyword targeting strategy for this line item. | [optional]
 **max_bid** | **float** | The maximum bid amount allowed for this line item. | [optional]

@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**product_buy_box_winners** | [**\criteo\api\retailmedia\preview\Model\ProductBuyBoxWinner[]**](ProductBuyBoxWinner.md) |  |
+**product_buy_box_winners** | [**\criteo\api\retailmedia\experimental\Model\ProductBuyBoxWinner[]**](ProductBuyBoxWinner.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
