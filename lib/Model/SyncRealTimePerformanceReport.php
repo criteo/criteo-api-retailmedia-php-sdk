@@ -287,8 +287,8 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
-    public const METRICS_BILLABLE_IMPRESSIONS = 'billableImpressions';
-    public const METRICS_BILLABLE_CLICKS = 'billableClicks';
+    public const METRICS_IMPRESSIONS = 'impressions';
+    public const METRICS_CLICKS = 'clicks';
     public const METRICS_SPEND = 'spend';
 
     /**
@@ -320,8 +320,8 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     public function getMetricsAllowableValues()
     {
         return [
-            self::METRICS_BILLABLE_IMPRESSIONS,
-            self::METRICS_BILLABLE_CLICKS,
+            self::METRICS_IMPRESSIONS,
+            self::METRICS_CLICKS,
             self::METRICS_SPEND,
         ];
     }
@@ -554,7 +554,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metrics
      *
-     * @param string[]|null $metrics List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid (billableImpressions, billableClicks, spend).
+     * @param string[]|null $metrics List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid.
      *
      * @return self
      */

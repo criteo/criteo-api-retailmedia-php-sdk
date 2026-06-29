@@ -275,6 +275,9 @@ class ShareOfVoiceInsightRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class ShareOfVoiceInsightRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class ShareOfVoiceInsightRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightResource $data data
      *
      * @return self
      */

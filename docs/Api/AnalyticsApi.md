@@ -507,7 +507,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **share_of_voice_insight_request** | [**\criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest**](../Model/ShareOfVoiceInsightRequest.md)|  | [optional] |
+| **share_of_voice_insight_request** | [**\criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest**](../Model/ShareOfVoiceInsightRequest.md)|  | |
 
 ### Return type
 

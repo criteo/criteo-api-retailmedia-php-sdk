@@ -2202,14 +2202,14 @@ class AnalyticsApi
      *
      * /experimental/retail-media/insights/share-of-voice
      *
-     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request share_of_voice_insight_request (optional)
+     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request share_of_voice_insight_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\experimental\Model\AsyncInsightResponse
      */
-    public function generateShareOfVoiceInsight($share_of_voice_insight_request = null, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
+    public function generateShareOfVoiceInsight($share_of_voice_insight_request, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
     {
         list($response) = $this->generateShareOfVoiceInsightWithHttpInfo($share_of_voice_insight_request, $contentType);
         return $response;
@@ -2220,14 +2220,14 @@ class AnalyticsApi
      *
      * /experimental/retail-media/insights/share-of-voice
      *
-     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
+     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\experimental\Model\AsyncInsightResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function generateShareOfVoiceInsightWithHttpInfo($share_of_voice_insight_request = null, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
+    public function generateShareOfVoiceInsightWithHttpInfo($share_of_voice_insight_request, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
     {
         $request = $this->generateShareOfVoiceInsightRequest($share_of_voice_insight_request, $contentType);
 
@@ -2320,13 +2320,13 @@ class AnalyticsApi
      *
      * /experimental/retail-media/insights/share-of-voice
      *
-     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
+     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateShareOfVoiceInsightAsync($share_of_voice_insight_request = null, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
+    public function generateShareOfVoiceInsightAsync($share_of_voice_insight_request, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
     {
         return $this->generateShareOfVoiceInsightAsyncWithHttpInfo($share_of_voice_insight_request, $contentType)
             ->then(
@@ -2341,13 +2341,13 @@ class AnalyticsApi
      *
      * /experimental/retail-media/insights/share-of-voice
      *
-     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
+     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateShareOfVoiceInsightAsyncWithHttpInfo($share_of_voice_insight_request = null, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
+    public function generateShareOfVoiceInsightAsyncWithHttpInfo($share_of_voice_insight_request, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
     {
         $returnType = '\criteo\api\retailmedia\experimental\Model\AsyncInsightResponse';
         $request = $this->generateShareOfVoiceInsightRequest($share_of_voice_insight_request, $contentType);
@@ -2391,15 +2391,21 @@ class AnalyticsApi
     /**
      * Create request for operation 'generateShareOfVoiceInsight'
      *
-     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (optional)
+     * @param  \criteo\api\retailmedia\experimental\Model\ShareOfVoiceInsightRequest $share_of_voice_insight_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateShareOfVoiceInsight'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function generateShareOfVoiceInsightRequest($share_of_voice_insight_request = null, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
+    public function generateShareOfVoiceInsightRequest($share_of_voice_insight_request, string $contentType = self::contentTypes['generateShareOfVoiceInsight'][0])
     {
 
+        // verify the required parameter 'share_of_voice_insight_request' is set
+        if ($share_of_voice_insight_request === null || (is_array($share_of_voice_insight_request) && count($share_of_voice_insight_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $share_of_voice_insight_request when calling generateShareOfVoiceInsight'
+            );
+        }
 
 
         $resourcePath = '/experimental/retail-media/insights/share-of-voice';

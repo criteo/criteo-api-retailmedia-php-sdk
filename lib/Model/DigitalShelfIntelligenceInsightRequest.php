@@ -275,6 +275,9 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceInsightResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceInsightResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceInsightResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceInsightResource $data data
      *
      * @return self
      */
