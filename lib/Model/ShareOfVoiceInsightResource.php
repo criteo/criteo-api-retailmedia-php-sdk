@@ -282,6 +282,9 @@ class ShareOfVoiceInsightResource implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +303,7 @@ class ShareOfVoiceInsightResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsight|null
+     * @return \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsight
      */
     public function getAttributes()
     {
@@ -310,7 +313,7 @@ class ShareOfVoiceInsightResource implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsight|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\ShareOfVoiceInsight $attributes attributes
      *
      * @return self
      */

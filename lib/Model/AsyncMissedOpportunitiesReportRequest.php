@@ -1,6 +1,6 @@
 <?php
 /**
- * DigitalShelfIntelligenceInsightRequest
+ * AsyncMissedOpportunitiesReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * DigitalShelfIntelligenceInsightRequest Class Doc Comment
+ * AsyncMissedOpportunitiesReportRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description A top-level object that encapsulates a missed-opportunities async report create request.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncMissedOpportunitiesReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DigitalShelfIntelligenceInsightRequest';
+    protected static $openAPIModelName = 'AsyncMissedOpportunitiesReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource'
+        'data' => '\criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource'
     ];
 
     /**
@@ -296,7 +296,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource
      */
     public function getData()
     {
@@ -306,7 +306,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource $data data
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * DigitalShelfIntelligenceInsightRequest
+ * AsyncPerformanceReportResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * DigitalShelfIntelligenceInsightRequest Class Doc Comment
+ * AsyncPerformanceReportResource Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description JSON:API resource wrapper for a performance DSP analytics async report create request.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncPerformanceReportResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DigitalShelfIntelligenceInsightRequest';
+    protected static $openAPIModelName = 'AsyncPerformanceReportResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\AsyncPerformanceReport',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'attributes' => false,
+		'type' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +180,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +190,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -229,6 +235,19 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const TYPE_ASYNC_PERFORMANCE_REPORT = 'AsyncPerformanceReport';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_ASYNC_PERFORMANCE_REPORT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -245,7 +264,8 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -275,9 +295,18 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -294,28 +323,65 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets data
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncPerformanceReport
      */
-    public function getData()
+    public function getAttributes()
     {
-        return $this->container['data'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets data
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncPerformanceReport $attributes attributes
      *
      * @return self
      */
-    public function setData($data)
+    public function setAttributes($attributes)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['data'] = $data;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Optional JSON:API resource type. If provided, it must match this create resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

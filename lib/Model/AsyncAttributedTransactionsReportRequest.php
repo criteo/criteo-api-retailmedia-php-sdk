@@ -1,6 +1,6 @@
 <?php
 /**
- * DigitalShelfIntelligenceInsightRequest
+ * AsyncAttributedTransactionsReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * DigitalShelfIntelligenceInsightRequest Class Doc Comment
+ * AsyncAttributedTransactionsReportRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description A top-level object that encapsulates an attributed-transactions async report create request.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncAttributedTransactionsReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DigitalShelfIntelligenceInsightRequest';
+    protected static $openAPIModelName = 'AsyncAttributedTransactionsReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource'
+        'data' => '\criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource'
     ];
 
     /**
@@ -296,7 +296,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource
      */
     public function getData()
     {
@@ -306,7 +306,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource $data data
      *
      * @return self
      */

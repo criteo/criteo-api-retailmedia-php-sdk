@@ -1,6 +1,6 @@
 <?php
 /**
- * DigitalShelfIntelligenceInsightRequest
+ * AttributedTransactionsReportFilters
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * DigitalShelfIntelligenceInsightRequest Class Doc Comment
+ * AttributedTransactionsReportFilters Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description Array-valued constraints for attributed-transactions reporting. At least one of accountIds, campaignIds, or lineItemIds is required.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DigitalShelfIntelligenceInsightRequest';
+    protected static $openAPIModelName = 'AttributedTransactionsReportFilters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource'
+        'account_ids' => 'string[]',
+        'campaign_ids' => 'string[]',
+        'line_item_ids' => 'string[]',
+        'media_types' => 'string[]'
     ];
 
     /**
@@ -69,7 +72,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'account_ids' => null,
+        'campaign_ids' => null,
+        'line_item_ids' => null,
+        'media_types' => null
     ];
 
     /**
@@ -78,7 +84,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'account_ids' => false,
+		'campaign_ids' => false,
+		'line_item_ids' => false,
+		'media_types' => false
     ];
 
     /**
@@ -167,7 +176,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'account_ids' => 'accountIds',
+        'campaign_ids' => 'campaignIds',
+        'line_item_ids' => 'lineItemIds',
+        'media_types' => 'mediaTypes'
     ];
 
     /**
@@ -176,7 +188,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'account_ids' => 'setAccountIds',
+        'campaign_ids' => 'setCampaignIds',
+        'line_item_ids' => 'setLineItemIds',
+        'media_types' => 'setMediaTypes'
     ];
 
     /**
@@ -185,7 +200,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'account_ids' => 'getAccountIds',
+        'campaign_ids' => 'getCampaignIds',
+        'line_item_ids' => 'getLineItemIds',
+        'media_types' => 'getMediaTypes'
     ];
 
     /**
@@ -229,6 +247,23 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const MEDIA_TYPES_UNKNOWN = 'unknown';
+    public const MEDIA_TYPES_VIDEO = 'video';
+    public const MEDIA_TYPES_DISPLAY = 'display';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMediaTypesAllowableValues()
+    {
+        return [
+            self::MEDIA_TYPES_UNKNOWN,
+            self::MEDIA_TYPES_VIDEO,
+            self::MEDIA_TYPES_DISPLAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -245,7 +280,10 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('media_types', $data ?? [], null);
     }
 
     /**
@@ -275,9 +313,34 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) > 5)) {
+            $invalidProperties[] = "invalid value for 'account_ids', number of items must be less than or equal to 5.";
         }
+
+        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) > 50)) {
+            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) > 50)) {
+            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be less than or equal to 50.";
+        }
+
+        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) < 1)) {
+            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['media_types']) && (count($this->container['media_types']) < 1)) {
+            $invalidProperties[] = "invalid value for 'media_types', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -294,28 +357,144 @@ class DigitalShelfIntelligenceInsightRequest implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets data
+     * Gets account_ids
      *
-     * @return \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource
+     * @return string[]|null
      */
-    public function getData()
+    public function getAccountIds()
     {
-        return $this->container['data'];
+        return $this->container['account_ids'];
     }
 
     /**
-     * Sets data
+     * Sets account_ids
      *
-     * @param \criteo\api\retailmedia\preview\Model\DigitalShelfIntelligenceInsightResource $data data
+     * @param string[]|null $account_ids Optional scope filter. Allows up to 5 account IDs per request.
      *
      * @return self
      */
-    public function setData($data)
+    public function setAccountIds($account_ids)
     {
-        if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+        if (is_null($account_ids)) {
+            throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
         }
-        $this->container['data'] = $data;
+
+        if ((count($account_ids) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $account_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 5.');
+        }
+        if ((count($account_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $account_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['account_ids'] = $account_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_ids
+     *
+     * @return string[]|null
+     */
+    public function getCampaignIds()
+    {
+        return $this->container['campaign_ids'];
+    }
+
+    /**
+     * Sets campaign_ids
+     *
+     * @param string[]|null $campaign_ids Optional scope filter. Allows up to 50 campaign IDs per request.
+     *
+     * @return self
+     */
+    public function setCampaignIds($campaign_ids)
+    {
+        if (is_null($campaign_ids)) {
+            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
+        }
+
+        if ((count($campaign_ids) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $campaign_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 50.');
+        }
+        if ((count($campaign_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $campaign_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['campaign_ids'] = $campaign_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Optional scope filter. Allows up to 50 line-item IDs per request.
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
+        }
+
+        if ((count($line_item_ids) > 50)) {
+            throw new \InvalidArgumentException('invalid value for $line_item_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 50.');
+        }
+        if ((count($line_item_ids) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $line_item_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_types
+     *
+     * @return string[]|null
+     */
+    public function getMediaTypes()
+    {
+        return $this->container['media_types'];
+    }
+
+    /**
+     * Sets media_types
+     *
+     * @param string[]|null $media_types Optional media type filter.
+     *
+     * @return self
+     */
+    public function setMediaTypes($media_types)
+    {
+        if (is_null($media_types)) {
+            throw new \InvalidArgumentException('non-nullable media_types cannot be null');
+        }
+        $allowedValues = $this->getMediaTypesAllowableValues();
+        if (array_diff($media_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'media_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+
+
+        if ((count($media_types) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $media_types when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
+        }
+        $this->container['media_types'] = $media_types;
 
         return $this;
     }

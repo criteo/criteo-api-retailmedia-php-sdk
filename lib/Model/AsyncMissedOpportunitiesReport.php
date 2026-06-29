@@ -1,6 +1,6 @@
 <?php
 /**
- * SyncRealTimePerformanceReport
+ * AsyncMissedOpportunitiesReport
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SyncRealTimePerformanceReport Class Doc Comment
+ * AsyncMissedOpportunitiesReport Class Doc Comment
  *
  * @category Class
- * @description Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension and Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric; invalid values cause deserialization to fail.
+ * @description Create payload attributes for a missed-opportunities async report.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SyncRealTimePerformanceReport';
+    protected static $openAPIModelName = 'AsyncMissedOpportunitiesReport';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_ids' => 'string[]',
-        'campaign_ids' => 'string[]',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
-        'line_item_ids' => 'string[]',
+        'filters' => '\criteo\api\retailmedia\preview\Model\MissedOpportunitiesReportFilters',
+        'format' => 'string',
         'metrics' => 'string[]',
-        'retailer_ids' => 'string[]',
-        'start_date' => '\DateTime',
-        'timezone' => 'string'
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -77,15 +74,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_ids' => null,
-        'campaign_ids' => null,
         'dimensions' => null,
-        'end_date' => 'date-time',
-        'line_item_ids' => null,
+        'end_date' => 'date',
+        'filters' => null,
+        'format' => null,
         'metrics' => null,
-        'retailer_ids' => null,
-        'start_date' => 'date-time',
-        'timezone' => null
+        'start_date' => 'date'
     ];
 
     /**
@@ -94,15 +88,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_ids' => false,
-		'campaign_ids' => false,
-		'dimensions' => false,
+        'dimensions' => false,
 		'end_date' => false,
-		'line_item_ids' => false,
+		'filters' => false,
+		'format' => false,
 		'metrics' => false,
-		'retailer_ids' => false,
-		'start_date' => false,
-		'timezone' => false
+		'start_date' => false
     ];
 
     /**
@@ -191,15 +182,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_ids' => 'accountIds',
-        'campaign_ids' => 'campaignIds',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
-        'line_item_ids' => 'lineItemIds',
+        'filters' => 'filters',
+        'format' => 'format',
         'metrics' => 'metrics',
-        'retailer_ids' => 'retailerIds',
-        'start_date' => 'startDate',
-        'timezone' => 'timezone'
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -208,15 +196,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'account_ids' => 'setAccountIds',
-        'campaign_ids' => 'setCampaignIds',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
-        'line_item_ids' => 'setLineItemIds',
+        'filters' => 'setFilters',
+        'format' => 'setFormat',
         'metrics' => 'setMetrics',
-        'retailer_ids' => 'setRetailerIds',
-        'start_date' => 'setStartDate',
-        'timezone' => 'setTimezone'
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -225,15 +210,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'account_ids' => 'getAccountIds',
-        'campaign_ids' => 'getCampaignIds',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
-        'line_item_ids' => 'getLineItemIds',
+        'filters' => 'getFilters',
+        'format' => 'getFormat',
         'metrics' => 'getMetrics',
-        'retailer_ids' => 'getRetailerIds',
-        'start_date' => 'getStartDate',
-        'timezone' => 'getTimezone'
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -278,18 +260,33 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     }
 
     public const DIMENSIONS_DATE = 'date';
-    public const DIMENSIONS_HOUR = 'hour';
-    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
-    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
     public const DIMENSIONS_LINE_ITEM_NAME = 'lineItemName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
+    public const DIMENSIONS_BUY_TYPE = 'buyType';
+    public const DIMENSIONS_BID_STRATEGY = 'bidStrategy';
+    public const FORMAT_JSON = 'json';
+    public const FORMAT_JSON_COMPACT = 'json-compact';
+    public const FORMAT_JSON_NEWLINE = 'json-newline';
+    public const FORMAT_CSV = 'csv';
+    public const METRICS_DAYPARTING_SCHEDULED = 'daypartingScheduled';
+    public const METRICS_TOTAL_SPEND = 'totalSpend';
+    public const METRICS_ROAS = 'roas';
+    public const METRICS_CAPOUT_HOUR = 'capoutHour';
+    public const METRICS_ATTRIBUTED_SALES = 'attributedSales';
     public const METRICS_IMPRESSIONS = 'impressions';
     public const METRICS_CLICKS = 'clicks';
-    public const METRICS_SPEND = 'spend';
+    public const METRICS_CPC = 'cpc';
+    public const METRICS_CPM = 'cpm';
+    public const METRICS_CTR = 'ctr';
+    public const METRICS_MISSED_TRAFFIC = 'missedTraffic';
+    public const METRICS_MISSED_SPEND = 'missedSpend';
+    public const METRICS_MISSED_CLICKS = 'missedClicks';
+    public const METRICS_MISSED_IMPRESSIONS = 'missedImpressions';
+    public const METRICS_MISSED_SALES = 'missedSales';
 
     /**
      * Gets allowable values of the enum
@@ -300,15 +297,29 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     {
         return [
             self::DIMENSIONS_DATE,
-            self::DIMENSIONS_HOUR,
-            self::DIMENSIONS_ACCOUNT_ID,
-            self::DIMENSIONS_ACCOUNT_NAME,
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_LINE_ITEM_ID,
             self::DIMENSIONS_LINE_ITEM_NAME,
             self::DIMENSIONS_RETAILER_ID,
             self::DIMENSIONS_RETAILER_NAME,
+            self::DIMENSIONS_BUY_TYPE,
+            self::DIMENSIONS_BID_STRATEGY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_JSON,
+            self::FORMAT_JSON_COMPACT,
+            self::FORMAT_JSON_NEWLINE,
+            self::FORMAT_CSV,
         ];
     }
 
@@ -320,9 +331,21 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     public function getMetricsAllowableValues()
     {
         return [
+            self::METRICS_DAYPARTING_SCHEDULED,
+            self::METRICS_TOTAL_SPEND,
+            self::METRICS_ROAS,
+            self::METRICS_CAPOUT_HOUR,
+            self::METRICS_ATTRIBUTED_SALES,
             self::METRICS_IMPRESSIONS,
             self::METRICS_CLICKS,
-            self::METRICS_SPEND,
+            self::METRICS_CPC,
+            self::METRICS_CPM,
+            self::METRICS_CTR,
+            self::METRICS_MISSED_TRAFFIC,
+            self::METRICS_MISSED_SPEND,
+            self::METRICS_MISSED_CLICKS,
+            self::METRICS_MISSED_IMPRESSIONS,
+            self::METRICS_MISSED_SALES,
         ];
     }
 
@@ -341,15 +364,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('account_ids', $data ?? [], null);
-        $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('filters', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], 'json-compact');
         $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('timezone', $data ?? [], 'UTC');
     }
 
     /**
@@ -379,6 +399,27 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        if ($this->container['dimensions'] === null) {
+            $invalidProperties[] = "'dimensions' can't be null";
+        }
+        if ($this->container['end_date'] === null) {
+            $invalidProperties[] = "'end_date' can't be null";
+        }
+        if ($this->container['filters'] === null) {
+            $invalidProperties[] = "'filters' can't be null";
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['metrics'] === null) {
+            $invalidProperties[] = "'metrics' can't be null";
+        }
         if ($this->container['start_date'] === null) {
             $invalidProperties[] = "'start_date' can't be null";
         }
@@ -398,63 +439,9 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets account_ids
-     *
-     * @return string[]|null
-     */
-    public function getAccountIds()
-    {
-        return $this->container['account_ids'];
-    }
-
-    /**
-     * Sets account_ids
-     *
-     * @param string[]|null $account_ids Account ids to filter (plural; base has AccountId for single account).
-     *
-     * @return self
-     */
-    public function setAccountIds($account_ids)
-    {
-        if (is_null($account_ids)) {
-            throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
-        }
-        $this->container['account_ids'] = $account_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets campaign_ids
-     *
-     * @return string[]|null
-     */
-    public function getCampaignIds()
-    {
-        return $this->container['campaign_ids'];
-    }
-
-    /**
-     * Sets campaign_ids
-     *
-     * @param string[]|null $campaign_ids Campaign ids to filter.
-     *
-     * @return self
-     */
-    public function setCampaignIds($campaign_ids)
-    {
-        if (is_null($campaign_ids)) {
-            throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-        $this->container['campaign_ids'] = $campaign_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets dimensions
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getDimensions()
     {
@@ -464,7 +451,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets dimensions
      *
-     * @param string[]|null $dimensions List of dimensions to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension are valid.
+     * @param string[] $dimensions Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty.
      *
      * @return self
      */
@@ -490,7 +477,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets end_date
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -500,7 +487,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date Optional end date/time (inclusive in the request timezone). If empty or not provided, no end date filter is applied.  When provided, used as the inclusive upper bound for the report range.  Hides base Report.EndDate so this report can treat end date as optional (no [Required]).
+     * @param \DateTime $end_date Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate.
      *
      * @return self
      */
@@ -515,28 +502,65 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets line_item_ids
+     * Gets filters
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\MissedOpportunitiesReportFilters
      */
-    public function getLineItemIds()
+    public function getFilters()
     {
-        return $this->container['line_item_ids'];
+        return $this->container['filters'];
     }
 
     /**
-     * Sets line_item_ids
+     * Sets filters
      *
-     * @param string[]|null $line_item_ids Line item ids to filter.
+     * @param \criteo\api\retailmedia\preview\Model\MissedOpportunitiesReportFilters $filters filters
      *
      * @return self
      */
-    public function setLineItemIds($line_item_ids)
+    public function setFilters($filters)
     {
-        if (is_null($line_item_ids)) {
-            throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
+        if (is_null($filters)) {
+            throw new \InvalidArgumentException('non-nullable filters cannot be null');
         }
-        $this->container['line_item_ids'] = $line_item_ids;
+        $this->container['filters'] = $filters;
+
+        return $this;
+    }
+
+    /**
+     * Gets format
+     *
+     * @return string|null
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string|null $format Output format. If omitted, json-compact is used.
+     *
+     * @return self
+     */
+    public function setFormat($format)
+    {
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['format'] = $format;
 
         return $this;
     }
@@ -544,7 +568,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets metrics
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getMetrics()
     {
@@ -554,7 +578,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metrics
      *
-     * @param string[]|null $metrics List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid.
+     * @param string[] $metrics Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty.
      *
      * @return self
      */
@@ -578,33 +602,6 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     }
 
     /**
-     * Gets retailer_ids
-     *
-     * @return string[]|null
-     */
-    public function getRetailerIds()
-    {
-        return $this->container['retailer_ids'];
-    }
-
-    /**
-     * Sets retailer_ids
-     *
-     * @param string[]|null $retailer_ids Retailer ids to filter. This is not used for security, so no need to check for > 0 elements
-     *
-     * @return self
-     */
-    public function setRetailerIds($retailer_ids)
-    {
-        if (is_null($retailer_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_ids cannot be null');
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets start_date
      *
      * @return \DateTime
@@ -617,7 +614,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Start date (real-time: must be within the last 7 days).
+     * @param \DateTime $start_date Required inclusive report start date in YYYY-MM-DD format.
      *
      * @return self
      */
@@ -627,33 +624,6 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
         $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets timezone
-     *
-     * @return string|null
-     */
-    public function getTimezone()
-    {
-        return $this->container['timezone'];
-    }
-
-    /**
-     * Sets timezone
-     *
-     * @param string|null $timezone Time zone : see criteo developer portal for supported time zones
-     *
-     * @return self
-     */
-    public function setTimezone($timezone)
-    {
-        if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
-        }
-        $this->container['timezone'] = $timezone;
 
         return $this;
     }
