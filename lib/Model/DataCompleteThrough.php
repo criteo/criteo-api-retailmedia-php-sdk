@@ -310,7 +310,7 @@ class DataCompleteThrough implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets date_time
      *
-     * @param string|null $date_time The instant through which data is complete, in the format \"yyyy-MM-dd HH:mm:ss\" in Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.Timezone.
+     * @param string|null $date_time The instant through which data is complete, in the format \"yyyy-MM-dd HH:mm:ss\" in the timezone given by the {timezone} field.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class DataCompleteThrough implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets timezone
      *
-     * @param string|null $timezone IANA timezone for Criteo.RetailMedia.Exam.Reporting.Resources.Models.Outputs.DataCompleteThrough.DateTime (e.g. \"UTC\", \"America/New_York\"). Matches the query timezone.
+     * @param string|null $timezone IANA timezone for the {dateTime} field (e.g. \"UTC\", \"America/New_York\"). Matches the query timezone.
      *
      * @return self
      */

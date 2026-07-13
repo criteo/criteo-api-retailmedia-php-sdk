@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignAvailability
+ * CampaignAvailabilityV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * CampaignAvailability Class Doc Comment
+ * CampaignAvailabilityV2 Class Doc Comment
  *
  * @category Class
- * @description Information about the availability of a specific campaign type and buy type combination, and page types and environments supported for that combination
+ * @description Information about the budget model availability for a specific campaign type and buy type combination, and page types and environments supported for that combination
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializable
+class CampaignAvailabilityV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CampaignAvailability';
+    protected static $openAPIModelName = 'CampaignAvailabilityV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'budget_model_availabilities' => 'string[]',
         'buy_type' => 'string',
         'campaign_type' => 'string',
-        'is_available' => 'bool',
-        'valid_combinations' => '\criteo\api\retailmedia\experimental\Model\PageTypeCombination[]'
+        'valid_combinations' => '\criteo\api\retailmedia\experimental\Model\PageTypeCombinationV2[]'
     ];
 
     /**
@@ -72,9 +72,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'budget_model_availabilities' => null,
         'buy_type' => null,
         'campaign_type' => null,
-        'is_available' => null,
         'valid_combinations' => null
     ];
 
@@ -84,9 +84,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'buy_type' => true,
+        'budget_model_availabilities' => true,
+		'buy_type' => true,
 		'campaign_type' => true,
-		'is_available' => true,
 		'valid_combinations' => true
     ];
 
@@ -176,9 +176,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'budget_model_availabilities' => 'budgetModelAvailabilities',
         'buy_type' => 'buyType',
         'campaign_type' => 'campaignType',
-        'is_available' => 'isAvailable',
         'valid_combinations' => 'validCombinations'
     ];
 
@@ -188,9 +188,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'budget_model_availabilities' => 'setBudgetModelAvailabilities',
         'buy_type' => 'setBuyType',
         'campaign_type' => 'setCampaignType',
-        'is_available' => 'setIsAvailable',
         'valid_combinations' => 'setValidCombinations'
     ];
 
@@ -200,9 +200,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'budget_model_availabilities' => 'getBudgetModelAvailabilities',
         'buy_type' => 'getBuyType',
         'campaign_type' => 'getCampaignType',
-        'is_available' => 'getIsAvailable',
         'valid_combinations' => 'getValidCombinations'
     ];
 
@@ -247,6 +247,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const BUDGET_MODEL_AVAILABILITIES_UNKNOWN = 'unknown';
+    public const BUDGET_MODEL_AVAILABILITIES_CRITEO_BUDGET = 'criteoBudget';
+    public const BUDGET_MODEL_AVAILABILITIES_RETAILER_BUDGET = 'retailerBudget';
     public const BUY_TYPE_UNKNOWN = 'unknown';
     public const BUY_TYPE_AUCTION = 'auction';
     public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
@@ -256,6 +259,20 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'onsiteDisplay';
     public const CAMPAIGN_TYPE_OFFSITE = 'offsite';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetModelAvailabilitiesAllowableValues()
+    {
+        return [
+            self::BUDGET_MODEL_AVAILABILITIES_UNKNOWN,
+            self::BUDGET_MODEL_AVAILABILITIES_CRITEO_BUDGET,
+            self::BUDGET_MODEL_AVAILABILITIES_RETAILER_BUDGET,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -303,9 +320,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('budget_model_availabilities', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
-        $this->setIfExists('is_available', $data ?? [], null);
         $this->setIfExists('valid_combinations', $data ?? [], null);
     }
 
@@ -368,6 +385,49 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets budget_model_availabilities
+     *
+     * @return string[]|null
+     */
+    public function getBudgetModelAvailabilities()
+    {
+        return $this->container['budget_model_availabilities'];
+    }
+
+    /**
+     * Sets budget_model_availabilities
+     *
+     * @param string[]|null $budget_model_availabilities The budget models available for this campaign type and buy type combination. Presence of a value indicates that budget model is available.
+     *
+     * @return self
+     */
+    public function setBudgetModelAvailabilities($budget_model_availabilities)
+    {
+        if (is_null($budget_model_availabilities)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_model_availabilities');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_model_availabilities', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getBudgetModelAvailabilitiesAllowableValues();
+        if (!is_null($budget_model_availabilities) && array_diff($budget_model_availabilities, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'budget_model_availabilities', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_model_availabilities'] = $budget_model_availabilities;
+
+        return $this;
+    }
 
     /**
      * Gets buy_type
@@ -458,43 +518,9 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
-     * Gets is_available
-     *
-     * @return bool|null
-     */
-    public function getIsAvailable()
-    {
-        return $this->container['is_available'];
-    }
-
-    /**
-     * Sets is_available
-     *
-     * @param bool|null $is_available Indicates whether the campaign type and buy type combination is available for the retailer
-     *
-     * @return self
-     */
-    public function setIsAvailable($is_available)
-    {
-        if (is_null($is_available)) {
-            array_push($this->openAPINullablesSetToNull, 'is_available');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_available', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_available'] = $is_available;
-
-        return $this;
-    }
-
-    /**
      * Gets valid_combinations
      *
-     * @return \criteo\api\retailmedia\experimental\Model\PageTypeCombination[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\PageTypeCombinationV2[]|null
      */
     public function getValidCombinations()
     {
@@ -504,7 +530,7 @@ class CampaignAvailability implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets valid_combinations
      *
-     * @param \criteo\api\retailmedia\experimental\Model\PageTypeCombination[]|null $valid_combinations PageType-PageEnvironmentType pairs which are supported for this campaign-buy type combination
+     * @param \criteo\api\retailmedia\experimental\Model\PageTypeCombinationV2[]|null $valid_combinations PageType-PageEnvironmentType pairs which are supported for this campaign-buy type combination
      *
      * @return self
      */

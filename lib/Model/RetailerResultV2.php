@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailerResult
+ * RetailerResultV2
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * RetailerResult Class Doc Comment
+ * RetailerResultV2 Class Doc Comment
  *
  * @category Class
  * @description The result of a query for the configuration of a retailer
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerResultV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailerResult';
+    protected static $openAPIModelName = 'RetailerResultV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_availabilities' => '\criteo\api\retailmedia\experimental\Model\CampaignAvailability[]',
+        'campaign_availabilities' => '\criteo\api\retailmedia\experimental\Model\CampaignAvailabilityV2[]',
         'name' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets campaign_availabilities
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CampaignAvailability[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\CampaignAvailabilityV2[]|null
      */
     public function getCampaignAvailabilities()
     {
@@ -310,7 +310,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign_availabilities
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CampaignAvailability[]|null $campaign_availabilities A list of campaign availabilities for the retailer, each of which shows the availability of a specific campaign type and buy type combination
+     * @param \criteo\api\retailmedia\experimental\Model\CampaignAvailabilityV2[]|null $campaign_availabilities A list of campaign availabilities for the retailer, each showing the budget models available for a specific campaign type and buy type combination
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailerSearchRequest
+ * ValueResourceInputOfRetailerSearchRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * RetailerSearchRequest Class Doc Comment
+ * ValueResourceInputOfRetailerSearchRequestV2 Class Doc Comment
  *
  * @category Class
- * @description Request model for searching retailers
+ * @description A top-level object that encapsulates a Criteo API request for a single value object.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceInputOfRetailerSearchRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailerSearchRequest';
+    protected static $openAPIModelName = 'ValueResourceInputOfRetailerSearchRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id_filter' => 'string[]'
+        'data' => '\criteo\api\retailmedia\experimental\Model\ValueResourceOfRetailerSearchRequestV2'
     ];
 
     /**
@@ -69,7 +69,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id_filter' => null
+        'data' => null
     ];
 
     /**
@@ -78,7 +78,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id_filter' => true
+        'data' => false
     ];
 
     /**
@@ -167,7 +167,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id_filter' => 'retailerIdFilter'
+        'data' => 'data'
     ];
 
     /**
@@ -176,7 +176,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id_filter' => 'setRetailerIdFilter'
+        'data' => 'setData'
     ];
 
     /**
@@ -185,7 +185,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id_filter' => 'getRetailerIdFilter'
+        'data' => 'getData'
     ];
 
     /**
@@ -245,7 +245,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_id_filter', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -291,35 +291,28 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets retailer_id_filter
+     * Gets data
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\ValueResourceOfRetailerSearchRequestV2|null
      */
-    public function getRetailerIdFilter()
+    public function getData()
     {
-        return $this->container['retailer_id_filter'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets retailer_id_filter
+     * Sets data
      *
-     * @param string[]|null $retailer_id_filter Optional list of retailer IDs to filter the results
+     * @param \criteo\api\retailmedia\experimental\Model\ValueResourceOfRetailerSearchRequestV2|null $data data
      *
      * @return self
      */
-    public function setRetailerIdFilter($retailer_id_filter)
+    public function setData($data)
     {
-        if (is_null($retailer_id_filter)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id_filter');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id_filter', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['retailer_id_filter'] = $retailer_id_filter;
+        $this->container['data'] = $data;
 
         return $this;
     }

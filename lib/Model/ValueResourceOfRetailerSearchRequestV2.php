@@ -1,6 +1,6 @@
 <?php
 /**
- * ValueResourceOfRetailerSearchRequest
+ * ValueResourceOfRetailerSearchRequestV2
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ValueResourceOfRetailerSearchRequest Class Doc Comment
+ * ValueResourceOfRetailerSearchRequestV2 Class Doc Comment
  *
  * @category Class
  * @description A value resource exposed by the API.
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ValueResourceOfRetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ValueResourceOfRetailerSearchRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ValueResourceOfRetailerSearchRequest implements ModelInterface, ArrayAcces
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ValueResourceOfRetailerSearchRequest';
+    protected static $openAPIModelName = 'ValueResourceOfRetailerSearchRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ValueResourceOfRetailerSearchRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\RetailerSearchRequest',
+        'attributes' => '\criteo\api\retailmedia\experimental\Model\RetailerSearchRequestV2',
         'type' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class ValueResourceOfRetailerSearchRequest implements ModelInterface, ArrayAcces
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\experimental\Model\RetailerSearchRequest|null
+     * @return \criteo\api\retailmedia\experimental\Model\RetailerSearchRequestV2|null
      */
     public function getAttributes()
     {
@@ -310,7 +310,7 @@ class ValueResourceOfRetailerSearchRequest implements ModelInterface, ArrayAcces
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\experimental\Model\RetailerSearchRequest|null $attributes attributes
+     * @param \criteo\api\retailmedia\experimental\Model\RetailerSearchRequestV2|null $attributes attributes
      *
      * @return self
      */

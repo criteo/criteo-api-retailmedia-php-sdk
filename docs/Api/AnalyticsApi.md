@@ -4,10 +4,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**generateAsyncAccountsReport()**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts |
-| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns |
+| [**generateAsyncAccountsReportV2()**](AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /experimental/retail-media/reports/accounts | /experimental/retail-media/reports/accounts |
+| [**generateAsyncCampaignsReportV2()**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /experimental/retail-media/reports/campaigns | /experimental/retail-media/reports/campaigns |
 | [**generateAsyncFillRateReport()**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /experimental/retail-media/reports/fillrate | /experimental/retail-media/reports/fillrate |
-| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items |
+| [**generateAsyncLineItemsReportV2()**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /experimental/retail-media/reports/line-items | /experimental/retail-media/reports/line-items |
 | [**generateAsyncOffsiteReport()**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /experimental/retail-media/reports/offsite | /experimental/retail-media/reports/offsite |
 | [**generateAsyncUnfilledPlacementsReport()**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /experimental/retail-media/reports/unfilled-placements | /experimental/retail-media/reports/unfilled-placements |
 | [**generateDigitalShelfIntelligenceInsight()**](AnalyticsApi.md#generateDigitalShelfIntelligenceInsight) | **POST** /experimental/retail-media/insights/digital-shelf-intelligence | /experimental/retail-media/insights/digital-shelf-intelligence |
@@ -22,10 +22,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getInsightReportStatus()**](AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insightId}/status | /experimental/retail-media/insights/{insightId}/status |
 
 
-## `generateAsyncAccountsReport()`
+## `generateAsyncAccountsReportV2()`
 
 ```php
-generateAsyncAccountsReport($async_accounts_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
+generateAsyncAccountsReportV2($async_accounts_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
 ```
 
 /experimental/retail-media/reports/accounts
@@ -55,10 +55,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\AnalyticsApi(
 $async_accounts_report_request = new \criteo\api\retailmedia\experimental\Model\AsyncAccountsReportRequest(); // \criteo\api\retailmedia\experimental\Model\AsyncAccountsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncAccountsReport($async_accounts_report_request);
+    $result = $apiInstance->generateAsyncAccountsReportV2($async_accounts_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncAccountsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncAccountsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -85,10 +85,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `generateAsyncCampaignsReport()`
+## `generateAsyncCampaignsReportV2()`
 
 ```php
-generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
+generateAsyncCampaignsReportV2($async_campaigns_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
 ```
 
 /experimental/retail-media/reports/campaigns
@@ -118,10 +118,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\AnalyticsApi(
 $async_campaigns_report_request = new \criteo\api\retailmedia\experimental\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\experimental\Model\AsyncCampaignsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncCampaignsReport($async_campaigns_report_request);
+    $result = $apiInstance->generateAsyncCampaignsReportV2($async_campaigns_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -211,10 +211,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `generateAsyncLineItemsReport()`
+## `generateAsyncLineItemsReportV2()`
 
 ```php
-generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
+generateAsyncLineItemsReportV2($async_line_items_report_request): \criteo\api\retailmedia\experimental\Model\AsyncReportResponse
 ```
 
 /experimental/retail-media/reports/line-items
@@ -244,10 +244,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\AnalyticsApi(
 $async_line_items_report_request = new \criteo\api\retailmedia\experimental\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\experimental\Model\AsyncLineItemsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncLineItemsReport($async_line_items_report_request);
+    $result = $apiInstance->generateAsyncLineItemsReportV2($async_line_items_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

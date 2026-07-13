@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+ * EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata Class Doc Comment
+ * EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata Class Doc Comment
  *
  * @category Class
  * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
@@ -41,7 +41,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResult[]',
+        'data' => '\criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResultV2[]',
         'errors' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]',
         'metadata' => '\criteo\api\retailmedia\experimental\Model\Metadata',
         'warnings' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]'
@@ -314,7 +314,7 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResult[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResultV2[]|null
      */
     public function getData()
     {
@@ -324,7 +324,7 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResult[]|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResultV2[]|null $data data
      *
      * @return self
      */

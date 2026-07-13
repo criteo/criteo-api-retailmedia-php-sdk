@@ -1,10 +1,10 @@
-# # EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+# # EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResult[]**](EntityResourceOfRetailerResult.md) |  | [optional]
+**data** | [**\criteo\api\retailmedia\experimental\Model\EntityResourceOfRetailerResultV2[]**](EntityResourceOfRetailerResultV2.md) |  | [optional]
 **errors** | [**\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Errors that occured during this call. | [optional] [readonly]
 **metadata** | [**\criteo\api\retailmedia\experimental\Model\Metadata**](Metadata.md) |  | [optional]
 **warnings** | [**\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]**](SdkApiRestCommonProblem.md) | Warnings that occured during this call. | [optional] [readonly]
