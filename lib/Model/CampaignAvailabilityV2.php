@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+ * CampaignAvailabilityV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeOfRetailerResultAndMetadata Class Doc Comment
+ * CampaignAvailabilityV2 Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
+ * @description Information about the budget model availability for a specific campaign type and buy type combination, and page types and environments supported for that combination
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
+class CampaignAvailabilityV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeOfRetailerResultAndMetadata';
+    protected static $openAPIModelName = 'CampaignAvailabilityV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]',
-        'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
-        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
-        'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
+        'budget_model_availabilities' => 'string[]',
+        'buy_type' => 'string',
+        'campaign_type' => 'string',
+        'valid_combinations' => '\criteo\api\retailmedia\preview\Model\PageTypeCombinationV2[]'
     ];
 
     /**
@@ -72,10 +72,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'metadata' => null,
-        'warnings' => null
+        'budget_model_availabilities' => null,
+        'buy_type' => null,
+        'campaign_type' => null,
+        'valid_combinations' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'metadata' => true,
-		'warnings' => true
+        'budget_model_availabilities' => true,
+		'buy_type' => true,
+		'campaign_type' => true,
+		'valid_combinations' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'metadata' => 'metadata',
-        'warnings' => 'warnings'
+        'budget_model_availabilities' => 'budgetModelAvailabilities',
+        'buy_type' => 'buyType',
+        'campaign_type' => 'campaignType',
+        'valid_combinations' => 'validCombinations'
     ];
 
     /**
@@ -188,10 +188,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'metadata' => 'setMetadata',
-        'warnings' => 'setWarnings'
+        'budget_model_availabilities' => 'setBudgetModelAvailabilities',
+        'buy_type' => 'setBuyType',
+        'campaign_type' => 'setCampaignType',
+        'valid_combinations' => 'setValidCombinations'
     ];
 
     /**
@@ -200,10 +200,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'metadata' => 'getMetadata',
-        'warnings' => 'getWarnings'
+        'budget_model_availabilities' => 'getBudgetModelAvailabilities',
+        'buy_type' => 'getBuyType',
+        'campaign_type' => 'getCampaignType',
+        'valid_combinations' => 'getValidCombinations'
     ];
 
     /**
@@ -247,6 +247,63 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
         return self::$openAPIModelName;
     }
 
+    public const BUDGET_MODEL_AVAILABILITIES_UNKNOWN = 'unknown';
+    public const BUDGET_MODEL_AVAILABILITIES_CRITEO_BUDGET = 'criteoBudget';
+    public const BUDGET_MODEL_AVAILABILITIES_RETAILER_BUDGET = 'retailerBudget';
+    public const BUY_TYPE_UNKNOWN = 'unknown';
+    public const BUY_TYPE_AUCTION = 'auction';
+    public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
+    public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
+    public const BUY_TYPE_OFFSITE = 'offsite';
+    public const CAMPAIGN_TYPE_UNKNOWN = 'unknown';
+    public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'onsiteDisplay';
+    public const CAMPAIGN_TYPE_OFFSITE = 'offsite';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetModelAvailabilitiesAllowableValues()
+    {
+        return [
+            self::BUDGET_MODEL_AVAILABILITIES_UNKNOWN,
+            self::BUDGET_MODEL_AVAILABILITIES_CRITEO_BUDGET,
+            self::BUDGET_MODEL_AVAILABILITIES_RETAILER_BUDGET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBuyTypeAllowableValues()
+    {
+        return [
+            self::BUY_TYPE_UNKNOWN,
+            self::BUY_TYPE_AUCTION,
+            self::BUY_TYPE_PREFERRED_DEALS,
+            self::BUY_TYPE_SPONSORSHIP,
+            self::BUY_TYPE_OFFSITE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignTypeAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_TYPE_UNKNOWN,
+            self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
+            self::CAMPAIGN_TYPE_ONSITE_DISPLAY,
+            self::CAMPAIGN_TYPE_OFFSITE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +320,10 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('budget_model_availabilities', $data ?? [], null);
+        $this->setIfExists('buy_type', $data ?? [], null);
+        $this->setIfExists('campaign_type', $data ?? [], null);
+        $this->setIfExists('valid_combinations', $data ?? [], null);
     }
 
     /**
@@ -296,6 +353,24 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBuyTypeAllowableValues();
+        if (!is_null($this->container['buy_type']) && !in_array($this->container['buy_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'buy_type', must be one of '%s'",
+                $this->container['buy_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($this->container['campaign_type']) && !in_array($this->container['campaign_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_type', must be one of '%s'",
+                $this->container['campaign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +387,166 @@ class EntityResourceCollectionOutcomeOfRetailerResultAndMetadata implements Mode
 
 
     /**
-     * Gets data
+     * Gets budget_model_availabilities
      *
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]|null
+     * @return string[]|null
      */
-    public function getData()
+    public function getBudgetModelAvailabilities()
     {
-        return $this->container['data'];
+        return $this->container['budget_model_availabilities'];
     }
 
     /**
-     * Sets data
+     * Sets budget_model_availabilities
      *
-     * @param \criteo\api\retailmedia\preview\Model\EntityResourceOfRetailerResult[]|null $data data
+     * @param string[]|null $budget_model_availabilities The budget models available for this campaign type and buy type combination. Presence of a value indicates that budget model is available.
      *
      * @return self
      */
-    public function setData($data)
+    public function setBudgetModelAvailabilities($budget_model_availabilities)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($budget_model_availabilities)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_model_availabilities');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('budget_model_availabilities', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $allowedValues = $this->getBudgetModelAvailabilitiesAllowableValues();
+        if (!is_null($budget_model_availabilities) && array_diff($budget_model_availabilities, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'budget_model_availabilities', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_model_availabilities'] = $budget_model_availabilities;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets buy_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return string|null
      */
-    public function getErrors()
+    public function getBuyType()
     {
-        return $this->container['errors'];
+        return $this->container['buy_type'];
     }
 
     /**
-     * Sets errors
+     * Sets buy_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     * @param string|null $buy_type The buy type this object represents availability for
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setBuyType($buy_type)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($buy_type)) {
+            array_push($this->openAPINullablesSetToNull, 'buy_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('buy_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $allowedValues = $this->getBuyTypeAllowableValues();
+        if (!is_null($buy_type) && !in_array($buy_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'buy_type', must be one of '%s'",
+                    $buy_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['buy_type'] = $buy_type;
 
         return $this;
     }
 
     /**
-     * Gets metadata
+     * Gets campaign_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
+     * @return string|null
      */
-    public function getMetadata()
+    public function getCampaignType()
     {
-        return $this->container['metadata'];
+        return $this->container['campaign_type'];
     }
 
     /**
-     * Sets metadata
+     * Sets campaign_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
+     * @param string|null $campaign_type The type of campaign this object represents availability for
      *
      * @return self
      */
-    public function setMetadata($metadata)
+    public function setCampaignType($campaign_type)
     {
-        if (is_null($metadata)) {
-            array_push($this->openAPINullablesSetToNull, 'metadata');
+        if (is_null($campaign_type)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('metadata', $nullablesSetToNull);
+            $index = array_search('campaign_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['metadata'] = $metadata;
+        $allowedValues = $this->getCampaignTypeAllowableValues();
+        if (!is_null($campaign_type) && !in_array($campaign_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_type', must be one of '%s'",
+                    $campaign_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_type'] = $campaign_type;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets valid_combinations
      *
-     * @return \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null
+     * @return \criteo\api\retailmedia\preview\Model\PageTypeCombinationV2[]|null
      */
-    public function getWarnings()
+    public function getValidCombinations()
     {
-        return $this->container['warnings'];
+        return $this->container['valid_combinations'];
     }
 
     /**
-     * Sets warnings
+     * Sets valid_combinations
      *
-     * @param \criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param \criteo\api\retailmedia\preview\Model\PageTypeCombinationV2[]|null $valid_combinations PageType-PageEnvironmentType pairs which are supported for this campaign-buy type combination
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setValidCombinations($valid_combinations)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($valid_combinations)) {
+            array_push($this->openAPINullablesSetToNull, 'valid_combinations');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('valid_combinations', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['valid_combinations'] = $valid_combinations;
 
         return $this;
     }

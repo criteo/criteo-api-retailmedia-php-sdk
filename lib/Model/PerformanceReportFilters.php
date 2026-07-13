@@ -302,13 +302,16 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public const BUY_TYPES_AUCTION = 'auction';
     public const BUY_TYPES_PREFERRED_DEALS = 'preferredDeals';
     public const BUY_TYPES_SPONSORSHIP = 'sponsorship';
+    public const CAMPAIGN_TYPES_ALL = 'all';
     public const CAMPAIGN_TYPES_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPES_ON_SITE_DISPLAYS = 'onSiteDisplays';
     public const MEDIA_TYPES_UNKNOWN = 'unknown';
     public const MEDIA_TYPES_VIDEO = 'video';
     public const MEDIA_TYPES_DISPLAY = 'display';
+    public const MEDIA_TYPES_ALL = 'all';
     public const SALES_CHANNELS_ONLINE = 'online';
     public const SALES_CHANNELS_OFFLINE = 'offline';
+    public const SALES_CHANNELS_ALL = 'all';
     public const SEARCH_TERM_TARGETINGS_UNKNOWN = 'unknown';
     public const SEARCH_TERM_TARGETINGS_AUTOMATIC = 'automatic';
     public const SEARCH_TERM_TARGETINGS_MANUAL = 'manual';
@@ -368,6 +371,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     public function getCampaignTypesAllowableValues()
     {
         return [
+            self::CAMPAIGN_TYPES_ALL,
             self::CAMPAIGN_TYPES_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPES_ON_SITE_DISPLAYS,
         ];
@@ -384,6 +388,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
             self::MEDIA_TYPES_UNKNOWN,
             self::MEDIA_TYPES_VIDEO,
             self::MEDIA_TYPES_DISPLAY,
+            self::MEDIA_TYPES_ALL,
         ];
     }
 
@@ -397,6 +402,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
         return [
             self::SALES_CHANNELS_ONLINE,
             self::SALES_CHANNELS_OFFLINE,
+            self::SALES_CHANNELS_ALL,
         ];
     }
 
@@ -499,66 +505,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) > 5)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be less than or equal to 5.";
-        }
-
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['activation_platforms']) && (count($this->container['activation_platforms']) < 1)) {
-            $invalidProperties[] = "invalid value for 'activation_platforms', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['budget_models']) && (count($this->container['budget_models']) < 1)) {
-            $invalidProperties[] = "invalid value for 'budget_models', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['buy_types']) && (count($this->container['buy_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'buy_types', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['campaign_types']) && (count($this->container['campaign_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'campaign_types', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['media_types']) && (count($this->container['media_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'media_types', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['sales_channels']) && (count($this->container['sales_channels']) < 1)) {
-            $invalidProperties[] = "invalid value for 'sales_channels', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['search_term_targetings']) && (count($this->container['search_term_targetings']) < 1)) {
-            $invalidProperties[] = "invalid value for 'search_term_targetings', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['search_term_types']) && (count($this->container['search_term_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'search_term_types', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['targeted_keyword_types']) && (count($this->container['targeted_keyword_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'targeted_keyword_types', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -587,7 +533,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets account_ids
      *
-     * @param string[]|null $account_ids Optional scope filter. Allows up to 5 account IDs per request.
+     * @param string[]|null $account_ids account_ids
      *
      * @return self
      */
@@ -595,13 +541,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($account_ids)) {
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
-        }
-
-        if ((count($account_ids) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $account_ids when calling PerformanceReportFilters., number of items must be less than or equal to 5.');
-        }
-        if ((count($account_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $account_ids when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['account_ids'] = $account_ids;
 
@@ -621,7 +560,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets activation_platforms
      *
-     * @param string[]|null $activation_platforms Optional activation platform filter.
+     * @param string[]|null $activation_platforms activation_platforms
      *
      * @return self
      */
@@ -638,11 +577,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($activation_platforms) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $activation_platforms when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['activation_platforms'] = $activation_platforms;
 
@@ -662,7 +596,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets budget_models
      *
-     * @param string[]|null $budget_models Optional budget model filter.
+     * @param string[]|null $budget_models budget_models
      *
      * @return self
      */
@@ -679,11 +613,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($budget_models) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $budget_models when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['budget_models'] = $budget_models;
 
@@ -703,7 +632,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets buy_types
      *
-     * @param string[]|null $buy_types Optional buy type filter.
+     * @param string[]|null $buy_types buy_types
      *
      * @return self
      */
@@ -720,11 +649,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($buy_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $buy_types when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['buy_types'] = $buy_types;
 
@@ -744,7 +668,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Optional scope filter. Allows up to 50 campaign IDs per request.
+     * @param string[]|null $campaign_ids campaign_ids
      *
      * @return self
      */
@@ -752,13 +676,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($campaign_ids)) {
             throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-
-        if ((count($campaign_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $campaign_ids when calling PerformanceReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($campaign_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $campaign_ids when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['campaign_ids'] = $campaign_ids;
 
@@ -778,7 +695,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets campaign_types
      *
-     * @param string[]|null $campaign_types Optional inherited campaign type filter.
+     * @param string[]|null $campaign_types campaign_types
      *
      * @return self
      */
@@ -795,11 +712,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($campaign_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $campaign_types when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['campaign_types'] = $campaign_types;
 
@@ -819,7 +731,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets line_item_ids
      *
-     * @param string[]|null $line_item_ids Optional scope filter. Allows up to 50 line-item IDs per request.
+     * @param string[]|null $line_item_ids line_item_ids
      *
      * @return self
      */
@@ -827,13 +739,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     {
         if (is_null($line_item_ids)) {
             throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
-        }
-
-        if ((count($line_item_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $line_item_ids when calling PerformanceReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($line_item_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $line_item_ids when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['line_item_ids'] = $line_item_ids;
 
@@ -853,7 +758,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets media_types
      *
-     * @param string[]|null $media_types Optional inherited media type filter.
+     * @param string[]|null $media_types media_types
      *
      * @return self
      */
@@ -870,11 +775,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($media_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $media_types when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['media_types'] = $media_types;
 
@@ -894,7 +794,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sales_channels
      *
-     * @param string[]|null $sales_channels Optional inherited sales channel filter.
+     * @param string[]|null $sales_channels sales_channels
      *
      * @return self
      */
@@ -911,11 +811,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($sales_channels) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $sales_channels when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['sales_channels'] = $sales_channels;
 
@@ -935,7 +830,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets search_term_targetings
      *
-     * @param string[]|null $search_term_targetings Optional search term targeting filter.
+     * @param string[]|null $search_term_targetings search_term_targetings
      *
      * @return self
      */
@@ -952,11 +847,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($search_term_targetings) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $search_term_targetings when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['search_term_targetings'] = $search_term_targetings;
 
@@ -976,7 +866,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets search_term_types
      *
-     * @param string[]|null $search_term_types Optional search term type filter.
+     * @param string[]|null $search_term_types search_term_types
      *
      * @return self
      */
@@ -993,11 +883,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($search_term_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $search_term_types when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['search_term_types'] = $search_term_types;
 
@@ -1017,7 +902,7 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets targeted_keyword_types
      *
-     * @param string[]|null $targeted_keyword_types Optional targeted keyword type filter.
+     * @param string[]|null $targeted_keyword_types targeted_keyword_types
      *
      * @return self
      */
@@ -1034,11 +919,6 @@ class PerformanceReportFilters implements ModelInterface, ArrayAccess, \JsonSeri
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($targeted_keyword_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $targeted_keyword_types when calling PerformanceReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['targeted_keyword_types'] = $targeted_keyword_types;
 

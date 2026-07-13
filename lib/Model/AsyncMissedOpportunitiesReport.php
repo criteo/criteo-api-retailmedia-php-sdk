@@ -75,11 +75,11 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPIFormats = [
         'dimensions' => null,
-        'end_date' => 'date',
+        'end_date' => 'date-time',
         'filters' => null,
         'format' => null,
         'metrics' => null,
-        'start_date' => 'date'
+        'start_date' => 'date-time'
     ];
 
     /**
@@ -367,7 +367,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], 'json-compact');
+        $this->setIfExists('format', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
     }
@@ -451,7 +451,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets dimensions
      *
-     * @param string[] $dimensions Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty.
+     * @param string[] $dimensions dimensions
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate.
+     * @param \DateTime $end_date end_date
      *
      * @return self
      */
@@ -541,7 +541,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets format
      *
-     * @param string|null $format Output format. If omitted, json-compact is used.
+     * @param string|null $format format
      *
      * @return self
      */
@@ -578,7 +578,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets metrics
      *
-     * @param string[] $metrics Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty.
+     * @param string[] $metrics metrics
      *
      * @return self
      */
@@ -614,7 +614,7 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Required inclusive report start date in YYYY-MM-DD format.
+     * @param \DateTime $start_date start_date
      *
      * @return self
      */

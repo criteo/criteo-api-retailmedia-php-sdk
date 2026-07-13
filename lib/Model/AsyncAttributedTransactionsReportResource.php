@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * AsyncAttributedTransactionsReportResource Class Doc Comment
  *
  * @category Class
- * @description JSON:API resource wrapper for an attributed-transactions async report create request.
+ * @description A top-level object that encapsulates a Criteo API response for a single value
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -235,19 +235,6 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const TYPE_ASYNC_ATTRIBUTED_TRANSACTIONS_REPORT = 'AsyncAttributedTransactionsReport';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_ASYNC_ATTRIBUTED_TRANSACTIONS_REPORT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -295,18 +282,6 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
     {
         $invalidProperties = [];
 
-        if ($this->container['attributes'] === null) {
-            $invalidProperties[] = "'attributes' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -325,7 +300,7 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReport
+     * @return \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReport|null
      */
     public function getAttributes()
     {
@@ -335,7 +310,7 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReport $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReport|null $attributes attributes
      *
      * @return self
      */
@@ -362,7 +337,7 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
     /**
      * Sets type
      *
-     * @param string|null $type Optional JSON:API resource type. If provided, it must match this create resource.
+     * @param string|null $type type
      *
      * @return self
      */
@@ -370,16 +345,6 @@ class AsyncAttributedTransactionsReportResource implements ModelInterface, Array
     {
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['type'] = $type;
 

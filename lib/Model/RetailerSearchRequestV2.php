@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailerResult
+ * RetailerSearchRequestV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailerResult Class Doc Comment
+ * RetailerSearchRequestV2 Class Doc Comment
  *
  * @category Class
- * @description The result of a query for the configuration of a retailer
+ * @description Request model for searching retailers
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class RetailerSearchRequestV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailerResult';
+    protected static $openAPIModelName = 'RetailerSearchRequestV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaign_availabilities' => '\criteo\api\retailmedia\preview\Model\CampaignAvailability[]',
-        'name' => 'string'
+        'retailer_id_filter' => 'string[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'campaign_availabilities' => null,
-        'name' => null
+        'retailer_id_filter' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'campaign_availabilities' => true,
-		'name' => true
+        'retailer_id_filter' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'campaign_availabilities' => 'campaignAvailabilities',
-        'name' => 'name'
+        'retailer_id_filter' => 'retailerIdFilter'
     ];
 
     /**
@@ -180,8 +176,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'campaign_availabilities' => 'setCampaignAvailabilities',
-        'name' => 'setName'
+        'retailer_id_filter' => 'setRetailerIdFilter'
     ];
 
     /**
@@ -190,8 +185,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'campaign_availabilities' => 'getCampaignAvailabilities',
-        'name' => 'getName'
+        'retailer_id_filter' => 'getRetailerIdFilter'
     ];
 
     /**
@@ -251,8 +245,7 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('campaign_availabilities', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('retailer_id_filter', $data ?? [], null);
     }
 
     /**
@@ -298,69 +291,35 @@ class RetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets campaign_availabilities
+     * Gets retailer_id_filter
      *
-     * @return \criteo\api\retailmedia\preview\Model\CampaignAvailability[]|null
+     * @return string[]|null
      */
-    public function getCampaignAvailabilities()
+    public function getRetailerIdFilter()
     {
-        return $this->container['campaign_availabilities'];
+        return $this->container['retailer_id_filter'];
     }
 
     /**
-     * Sets campaign_availabilities
+     * Sets retailer_id_filter
      *
-     * @param \criteo\api\retailmedia\preview\Model\CampaignAvailability[]|null $campaign_availabilities A list of campaign availabilities for the retailer, each of which shows the availability of a specific campaign type and buy type combination
+     * @param string[]|null $retailer_id_filter Optional list of retailer IDs to filter the results
      *
      * @return self
      */
-    public function setCampaignAvailabilities($campaign_availabilities)
+    public function setRetailerIdFilter($retailer_id_filter)
     {
-        if (is_null($campaign_availabilities)) {
-            array_push($this->openAPINullablesSetToNull, 'campaign_availabilities');
+        if (is_null($retailer_id_filter)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_id_filter');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('campaign_availabilities', $nullablesSetToNull);
+            $index = array_search('retailer_id_filter', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['campaign_availabilities'] = $campaign_availabilities;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Name of the retailer
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['name'] = $name;
+        $this->container['retailer_id_filter'] = $retailer_id_filter;
 
         return $this;
     }

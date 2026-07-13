@@ -1,6 +1,6 @@
 <?php
 /**
- * RetailerSearchRequest
+ * EntityResourceOfRetailerResultV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * RetailerSearchRequest Class Doc Comment
+ * EntityResourceOfRetailerResultV2 Class Doc Comment
  *
  * @category Class
- * @description Request model for searching retailers
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfRetailerResultV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RetailerSearchRequest';
+    protected static $openAPIModelName = 'EntityResourceOfRetailerResultV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id_filter' => 'string[]'
+        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailerResultV2',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id_filter' => null
+        'attributes' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id_filter' => true
+        'attributes' => true,
+		'id' => true,
+		'type' => true
     ];
 
     /**
@@ -167,7 +173,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id_filter' => 'retailerIdFilter'
+        'attributes' => 'attributes',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +184,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id_filter' => 'setRetailerIdFilter'
+        'attributes' => 'setAttributes',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +195,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id_filter' => 'getRetailerIdFilter'
+        'attributes' => 'getAttributes',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -245,7 +257,9 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_id_filter', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -291,35 +305,103 @@ class RetailerSearchRequest implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets retailer_id_filter
+     * Gets attributes
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\preview\Model\RetailerResultV2|null
      */
-    public function getRetailerIdFilter()
+    public function getAttributes()
     {
-        return $this->container['retailer_id_filter'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets retailer_id_filter
+     * Sets attributes
      *
-     * @param string[]|null $retailer_id_filter Optional list of retailer IDs to filter the results
+     * @param \criteo\api\retailmedia\preview\Model\RetailerResultV2|null $attributes attributes
      *
      * @return self
      */
-    public function setRetailerIdFilter($retailer_id_filter)
+    public function setAttributes($attributes)
     {
-        if (is_null($retailer_id_filter)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_id_filter');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_id_filter', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['retailer_id_filter'] = $retailer_id_filter;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Unique id of the entity.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type of the resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

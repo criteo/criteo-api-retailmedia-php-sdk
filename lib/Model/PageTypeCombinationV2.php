@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceOfRetailerResult
+ * PageTypeCombinationV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourceOfRetailerResult Class Doc Comment
+ * PageTypeCombinationV2 Class Doc Comment
  *
  * @category Class
- * @description A domain entity exposed by the API, identified by a unique id.
+ * @description Represents a combination of page type and page environment type for a specific campaign-buy type.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \JsonSerializable
+class PageTypeCombinationV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceOfRetailerResult';
+    protected static $openAPIModelName = 'PageTypeCombinationV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\preview\Model\RetailerResult',
-        'id' => 'string',
-        'type' => 'string'
+        'page_environment_type' => 'string',
+        'page_type' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'page_environment_type' => null,
+        'page_type' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'id' => true,
-		'type' => true
+        'page_environment_type' => true,
+		'page_type' => true
     ];
 
     /**
@@ -173,9 +170,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'page_environment_type' => 'pageEnvironmentType',
+        'page_type' => 'pageType'
     ];
 
     /**
@@ -184,9 +180,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'page_environment_type' => 'setPageEnvironmentType',
+        'page_type' => 'setPageType'
     ];
 
     /**
@@ -195,9 +190,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'page_environment_type' => 'getPageEnvironmentType',
+        'page_type' => 'getPageType'
     ];
 
     /**
@@ -241,6 +235,70 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const PAGE_ENVIRONMENT_TYPE_UNKNOWN = 'unknown';
+    public const PAGE_ENVIRONMENT_TYPE_WEB = 'web';
+    public const PAGE_ENVIRONMENT_TYPE_MOBILE = 'mobile';
+    public const PAGE_ENVIRONMENT_TYPE_APP = 'app';
+    public const PAGE_ENVIRONMENT_TYPE_LOCKOUT = 'lockout';
+    public const PAGE_ENVIRONMENT_TYPE_MIXED = 'mixed';
+    public const PAGE_ENVIRONMENT_TYPE_IOS = 'ios';
+    public const PAGE_ENVIRONMENT_TYPE_ANDROID = 'android';
+    public const PAGE_TYPE_UNKNOWN = 'unknown';
+    public const PAGE_TYPE_SEARCH = 'search';
+    public const PAGE_TYPE_HOME = 'home';
+    public const PAGE_TYPE_CHECKOUT = 'checkout';
+    public const PAGE_TYPE_CATEGORY = 'category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'productDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'merchandising';
+    public const PAGE_TYPE_DEALS = 'deals';
+    public const PAGE_TYPE_FAVORITES = 'favorites';
+    public const PAGE_TYPE_SEARCHBAR = 'searchbar';
+    public const PAGE_TYPE_CATEGORY_MENU = 'categoryMenu';
+    public const PAGE_TYPE_AI_ASSISTANT = 'aiAssistant';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageEnvironmentTypeAllowableValues()
+    {
+        return [
+            self::PAGE_ENVIRONMENT_TYPE_UNKNOWN,
+            self::PAGE_ENVIRONMENT_TYPE_WEB,
+            self::PAGE_ENVIRONMENT_TYPE_MOBILE,
+            self::PAGE_ENVIRONMENT_TYPE_APP,
+            self::PAGE_ENVIRONMENT_TYPE_LOCKOUT,
+            self::PAGE_ENVIRONMENT_TYPE_MIXED,
+            self::PAGE_ENVIRONMENT_TYPE_IOS,
+            self::PAGE_ENVIRONMENT_TYPE_ANDROID,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_UNKNOWN,
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+            self::PAGE_TYPE_FAVORITES,
+            self::PAGE_TYPE_SEARCHBAR,
+            self::PAGE_TYPE_CATEGORY_MENU,
+            self::PAGE_TYPE_AI_ASSISTANT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +315,8 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('page_environment_type', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
     }
 
     /**
@@ -289,6 +346,24 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
+        if (!is_null($this->container['page_environment_type']) && !in_array($this->container['page_environment_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_environment_type', must be one of '%s'",
+                $this->container['page_environment_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +380,89 @@ class EntityResourceOfRetailerResult implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets attributes
+     * Gets page_environment_type
      *
-     * @return \criteo\api\retailmedia\preview\Model\RetailerResult|null
+     * @return string|null
      */
-    public function getAttributes()
+    public function getPageEnvironmentType()
     {
-        return $this->container['attributes'];
+        return $this->container['page_environment_type'];
     }
 
     /**
-     * Sets attributes
+     * Sets page_environment_type
      *
-     * @param \criteo\api\retailmedia\preview\Model\RetailerResult|null $attributes attributes
+     * @param string|null $page_environment_type The page environment type supported for this campaign-buy type combination
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setPageEnvironmentType($page_environment_type)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($page_environment_type)) {
+            array_push($this->openAPINullablesSetToNull, 'page_environment_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('page_environment_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
+        $allowedValues = $this->getPageEnvironmentTypeAllowableValues();
+        if (!is_null($page_environment_type) && !in_array($page_environment_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_environment_type', must be one of '%s'",
+                    $page_environment_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_environment_type'] = $page_environment_type;
 
         return $this;
     }
 
     /**
-     * Gets id
+     * Gets page_type
      *
      * @return string|null
      */
-    public function getId()
+    public function getPageType()
     {
-        return $this->container['id'];
+        return $this->container['page_type'];
     }
 
     /**
-     * Sets id
+     * Sets page_type
      *
-     * @param string|null $id Unique id of the entity.
+     * @param string|null $page_type The page type supported for this campaign-buy type combination
      *
      * @return self
      */
-    public function setId($id)
+    public function setPageType($page_type)
     {
-        if (is_null($id)) {
-            array_push($this->openAPINullablesSetToNull, 'id');
+        if (is_null($page_type)) {
+            array_push($this->openAPINullablesSetToNull, 'page_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id', $nullablesSetToNull);
+            $index = array_search('page_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($page_type) && !in_array($page_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_type', must be one of '%s'",
+                    $page_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['type'] = $type;
+        $this->container['page_type'] = $page_type;
 
         return $this;
     }

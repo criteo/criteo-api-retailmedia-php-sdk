@@ -250,6 +250,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     public const MEDIA_TYPES_UNKNOWN = 'unknown';
     public const MEDIA_TYPES_VIDEO = 'video';
     public const MEDIA_TYPES_DISPLAY = 'display';
+    public const MEDIA_TYPES_ALL = 'all';
 
     /**
      * Gets allowable values of the enum
@@ -262,6 +263,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
             self::MEDIA_TYPES_UNKNOWN,
             self::MEDIA_TYPES_VIDEO,
             self::MEDIA_TYPES_DISPLAY,
+            self::MEDIA_TYPES_ALL,
         ];
     }
 
@@ -313,34 +315,6 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) > 5)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be less than or equal to 5.";
-        }
-
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['media_types']) && (count($this->container['media_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'media_types', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -369,7 +343,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     /**
      * Sets account_ids
      *
-     * @param string[]|null $account_ids Optional scope filter. Allows up to 5 account IDs per request.
+     * @param string[]|null $account_ids account_ids
      *
      * @return self
      */
@@ -377,13 +351,6 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     {
         if (is_null($account_ids)) {
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
-        }
-
-        if ((count($account_ids) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $account_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 5.');
-        }
-        if ((count($account_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $account_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['account_ids'] = $account_ids;
 
@@ -403,7 +370,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Optional scope filter. Allows up to 50 campaign IDs per request.
+     * @param string[]|null $campaign_ids campaign_ids
      *
      * @return self
      */
@@ -411,13 +378,6 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     {
         if (is_null($campaign_ids)) {
             throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
-        }
-
-        if ((count($campaign_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $campaign_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($campaign_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $campaign_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['campaign_ids'] = $campaign_ids;
 
@@ -437,7 +397,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     /**
      * Sets line_item_ids
      *
-     * @param string[]|null $line_item_ids Optional scope filter. Allows up to 50 line-item IDs per request.
+     * @param string[]|null $line_item_ids line_item_ids
      *
      * @return self
      */
@@ -445,13 +405,6 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     {
         if (is_null($line_item_ids)) {
             throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
-        }
-
-        if ((count($line_item_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $line_item_ids when calling AttributedTransactionsReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($line_item_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $line_item_ids when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['line_item_ids'] = $line_item_ids;
 
@@ -471,7 +424,7 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
     /**
      * Sets media_types
      *
-     * @param string[]|null $media_types Optional media type filter.
+     * @param string[]|null $media_types media_types
      *
      * @return self
      */
@@ -488,11 +441,6 @@ class AttributedTransactionsReportFilters implements ModelInterface, ArrayAccess
                     implode("', '", $allowedValues)
                 )
             );
-        }
-
-
-        if ((count($media_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $media_types when calling AttributedTransactionsReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['media_types'] = $media_types;
 

@@ -58,7 +58,7 @@ docs/Model/BatchStoreInventoryRequest.md
 docs/Model/BotMessage.md
 docs/Model/BrandIdSearchRequest.md
 docs/Model/BrandIdSearchResult.md
-docs/Model/CampaignAvailability.md
+docs/Model/CampaignAvailabilityV2.md
 docs/Model/CatalogStatusV2.md
 docs/Model/ChangeDetailsV1.md
 docs/Model/ChoiceVariableValue.md
@@ -85,7 +85,7 @@ docs/Model/EntityResourceCollectionOutcomeBalanceV1AndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md
 docs/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md
 docs/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.md
-docs/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md
+docs/Model/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md
 docs/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.md
 docs/Model/EntityResourceCreativeSearchRequest.md
 docs/Model/EntityResourceCreativeSearchResponse.md
@@ -93,7 +93,7 @@ docs/Model/EntityResourceInputCreativeSearchRequest.md
 docs/Model/EntityResourceOfCatalogStatusV2.md
 docs/Model/EntityResourceOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
-docs/Model/EntityResourceOfRetailerResult.md
+docs/Model/EntityResourceOfRetailerResultV2.md
 docs/Model/EntityResourceOfSponsoredProductsLineItem.md
 docs/Model/EntityResourceOutcomeBalanceV1.md
 docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
@@ -143,7 +143,7 @@ docs/Model/NillableString.md
 docs/Model/OfferUpdate.md
 docs/Model/Outcome.md
 docs/Model/PageMetadata.md
-docs/Model/PageTypeCombination.md
+docs/Model/PageTypeCombinationV2.md
 docs/Model/PageTypeEnvironment2.md
 docs/Model/PagingOffsetLimitMetadata.md
 docs/Model/PerformanceReportFilters.md
@@ -194,8 +194,8 @@ docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
 docs/Model/RetailMediaContactlistOperation.md
 docs/Model/RetailMediaContactlistOperationResponseAttributes.md
-docs/Model/RetailerResult.md
-docs/Model/RetailerSearchRequest.md
+docs/Model/RetailerResultV2.md
+docs/Model/RetailerSearchRequestV2.md
 docs/Model/RmAlgebraNodeV1.md
 docs/Model/RmAudienceBulkCreateInputV1.md
 docs/Model/RmAudienceBulkDeleteInputV1.md
@@ -313,7 +313,7 @@ docs/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.md
 docs/Model/ValueResourceInputOfRetailMediaBrandAccountCreationV2.md
 docs/Model/ValueResourceInputOfRetailMediaBrands.md
 docs/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.md
-docs/Model/ValueResourceInputOfRetailerSearchRequest.md
+docs/Model/ValueResourceInputOfRetailerSearchRequestV2.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/Model/ValueResourceInputOfUpdateBalanceModelV1.md
@@ -325,7 +325,7 @@ docs/Model/ValueResourceOfRetailMediaBrandAccountCreationV2.md
 docs/Model/ValueResourceOfRetailMediaBrands.md
 docs/Model/ValueResourceOfRetailMediaSeller.md
 docs/Model/ValueResourceOfRetailMediaSellerAccountCreationV2.md
-docs/Model/ValueResourceOfRetailerSearchRequest.md
+docs/Model/ValueResourceOfRetailerSearchRequestV2.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.md
 docs/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.md
 docs/Model/ValueResourceOfUpdateBalanceModelV1.md
@@ -395,7 +395,7 @@ lib/Model/BatchStoreInventoryRequest.php
 lib/Model/BotMessage.php
 lib/Model/BrandIdSearchRequest.php
 lib/Model/BrandIdSearchResult.php
-lib/Model/CampaignAvailability.php
+lib/Model/CampaignAvailabilityV2.php
 lib/Model/CatalogStatusV2.php
 lib/Model/ChangeDetailsV1.php
 lib/Model/ChoiceVariableValue.php
@@ -422,7 +422,7 @@ lib/Model/EntityResourceCollectionOutcomeBalanceV1AndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.php
 lib/Model/EntityResourceCollectionOutcomeCreativeSearchResponse.php
 lib/Model/EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata.php
-lib/Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.php
+lib/Model/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.php
 lib/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.php
 lib/Model/EntityResourceCreativeSearchRequest.php
 lib/Model/EntityResourceCreativeSearchResponse.php
@@ -430,7 +430,7 @@ lib/Model/EntityResourceInputCreativeSearchRequest.php
 lib/Model/EntityResourceOfCatalogStatusV2.php
 lib/Model/EntityResourceOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
-lib/Model/EntityResourceOfRetailerResult.php
+lib/Model/EntityResourceOfRetailerResultV2.php
 lib/Model/EntityResourceOfSponsoredProductsLineItem.php
 lib/Model/EntityResourceOutcomeBalanceV1.php
 lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
@@ -481,7 +481,7 @@ lib/Model/NillableString.php
 lib/Model/OfferUpdate.php
 lib/Model/Outcome.php
 lib/Model/PageMetadata.php
-lib/Model/PageTypeCombination.php
+lib/Model/PageTypeCombinationV2.php
 lib/Model/PageTypeEnvironment2.php
 lib/Model/PagingOffsetLimitMetadata.php
 lib/Model/PerformanceReportFilters.php
@@ -532,8 +532,8 @@ lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php
 lib/Model/RetailMediaContactlistOperation.php
 lib/Model/RetailMediaContactlistOperationResponseAttributes.php
-lib/Model/RetailerResult.php
-lib/Model/RetailerSearchRequest.php
+lib/Model/RetailerResultV2.php
+lib/Model/RetailerSearchRequestV2.php
 lib/Model/RmAlgebraNodeV1.php
 lib/Model/RmAudienceBulkCreateInputV1.php
 lib/Model/RmAudienceBulkDeleteInputV1.php
@@ -651,7 +651,7 @@ lib/Model/ValueResourceInputLineItemBudgetCapOutHistoryRequest.php
 lib/Model/ValueResourceInputOfRetailMediaBrandAccountCreationV2.php
 lib/Model/ValueResourceInputOfRetailMediaBrands.php
 lib/Model/ValueResourceInputOfRetailMediaSellerAccountCreationV2.php
-lib/Model/ValueResourceInputOfRetailerSearchRequest.php
+lib/Model/ValueResourceInputOfRetailerSearchRequestV2.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel.php
 lib/Model/ValueResourceInputOfUpdateBalanceModelV1.php
@@ -663,7 +663,7 @@ lib/Model/ValueResourceOfRetailMediaBrandAccountCreationV2.php
 lib/Model/ValueResourceOfRetailMediaBrands.php
 lib/Model/ValueResourceOfRetailMediaSeller.php
 lib/Model/ValueResourceOfRetailMediaSellerAccountCreationV2.php
-lib/Model/ValueResourceOfRetailerSearchRequest.php
+lib/Model/ValueResourceOfRetailerSearchRequestV2.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemCreateRequestModel.php
 lib/Model/ValueResourceOfSponsoredProductsLineItemUpdateRequestModel.php
 lib/Model/ValueResourceOfUpdateBalanceModelV1.php

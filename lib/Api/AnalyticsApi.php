@@ -71,28 +71,28 @@ class AnalyticsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createAsyncAttributedTransactionsReport' => [
+        'generateAsyncAccountsReportV2' => [
             'application/json',
         ],
-        'createAsyncMissedOpportunitiesReport' => [
+        'generateAsyncAttributedTransactionsReport' => [
             'application/json',
         ],
-        'createAsyncPerformanceReport' => [
-            'application/json',
-        ],
-        'generateAsyncAccountsReport' => [
-            'application/json',
-        ],
-        'generateAsyncCampaignsReport' => [
+        'generateAsyncCampaignsReportV2' => [
             'application/json',
         ],
         'generateAsyncFillRateReport' => [
             'application/json',
         ],
-        'generateAsyncLineItemsReport' => [
+        'generateAsyncLineItemsReportV2' => [
+            'application/json',
+        ],
+        'generateAsyncMissedOpportunitiesReport' => [
             'application/json',
         ],
         'generateAsyncOffsiteReport' => [
+            'application/json',
+        ],
+        'generateAsyncPerformanceReport' => [
             'application/json',
         ],
         'generateAsyncUnfilledPlacementsReport' => [
@@ -177,908 +177,38 @@ class AnalyticsApi
     }
 
     /**
-     * Operation createAsyncAttributedTransactionsReport
-     *
-     * /preview/retail-media/reports/attributed-transactions
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncAttributedTransactionsReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-     */
-    public function createAsyncAttributedTransactionsReport($async_attributed_transactions_report_request, string $contentType = self::contentTypes['createAsyncAttributedTransactionsReport'][0])
-    {
-        list($response) = $this->createAsyncAttributedTransactionsReportWithHttpInfo($async_attributed_transactions_report_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createAsyncAttributedTransactionsReportWithHttpInfo
-     *
-     * /preview/retail-media/reports/attributed-transactions
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncAttributedTransactionsReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createAsyncAttributedTransactionsReportWithHttpInfo($async_attributed_transactions_report_request, string $contentType = self::contentTypes['createAsyncAttributedTransactionsReport'][0])
-    {
-        $request = $this->createAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsyncAttributedTransactionsReportAsync
-     *
-     * /preview/retail-media/reports/attributed-transactions
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncAttributedTransactionsReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncAttributedTransactionsReportAsync($async_attributed_transactions_report_request, string $contentType = self::contentTypes['createAsyncAttributedTransactionsReport'][0])
-    {
-        return $this->createAsyncAttributedTransactionsReportAsyncWithHttpInfo($async_attributed_transactions_report_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncAttributedTransactionsReportAsyncWithHttpInfo
-     *
-     * /preview/retail-media/reports/attributed-transactions
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncAttributedTransactionsReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncAttributedTransactionsReportAsyncWithHttpInfo($async_attributed_transactions_report_request, string $contentType = self::contentTypes['createAsyncAttributedTransactionsReport'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->createAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createAsyncAttributedTransactionsReport'
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncAttributedTransactionsReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, string $contentType = self::contentTypes['createAsyncAttributedTransactionsReport'][0])
-    {
-
-        // verify the required parameter 'async_attributed_transactions_report_request' is set
-        if ($async_attributed_transactions_report_request === null || (is_array($async_attributed_transactions_report_request) && count($async_attributed_transactions_report_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $async_attributed_transactions_report_request when calling createAsyncAttributedTransactionsReport'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/reports/attributed-transactions';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($async_attributed_transactions_report_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_attributed_transactions_report_request));
-            } else {
-                $httpBody = $async_attributed_transactions_report_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation createAsyncMissedOpportunitiesReport
-     *
-     * /preview/retail-media/reports/missed-opportunities
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncMissedOpportunitiesReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-     */
-    public function createAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request, string $contentType = self::contentTypes['createAsyncMissedOpportunitiesReport'][0])
-    {
-        list($response) = $this->createAsyncMissedOpportunitiesReportWithHttpInfo($async_missed_opportunities_report_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createAsyncMissedOpportunitiesReportWithHttpInfo
-     *
-     * /preview/retail-media/reports/missed-opportunities
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncMissedOpportunitiesReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createAsyncMissedOpportunitiesReportWithHttpInfo($async_missed_opportunities_report_request, string $contentType = self::contentTypes['createAsyncMissedOpportunitiesReport'][0])
-    {
-        $request = $this->createAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsyncMissedOpportunitiesReportAsync
-     *
-     * /preview/retail-media/reports/missed-opportunities
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncMissedOpportunitiesReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncMissedOpportunitiesReportAsync($async_missed_opportunities_report_request, string $contentType = self::contentTypes['createAsyncMissedOpportunitiesReport'][0])
-    {
-        return $this->createAsyncMissedOpportunitiesReportAsyncWithHttpInfo($async_missed_opportunities_report_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncMissedOpportunitiesReportAsyncWithHttpInfo
-     *
-     * /preview/retail-media/reports/missed-opportunities
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncMissedOpportunitiesReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncMissedOpportunitiesReportAsyncWithHttpInfo($async_missed_opportunities_report_request, string $contentType = self::contentTypes['createAsyncMissedOpportunitiesReport'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->createAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createAsyncMissedOpportunitiesReport'
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncMissedOpportunitiesReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, string $contentType = self::contentTypes['createAsyncMissedOpportunitiesReport'][0])
-    {
-
-        // verify the required parameter 'async_missed_opportunities_report_request' is set
-        if ($async_missed_opportunities_report_request === null || (is_array($async_missed_opportunities_report_request) && count($async_missed_opportunities_report_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $async_missed_opportunities_report_request when calling createAsyncMissedOpportunitiesReport'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/reports/missed-opportunities';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($async_missed_opportunities_report_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_missed_opportunities_report_request));
-            } else {
-                $httpBody = $async_missed_opportunities_report_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation createAsyncPerformanceReport
-     *
-     * /preview/retail-media/reports/performance
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncPerformanceReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-     */
-    public function createAsyncPerformanceReport($async_performance_report_request, string $contentType = self::contentTypes['createAsyncPerformanceReport'][0])
-    {
-        list($response) = $this->createAsyncPerformanceReportWithHttpInfo($async_performance_report_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createAsyncPerformanceReportWithHttpInfo
-     *
-     * /preview/retail-media/reports/performance
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncPerformanceReport'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createAsyncPerformanceReportWithHttpInfo($async_performance_report_request, string $contentType = self::contentTypes['createAsyncPerformanceReport'][0])
-    {
-        $request = $this->createAsyncPerformanceReportRequest($async_performance_report_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsyncPerformanceReportAsync
-     *
-     * /preview/retail-media/reports/performance
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncPerformanceReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncPerformanceReportAsync($async_performance_report_request, string $contentType = self::contentTypes['createAsyncPerformanceReport'][0])
-    {
-        return $this->createAsyncPerformanceReportAsyncWithHttpInfo($async_performance_report_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncPerformanceReportAsyncWithHttpInfo
-     *
-     * /preview/retail-media/reports/performance
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncPerformanceReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncPerformanceReportAsyncWithHttpInfo($async_performance_report_request, string $contentType = self::contentTypes['createAsyncPerformanceReport'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->createAsyncPerformanceReportRequest($async_performance_report_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createAsyncPerformanceReport'
-     *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request Required create payload. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsyncPerformanceReport'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createAsyncPerformanceReportRequest($async_performance_report_request, string $contentType = self::contentTypes['createAsyncPerformanceReport'][0])
-    {
-
-        // verify the required parameter 'async_performance_report_request' is set
-        if ($async_performance_report_request === null || (is_array($async_performance_report_request) && count($async_performance_report_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $async_performance_report_request when calling createAsyncPerformanceReport'
-            );
-        }
-
-
-        $resourcePath = '/preview/retail-media/reports/performance';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($async_performance_report_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_performance_report_request));
-            } else {
-                $httpBody = $async_performance_report_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation generateAsyncAccountsReport
+     * Operation generateAsyncAccountsReportV2
      *
      * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request async_accounts_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReportV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
      */
-    public function generateAsyncAccountsReport($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReport'][0])
+    public function generateAsyncAccountsReportV2($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReportV2'][0])
     {
-        list($response) = $this->generateAsyncAccountsReportWithHttpInfo($async_accounts_report_request, $contentType);
+        list($response) = $this->generateAsyncAccountsReportV2WithHttpInfo($async_accounts_report_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation generateAsyncAccountsReportWithHttpInfo
+     * Operation generateAsyncAccountsReportV2WithHttpInfo
      *
      * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReportV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function generateAsyncAccountsReportWithHttpInfo($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReport'][0])
+    public function generateAsyncAccountsReportV2WithHttpInfo($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReportV2'][0])
     {
-        $request = $this->generateAsyncAccountsReportRequest($async_accounts_report_request, $contentType);
+        $request = $this->generateAsyncAccountsReportV2Request($async_accounts_report_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1165,19 +295,19 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncAccountsReportAsync
+     * Operation generateAsyncAccountsReportV2Async
      *
      * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncAccountsReportAsync($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReport'][0])
+    public function generateAsyncAccountsReportV2Async($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReportV2'][0])
     {
-        return $this->generateAsyncAccountsReportAsyncWithHttpInfo($async_accounts_report_request, $contentType)
+        return $this->generateAsyncAccountsReportV2AsyncWithHttpInfo($async_accounts_report_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1186,20 +316,20 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncAccountsReportAsyncWithHttpInfo
+     * Operation generateAsyncAccountsReportV2AsyncWithHttpInfo
      *
      * /preview/retail-media/reports/accounts
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncAccountsReportAsyncWithHttpInfo($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReport'][0])
+    public function generateAsyncAccountsReportV2AsyncWithHttpInfo($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReportV2'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->generateAsyncAccountsReportRequest($async_accounts_report_request, $contentType);
+        $request = $this->generateAsyncAccountsReportV2Request($async_accounts_report_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1238,21 +368,21 @@ class AnalyticsApi
     }
 
     /**
-     * Create request for operation 'generateAsyncAccountsReport'
+     * Create request for operation 'generateAsyncAccountsReportV2'
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest $async_accounts_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAccountsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function generateAsyncAccountsReportRequest($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReport'][0])
+    public function generateAsyncAccountsReportV2Request($async_accounts_report_request, string $contentType = self::contentTypes['generateAsyncAccountsReportV2'][0])
     {
 
         // verify the required parameter 'async_accounts_report_request' is set
         if ($async_accounts_report_request === null || (is_array($async_accounts_report_request) && count($async_accounts_report_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $async_accounts_report_request when calling generateAsyncAccountsReport'
+                'Missing the required parameter $async_accounts_report_request when calling generateAsyncAccountsReportV2'
             );
         }
 
@@ -1337,38 +467,38 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncCampaignsReport
+     * Operation generateAsyncAttributedTransactionsReport
      *
-     * /preview/retail-media/reports/campaigns
+     * /preview/retail-media/reports/attributed-transactions
      *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request async_campaigns_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request async_attributed_transactions_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAttributedTransactionsReport'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
      */
-    public function generateAsyncCampaignsReport($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
+    public function generateAsyncAttributedTransactionsReport($async_attributed_transactions_report_request, string $contentType = self::contentTypes['generateAsyncAttributedTransactionsReport'][0])
     {
-        list($response) = $this->generateAsyncCampaignsReportWithHttpInfo($async_campaigns_report_request, $contentType);
+        list($response) = $this->generateAsyncAttributedTransactionsReportWithHttpInfo($async_attributed_transactions_report_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation generateAsyncCampaignsReportWithHttpInfo
+     * Operation generateAsyncAttributedTransactionsReportWithHttpInfo
      *
-     * /preview/retail-media/reports/campaigns
+     * /preview/retail-media/reports/attributed-transactions
      *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAttributedTransactionsReport'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function generateAsyncCampaignsReportWithHttpInfo($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
+    public function generateAsyncAttributedTransactionsReportWithHttpInfo($async_attributed_transactions_report_request, string $contentType = self::contentTypes['generateAsyncAttributedTransactionsReport'][0])
     {
-        $request = $this->generateAsyncCampaignsReportRequest($async_campaigns_report_request, $contentType);
+        $request = $this->generateAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1455,19 +585,19 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncCampaignsReportAsync
+     * Operation generateAsyncAttributedTransactionsReportAsync
      *
-     * /preview/retail-media/reports/campaigns
+     * /preview/retail-media/reports/attributed-transactions
      *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAttributedTransactionsReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncCampaignsReportAsync($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
+    public function generateAsyncAttributedTransactionsReportAsync($async_attributed_transactions_report_request, string $contentType = self::contentTypes['generateAsyncAttributedTransactionsReport'][0])
     {
-        return $this->generateAsyncCampaignsReportAsyncWithHttpInfo($async_campaigns_report_request, $contentType)
+        return $this->generateAsyncAttributedTransactionsReportAsyncWithHttpInfo($async_attributed_transactions_report_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1476,20 +606,20 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncCampaignsReportAsyncWithHttpInfo
+     * Operation generateAsyncAttributedTransactionsReportAsyncWithHttpInfo
      *
-     * /preview/retail-media/reports/campaigns
+     * /preview/retail-media/reports/attributed-transactions
      *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAttributedTransactionsReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncCampaignsReportAsyncWithHttpInfo($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
+    public function generateAsyncAttributedTransactionsReportAsyncWithHttpInfo($async_attributed_transactions_report_request, string $contentType = self::contentTypes['generateAsyncAttributedTransactionsReport'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->generateAsyncCampaignsReportRequest($async_campaigns_report_request, $contentType);
+        $request = $this->generateAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1528,21 +658,311 @@ class AnalyticsApi
     }
 
     /**
-     * Create request for operation 'generateAsyncCampaignsReport'
+     * Create request for operation 'generateAsyncAttributedTransactionsReport'
      *
-     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReport'] to see the possible values for this operation
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest $async_attributed_transactions_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncAttributedTransactionsReport'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function generateAsyncCampaignsReportRequest($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReport'][0])
+    public function generateAsyncAttributedTransactionsReportRequest($async_attributed_transactions_report_request, string $contentType = self::contentTypes['generateAsyncAttributedTransactionsReport'][0])
+    {
+
+        // verify the required parameter 'async_attributed_transactions_report_request' is set
+        if ($async_attributed_transactions_report_request === null || (is_array($async_attributed_transactions_report_request) && count($async_attributed_transactions_report_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $async_attributed_transactions_report_request when calling generateAsyncAttributedTransactionsReport'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/reports/attributed-transactions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($async_attributed_transactions_report_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_attributed_transactions_report_request));
+            } else {
+                $httpBody = $async_attributed_transactions_report_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation generateAsyncCampaignsReportV2
+     *
+     * /preview/retail-media/reports/campaigns
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request async_campaigns_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReportV2'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+     */
+    public function generateAsyncCampaignsReportV2($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReportV2'][0])
+    {
+        list($response) = $this->generateAsyncCampaignsReportV2WithHttpInfo($async_campaigns_report_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateAsyncCampaignsReportV2WithHttpInfo
+     *
+     * /preview/retail-media/reports/campaigns
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReportV2'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateAsyncCampaignsReportV2WithHttpInfo($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReportV2'][0])
+    {
+        $request = $this->generateAsyncCampaignsReportV2Request($async_campaigns_report_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateAsyncCampaignsReportV2Async
+     *
+     * /preview/retail-media/reports/campaigns
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReportV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncCampaignsReportV2Async($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReportV2'][0])
+    {
+        return $this->generateAsyncCampaignsReportV2AsyncWithHttpInfo($async_campaigns_report_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateAsyncCampaignsReportV2AsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/campaigns
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReportV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncCampaignsReportV2AsyncWithHttpInfo($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReportV2'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+        $request = $this->generateAsyncCampaignsReportV2Request($async_campaigns_report_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateAsyncCampaignsReportV2'
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest $async_campaigns_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncCampaignsReportV2'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateAsyncCampaignsReportV2Request($async_campaigns_report_request, string $contentType = self::contentTypes['generateAsyncCampaignsReportV2'][0])
     {
 
         // verify the required parameter 'async_campaigns_report_request' is set
         if ($async_campaigns_report_request === null || (is_array($async_campaigns_report_request) && count($async_campaigns_report_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $async_campaigns_report_request when calling generateAsyncCampaignsReport'
+                'Missing the required parameter $async_campaigns_report_request when calling generateAsyncCampaignsReportV2'
             );
         }
 
@@ -1917,38 +1337,38 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncLineItemsReport
+     * Operation generateAsyncLineItemsReportV2
      *
      * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request async_line_items_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReportV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
      */
-    public function generateAsyncLineItemsReport($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
+    public function generateAsyncLineItemsReportV2($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReportV2'][0])
     {
-        list($response) = $this->generateAsyncLineItemsReportWithHttpInfo($async_line_items_report_request, $contentType);
+        list($response) = $this->generateAsyncLineItemsReportV2WithHttpInfo($async_line_items_report_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation generateAsyncLineItemsReportWithHttpInfo
+     * Operation generateAsyncLineItemsReportV2WithHttpInfo
      *
      * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReportV2'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function generateAsyncLineItemsReportWithHttpInfo($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
+    public function generateAsyncLineItemsReportV2WithHttpInfo($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReportV2'][0])
     {
-        $request = $this->generateAsyncLineItemsReportRequest($async_line_items_report_request, $contentType);
+        $request = $this->generateAsyncLineItemsReportV2Request($async_line_items_report_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2035,19 +1455,19 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncLineItemsReportAsync
+     * Operation generateAsyncLineItemsReportV2Async
      *
      * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncLineItemsReportAsync($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
+    public function generateAsyncLineItemsReportV2Async($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReportV2'][0])
     {
-        return $this->generateAsyncLineItemsReportAsyncWithHttpInfo($async_line_items_report_request, $contentType)
+        return $this->generateAsyncLineItemsReportV2AsyncWithHttpInfo($async_line_items_report_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2056,20 +1476,20 @@ class AnalyticsApi
     }
 
     /**
-     * Operation generateAsyncLineItemsReportAsyncWithHttpInfo
+     * Operation generateAsyncLineItemsReportV2AsyncWithHttpInfo
      *
      * /preview/retail-media/reports/line-items
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function generateAsyncLineItemsReportAsyncWithHttpInfo($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
+    public function generateAsyncLineItemsReportV2AsyncWithHttpInfo($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReportV2'][0])
     {
         $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
-        $request = $this->generateAsyncLineItemsReportRequest($async_line_items_report_request, $contentType);
+        $request = $this->generateAsyncLineItemsReportV2Request($async_line_items_report_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2108,21 +1528,21 @@ class AnalyticsApi
     }
 
     /**
-     * Create request for operation 'generateAsyncLineItemsReport'
+     * Create request for operation 'generateAsyncLineItemsReportV2'
      *
      * @param  \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest $async_line_items_report_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReport'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncLineItemsReportV2'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function generateAsyncLineItemsReportRequest($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReport'][0])
+    public function generateAsyncLineItemsReportV2Request($async_line_items_report_request, string $contentType = self::contentTypes['generateAsyncLineItemsReportV2'][0])
     {
 
         // verify the required parameter 'async_line_items_report_request' is set
         if ($async_line_items_report_request === null || (is_array($async_line_items_report_request) && count($async_line_items_report_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $async_line_items_report_request when calling generateAsyncLineItemsReport'
+                'Missing the required parameter $async_line_items_report_request when calling generateAsyncLineItemsReportV2'
             );
         }
 
@@ -2151,6 +1571,296 @@ class AnalyticsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_line_items_report_request));
             } else {
                 $httpBody = $async_line_items_report_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation generateAsyncMissedOpportunitiesReport
+     *
+     * /preview/retail-media/reports/missed-opportunities
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request async_missed_opportunities_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncMissedOpportunitiesReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+     */
+    public function generateAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request, string $contentType = self::contentTypes['generateAsyncMissedOpportunitiesReport'][0])
+    {
+        list($response) = $this->generateAsyncMissedOpportunitiesReportWithHttpInfo($async_missed_opportunities_report_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateAsyncMissedOpportunitiesReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/missed-opportunities
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncMissedOpportunitiesReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateAsyncMissedOpportunitiesReportWithHttpInfo($async_missed_opportunities_report_request, string $contentType = self::contentTypes['generateAsyncMissedOpportunitiesReport'][0])
+    {
+        $request = $this->generateAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateAsyncMissedOpportunitiesReportAsync
+     *
+     * /preview/retail-media/reports/missed-opportunities
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncMissedOpportunitiesReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncMissedOpportunitiesReportAsync($async_missed_opportunities_report_request, string $contentType = self::contentTypes['generateAsyncMissedOpportunitiesReport'][0])
+    {
+        return $this->generateAsyncMissedOpportunitiesReportAsyncWithHttpInfo($async_missed_opportunities_report_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateAsyncMissedOpportunitiesReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/missed-opportunities
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncMissedOpportunitiesReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncMissedOpportunitiesReportAsyncWithHttpInfo($async_missed_opportunities_report_request, string $contentType = self::contentTypes['generateAsyncMissedOpportunitiesReport'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+        $request = $this->generateAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateAsyncMissedOpportunitiesReport'
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest $async_missed_opportunities_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncMissedOpportunitiesReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateAsyncMissedOpportunitiesReportRequest($async_missed_opportunities_report_request, string $contentType = self::contentTypes['generateAsyncMissedOpportunitiesReport'][0])
+    {
+
+        // verify the required parameter 'async_missed_opportunities_report_request' is set
+        if ($async_missed_opportunities_report_request === null || (is_array($async_missed_opportunities_report_request) && count($async_missed_opportunities_report_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $async_missed_opportunities_report_request when calling generateAsyncMissedOpportunitiesReport'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/reports/missed-opportunities';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($async_missed_opportunities_report_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_missed_opportunities_report_request));
+            } else {
+                $httpBody = $async_missed_opportunities_report_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2441,6 +2151,296 @@ class AnalyticsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_offsite_report_request));
             } else {
                 $httpBody = $async_offsite_report_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation generateAsyncPerformanceReport
+     *
+     * /preview/retail-media/reports/performance
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request async_performance_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncPerformanceReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+     */
+    public function generateAsyncPerformanceReport($async_performance_report_request, string $contentType = self::contentTypes['generateAsyncPerformanceReport'][0])
+    {
+        list($response) = $this->generateAsyncPerformanceReportWithHttpInfo($async_performance_report_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation generateAsyncPerformanceReportWithHttpInfo
+     *
+     * /preview/retail-media/reports/performance
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncPerformanceReport'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\preview\Model\AsyncReportResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function generateAsyncPerformanceReportWithHttpInfo($async_performance_report_request, string $contentType = self::contentTypes['generateAsyncPerformanceReport'][0])
+    {
+        $request = $this->generateAsyncPerformanceReportRequest($async_performance_report_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\AsyncReportResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\AsyncReportResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\AsyncReportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation generateAsyncPerformanceReportAsync
+     *
+     * /preview/retail-media/reports/performance
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncPerformanceReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncPerformanceReportAsync($async_performance_report_request, string $contentType = self::contentTypes['generateAsyncPerformanceReport'][0])
+    {
+        return $this->generateAsyncPerformanceReportAsyncWithHttpInfo($async_performance_report_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation generateAsyncPerformanceReportAsyncWithHttpInfo
+     *
+     * /preview/retail-media/reports/performance
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncPerformanceReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function generateAsyncPerformanceReportAsyncWithHttpInfo($async_performance_report_request, string $contentType = self::contentTypes['generateAsyncPerformanceReport'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\preview\Model\AsyncReportResponse';
+        $request = $this->generateAsyncPerformanceReportRequest($async_performance_report_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'generateAsyncPerformanceReport'
+     *
+     * @param  \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest $async_performance_report_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['generateAsyncPerformanceReport'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function generateAsyncPerformanceReportRequest($async_performance_report_request, string $contentType = self::contentTypes['generateAsyncPerformanceReport'][0])
+    {
+
+        // verify the required parameter 'async_performance_report_request' is set
+        if ($async_performance_report_request === null || (is_array($async_performance_report_request) && count($async_performance_report_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $async_performance_report_request when calling generateAsyncPerformanceReport'
+            );
+        }
+
+
+        $resourcePath = '/preview/retail-media/reports/performance';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($async_performance_report_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($async_performance_report_request));
+            } else {
+                $httpBody = $async_performance_report_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

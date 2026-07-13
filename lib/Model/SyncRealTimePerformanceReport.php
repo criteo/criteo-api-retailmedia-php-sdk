@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * SyncRealTimePerformanceReport Class Doc Comment
  *
  * @category Class
- * @description Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension and Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric; invalid values cause deserialization to fail.
+ * @description Real Time Performance report body request (one sheeter: startDate, endDate (optional), RetailerIds, accountIds, campaignIds, lineItemIds, dimensions, metrics, timezones).  Extends SyncReport only (no default filters); adds entry filter arrays.  Dimensions and metrics are restricted to their supported enumerated values; invalid values cause deserialization to fail.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -464,7 +464,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets dimensions
      *
-     * @param string[]|null $dimensions List of dimensions to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeDimension are valid.
+     * @param string[]|null $dimensions List of dimensions to report on (real-time: at least one required). Only the supported dimension values are valid.
      *
      * @return self
      */
@@ -554,7 +554,7 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets metrics
      *
-     * @param string[]|null $metrics List of metrics to report on (real-time: at least one required). Only values from Criteo.RetailMedia.Exam.Reporting.Resources.Models.Inputs.RealTimePerformance.SyncRealTimeMetric are valid.
+     * @param string[]|null $metrics List of metrics to report on (real-time: at least one required). Only the supported metric values are valid.
      *
      * @return self
      */

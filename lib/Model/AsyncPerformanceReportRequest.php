@@ -275,9 +275,6 @@ class AsyncPerformanceReportRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class AsyncPerformanceReportRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportResource|null
      */
     public function getData()
     {
@@ -306,7 +303,7 @@ class AsyncPerformanceReportRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportResource|null $data data
      *
      * @return self
      */

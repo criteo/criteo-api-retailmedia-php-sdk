@@ -275,9 +275,6 @@ class AsyncMissedOpportunitiesReportRequest implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class AsyncMissedOpportunitiesReportRequest implements ModelInterface, ArrayAcce
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource|null
      */
     public function getData()
     {
@@ -306,7 +303,7 @@ class AsyncMissedOpportunitiesReportRequest implements ModelInterface, ArrayAcce
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportResource|null $data data
      *
      * @return self
      */

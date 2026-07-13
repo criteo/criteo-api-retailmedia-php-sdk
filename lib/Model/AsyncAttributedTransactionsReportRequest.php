@@ -275,9 +275,6 @@ class AsyncAttributedTransactionsReportRequest implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -296,7 +293,7 @@ class AsyncAttributedTransactionsReportRequest implements ModelInterface, ArrayA
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource
+     * @return \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource|null
      */
     public function getData()
     {
@@ -306,7 +303,7 @@ class AsyncAttributedTransactionsReportRequest implements ModelInterface, ArrayA
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportResource|null $data data
      *
      * @return self
      */

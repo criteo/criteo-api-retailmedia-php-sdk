@@ -4,14 +4,14 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createAsyncAttributedTransactionsReport()**](AnalyticsApi.md#createAsyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/attributed-transactions | /preview/retail-media/reports/attributed-transactions |
-| [**createAsyncMissedOpportunitiesReport()**](AnalyticsApi.md#createAsyncMissedOpportunitiesReport) | **POST** /preview/retail-media/reports/missed-opportunities | /preview/retail-media/reports/missed-opportunities |
-| [**createAsyncPerformanceReport()**](AnalyticsApi.md#createAsyncPerformanceReport) | **POST** /preview/retail-media/reports/performance | /preview/retail-media/reports/performance |
-| [**generateAsyncAccountsReport()**](AnalyticsApi.md#generateAsyncAccountsReport) | **POST** /preview/retail-media/reports/accounts | /preview/retail-media/reports/accounts |
-| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /preview/retail-media/reports/campaigns | /preview/retail-media/reports/campaigns |
+| [**generateAsyncAccountsReportV2()**](AnalyticsApi.md#generateAsyncAccountsReportV2) | **POST** /preview/retail-media/reports/accounts | /preview/retail-media/reports/accounts |
+| [**generateAsyncAttributedTransactionsReport()**](AnalyticsApi.md#generateAsyncAttributedTransactionsReport) | **POST** /preview/retail-media/reports/attributed-transactions | /preview/retail-media/reports/attributed-transactions |
+| [**generateAsyncCampaignsReportV2()**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /preview/retail-media/reports/campaigns | /preview/retail-media/reports/campaigns |
 | [**generateAsyncFillRateReport()**](AnalyticsApi.md#generateAsyncFillRateReport) | **POST** /preview/retail-media/reports/fillrate | /preview/retail-media/reports/fillrate |
-| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /preview/retail-media/reports/line-items | /preview/retail-media/reports/line-items |
+| [**generateAsyncLineItemsReportV2()**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /preview/retail-media/reports/line-items | /preview/retail-media/reports/line-items |
+| [**generateAsyncMissedOpportunitiesReport()**](AnalyticsApi.md#generateAsyncMissedOpportunitiesReport) | **POST** /preview/retail-media/reports/missed-opportunities | /preview/retail-media/reports/missed-opportunities |
 | [**generateAsyncOffsiteReport()**](AnalyticsApi.md#generateAsyncOffsiteReport) | **POST** /preview/retail-media/reports/offsite | /preview/retail-media/reports/offsite |
+| [**generateAsyncPerformanceReport()**](AnalyticsApi.md#generateAsyncPerformanceReport) | **POST** /preview/retail-media/reports/performance | /preview/retail-media/reports/performance |
 | [**generateAsyncUnfilledPlacementsReport()**](AnalyticsApi.md#generateAsyncUnfilledPlacementsReport) | **POST** /preview/retail-media/reports/unfilled-placements | /preview/retail-media/reports/unfilled-placements |
 | [**generateDigitalShelfIntelligenceInsight()**](AnalyticsApi.md#generateDigitalShelfIntelligenceInsight) | **POST** /preview/retail-media/insights/digital-shelf-intelligence | /preview/retail-media/insights/digital-shelf-intelligence |
 | [**generateShareOfVoiceInsight()**](AnalyticsApi.md#generateShareOfVoiceInsight) | **POST** /preview/retail-media/insights/share-of-voice | /preview/retail-media/insights/share-of-voice |
@@ -25,199 +25,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getInsightReportStatus()**](AnalyticsApi.md#getInsightReportStatus) | **GET** /preview/retail-media/insights/{insightId}/status | /preview/retail-media/insights/{insightId}/status |
 
 
-## `createAsyncAttributedTransactionsReport()`
+## `generateAsyncAccountsReportV2()`
 
 ```php
-createAsyncAttributedTransactionsReport($async_attributed_transactions_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-```
-
-/preview/retail-media/reports/attributed-transactions
-
-Creates an attributed-transactions async report. The request accepts explicit attributed-transaction dimensions, metrics, and filters.  <br />  This endpoint is subject to specific rate limits.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$async_attributed_transactions_report_request = new \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest | Required create payload.
-
-try {
-    $result = $apiInstance->createAsyncAttributedTransactionsReport($async_attributed_transactions_report_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->createAsyncAttributedTransactionsReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **async_attributed_transactions_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest**](../Model/AsyncAttributedTransactionsReportRequest.md)| Required create payload. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createAsyncMissedOpportunitiesReport()`
-
-```php
-createAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-```
-
-/preview/retail-media/reports/missed-opportunities
-
-Creates a missed-opportunities async report. The request accepts explicit missed-opportunities dimensions, metrics, and filters.  <br />  This endpoint is subject to specific rate limits.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$async_missed_opportunities_report_request = new \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest | Required create payload.
-
-try {
-    $result = $apiInstance->createAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->createAsyncMissedOpportunitiesReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **async_missed_opportunities_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest**](../Model/AsyncMissedOpportunitiesReportRequest.md)| Required create payload. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createAsyncPerformanceReport()`
-
-```php
-createAsyncPerformanceReport($async_performance_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
-```
-
-/preview/retail-media/reports/performance
-
-Creates a performance DSP analytics async report. Dimensions and metrics select the output schema, and filters constrain eligible data.  <br />  This endpoint is subject to specific rate limits.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$async_performance_report_request = new \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest | Required create payload.
-
-try {
-    $result = $apiInstance->createAsyncPerformanceReport($async_performance_report_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->createAsyncPerformanceReport: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **async_performance_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest**](../Model/AsyncPerformanceReportRequest.md)| Required create payload. | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `generateAsyncAccountsReport()`
-
-```php
-generateAsyncAccountsReport($async_accounts_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+generateAsyncAccountsReportV2($async_accounts_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
 /preview/retail-media/reports/accounts
@@ -247,10 +58,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
 $async_accounts_report_request = new \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncAccountsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncAccountsReport($async_accounts_report_request);
+    $result = $apiInstance->generateAsyncAccountsReportV2($async_accounts_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncAccountsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncAccountsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -277,10 +88,73 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `generateAsyncCampaignsReport()`
+## `generateAsyncAttributedTransactionsReport()`
 
 ```php
-generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+generateAsyncAttributedTransactionsReport($async_attributed_transactions_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+/preview/retail-media/reports/attributed-transactions
+
+Creates an attributed-transactions async report. The request accepts explicit attributed-transaction dimensions, metrics, and filters.  <br />  This endpoint is subject to specific rate limits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_attributed_transactions_report_request = new \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncAttributedTransactionsReport($async_attributed_transactions_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncAttributedTransactionsReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_attributed_transactions_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncAttributedTransactionsReportRequest**](../Model/AsyncAttributedTransactionsReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncCampaignsReportV2()`
+
+```php
+generateAsyncCampaignsReportV2($async_campaigns_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
 /preview/retail-media/reports/campaigns
@@ -310,10 +184,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
 $async_campaigns_report_request = new \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncCampaignsReport($async_campaigns_report_request);
+    $result = $apiInstance->generateAsyncCampaignsReportV2($async_campaigns_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -403,10 +277,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `generateAsyncLineItemsReport()`
+## `generateAsyncLineItemsReportV2()`
 
 ```php
-generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+generateAsyncLineItemsReportV2($async_line_items_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
 ```
 
 /preview/retail-media/reports/line-items
@@ -436,10 +310,10 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
 $async_line_items_report_request = new \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncLineItemsReport($async_line_items_report_request);
+    $result = $apiInstance->generateAsyncLineItemsReportV2($async_line_items_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -448,6 +322,69 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **async_line_items_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncLineItemsReportRequest**](../Model/AsyncLineItemsReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncMissedOpportunitiesReport()`
+
+```php
+generateAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+/preview/retail-media/reports/missed-opportunities
+
+Creates a missed-opportunities async report. The request accepts explicit missed-opportunities dimensions, metrics, and filters.  <br />  This endpoint is subject to specific rate limits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_missed_opportunities_report_request = new \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncMissedOpportunitiesReport($async_missed_opportunities_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncMissedOpportunitiesReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_missed_opportunities_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncMissedOpportunitiesReportRequest**](../Model/AsyncMissedOpportunitiesReportRequest.md)|  | |
 
 ### Return type
 
@@ -511,6 +448,69 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **async_offsite_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncOffsiteReportRequest**](../Model/AsyncOffsiteReportRequest.md)|  | |
+
+### Return type
+
+[**\criteo\api\retailmedia\preview\Model\AsyncReportResponse**](../Model/AsyncReportResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `generateAsyncPerformanceReport()`
+
+```php
+generateAsyncPerformanceReport($async_performance_report_request): \criteo\api\retailmedia\preview\Model\AsyncReportResponse
+```
+
+/preview/retail-media/reports/performance
+
+Creates a performance DSP analytics async report. Dimensions and metrics select the output schema, and filters constrain eligible data.  <br />  This endpoint is subject to specific rate limits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\preview\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$async_performance_report_request = new \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest(); // \criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest
+
+try {
+    $result = $apiInstance->generateAsyncPerformanceReport($async_performance_report_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->generateAsyncPerformanceReport: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **async_performance_report_request** | [**\criteo\api\retailmedia\preview\Model\AsyncPerformanceReportRequest**](../Model/AsyncPerformanceReportRequest.md)|  | |
 
 ### Return type
 

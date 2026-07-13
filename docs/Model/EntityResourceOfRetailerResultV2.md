@@ -1,10 +1,10 @@
-# # EntityResourceOfRetailerResult
+# # EntityResourceOfRetailerResultV2
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\RetailerResult**](RetailerResult.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\preview\Model\RetailerResultV2**](RetailerResultV2.md) |  | [optional]
 **id** | **string** | Unique id of the entity. | [optional]
 **type** | **string** | Type of the resource. | [optional]
 

@@ -60,9 +60,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
         'campaign_ids' => 'string[]',
-        'line_item_ids' => 'string[]',
-        'media_types' => 'string[]',
-        'sales_channels' => 'string[]'
+        'campaign_types' => 'string[]',
+        'line_item_ids' => 'string[]'
     ];
 
     /**
@@ -75,9 +74,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static $openAPIFormats = [
         'account_ids' => null,
         'campaign_ids' => null,
-        'line_item_ids' => null,
-        'media_types' => null,
-        'sales_channels' => null
+        'campaign_types' => null,
+        'line_item_ids' => null
     ];
 
     /**
@@ -88,9 +86,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static array $openAPINullables = [
         'account_ids' => false,
 		'campaign_ids' => false,
-		'line_item_ids' => false,
-		'media_types' => false,
-		'sales_channels' => false
+		'campaign_types' => false,
+		'line_item_ids' => false
     ];
 
     /**
@@ -181,9 +178,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
         'campaign_ids' => 'campaignIds',
-        'line_item_ids' => 'lineItemIds',
-        'media_types' => 'mediaTypes',
-        'sales_channels' => 'salesChannels'
+        'campaign_types' => 'campaignTypes',
+        'line_item_ids' => 'lineItemIds'
     ];
 
     /**
@@ -194,9 +190,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static $setters = [
         'account_ids' => 'setAccountIds',
         'campaign_ids' => 'setCampaignIds',
-        'line_item_ids' => 'setLineItemIds',
-        'media_types' => 'setMediaTypes',
-        'sales_channels' => 'setSalesChannels'
+        'campaign_types' => 'setCampaignTypes',
+        'line_item_ids' => 'setLineItemIds'
     ];
 
     /**
@@ -207,9 +202,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     protected static $getters = [
         'account_ids' => 'getAccountIds',
         'campaign_ids' => 'getCampaignIds',
-        'line_item_ids' => 'getLineItemIds',
-        'media_types' => 'getMediaTypes',
-        'sales_channels' => 'getSalesChannels'
+        'campaign_types' => 'getCampaignTypes',
+        'line_item_ids' => 'getLineItemIds'
     ];
 
     /**
@@ -253,36 +247,21 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
-    public const MEDIA_TYPES_UNKNOWN = 'unknown';
-    public const MEDIA_TYPES_VIDEO = 'video';
-    public const MEDIA_TYPES_DISPLAY = 'display';
-    public const SALES_CHANNELS_ONLINE = 'online';
-    public const SALES_CHANNELS_OFFLINE = 'offline';
+    public const CAMPAIGN_TYPES_ALL = 'all';
+    public const CAMPAIGN_TYPES_SPONSORED_PRODUCTS = 'sponsoredProducts';
+    public const CAMPAIGN_TYPES_ON_SITE_DISPLAYS = 'onSiteDisplays';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getMediaTypesAllowableValues()
+    public function getCampaignTypesAllowableValues()
     {
         return [
-            self::MEDIA_TYPES_UNKNOWN,
-            self::MEDIA_TYPES_VIDEO,
-            self::MEDIA_TYPES_DISPLAY,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSalesChannelsAllowableValues()
-    {
-        return [
-            self::SALES_CHANNELS_ONLINE,
-            self::SALES_CHANNELS_OFFLINE,
+            self::CAMPAIGN_TYPES_ALL,
+            self::CAMPAIGN_TYPES_SPONSORED_PRODUCTS,
+            self::CAMPAIGN_TYPES_ON_SITE_DISPLAYS,
         ];
     }
 
@@ -303,9 +282,8 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     {
         $this->setIfExists('account_ids', $data ?? [], null);
         $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('campaign_types', $data ?? [], null);
         $this->setIfExists('line_item_ids', $data ?? [], null);
-        $this->setIfExists('media_types', $data ?? [], null);
-        $this->setIfExists('sales_channels', $data ?? [], null);
     }
 
     /**
@@ -335,38 +313,6 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) > 5)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be less than or equal to 5.";
-        }
-
-        if (!is_null($this->container['account_ids']) && (count($this->container['account_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'account_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['campaign_ids']) && (count($this->container['campaign_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'campaign_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) > 50)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be less than or equal to 50.";
-        }
-
-        if (!is_null($this->container['line_item_ids']) && (count($this->container['line_item_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'line_item_ids', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['media_types']) && (count($this->container['media_types']) < 1)) {
-            $invalidProperties[] = "invalid value for 'media_types', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['sales_channels']) && (count($this->container['sales_channels']) < 1)) {
-            $invalidProperties[] = "invalid value for 'sales_channels', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -395,7 +341,7 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     /**
      * Sets account_ids
      *
-     * @param string[]|null $account_ids Optional scope filter. Allows up to 5 account IDs per request.
+     * @param string[]|null $account_ids account_ids
      *
      * @return self
      */
@@ -403,13 +349,6 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     {
         if (is_null($account_ids)) {
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
-        }
-
-        if ((count($account_ids) > 5)) {
-            throw new \InvalidArgumentException('invalid value for $account_ids when calling MissedOpportunitiesReportFilters., number of items must be less than or equal to 5.');
-        }
-        if ((count($account_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $account_ids when calling MissedOpportunitiesReportFilters., number of items must be greater than or equal to 1.');
         }
         $this->container['account_ids'] = $account_ids;
 
@@ -429,7 +368,7 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     /**
      * Sets campaign_ids
      *
-     * @param string[]|null $campaign_ids Optional scope filter. Allows up to 50 campaign IDs per request.
+     * @param string[]|null $campaign_ids campaign_ids
      *
      * @return self
      */
@@ -438,14 +377,43 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
         if (is_null($campaign_ids)) {
             throw new \InvalidArgumentException('non-nullable campaign_ids cannot be null');
         }
-
-        if ((count($campaign_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $campaign_ids when calling MissedOpportunitiesReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($campaign_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $campaign_ids when calling MissedOpportunitiesReportFilters., number of items must be greater than or equal to 1.');
-        }
         $this->container['campaign_ids'] = $campaign_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_types
+     *
+     * @return string[]|null
+     */
+    public function getCampaignTypes()
+    {
+        return $this->container['campaign_types'];
+    }
+
+    /**
+     * Sets campaign_types
+     *
+     * @param string[]|null $campaign_types campaign_types
+     *
+     * @return self
+     */
+    public function setCampaignTypes($campaign_types)
+    {
+        if (is_null($campaign_types)) {
+            throw new \InvalidArgumentException('non-nullable campaign_types cannot be null');
+        }
+        $allowedValues = $this->getCampaignTypesAllowableValues();
+        if (array_diff($campaign_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'campaign_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_types'] = $campaign_types;
 
         return $this;
     }
@@ -463,7 +431,7 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
     /**
      * Sets line_item_ids
      *
-     * @param string[]|null $line_item_ids Optional scope filter. Allows up to 50 line-item IDs per request.
+     * @param string[]|null $line_item_ids line_item_ids
      *
      * @return self
      */
@@ -472,96 +440,7 @@ class MissedOpportunitiesReportFilters implements ModelInterface, ArrayAccess, \
         if (is_null($line_item_ids)) {
             throw new \InvalidArgumentException('non-nullable line_item_ids cannot be null');
         }
-
-        if ((count($line_item_ids) > 50)) {
-            throw new \InvalidArgumentException('invalid value for $line_item_ids when calling MissedOpportunitiesReportFilters., number of items must be less than or equal to 50.');
-        }
-        if ((count($line_item_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $line_item_ids when calling MissedOpportunitiesReportFilters., number of items must be greater than or equal to 1.');
-        }
         $this->container['line_item_ids'] = $line_item_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets media_types
-     *
-     * @return string[]|null
-     */
-    public function getMediaTypes()
-    {
-        return $this->container['media_types'];
-    }
-
-    /**
-     * Sets media_types
-     *
-     * @param string[]|null $media_types Optional inherited media type filter.
-     *
-     * @return self
-     */
-    public function setMediaTypes($media_types)
-    {
-        if (is_null($media_types)) {
-            throw new \InvalidArgumentException('non-nullable media_types cannot be null');
-        }
-        $allowedValues = $this->getMediaTypesAllowableValues();
-        if (array_diff($media_types, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'media_types', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($media_types) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $media_types when calling MissedOpportunitiesReportFilters., number of items must be greater than or equal to 1.');
-        }
-        $this->container['media_types'] = $media_types;
-
-        return $this;
-    }
-
-    /**
-     * Gets sales_channels
-     *
-     * @return string[]|null
-     */
-    public function getSalesChannels()
-    {
-        return $this->container['sales_channels'];
-    }
-
-    /**
-     * Sets sales_channels
-     *
-     * @param string[]|null $sales_channels Optional inherited sales channel filter.
-     *
-     * @return self
-     */
-    public function setSalesChannels($sales_channels)
-    {
-        if (is_null($sales_channels)) {
-            throw new \InvalidArgumentException('non-nullable sales_channels cannot be null');
-        }
-        $allowedValues = $this->getSalesChannelsAllowableValues();
-        if (array_diff($sales_channels, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'sales_channels', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($sales_channels) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $sales_channels when calling MissedOpportunitiesReportFilters., number of items must be greater than or equal to 1.');
-        }
-        $this->container['sales_channels'] = $sales_channels;
 
         return $this;
     }

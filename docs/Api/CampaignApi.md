@@ -1473,12 +1473,12 @@ try {
 ## `searchAccountRetailers()`
 
 ```php
-searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request_v2, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
 ```
 
 /preview/retail-media/accounts/{accountId}/retailers/search
 
-Searches for retailers associated with the specified account based on provided search criteria
+Searches for retailers associated with the specified account and returns budget model availability for each retailer
 
 ### Example
 
@@ -1501,12 +1501,12 @@ $apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The external account identifier
-$value_resource_input_of_retailer_search_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
+$value_resource_input_of_retailer_search_request_v2 = new \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequestV2(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequestV2 | The search request containing filtering parameters
 $limit = 5; // int | The maximum number of items to return. Must be between 1 and 10. Default is 5.
 $offset = 0; // int | The number of items to skip before starting to collect the result set. Default is 0.
 
 try {
-    $result = $apiInstance->searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset);
+    $result = $apiInstance->searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request_v2, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->searchAccountRetailers: ', $e->getMessage(), PHP_EOL;
@@ -1518,13 +1518,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The external account identifier | |
-| **value_resource_input_of_retailer_search_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequest**](../Model/ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
+| **value_resource_input_of_retailer_search_request_v2** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputOfRetailerSearchRequestV2**](../Model/ValueResourceInputOfRetailerSearchRequestV2.md)| The search request containing filtering parameters | |
 | **limit** | **int**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **int**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
 
 ### Authorization
 

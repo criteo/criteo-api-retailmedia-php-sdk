@@ -59,6 +59,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'click_attribution_window' => 'string',
+        'click_match_level' => 'string',
         'dimensions' => 'string[]',
         'end_date' => '\DateTime',
         'filters' => '\criteo\api\retailmedia\preview\Model\AttributedTransactionsReportFilters',
@@ -66,7 +67,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
         'metrics' => 'string[]',
         'start_date' => '\DateTime',
         'timezone' => 'string',
-        'view_attribution_window' => 'string'
+        'view_attribution_window' => 'string',
+        'view_match_level' => 'string'
     ];
 
     /**
@@ -78,14 +80,16 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPIFormats = [
         'click_attribution_window' => null,
+        'click_match_level' => null,
         'dimensions' => null,
-        'end_date' => 'date',
+        'end_date' => 'date-time',
         'filters' => null,
         'format' => null,
         'metrics' => null,
-        'start_date' => 'date',
+        'start_date' => 'date-time',
         'timezone' => null,
-        'view_attribution_window' => null
+        'view_attribution_window' => null,
+        'view_match_level' => null
     ];
 
     /**
@@ -95,6 +99,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
       */
     protected static array $openAPINullables = [
         'click_attribution_window' => false,
+		'click_match_level' => false,
 		'dimensions' => false,
 		'end_date' => false,
 		'filters' => false,
@@ -102,7 +107,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
 		'metrics' => false,
 		'start_date' => false,
 		'timezone' => false,
-		'view_attribution_window' => false
+		'view_attribution_window' => false,
+		'view_match_level' => false
     ];
 
     /**
@@ -192,6 +198,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
      */
     protected static $attributeMap = [
         'click_attribution_window' => 'clickAttributionWindow',
+        'click_match_level' => 'clickMatchLevel',
         'dimensions' => 'dimensions',
         'end_date' => 'endDate',
         'filters' => 'filters',
@@ -199,7 +206,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
         'metrics' => 'metrics',
         'start_date' => 'startDate',
         'timezone' => 'timezone',
-        'view_attribution_window' => 'viewAttributionWindow'
+        'view_attribution_window' => 'viewAttributionWindow',
+        'view_match_level' => 'viewMatchLevel'
     ];
 
     /**
@@ -209,6 +217,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
      */
     protected static $setters = [
         'click_attribution_window' => 'setClickAttributionWindow',
+        'click_match_level' => 'setClickMatchLevel',
         'dimensions' => 'setDimensions',
         'end_date' => 'setEndDate',
         'filters' => 'setFilters',
@@ -216,7 +225,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
         'metrics' => 'setMetrics',
         'start_date' => 'setStartDate',
         'timezone' => 'setTimezone',
-        'view_attribution_window' => 'setViewAttributionWindow'
+        'view_attribution_window' => 'setViewAttributionWindow',
+        'view_match_level' => 'setViewMatchLevel'
     ];
 
     /**
@@ -226,6 +236,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
      */
     protected static $getters = [
         'click_attribution_window' => 'getClickAttributionWindow',
+        'click_match_level' => 'getClickMatchLevel',
         'dimensions' => 'getDimensions',
         'end_date' => 'getEndDate',
         'filters' => 'getFilters',
@@ -233,7 +244,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
         'metrics' => 'getMetrics',
         'start_date' => 'getStartDate',
         'timezone' => 'getTimezone',
-        'view_attribution_window' => 'getViewAttributionWindow'
+        'view_attribution_window' => 'getViewAttributionWindow',
+        'view_match_level' => 'getViewMatchLevel'
     ];
 
     /**
@@ -281,6 +293,10 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     public const CLICK_ATTRIBUTION_WINDOW__7_D = '7D';
     public const CLICK_ATTRIBUTION_WINDOW__14_D = '14D';
     public const CLICK_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const CLICK_MATCH_LEVEL_SAME_SKU = 'sameSku';
+    public const CLICK_MATCH_LEVEL_SAME_CATEGORY = 'sameCategory';
+    public const CLICK_MATCH_LEVEL_SAME_BRAND = 'sameBrand';
+    public const CLICK_MATCH_LEVEL_CAMPAIGN = 'campaign';
     public const DIMENSIONS_PURCHASED_DATE = 'purchasedDate';
     public const DIMENSIONS_PURCHASED_HOUR = 'purchasedHour';
     public const DIMENSIONS_ADVERTISED_DATE = 'advertisedDate';
@@ -323,6 +339,10 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     public const VIEW_ATTRIBUTION_WINDOW__7_D = '7D';
     public const VIEW_ATTRIBUTION_WINDOW__14_D = '14D';
     public const VIEW_ATTRIBUTION_WINDOW__30_D = '30D';
+    public const VIEW_MATCH_LEVEL_SAME_SKU = 'sameSku';
+    public const VIEW_MATCH_LEVEL_SAME_CATEGORY = 'sameCategory';
+    public const VIEW_MATCH_LEVEL_SAME_BRAND = 'sameBrand';
+    public const VIEW_MATCH_LEVEL_CAMPAIGN = 'campaign';
 
     /**
      * Gets allowable values of the enum
@@ -336,6 +356,21 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
             self::CLICK_ATTRIBUTION_WINDOW__7_D,
             self::CLICK_ATTRIBUTION_WINDOW__14_D,
             self::CLICK_ATTRIBUTION_WINDOW__30_D,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getClickMatchLevelAllowableValues()
+    {
+        return [
+            self::CLICK_MATCH_LEVEL_SAME_SKU,
+            self::CLICK_MATCH_LEVEL_SAME_CATEGORY,
+            self::CLICK_MATCH_LEVEL_SAME_BRAND,
+            self::CLICK_MATCH_LEVEL_CAMPAIGN,
         ];
     }
 
@@ -426,6 +461,21 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getViewMatchLevelAllowableValues()
+    {
+        return [
+            self::VIEW_MATCH_LEVEL_SAME_SKU,
+            self::VIEW_MATCH_LEVEL_SAME_CATEGORY,
+            self::VIEW_MATCH_LEVEL_SAME_BRAND,
+            self::VIEW_MATCH_LEVEL_CAMPAIGN,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -440,15 +490,17 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('click_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('click_attribution_window', $data ?? [], null);
+        $this->setIfExists('click_match_level', $data ?? [], 'campaign');
         $this->setIfExists('dimensions', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('format', $data ?? [], 'json-compact');
+        $this->setIfExists('format', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], 'UTC');
-        $this->setIfExists('view_attribution_window', $data ?? [], 'none');
+        $this->setIfExists('view_attribution_window', $data ?? [], null);
+        $this->setIfExists('view_match_level', $data ?? [], 'campaign');
     }
 
     /**
@@ -487,6 +539,15 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
             );
         }
 
+        $allowedValues = $this->getClickMatchLevelAllowableValues();
+        if (!is_null($this->container['click_match_level']) && !in_array($this->container['click_match_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'click_match_level', must be one of '%s'",
+                $this->container['click_match_level'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['dimensions'] === null) {
             $invalidProperties[] = "'dimensions' can't be null";
         }
@@ -520,6 +581,15 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
             );
         }
 
+        $allowedValues = $this->getViewMatchLevelAllowableValues();
+        if (!is_null($this->container['view_match_level']) && !in_array($this->container['view_match_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'view_match_level', must be one of '%s'",
+                $this->container['view_match_level'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -548,7 +618,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets click_attribution_window
      *
-     * @param string|null $click_attribution_window Optional click attribution window.
+     * @param string|null $click_attribution_window click_attribution_window
      *
      * @return self
      */
@@ -573,6 +643,43 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     }
 
     /**
+     * Gets click_match_level
+     *
+     * @return string|null
+     */
+    public function getClickMatchLevel()
+    {
+        return $this->container['click_match_level'];
+    }
+
+    /**
+     * Sets click_match_level
+     *
+     * @param string|null $click_match_level click_match_level
+     *
+     * @return self
+     */
+    public function setClickMatchLevel($click_match_level)
+    {
+        if (is_null($click_match_level)) {
+            throw new \InvalidArgumentException('non-nullable click_match_level cannot be null');
+        }
+        $allowedValues = $this->getClickMatchLevelAllowableValues();
+        if (!in_array($click_match_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'click_match_level', must be one of '%s'",
+                    $click_match_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['click_match_level'] = $click_match_level;
+
+        return $this;
+    }
+
+    /**
      * Gets dimensions
      *
      * @return string[]
@@ -585,7 +692,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets dimensions
      *
-     * @param string[] $dimensions Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty.
+     * @param string[] $dimensions dimensions
      *
      * @return self
      */
@@ -621,7 +728,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate.
+     * @param \DateTime $end_date end_date
      *
      * @return self
      */
@@ -675,7 +782,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets format
      *
-     * @param string|null $format Output format. If omitted, json-compact is used.
+     * @param string|null $format format
      *
      * @return self
      */
@@ -712,7 +819,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets metrics
      *
-     * @param string[] $metrics Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty.
+     * @param string[] $metrics metrics
      *
      * @return self
      */
@@ -748,7 +855,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Required inclusive report start date in YYYY-MM-DD format.
+     * @param \DateTime $start_date start_date
      *
      * @return self
      */
@@ -775,7 +882,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets timezone
      *
-     * @param string|null $timezone Optional time zone identifier. If omitted, UTC is used. If provided, it must be valid.
+     * @param string|null $timezone timezone
      *
      * @return self
      */
@@ -802,7 +909,7 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     /**
      * Sets view_attribution_window
      *
-     * @param string|null $view_attribution_window Optional view attribution window.
+     * @param string|null $view_attribution_window view_attribution_window
      *
      * @return self
      */
@@ -822,6 +929,43 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
             );
         }
         $this->container['view_attribution_window'] = $view_attribution_window;
+
+        return $this;
+    }
+
+    /**
+     * Gets view_match_level
+     *
+     * @return string|null
+     */
+    public function getViewMatchLevel()
+    {
+        return $this->container['view_match_level'];
+    }
+
+    /**
+     * Sets view_match_level
+     *
+     * @param string|null $view_match_level view_match_level
+     *
+     * @return self
+     */
+    public function setViewMatchLevel($view_match_level)
+    {
+        if (is_null($view_match_level)) {
+            throw new \InvalidArgumentException('non-nullable view_match_level cannot be null');
+        }
+        $allowedValues = $this->getViewMatchLevelAllowableValues();
+        if (!in_array($view_match_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'view_match_level', must be one of '%s'",
+                    $view_match_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['view_match_level'] = $view_match_level;
 
         return $this;
     }

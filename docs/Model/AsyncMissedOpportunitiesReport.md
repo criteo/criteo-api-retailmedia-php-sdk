@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dimensions** | **string[]** | Required output grouping fields. Empty array means no grouping fields. At least one of dimensions or metrics must be non-empty. |
-**end_date** | **\DateTime** | Required inclusive report end date in YYYY-MM-DD format. Must be greater than or equal to startDate. |
+**dimensions** | **string[]** |  |
+**end_date** | **\DateTime** |  |
 **filters** | [**\criteo\api\retailmedia\preview\Model\MissedOpportunitiesReportFilters**](MissedOpportunitiesReportFilters.md) |  |
-**format** | **string** | Output format. If omitted, json-compact is used. | [optional] [default to 'json-compact']
-**metrics** | **string[]** | Required output measure fields. Empty array means no measure fields. At least one of dimensions or metrics must be non-empty. |
-**start_date** | **\DateTime** | Required inclusive report start date in YYYY-MM-DD format. |
+**format** | **string** |  | [optional]
+**metrics** | **string[]** |  |
+**start_date** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
