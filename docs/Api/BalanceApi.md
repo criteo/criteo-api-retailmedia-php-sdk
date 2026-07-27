@@ -8,16 +8,17 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**changeDatesByAccountAndBalanceId()**](BalanceApi.md#changeDatesByAccountAndBalanceId) | **POST** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates |
 | [**createBalanceByAccountId()**](BalanceApi.md#createBalanceByAccountId) | **POST** /2026-07/retail-media/accounts/{account-id}/balances | /2026-07/retail-media/accounts/{account-id}/balances |
 | [**getBalanceByAccountAndBalanceId()**](BalanceApi.md#getBalanceByAccountAndBalanceId) | **GET** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
-| [**getBalanceHistory()**](BalanceApi.md#getBalanceHistory) | **GET** /2026-07/retail-media/balances/{balanceId}/history | /2026-07/retail-media/balances/{balanceId}/history |
-| [**getBalancesByAccountId()**](BalanceApi.md#getBalancesByAccountId) | **GET** /2026-07/retail-media/accounts/{account-id}/balances | /2026-07/retail-media/accounts/{account-id}/balances |
+| [**getBalanceHistoryV1()**](BalanceApi.md#getBalanceHistoryV1) | **GET** /2026-07/retail-media/balances/{balanceId}/history | /2026-07/retail-media/balances/{balanceId}/history |
+| [**getBalanceV1()**](BalanceApi.md#getBalanceV1) | **GET** /2026-07/retail-media/balances/{balanceId} | /2026-07/retail-media/balances/{balanceId} |
 | [**getCampaignsByBalanceId()**](BalanceApi.md#getCampaignsByBalanceId) | **GET** /2026-07/retail-media/balances/{balance-id}/campaigns | /2026-07/retail-media/balances/{balance-id}/campaigns |
-| [**modifyBalanceByAccountAndBalanceId()**](BalanceApi.md#modifyBalanceByAccountAndBalanceId) | **PATCH** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
+| [**getPageOfBalancesV1()**](BalanceApi.md#getPageOfBalancesV1) | **GET** /2026-07/retail-media/accounts/{accountId}/balances | /2026-07/retail-media/accounts/{accountId}/balances |
+| [**updateBalanceV1()**](BalanceApi.md#updateBalanceV1) | **PATCH** /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} | /2026-07/retail-media/accounts/{account-id}/balances/{balance-id} |
 
 
 ## `addFundsByAccountAndBalanceId()`
 
 ```php
-addFundsByAccountAndBalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response
+addFundsByAccountAndBalanceId($account_id, $balance_id, $add_funds_to_balance_v3_request): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV3Response
 ```
 
 /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
@@ -46,10 +47,10 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to add funds to
-$add_funds_to_balance_v2_request = new \criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV2Request(); // \criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV2Request | An object that represents the available options of adding funds to a balance.
+$add_funds_to_balance_v3_request = new \criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV3Request(); // \criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV3Request | An object that represents the available options of adding funds to a balance.
 
 try {
-    $result = $apiInstance->addFundsByAccountAndBalanceId($account_id, $balance_id, $add_funds_to_balance_v2_request);
+    $result = $apiInstance->addFundsByAccountAndBalanceId($account_id, $balance_id, $add_funds_to_balance_v3_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BalanceApi->addFundsByAccountAndBalanceId: ', $e->getMessage(), PHP_EOL;
@@ -62,11 +63,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to add funds to | |
-| **add_funds_to_balance_v2_request** | [**\criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV2Request**](../Model/AddFundsToBalanceV2Request.md)| An object that represents the available options of adding funds to a balance. | |
+| **add_funds_to_balance_v3_request** | [**\criteo\api\retailmedia\v2026_07\Model\AddFundsToBalanceV3Request**](../Model/AddFundsToBalanceV3Request.md)| An object that represents the available options of adding funds to a balance. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV3Response**](../Model/BalanceResponseV3Response.md)
 
 ### Authorization
 
@@ -151,7 +152,7 @@ try {
 ## `createBalanceByAccountId()`
 
 ```php
-createBalanceByAccountId($account_id, $create_balance_v2_request): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response
+createBalanceByAccountId($account_id, $create_balance_v3_request): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV3Response
 ```
 
 /2026-07/retail-media/accounts/{account-id}/balances
@@ -179,10 +180,10 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\BalanceApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The account to create balances for
-$create_balance_v2_request = new \criteo\api\retailmedia\v2026_07\Model\CreateBalanceV2Request(); // \criteo\api\retailmedia\v2026_07\Model\CreateBalanceV2Request | An object that represents the available options to set when creating a Retail Media Balance
+$create_balance_v3_request = new \criteo\api\retailmedia\v2026_07\Model\CreateBalanceV3Request(); // \criteo\api\retailmedia\v2026_07\Model\CreateBalanceV3Request | An object that represents the available options to set when creating a Retail Media Balance
 
 try {
-    $result = $apiInstance->createBalanceByAccountId($account_id, $create_balance_v2_request);
+    $result = $apiInstance->createBalanceByAccountId($account_id, $create_balance_v3_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BalanceApi->createBalanceByAccountId: ', $e->getMessage(), PHP_EOL;
@@ -194,11 +195,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account to create balances for | |
-| **create_balance_v2_request** | [**\criteo\api\retailmedia\v2026_07\Model\CreateBalanceV2Request**](../Model/CreateBalanceV2Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
+| **create_balance_v3_request** | [**\criteo\api\retailmedia\v2026_07\Model\CreateBalanceV3Request**](../Model/CreateBalanceV3Request.md)| An object that represents the available options to set when creating a Retail Media Balance | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV3Response**](../Model/BalanceResponseV3Response.md)
 
 ### Authorization
 
@@ -278,10 +279,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getBalanceHistory()`
+## `getBalanceHistoryV1()`
 
 ```php
-getBalanceHistory($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\v2026_07\Model\PageOfBalanceHistoryChangeDataCaptureV1
+getBalanceHistoryV1($balance_id, $limit, $limit_to_change_types, $offset): \criteo\api\retailmedia\v2026_07\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata
 ```
 
 /2026-07/retail-media/balances/{balanceId}/history
@@ -314,10 +315,10 @@ $limit_to_change_types = 'limit_to_change_types_example'; // string | Comma sepa
 $offset = 0; // int | The (zero-based) starting offset in the collection.
 
 try {
-    $result = $apiInstance->getBalanceHistory($balance_id, $limit, $limit_to_change_types, $offset);
+    $result = $apiInstance->getBalanceHistoryV1($balance_id, $limit, $limit_to_change_types, $offset);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->getBalanceHistory: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->getBalanceHistoryV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -332,7 +333,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\PageOfBalanceHistoryChangeDataCaptureV1**](../Model/PageOfBalanceHistoryChangeDataCaptureV1.md)
+[**\criteo\api\retailmedia\v2026_07\Model\ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata**](../Model/ValueResourceCollectionOutcomeBalanceHistoryChangeDataCaptureV1AndMetadata.md)
 
 ### Authorization
 
@@ -347,15 +348,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getBalancesByAccountId()`
+## `getBalanceV1()`
 
 ```php
-getBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2PagedListResponse
+getBalanceV1($balance_id): \criteo\api\retailmedia\v2026_07\Model\EntityResourceOutcomeBalanceV1
 ```
 
-/2026-07/retail-media/accounts/{account-id}/balances
+/2026-07/retail-media/balances/{balanceId}
 
-Gets page of balance objects for the given account id
+Get a balance for the given balance id.
 
 ### Example
 
@@ -377,16 +378,13 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\BalanceApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The account to get balances for
-$limit_to_id = array('limit_to_id_example'); // string[] | The ids that you would like to limit your result set to
-$page_index = 0; // int | The 0 indexed page index you would like to receive given the page size
-$page_size = 25; // int | The maximum number of items you would like to receive in this request
+$balance_id = 'balance_id_example'; // string | The balance id.
 
 try {
-    $result = $apiInstance->getBalancesByAccountId($account_id, $limit_to_id, $page_index, $page_size);
+    $result = $apiInstance->getBalanceV1($balance_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->getBalancesByAccountId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->getBalanceV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -394,14 +392,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The account to get balances for | |
-| **limit_to_id** | [**string[]**](../Model/string.md)| The ids that you would like to limit your result set to | [optional] |
-| **page_index** | **int**| The 0 indexed page index you would like to receive given the page size | [optional] [default to 0] |
-| **page_size** | **int**| The maximum number of items you would like to receive in this request | [optional] [default to 25] |
+| **balance_id** | **string**| The balance id. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2PagedListResponse**](../Model/BalanceResponseV2PagedListResponse.md)
+[**\criteo\api\retailmedia\v2026_07\Model\EntityResourceOutcomeBalanceV1**](../Model/EntityResourceOutcomeBalanceV1.md)
 
 ### Authorization
 
@@ -485,10 +480,79 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `modifyBalanceByAccountAndBalanceId()`
+## `getPageOfBalancesV1()`
 
 ```php
-modifyBalanceByAccountAndBalanceId($account_id, $balance_id, $update_balance_model_v2_request): \criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response
+getPageOfBalancesV1($account_id, $limit, $limit_to_id, $offset): \criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata
+```
+
+/2026-07/retail-media/accounts/{accountId}/balances
+
+Gets page of balance objects for the given account id.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2026_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2026_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2026_07\Api\BalanceApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The account to get balances for.
+$limit = 25; // int | The number of elements to be returned.
+$limit_to_id = array('limit_to_id_example'); // string[] | The balance ids which the result is limited to.
+$offset = 0; // int | The (zero-based) starting offset in the collection.
+
+try {
+    $result = $apiInstance->getPageOfBalancesV1($account_id, $limit, $limit_to_id, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BalanceApi->getPageOfBalancesV1: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The account to get balances for. | |
+| **limit** | **int**| The number of elements to be returned. | [optional] [default to 25] |
+| **limit_to_id** | [**string[]**](../Model/string.md)| The balance ids which the result is limited to. | [optional] |
+| **offset** | **int**| The (zero-based) starting offset in the collection. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeBalanceV1AndMetadata**](../Model/EntityResourceCollectionOutcomeBalanceV1AndMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateBalanceV1()`
+
+```php
+updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1): \criteo\api\retailmedia\v2026_07\Model\EntityResourceOutcomeOfBalanceResponseV1
 ```
 
 /2026-07/retail-media/accounts/{account-id}/balances/{balance-id}
@@ -517,13 +581,13 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\BalanceApi(
 );
 $account_id = 'account_id_example'; // string | The account of the balance
 $balance_id = 'balance_id_example'; // string | The balance to change the dates
-$update_balance_model_v2_request = new \criteo\api\retailmedia\v2026_07\Model\UpdateBalanceModelV2Request(); // \criteo\api\retailmedia\v2026_07\Model\UpdateBalanceModelV2Request | An object that represents the available options to modify a balance.
+$value_resource_input_of_update_balance_model_v1 = new \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfUpdateBalanceModelV1(); // \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
 
 try {
-    $result = $apiInstance->modifyBalanceByAccountAndBalanceId($account_id, $balance_id, $update_balance_model_v2_request);
+    $result = $apiInstance->updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling BalanceApi->modifyBalanceByAccountAndBalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling BalanceApi->updateBalanceV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -533,11 +597,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The account of the balance | |
 | **balance_id** | **string**| The balance to change the dates | |
-| **update_balance_model_v2_request** | [**\criteo\api\retailmedia\v2026_07\Model\UpdateBalanceModelV2Request**](../Model/UpdateBalanceModelV2Request.md)| An object that represents the available options to modify a balance. | |
+| **value_resource_input_of_update_balance_model_v1** | [**\criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfUpdateBalanceModelV1**](../Model/ValueResourceInputOfUpdateBalanceModelV1.md)| An object that represents the available options to modify a balance. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceResponseV2Response**](../Model/BalanceResponseV2Response.md)
+[**\criteo\api\retailmedia\v2026_07\Model\EntityResourceOutcomeOfBalanceResponseV1**](../Model/EntityResourceOutcomeOfBalanceResponseV1.md)
 
 ### Authorization
 

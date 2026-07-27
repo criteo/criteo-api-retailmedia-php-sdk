@@ -7,7 +7,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**addRemoveKeywords()**](CampaignApi.md#addRemoveKeywords) | **POST** /2026-07/retail-media/line-items/{id}/keywords/add-remove | /2026-07/retail-media/line-items/{id}/keywords/add-remove |
 | [**appendAddToBasketTargetsByLineItemId()**](CampaignApi.md#appendAddToBasketTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |
 | [**appendAudienceTargetsByLineItemId()**](CampaignApi.md#appendAudienceTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |
-| [**appendCampaignsByBalanceId()**](CampaignApi.md#appendCampaignsByBalanceId) | **POST** /2026-07/retail-media/balances/{balance-id}/campaigns/append | /2026-07/retail-media/balances/{balance-id}/campaigns/append |
+| [**appendCampaignsToBalanceV1()**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /2026-07/retail-media/balances/{balanceId}/campaigns/append | /2026-07/retail-media/balances/{balanceId}/campaigns/append |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /2026-07/retail-media/line-items/{line-item-id}/products/append | /2026-07/retail-media/line-items/{line-item-id}/products/append |
 | [**appendStoreTargetsByLineItemId()**](CampaignApi.md#appendStoreTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |
 | [**createAsset()**](CampaignApi.md#createAsset) | **POST** /2026-07/retail-media/assets | /2026-07/retail-media/assets |
@@ -19,7 +19,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**createSellerCatalogExport()**](CampaignApi.md#createSellerCatalogExport) | **POST** /2026-07/retail-media/accounts/{accountId}/seller-catalog-export | /2026-07/retail-media/accounts/{accountId}/seller-catalog-export |
 | [**deleteAddToBasketTargetsByLineItemId()**](CampaignApi.md#deleteAddToBasketTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |
 | [**deleteAudienceTargetsByLineItemId()**](CampaignApi.md#deleteAudienceTargetsByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |
-| [**deleteCampaignsByBalanceId()**](CampaignApi.md#deleteCampaignsByBalanceId) | **POST** /2026-07/retail-media/balances/{balance-id}/campaigns/delete | /2026-07/retail-media/balances/{balance-id}/campaigns/delete |
+| [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /2026-07/retail-media/balances/{balanceId}/campaigns/delete | /2026-07/retail-media/balances/{balanceId}/campaigns/delete |
 | [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /2026-07/retail-media/line-items/{line-item-id}/products/delete | /2026-07/retail-media/line-items/{line-item-id}/products/delete |
 | [**deleteStoreTargetByLineItemId()**](CampaignApi.md#deleteStoreTargetByLineItemId) | **POST** /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete | /2026-07/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |
 | [**fetchKeywords()**](CampaignApi.md#fetchKeywords) | **GET** /2026-07/retail-media/line-items/{id}/keywords | /2026-07/retail-media/line-items/{id}/keywords |
@@ -269,15 +269,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `appendCampaignsByBalanceId()`
+## `appendCampaignsToBalanceV1()`
 
 ```php
-appendCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110PagedListResponse
+appendCampaignsToBalanceV1($balance_id, $value_resource_input_append_campaigns_request_v1): \criteo\api\retailmedia\v2026_07\Model\ValueResourceOutcomeBalanceCampaignsV1
 ```
 
-/2026-07/retail-media/balances/{balance-id}/campaigns/append
+/2026-07/retail-media/balances/{balanceId}/campaigns/append
 
-appends one or more campaigns to the specified balance
+Appends one or more campaigns to the specified balance
 
 ### Example
 
@@ -300,13 +300,13 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\CampaignApi(
     $config
 );
 $balance_id = 'balance_id_example'; // string | The balance to add campaigns from
-$balance_campaign202110_list_request = new \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest(); // \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest | The campaigns to append
+$value_resource_input_append_campaigns_request_v1 = new \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputAppendCampaignsRequestV1(); // \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputAppendCampaignsRequestV1 | The balance campaign appending request.
 
 try {
-    $result = $apiInstance->appendCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request);
+    $result = $apiInstance->appendCampaignsToBalanceV1($balance_id, $value_resource_input_append_campaigns_request_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->appendCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->appendCampaignsToBalanceV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -315,11 +315,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **balance_id** | **string**| The balance to add campaigns from | |
-| **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
+| **value_resource_input_append_campaigns_request_v1** | [**\criteo\api\retailmedia\v2026_07\Model\ValueResourceInputAppendCampaignsRequestV1**](../Model/ValueResourceInputAppendCampaignsRequestV1.md)| The balance campaign appending request. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
+[**\criteo\api\retailmedia\v2026_07\Model\ValueResourceOutcomeBalanceCampaignsV1**](../Model/ValueResourceOutcomeBalanceCampaignsV1.md)
 
 ### Authorization
 
@@ -1047,15 +1047,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deleteCampaignsByBalanceId()`
+## `deleteCampaignsFromBalanceV1()`
 
 ```php
-deleteCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110PagedListResponse
+deleteCampaignsFromBalanceV1($balance_id, $value_resource_input_delete_campaigns_request_v1): \criteo\api\retailmedia\v2026_07\Model\ValueResourceOutcomeBalanceCampaignsV1
 ```
 
-/2026-07/retail-media/balances/{balance-id}/campaigns/delete
+/2026-07/retail-media/balances/{balanceId}/campaigns/delete
 
-Removes one or more campaigns on the specified balance
+Deletes one or more campaigns on the specified balance
 
 ### Example
 
@@ -1078,13 +1078,13 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\CampaignApi(
     $config
 );
 $balance_id = 'balance_id_example'; // string | The balance to remove campaigns from
-$balance_campaign202110_list_request = new \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest(); // \criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest | The campaigns to append
+$value_resource_input_delete_campaigns_request_v1 = new \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputDeleteCampaignsRequestV1(); // \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputDeleteCampaignsRequestV1 | The balance campaign deleting request.
 
 try {
-    $result = $apiInstance->deleteCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request);
+    $result = $apiInstance->deleteCampaignsFromBalanceV1($balance_id, $value_resource_input_delete_campaigns_request_v1);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->deleteCampaignsByBalanceId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->deleteCampaignsFromBalanceV1: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1093,11 +1093,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **balance_id** | **string**| The balance to remove campaigns from | |
-| **balance_campaign202110_list_request** | [**\criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110ListRequest**](../Model/BalanceCampaign202110ListRequest.md)| The campaigns to append | [optional] |
+| **value_resource_input_delete_campaigns_request_v1** | [**\criteo\api\retailmedia\v2026_07\Model\ValueResourceInputDeleteCampaignsRequestV1**](../Model/ValueResourceInputDeleteCampaignsRequestV1.md)| The balance campaign deleting request. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\BalanceCampaign202110PagedListResponse**](../Model/BalanceCampaign202110PagedListResponse.md)
+[**\criteo\api\retailmedia\v2026_07\Model\ValueResourceOutcomeBalanceCampaignsV1**](../Model/ValueResourceOutcomeBalanceCampaignsV1.md)
 
 ### Authorization
 
@@ -3711,12 +3711,12 @@ try {
 ## `searchAccountRetailers()`
 
 ```php
-searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset): \criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata
+searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request_v2, $limit, $offset): \criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata
 ```
 
 /2026-07/retail-media/accounts/{accountId}/retailers/search
 
-Searches for retailers associated with the specified account based on provided search criteria
+Searches for retailers associated with the specified account and returns budget model availability for each retailer
 
 ### Example
 
@@ -3739,12 +3739,12 @@ $apiInstance = new criteo\api\retailmedia\v2026_07\Api\CampaignApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The external account identifier
-$value_resource_input_of_retailer_search_request = new \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequest(); // \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequest | The search request containing filtering parameters
+$value_resource_input_of_retailer_search_request_v2 = new \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequestV2(); // \criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequestV2 | The search request containing filtering parameters
 $limit = 5; // int | The maximum number of items to return. Must be between 1 and 10. Default is 5.
 $offset = 0; // int | The number of items to skip before starting to collect the result set. Default is 0.
 
 try {
-    $result = $apiInstance->searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request, $limit, $offset);
+    $result = $apiInstance->searchAccountRetailers($account_id, $value_resource_input_of_retailer_search_request_v2, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->searchAccountRetailers: ', $e->getMessage(), PHP_EOL;
@@ -3756,13 +3756,13 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The external account identifier | |
-| **value_resource_input_of_retailer_search_request** | [**\criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequest**](../Model/ValueResourceInputOfRetailerSearchRequest.md)| The search request containing filtering parameters | |
+| **value_resource_input_of_retailer_search_request_v2** | [**\criteo\api\retailmedia\v2026_07\Model\ValueResourceInputOfRetailerSearchRequestV2**](../Model/ValueResourceInputOfRetailerSearchRequestV2.md)| The search request containing filtering parameters | |
 | **limit** | **int**| The maximum number of items to return. Must be between 1 and 10. Default is 5. | [optional] [default to 5] |
 | **offset** | **int**| The number of items to skip before starting to collect the result set. Default is 0. | [optional] [default to 0] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeOfRetailerResultAndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailerResultAndMetadata.md)
+[**\criteo\api\retailmedia\v2026_07\Model\EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata**](../Model/EntityResourceCollectionOutcomeOfRetailerResultV2AndMetadata.md)
 
 ### Authorization
 

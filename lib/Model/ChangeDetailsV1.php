@@ -317,7 +317,7 @@ class ChangeDetailsV1 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets change_value
      *
-     * @param string|null $change_value Change detail of a property of the insertion order.
+     * @param string|null $change_value Change amount of a property of the insertion order.
      *
      * @return self
      */
