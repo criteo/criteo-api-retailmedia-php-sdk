@@ -4,14 +4,14 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addRemoveContactListByAudienceSegment()**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |  |
-| [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/create |  |
-| [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/delete |  |
-| [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /2025-10/retail-media/accounts/{account-id}/audience-segments |  |
-| [**clearContactListByAudienceSegment()**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |  |
-| [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /2025-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |  |
-| [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/search |  |
-| [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /2025-10/retail-media/accounts/{account-id}/audiences/search |  |
+| [**addRemoveContactListByAudienceSegment()**](AudienceApi.md#addRemoveContactListByAudienceSegment) | **POST** /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove | /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove |
+| [**bulkCreateAudienceSegments()**](AudienceApi.md#bulkCreateAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/create | /2025-10/retail-media/accounts/{account-id}/audience-segments/create |
+| [**bulkDeleteAudienceSegments()**](AudienceApi.md#bulkDeleteAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/delete | /2025-10/retail-media/accounts/{account-id}/audience-segments/delete |
+| [**bulkUpdateAudienceSegments()**](AudienceApi.md#bulkUpdateAudienceSegments) | **PATCH** /2025-10/retail-media/accounts/{account-id}/audience-segments | /2025-10/retail-media/accounts/{account-id}/audience-segments |
+| [**clearContactListByAudienceSegment()**](AudienceApi.md#clearContactListByAudienceSegment) | **POST** /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear | /2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear |
+| [**getAudienceSegmentContactListStatistics()**](AudienceApi.md#getAudienceSegmentContactListStatistics) | **GET** /2025-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list | /2025-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list |
+| [**searchAudienceSegments()**](AudienceApi.md#searchAudienceSegments) | **POST** /2025-10/retail-media/accounts/{account-id}/audience-segments/search | /2025-10/retail-media/accounts/{account-id}/audience-segments/search |
+| [**searchAudiences()**](AudienceApi.md#searchAudiences) | **POST** /2025-10/retail-media/accounts/{account-id}/audiences/search | /2025-10/retail-media/accounts/{account-id}/audiences/search |
 
 
 ## `addRemoveContactListByAudienceSegment()`
@@ -20,7 +20,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 addRemoveContactListByAudienceSegment($audience_segment_id, $retail_media_contactlist_amendment_request): \criteo\api\retailmedia\v2025_10\Model\RetailMediaContactlistOperation
 ```
 
-
+/2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
 
 Add/remove identifiers to or from a retail-media contact list audience-segment, with external audience segment id.
 
@@ -85,7 +85,7 @@ try {
 bulkCreateAudienceSegments($account_id, $rm_audience_segment_bulk_create_input_v1): \criteo\api\retailmedia\v2025_10\Model\RmAudienceSegmentEntityV1ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audience-segments/create
 
 Creates all segments with a valid configuration, and returns the full segments. For those that cannot be created, one or multiple errors are returned.
 
@@ -150,7 +150,7 @@ try {
 bulkDeleteAudienceSegments($account_id, $rm_audience_segment_bulk_delete_input_v1): \criteo\api\retailmedia\v2025_10\Model\RmAudienceSegmentIdEntityV1ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audience-segments/delete
 
 Delete the segments associated to the given IDs.
 
@@ -215,7 +215,7 @@ try {
 bulkUpdateAudienceSegments($account_id, $rm_audience_segment_bulk_update_input_v1): \criteo\api\retailmedia\v2025_10\Model\RmAudienceSegmentEntityV1ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audience-segments
 
 Updates the properties of all segments with a valid configuration, and returns the full segments. For those that cannot be updated, one or multiple errors are returned.
 
@@ -280,7 +280,7 @@ try {
 clearContactListByAudienceSegment($audience_segment_id)
 ```
 
-
+/2025-10/retail-media/audience-segments/{audience-segment-id}/contact-list/clear
 
 Delete all identifiers from a retail-media contact list audience-segment, with external audience segment id.
 
@@ -342,7 +342,7 @@ void (empty response body)
 getAudienceSegmentContactListStatistics($account_id, $audience_segment_id): \criteo\api\retailmedia\v2025_10\Model\RmContactListStatisticsEntityV1Response
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audience-segments/{audience-segment-id}/contact-list
 
 Returns the statistics of a contact list segment.
 
@@ -407,7 +407,7 @@ try {
 searchAudienceSegments($account_id, $rm_audience_segment_search_input_v1, $limit, $offset): \criteo\api\retailmedia\v2025_10\Model\RmAudienceSegmentEntityV1RmAudienceSegmentSearchMetadataV1ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audience-segments/search
 
 Returns a list of segments that match the provided filters. If present, the filters are AND'ed together when applied.
 
@@ -476,7 +476,7 @@ try {
 searchAudiences($account_id, $rm_audience_search_input_v1, $limit, $offset): \criteo\api\retailmedia\v2025_10\Model\RmAudienceEntityV1RmAudienceSearchMetadataV1ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/audiences/search
 
 Returns a list of audiences that match the provided filters. If present, the filters are AND'ed together when applied.
 

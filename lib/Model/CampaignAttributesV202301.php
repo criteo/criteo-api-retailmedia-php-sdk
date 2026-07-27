@@ -69,6 +69,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'monthly_pacing' => 'float',
         'name' => 'string',
         'on_behalf_company_name' => 'string',
+        'retailer_id' => 'int',
         'start_date' => '\DateTime',
         'type' => 'string',
         'view_attribution_scope' => 'string',
@@ -94,6 +95,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'monthly_pacing' => 'double',
         'name' => null,
         'on_behalf_company_name' => null,
+        'retailer_id' => 'int32',
         'start_date' => 'date-time',
         'type' => null,
         'view_attribution_scope' => null,
@@ -117,6 +119,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
 		'monthly_pacing' => true,
 		'name' => false,
 		'on_behalf_company_name' => true,
+		'retailer_id' => false,
 		'start_date' => true,
 		'type' => false,
 		'view_attribution_scope' => true,
@@ -220,6 +223,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'monthly_pacing' => 'monthlyPacing',
         'name' => 'name',
         'on_behalf_company_name' => 'onBehalfCompanyName',
+        'retailer_id' => 'retailerId',
         'start_date' => 'startDate',
         'type' => 'type',
         'view_attribution_scope' => 'viewAttributionScope',
@@ -243,6 +247,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'monthly_pacing' => 'setMonthlyPacing',
         'name' => 'setName',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
+        'retailer_id' => 'setRetailerId',
         'start_date' => 'setStartDate',
         'type' => 'setType',
         'view_attribution_scope' => 'setViewAttributionScope',
@@ -266,6 +271,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         'monthly_pacing' => 'getMonthlyPacing',
         'name' => 'getName',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
+        'retailer_id' => 'getRetailerId',
         'start_date' => 'getStartDate',
         'type' => 'getType',
         'view_attribution_scope' => 'getViewAttributionScope',
@@ -437,6 +443,7 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('monthly_pacing', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], 'auction');
         $this->setIfExists('view_attribution_scope', $data ?? [], null);
@@ -913,6 +920,33 @@ class CampaignAttributesV202301 implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['on_behalf_company_name'] = $on_behalf_company_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return int|null
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param int|null $retailer_id retailer_id
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        }
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }

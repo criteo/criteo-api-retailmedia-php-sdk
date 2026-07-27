@@ -74,6 +74,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'on_behalf_company_name' => 'string',
         'promoted_brand_ids' => 'string[]',
+        'retailer_id' => 'int',
         'start_date' => '\DateTime',
         'status' => 'string',
         'type' => 'string',
@@ -106,6 +107,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'on_behalf_company_name' => null,
         'promoted_brand_ids' => 'long-id',
+        'retailer_id' => 'int32',
         'start_date' => 'date-time',
         'status' => null,
         'type' => null,
@@ -136,6 +138,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'name' => false,
 		'on_behalf_company_name' => true,
 		'promoted_brand_ids' => false,
+		'retailer_id' => true,
 		'start_date' => true,
 		'status' => false,
 		'type' => false,
@@ -246,6 +249,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'on_behalf_company_name' => 'onBehalfCompanyName',
         'promoted_brand_ids' => 'promotedBrandIds',
+        'retailer_id' => 'retailerId',
         'start_date' => 'startDate',
         'status' => 'status',
         'type' => 'type',
@@ -276,6 +280,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
         'promoted_brand_ids' => 'setPromotedBrandIds',
+        'retailer_id' => 'setRetailerId',
         'start_date' => 'setStartDate',
         'status' => 'setStatus',
         'type' => 'setType',
@@ -306,6 +311,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
         'promoted_brand_ids' => 'getPromotedBrandIds',
+        'retailer_id' => 'getRetailerId',
         'start_date' => 'getStartDate',
         'status' => 'getStatus',
         'type' => 'getType',
@@ -505,6 +511,7 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
         $this->setIfExists('promoted_brand_ids', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], 'auction');
@@ -1150,6 +1157,40 @@ class CampaignV202301 implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable promoted_brand_ids cannot be null');
         }
         $this->container['promoted_brand_ids'] = $promoted_brand_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return int|null
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param int|null $retailer_id retailer_id
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['retailer_id'] = $retailer_id;
 
         return $this;
     }

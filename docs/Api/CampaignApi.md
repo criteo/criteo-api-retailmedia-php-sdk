@@ -4,75 +4,74 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addRemoveKeywords()**](CampaignApi.md#addRemoveKeywords) | **POST** /2025-10/retail-media/line-items/{id}/keywords/add-remove |  |
-| [**appendAddToBasketTargetsByLineItemId()**](CampaignApi.md#appendAddToBasketTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |  |
-| [**appendAudienceTargetsByLineItemId()**](CampaignApi.md#appendAudienceTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |  |
-| [**appendCampaignsByBalanceId()**](CampaignApi.md#appendCampaignsByBalanceId) | **POST** /2025-10/retail-media/balances/{balance-id}/campaigns/append |  |
-| [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/append |  |
-| [**appendStoreTargetsByLineItemId()**](CampaignApi.md#appendStoreTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |  |
-| [**createAsset()**](CampaignApi.md#createAsset) | **POST** /2025-10/retail-media/assets |  |
-| [**createBrandCatalogExport()**](CampaignApi.md#createBrandCatalogExport) | **POST** /2025-10/retail-media/accounts/{accountId}/brand-catalog-export |  |
-| [**createCampaignsByAccountId()**](CampaignApi.md#createCampaignsByAccountId) | **POST** /2025-10/retail-media/accounts/{account-id}/campaigns |  |
-| [**createCreative()**](CampaignApi.md#createCreative) | **POST** /2025-10/retail-media/accounts/{account-id}/creatives |  |
-| [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**createSellerCatalogExport()**](CampaignApi.md#createSellerCatalogExport) | **POST** /2025-10/retail-media/accounts/{accountId}/seller-catalog-export |  |
-| [**deleteAddToBasketTargetsByLineItemId()**](CampaignApi.md#deleteAddToBasketTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |  |
-| [**deleteAudienceTargetsByLineItemId()**](CampaignApi.md#deleteAudienceTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |  |
-| [**deleteCampaignsByBalanceId()**](CampaignApi.md#deleteCampaignsByBalanceId) | **POST** /2025-10/retail-media/balances/{balance-id}/campaigns/delete |  |
-| [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/delete |  |
-| [**deleteStoreTargetByLineItemId()**](CampaignApi.md#deleteStoreTargetByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |  |
-| [**fetchKeywords()**](CampaignApi.md#fetchKeywords) | **GET** /2025-10/retail-media/line-items/{id}/keywords |  |
-| [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /2025-10/retail-media/line-items/{line-item-id}/products |  |
-| [**getAccountCreatives()**](CampaignApi.md#getAccountCreatives) | **GET** /2025-10/retail-media/accounts/{account-id}/creatives |  |
-| [**getAddToBasketTargetsByLineItemId()**](CampaignApi.md#getAddToBasketTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
-| [**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2025-10/retail-media/retailers/{retailerId}/pages |  |
-| [**getApiExternalV1Categories()**](CampaignApi.md#getApiExternalV1Categories) | **GET** /2025-10/retail-media/categories |  |
-| [**getAuctionLineItemsByCampaignId()**](CampaignApi.md#getAuctionLineItemsByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
-| [**getAuctionLineItemsByLineItemId()**](CampaignApi.md#getAuctionLineItemsByLineItemId) | **GET** /2025-10/retail-media/auction-line-items/{line-item-id} |  |
-| [**getAudienceTargetsByLineItemId()**](CampaignApi.md#getAudienceTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
-| [**getBidMultipliersByLineItemId()**](CampaignApi.md#getBidMultipliersByLineItemId) | **GET** /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers |  |
-| [**getBrandsByAccountId()**](CampaignApi.md#getBrandsByAccountId) | **GET** /2025-10/retail-media/accounts/{accountId}/brands |  |
-| [**getCampaignBudgetOverrides()**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
-| [**getCampaignByCampaignId()**](CampaignApi.md#getCampaignByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaignId} |  |
-| [**getCampaignsByAccountId()**](CampaignApi.md#getCampaignsByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/campaigns |  |
-| [**getCatalogOutput()**](CampaignApi.md#getCatalogOutput) | **GET** /2025-10/retail-media/catalogs/{catalogId}/output |  |
-| [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /2025-10/retail-media/catalogs/{catalogId}/status |  |
-| [**getCategory()**](CampaignApi.md#getCategory) | **GET** /2025-10/retail-media/categories/{categoryId} |  |
-| [**getCpcMinBidsBySkuIdsV1()**](CampaignApi.md#getCpcMinBidsBySkuIdsV1) | **POST** /2025-10/retail-media/retailers/{retailerId}/cpc-min-bids |  |
-| [**getCreative()**](CampaignApi.md#getCreative) | **GET** /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**getCreativeTemplate()**](CampaignApi.md#getCreativeTemplate) | **GET** /2025-10/retail-media/retailers/{retailer-id}/templates/{template-id} |  |
-| [**getKeywordInReviewReport()**](CampaignApi.md#getKeywordInReviewReport) | **GET** /2025-10/retail-media/accounts/{account-id}/keywords/in-review-report |  |
-| [**getLineItemBudgetOverrides()**](CampaignApi.md#getLineItemBudgetOverrides) | **GET** /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
-| [**getLineItemsByAccountId()**](CampaignApi.md#getLineItemsByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/line-items |  |
-| [**getLineItemsByCampaignId()**](CampaignApi.md#getLineItemsByCampaignId) | **GET** /2025-10/retail-media/line-items/{line-item-id} |  |
-| [**getPreferredLineItemsByCampaignId()**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items |  |
-| [**getPreferredLineItemsByLineItemId()**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id} |  |
-| [**getRecommendedCategories()**](CampaignApi.md#getRecommendedCategories) | **POST** /2025-10/retail-media/retailers/{retailerId}/recommend-categories |  |
-| [**getRecommendedKeywords()**](CampaignApi.md#getRecommendedKeywords) | **GET** /2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended |  |
-| [**getRetailerCreativeTemplates()**](CampaignApi.md#getRetailerCreativeTemplates) | **GET** /2025-10/retail-media/retailers/{retailer-id}/templates |  |
-| [**getRetailersByAccountId()**](CampaignApi.md#getRetailersByAccountId) | **GET** /2025-10/retail-media/accounts/{accountId}/retailers |  |
-| [**getStoreTargetsByLineItemId()**](CampaignApi.md#getStoreTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
-| [**modifyAuctionLineItemsByCampaignId()**](CampaignApi.md#modifyAuctionLineItemsByCampaignId) | **POST** /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items |  |
-| [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/pause |  |
-| [**postApiExternalV1AccountCatalogsSellersByAccountId()**](CampaignApi.md#postApiExternalV1AccountCatalogsSellersByAccountId) | **POST** /2025-10/retail-media/accounts/{accountId}/catalogs/sellers |  |
-| [**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2025-10/retail-media/accounts/{accountId}/catalogs |  |
-| [**putAddToBasketTargetByLineItemId()**](CampaignApi.md#putAddToBasketTargetByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |  |
-| [**putAudienceTargetsByLineItemId()**](CampaignApi.md#putAudienceTargetsByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |  |
-| [**putStoreTargetByLineItemId()**](CampaignApi.md#putStoreTargetByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores |  |
-| [**recommendedKeywords()**](CampaignApi.md#recommendedKeywords) | **POST** /2025-10/retail-media/retailers/{retailerId}/recommend-keywords |  |
-| [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /2025-10/retail-media/accounts/{account-id}/creatives/search |  |
-| [**searchBrands()**](CampaignApi.md#searchBrands) | **POST** /2025-10/retail-media/brands/search |  |
-| [**searchCategory()**](CampaignApi.md#searchCategory) | **POST** /2025-10/retail-media/retailers/{retailerId}/categories/search |  |
-| [**setKeywordBids()**](CampaignApi.md#setKeywordBids) | **POST** /2025-10/retail-media/line-items/{id}/keywords/set-bid |  |
-| [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/unpause |  |
-| [**updateAuctionLineItemByLineItemId()**](CampaignApi.md#updateAuctionLineItemByLineItemId) | **PUT** /2025-10/retail-media/auction-line-items/{line-item-id} |  |
-| [**updateBidMultipliersByLineItemId()**](CampaignApi.md#updateBidMultipliersByLineItemId) | **PUT** /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers |  |
-| [**updateCampaignBudgetOverrides()**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides |  |
-| [**updateCampaignByCampaignId()**](CampaignApi.md#updateCampaignByCampaignId) | **PUT** /2025-10/retail-media/campaigns/{campaignId} |  |
-| [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} |  |
-| [**updateKeywordReviews()**](CampaignApi.md#updateKeywordReviews) | **POST** /2025-10/retail-media/line-items/{line-item-id}/keywords/review |  |
-| [**updateLineItemBudgetOverrides()**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides |  |
-| [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id} |  |
+| [**addRemoveKeywords()**](CampaignApi.md#addRemoveKeywords) | **POST** /2025-10/retail-media/line-items/{id}/keywords/add-remove | /2025-10/retail-media/line-items/{id}/keywords/add-remove |
+| [**appendAddToBasketTargetsByLineItemId()**](CampaignApi.md#appendAddToBasketTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append |
+| [**appendAudienceTargetsByLineItemId()**](CampaignApi.md#appendAudienceTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append |
+| [**appendCampaignsByBalanceId()**](CampaignApi.md#appendCampaignsByBalanceId) | **POST** /2025-10/retail-media/balances/{balance-id}/campaigns/append | /2025-10/retail-media/balances/{balance-id}/campaigns/append |
+| [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/append | /2025-10/retail-media/line-items/{line-item-id}/products/append |
+| [**appendStoreTargetsByLineItemId()**](CampaignApi.md#appendStoreTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append |
+| [**createAsset()**](CampaignApi.md#createAsset) | **POST** /2025-10/retail-media/assets | /2025-10/retail-media/assets |
+| [**createBrandCatalogExport()**](CampaignApi.md#createBrandCatalogExport) | **POST** /2025-10/retail-media/accounts/{accountId}/brand-catalog-export | /2025-10/retail-media/accounts/{accountId}/brand-catalog-export |
+| [**createCampaignsByAccountId()**](CampaignApi.md#createCampaignsByAccountId) | **POST** /2025-10/retail-media/accounts/{account-id}/campaigns | /2025-10/retail-media/accounts/{account-id}/campaigns |
+| [**createCreative()**](CampaignApi.md#createCreative) | **POST** /2025-10/retail-media/accounts/{account-id}/creatives | /2025-10/retail-media/accounts/{account-id}/creatives |
+| [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items | /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items |
+| [**createSellerCatalogExport()**](CampaignApi.md#createSellerCatalogExport) | **POST** /2025-10/retail-media/accounts/{accountId}/seller-catalog-export | /2025-10/retail-media/accounts/{accountId}/seller-catalog-export |
+| [**deleteAddToBasketTargetsByLineItemId()**](CampaignApi.md#deleteAddToBasketTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete |
+| [**deleteAudienceTargetsByLineItemId()**](CampaignApi.md#deleteAudienceTargetsByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete |
+| [**deleteCampaignsByBalanceId()**](CampaignApi.md#deleteCampaignsByBalanceId) | **POST** /2025-10/retail-media/balances/{balance-id}/campaigns/delete | /2025-10/retail-media/balances/{balance-id}/campaigns/delete |
+| [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/delete | /2025-10/retail-media/line-items/{line-item-id}/products/delete |
+| [**deleteStoreTargetByLineItemId()**](CampaignApi.md#deleteStoreTargetByLineItemId) | **POST** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete |
+| [**fetchKeywords()**](CampaignApi.md#fetchKeywords) | **GET** /2025-10/retail-media/line-items/{id}/keywords | /2025-10/retail-media/line-items/{id}/keywords |
+| [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /2025-10/retail-media/line-items/{line-item-id}/products | /2025-10/retail-media/line-items/{line-item-id}/products |
+| [**getAccountCreatives()**](CampaignApi.md#getAccountCreatives) | **GET** /2025-10/retail-media/accounts/{account-id}/creatives | /2025-10/retail-media/accounts/{account-id}/creatives |
+| [**getAddToBasketTargetsByLineItemId()**](CampaignApi.md#getAddToBasketTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |
+| [**getApi202110ExternalRetailerPagesByRetailerId()**](CampaignApi.md#getApi202110ExternalRetailerPagesByRetailerId) | **GET** /2025-10/retail-media/retailers/{retailerId}/pages | /2025-10/retail-media/retailers/{retailerId}/pages |
+| [**getApiExternalV1Categories()**](CampaignApi.md#getApiExternalV1Categories) | **GET** /2025-10/retail-media/categories | /2025-10/retail-media/categories |
+| [**getAuctionLineItemsByCampaignId()**](CampaignApi.md#getAuctionLineItemsByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items | /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items |
+| [**getAuctionLineItemsByLineItemId()**](CampaignApi.md#getAuctionLineItemsByLineItemId) | **GET** /2025-10/retail-media/auction-line-items/{line-item-id} | /2025-10/retail-media/auction-line-items/{line-item-id} |
+| [**getAudienceTargetsByLineItemId()**](CampaignApi.md#getAudienceTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |
+| [**getBidMultipliersByLineItemId()**](CampaignApi.md#getBidMultipliersByLineItemId) | **GET** /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers | /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers |
+| [**getBrandsByAccountId()**](CampaignApi.md#getBrandsByAccountId) | **GET** /2025-10/retail-media/accounts/{accountId}/brands | /2025-10/retail-media/accounts/{accountId}/brands |
+| [**getCampaignBudgetOverrides()**](CampaignApi.md#getCampaignBudgetOverrides) | **GET** /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides | /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides |
+| [**getCampaignByCampaignId()**](CampaignApi.md#getCampaignByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaignId} | /2025-10/retail-media/campaigns/{campaignId} |
+| [**getCampaignsByAccountId()**](CampaignApi.md#getCampaignsByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/campaigns | /2025-10/retail-media/accounts/{account-id}/campaigns |
+| [**getCatalogOutput()**](CampaignApi.md#getCatalogOutput) | **GET** /2025-10/retail-media/catalogs/{catalogId}/output | /2025-10/retail-media/catalogs/{catalogId}/output |
+| [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /2025-10/retail-media/catalogs/{catalogId}/status | /2025-10/retail-media/catalogs/{catalogId}/status |
+| [**getCategory()**](CampaignApi.md#getCategory) | **GET** /2025-10/retail-media/categories/{categoryId} | /2025-10/retail-media/categories/{categoryId} |
+| [**getCpcMinBidsBySkuIdsV1()**](CampaignApi.md#getCpcMinBidsBySkuIdsV1) | **POST** /2025-10/retail-media/retailers/{retailerId}/cpc-min-bids | /2025-10/retail-media/retailers/{retailerId}/cpc-min-bids |
+| [**getCreative()**](CampaignApi.md#getCreative) | **GET** /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} | /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getCreativeTemplate()**](CampaignApi.md#getCreativeTemplate) | **GET** /2025-10/retail-media/retailers/{retailer-id}/templates/{template-id} | /2025-10/retail-media/retailers/{retailer-id}/templates/{template-id} |
+| [**getKeywordInReviewReport()**](CampaignApi.md#getKeywordInReviewReport) | **GET** /2025-10/retail-media/accounts/{account-id}/keywords/in-review-report | /2025-10/retail-media/accounts/{account-id}/keywords/in-review-report |
+| [**getLineItemBudgetOverrides()**](CampaignApi.md#getLineItemBudgetOverrides) | **GET** /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides | /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides |
+| [**getLineItemsByAccountId()**](CampaignApi.md#getLineItemsByAccountId) | **GET** /2025-10/retail-media/accounts/{account-id}/line-items | /2025-10/retail-media/accounts/{account-id}/line-items |
+| [**getLineItemsByCampaignId()**](CampaignApi.md#getLineItemsByCampaignId) | **GET** /2025-10/retail-media/line-items/{line-item-id} | /2025-10/retail-media/line-items/{line-item-id} |
+| [**getPreferredLineItemsByCampaignId()**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items | /2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items |
+| [**getPreferredLineItemsByLineItemId()**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id} | /2025-10/retail-media/preferred-line-items/{line-item-id} |
+| [**getRecommendedCategories()**](CampaignApi.md#getRecommendedCategories) | **POST** /2025-10/retail-media/retailers/{retailerId}/recommend-categories | /2025-10/retail-media/retailers/{retailerId}/recommend-categories |
+| [**getRecommendedKeywords()**](CampaignApi.md#getRecommendedKeywords) | **GET** /2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended | /2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended |
+| [**getRetailerCreativeTemplates()**](CampaignApi.md#getRetailerCreativeTemplates) | **GET** /2025-10/retail-media/retailers/{retailer-id}/templates | /2025-10/retail-media/retailers/{retailer-id}/templates |
+| [**getRetailersByAccountId()**](CampaignApi.md#getRetailersByAccountId) | **GET** /2025-10/retail-media/accounts/{accountId}/retailers | /2025-10/retail-media/accounts/{accountId}/retailers |
+| [**getStoreTargetsByLineItemId()**](CampaignApi.md#getStoreTargetsByLineItemId) | **GET** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores |
+| [**modifyAuctionLineItemsByCampaignId()**](CampaignApi.md#modifyAuctionLineItemsByCampaignId) | **POST** /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items | /2025-10/retail-media/campaigns/{campaign-id}/auction-line-items |
+| [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/pause | /2025-10/retail-media/line-items/{line-item-id}/products/pause |
+| [**postApiExternalV1AccountCatalogsSellersByAccountId()**](CampaignApi.md#postApiExternalV1AccountCatalogsSellersByAccountId) | **POST** /2025-10/retail-media/accounts/{accountId}/catalogs/sellers | /2025-10/retail-media/accounts/{accountId}/catalogs/sellers |
+| [**postApiV1ExternalAccountCatalogsByAccountId()**](CampaignApi.md#postApiV1ExternalAccountCatalogsByAccountId) | **POST** /2025-10/retail-media/accounts/{accountId}/catalogs | /2025-10/retail-media/accounts/{accountId}/catalogs |
+| [**putAddToBasketTargetByLineItemId()**](CampaignApi.md#putAddToBasketTargetByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket |
+| [**putAudienceTargetsByLineItemId()**](CampaignApi.md#putAudienceTargetsByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences |
+| [**putStoreTargetByLineItemId()**](CampaignApi.md#putStoreTargetByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores | /2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores |
+| [**recommendedKeywords()**](CampaignApi.md#recommendedKeywords) | **POST** /2025-10/retail-media/retailers/{retailerId}/recommend-keywords | /2025-10/retail-media/retailers/{retailerId}/recommend-keywords |
+| [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /2025-10/retail-media/accounts/{account-id}/creatives/search | /2025-10/retail-media/accounts/{account-id}/creatives/search |
+| [**searchCategory()**](CampaignApi.md#searchCategory) | **POST** /2025-10/retail-media/retailers/{retailerId}/categories/search | /2025-10/retail-media/retailers/{retailerId}/categories/search |
+| [**setKeywordBids()**](CampaignApi.md#setKeywordBids) | **POST** /2025-10/retail-media/line-items/{id}/keywords/set-bid | /2025-10/retail-media/line-items/{id}/keywords/set-bid |
+| [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /2025-10/retail-media/line-items/{line-item-id}/products/unpause | /2025-10/retail-media/line-items/{line-item-id}/products/unpause |
+| [**updateAuctionLineItemByLineItemId()**](CampaignApi.md#updateAuctionLineItemByLineItemId) | **PUT** /2025-10/retail-media/auction-line-items/{line-item-id} | /2025-10/retail-media/auction-line-items/{line-item-id} |
+| [**updateBidMultipliersByLineItemId()**](CampaignApi.md#updateBidMultipliersByLineItemId) | **PUT** /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers | /2025-10/retail-media/line-items/{line-item-id}/bid-multipliers |
+| [**updateCampaignBudgetOverrides()**](CampaignApi.md#updateCampaignBudgetOverrides) | **PUT** /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides | /2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides |
+| [**updateCampaignByCampaignId()**](CampaignApi.md#updateCampaignByCampaignId) | **PUT** /2025-10/retail-media/campaigns/{campaignId} | /2025-10/retail-media/campaigns/{campaignId} |
+| [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} | /2025-10/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**updateKeywordReviews()**](CampaignApi.md#updateKeywordReviews) | **POST** /2025-10/retail-media/line-items/{line-item-id}/keywords/review | /2025-10/retail-media/line-items/{line-item-id}/keywords/review |
+| [**updateLineItemBudgetOverrides()**](CampaignApi.md#updateLineItemBudgetOverrides) | **PUT** /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides | /2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides |
+| [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /2025-10/retail-media/preferred-line-items/{line-item-id} | /2025-10/retail-media/preferred-line-items/{line-item-id} |
 
 
 ## `addRemoveKeywords()`
@@ -81,7 +80,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 addRemoveKeywords($id, $add_remove_keywords_model_request): \criteo\api\retailmedia\v2025_10\Model\ResourceOutcome
 ```
 
-
+/2025-10/retail-media/line-items/{id}/keywords/add-remove
 
 Add or Remove keywords from the line item in bulk
 
@@ -146,7 +145,7 @@ try {
 appendAddToBasketTargetsByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\AddToBasketTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
 
 This endpoint appends one or more add to basket ids to targeting on the specified line item.  The resulting state of the add to basket target is returned.
 
@@ -211,7 +210,7 @@ try {
 appendAudienceTargetsByLineItemId($line_item_id, $audience_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\AudienceTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
 
 This endpoint appends one or more audiences ids to targeting on the specified line item.  The resulting state of the audience target is returned.
 
@@ -276,7 +275,7 @@ try {
 appendCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2025_10\Model\BalanceCampaign202110PagedListResponse
 ```
 
-
+/2025-10/retail-media/balances/{balance-id}/campaigns/append
 
 appends one or more campaigns to the specified balance
 
@@ -341,7 +340,7 @@ try {
 appendPromotedProducts($line_item_id, $promoted_product_resource_collection_input): \criteo\api\retailmedia\v2025_10\Model\ProductResourceOutcome
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/products/append
 
 Append a collection of promoted products to a line item
 
@@ -406,7 +405,7 @@ try {
 appendStoreTargetsByLineItemId($line_item_id, $store_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\StoreTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
 
 This endpoint appends one or more store ids to targeting on the specified line item.  The resulting state of the store target is returned.
 
@@ -471,7 +470,7 @@ try {
 createAsset($asset_file): \criteo\api\retailmedia\v2025_10\Model\AssetResponse
 ```
 
-
+/2025-10/retail-media/assets
 
 Creates an asset
 
@@ -534,7 +533,7 @@ try {
 createBrandCatalogExport($account_id, $value_resource_input_of_brand_catalog_request_v2): \criteo\api\retailmedia\v2025_10\Model\EntityResourceOutcomeOfCatalogStatusV2
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/brand-catalog-export
 
 Create a request for a Catalog available to the indicated account.
 
@@ -599,7 +598,7 @@ try {
 createCampaignsByAccountId($account_id, $post_campaign_v202301): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCampaignV202301
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/campaigns
 
 Creates a new campaign with the specified settings
 
@@ -664,7 +663,7 @@ try {
 createCreative($account_id, $creative_create_model202207): \criteo\api\retailmedia\v2025_10\Model\Creative202210Response
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/creatives
 
 Create a creative for an account
 
@@ -729,7 +728,7 @@ try {
 createPreferredLineItemByCampaignId($campaign_id, $preferred_line_item_create_model_v2_request): \criteo\api\retailmedia\v2025_10\Model\PreferredLineItemV2Response
 ```
 
-
+/2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items
 
 Creates a new preferred line item with the specified settings
 
@@ -794,7 +793,7 @@ try {
 createSellerCatalogExport($account_id, $value_resource_input_of_seller_catalog_request_v2): \criteo\api\retailmedia\v2025_10\Model\EntityResourceOutcomeOfCatalogStatusV2
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/seller-catalog-export
 
 Create a request for a Catalog available to the indicated account.
 
@@ -859,7 +858,7 @@ try {
 deleteAddToBasketTargetsByLineItemId($line_item_id, $add_to_basket_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\AddToBasketTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
 
 This endpoint removes one or more add to basket ids from targeting on the specified line item.  The resulting state of the add to basket target is returned.
 
@@ -924,7 +923,7 @@ try {
 deleteAudienceTargetsByLineItemId($line_item_id, $audience_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\AudienceTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
 
 This endpoint removes one or more audiences ids from targeting on the specified line item.  The resulting state of the audience target is returned.
 
@@ -989,7 +988,7 @@ try {
 deleteCampaignsByBalanceId($balance_id, $balance_campaign202110_list_request): \criteo\api\retailmedia\v2025_10\Model\BalanceCampaign202110PagedListResponse
 ```
 
-
+/2025-10/retail-media/balances/{balance-id}/campaigns/delete
 
 Removes one or more campaigns on the specified balance
 
@@ -1054,7 +1053,7 @@ try {
 deletePromotedProducts($line_item_id, $promoted_product_resource_collection_input)
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/products/delete
 
 Remove a collection of promoted products from a line item
 
@@ -1118,7 +1117,7 @@ void (empty response body)
 deleteStoreTargetByLineItemId($line_item_id, $store_ids_update_model202110_request): \criteo\api\retailmedia\v2025_10\Model\StoreTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
 
 This endpoint removes one or more store ids from targeting on the specified line item.  The resulting state of the store target is returned.
 
@@ -1183,7 +1182,7 @@ try {
 fetchKeywords($id): \criteo\api\retailmedia\v2025_10\Model\KeywordsModelResponse
 ```
 
-
+/2025-10/retail-media/line-items/{id}/keywords
 
 Fetch keywords associated with the specified line item
 
@@ -1246,7 +1245,7 @@ try {
 fetchPromotedProducts($line_item_id, $fields, $limit, $offset): \criteo\api\retailmedia\v2025_10\Model\PromotedProductResourceCollectionOutcome
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/products
 
 Retrieve a page of promoted products for a line item
 
@@ -1315,7 +1314,7 @@ try {
 getAccountCreatives($account_id): \criteo\api\retailmedia\v2025_10\Model\Creative202110ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/creatives
 
 Get account creatives
 
@@ -1378,7 +1377,7 @@ try {
 getAddToBasketTargetsByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\AddToBasketTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
 
 This endpoint gets the add to basket target on the specified line item.
 
@@ -1441,7 +1440,7 @@ try {
 getApi202110ExternalRetailerPagesByRetailerId($retailer_id): \criteo\api\retailmedia\v2025_10\Model\RetailerPages202110
 ```
 
-
+/2025-10/retail-media/retailers/{retailerId}/pages
 
 Get the page types available for the given retailer
 
@@ -1504,7 +1503,7 @@ try {
 getApiExternalV1Categories($page_index, $page_size, $retailer_id, $text_substring): \criteo\api\retailmedia\v2025_10\Model\Category202204ListResponse
 ```
 
-
+/2025-10/retail-media/categories
 
 Endpoint to search categories by text and retailer.
 
@@ -1573,7 +1572,7 @@ try {
 getAuctionLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\AuctionLineItemPagedListResponse
 ```
 
-
+/2025-10/retail-media/campaigns/{campaign-id}/auction-line-items
 
 Gets page of auction line item objects for the given campaign id
 
@@ -1642,7 +1641,7 @@ try {
 getAuctionLineItemsByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\AuctionLineItemResponse
 ```
 
-
+/2025-10/retail-media/auction-line-items/{line-item-id}
 
 Gets the auction line item for the given line item id
 
@@ -1705,7 +1704,7 @@ try {
 getAudienceTargetsByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\AudienceTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
 
 This endpoint gets the audience target on the specified line item.
 
@@ -1768,7 +1767,7 @@ try {
 getBidMultipliersByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfLineItemBidMultipliersV2
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/bid-multipliers
 
 Fetch all bid multipliers for a given line item
 
@@ -1831,7 +1830,7 @@ try {
 getBrandsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\JsonApiPageResponseOfBrand
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/brands
 
 Gets page of retailer objects that are associated with the given account
 
@@ -1900,7 +1899,7 @@ try {
 getCampaignBudgetOverrides($campaign_id): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeOfCampaignBudgetOverrides
 ```
 
-
+/2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides
 
 Get current campaign budget overrides by given campaign id.
 
@@ -1963,7 +1962,7 @@ try {
 getCampaignByCampaignId($campaign_id): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCampaignV202301
 ```
 
-
+/2025-10/retail-media/campaigns/{campaignId}
 
 Gets the campaign for the given campaign id
 
@@ -2026,7 +2025,7 @@ try {
 getCampaignsByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\JsonApiPageResponseOfCampaignV202301
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/campaigns
 
 Gets page of campaign objects for the given account id
 
@@ -2095,7 +2094,7 @@ try {
 getCatalogOutput($catalog_id): \SplFileObject
 ```
 
-
+/2025-10/retail-media/catalogs/{catalogId}/output
 
 Output the indicated catalog. Catalogs are only available for retrieval when their associated status request  is at a Success status.  Produces application/x-json-stream CatalogProduct json objects (first introduced in the 2021-07 version).
 
@@ -2158,7 +2157,7 @@ try {
 getCatalogStatus($catalog_id): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCatalogStatus
 ```
 
-
+/2025-10/retail-media/catalogs/{catalogId}/status
 
 Check the status of a catalog request.
 
@@ -2221,7 +2220,7 @@ try {
 getCategory($category_id): \criteo\api\retailmedia\v2025_10\Model\Category202204
 ```
 
-
+/2025-10/retail-media/categories/{categoryId}
 
 Endpoint to search for a specific category by categoryId.
 
@@ -2284,7 +2283,7 @@ try {
 getCpcMinBidsBySkuIdsV1($retailer_id, $value_resource_input_cpc_min_bids_request): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeCpcMinBidsResponse
 ```
 
-
+/2025-10/retail-media/retailers/{retailerId}/cpc-min-bids
 
 Get overall and individual minimum bid amount for given retailer id and sku id list.
 
@@ -2349,7 +2348,7 @@ try {
 getCreative($account_id, $creative_id): \criteo\api\retailmedia\v2025_10\Model\Creative2Response
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/creatives/{creative-id}
 
 Get the specified creative
 
@@ -2414,7 +2413,7 @@ try {
 getCreativeTemplate($retailer_id, $template_id): \criteo\api\retailmedia\v2025_10\Model\TemplateResponse
 ```
 
-
+/2025-10/retail-media/retailers/{retailer-id}/templates/{template-id}
 
 Gets the template for the specified retailer id and template id
 
@@ -2479,7 +2478,7 @@ try {
 getKeywordInReviewReport($account_id, $limit, $offset): \criteo\api\retailmedia\v2025_10\Model\EntityResourceCollectionOutcomeLineItemKeywordReviewReportAndMetadata
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/keywords/in-review-report
 
 Generate a list of reports for line items which contain one or more actionable keyword reviews
 
@@ -2546,7 +2545,7 @@ try {
 getLineItemBudgetOverrides($line_item_id): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
 ```
 
-
+/2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides
 
 Gets a collection of monthly and daily budget overrides for the provided line item.
 
@@ -2609,7 +2608,7 @@ try {
 getLineItemsByAccountId($account_id, $limit_to_campaign_id, $limit_to_id, $limit_to_type, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\CommonLineItemPagedListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/line-items
 
 Gets page of line item objects for the given account id
 
@@ -2682,7 +2681,7 @@ try {
 getLineItemsByCampaignId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\CommonLineItemResponse
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}
 
 Gets the line item for the given line item id
 
@@ -2745,7 +2744,7 @@ try {
 getPreferredLineItemsByCampaignId($campaign_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\PreferredLineItemV2PagedListResponse
 ```
 
-
+/2025-10/retail-media/campaigns/{campaign-id}/preferred-line-items
 
 Gets page of preferred line item objects for the given campaign id
 
@@ -2814,7 +2813,7 @@ try {
 getPreferredLineItemsByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\PreferredLineItemV2Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}
 
 Gets the preferred line item for the given line item id
 
@@ -2877,7 +2876,7 @@ try {
 getRecommendedCategories($retailer_id, $value_resource_input_recommended_categories_request_v1): \criteo\api\retailmedia\v2025_10\Model\EntityResourceCollectionOutcomeCategory202204
 ```
 
-
+/2025-10/retail-media/retailers/{retailerId}/recommend-categories
 
 Endpoint to get recommended categories by given retailer id and sku id list.
 
@@ -2942,7 +2941,7 @@ try {
 getRecommendedKeywords($external_line_item_id): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeOfRecommendedKeywordsResult
 ```
 
-
+/2025-10/retail-media/line-items/{externalLineItemId}/keywords/recommended
 
 Retrieves a collection of recommended keywords for a line item
 
@@ -3005,7 +3004,7 @@ try {
 getRetailerCreativeTemplates($retailer_id): \criteo\api\retailmedia\v2025_10\Model\TemplateListResponse
 ```
 
-
+/2025-10/retail-media/retailers/{retailer-id}/templates
 
 Get retailer creative templates
 
@@ -3068,7 +3067,7 @@ try {
 getRetailersByAccountId($account_id, $limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_10\Model\JsonApiPageResponseOfRetailer
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/retailers
 
 Gets page of retailer objects that are associated with the given account
 
@@ -3137,7 +3136,7 @@ try {
 getStoreTargetsByLineItemId($line_item_id): \criteo\api\retailmedia\v2025_10\Model\StoreTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores
 
 This endpoint gets the store target on the specified line item.
 
@@ -3200,7 +3199,7 @@ try {
 modifyAuctionLineItemsByCampaignId($campaign_id, $auction_line_item_create_model_request): \criteo\api\retailmedia\v2025_10\Model\AuctionLineItemResponse
 ```
 
-
+/2025-10/retail-media/campaigns/{campaign-id}/auction-line-items
 
 Creates new auction line item with the specified settings
 
@@ -3265,7 +3264,7 @@ try {
 pausePromotedProducts($line_item_id, $promoted_product_resource_collection_input)
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/products/pause
 
 Pause a collection of promoted products associated with a line item
 
@@ -3329,7 +3328,7 @@ void (empty response body)
 postApiExternalV1AccountCatalogsSellersByAccountId($account_id, $json_api_request_of_seller_catalog_request): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCatalogStatus
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/catalogs/sellers
 
 Create a request for a Catalog available to the indicated account.
 
@@ -3394,7 +3393,7 @@ try {
 postApiV1ExternalAccountCatalogsByAccountId($account_id, $json_api_request_of_catalog_request): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCatalogStatus
 ```
 
-
+/2025-10/retail-media/accounts/{accountId}/catalogs
 
 Create a request for a Catalog available to the indicated account.
 
@@ -3459,7 +3458,7 @@ try {
 putAddToBasketTargetByLineItemId($line_item_id, $add_to_basket_target202110_request): \criteo\api\retailmedia\v2025_10\Model\AddToBasketTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
 
 This endpoint sets the scope of the add to basket target on the specified line item.
 
@@ -3524,7 +3523,7 @@ try {
 putAudienceTargetsByLineItemId($line_item_id, $audience_target202110_request): \criteo\api\retailmedia\v2025_10\Model\AudienceTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
 
 This endpoint sets the scope of the audience target on the specified line item.
 
@@ -3589,7 +3588,7 @@ try {
 putStoreTargetByLineItemId($line_item_id, $store_target202110_request): \criteo\api\retailmedia\v2025_10\Model\StoreTarget202110Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}/targeting/stores
 
 This endpoint sets the scope of the store target on the specified line item.
 
@@ -3654,7 +3653,7 @@ try {
 recommendedKeywords($retailer_id, $value_resource_input_recommended_keywords_request_v1): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeRecommendedKeywordsResponseV1
 ```
 
-
+/2025-10/retail-media/retailers/{retailerId}/recommend-keywords
 
 Recommend keywords by given retailer id and sku ids.
 
@@ -3719,7 +3718,7 @@ try {
 searchAccountCreatives($account_id, $creative_ids): \criteo\api\retailmedia\v2025_10\Model\Creative2ListResponse
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/creatives/search
 
 Get account creatives
 
@@ -3778,80 +3777,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `searchBrands()`
-
-```php
-searchBrands($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\v2025_10\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
-```
-
-
-
-Search for brands given a retailer ID and search term.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2025_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\v2025_10\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\v2025_10\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$limit = 25; // int | the number of brands to return
-$offset = 0; // int | offset of paginated results
-$value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\v2025_10\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
-
-try {
-    $result = $apiInstance->searchBrands($limit, $offset, $value_resource_input_brand_id_search_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->searchBrands: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| the number of brands to return | [optional] [default to 25] |
-| **offset** | **int**| offset of paginated results | [optional] [default to 0] |
-| **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\v2025_10\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\v2025_10\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `searchCategory()`
 
 ```php
 searchCategory($retailer_id, $limit, $offset, $value_resource_input_categories_search_request_v1): \criteo\api\retailmedia\v2025_10\Model\EntityResourceCollectionOutcomeCategory202204Metadata
 ```
 
-
+/2025-10/retail-media/retailers/{retailerId}/categories/search
 
 Search a retailer categories by given text substring and category ids.
 
@@ -3920,7 +3852,7 @@ try {
 setKeywordBids($id, $set_bids_model_request): \criteo\api\retailmedia\v2025_10\Model\ResourceOutcome
 ```
 
-
+/2025-10/retail-media/line-items/{id}/keywords/set-bid
 
 Set bid overrides for associated keywords to the given line item in bulk
 
@@ -3985,7 +3917,7 @@ try {
 unpausePromotedProducts($line_item_id, $promoted_product_resource_collection_input)
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/products/unpause
 
 Un-pause a collection of promoted products associated with a line item
 
@@ -4049,7 +3981,7 @@ void (empty response body)
 updateAuctionLineItemByLineItemId($line_item_id, $auction_line_item_update_model_request): \criteo\api\retailmedia\v2025_10\Model\AuctionLineItemResponse
 ```
 
-
+/2025-10/retail-media/auction-line-items/{line-item-id}
 
 Updates the auction line item for the given line item id
 
@@ -4114,7 +4046,7 @@ try {
 updateBidMultipliersByLineItemId($line_item_id, $line_item_bid_multipliers_v2_request): \criteo\api\retailmedia\v2025_10\Model\LineItemBidMultipliersV2Response
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/bid-multipliers
 
 Updates the bid multipliers for a given line item
 
@@ -4179,7 +4111,7 @@ try {
 updateCampaignBudgetOverrides($campaign_id, $value_resource_input_of_campaign_budget_overrides): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeOfCampaignBudgetOverrides
 ```
 
-
+/2025-10/retail-media/campaigns/{campaignId}/campaign-budget-overrides
 
 Update campaign budget overrides by given campaign id and new campaign budget overrides settings.
 
@@ -4244,7 +4176,7 @@ try {
 updateCampaignByCampaignId($campaign_id, $put_campaign_v202301): \criteo\api\retailmedia\v2025_10\Model\JsonApiSingleResponseOfCampaignV202301
 ```
 
-
+/2025-10/retail-media/campaigns/{campaignId}
 
 Updates the campaign for the given campaign id
 
@@ -4309,7 +4241,7 @@ try {
 updateCreative($account_id, $creative_id, $creative_update_model202207): \criteo\api\retailmedia\v2025_10\Model\Creative202210Response
 ```
 
-
+/2025-10/retail-media/accounts/{account-id}/creatives/{creative-id}
 
 Update a creative
 
@@ -4376,7 +4308,7 @@ try {
 updateKeywordReviews($line_item_id, $value_resource_input_retail_media_keywords_review): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeRetailMediaKeywordsReviewResult
 ```
 
-
+/2025-10/retail-media/line-items/{line-item-id}/keywords/review
 
 Update the status of keyword reviews under a line item
 
@@ -4441,7 +4373,7 @@ try {
 updateLineItemBudgetOverrides($line_item_id, $value_resource_input_of_line_item_budget_overrides): \criteo\api\retailmedia\v2025_10\Model\ValueResourceOutcomeOfLineItemBudgetOverrides
 ```
 
-
+/2025-10/retail-media/line-items/{lineItemId}/line-item-budget-overrides
 
 Update line item budget overrides by given external line item id and new line item budget overrides settings.
 
@@ -4506,7 +4438,7 @@ try {
 updatePreferredLineItemByLineItemId($line_item_id, $preferred_line_item_update_model_v2_request): \criteo\api\retailmedia\v2025_10\Model\PreferredLineItemV2Response
 ```
 
-
+/2025-10/retail-media/preferred-line-items/{line-item-id}
 
 Updates the preferred line item for the given line item id
 

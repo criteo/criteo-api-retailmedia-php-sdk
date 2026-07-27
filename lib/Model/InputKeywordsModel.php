@@ -317,7 +317,7 @@ class InputKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets negative_broad
      *
-     * @param string[]|null $negative_broad negative_broad
+     * @param string[]|null $negative_broad The collection of supplied negative broad phrases.
      *
      * @return self
      */
@@ -351,7 +351,7 @@ class InputKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets negative_exact
      *
-     * @param string[]|null $negative_exact negative_exact
+     * @param string[]|null $negative_exact The collection of supplied negative exact phrases.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class InputKeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets positive_exact
      *
-     * @param string[]|null $positive_exact positive_exact
+     * @param string[]|null $positive_exact The collection of supplied positive exact phrases.
      *
      * @return self
      */

@@ -4,20 +4,20 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**generateAsyncCampaignsReport()**](AnalyticsApi.md#generateAsyncCampaignsReport) | **POST** /2025-10/retail-media/reports/campaigns |  |
-| [**generateAsyncLineItemsReport()**](AnalyticsApi.md#generateAsyncLineItemsReport) | **POST** /2025-10/retail-media/reports/line-items |  |
-| [**generateAsyncRevenueReport()**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2025-10/retail-media/reports/revenue |  |
-| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2025-10/retail-media/reports/{reportId}/output |  |
-| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2025-10/retail-media/reports/{reportId}/status |  |
+| [**generateAsyncCampaignsReportV2()**](AnalyticsApi.md#generateAsyncCampaignsReportV2) | **POST** /2025-10/retail-media/reports/campaigns | /2025-10/retail-media/reports/campaigns |
+| [**generateAsyncLineItemsReportV2()**](AnalyticsApi.md#generateAsyncLineItemsReportV2) | **POST** /2025-10/retail-media/reports/line-items | /2025-10/retail-media/reports/line-items |
+| [**generateAsyncRevenueReport()**](AnalyticsApi.md#generateAsyncRevenueReport) | **POST** /2025-10/retail-media/reports/revenue | /2025-10/retail-media/reports/revenue |
+| [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /2025-10/retail-media/reports/{reportId}/output | /2025-10/retail-media/reports/{reportId}/output |
+| [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /2025-10/retail-media/reports/{reportId}/status | /2025-10/retail-media/reports/{reportId}/status |
 
 
-## `generateAsyncCampaignsReport()`
+## `generateAsyncCampaignsReportV2()`
 
 ```php
-generateAsyncCampaignsReport($async_campaigns_report_request): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
+generateAsyncCampaignsReportV2($async_campaigns_report_request): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
 ```
 
-
+/2025-10/retail-media/reports/campaigns
 
 Return an asynchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -44,10 +44,10 @@ $apiInstance = new criteo\api\retailmedia\v2025_10\Api\AnalyticsApi(
 $async_campaigns_report_request = new \criteo\api\retailmedia\v2025_10\Model\AsyncCampaignsReportRequest(); // \criteo\api\retailmedia\v2025_10\Model\AsyncCampaignsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncCampaignsReport($async_campaigns_report_request);
+    $result = $apiInstance->generateAsyncCampaignsReportV2($async_campaigns_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncCampaignsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -74,13 +74,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `generateAsyncLineItemsReport()`
+## `generateAsyncLineItemsReportV2()`
 
 ```php
-generateAsyncLineItemsReport($async_line_items_report_request): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
+generateAsyncLineItemsReportV2($async_line_items_report_request): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
 ```
 
-
+/2025-10/retail-media/reports/line-items
 
 Returns an asynchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -107,10 +107,10 @@ $apiInstance = new criteo\api\retailmedia\v2025_10\Api\AnalyticsApi(
 $async_line_items_report_request = new \criteo\api\retailmedia\v2025_10\Model\AsyncLineItemsReportRequest(); // \criteo\api\retailmedia\v2025_10\Model\AsyncLineItemsReportRequest
 
 try {
-    $result = $apiInstance->generateAsyncLineItemsReport($async_line_items_report_request);
+    $result = $apiInstance->generateAsyncLineItemsReportV2($async_line_items_report_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReport: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AnalyticsApi->generateAsyncLineItemsReportV2: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -143,7 +143,7 @@ try {
 generateAsyncRevenueReport($async_revenue_report_request): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
 ```
 
-
+/2025-10/retail-media/reports/revenue
 
 Returns an asynchronous Revenue Report  <br />  This endpoint is subject to specific rate limits.
 
@@ -206,7 +206,7 @@ try {
 getAsyncExportOutput($report_id): \SplFileObject
 ```
 
-
+/2025-10/retail-media/reports/{reportId}/output
 
 Returns the output of an async report
 
@@ -269,7 +269,7 @@ try {
 getAsyncExportStatus($report_id): \criteo\api\retailmedia\v2025_10\Model\AsyncReportResponse
 ```
 
-
+/2025-10/retail-media/reports/{reportId}/status
 
 Returns the status of an async report
 
