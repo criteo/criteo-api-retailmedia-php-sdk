@@ -214,7 +214,7 @@ try {
 ## `updateBalanceV1()`
 
 ```php
-updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1)
+updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1): \criteo\api\retailmedia\experimental\Model\EntityResourceOutcomeOfBalanceResponseV1
 ```
 
 /experimental/retail-media/accounts/{account-id}/balances/{balance-id}
@@ -246,7 +246,8 @@ $balance_id = 'balance_id_example'; // string | The balance to change the dates
 $value_resource_input_of_update_balance_model_v1 = new \criteo\api\retailmedia\experimental\Model\ValueResourceInputOfUpdateBalanceModelV1(); // \criteo\api\retailmedia\experimental\Model\ValueResourceInputOfUpdateBalanceModelV1 | An object that represents the available options to modify a balance.
 
 try {
-    $apiInstance->updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1);
+    $result = $apiInstance->updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BalanceApi->updateBalanceV1: ', $e->getMessage(), PHP_EOL;
 }
@@ -262,7 +263,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceOutcomeOfBalanceResponseV1**](../Model/EntityResourceOutcomeOfBalanceResponseV1.md)
 
 ### Authorization
 
@@ -271,7 +272,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

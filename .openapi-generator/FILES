@@ -41,6 +41,7 @@ docs/Model/AudienceError.md
 docs/Model/AudienceWarning.md
 docs/Model/BalanceCampaignsV1.md
 docs/Model/BalanceHistoryChangeDataCaptureV1.md
+docs/Model/BalanceResponseV1.md
 docs/Model/BalanceV1.md
 docs/Model/BatchAcceptedResponse.md
 docs/Model/BatchStoreInventoryDeleteRequest.md
@@ -80,12 +81,14 @@ docs/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata
 docs/Model/EntityResourceCreativeSearchRequest.md
 docs/Model/EntityResourceCreativeSearchResponse.md
 docs/Model/EntityResourceInputCreativeSearchRequest.md
+docs/Model/EntityResourceOfBalanceResponseV1.md
 docs/Model/EntityResourceOfCatalogStatusV2.md
 docs/Model/EntityResourceOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOfRetailMediaChildAccount.md
 docs/Model/EntityResourceOfRetailerResultV2.md
 docs/Model/EntityResourceOfSponsoredProductsLineItem.md
 docs/Model/EntityResourceOutcomeBalanceV1.md
+docs/Model/EntityResourceOutcomeOfBalanceResponseV1.md
 docs/Model/EntityResourceOutcomeOfCatalogStatusV2.md
 docs/Model/EntityResourceOutcomeOfRetailMediaAccountV2.md
 docs/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.md
@@ -366,6 +369,7 @@ lib/Model/AudienceError.php
 lib/Model/AudienceWarning.php
 lib/Model/BalanceCampaignsV1.php
 lib/Model/BalanceHistoryChangeDataCaptureV1.php
+lib/Model/BalanceResponseV1.php
 lib/Model/BalanceV1.php
 lib/Model/BatchAcceptedResponse.php
 lib/Model/BatchStoreInventoryDeleteRequest.php
@@ -405,12 +409,14 @@ lib/Model/EntityResourceCollectionOutcomeOfSponsoredProductsLineItemAndMetadata.
 lib/Model/EntityResourceCreativeSearchRequest.php
 lib/Model/EntityResourceCreativeSearchResponse.php
 lib/Model/EntityResourceInputCreativeSearchRequest.php
+lib/Model/EntityResourceOfBalanceResponseV1.php
 lib/Model/EntityResourceOfCatalogStatusV2.php
 lib/Model/EntityResourceOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOfRetailMediaChildAccount.php
 lib/Model/EntityResourceOfRetailerResultV2.php
 lib/Model/EntityResourceOfSponsoredProductsLineItem.php
 lib/Model/EntityResourceOutcomeBalanceV1.php
+lib/Model/EntityResourceOutcomeOfBalanceResponseV1.php
 lib/Model/EntityResourceOutcomeOfCatalogStatusV2.php
 lib/Model/EntityResourceOutcomeOfRetailMediaAccountV2.php
 lib/Model/EntityResourceOutcomeOfSponsoredProductsLineItem.php
