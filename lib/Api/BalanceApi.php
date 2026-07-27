@@ -1133,11 +1133,12 @@ class BalanceApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1
      */
     public function updateBalanceV1($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, string $contentType = self::contentTypes['updateBalanceV1'][0])
     {
-        $this->updateBalanceV1WithHttpInfo($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, $contentType);
+        list($response) = $this->updateBalanceV1WithHttpInfo($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, $contentType);
+        return $response;
     }
 
     /**
@@ -1152,7 +1153,7 @@ class BalanceApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateBalanceV1WithHttpInfo($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, string $contentType = self::contentTypes['updateBalanceV1'][0])
     {
@@ -1193,10 +1194,50 @@ class BalanceApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1240,14 +1281,27 @@ class BalanceApi
      */
     public function updateBalanceV1AsyncWithHttpInfo($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, string $contentType = self::contentTypes['updateBalanceV1'][0])
     {
-        $returnType = '';
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceOutcomeOfBalanceResponseV1';
         $request = $this->updateBalanceV1Request($account_id, $balance_id, $value_resource_input_of_update_balance_model_v1, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1330,7 +1384,7 @@ class BalanceApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
