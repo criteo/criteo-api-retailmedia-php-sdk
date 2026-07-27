@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**negative_broad** | **string[]** |  | [optional]
-**negative_exact** | **string[]** |  | [optional]
-**positive_exact** | **string[]** |  | [optional]
+**negative_broad** | **string[]** | The collection of supplied negative broad phrases. | [optional]
+**negative_exact** | **string[]** | The collection of supplied negative exact phrases. | [optional]
+**positive_exact** | **string[]** | The collection of supplied positive exact phrases. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

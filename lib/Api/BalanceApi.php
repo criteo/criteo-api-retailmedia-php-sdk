@@ -146,6 +146,8 @@ class BalanceApi
     /**
      * Operation addFundsByAccountAndBalanceId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to add funds to (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddFundsToBalanceV2Request $add_funds_to_balance_v2_request An object that represents the available options of adding funds to a balance. (required)
@@ -163,6 +165,8 @@ class BalanceApi
 
     /**
      * Operation addFundsByAccountAndBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to add funds to (required)
@@ -264,6 +268,8 @@ class BalanceApi
     /**
      * Operation addFundsByAccountAndBalanceIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to add funds to (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddFundsToBalanceV2Request $add_funds_to_balance_v2_request An object that represents the available options of adding funds to a balance. (required)
@@ -284,6 +290,8 @@ class BalanceApi
 
     /**
      * Operation addFundsByAccountAndBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/add-funds
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to add funds to (required)
@@ -468,6 +476,8 @@ class BalanceApi
     /**
      * Operation changeDatesByAccountAndBalanceId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
@@ -485,6 +495,8 @@ class BalanceApi
 
     /**
      * Operation changeDatesByAccountAndBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
@@ -586,6 +598,8 @@ class BalanceApi
     /**
      * Operation changeDatesByAccountAndBalanceIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ChangeDatesOfBalanceV2Request $change_dates_of_balance_v2_request An object that represents the available options to modify schedule of a balance. (required)
@@ -606,6 +620,8 @@ class BalanceApi
 
     /**
      * Operation changeDatesByAccountAndBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}/change-dates
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
@@ -790,6 +806,8 @@ class BalanceApi
     /**
      * Operation createBalanceByAccountId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances
+     *
      * @param  string $account_id The account to create balances for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
@@ -806,6 +824,8 @@ class BalanceApi
 
     /**
      * Operation createBalanceByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances
      *
      * @param  string $account_id The account to create balances for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
@@ -906,6 +926,8 @@ class BalanceApi
     /**
      * Operation createBalanceByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances
+     *
      * @param  string $account_id The account to create balances for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBalanceByAccountId'] to see the possible values for this operation
@@ -925,6 +947,8 @@ class BalanceApi
 
     /**
      * Operation createBalanceByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances
      *
      * @param  string $account_id The account to create balances for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreateBalanceV2Request $create_balance_v2_request An object that represents the available options to set when creating a Retail Media Balance (required)
@@ -1092,6 +1116,8 @@ class BalanceApi
     /**
      * Operation getBalanceByAccountAndBalanceId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
@@ -1108,6 +1134,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceByAccountAndBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance id (required)
@@ -1208,6 +1236,8 @@ class BalanceApi
     /**
      * Operation getBalanceByAccountAndBalanceIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBalanceByAccountAndBalanceId'] to see the possible values for this operation
@@ -1227,6 +1257,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceByAccountAndBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance id (required)
@@ -1395,6 +1427,8 @@ class BalanceApi
     /**
      * Operation getBalanceHistory
      *
+     * /2026-01/retail-media/balances/{balanceId}/history
+     *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
@@ -1413,6 +1447,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceHistoryWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balanceId}/history
      *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -1515,6 +1551,8 @@ class BalanceApi
     /**
      * Operation getBalanceHistoryAsync
      *
+     * /2026-01/retail-media/balances/{balanceId}/history
+     *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
      * @param  string $limit_to_change_types Comma separated change types string that will be queried. (optional)
@@ -1536,6 +1574,8 @@ class BalanceApi
 
     /**
      * Operation getBalanceHistoryAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balanceId}/history
      *
      * @param  string $balance_id Balance id. (required)
      * @param  int $limit The number of elements to be returned. (optional, default to 25)
@@ -1735,6 +1775,8 @@ class BalanceApi
     /**
      * Operation getBalancesByAccountId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances
+     *
      * @param  string $account_id The account to get balances for (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -1753,6 +1795,8 @@ class BalanceApi
 
     /**
      * Operation getBalancesByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances
      *
      * @param  string $account_id The account to get balances for (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -1855,6 +1899,8 @@ class BalanceApi
     /**
      * Operation getBalancesByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances
+     *
      * @param  string $account_id The account to get balances for (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -1876,6 +1922,8 @@ class BalanceApi
 
     /**
      * Operation getBalancesByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances
      *
      * @param  string $account_id The account to get balances for (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -2075,6 +2123,8 @@ class BalanceApi
     /**
      * Operation getCampaignsByBalanceId
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns
+     *
      * @param  string $balance_id The balance to get campaigns from (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -2093,6 +2143,8 @@ class BalanceApi
 
     /**
      * Operation getCampaignsByBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns
      *
      * @param  string $balance_id The balance to get campaigns from (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -2195,6 +2247,8 @@ class BalanceApi
     /**
      * Operation getCampaignsByBalanceIdAsync
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns
+     *
      * @param  string $balance_id The balance to get campaigns from (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -2216,6 +2270,8 @@ class BalanceApi
 
     /**
      * Operation getCampaignsByBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns
      *
      * @param  string $balance_id The balance to get campaigns from (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -2415,6 +2471,8 @@ class BalanceApi
     /**
      * Operation modifyBalanceByAccountAndBalanceId
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
@@ -2432,6 +2490,8 @@ class BalanceApi
 
     /**
      * Operation modifyBalanceByAccountAndBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
@@ -2533,6 +2593,8 @@ class BalanceApi
     /**
      * Operation modifyBalanceByAccountAndBalanceIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
+     *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\UpdateBalanceModelV2Request $update_balance_model_v2_request An object that represents the available options to modify a balance. (required)
@@ -2553,6 +2615,8 @@ class BalanceApi
 
     /**
      * Operation modifyBalanceByAccountAndBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/balances/{balance-id}
      *
      * @param  string $account_id The account of the balance (required)
      * @param  string $balance_id The balance to change the dates (required)

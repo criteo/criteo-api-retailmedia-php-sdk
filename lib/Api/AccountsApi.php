@@ -95,6 +95,9 @@ class AccountsApi
         'removeBrands' => [
             'application/json',
         ],
+        'searchBrands' => [
+            'application/json',
+        ],
         'searchSellers' => [
             'application/json',
         ],
@@ -155,6 +158,8 @@ class AccountsApi
     /**
      * Operation accountFeesSearch
      *
+     * /2026-01/retail-media/accounts/fees/search
+     *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
@@ -172,6 +177,8 @@ class AccountsApi
 
     /**
      * Operation accountFeesSearchWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/fees/search
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
@@ -273,6 +280,8 @@ class AccountsApi
     /**
      * Operation accountFeesSearchAsync
      *
+     * /2026-01/retail-media/accounts/fees/search
+     *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
      * @param  int $offset used for paging, number of records to skip (optional, default to 0)
@@ -293,6 +302,8 @@ class AccountsApi
 
     /**
      * Operation accountFeesSearchAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/fees/search
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesSearchRequest $value_resource_input_account_fees_search_request (required)
      * @param  int $limit used for paging, number of results returned per request, Maximum of 500 (optional, default to 50)
@@ -479,6 +490,8 @@ class AccountsApi
     /**
      * Operation addBrands
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/add
+     *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
@@ -495,6 +508,8 @@ class AccountsApi
 
     /**
      * Operation addBrandsWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/add
      *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
@@ -595,6 +610,8 @@ class AccountsApi
     /**
      * Operation addBrandsAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/add
+     *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBrands'] to see the possible values for this operation
@@ -614,6 +631,8 @@ class AccountsApi
 
     /**
      * Operation addBrandsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/add
      *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
@@ -775,6 +794,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccount
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-brand-account
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
@@ -791,6 +812,8 @@ class AccountsApi
 
     /**
      * Operation createPrivateMarketDemandBrandAccountWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-brand-account
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
@@ -891,6 +914,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandBrandAccountAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-brand-account
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandBrandAccount'] to see the possible values for this operation
@@ -910,6 +935,8 @@ class AccountsApi
 
     /**
      * Operation createPrivateMarketDemandBrandAccountAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-brand-account
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrandAccountCreation $value_resource_input_of_retail_media_brand_account_creation (optional)
@@ -1071,6 +1098,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccount
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-seller-account
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
@@ -1087,6 +1116,8 @@ class AccountsApi
 
     /**
      * Operation createPrivateMarketDemandSellerAccountWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-seller-account
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
@@ -1187,6 +1218,8 @@ class AccountsApi
     /**
      * Operation createPrivateMarketDemandSellerAccountAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-seller-account
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPrivateMarketDemandSellerAccount'] to see the possible values for this operation
@@ -1206,6 +1239,8 @@ class AccountsApi
 
     /**
      * Operation createPrivateMarketDemandSellerAccountAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/create-seller-account
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaSellerAccountCreation $value_resource_input_of_retail_media_seller_account_creation (optional)
@@ -1367,6 +1402,8 @@ class AccountsApi
     /**
      * Operation getAccounts
      *
+     * /2026-01/retail-media/accounts
+     *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
@@ -1384,6 +1421,8 @@ class AccountsApi
 
     /**
      * Operation getAccountsWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -1485,6 +1524,8 @@ class AccountsApi
     /**
      * Operation getAccountsAsync
      *
+     * /2026-01/retail-media/accounts
+     *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
      * @param  int $page_size The maximum number of items you would like to receive in this request (optional, default to 25)
@@ -1505,6 +1546,8 @@ class AccountsApi
 
     /**
      * Operation getAccountsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts
      *
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -1675,6 +1718,8 @@ class AccountsApi
     /**
      * Operation getPrivateMarketChildAccountsByAccountId
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
+     *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -1692,6 +1737,8 @@ class AccountsApi
 
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -1793,6 +1840,8 @@ class AccountsApi
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
+     *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
      * @param  int $offset The (zero-based) offset into the collection of accounts. The default is 0. (optional, default to 0)
@@ -1813,6 +1862,8 @@ class AccountsApi
 
     /**
      * Operation getPrivateMarketChildAccountsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
      *
      * @param  string $account_id Account Id (required)
      * @param  int $limit The number of accounts to be returned. The default is 25. (optional, default to 25)
@@ -1988,7 +2039,7 @@ class AccountsApi
     /**
      * Operation grantConsent
      *
-     * 
+     * /2026-01/retail-media/accounts/{accountId}/grant-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\GrantConsentInput $grant_consent_input grant_consent_input (optional)
@@ -2006,7 +2057,7 @@ class AccountsApi
     /**
      * Operation grantConsentWithHttpInfo
      *
-     * 
+     * /2026-01/retail-media/accounts/{accountId}/grant-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\GrantConsentInput $grant_consent_input (optional)
@@ -2067,7 +2118,7 @@ class AccountsApi
     /**
      * Operation grantConsentAsync
      *
-     * 
+     * /2026-01/retail-media/accounts/{accountId}/grant-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\GrantConsentInput $grant_consent_input (optional)
@@ -2089,7 +2140,7 @@ class AccountsApi
     /**
      * Operation grantConsentAsyncWithHttpInfo
      *
-     * 
+     * /2026-01/retail-media/accounts/{accountId}/grant-consent
      *
      * @param  string $account_id The demand account ID on which to grant consent (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\GrantConsentInput $grant_consent_input (optional)
@@ -2238,6 +2289,8 @@ class AccountsApi
     /**
      * Operation removeBrands
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/remove
+     *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
@@ -2254,6 +2307,8 @@ class AccountsApi
 
     /**
      * Operation removeBrandsWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/remove
      *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
@@ -2354,6 +2409,8 @@ class AccountsApi
     /**
      * Operation removeBrandsAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/remove
+     *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeBrands'] to see the possible values for this operation
@@ -2373,6 +2430,8 @@ class AccountsApi
 
     /**
      * Operation removeBrandsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/brands/remove
      *
      * @param  string $account_id the account id to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailMediaBrands $value_resource_input_of_retail_media_brands (optional)
@@ -2532,7 +2591,335 @@ class AccountsApi
     }
 
     /**
+     * Operation searchBrands
+     *
+     * /2026-01/retail-media/brands/search
+     *
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+     */
+    public function searchBrands($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
+    {
+        list($response) = $this->searchBrandsWithHttpInfo($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchBrandsWithHttpInfo
+     *
+     * /2026-01/retail-media/brands/search
+     *
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchBrandsWithHttpInfo($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
+    {
+        $request = $this->searchBrandsRequest($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchBrandsAsync
+     *
+     * /2026-01/retail-media/brands/search
+     *
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchBrandsAsync($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
+    {
+        return $this->searchBrandsAsyncWithHttpInfo($limit, $offset, $value_resource_input_brand_id_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchBrandsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/brands/search
+     *
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchBrandsAsyncWithHttpInfo($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
+        $request = $this->searchBrandsRequest($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchBrands'
+     *
+     * @param  int $limit the number of brands to return (optional, default to 25)
+     * @param  int $offset offset of paginated results (optional, default to 0)
+     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchBrandsRequest($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
+    {
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AccountsApi.searchBrands, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AccountsApi.searchBrands, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AccountsApi.searchBrands, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling AccountsApi.searchBrands, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/2026-01/retail-media/brands/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($value_resource_input_brand_id_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_brand_id_search_request));
+            } else {
+                $httpBody = $value_resource_input_brand_id_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation searchSellers
+     *
+     * /2026-01/retail-media/accounts/sellers/search
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
@@ -2549,6 +2936,8 @@ class AccountsApi
 
     /**
      * Operation searchSellersWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/sellers/search
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
@@ -2648,6 +3037,8 @@ class AccountsApi
     /**
      * Operation searchSellersAsync
      *
+     * /2026-01/retail-media/accounts/sellers/search
+     *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
      *
@@ -2666,6 +3057,8 @@ class AccountsApi
 
     /**
      * Operation searchSellersAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/sellers/search
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerSearch $value_resource_input_of_seller_search  (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSellers'] to see the possible values for this operation
@@ -2816,6 +3209,8 @@ class AccountsApi
     /**
      * Operation updateAccountFees
      *
+     * /2026-01/retail-media/accounts/fees/update
+     *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
@@ -2830,6 +3225,8 @@ class AccountsApi
 
     /**
      * Operation updateAccountFeesWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/fees/update
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
@@ -2889,6 +3286,8 @@ class AccountsApi
     /**
      * Operation updateAccountFeesAsync
      *
+     * /2026-01/retail-media/accounts/fees/update
+     *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
      *
@@ -2907,6 +3306,8 @@ class AccountsApi
 
     /**
      * Operation updateAccountFeesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/fees/update
      *
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputAccountFeesUpdateRequest $value_resource_input_account_fees_update_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountFees'] to see the possible values for this operation
@@ -3044,6 +3445,8 @@ class AccountsApi
     /**
      * Operation updateSellers
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/sellers
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
@@ -3060,6 +3463,8 @@ class AccountsApi
 
     /**
      * Operation updateSellersWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/sellers
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
@@ -3160,6 +3565,8 @@ class AccountsApi
     /**
      * Operation updateSellersAsync
      *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/sellers
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSellers'] to see the possible values for this operation
@@ -3179,6 +3586,8 @@ class AccountsApi
 
     /**
      * Operation updateSellersAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/account-management/accounts/{accountId}/sellers
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceCollectionInputOfRetailMediaSeller $value_resource_collection_input_of_retail_media_seller (required)

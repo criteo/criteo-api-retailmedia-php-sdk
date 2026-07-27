@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **name** | **string** |  |
 **on_behalf_company_name** | **string** |  | [optional]
 **promoted_brand_ids** | **string[]** |  | [optional]
+**retailer_id** | **int** |  | [optional]
 **start_date** | **\DateTime** |  | [optional]
 **status** | **string** |  | [optional]
 **type** | **string** |  | [optional] [default to 'auction']

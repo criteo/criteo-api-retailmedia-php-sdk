@@ -344,7 +344,7 @@ class ValueResourceRetailMediaKeywordsReviewResult implements ModelInterface, Ar
     /**
      * Sets type
      *
-     * @param string|null $type Type of the resource.
+     * @param string|null $type type
      *
      * @return self
      */

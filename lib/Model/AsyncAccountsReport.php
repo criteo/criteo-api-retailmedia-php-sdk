@@ -59,7 +59,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
+        'activation_platforms' => 'string[]',
         'aggregation_level' => 'string',
+        'budget_models' => 'string[]',
+        'buy_types' => 'string[]',
         'campaign_type' => 'string',
         'click_attribution_window' => 'string',
         'dimensions' => 'string[]',
@@ -86,7 +89,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'account_ids' => null,
+        'activation_platforms' => null,
         'aggregation_level' => null,
+        'budget_models' => null,
+        'buy_types' => null,
         'campaign_type' => null,
         'click_attribution_window' => null,
         'dimensions' => null,
@@ -111,7 +117,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'account_ids' => false,
+		'activation_platforms' => false,
 		'aggregation_level' => false,
+		'budget_models' => false,
+		'buy_types' => false,
 		'campaign_type' => false,
 		'click_attribution_window' => false,
 		'dimensions' => false,
@@ -216,7 +225,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
+        'activation_platforms' => 'activationPlatforms',
         'aggregation_level' => 'aggregationLevel',
+        'budget_models' => 'budgetModels',
+        'buy_types' => 'buyTypes',
         'campaign_type' => 'campaignType',
         'click_attribution_window' => 'clickAttributionWindow',
         'dimensions' => 'dimensions',
@@ -241,7 +253,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'account_ids' => 'setAccountIds',
+        'activation_platforms' => 'setActivationPlatforms',
         'aggregation_level' => 'setAggregationLevel',
+        'budget_models' => 'setBudgetModels',
+        'buy_types' => 'setBuyTypes',
         'campaign_type' => 'setCampaignType',
         'click_attribution_window' => 'setClickAttributionWindow',
         'dimensions' => 'setDimensions',
@@ -266,7 +281,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'account_ids' => 'getAccountIds',
+        'activation_platforms' => 'getActivationPlatforms',
         'aggregation_level' => 'getAggregationLevel',
+        'budget_models' => 'getBudgetModels',
+        'buy_types' => 'getBuyTypes',
         'campaign_type' => 'getCampaignType',
         'click_attribution_window' => 'getClickAttributionWindow',
         'dimensions' => 'getDimensions',
@@ -325,8 +343,15 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const ACTIVATION_PLATFORMS_COMMERCE_MAX = 'CommerceMax';
+    public const ACTIVATION_PLATFORMS_PRIVATE_MARKET = 'PrivateMarket';
     public const AGGREGATION_LEVEL_CAMPAIGN = 'campaign';
     public const AGGREGATION_LEVEL_LINE_ITEM = 'lineItem';
+    public const BUDGET_MODELS_CRITEO_BUDGET = 'CriteoBudget';
+    public const BUDGET_MODELS_RETAILER_BUDGET = 'RetailerBudget';
+    public const BUY_TYPES_AUCTION = 'auction';
+    public const BUY_TYPES_PREFERRED_DEALS = 'preferredDeals';
+    public const BUY_TYPES_SPONSORSHIP = 'sponsorship';
     public const CAMPAIGN_TYPE_ALL = 'all';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'sponsoredProducts';
     public const CAMPAIGN_TYPE_ON_SITE_DISPLAYS = 'onSiteDisplays';
@@ -352,6 +377,9 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const DIMENSIONS_ADV_PRODUCT_NAME = 'advProductName';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
     public const DIMENSIONS_MEDIA_TYPE = 'mediaType';
+    public const DIMENSIONS_BUY_TYPE = 'buyType';
+    public const DIMENSIONS_BUDGET_MODEL = 'budgetModel';
+    public const DIMENSIONS_ACTIVATION_PLATFORM = 'activationPlatform';
     public const DIMENSIONS_ENVIRONMENT = 'environment';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_PAGE_CATEGORY = 'pageCategory';
@@ -449,11 +477,51 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
      *
      * @return string[]
      */
+    public function getActivationPlatformsAllowableValues()
+    {
+        return [
+            self::ACTIVATION_PLATFORMS_COMMERCE_MAX,
+            self::ACTIVATION_PLATFORMS_PRIVATE_MARKET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getAggregationLevelAllowableValues()
     {
         return [
             self::AGGREGATION_LEVEL_CAMPAIGN,
             self::AGGREGATION_LEVEL_LINE_ITEM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetModelsAllowableValues()
+    {
+        return [
+            self::BUDGET_MODELS_CRITEO_BUDGET,
+            self::BUDGET_MODELS_RETAILER_BUDGET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBuyTypesAllowableValues()
+    {
+        return [
+            self::BUY_TYPES_AUCTION,
+            self::BUY_TYPES_PREFERRED_DEALS,
+            self::BUY_TYPES_SPONSORSHIP,
         ];
     }
 
@@ -512,6 +580,9 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::DIMENSIONS_ADV_PRODUCT_NAME,
             self::DIMENSIONS_SALES_CHANNEL,
             self::DIMENSIONS_MEDIA_TYPE,
+            self::DIMENSIONS_BUY_TYPE,
+            self::DIMENSIONS_BUDGET_MODEL,
+            self::DIMENSIONS_ACTIVATION_PLATFORM,
             self::DIMENSIONS_ENVIRONMENT,
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_PAGE_CATEGORY,
@@ -721,7 +792,10 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('activation_platforms', $data ?? [], null);
         $this->setIfExists('aggregation_level', $data ?? [], 'campaign');
+        $this->setIfExists('budget_models', $data ?? [], null);
+        $this->setIfExists('buy_types', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
         $this->setIfExists('click_attribution_window', $data ?? [], 'none');
         $this->setIfExists('dimensions', $data ?? [], null);
@@ -890,6 +964,42 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets activation_platforms
+     *
+     * @return string[]|null
+     */
+    public function getActivationPlatforms()
+    {
+        return $this->container['activation_platforms'];
+    }
+
+    /**
+     * Sets activation_platforms
+     *
+     * @param string[]|null $activation_platforms Filter on the activation platform: CommerceMax, PrivateMarket
+     *
+     * @return self
+     */
+    public function setActivationPlatforms($activation_platforms)
+    {
+        if (is_null($activation_platforms)) {
+            throw new \InvalidArgumentException('non-nullable activation_platforms cannot be null');
+        }
+        $allowedValues = $this->getActivationPlatformsAllowableValues();
+        if (array_diff($activation_platforms, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'activation_platforms', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['activation_platforms'] = $activation_platforms;
+
+        return $this;
+    }
+
+    /**
      * Gets aggregation_level
      *
      * @return string|null
@@ -922,6 +1032,78 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['aggregation_level'] = $aggregation_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_models
+     *
+     * @return string[]|null
+     */
+    public function getBudgetModels()
+    {
+        return $this->container['budget_models'];
+    }
+
+    /**
+     * Sets budget_models
+     *
+     * @param string[]|null $budget_models Filter on the budget model: CriteoBudget, RetailerBudget
+     *
+     * @return self
+     */
+    public function setBudgetModels($budget_models)
+    {
+        if (is_null($budget_models)) {
+            throw new \InvalidArgumentException('non-nullable budget_models cannot be null');
+        }
+        $allowedValues = $this->getBudgetModelsAllowableValues();
+        if (array_diff($budget_models, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'budget_models', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_models'] = $budget_models;
+
+        return $this;
+    }
+
+    /**
+     * Gets buy_types
+     *
+     * @return string[]|null
+     */
+    public function getBuyTypes()
+    {
+        return $this->container['buy_types'];
+    }
+
+    /**
+     * Sets buy_types
+     *
+     * @param string[]|null $buy_types Filter on the buy type: auction, preferredDeals, sponsorship
+     *
+     * @return self
+     */
+    public function setBuyTypes($buy_types)
+    {
+        if (is_null($buy_types)) {
+            throw new \InvalidArgumentException('non-nullable buy_types cannot be null');
+        }
+        $allowedValues = $this->getBuyTypesAllowableValues();
+        if (array_diff($buy_types, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'buy_types', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['buy_types'] = $buy_types;
 
         return $this;
     }

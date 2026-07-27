@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\v2026_01\ObjectSerializer;
  * KeywordDataModel Class Doc Comment
  *
  * @category Class
- * @description A single keyword and associated bid override
+ * @description A single keyword and associated bid override.
  * @package  criteo\api\retailmedia\v2026_01
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +61,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'bid' => 'float',
         'created_at' => '\DateTime',
         'input_keywords' => '\criteo\api\retailmedia\v2026_01\Model\InputKeywordsModel',
-        'match_type' => '\criteo\api\retailmedia\v2026_01\Model\MatchTypeModel',
+        'match_type' => 'string',
         'review_state' => '\criteo\api\retailmedia\v2026_01\Model\ReviewStateModel',
         'updated_at' => '\DateTime'
     ];
@@ -259,6 +259,23 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const MATCH_TYPE_POSITIVE_EXACT_MATCH = 'PositiveExactMatch';
+    public const MATCH_TYPE_NEGATIVE_EXACT_MATCH = 'NegativeExactMatch';
+    public const MATCH_TYPE_NEGATIVE_BROAD_MATCH = 'NegativeBroadMatch';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMatchTypeAllowableValues()
+    {
+        return [
+            self::MATCH_TYPE_POSITIVE_EXACT_MATCH,
+            self::MATCH_TYPE_NEGATIVE_EXACT_MATCH,
+            self::MATCH_TYPE_NEGATIVE_BROAD_MATCH,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -310,6 +327,15 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getMatchTypeAllowableValues();
+        if (!is_null($this->container['match_type']) && !in_array($this->container['match_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'match_type', must be one of '%s'",
+                $this->container['match_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -338,7 +364,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid
      *
-     * @param float|null $bid bid
+     * @param float|null $bid The bid to use when a positive keyword matches the shopper search phrase.
      *
      * @return self
      */
@@ -372,7 +398,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime|null $created_at The time at which this keyword was created in UTC.
      *
      * @return self
      */
@@ -416,7 +442,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets match_type
      *
-     * @return \criteo\api\retailmedia\v2026_01\Model\MatchTypeModel|null
+     * @return string|null
      */
     public function getMatchType()
     {
@@ -426,7 +452,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets match_type
      *
-     * @param \criteo\api\retailmedia\v2026_01\Model\MatchTypeModel|null $match_type match_type
+     * @param string|null $match_type The matching algorithm to be used when comparing this keyword with the shopper search phrase.
      *
      * @return self
      */
@@ -434,6 +460,16 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($match_type)) {
             throw new \InvalidArgumentException('non-nullable match_type cannot be null');
+        }
+        $allowedValues = $this->getMatchTypeAllowableValues();
+        if (!in_array($match_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'match_type', must be one of '%s'",
+                    $match_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['match_type'] = $match_type;
 
@@ -480,7 +516,7 @@ class KeywordDataModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime|null $updated_at The time at which this keyword was last modified in UTC.
      *
      * @return self
      */

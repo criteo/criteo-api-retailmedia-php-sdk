@@ -242,9 +242,6 @@ class CampaignApi
         'searchAccountRetailers' => [
             'application/json',
         ],
-        'searchBrands' => [
-            'application/json',
-        ],
         'searchCategory' => [
             'application/json',
         ],
@@ -329,6 +326,8 @@ class CampaignApi
     /**
      * Operation addRemoveKeywords
      *
+     * /2026-01/retail-media/line-items/{id}/keywords/add-remove
+     *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
@@ -345,6 +344,8 @@ class CampaignApi
 
     /**
      * Operation addRemoveKeywordsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords/add-remove
      *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
@@ -445,6 +446,8 @@ class CampaignApi
     /**
      * Operation addRemoveKeywordsAsync
      *
+     * /2026-01/retail-media/line-items/{id}/keywords/add-remove
+     *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addRemoveKeywords'] to see the possible values for this operation
@@ -464,6 +467,8 @@ class CampaignApi
 
     /**
      * Operation addRemoveKeywordsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords/add-remove
      *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddRemoveKeywordsModelRequest $add_remove_keywords_model_request (optional)
@@ -625,6 +630,8 @@ class CampaignApi
     /**
      * Operation appendAddToBasketTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -641,6 +648,8 @@ class CampaignApi
 
     /**
      * Operation appendAddToBasketTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to append to the target (optional)
@@ -741,6 +750,8 @@ class CampaignApi
     /**
      * Operation appendAddToBasketTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -760,6 +771,8 @@ class CampaignApi
 
     /**
      * Operation appendAddToBasketTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to append to the target (optional)
@@ -921,6 +934,8 @@ class CampaignApi
     /**
      * Operation appendAudienceTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -937,6 +952,8 @@ class CampaignApi
 
     /**
      * Operation appendAudienceTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to append to the target (optional)
@@ -1037,6 +1054,8 @@ class CampaignApi
     /**
      * Operation appendAudienceTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -1056,6 +1075,8 @@ class CampaignApi
 
     /**
      * Operation appendAudienceTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to append to the target (optional)
@@ -1217,6 +1238,8 @@ class CampaignApi
     /**
      * Operation appendCampaignsByBalanceId
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/append
+     *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
@@ -1233,6 +1256,8 @@ class CampaignApi
 
     /**
      * Operation appendCampaignsByBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/append
      *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
@@ -1333,6 +1358,8 @@ class CampaignApi
     /**
      * Operation appendCampaignsByBalanceIdAsync
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/append
+     *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendCampaignsByBalanceId'] to see the possible values for this operation
@@ -1352,6 +1379,8 @@ class CampaignApi
 
     /**
      * Operation appendCampaignsByBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/append
      *
      * @param  string $balance_id The balance to add campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
@@ -1513,6 +1542,8 @@ class CampaignApi
     /**
      * Operation appendPromotedProducts
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/append
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendPromotedProducts'] to see the possible values for this operation
@@ -1529,6 +1560,8 @@ class CampaignApi
 
     /**
      * Operation appendPromotedProductsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/append
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -1629,6 +1662,8 @@ class CampaignApi
     /**
      * Operation appendPromotedProductsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/append
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendPromotedProducts'] to see the possible values for this operation
@@ -1648,6 +1683,8 @@ class CampaignApi
 
     /**
      * Operation appendPromotedProductsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/append
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -1809,6 +1846,8 @@ class CampaignApi
     /**
      * Operation appendStoreTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendStoreTargetsByLineItemId'] to see the possible values for this operation
@@ -1825,6 +1864,8 @@ class CampaignApi
 
     /**
      * Operation appendStoreTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to append to the target (optional)
@@ -1925,6 +1966,8 @@ class CampaignApi
     /**
      * Operation appendStoreTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to append to the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['appendStoreTargetsByLineItemId'] to see the possible values for this operation
@@ -1944,6 +1987,8 @@ class CampaignApi
 
     /**
      * Operation appendStoreTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/append
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to append to the target (optional)
@@ -2105,6 +2150,8 @@ class CampaignApi
     /**
      * Operation createAsset
      *
+     * /2026-01/retail-media/assets
+     *
      * @param  \SplFileObject $asset_file The asset binary content (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsset'] to see the possible values for this operation
      *
@@ -2120,6 +2167,8 @@ class CampaignApi
 
     /**
      * Operation createAssetWithHttpInfo
+     *
+     * /2026-01/retail-media/assets
      *
      * @param  \SplFileObject $asset_file The asset binary content (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsset'] to see the possible values for this operation
@@ -2219,6 +2268,8 @@ class CampaignApi
     /**
      * Operation createAssetAsync
      *
+     * /2026-01/retail-media/assets
+     *
      * @param  \SplFileObject $asset_file The asset binary content (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsset'] to see the possible values for this operation
      *
@@ -2237,6 +2288,8 @@ class CampaignApi
 
     /**
      * Operation createAssetAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/assets
      *
      * @param  \SplFileObject $asset_file The asset binary content (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAsset'] to see the possible values for this operation
@@ -2392,6 +2445,8 @@ class CampaignApi
     /**
      * Operation createAuctionLineItem
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
@@ -2408,6 +2463,8 @@ class CampaignApi
 
     /**
      * Operation createAuctionLineItemWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
@@ -2508,6 +2565,8 @@ class CampaignApi
     /**
      * Operation createAuctionLineItemAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAuctionLineItem'] to see the possible values for this operation
@@ -2527,6 +2586,8 @@ class CampaignApi
 
     /**
      * Operation createAuctionLineItemAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemCreateRequestModel $value_resource_input_of_sponsored_products_line_item_create_request_model The line item settings to create a line item with (required)
@@ -2694,6 +2755,8 @@ class CampaignApi
     /**
      * Operation createBrandCatalogExport
      *
+     * /2026-01/retail-media/accounts/{accountId}/brand-catalog-export
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfBrandCatalogRequestV2 $value_resource_input_of_brand_catalog_request_v2 value_resource_input_of_brand_catalog_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrandCatalogExport'] to see the possible values for this operation
@@ -2710,6 +2773,8 @@ class CampaignApi
 
     /**
      * Operation createBrandCatalogExportWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/brand-catalog-export
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfBrandCatalogRequestV2 $value_resource_input_of_brand_catalog_request_v2 (required)
@@ -2810,6 +2875,8 @@ class CampaignApi
     /**
      * Operation createBrandCatalogExportAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/brand-catalog-export
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfBrandCatalogRequestV2 $value_resource_input_of_brand_catalog_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBrandCatalogExport'] to see the possible values for this operation
@@ -2829,6 +2896,8 @@ class CampaignApi
 
     /**
      * Operation createBrandCatalogExportAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/brand-catalog-export
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfBrandCatalogRequestV2 $value_resource_input_of_brand_catalog_request_v2 (required)
@@ -2996,6 +3065,8 @@ class CampaignApi
     /**
      * Operation createCampaignsByAccountId
      *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PostCampaignV202301 $post_campaign_v202301 The campaign settings to create a campaign with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaignsByAccountId'] to see the possible values for this operation
@@ -3012,6 +3083,8 @@ class CampaignApi
 
     /**
      * Operation createCampaignsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PostCampaignV202301 $post_campaign_v202301 The campaign settings to create a campaign with (required)
@@ -3112,6 +3185,8 @@ class CampaignApi
     /**
      * Operation createCampaignsByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
+     *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PostCampaignV202301 $post_campaign_v202301 The campaign settings to create a campaign with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCampaignsByAccountId'] to see the possible values for this operation
@@ -3131,6 +3206,8 @@ class CampaignApi
 
     /**
      * Operation createCampaignsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
      *
      * @param  string $account_id The given account id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PostCampaignV202301 $post_campaign_v202301 The campaign settings to create a campaign with (required)
@@ -3298,6 +3375,8 @@ class CampaignApi
     /**
      * Operation createCreative
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeCreateModel202207 $creative_create_model202207 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
@@ -3314,6 +3393,8 @@ class CampaignApi
 
     /**
      * Operation createCreativeWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeCreateModel202207 $creative_create_model202207 The creative to create (required)
@@ -3414,6 +3495,8 @@ class CampaignApi
     /**
      * Operation createCreativeAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeCreateModel202207 $creative_create_model202207 The creative to create (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreative'] to see the possible values for this operation
@@ -3433,6 +3516,8 @@ class CampaignApi
 
     /**
      * Operation createCreativeAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to create a creative for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeCreateModel202207 $creative_create_model202207 The creative to create (required)
@@ -3600,6 +3685,8 @@ class CampaignApi
     /**
      * Operation createPreferredLineItemByCampaignId
      *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
@@ -3616,6 +3703,8 @@ class CampaignApi
 
     /**
      * Operation createPreferredLineItemByCampaignIdWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
@@ -3716,6 +3805,8 @@ class CampaignApi
     /**
      * Operation createPreferredLineItemByCampaignIdAsync
      *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPreferredLineItemByCampaignId'] to see the possible values for this operation
@@ -3735,6 +3826,8 @@ class CampaignApi
 
     /**
      * Operation createPreferredLineItemByCampaignIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemCreateModelV2Request $preferred_line_item_create_model_v2_request The line item settings to create a line item with (required)
@@ -3902,6 +3995,8 @@ class CampaignApi
     /**
      * Operation createSellerCatalogExport
      *
+     * /2026-01/retail-media/accounts/{accountId}/seller-catalog-export
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerCatalogRequestV2 $value_resource_input_of_seller_catalog_request_v2 value_resource_input_of_seller_catalog_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSellerCatalogExport'] to see the possible values for this operation
@@ -3918,6 +4013,8 @@ class CampaignApi
 
     /**
      * Operation createSellerCatalogExportWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/seller-catalog-export
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerCatalogRequestV2 $value_resource_input_of_seller_catalog_request_v2 (required)
@@ -4018,6 +4115,8 @@ class CampaignApi
     /**
      * Operation createSellerCatalogExportAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/seller-catalog-export
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerCatalogRequestV2 $value_resource_input_of_seller_catalog_request_v2 (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSellerCatalogExport'] to see the possible values for this operation
@@ -4037,6 +4136,8 @@ class CampaignApi
 
     /**
      * Operation createSellerCatalogExportAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/seller-catalog-export
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSellerCatalogRequestV2 $value_resource_input_of_seller_catalog_request_v2 (required)
@@ -4204,6 +4305,8 @@ class CampaignApi
     /**
      * Operation deleteAddToBasketTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -4220,6 +4323,8 @@ class CampaignApi
 
     /**
      * Operation deleteAddToBasketTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to remove from the target (optional)
@@ -4320,6 +4425,8 @@ class CampaignApi
     /**
      * Operation deleteAddToBasketTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -4339,6 +4446,8 @@ class CampaignApi
 
     /**
      * Operation deleteAddToBasketTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketIdsUpdateModel202110Request $add_to_basket_ids_update_model202110_request Ids to remove from the target (optional)
@@ -4500,6 +4609,8 @@ class CampaignApi
     /**
      * Operation deleteAudienceTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -4516,6 +4627,8 @@ class CampaignApi
 
     /**
      * Operation deleteAudienceTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to remove from the target (optional)
@@ -4616,6 +4729,8 @@ class CampaignApi
     /**
      * Operation deleteAudienceTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -4635,6 +4750,8 @@ class CampaignApi
 
     /**
      * Operation deleteAudienceTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceIdsUpdateModel202110Request $audience_ids_update_model202110_request Audience ids to remove from the target (optional)
@@ -4796,6 +4913,8 @@ class CampaignApi
     /**
      * Operation deleteCampaignsByBalanceId
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/delete
+     *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsByBalanceId'] to see the possible values for this operation
@@ -4812,6 +4931,8 @@ class CampaignApi
 
     /**
      * Operation deleteCampaignsByBalanceIdWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/delete
      *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
@@ -4912,6 +5033,8 @@ class CampaignApi
     /**
      * Operation deleteCampaignsByBalanceIdAsync
      *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/delete
+     *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCampaignsByBalanceId'] to see the possible values for this operation
@@ -4931,6 +5054,8 @@ class CampaignApi
 
     /**
      * Operation deleteCampaignsByBalanceIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/balances/{balance-id}/campaigns/delete
      *
      * @param  string $balance_id The balance to remove campaigns from (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\BalanceCampaign202110ListRequest $balance_campaign202110_list_request The campaigns to append (optional)
@@ -5092,6 +5217,8 @@ class CampaignApi
     /**
      * Operation deletePromotedProducts
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/delete
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
@@ -5107,6 +5234,8 @@ class CampaignApi
 
     /**
      * Operation deletePromotedProductsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -5167,6 +5296,8 @@ class CampaignApi
     /**
      * Operation deletePromotedProductsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/delete
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
@@ -5186,6 +5317,8 @@ class CampaignApi
 
     /**
      * Operation deletePromotedProductsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -5334,6 +5467,8 @@ class CampaignApi
     /**
      * Operation deleteStoreTargetByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreTargetByLineItemId'] to see the possible values for this operation
@@ -5350,6 +5485,8 @@ class CampaignApi
 
     /**
      * Operation deleteStoreTargetByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to remove from the target (optional)
@@ -5450,6 +5587,8 @@ class CampaignApi
     /**
      * Operation deleteStoreTargetByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to remove from the target (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreTargetByLineItemId'] to see the possible values for this operation
@@ -5469,6 +5608,8 @@ class CampaignApi
 
     /**
      * Operation deleteStoreTargetByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores/delete
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreIdsUpdateModel202110Request $store_ids_update_model202110_request Store ids to remove from the target (optional)
@@ -5630,6 +5771,8 @@ class CampaignApi
     /**
      * Operation fetchKeywords
      *
+     * /2026-01/retail-media/line-items/{id}/keywords
+     *
      * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
@@ -5645,6 +5788,8 @@ class CampaignApi
 
     /**
      * Operation fetchKeywordsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords
      *
      * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
@@ -5744,6 +5889,8 @@ class CampaignApi
     /**
      * Operation fetchKeywordsAsync
      *
+     * /2026-01/retail-media/line-items/{id}/keywords
+     *
      * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
      *
@@ -5762,6 +5909,8 @@ class CampaignApi
 
     /**
      * Operation fetchKeywordsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords
      *
      * @param  string $id ID of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['fetchKeywords'] to see the possible values for this operation
@@ -5913,6 +6062,8 @@ class CampaignApi
     /**
      * Operation fetchPromotedProducts
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products
+     *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
      * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
@@ -5931,6 +6082,8 @@ class CampaignApi
 
     /**
      * Operation fetchPromotedProductsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products
      *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -6033,6 +6186,8 @@ class CampaignApi
     /**
      * Operation fetchPromotedProductsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products
+     *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
      * @param  int $limit Maximum page size to fetch. Defaults to 500. (optional)
@@ -6054,6 +6209,8 @@ class CampaignApi
 
     /**
      * Operation fetchPromotedProductsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products
      *
      * @param  string $line_item_id ID of the line item. (required)
      * @param  string $fields A comma separated list of attribute names from the response model to compute and return.              Valid values are &#x60;status&#x60; and &#x60;bidOverride&#x60; in any order. Defaults to &#x60;status&#x60;. (optional)
@@ -6241,6 +6398,8 @@ class CampaignApi
     /**
      * Operation getAccountCreatives
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountCreatives'] to see the possible values for this operation
      *
@@ -6256,6 +6415,8 @@ class CampaignApi
 
     /**
      * Operation getAccountCreativesWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountCreatives'] to see the possible values for this operation
@@ -6355,6 +6516,8 @@ class CampaignApi
     /**
      * Operation getAccountCreativesAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountCreatives'] to see the possible values for this operation
      *
@@ -6373,6 +6536,8 @@ class CampaignApi
 
     /**
      * Operation getAccountCreativesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountCreatives'] to see the possible values for this operation
@@ -6524,6 +6689,8 @@ class CampaignApi
     /**
      * Operation getAddToBasketTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddToBasketTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -6539,6 +6706,8 @@ class CampaignApi
 
     /**
      * Operation getAddToBasketTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -6638,6 +6807,8 @@ class CampaignApi
     /**
      * Operation getAddToBasketTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddToBasketTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -6656,6 +6827,8 @@ class CampaignApi
 
     /**
      * Operation getAddToBasketTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAddToBasketTargetsByLineItemId'] to see the possible values for this operation
@@ -6807,6 +6980,8 @@ class CampaignApi
     /**
      * Operation getApi202110ExternalRetailerPagesByRetailerId
      *
+     * /2026-01/retail-media/retailers/{retailerId}/pages
+     *
      * @param  string $retailer_id The retailers to fetch pages for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalRetailerPagesByRetailerId'] to see the possible values for this operation
      *
@@ -6822,6 +6997,8 @@ class CampaignApi
 
     /**
      * Operation getApi202110ExternalRetailerPagesByRetailerIdWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/pages
      *
      * @param  string $retailer_id The retailers to fetch pages for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalRetailerPagesByRetailerId'] to see the possible values for this operation
@@ -6921,6 +7098,8 @@ class CampaignApi
     /**
      * Operation getApi202110ExternalRetailerPagesByRetailerIdAsync
      *
+     * /2026-01/retail-media/retailers/{retailerId}/pages
+     *
      * @param  string $retailer_id The retailers to fetch pages for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalRetailerPagesByRetailerId'] to see the possible values for this operation
      *
@@ -6939,6 +7118,8 @@ class CampaignApi
 
     /**
      * Operation getApi202110ExternalRetailerPagesByRetailerIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/pages
      *
      * @param  string $retailer_id The retailers to fetch pages for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getApi202110ExternalRetailerPagesByRetailerId'] to see the possible values for this operation
@@ -7090,6 +7271,8 @@ class CampaignApi
     /**
      * Operation getApiExternalV1Categories
      *
+     * /2026-01/retail-media/categories
+     *
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
      * @param  int $retailer_id The retailer id for which Categories fetched (optional)
@@ -7108,6 +7291,8 @@ class CampaignApi
 
     /**
      * Operation getApiExternalV1CategoriesWithHttpInfo
+     *
+     * /2026-01/retail-media/categories
      *
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
@@ -7210,6 +7395,8 @@ class CampaignApi
     /**
      * Operation getApiExternalV1CategoriesAsync
      *
+     * /2026-01/retail-media/categories
+     *
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
      * @param  int $retailer_id The retailer id for which Categories fetched (optional)
@@ -7231,6 +7418,8 @@ class CampaignApi
 
     /**
      * Operation getApiExternalV1CategoriesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/categories
      *
      * @param  int $page_index The start position in the overall list of matches. Must be zero or greater. (optional, default to 0)
      * @param  int $page_size The maximum number of results to return with each call. Must be greater than zero. (optional, default to 100)
@@ -7425,6 +7614,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItem
      *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
@@ -7440,6 +7631,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemWithHttpInfo
+     *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
@@ -7539,6 +7732,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemAsync
      *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
      *
@@ -7557,6 +7752,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The id of the line item (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAuctionLineItem'] to see the possible values for this operation
@@ -7708,6 +7905,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemsByCampaign
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
@@ -7726,6 +7925,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemsByCampaignWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
@@ -7828,6 +8029,8 @@ class CampaignApi
     /**
      * Operation getAuctionLineItemsByCampaignAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
+     *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
      * @param  string[] $limit_to_ids The ids to limit the auction line item results to (optional)
@@ -7849,6 +8052,8 @@ class CampaignApi
 
     /**
      * Operation getAuctionLineItemsByCampaignAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/auction-line-items
      *
      * @param  string $campaign_id The id of the campaign (required)
      * @param  int $limit The number of elements to be returned on a page. (optional, default to 25)
@@ -8048,6 +8253,8 @@ class CampaignApi
     /**
      * Operation getAudienceTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -8063,6 +8270,8 @@ class CampaignApi
 
     /**
      * Operation getAudienceTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -8162,6 +8371,8 @@ class CampaignApi
     /**
      * Operation getAudienceTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -8180,6 +8391,8 @@ class CampaignApi
 
     /**
      * Operation getAudienceTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -8331,6 +8544,8 @@ class CampaignApi
     /**
      * Operation getBidMultipliersByLineItemId
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
+     *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBidMultipliersByLineItemId'] to see the possible values for this operation
      *
@@ -8346,6 +8561,8 @@ class CampaignApi
 
     /**
      * Operation getBidMultipliersByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
      *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBidMultipliersByLineItemId'] to see the possible values for this operation
@@ -8445,6 +8662,8 @@ class CampaignApi
     /**
      * Operation getBidMultipliersByLineItemIdAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
+     *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBidMultipliersByLineItemId'] to see the possible values for this operation
      *
@@ -8463,6 +8682,8 @@ class CampaignApi
 
     /**
      * Operation getBidMultipliersByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
      *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBidMultipliersByLineItemId'] to see the possible values for this operation
@@ -8614,6 +8835,8 @@ class CampaignApi
     /**
      * Operation getBrandsByAccountId
      *
+     * /2026-01/retail-media/accounts/{accountId}/brands
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -8632,6 +8855,8 @@ class CampaignApi
 
     /**
      * Operation getBrandsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/brands
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -8734,6 +8959,8 @@ class CampaignApi
     /**
      * Operation getBrandsByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/brands
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -8755,6 +8982,8 @@ class CampaignApi
 
     /**
      * Operation getBrandsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/brands
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -8942,6 +9171,8 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverrides
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
+     *
      * @param  string $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -8957,6 +9188,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignBudgetOverridesWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      *
      * @param  string $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
@@ -9056,6 +9289,8 @@ class CampaignApi
     /**
      * Operation getCampaignBudgetOverridesAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
+     *
      * @param  string $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
      *
@@ -9074,6 +9309,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignBudgetOverridesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      *
      * @param  string $campaign_id Campaign id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignBudgetOverrides'] to see the possible values for this operation
@@ -9225,6 +9462,8 @@ class CampaignApi
     /**
      * Operation getCampaignByCampaignId
      *
+     * /2026-01/retail-media/campaigns/{campaignId}
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignByCampaignId'] to see the possible values for this operation
      *
@@ -9240,6 +9479,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignByCampaignIdWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignByCampaignId'] to see the possible values for this operation
@@ -9339,6 +9580,8 @@ class CampaignApi
     /**
      * Operation getCampaignByCampaignIdAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignByCampaignId'] to see the possible values for this operation
      *
@@ -9357,6 +9600,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignByCampaignIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaignByCampaignId'] to see the possible values for this operation
@@ -9508,6 +9753,8 @@ class CampaignApi
     /**
      * Operation getCampaignsByAccountId
      *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -9526,6 +9773,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -9628,6 +9877,8 @@ class CampaignApi
     /**
      * Operation getCampaignsByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -9649,6 +9900,8 @@ class CampaignApi
 
     /**
      * Operation getCampaignsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/campaigns
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -9848,6 +10101,8 @@ class CampaignApi
     /**
      * Operation getCatalogOutput
      *
+     * /2026-01/retail-media/catalogs/{catalogId}/output
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogOutput'] to see the possible values for this operation
      *
@@ -9863,6 +10118,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogOutputWithHttpInfo
+     *
+     * /2026-01/retail-media/catalogs/{catalogId}/output
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogOutput'] to see the possible values for this operation
@@ -9962,6 +10219,8 @@ class CampaignApi
     /**
      * Operation getCatalogOutputAsync
      *
+     * /2026-01/retail-media/catalogs/{catalogId}/output
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogOutput'] to see the possible values for this operation
      *
@@ -9980,6 +10239,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogOutputAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/catalogs/{catalogId}/output
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogOutput'] to see the possible values for this operation
@@ -10131,6 +10392,8 @@ class CampaignApi
     /**
      * Operation getCatalogStatus
      *
+     * /2026-01/retail-media/catalogs/{catalogId}/status
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
      *
@@ -10146,6 +10409,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogStatusWithHttpInfo
+     *
+     * /2026-01/retail-media/catalogs/{catalogId}/status
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
@@ -10245,6 +10510,8 @@ class CampaignApi
     /**
      * Operation getCatalogStatusAsync
      *
+     * /2026-01/retail-media/catalogs/{catalogId}/status
+     *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
      *
@@ -10263,6 +10530,8 @@ class CampaignApi
 
     /**
      * Operation getCatalogStatusAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/catalogs/{catalogId}/status
      *
      * @param  string $catalog_id A catalog ID returned from an account catalog request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogStatus'] to see the possible values for this operation
@@ -10414,6 +10683,8 @@ class CampaignApi
     /**
      * Operation getCategory
      *
+     * /2026-01/retail-media/categories/{categoryId}
+     *
      * @param  string $category_id ID of the desired category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategory'] to see the possible values for this operation
      *
@@ -10429,6 +10700,8 @@ class CampaignApi
 
     /**
      * Operation getCategoryWithHttpInfo
+     *
+     * /2026-01/retail-media/categories/{categoryId}
      *
      * @param  string $category_id ID of the desired category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategory'] to see the possible values for this operation
@@ -10528,6 +10801,8 @@ class CampaignApi
     /**
      * Operation getCategoryAsync
      *
+     * /2026-01/retail-media/categories/{categoryId}
+     *
      * @param  string $category_id ID of the desired category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategory'] to see the possible values for this operation
      *
@@ -10546,6 +10821,8 @@ class CampaignApi
 
     /**
      * Operation getCategoryAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/categories/{categoryId}
      *
      * @param  string $category_id ID of the desired category (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCategory'] to see the possible values for this operation
@@ -10697,6 +10974,8 @@ class CampaignApi
     /**
      * Operation getCpcMinBidsBySkuIdsV1
      *
+     * /2026-01/retail-media/retailers/{retailerId}/cpc-min-bids
+     *
      * @param  string $retailer_id Retailer Id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputCpcMinBidsRequest $value_resource_input_cpc_min_bids_request Cpc minimum bid amount request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCpcMinBidsBySkuIdsV1'] to see the possible values for this operation
@@ -10713,6 +10992,8 @@ class CampaignApi
 
     /**
      * Operation getCpcMinBidsBySkuIdsV1WithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/cpc-min-bids
      *
      * @param  string $retailer_id Retailer Id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputCpcMinBidsRequest $value_resource_input_cpc_min_bids_request Cpc minimum bid amount request object. (required)
@@ -10813,6 +11094,8 @@ class CampaignApi
     /**
      * Operation getCpcMinBidsBySkuIdsV1Async
      *
+     * /2026-01/retail-media/retailers/{retailerId}/cpc-min-bids
+     *
      * @param  string $retailer_id Retailer Id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputCpcMinBidsRequest $value_resource_input_cpc_min_bids_request Cpc minimum bid amount request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCpcMinBidsBySkuIdsV1'] to see the possible values for this operation
@@ -10832,6 +11115,8 @@ class CampaignApi
 
     /**
      * Operation getCpcMinBidsBySkuIdsV1AsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/cpc-min-bids
      *
      * @param  string $retailer_id Retailer Id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputCpcMinBidsRequest $value_resource_input_cpc_min_bids_request Cpc minimum bid amount request object. (required)
@@ -10999,6 +11284,8 @@ class CampaignApi
     /**
      * Operation getCreative
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
@@ -11015,6 +11302,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
@@ -11115,6 +11404,8 @@ class CampaignApi
     /**
      * Operation getCreativeAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreative'] to see the possible values for this operation
@@ -11134,6 +11425,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string $creative_id Creative to get (required)
@@ -11302,6 +11595,8 @@ class CampaignApi
     /**
      * Operation getCreativeTemplate
      *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates/{template-id}
+     *
      * @param  string $retailer_id Retailer Id (required)
      * @param  string $template_id Template Id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreativeTemplate'] to see the possible values for this operation
@@ -11318,6 +11613,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeTemplateWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates/{template-id}
      *
      * @param  string $retailer_id Retailer Id (required)
      * @param  string $template_id Template Id (required)
@@ -11418,6 +11715,8 @@ class CampaignApi
     /**
      * Operation getCreativeTemplateAsync
      *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates/{template-id}
+     *
      * @param  string $retailer_id Retailer Id (required)
      * @param  string $template_id Template Id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCreativeTemplate'] to see the possible values for this operation
@@ -11437,6 +11736,8 @@ class CampaignApi
 
     /**
      * Operation getCreativeTemplateAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates/{template-id}
      *
      * @param  string $retailer_id Retailer Id (required)
      * @param  string $template_id Template Id (required)
@@ -11605,6 +11906,8 @@ class CampaignApi
     /**
      * Operation getKeywordInReviewReport
      *
+     * /2026-01/retail-media/accounts/{account-id}/keywords/in-review-report
+     *
      * @param  string $account_id The account to generate a report for (required)
      * @param  int $limit Number of items per page (optional, default to 25)
      * @param  int $offset Offset for pagination (optional, default to 0)
@@ -11622,6 +11925,8 @@ class CampaignApi
 
     /**
      * Operation getKeywordInReviewReportWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/keywords/in-review-report
      *
      * @param  string $account_id The account to generate a report for (required)
      * @param  int $limit Number of items per page (optional, default to 25)
@@ -11723,6 +12028,8 @@ class CampaignApi
     /**
      * Operation getKeywordInReviewReportAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/keywords/in-review-report
+     *
      * @param  string $account_id The account to generate a report for (required)
      * @param  int $limit Number of items per page (optional, default to 25)
      * @param  int $offset Offset for pagination (optional, default to 0)
@@ -11743,6 +12050,8 @@ class CampaignApi
 
     /**
      * Operation getKeywordInReviewReportAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/keywords/in-review-report
      *
      * @param  string $account_id The account to generate a report for (required)
      * @param  int $limit Number of items per page (optional, default to 25)
@@ -11930,6 +12239,8 @@ class CampaignApi
     /**
      * Operation getLineItemBudgetOverrides
      *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
+     *
      * @param  string $line_item_id The line item id to get budget overrides for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -11945,6 +12256,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemBudgetOverridesWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      *
      * @param  string $line_item_id The line item id to get budget overrides for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemBudgetOverrides'] to see the possible values for this operation
@@ -12044,6 +12357,8 @@ class CampaignApi
     /**
      * Operation getLineItemBudgetOverridesAsync
      *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
+     *
      * @param  string $line_item_id The line item id to get budget overrides for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemBudgetOverrides'] to see the possible values for this operation
      *
@@ -12062,6 +12377,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemBudgetOverridesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      *
      * @param  string $line_item_id The line item id to get budget overrides for. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemBudgetOverrides'] to see the possible values for this operation
@@ -12213,6 +12530,8 @@ class CampaignApi
     /**
      * Operation getLineItemsByAccountId
      *
+     * /2026-01/retail-media/accounts/{account-id}/line-items
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -12233,6 +12552,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/line-items
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
@@ -12337,6 +12658,8 @@ class CampaignApi
     /**
      * Operation getLineItemsByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/line-items
+     *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -12360,6 +12683,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/line-items
      *
      * @param  string $account_id The given account id (required)
      * @param  string[] $limit_to_campaign_id The campaign ids that you would like to limit your result set to (optional)
@@ -12583,6 +12908,8 @@ class CampaignApi
     /**
      * Operation getLineItemsByCampaignId
      *
+     * /2026-01/retail-media/line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemsByCampaignId'] to see the possible values for this operation
      *
@@ -12598,6 +12925,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemsByCampaignIdWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemsByCampaignId'] to see the possible values for this operation
@@ -12697,6 +13026,8 @@ class CampaignApi
     /**
      * Operation getLineItemsByCampaignIdAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemsByCampaignId'] to see the possible values for this operation
      *
@@ -12715,6 +13046,8 @@ class CampaignApi
 
     /**
      * Operation getLineItemsByCampaignIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLineItemsByCampaignId'] to see the possible values for this operation
@@ -12866,6 +13199,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByCampaignId
      *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -12884,6 +13219,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByCampaignIdWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -12986,6 +13323,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByCampaignIdAsync
      *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
      * @param  int $page_index The 0 indexed page index you would like to receive given the page size (optional, default to 0)
@@ -13007,6 +13346,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByCampaignIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaign-id}/preferred-line-items
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  string[] $limit_to_id The ids that you would like to limit your result set to (optional)
@@ -13206,6 +13547,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
      *
@@ -13221,6 +13564,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
@@ -13320,6 +13665,8 @@ class CampaignApi
     /**
      * Operation getPreferredLineItemsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
      *
@@ -13338,6 +13685,8 @@ class CampaignApi
 
     /**
      * Operation getPreferredLineItemsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreferredLineItemsByLineItemId'] to see the possible values for this operation
@@ -13489,6 +13838,8 @@ class CampaignApi
     /**
      * Operation getRecommendedCategories
      *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-categories
+     *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
@@ -13505,6 +13856,8 @@ class CampaignApi
 
     /**
      * Operation getRecommendedCategoriesWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-categories
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
@@ -13605,6 +13958,8 @@ class CampaignApi
     /**
      * Operation getRecommendedCategoriesAsync
      *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-categories
+     *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedCategories'] to see the possible values for this operation
@@ -13624,6 +13979,8 @@ class CampaignApi
 
     /**
      * Operation getRecommendedCategoriesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-categories
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedCategoriesRequestV1 $value_resource_input_recommended_categories_request_v1 Request of recommended categories. (required)
@@ -13791,12 +14148,15 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywords
      *
+     * /2026-01/retail-media/line-items/{externalLineItemId}/keywords/recommended
+     *
      * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\v2026_01\Model\ValueResourceOutcomeOfRecommendedKeywordsResult
+     * @deprecated
      */
     public function getRecommendedKeywords($external_line_item_id, string $contentType = self::contentTypes['getRecommendedKeywords'][0])
     {
@@ -13807,12 +14167,15 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsWithHttpInfo
      *
+     * /2026-01/retail-media/line-items/{externalLineItemId}/keywords/recommended
+     *
      * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\v2026_01\Model\ValueResourceOutcomeOfRecommendedKeywordsResult, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getRecommendedKeywordsWithHttpInfo($external_line_item_id, string $contentType = self::contentTypes['getRecommendedKeywords'][0])
     {
@@ -13905,11 +14268,14 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsAsync
      *
+     * /2026-01/retail-media/line-items/{externalLineItemId}/keywords/recommended
+     *
      * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getRecommendedKeywordsAsync($external_line_item_id, string $contentType = self::contentTypes['getRecommendedKeywords'][0])
     {
@@ -13924,11 +14290,14 @@ class CampaignApi
     /**
      * Operation getRecommendedKeywordsAsyncWithHttpInfo
      *
+     * /2026-01/retail-media/line-items/{externalLineItemId}/keywords/recommended
+     *
      * @param  string $external_line_item_id The line item identifier (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecommendedKeywords'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getRecommendedKeywordsAsyncWithHttpInfo($external_line_item_id, string $contentType = self::contentTypes['getRecommendedKeywords'][0])
     {
@@ -13979,6 +14348,7 @@ class CampaignApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getRecommendedKeywordsRequest($external_line_item_id, string $contentType = self::contentTypes['getRecommendedKeywords'][0])
     {
@@ -14074,6 +14444,8 @@ class CampaignApi
     /**
      * Operation getRetailerCreativeTemplates
      *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates
+     *
      * @param  string $retailer_id External retailer id to retrieve creative templates for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailerCreativeTemplates'] to see the possible values for this operation
      *
@@ -14089,6 +14461,8 @@ class CampaignApi
 
     /**
      * Operation getRetailerCreativeTemplatesWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates
      *
      * @param  string $retailer_id External retailer id to retrieve creative templates for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailerCreativeTemplates'] to see the possible values for this operation
@@ -14188,6 +14562,8 @@ class CampaignApi
     /**
      * Operation getRetailerCreativeTemplatesAsync
      *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates
+     *
      * @param  string $retailer_id External retailer id to retrieve creative templates for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailerCreativeTemplates'] to see the possible values for this operation
      *
@@ -14206,6 +14582,8 @@ class CampaignApi
 
     /**
      * Operation getRetailerCreativeTemplatesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailer-id}/templates
      *
      * @param  string $retailer_id External retailer id to retrieve creative templates for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRetailerCreativeTemplates'] to see the possible values for this operation
@@ -14357,6 +14735,8 @@ class CampaignApi
     /**
      * Operation getStoreTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStoreTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -14372,6 +14752,8 @@ class CampaignApi
 
     /**
      * Operation getStoreTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStoreTargetsByLineItemId'] to see the possible values for this operation
@@ -14471,6 +14853,8 @@ class CampaignApi
     /**
      * Operation getStoreTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStoreTargetsByLineItemId'] to see the possible values for this operation
      *
@@ -14489,6 +14873,8 @@ class CampaignApi
 
     /**
      * Operation getStoreTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStoreTargetsByLineItemId'] to see the possible values for this operation
@@ -14640,6 +15026,8 @@ class CampaignApi
     /**
      * Operation pausePromotedProducts
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/pause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pausePromotedProducts'] to see the possible values for this operation
@@ -14655,6 +15043,8 @@ class CampaignApi
 
     /**
      * Operation pausePromotedProductsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/pause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -14715,6 +15105,8 @@ class CampaignApi
     /**
      * Operation pausePromotedProductsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/pause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pausePromotedProducts'] to see the possible values for this operation
@@ -14734,6 +15126,8 @@ class CampaignApi
 
     /**
      * Operation pausePromotedProductsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/pause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -14882,6 +15276,8 @@ class CampaignApi
     /**
      * Operation postApiExternalV1AccountCatalogsSellersByAccountId
      *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs/sellers
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request json_api_request_of_seller_catalog_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1AccountCatalogsSellersByAccountId'] to see the possible values for this operation
@@ -14898,6 +15294,8 @@ class CampaignApi
 
     /**
      * Operation postApiExternalV1AccountCatalogsSellersByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs/sellers
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (required)
@@ -14998,6 +15396,8 @@ class CampaignApi
     /**
      * Operation postApiExternalV1AccountCatalogsSellersByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs/sellers
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiExternalV1AccountCatalogsSellersByAccountId'] to see the possible values for this operation
@@ -15017,6 +15417,8 @@ class CampaignApi
 
     /**
      * Operation postApiExternalV1AccountCatalogsSellersByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs/sellers
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfSellerCatalogRequest $json_api_request_of_seller_catalog_request (required)
@@ -15184,6 +15586,8 @@ class CampaignApi
     /**
      * Operation postApiV1ExternalAccountCatalogsByAccountId
      *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfCatalogRequest $json_api_request_of_catalog_request json_api_request_of_catalog_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsByAccountId'] to see the possible values for this operation
@@ -15200,6 +15604,8 @@ class CampaignApi
 
     /**
      * Operation postApiV1ExternalAccountCatalogsByAccountIdWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfCatalogRequest $json_api_request_of_catalog_request (required)
@@ -15300,6 +15706,8 @@ class CampaignApi
     /**
      * Operation postApiV1ExternalAccountCatalogsByAccountIdAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs
+     *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfCatalogRequest $json_api_request_of_catalog_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postApiV1ExternalAccountCatalogsByAccountId'] to see the possible values for this operation
@@ -15319,6 +15727,8 @@ class CampaignApi
 
     /**
      * Operation postApiV1ExternalAccountCatalogsByAccountIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/catalogs
      *
      * @param  string $account_id The account to request the catalog for. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\JsonApiRequestOfCatalogRequest $json_api_request_of_catalog_request (required)
@@ -15486,6 +15896,8 @@ class CampaignApi
     /**
      * Operation putAddToBasketTargetByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketTarget202110Request $add_to_basket_target202110_request The add to basket target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAddToBasketTargetByLineItemId'] to see the possible values for this operation
@@ -15502,6 +15914,8 @@ class CampaignApi
 
     /**
      * Operation putAddToBasketTargetByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketTarget202110Request $add_to_basket_target202110_request The add to basket target to set the scope for (required)
@@ -15602,6 +16016,8 @@ class CampaignApi
     /**
      * Operation putAddToBasketTargetByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketTarget202110Request $add_to_basket_target202110_request The add to basket target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAddToBasketTargetByLineItemId'] to see the possible values for this operation
@@ -15621,6 +16037,8 @@ class CampaignApi
 
     /**
      * Operation putAddToBasketTargetByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/add-to-basket
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AddToBasketTarget202110Request $add_to_basket_target202110_request The add to basket target to set the scope for (required)
@@ -15788,6 +16206,8 @@ class CampaignApi
     /**
      * Operation putAudienceTargetsByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceTarget202110Request $audience_target202110_request The audience target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -15804,6 +16224,8 @@ class CampaignApi
 
     /**
      * Operation putAudienceTargetsByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceTarget202110Request $audience_target202110_request The audience target to set the scope for (required)
@@ -15904,6 +16326,8 @@ class CampaignApi
     /**
      * Operation putAudienceTargetsByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceTarget202110Request $audience_target202110_request The audience target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putAudienceTargetsByLineItemId'] to see the possible values for this operation
@@ -15923,6 +16347,8 @@ class CampaignApi
 
     /**
      * Operation putAudienceTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/audiences
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\AudienceTarget202110Request $audience_target202110_request The audience target to set the scope for (required)
@@ -16090,6 +16516,8 @@ class CampaignApi
     /**
      * Operation putStoreTargetByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreTarget202110Request $store_target202110_request The store target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putStoreTargetByLineItemId'] to see the possible values for this operation
@@ -16106,6 +16534,8 @@ class CampaignApi
 
     /**
      * Operation putStoreTargetByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreTarget202110Request $store_target202110_request The store target to set the scope for (required)
@@ -16206,6 +16636,8 @@ class CampaignApi
     /**
      * Operation putStoreTargetByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
+     *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreTarget202110Request $store_target202110_request The store target to set the scope for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['putStoreTargetByLineItemId'] to see the possible values for this operation
@@ -16225,6 +16657,8 @@ class CampaignApi
 
     /**
      * Operation putStoreTargetByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}/targeting/stores
      *
      * @param  string $line_item_id The line item to interact with (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\StoreTarget202110Request $store_target202110_request The store target to set the scope for (required)
@@ -16392,6 +16826,8 @@ class CampaignApi
     /**
      * Operation recommendedKeywords
      *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-keywords
+     *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
@@ -16408,6 +16844,8 @@ class CampaignApi
 
     /**
      * Operation recommendedKeywordsWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-keywords
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
@@ -16508,6 +16946,8 @@ class CampaignApi
     /**
      * Operation recommendedKeywordsAsync
      *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-keywords
+     *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['recommendedKeywords'] to see the possible values for this operation
@@ -16527,6 +16967,8 @@ class CampaignApi
 
     /**
      * Operation recommendedKeywordsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/recommend-keywords
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRecommendedKeywordsRequestV1 $value_resource_input_recommended_keywords_request_v1 Request of recommended keywords. (required)
@@ -16694,6 +17136,8 @@ class CampaignApi
     /**
      * Operation searchAccountCreatives
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/search
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string[] $creative_ids Creatives to filter by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
@@ -16710,6 +17154,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountCreativesWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/search
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string[] $creative_ids Creatives to filter by (optional)
@@ -16810,6 +17256,8 @@ class CampaignApi
     /**
      * Operation searchAccountCreativesAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/search
+     *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string[] $creative_ids Creatives to filter by (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreatives'] to see the possible values for this operation
@@ -16829,6 +17277,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountCreativesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/search
      *
      * @param  string $account_id External account id to retrieve creatives for (required)
      * @param  string[] $creative_ids Creatives to filter by (optional)
@@ -16992,6 +17442,8 @@ class CampaignApi
     /**
      * Operation searchAccountRetailers
      *
+     * /2026-01/retail-media/accounts/{accountId}/retailers/search
+     *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
@@ -17010,6 +17462,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountRetailersWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/retailers/search
      *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
@@ -17112,6 +17566,8 @@ class CampaignApi
     /**
      * Operation searchAccountRetailersAsync
      *
+     * /2026-01/retail-media/accounts/{accountId}/retailers/search
+     *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
      * @param  int $limit The maximum number of items to return. Must be between 1 and 10. Default is 5. (optional, default to 5)
@@ -17133,6 +17589,8 @@ class CampaignApi
 
     /**
      * Operation searchAccountRetailersAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{accountId}/retailers/search
      *
      * @param  string $account_id The external account identifier (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfRetailerSearchRequest $value_resource_input_of_retailer_search_request The search request containing filtering parameters (required)
@@ -17334,325 +17792,9 @@ class CampaignApi
     }
 
     /**
-     * Operation searchBrands
-     *
-     * @param  int $limit the number of brands to return (optional, default to 25)
-     * @param  int $offset offset of paginated results (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
-     */
-    public function searchBrands($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
-    {
-        list($response) = $this->searchBrandsWithHttpInfo($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation searchBrandsWithHttpInfo
-     *
-     * @param  int $limit the number of brands to return (optional, default to 25)
-     * @param  int $offset offset of paginated results (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\v2026_01\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function searchBrandsWithHttpInfo($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
-    {
-        $request = $this->searchBrandsRequest($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            switch($statusCode) {
-                case 200:
-                    if ('\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata' !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata', []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-            }
-
-            $returnType = '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
-            if ($returnType === '\SplFileObject') {
-                $content = $response->getBody(); //stream goes to serializer
-            } else {
-                $content = (string) $response->getBody();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation searchBrandsAsync
-     *
-     * @param  int $limit the number of brands to return (optional, default to 25)
-     * @param  int $offset offset of paginated results (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function searchBrandsAsync($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
-    {
-        return $this->searchBrandsAsyncWithHttpInfo($limit, $offset, $value_resource_input_brand_id_search_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation searchBrandsAsyncWithHttpInfo
-     *
-     * @param  int $limit the number of brands to return (optional, default to 25)
-     * @param  int $offset offset of paginated results (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function searchBrandsAsyncWithHttpInfo($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
-    {
-        $returnType = '\criteo\api\retailmedia\v2026_01\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata';
-        $request = $this->searchBrandsRequest($limit, $offset, $value_resource_input_brand_id_search_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'searchBrands'
-     *
-     * @param  int $limit the number of brands to return (optional, default to 25)
-     * @param  int $offset offset of paginated results (optional, default to 0)
-     * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputBrandIdSearchRequest $value_resource_input_brand_id_search_request BrandIdSearchRequest which contains the request parameters (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchBrands'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function searchBrandsRequest($limit = 25, $offset = 0, $value_resource_input_brand_id_search_request = null, string $contentType = self::contentTypes['searchBrands'][0])
-    {
-
-        if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchBrands, must be smaller than or equal to 100.');
-        }
-        if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchBrands, must be bigger than or equal to 1.');
-        }
-        
-        if ($offset !== null && $offset > 2147483647) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchBrands, must be smaller than or equal to 2147483647.');
-        }
-        if ($offset !== null && $offset < 0) {
-            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchBrands, must be bigger than or equal to 0.');
-        }
-        
-
-
-        $resourcePath = '/2026-01/retail-media/brands/search';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($value_resource_input_brand_id_search_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($value_resource_input_brand_id_search_request));
-            } else {
-                $httpBody = $value_resource_input_brand_id_search_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation searchCategory
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/categories/search
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  int $limit Limit of the search result. (optional, default to 50)
@@ -17672,6 +17814,8 @@ class CampaignApi
 
     /**
      * Operation searchCategoryWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/categories/search
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  int $limit Limit of the search result. (optional, default to 50)
@@ -17774,6 +17918,8 @@ class CampaignApi
     /**
      * Operation searchCategoryAsync
      *
+     * /2026-01/retail-media/retailers/{retailerId}/categories/search
+     *
      * @param  string $retailer_id Retailer id. (required)
      * @param  int $limit Limit of the search result. (optional, default to 50)
      * @param  int $offset Offset of the search result. (optional, default to 0)
@@ -17795,6 +17941,8 @@ class CampaignApi
 
     /**
      * Operation searchCategoryAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/retailers/{retailerId}/categories/search
      *
      * @param  string $retailer_id Retailer id. (required)
      * @param  int $limit Limit of the search result. (optional, default to 50)
@@ -17992,6 +18140,8 @@ class CampaignApi
     /**
      * Operation setKeywordBids
      *
+     * /2026-01/retail-media/line-items/{id}/keywords/set-bid
+     *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\SetBidsModelRequest $set_bids_model_request set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
@@ -18008,6 +18158,8 @@ class CampaignApi
 
     /**
      * Operation setKeywordBidsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords/set-bid
      *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\SetBidsModelRequest $set_bids_model_request (optional)
@@ -18108,6 +18260,8 @@ class CampaignApi
     /**
      * Operation setKeywordBidsAsync
      *
+     * /2026-01/retail-media/line-items/{id}/keywords/set-bid
+     *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\SetBidsModelRequest $set_bids_model_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setKeywordBids'] to see the possible values for this operation
@@ -18127,6 +18281,8 @@ class CampaignApi
 
     /**
      * Operation setKeywordBidsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{id}/keywords/set-bid
      *
      * @param  string $id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\SetBidsModelRequest $set_bids_model_request (optional)
@@ -18288,6 +18444,8 @@ class CampaignApi
     /**
      * Operation unpausePromotedProducts
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/unpause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpausePromotedProducts'] to see the possible values for this operation
@@ -18303,6 +18461,8 @@ class CampaignApi
 
     /**
      * Operation unpausePromotedProductsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/unpause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -18363,6 +18523,8 @@ class CampaignApi
     /**
      * Operation unpausePromotedProductsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/unpause
+     *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpausePromotedProducts'] to see the possible values for this operation
@@ -18382,6 +18544,8 @@ class CampaignApi
 
     /**
      * Operation unpausePromotedProductsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/products/unpause
      *
      * @param  string $line_item_id ID of the line item (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
@@ -18530,6 +18694,8 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItem
      *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
@@ -18546,6 +18712,8 @@ class CampaignApi
 
     /**
      * Operation updateAuctionLineItemWithHttpInfo
+     *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
@@ -18646,6 +18814,8 @@ class CampaignApi
     /**
      * Operation updateAuctionLineItemAsync
      *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
+     *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAuctionLineItem'] to see the possible values for this operation
@@ -18665,6 +18835,8 @@ class CampaignApi
 
     /**
      * Operation updateAuctionLineItemAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/auction-line-items/{lineItemId}
      *
      * @param  string $line_item_id The external line item ID of the sponsored products line item. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfSponsoredProductsLineItemUpdateRequestModel $value_resource_input_of_sponsored_products_line_item_update_request_model An update request containing all details of the requested update. (required)
@@ -18832,6 +19004,8 @@ class CampaignApi
     /**
      * Operation updateBidMultipliersByLineItemId
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
+     *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\LineItemBidMultipliersV2Request $line_item_bid_multipliers_v2_request New Bid Multipliers to be set (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidMultipliersByLineItemId'] to see the possible values for this operation
@@ -18848,6 +19022,8 @@ class CampaignApi
 
     /**
      * Operation updateBidMultipliersByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
      *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\LineItemBidMultipliersV2Request $line_item_bid_multipliers_v2_request New Bid Multipliers to be set (required)
@@ -18948,6 +19124,8 @@ class CampaignApi
     /**
      * Operation updateBidMultipliersByLineItemIdAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
+     *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\LineItemBidMultipliersV2Request $line_item_bid_multipliers_v2_request New Bid Multipliers to be set (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBidMultipliersByLineItemId'] to see the possible values for this operation
@@ -18967,6 +19145,8 @@ class CampaignApi
 
     /**
      * Operation updateBidMultipliersByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/bid-multipliers
      *
      * @param  string $line_item_id LineItemId for bid multiplier retrieval (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\LineItemBidMultipliersV2Request $line_item_bid_multipliers_v2_request New Bid Multipliers to be set (required)
@@ -19134,6 +19314,8 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverrides
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
+     *
      * @param  string $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
@@ -19150,6 +19332,8 @@ class CampaignApi
 
     /**
      * Operation updateCampaignBudgetOverridesWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      *
      * @param  string $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (required)
@@ -19250,6 +19434,8 @@ class CampaignApi
     /**
      * Operation updateCampaignBudgetOverridesAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
+     *
      * @param  string $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignBudgetOverrides'] to see the possible values for this operation
@@ -19269,6 +19455,8 @@ class CampaignApi
 
     /**
      * Operation updateCampaignBudgetOverridesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}/campaign-budget-overrides
      *
      * @param  string $campaign_id Campaign id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfCampaignBudgetOverrides $value_resource_input_of_campaign_budget_overrides New campaign budget overrides settings value resource input. (required)
@@ -19436,6 +19624,8 @@ class CampaignApi
     /**
      * Operation updateCampaignByCampaignId
      *
+     * /2026-01/retail-media/campaigns/{campaignId}
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PutCampaignV202301 $put_campaign_v202301 The campaign settings to update that campaign with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignByCampaignId'] to see the possible values for this operation
@@ -19452,6 +19642,8 @@ class CampaignApi
 
     /**
      * Operation updateCampaignByCampaignIdWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PutCampaignV202301 $put_campaign_v202301 The campaign settings to update that campaign with (required)
@@ -19552,6 +19744,8 @@ class CampaignApi
     /**
      * Operation updateCampaignByCampaignIdAsync
      *
+     * /2026-01/retail-media/campaigns/{campaignId}
+     *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PutCampaignV202301 $put_campaign_v202301 The campaign settings to update that campaign with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaignByCampaignId'] to see the possible values for this operation
@@ -19571,6 +19765,8 @@ class CampaignApi
 
     /**
      * Operation updateCampaignByCampaignIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/campaigns/{campaignId}
      *
      * @param  string $campaign_id The given campaign id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PutCampaignV202301 $put_campaign_v202301 The campaign settings to update that campaign with (required)
@@ -19738,6 +19934,8 @@ class CampaignApi
     /**
      * Operation updateCreative
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeUpdateModel202207 $creative_update_model202207 The creative to create (required)
@@ -19755,6 +19953,8 @@ class CampaignApi
 
     /**
      * Operation updateCreativeWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
@@ -19856,6 +20056,8 @@ class CampaignApi
     /**
      * Operation updateCreativeAsync
      *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
+     *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\CreativeUpdateModel202207 $creative_update_model202207 The creative to create (required)
@@ -19876,6 +20078,8 @@ class CampaignApi
 
     /**
      * Operation updateCreativeAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/accounts/{account-id}/creatives/{creative-id}
      *
      * @param  string $account_id External account id containing the creative (required)
      * @param  string $creative_id Creative to update (required)
@@ -20060,6 +20264,8 @@ class CampaignApi
     /**
      * Operation updateKeywordReviews
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/keywords/review
+     *
      * @param  string $line_item_id The line item to update keyword review statuses for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviews'] to see the possible values for this operation
@@ -20076,6 +20282,8 @@ class CampaignApi
 
     /**
      * Operation updateKeywordReviewsWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/keywords/review
      *
      * @param  string $line_item_id The line item to update keyword review statuses for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
@@ -20176,6 +20384,8 @@ class CampaignApi
     /**
      * Operation updateKeywordReviewsAsync
      *
+     * /2026-01/retail-media/line-items/{line-item-id}/keywords/review
+     *
      * @param  string $line_item_id The line item to update keyword review statuses for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateKeywordReviews'] to see the possible values for this operation
@@ -20195,6 +20405,8 @@ class CampaignApi
 
     /**
      * Operation updateKeywordReviewsAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{line-item-id}/keywords/review
      *
      * @param  string $line_item_id The line item to update keyword review statuses for (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputRetailMediaKeywordsReview $value_resource_input_retail_media_keywords_review Request object containing a list of Phrase-ReviewState pairs to update (optional)
@@ -20356,6 +20568,8 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverrides
      *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
+     *
      * @param  string $line_item_id Line item external id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
@@ -20372,6 +20586,8 @@ class CampaignApi
 
     /**
      * Operation updateLineItemBudgetOverridesWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      *
      * @param  string $line_item_id Line item external id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (required)
@@ -20472,6 +20688,8 @@ class CampaignApi
     /**
      * Operation updateLineItemBudgetOverridesAsync
      *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
+     *
      * @param  string $line_item_id Line item external id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItemBudgetOverrides'] to see the possible values for this operation
@@ -20491,6 +20709,8 @@ class CampaignApi
 
     /**
      * Operation updateLineItemBudgetOverridesAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/line-items/{lineItemId}/line-item-budget-overrides
      *
      * @param  string $line_item_id Line item external id. (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\ValueResourceInputOfLineItemBudgetOverrides $value_resource_input_of_line_item_budget_overrides New line item budget overrides settings value resource input. (required)
@@ -20658,6 +20878,8 @@ class CampaignApi
     /**
      * Operation updatePreferredLineItemByLineItemId
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
@@ -20674,6 +20896,8 @@ class CampaignApi
 
     /**
      * Operation updatePreferredLineItemByLineItemIdWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
@@ -20774,6 +20998,8 @@ class CampaignApi
     /**
      * Operation updatePreferredLineItemByLineItemIdAsync
      *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
+     *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePreferredLineItemByLineItemId'] to see the possible values for this operation
@@ -20793,6 +21019,8 @@ class CampaignApi
 
     /**
      * Operation updatePreferredLineItemByLineItemIdAsyncWithHttpInfo
+     *
+     * /2026-01/retail-media/preferred-line-items/{line-item-id}
      *
      * @param  string $line_item_id The given line item id (required)
      * @param  \criteo\api\retailmedia\v2026_01\Model\PreferredLineItemUpdateModelV2Request $preferred_line_item_update_model_v2_request The line item settings to create a line item with (required)

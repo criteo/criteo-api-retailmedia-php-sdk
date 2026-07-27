@@ -310,7 +310,7 @@ class RetailMediaKeywordsReviewResult implements ModelInterface, ArrayAccess, \J
     /**
      * Sets keywords
      *
-     * @param \criteo\api\retailmedia\v2026_01\Model\ReviewSetState[] $keywords List of Phrase-ReviewState pairs describing keyword review updates which were performed
+     * @param \criteo\api\retailmedia\v2026_01\Model\ReviewSetState[] $keywords keywords
      *
      * @return self
      */

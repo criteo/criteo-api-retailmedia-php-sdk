@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_ids** | **string[]** | Account ids to filter | [optional]
+**activation_platforms** | **string[]** | Filter on the activation platform: CommerceMax, PrivateMarket | [optional]
 **advertiser_types** | **string[]** | Filter on the type of advertiser: retailer, brand, seller | [optional]
+**budget_models** | **string[]** | Filter on the budget model: CriteoBudget, RetailerBudget | [optional]
 **buy_type** | **string** | Filter on buy type: Auction, Preferred Deals or Sponsorship | [optional]
 **campaign_ids** | **string[]** | Campaign ids to filter | [optional]
 **campaign_type** | **string** | Filter the type of campaigns to report on: sponsoredProducts or onSiteDisplays | [optional] [default to 'all']
@@ -24,7 +26,7 @@ Name | Type | Description | Notes
 **revenue_type** | **string** | Type of revenue | [optional]
 **sales_channel** | **string** | Filter on specific sales channel: offline or online | [optional] [default to 'all']
 **sku_relations** | **string[]** | Filter on sku relations: Same SKU, Same Parent SKU, Same Category, Same Brand or Same Seller | [optional]
-**sold_by** | **string** | Filter on the seller: Indirect Sold, Direct Sold or Private Market | [optional]
+**sold_by** | **string** | Filter on the seller: Indirect Sold, Direct Sold, Authorized Buyer or Private Market | [optional]
 **start_date** | **\DateTime** | Start date |
 **targeted_keyword_types** | **string[]** | Filter on targeted keyword type: unknown, generic, branded, conquesting | [optional]
 **timezone** | **string** | Time zone : see criteo developer portal for supported time zones | [optional] [default to 'UTC']

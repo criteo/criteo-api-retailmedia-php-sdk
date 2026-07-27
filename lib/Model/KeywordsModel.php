@@ -310,7 +310,7 @@ class KeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets keywords
      *
-     * @param array<string,\criteo\api\retailmedia\v2026_01\Model\KeywordDataModel>|null $keywords keywords
+     * @param array<string,\criteo\api\retailmedia\v2026_01\Model\KeywordDataModel>|null $keywords A dictionary of normalized keywords mapped to their properties.
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class KeywordsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rank
      *
-     * @param string[]|null $rank rank
+     * @param string[]|null $rank The top suggested keywords for products in this line item ranked by popularity score.
      *
      * @return self
      */
