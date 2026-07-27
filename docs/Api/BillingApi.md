@@ -4,9 +4,9 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createPartnerBillingReportRequestV1()**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report |  |
-| [**getPartnerBillingReportOutputV1()**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output |  |
-| [**getPartnerBillingReportStatusV1()**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status |  |
+| [**createPartnerBillingReportRequestV1()**](BillingApi.md#createPartnerBillingReportRequestV1) | **POST** /2025-07/retail-media/billing/partner-report | /2025-07/retail-media/billing/partner-report |
+| [**getPartnerBillingReportOutputV1()**](BillingApi.md#getPartnerBillingReportOutputV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/output | /2025-07/retail-media/billing/partner-report/{requestId}/output |
+| [**getPartnerBillingReportStatusV1()**](BillingApi.md#getPartnerBillingReportStatusV1) | **GET** /2025-07/retail-media/billing/partner-report/{requestId}/status | /2025-07/retail-media/billing/partner-report/{requestId}/status |
 
 
 ## `createPartnerBillingReportRequestV1()`
@@ -15,7 +15,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 createPartnerBillingReportRequestV1($value_resource_input_partner_billing_report_request_v1): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
-
+/2025-07/retail-media/billing/partner-report
 
 Create a Partner Billing Report request.
 
@@ -78,7 +78,7 @@ try {
 getPartnerBillingReportOutputV1($request_id): \SplFileObject
 ```
 
-
+/2025-07/retail-media/billing/partner-report/{requestId}/output
 
 Get the output of an existing Partner Billing Report.
 
@@ -141,7 +141,7 @@ try {
 getPartnerBillingReportStatusV1($request_id): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomePartnerBillingReportStatusV1
 ```
 
-
+/2025-07/retail-media/billing/partner-report/{requestId}/status
 
 Get the status of an existing Partner Billing Report.
 

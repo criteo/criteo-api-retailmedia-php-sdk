@@ -59,7 +59,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'account_ids' => 'string[]',
+        'activation_platforms' => 'string[]',
         'advertiser_types' => 'string[]',
+        'budget_models' => 'string[]',
         'buy_type' => 'string',
         'campaign_ids' => 'string[]',
         'campaign_type' => 'string',
@@ -95,7 +97,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'account_ids' => null,
+        'activation_platforms' => null,
         'advertiser_types' => null,
+        'budget_models' => null,
         'buy_type' => null,
         'campaign_ids' => null,
         'campaign_type' => null,
@@ -129,7 +133,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'account_ids' => false,
+		'activation_platforms' => false,
 		'advertiser_types' => false,
+		'budget_models' => false,
 		'buy_type' => false,
 		'campaign_ids' => false,
 		'campaign_type' => false,
@@ -243,7 +249,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'account_ids' => 'accountIds',
+        'activation_platforms' => 'activationPlatforms',
         'advertiser_types' => 'advertiserTypes',
+        'budget_models' => 'budgetModels',
         'buy_type' => 'buyType',
         'campaign_ids' => 'campaignIds',
         'campaign_type' => 'campaignType',
@@ -277,7 +285,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'account_ids' => 'setAccountIds',
+        'activation_platforms' => 'setActivationPlatforms',
         'advertiser_types' => 'setAdvertiserTypes',
+        'budget_models' => 'setBudgetModels',
         'buy_type' => 'setBuyType',
         'campaign_ids' => 'setCampaignIds',
         'campaign_type' => 'setCampaignType',
@@ -311,7 +321,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'account_ids' => 'getAccountIds',
+        'activation_platforms' => 'getActivationPlatforms',
         'advertiser_types' => 'getAdvertiserTypes',
+        'budget_models' => 'getBudgetModels',
         'buy_type' => 'getBuyType',
         'campaign_ids' => 'getCampaignIds',
         'campaign_type' => 'getCampaignType',
@@ -379,9 +391,13 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const ACTIVATION_PLATFORMS_COMMERCE_MAX = 'CommerceMax';
+    public const ACTIVATION_PLATFORMS_PRIVATE_MARKET = 'PrivateMarket';
     public const ADVERTISER_TYPES_RETAILER = 'retailer';
     public const ADVERTISER_TYPES_BRAND = 'brand';
     public const ADVERTISER_TYPES_SELLER = 'seller';
+    public const BUDGET_MODELS_CRITEO_BUDGET = 'CriteoBudget';
+    public const BUDGET_MODELS_RETAILER_BUDGET = 'RetailerBudget';
     public const BUY_TYPE_AUCTION = 'auction';
     public const BUY_TYPE_PREFERRED_DEALS = 'preferredDeals';
     public const BUY_TYPE_SPONSORSHIP = 'sponsorship';
@@ -427,6 +443,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const DIMENSIONS_ADV_PRODUCT_GTIN = 'advProductGtin';
     public const DIMENSIONS_ADV_PRODUCT_MPN = 'advProductMpn';
     public const DIMENSIONS_BUY_TYPE = 'buyType';
+    public const DIMENSIONS_BUDGET_MODEL = 'budgetModel';
+    public const DIMENSIONS_ACTIVATION_PLATFORM = 'activationPlatform';
     public const DIMENSIONS_SOLD_BY = 'soldBy';
     public const DIMENSIONS_SALE_CHANNEL = 'saleChannel';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
@@ -523,6 +541,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public const SOLD_BY_DIRECT_SOLD = 'directSold';
     public const SOLD_BY_INDIRECT_SOLD = 'indirectSold';
     public const SOLD_BY_PRIVATE_MARKET = 'privateMarket';
+    public const SOLD_BY_AUTHORIZED_BUYER = 'authorizedBuyer';
     public const TARGETED_KEYWORD_TYPES_UNKNOWN = 'unknown';
     public const TARGETED_KEYWORD_TYPES_GENERIC = 'generic';
     public const TARGETED_KEYWORD_TYPES_BRANDED = 'branded';
@@ -542,12 +561,38 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
      *
      * @return string[]
      */
+    public function getActivationPlatformsAllowableValues()
+    {
+        return [
+            self::ACTIVATION_PLATFORMS_COMMERCE_MAX,
+            self::ACTIVATION_PLATFORMS_PRIVATE_MARKET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
     public function getAdvertiserTypesAllowableValues()
     {
         return [
             self::ADVERTISER_TYPES_RETAILER,
             self::ADVERTISER_TYPES_BRAND,
             self::ADVERTISER_TYPES_SELLER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetModelsAllowableValues()
+    {
+        return [
+            self::BUDGET_MODELS_CRITEO_BUDGET,
+            self::BUDGET_MODELS_RETAILER_BUDGET,
         ];
     }
 
@@ -648,6 +693,8 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::DIMENSIONS_ADV_PRODUCT_GTIN,
             self::DIMENSIONS_ADV_PRODUCT_MPN,
             self::DIMENSIONS_BUY_TYPE,
+            self::DIMENSIONS_BUDGET_MODEL,
+            self::DIMENSIONS_ACTIVATION_PLATFORM,
             self::DIMENSIONS_SOLD_BY,
             self::DIMENSIONS_SALE_CHANNEL,
             self::DIMENSIONS_SALES_CHANNEL,
@@ -832,6 +879,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             self::SOLD_BY_DIRECT_SOLD,
             self::SOLD_BY_INDIRECT_SOLD,
             self::SOLD_BY_PRIVATE_MARKET,
+            self::SOLD_BY_AUTHORIZED_BUYER,
         ];
     }
 
@@ -897,7 +945,9 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('activation_platforms', $data ?? [], null);
         $this->setIfExists('advertiser_types', $data ?? [], null);
+        $this->setIfExists('budget_models', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_ids', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'all');
@@ -1108,6 +1158,42 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
+     * Gets activation_platforms
+     *
+     * @return string[]|null
+     */
+    public function getActivationPlatforms()
+    {
+        return $this->container['activation_platforms'];
+    }
+
+    /**
+     * Sets activation_platforms
+     *
+     * @param string[]|null $activation_platforms Filter on the activation platform: CommerceMax, PrivateMarket
+     *
+     * @return self
+     */
+    public function setActivationPlatforms($activation_platforms)
+    {
+        if (is_null($activation_platforms)) {
+            throw new \InvalidArgumentException('non-nullable activation_platforms cannot be null');
+        }
+        $allowedValues = $this->getActivationPlatformsAllowableValues();
+        if (array_diff($activation_platforms, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'activation_platforms', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['activation_platforms'] = $activation_platforms;
+
+        return $this;
+    }
+
+    /**
      * Gets advertiser_types
      *
      * @return string[]|null
@@ -1139,6 +1225,42 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['advertiser_types'] = $advertiser_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_models
+     *
+     * @return string[]|null
+     */
+    public function getBudgetModels()
+    {
+        return $this->container['budget_models'];
+    }
+
+    /**
+     * Sets budget_models
+     *
+     * @param string[]|null $budget_models Filter on the budget model: CriteoBudget, RetailerBudget
+     *
+     * @return self
+     */
+    public function setBudgetModels($budget_models)
+    {
+        if (is_null($budget_models)) {
+            throw new \InvalidArgumentException('non-nullable budget_models cannot be null');
+        }
+        $allowedValues = $this->getBudgetModelsAllowableValues();
+        if (array_diff($budget_models, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'budget_models', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_models'] = $budget_models;
 
         return $this;
     }
@@ -1759,7 +1881,7 @@ class AsyncRevenueReport implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets sold_by
      *
-     * @param string|null $sold_by Filter on the seller: Indirect Sold, Direct Sold or Private Market
+     * @param string|null $sold_by Filter on the seller: Indirect Sold, Direct Sold, Authorized Buyer or Private Market
      *
      * @return self
      */

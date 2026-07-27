@@ -4,15 +4,16 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addBrands()**](AccountsApi.md#addBrands) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/brands/add |  |
-| [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account |  |
-| [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account |  |
-| [**getAccounts()**](AccountsApi.md#getAccounts) | **GET** /2025-07/retail-media/accounts |  |
-| [**getPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |  |
-| [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /2025-07/retail-media/accounts/{accountId}/grant-consent |  |
-| [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove |  |
-| [**searchSellers()**](AccountsApi.md#searchSellers) | **POST** /2025-07/retail-media/accounts/sellers/search |  |
-| [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /2025-07/retail-media/account-management/accounts/{accountId}/sellers |  |
+| [**addBrands()**](AccountsApi.md#addBrands) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/brands/add | /2025-07/retail-media/account-management/accounts/{accountId}/brands/add |
+| [**createPrivateMarketDemandBrandAccount()**](AccountsApi.md#createPrivateMarketDemandBrandAccount) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account | /2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account |
+| [**createPrivateMarketDemandSellerAccount()**](AccountsApi.md#createPrivateMarketDemandSellerAccount) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account | /2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account |
+| [**getAccounts()**](AccountsApi.md#getAccounts) | **GET** /2025-07/retail-media/accounts | /2025-07/retail-media/accounts |
+| [**getPrivateMarketChildAccountsByAccountId()**](AccountsApi.md#getPrivateMarketChildAccountsByAccountId) | **GET** /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts | /2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts |
+| [**grantConsent()**](AccountsApi.md#grantConsent) | **POST** /2025-07/retail-media/accounts/{accountId}/grant-consent | /2025-07/retail-media/accounts/{accountId}/grant-consent |
+| [**removeBrands()**](AccountsApi.md#removeBrands) | **POST** /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove | /2025-07/retail-media/account-management/accounts/{accountId}/brands/remove |
+| [**searchBrands()**](AccountsApi.md#searchBrands) | **POST** /2025-07/retail-media/brands/search | /2025-07/retail-media/brands/search |
+| [**searchSellers()**](AccountsApi.md#searchSellers) | **POST** /2025-07/retail-media/accounts/sellers/search | /2025-07/retail-media/accounts/sellers/search |
+| [**updateSellers()**](AccountsApi.md#updateSellers) | **PUT** /2025-07/retail-media/account-management/accounts/{accountId}/sellers | /2025-07/retail-media/account-management/accounts/{accountId}/sellers |
 
 
 ## `addBrands()`
@@ -21,7 +22,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 addBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2025_07\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/brands/add
 
 Add brands to an account
 
@@ -86,7 +87,7 @@ try {
 createPrivateMarketDemandBrandAccount($account_id, $value_resource_input_of_retail_media_brand_account_creation): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomeOfRetailMediaAccount
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/create-brand-account
 
 Creates a new child Demand Brand account for the provided parent Private Market account
 
@@ -151,7 +152,7 @@ try {
 createPrivateMarketDemandSellerAccount($account_id, $value_resource_input_of_retail_media_seller_account_creation): \criteo\api\retailmedia\v2025_07\Model\EntityResourceOutcomeOfRetailMediaAccount
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/create-seller-account
 
 Creates a new child Demand Seller account for the provided parent Private Market account
 
@@ -216,7 +217,7 @@ try {
 getAccounts($limit_to_id, $page_index, $page_size): \criteo\api\retailmedia\v2025_07\Model\JsonApiPageResponseOfAccount
 ```
 
-
+/2025-07/retail-media/accounts
 
 Gets page of account objects that the current user can access
 
@@ -283,7 +284,7 @@ try {
 getPrivateMarketChildAccountsByAccountId($account_id, $limit, $offset): \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeOfRetailMediaChildAccountAndMetadata
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/private-market-child-accounts
 
 Gets Private Market child accounts that are associated with the given account
 
@@ -350,7 +351,7 @@ try {
 grantConsent($account_id, $grant_consent_input)
 ```
 
-
+/2025-07/retail-media/accounts/{accountId}/grant-consent
 
 Grant consent to a business application on behalf of a Private Market demand account
 
@@ -414,7 +415,7 @@ void (empty response body)
 removeBrands($account_id, $value_resource_input_of_retail_media_brands): \criteo\api\retailmedia\v2025_07\Model\ValueResourceOutcomeOfRetailMediaBrands
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/brands/remove
 
 Remove brands from an account
 
@@ -473,13 +474,80 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `searchBrands()`
+
+```php
+searchBrands($limit, $offset, $value_resource_input_brand_id_search_request): \criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata
+```
+
+/2025-07/retail-media/brands/search
+
+Search for brands given a retailer ID and search term.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2025_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\v2025_07\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\v2025_07\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$limit = 25; // int | the number of brands to return
+$offset = 0; // int | offset of paginated results
+$value_resource_input_brand_id_search_request = new \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputBrandIdSearchRequest(); // \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputBrandIdSearchRequest | BrandIdSearchRequest which contains the request parameters
+
+try {
+    $result = $apiInstance->searchBrands($limit, $offset, $value_resource_input_brand_id_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->searchBrands: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| the number of brands to return | [optional] [default to 25] |
+| **offset** | **int**| offset of paginated results | [optional] [default to 0] |
+| **value_resource_input_brand_id_search_request** | [**\criteo\api\retailmedia\v2025_07\Model\ValueResourceInputBrandIdSearchRequest**](../Model/ValueResourceInputBrandIdSearchRequest.md)| BrandIdSearchRequest which contains the request parameters | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\v2025_07\Model\EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata**](../Model/EntityResourceCollectionOutcomeBrandIdSearchResultPagingOffsetLimitMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `searchSellers()`
 
 ```php
 searchSellers($value_resource_input_of_seller_search): \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfSellerSearchResult
 ```
 
-
+/2025-07/retail-media/accounts/sellers/search
 
 Get the sellers mapped to provided accounts
 
@@ -542,7 +610,7 @@ try {
 updateSellers($account_id, $value_resource_collection_input_of_retail_media_seller): \criteo\api\retailmedia\v2025_07\Model\ValueResourceCollectionOutcomeOfRetailMediaSeller
 ```
 
-
+/2025-07/retail-media/account-management/accounts/{accountId}/sellers
 
 Replace the sellers associated with an account
 

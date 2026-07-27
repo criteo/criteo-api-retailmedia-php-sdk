@@ -131,6 +131,8 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1
      *
+     * /2025-07/retail-media/billing/partner-report
+     *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
@@ -146,6 +148,8 @@ class BillingApi
 
     /**
      * Operation createPartnerBillingReportRequestV1WithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
@@ -245,6 +249,8 @@ class BillingApi
     /**
      * Operation createPartnerBillingReportRequestV1Async
      *
+     * /2025-07/retail-media/billing/partner-report
+     *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
      *
@@ -263,6 +269,8 @@ class BillingApi
 
     /**
      * Operation createPartnerBillingReportRequestV1AsyncWithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report
      *
      * @param  \criteo\api\retailmedia\v2025_07\Model\ValueResourceInputPartnerBillingReportRequestV1 $value_resource_input_partner_billing_report_request_v1 Partner Billing Report request object. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPartnerBillingReportRequestV1'] to see the possible values for this operation
@@ -413,6 +421,8 @@ class BillingApi
     /**
      * Operation getPartnerBillingReportOutputV1
      *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/output
+     *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
@@ -428,6 +438,8 @@ class BillingApi
 
     /**
      * Operation getPartnerBillingReportOutputV1WithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/output
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
@@ -527,6 +539,8 @@ class BillingApi
     /**
      * Operation getPartnerBillingReportOutputV1Async
      *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/output
+     *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
      *
@@ -545,6 +559,8 @@ class BillingApi
 
     /**
      * Operation getPartnerBillingReportOutputV1AsyncWithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/output
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportOutputV1'] to see the possible values for this operation
@@ -696,6 +712,8 @@ class BillingApi
     /**
      * Operation getPartnerBillingReportStatusV1
      *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/status
+     *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
@@ -711,6 +729,8 @@ class BillingApi
 
     /**
      * Operation getPartnerBillingReportStatusV1WithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/status
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
@@ -810,6 +830,8 @@ class BillingApi
     /**
      * Operation getPartnerBillingReportStatusV1Async
      *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/status
+     *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
      *
@@ -828,6 +850,8 @@ class BillingApi
 
     /**
      * Operation getPartnerBillingReportStatusV1AsyncWithHttpInfo
+     *
+     * /2025-07/retail-media/billing/partner-report/{requestId}/status
      *
      * @param  string $request_id The id of a Partner Billing Report request. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPartnerBillingReportStatusV1'] to see the possible values for this operation
