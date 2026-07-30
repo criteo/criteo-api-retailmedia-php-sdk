@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\BrandIdSearchResult**](BrandIdSearchResult.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2027_01\Model\BrandIdSearchResult**](BrandIdSearchResult.md) |  | [optional]
 **id** | **string** | Unique id of the entity. | [optional]
 **type** | **string** | Type of the resource. | [optional]
 

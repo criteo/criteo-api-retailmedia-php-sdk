@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attributes** | [**\criteo\api\retailmedia\preview\Model\PreferredLineItemV2**](PreferredLineItemV2.md) |  | [optional]
+**attributes** | [**\criteo\api\retailmedia\v2027_01\Model\PreferredLineItemV2**](PreferredLineItemV2.md) |  | [optional]
 **id** | **string** | Id of the entity | [optional]
 **type** | **string** | Canonical type name of the entity | [optional]
 

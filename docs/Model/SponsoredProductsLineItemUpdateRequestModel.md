@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **budget** | **float** | The total budget allocated for this line item. | [optional]
 **daily_pacing** | **float** | The daily pacing amount for the line item. | [optional]
 **end_date** | **\DateTime** | The date and time when the line item stops running. | [optional]
-**flight_schedule** | [**\criteo\api\retailmedia\preview\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
+**flight_schedule** | [**\criteo\api\retailmedia\v2027_01\Model\FlightSchedule**](FlightSchedule.md) |  | [optional]
 **is_auto_daily_pacing** | **bool** | True if daily pacing is automatic, false if manual. |
 **max_bid** | **float** | The maximum bid amount for the line item. | [optional]
 **monthly_pacing** | **float** | The monthly pacing amount for the line item. | [optional]
