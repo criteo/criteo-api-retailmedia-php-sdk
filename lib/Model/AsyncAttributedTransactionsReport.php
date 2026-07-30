@@ -302,6 +302,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
     public const DIMENSIONS_ADVERTISED_DATE = 'advertisedDate';
     public const DIMENSIONS_ADVERTISED_HOUR = 'advertisedHour';
     public const DIMENSIONS_DAYS_DIFFERENCE = 'daysDifference';
+    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
+    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
@@ -387,6 +389,8 @@ class AsyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, 
             self::DIMENSIONS_ADVERTISED_DATE,
             self::DIMENSIONS_ADVERTISED_HOUR,
             self::DIMENSIONS_DAYS_DIFFERENCE,
+            self::DIMENSIONS_ACCOUNT_ID,
+            self::DIMENSIONS_ACCOUNT_NAME,
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_LINE_ITEM_ID,

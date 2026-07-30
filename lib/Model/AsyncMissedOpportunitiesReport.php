@@ -260,6 +260,8 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     }
 
     public const DIMENSIONS_DATE = 'date';
+    public const DIMENSIONS_ACCOUNT_ID = 'accountId';
+    public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_CAMPAIGN_ID = 'campaignId';
     public const DIMENSIONS_CAMPAIGN_NAME = 'campaignName';
     public const DIMENSIONS_LINE_ITEM_ID = 'lineItemId';
@@ -297,6 +299,8 @@ class AsyncMissedOpportunitiesReport implements ModelInterface, ArrayAccess, \Js
     {
         return [
             self::DIMENSIONS_DATE,
+            self::DIMENSIONS_ACCOUNT_ID,
+            self::DIMENSIONS_ACCOUNT_NAME,
             self::DIMENSIONS_CAMPAIGN_ID,
             self::DIMENSIONS_CAMPAIGN_NAME,
             self::DIMENSIONS_LINE_ITEM_ID,
