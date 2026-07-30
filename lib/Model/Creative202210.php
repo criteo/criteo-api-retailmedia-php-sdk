@@ -311,6 +311,14 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
     public const CREATIVE_FORMAT_TYPE_CUSTOM = 'CUSTOM';
     public const CREATIVE_FORMAT_TYPE_DISPLAY_PANEL = 'DisplayPanel';
     public const CREATIVE_FORMAT_TYPE_DIGITAL_SHELF_TALKER = 'DigitalShelfTalker';
+    public const CREATIVE_FORMAT_TYPE_COMMERCE_VIDEO_SPOTLIGHT = 'CommerceVideoSpotlight';
+    public const CREATIVE_FORMAT_TYPE_BRANDING_VIDEO_STANDOUT = 'BrandingVideoStandout';
+    public const CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_SPOTLIGHT = 'CommerceDisplaySpotlight';
+    public const CREATIVE_FORMAT_TYPE_BRANDING_DISPLAY_SPOTLIGHT_SOLO = 'BrandingDisplaySpotlightSolo';
+    public const CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_GRID_SHELF = 'CommerceDisplayGridShelf';
+    public const CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_GRID_DUET = 'CommerceDisplayGridDuet';
+    public const CREATIVE_FORMAT_TYPE_BRANDING_DISPLAY_GRID_SOLO = 'BrandingDisplayGridSolo';
+    public const CREATIVE_FORMAT_TYPE_COMMERCE_VIDEO_GRID_DUET = 'CommerceVideoGridDuet';
     public const STATUS_READY = 'Ready';
     public const STATUS_IN_USE = 'In_Use';
     public const STATUS_ARCHIVED = 'Archived';
@@ -334,6 +342,14 @@ class Creative202210 implements ModelInterface, ArrayAccess, \JsonSerializable
             self::CREATIVE_FORMAT_TYPE_CUSTOM,
             self::CREATIVE_FORMAT_TYPE_DISPLAY_PANEL,
             self::CREATIVE_FORMAT_TYPE_DIGITAL_SHELF_TALKER,
+            self::CREATIVE_FORMAT_TYPE_COMMERCE_VIDEO_SPOTLIGHT,
+            self::CREATIVE_FORMAT_TYPE_BRANDING_VIDEO_STANDOUT,
+            self::CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_SPOTLIGHT,
+            self::CREATIVE_FORMAT_TYPE_BRANDING_DISPLAY_SPOTLIGHT_SOLO,
+            self::CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_GRID_SHELF,
+            self::CREATIVE_FORMAT_TYPE_COMMERCE_DISPLAY_GRID_DUET,
+            self::CREATIVE_FORMAT_TYPE_BRANDING_DISPLAY_GRID_SOLO,
+            self::CREATIVE_FORMAT_TYPE_COMMERCE_VIDEO_GRID_DUET,
         ];
     }
 
