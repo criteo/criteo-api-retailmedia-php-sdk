@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceHistoryChangeDataCaptureV1
+ * ExperimentalCreateLineItemModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BalanceHistoryChangeDataCaptureV1 Class Doc Comment
+ * ExperimentalCreateLineItemModel Class Doc Comment
  *
  * @category Class
- * @description Data model represents the data change capture of balance history.
+ * @description The settings to create a line item with.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceHistoryChangeDataCaptureV1';
+    protected static $openAPIModelName = 'ExperimentalCreateLineItemModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_details' => '\criteo\api\retailmedia\experimental\Model\ChangeDetailsV1',
-        'change_type' => 'string',
-        'date_of_modification' => '\DateTime',
-        'memo' => 'string',
-        'modified_by_user' => 'string'
+        'campaign_id' => 'string',
+        'flight_dates' => '\criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel',
+        'is_paused' => 'bool',
+        'name' => 'string',
+        'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExperimentalCreateOnsiteDisplayLineItemDetails',
+        'retailer_id' => 'string',
+        'serve_to_opt_out_user' => 'bool'
     ];
 
     /**
@@ -73,11 +75,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_details' => null,
-        'change_type' => null,
-        'date_of_modification' => 'date-time',
-        'memo' => null,
-        'modified_by_user' => null
+        'campaign_id' => null,
+        'flight_dates' => null,
+        'is_paused' => null,
+        'name' => null,
+        'onsite_display_details' => null,
+        'retailer_id' => null,
+        'serve_to_opt_out_user' => null
     ];
 
     /**
@@ -86,11 +90,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_details' => false,
-		'change_type' => false,
-		'date_of_modification' => false,
-		'memo' => true,
-		'modified_by_user' => false
+        'campaign_id' => true,
+		'flight_dates' => true,
+		'is_paused' => true,
+		'name' => true,
+		'onsite_display_details' => false,
+		'retailer_id' => true,
+		'serve_to_opt_out_user' => true
     ];
 
     /**
@@ -179,11 +185,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_details' => 'changeDetails',
-        'change_type' => 'changeType',
-        'date_of_modification' => 'dateOfModification',
-        'memo' => 'memo',
-        'modified_by_user' => 'modifiedByUser'
+        'campaign_id' => 'campaignId',
+        'flight_dates' => 'flightDates',
+        'is_paused' => 'isPaused',
+        'name' => 'name',
+        'onsite_display_details' => 'onsiteDisplayDetails',
+        'retailer_id' => 'retailerId',
+        'serve_to_opt_out_user' => 'serveToOptOutUser'
     ];
 
     /**
@@ -192,11 +200,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'change_details' => 'setChangeDetails',
-        'change_type' => 'setChangeType',
-        'date_of_modification' => 'setDateOfModification',
-        'memo' => 'setMemo',
-        'modified_by_user' => 'setModifiedByUser'
+        'campaign_id' => 'setCampaignId',
+        'flight_dates' => 'setFlightDates',
+        'is_paused' => 'setIsPaused',
+        'name' => 'setName',
+        'onsite_display_details' => 'setOnsiteDisplayDetails',
+        'retailer_id' => 'setRetailerId',
+        'serve_to_opt_out_user' => 'setServeToOptOutUser'
     ];
 
     /**
@@ -205,11 +215,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'change_details' => 'getChangeDetails',
-        'change_type' => 'getChangeType',
-        'date_of_modification' => 'getDateOfModification',
-        'memo' => 'getMemo',
-        'modified_by_user' => 'getModifiedByUser'
+        'campaign_id' => 'getCampaignId',
+        'flight_dates' => 'getFlightDates',
+        'is_paused' => 'getIsPaused',
+        'name' => 'getName',
+        'onsite_display_details' => 'getOnsiteDisplayDetails',
+        'retailer_id' => 'getRetailerId',
+        'serve_to_opt_out_user' => 'getServeToOptOutUser'
     ];
 
     /**
@@ -253,43 +265,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const CHANGE_TYPE_BALANCE_CREATED = 'BalanceCreated';
-    public const CHANGE_TYPE_BALANCE_ADDED = 'BalanceAdded';
-    public const CHANGE_TYPE_BALANCE_REMOVED = 'BalanceRemoved';
-    public const CHANGE_TYPE_BALANCE_UNCAPPED = 'BalanceUncapped';
-    public const CHANGE_TYPE_BALANCE_CAPPED = 'BalanceCapped';
-    public const CHANGE_TYPE_END_DATE = 'EndDate';
-    public const CHANGE_TYPE_START_DATE = 'StartDate';
-    public const CHANGE_TYPE_BALANCE_NAME = 'BalanceName';
-    public const CHANGE_TYPE_RETAILER_PO_NUMBER = 'RetailerPoNumber';
-    public const CHANGE_TYPE_CRITEO_PO_NUMBER = 'CriteoPoNumber';
-    public const CHANGE_TYPE_RETAILER_ID = 'RetailerId';
-    public const CHANGE_TYPE_VALUE_ADD = 'ValueAdd';
-    public const CHANGE_TYPE_UNKNOWN = 'Unknown';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getChangeTypeAllowableValues()
-    {
-        return [
-            self::CHANGE_TYPE_BALANCE_CREATED,
-            self::CHANGE_TYPE_BALANCE_ADDED,
-            self::CHANGE_TYPE_BALANCE_REMOVED,
-            self::CHANGE_TYPE_BALANCE_UNCAPPED,
-            self::CHANGE_TYPE_BALANCE_CAPPED,
-            self::CHANGE_TYPE_END_DATE,
-            self::CHANGE_TYPE_START_DATE,
-            self::CHANGE_TYPE_BALANCE_NAME,
-            self::CHANGE_TYPE_RETAILER_PO_NUMBER,
-            self::CHANGE_TYPE_CRITEO_PO_NUMBER,
-            self::CHANGE_TYPE_RETAILER_ID,
-            self::CHANGE_TYPE_VALUE_ADD,
-            self::CHANGE_TYPE_UNKNOWN,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,11 +281,13 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_details', $data ?? [], null);
-        $this->setIfExists('change_type', $data ?? [], null);
-        $this->setIfExists('date_of_modification', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
-        $this->setIfExists('modified_by_user', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('flight_dates', $data ?? [], null);
+        $this->setIfExists('is_paused', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('onsite_display_details', $data ?? [], null);
+        $this->setIfExists('retailer_id', $data ?? [], null);
+        $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
     }
 
     /**
@@ -340,27 +317,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['change_details'] === null) {
-            $invalidProperties[] = "'change_details' can't be null";
-        }
-        if ($this->container['change_type'] === null) {
-            $invalidProperties[] = "'change_type' can't be null";
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!is_null($this->container['change_type']) && !in_array($this->container['change_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'change_type', must be one of '%s'",
-                $this->container['change_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['date_of_modification'] === null) {
-            $invalidProperties[] = "'date_of_modification' can't be null";
-        }
-        if ($this->container['modified_by_user'] === null) {
-            $invalidProperties[] = "'modified_by_user' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -377,153 +333,232 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets change_details
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1
-     */
-    public function getChangeDetails()
-    {
-        return $this->container['change_details'];
-    }
-
-    /**
-     * Sets change_details
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1 $change_details change_details
-     *
-     * @return self
-     */
-    public function setChangeDetails($change_details)
-    {
-        if (is_null($change_details)) {
-            throw new \InvalidArgumentException('non-nullable change_details cannot be null');
-        }
-        $this->container['change_details'] = $change_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets change_type
-     *
-     * @return string
-     */
-    public function getChangeType()
-    {
-        return $this->container['change_type'];
-    }
-
-    /**
-     * Sets change_type
-     *
-     * @param string $change_type Represent the type of change states of the history.
-     *
-     * @return self
-     */
-    public function setChangeType($change_type)
-    {
-        if (is_null($change_type)) {
-            throw new \InvalidArgumentException('non-nullable change_type cannot be null');
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!in_array($change_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'change_type', must be one of '%s'",
-                    $change_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['change_type'] = $change_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_of_modification
-     *
-     * @return \DateTime
-     */
-    public function getDateOfModification()
-    {
-        return $this->container['date_of_modification'];
-    }
-
-    /**
-     * Sets date_of_modification
-     *
-     * @param \DateTime $date_of_modification Date when data change has occured.
-     *
-     * @return self
-     */
-    public function setDateOfModification($date_of_modification)
-    {
-        if (is_null($date_of_modification)) {
-            throw new \InvalidArgumentException('non-nullable date_of_modification cannot be null');
-        }
-        $this->container['date_of_modification'] = $date_of_modification;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
+     * Gets campaign_id
      *
      * @return string|null
      */
-    public function getMemo()
+    public function getCampaignId()
     {
-        return $this->container['memo'];
+        return $this->container['campaign_id'];
     }
 
     /**
-     * Sets memo
+     * Sets campaign_id
      *
-     * @param string|null $memo Memo associate with the insertion order modification.
+     * @param string|null $campaign_id The campaign id of the associated campaign.
      *
      * @return self
      */
-    public function setMemo($memo)
+    public function setCampaignId($campaign_id)
     {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
+        if (is_null($campaign_id)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
+            $index = array_search('campaign_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['memo'] = $memo;
+        $this->container['campaign_id'] = $campaign_id;
 
         return $this;
     }
 
     /**
-     * Gets modified_by_user
+     * Gets flight_dates
      *
-     * @return string
+     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel|null
      */
-    public function getModifiedByUser()
+    public function getFlightDates()
     {
-        return $this->container['modified_by_user'];
+        return $this->container['flight_dates'];
     }
 
     /**
-     * Sets modified_by_user
+     * Sets flight_dates
      *
-     * @param string $modified_by_user Username who modified the insertion order.
+     * @param \criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel|null $flight_dates flight_dates
      *
      * @return self
      */
-    public function setModifiedByUser($modified_by_user)
+    public function setFlightDates($flight_dates)
     {
-        if (is_null($modified_by_user)) {
-            throw new \InvalidArgumentException('non-nullable modified_by_user cannot be null');
+        if (is_null($flight_dates)) {
+            array_push($this->openAPINullablesSetToNull, 'flight_dates');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('flight_dates', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['modified_by_user'] = $modified_by_user;
+        $this->container['flight_dates'] = $flight_dates;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paused
+     *
+     * @return bool|null
+     */
+    public function getIsPaused()
+    {
+        return $this->container['is_paused'];
+    }
+
+    /**
+     * Sets is_paused
+     *
+     * @param bool|null $is_paused Whether the line item should be paused or unpaused.
+     *
+     * @return self
+     */
+    public function setIsPaused($is_paused)
+    {
+        if (is_null($is_paused)) {
+            array_push($this->openAPINullablesSetToNull, 'is_paused');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_paused', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_paused'] = $is_paused;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name The name of the line item.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets onsite_display_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalCreateOnsiteDisplayLineItemDetails|null
+     */
+    public function getOnsiteDisplayDetails()
+    {
+        return $this->container['onsite_display_details'];
+    }
+
+    /**
+     * Sets onsite_display_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\ExperimentalCreateOnsiteDisplayLineItemDetails|null $onsite_display_details onsite_display_details
+     *
+     * @return self
+     */
+    public function setOnsiteDisplayDetails($onsite_display_details)
+    {
+        if (is_null($onsite_display_details)) {
+            throw new \InvalidArgumentException('non-nullable onsite_display_details cannot be null');
+        }
+        $this->container['onsite_display_details'] = $onsite_display_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets retailer_id
+     *
+     * @return string|null
+     */
+    public function getRetailerId()
+    {
+        return $this->container['retailer_id'];
+    }
+
+    /**
+     * Sets retailer_id
+     *
+     * @param string|null $retailer_id The retailer id of the associated retailer.
+     *
+     * @return self
+     */
+    public function setRetailerId($retailer_id)
+    {
+        if (is_null($retailer_id)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['retailer_id'] = $retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets serve_to_opt_out_user
+     *
+     * @return bool|null
+     */
+    public function getServeToOptOutUser()
+    {
+        return $this->container['serve_to_opt_out_user'];
+    }
+
+    /**
+     * Sets serve_to_opt_out_user
+     *
+     * @param bool|null $serve_to_opt_out_user Whether to serve ads to users who have opted out of personalization.
+     *
+     * @return self
+     */
+    public function setServeToOptOutUser($serve_to_opt_out_user)
+    {
+        if (is_null($serve_to_opt_out_user)) {
+            array_push($this->openAPINullablesSetToNull, 'serve_to_opt_out_user');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('serve_to_opt_out_user', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['serve_to_opt_out_user'] = $serve_to_opt_out_user;
 
         return $this;
     }

@@ -10,6 +10,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**computeDisplayMinBidByRetailerId()**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /experimental/retail-media/retailers/{retailerId}/compute-display-min-bid | /experimental/retail-media/retailers/{retailerId}/compute-display-min-bid |
 | [**createAuctionLineItem()**](CampaignApi.md#createAuctionLineItem) | **POST** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items |
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives |
+| [**createLineItem()**](CampaignApi.md#createLineItem) | **POST** /experimental/retail-media/line-items | /experimental/retail-media/line-items |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items |
 | [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/delete | /experimental/retail-media/balances/{balanceId}/campaigns/delete |
 | [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
@@ -24,12 +25,15 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getPreferredLineItemsByLineItemId()**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
 | [**getProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId()**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
+| [**lineItemsDemandSearch()**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
+| [**lineItemsSupplySearch()**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/pause | /experimental/retail-media/line-items/{line-item-id}/products/pause |
 | [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search |
 | [**searchAccountRetailers()**](CampaignApi.md#searchAccountRetailers) | **POST** /experimental/retail-media/accounts/{accountId}/retailers/search | /experimental/retail-media/accounts/{accountId}/retailers/search |
 | [**unpausePromotedProducts()**](CampaignApi.md#unpausePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/unpause | /experimental/retail-media/line-items/{line-item-id}/products/unpause |
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
 | [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**updateLineItem()**](CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
 | [**updateProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 
@@ -410,6 +414,69 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createLineItem()`
+
+```php
+createLineItem($experimental_create_line_item_model_request): \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+```
+
+/experimental/retail-media/line-items
+
+Create a new line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$experimental_create_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest | Line item details
+
+try {
+    $result = $apiInstance->createLineItem($experimental_create_line_item_model_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->createLineItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **experimental_create_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest**](../Model/ExperimentalCreateLineItemModelRequest.md)| Line item details | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse**](../Model/ExperimentalLineItemModelResponse.md)
 
 ### Authorization
 
@@ -1337,6 +1404,132 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `lineItemsDemandSearch()`
+
+```php
+lineItemsDemandSearch($demand_search_request): \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination
+```
+
+/experimental/retail-media/line-items/demand-search
+
+Search line items accessible from demand accounts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$demand_search_request = new \criteo\api\retailmedia\experimental\Model\DemandSearchRequest(); // \criteo\api\retailmedia\experimental\Model\DemandSearchRequest | Search criteria and pagination.
+
+try {
+    $result = $apiInstance->lineItemsDemandSearch($demand_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->lineItemsDemandSearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **demand_search_request** | [**\criteo\api\retailmedia\experimental\Model\DemandSearchRequest**](../Model/DemandSearchRequest.md)| Search criteria and pagination. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination**](../Model/LineItemListResponseWithPagination.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `lineItemsSupplySearch()`
+
+```php
+lineItemsSupplySearch($supply_search_request): \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination
+```
+
+/experimental/retail-media/line-items/supply-search
+
+Search line items accessible from a supply account and its retailers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$supply_search_request = new \criteo\api\retailmedia\experimental\Model\SupplySearchRequest(); // \criteo\api\retailmedia\experimental\Model\SupplySearchRequest | Search criteria and pagination.
+
+try {
+    $result = $apiInstance->lineItemsSupplySearch($supply_search_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->lineItemsSupplySearch: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **supply_search_request** | [**\criteo\api\retailmedia\experimental\Model\SupplySearchRequest**](../Model/SupplySearchRequest.md)| Search criteria and pagination. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination**](../Model/LineItemListResponseWithPagination.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `pausePromotedProducts()`
 
 ```php
@@ -1404,7 +1597,7 @@ void (empty response body)
 ## `searchAccountCreatives()`
 
 ```php
-searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit, $offset): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse
+searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit, $offset): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
 ```
 
 /experimental/retail-media/accounts/{account-id}/creatives/search
@@ -1455,7 +1648,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse**](../Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata**](../Model/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
 
 ### Authorization
 
@@ -1721,6 +1914,71 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateLineItem()`
+
+```php
+updateLineItem($line_item_id, $experimental_update_line_item_model_request): \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+```
+
+/experimental/retail-media/line-items/{line-item-id}
+
+Update an existing line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item id
+$experimental_update_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest | Line item details
+
+try {
+    $result = $apiInstance->updateLineItem($line_item_id, $experimental_update_line_item_model_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->updateLineItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item id | |
+| **experimental_update_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest**](../Model/ExperimentalUpdateLineItemModelRequest.md)| Line item details | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse**](../Model/ExperimentalLineItemModelResponse.md)
 
 ### Authorization
 

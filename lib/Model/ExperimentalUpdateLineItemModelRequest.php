@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceHistoryChangeDataCaptureV1
+ * ExperimentalUpdateLineItemModelRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BalanceHistoryChangeDataCaptureV1 Class Doc Comment
+ * ExperimentalUpdateLineItemModelRequest Class Doc Comment
  *
  * @category Class
- * @description Data model represents the data change capture of balance history.
+ * @description A top-level object that encapsulates a Criteo API request for a single value object.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentalUpdateLineItemModelRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceHistoryChangeDataCaptureV1';
+    protected static $openAPIModelName = 'ExperimentalUpdateLineItemModelRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_details' => '\criteo\api\retailmedia\experimental\Model\ChangeDetailsV1',
-        'change_type' => 'string',
-        'date_of_modification' => '\DateTime',
-        'memo' => 'string',
-        'modified_by_user' => 'string'
+        'data' => '\criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelResource'
     ];
 
     /**
@@ -73,11 +69,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_details' => null,
-        'change_type' => null,
-        'date_of_modification' => 'date-time',
-        'memo' => null,
-        'modified_by_user' => null
+        'data' => null
     ];
 
     /**
@@ -86,11 +78,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_details' => false,
-		'change_type' => false,
-		'date_of_modification' => false,
-		'memo' => true,
-		'modified_by_user' => false
+        'data' => false
     ];
 
     /**
@@ -179,11 +167,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_details' => 'changeDetails',
-        'change_type' => 'changeType',
-        'date_of_modification' => 'dateOfModification',
-        'memo' => 'memo',
-        'modified_by_user' => 'modifiedByUser'
+        'data' => 'data'
     ];
 
     /**
@@ -192,11 +176,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'change_details' => 'setChangeDetails',
-        'change_type' => 'setChangeType',
-        'date_of_modification' => 'setDateOfModification',
-        'memo' => 'setMemo',
-        'modified_by_user' => 'setModifiedByUser'
+        'data' => 'setData'
     ];
 
     /**
@@ -205,11 +185,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'change_details' => 'getChangeDetails',
-        'change_type' => 'getChangeType',
-        'date_of_modification' => 'getDateOfModification',
-        'memo' => 'getMemo',
-        'modified_by_user' => 'getModifiedByUser'
+        'data' => 'getData'
     ];
 
     /**
@@ -253,43 +229,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const CHANGE_TYPE_BALANCE_CREATED = 'BalanceCreated';
-    public const CHANGE_TYPE_BALANCE_ADDED = 'BalanceAdded';
-    public const CHANGE_TYPE_BALANCE_REMOVED = 'BalanceRemoved';
-    public const CHANGE_TYPE_BALANCE_UNCAPPED = 'BalanceUncapped';
-    public const CHANGE_TYPE_BALANCE_CAPPED = 'BalanceCapped';
-    public const CHANGE_TYPE_END_DATE = 'EndDate';
-    public const CHANGE_TYPE_START_DATE = 'StartDate';
-    public const CHANGE_TYPE_BALANCE_NAME = 'BalanceName';
-    public const CHANGE_TYPE_RETAILER_PO_NUMBER = 'RetailerPoNumber';
-    public const CHANGE_TYPE_CRITEO_PO_NUMBER = 'CriteoPoNumber';
-    public const CHANGE_TYPE_RETAILER_ID = 'RetailerId';
-    public const CHANGE_TYPE_VALUE_ADD = 'ValueAdd';
-    public const CHANGE_TYPE_UNKNOWN = 'Unknown';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getChangeTypeAllowableValues()
-    {
-        return [
-            self::CHANGE_TYPE_BALANCE_CREATED,
-            self::CHANGE_TYPE_BALANCE_ADDED,
-            self::CHANGE_TYPE_BALANCE_REMOVED,
-            self::CHANGE_TYPE_BALANCE_UNCAPPED,
-            self::CHANGE_TYPE_BALANCE_CAPPED,
-            self::CHANGE_TYPE_END_DATE,
-            self::CHANGE_TYPE_START_DATE,
-            self::CHANGE_TYPE_BALANCE_NAME,
-            self::CHANGE_TYPE_RETAILER_PO_NUMBER,
-            self::CHANGE_TYPE_CRITEO_PO_NUMBER,
-            self::CHANGE_TYPE_RETAILER_ID,
-            self::CHANGE_TYPE_VALUE_ADD,
-            self::CHANGE_TYPE_UNKNOWN,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,11 +245,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_details', $data ?? [], null);
-        $this->setIfExists('change_type', $data ?? [], null);
-        $this->setIfExists('date_of_modification', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
-        $this->setIfExists('modified_by_user', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -340,27 +275,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['change_details'] === null) {
-            $invalidProperties[] = "'change_details' can't be null";
-        }
-        if ($this->container['change_type'] === null) {
-            $invalidProperties[] = "'change_type' can't be null";
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!is_null($this->container['change_type']) && !in_array($this->container['change_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'change_type', must be one of '%s'",
-                $this->container['change_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['date_of_modification'] === null) {
-            $invalidProperties[] = "'date_of_modification' can't be null";
-        }
-        if ($this->container['modified_by_user'] === null) {
-            $invalidProperties[] = "'modified_by_user' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -377,153 +291,28 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets change_details
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1
+     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelResource|null
      */
-    public function getChangeDetails()
+    public function getData()
     {
-        return $this->container['change_details'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets change_details
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1 $change_details change_details
+     * @param \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelResource|null $data data
      *
      * @return self
      */
-    public function setChangeDetails($change_details)
+    public function setData($data)
     {
-        if (is_null($change_details)) {
-            throw new \InvalidArgumentException('non-nullable change_details cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['change_details'] = $change_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets change_type
-     *
-     * @return string
-     */
-    public function getChangeType()
-    {
-        return $this->container['change_type'];
-    }
-
-    /**
-     * Sets change_type
-     *
-     * @param string $change_type Represent the type of change states of the history.
-     *
-     * @return self
-     */
-    public function setChangeType($change_type)
-    {
-        if (is_null($change_type)) {
-            throw new \InvalidArgumentException('non-nullable change_type cannot be null');
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!in_array($change_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'change_type', must be one of '%s'",
-                    $change_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['change_type'] = $change_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_of_modification
-     *
-     * @return \DateTime
-     */
-    public function getDateOfModification()
-    {
-        return $this->container['date_of_modification'];
-    }
-
-    /**
-     * Sets date_of_modification
-     *
-     * @param \DateTime $date_of_modification Date when data change has occured.
-     *
-     * @return self
-     */
-    public function setDateOfModification($date_of_modification)
-    {
-        if (is_null($date_of_modification)) {
-            throw new \InvalidArgumentException('non-nullable date_of_modification cannot be null');
-        }
-        $this->container['date_of_modification'] = $date_of_modification;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Memo associate with the insertion order modification.
-     *
-     * @return self
-     */
-    public function setMemo($memo)
-    {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets modified_by_user
-     *
-     * @return string
-     */
-    public function getModifiedByUser()
-    {
-        return $this->container['modified_by_user'];
-    }
-
-    /**
-     * Sets modified_by_user
-     *
-     * @param string $modified_by_user Username who modified the insertion order.
-     *
-     * @return self
-     */
-    public function setModifiedByUser($modified_by_user)
-    {
-        if (is_null($modified_by_user)) {
-            throw new \InvalidArgumentException('non-nullable modified_by_user cannot be null');
-        }
-        $this->container['modified_by_user'] = $modified_by_user;
+        $this->container['data'] = $data;
 
         return $this;
     }

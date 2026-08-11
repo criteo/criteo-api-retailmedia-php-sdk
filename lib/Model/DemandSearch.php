@@ -1,6 +1,6 @@
 <?php
 /**
- * BalanceHistoryChangeDataCaptureV1
+ * DemandSearch
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BalanceHistoryChangeDataCaptureV1 Class Doc Comment
+ * DemandSearch Class Doc Comment
  *
  * @category Class
- * @description Data model represents the data change capture of balance history.
+ * @description Request attributes for a Demand Account Line Item search
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, \JsonSerializable
+class DemandSearch implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BalanceHistoryChangeDataCaptureV1';
+    protected static $openAPIModelName = 'DemandSearch';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'change_details' => '\criteo\api\retailmedia\experimental\Model\ChangeDetailsV1',
-        'change_type' => 'string',
-        'date_of_modification' => '\DateTime',
-        'memo' => 'string',
-        'modified_by_user' => 'string'
+        'account_ids' => 'string[]',
+        'campaign_ids' => 'string[]',
+        'include_children_accounts' => 'bool',
+        'limit' => 'int',
+        'line_item_ids' => 'string[]',
+        'offset' => 'int'
     ];
 
     /**
@@ -73,11 +74,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'change_details' => null,
-        'change_type' => null,
-        'date_of_modification' => 'date-time',
-        'memo' => null,
-        'modified_by_user' => null
+        'account_ids' => null,
+        'campaign_ids' => null,
+        'include_children_accounts' => null,
+        'limit' => 'int32',
+        'line_item_ids' => null,
+        'offset' => 'int32'
     ];
 
     /**
@@ -86,11 +88,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'change_details' => false,
-		'change_type' => false,
-		'date_of_modification' => false,
-		'memo' => true,
-		'modified_by_user' => false
+        'account_ids' => true,
+		'campaign_ids' => true,
+		'include_children_accounts' => false,
+		'limit' => true,
+		'line_item_ids' => true,
+		'offset' => true
     ];
 
     /**
@@ -179,11 +182,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'change_details' => 'changeDetails',
-        'change_type' => 'changeType',
-        'date_of_modification' => 'dateOfModification',
-        'memo' => 'memo',
-        'modified_by_user' => 'modifiedByUser'
+        'account_ids' => 'accountIds',
+        'campaign_ids' => 'campaignIds',
+        'include_children_accounts' => 'includeChildrenAccounts',
+        'limit' => 'limit',
+        'line_item_ids' => 'lineItemIds',
+        'offset' => 'offset'
     ];
 
     /**
@@ -192,11 +196,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
-        'change_details' => 'setChangeDetails',
-        'change_type' => 'setChangeType',
-        'date_of_modification' => 'setDateOfModification',
-        'memo' => 'setMemo',
-        'modified_by_user' => 'setModifiedByUser'
+        'account_ids' => 'setAccountIds',
+        'campaign_ids' => 'setCampaignIds',
+        'include_children_accounts' => 'setIncludeChildrenAccounts',
+        'limit' => 'setLimit',
+        'line_item_ids' => 'setLineItemIds',
+        'offset' => 'setOffset'
     ];
 
     /**
@@ -205,11 +210,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
-        'change_details' => 'getChangeDetails',
-        'change_type' => 'getChangeType',
-        'date_of_modification' => 'getDateOfModification',
-        'memo' => 'getMemo',
-        'modified_by_user' => 'getModifiedByUser'
+        'account_ids' => 'getAccountIds',
+        'campaign_ids' => 'getCampaignIds',
+        'include_children_accounts' => 'getIncludeChildrenAccounts',
+        'limit' => 'getLimit',
+        'line_item_ids' => 'getLineItemIds',
+        'offset' => 'getOffset'
     ];
 
     /**
@@ -253,43 +259,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const CHANGE_TYPE_BALANCE_CREATED = 'BalanceCreated';
-    public const CHANGE_TYPE_BALANCE_ADDED = 'BalanceAdded';
-    public const CHANGE_TYPE_BALANCE_REMOVED = 'BalanceRemoved';
-    public const CHANGE_TYPE_BALANCE_UNCAPPED = 'BalanceUncapped';
-    public const CHANGE_TYPE_BALANCE_CAPPED = 'BalanceCapped';
-    public const CHANGE_TYPE_END_DATE = 'EndDate';
-    public const CHANGE_TYPE_START_DATE = 'StartDate';
-    public const CHANGE_TYPE_BALANCE_NAME = 'BalanceName';
-    public const CHANGE_TYPE_RETAILER_PO_NUMBER = 'RetailerPoNumber';
-    public const CHANGE_TYPE_CRITEO_PO_NUMBER = 'CriteoPoNumber';
-    public const CHANGE_TYPE_RETAILER_ID = 'RetailerId';
-    public const CHANGE_TYPE_VALUE_ADD = 'ValueAdd';
-    public const CHANGE_TYPE_UNKNOWN = 'Unknown';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getChangeTypeAllowableValues()
-    {
-        return [
-            self::CHANGE_TYPE_BALANCE_CREATED,
-            self::CHANGE_TYPE_BALANCE_ADDED,
-            self::CHANGE_TYPE_BALANCE_REMOVED,
-            self::CHANGE_TYPE_BALANCE_UNCAPPED,
-            self::CHANGE_TYPE_BALANCE_CAPPED,
-            self::CHANGE_TYPE_END_DATE,
-            self::CHANGE_TYPE_START_DATE,
-            self::CHANGE_TYPE_BALANCE_NAME,
-            self::CHANGE_TYPE_RETAILER_PO_NUMBER,
-            self::CHANGE_TYPE_CRITEO_PO_NUMBER,
-            self::CHANGE_TYPE_RETAILER_ID,
-            self::CHANGE_TYPE_VALUE_ADD,
-            self::CHANGE_TYPE_UNKNOWN,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,11 +275,12 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('change_details', $data ?? [], null);
-        $this->setIfExists('change_type', $data ?? [], null);
-        $this->setIfExists('date_of_modification', $data ?? [], null);
-        $this->setIfExists('memo', $data ?? [], null);
-        $this->setIfExists('modified_by_user', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('campaign_ids', $data ?? [], null);
+        $this->setIfExists('include_children_accounts', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('line_item_ids', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
     }
 
     /**
@@ -340,27 +310,6 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['change_details'] === null) {
-            $invalidProperties[] = "'change_details' can't be null";
-        }
-        if ($this->container['change_type'] === null) {
-            $invalidProperties[] = "'change_type' can't be null";
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!is_null($this->container['change_type']) && !in_array($this->container['change_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'change_type', must be one of '%s'",
-                $this->container['change_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['date_of_modification'] === null) {
-            $invalidProperties[] = "'date_of_modification' can't be null";
-        }
-        if ($this->container['modified_by_user'] === null) {
-            $invalidProperties[] = "'modified_by_user' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -377,153 +326,198 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets change_details
+     * Gets account_ids
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1
+     * @return string[]|null
      */
-    public function getChangeDetails()
+    public function getAccountIds()
     {
-        return $this->container['change_details'];
+        return $this->container['account_ids'];
     }
 
     /**
-     * Sets change_details
+     * Sets account_ids
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ChangeDetailsV1 $change_details change_details
+     * @param string[]|null $account_ids Demand account ids to search from.
      *
      * @return self
      */
-    public function setChangeDetails($change_details)
+    public function setAccountIds($account_ids)
     {
-        if (is_null($change_details)) {
-            throw new \InvalidArgumentException('non-nullable change_details cannot be null');
-        }
-        $this->container['change_details'] = $change_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets change_type
-     *
-     * @return string
-     */
-    public function getChangeType()
-    {
-        return $this->container['change_type'];
-    }
-
-    /**
-     * Sets change_type
-     *
-     * @param string $change_type Represent the type of change states of the history.
-     *
-     * @return self
-     */
-    public function setChangeType($change_type)
-    {
-        if (is_null($change_type)) {
-            throw new \InvalidArgumentException('non-nullable change_type cannot be null');
-        }
-        $allowedValues = $this->getChangeTypeAllowableValues();
-        if (!in_array($change_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'change_type', must be one of '%s'",
-                    $change_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['change_type'] = $change_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_of_modification
-     *
-     * @return \DateTime
-     */
-    public function getDateOfModification()
-    {
-        return $this->container['date_of_modification'];
-    }
-
-    /**
-     * Sets date_of_modification
-     *
-     * @param \DateTime $date_of_modification Date when data change has occured.
-     *
-     * @return self
-     */
-    public function setDateOfModification($date_of_modification)
-    {
-        if (is_null($date_of_modification)) {
-            throw new \InvalidArgumentException('non-nullable date_of_modification cannot be null');
-        }
-        $this->container['date_of_modification'] = $date_of_modification;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string|null
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string|null $memo Memo associate with the insertion order modification.
-     *
-     * @return self
-     */
-    public function setMemo($memo)
-    {
-        if (is_null($memo)) {
-            array_push($this->openAPINullablesSetToNull, 'memo');
+        if (is_null($account_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'account_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('memo', $nullablesSetToNull);
+            $index = array_search('account_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['memo'] = $memo;
+        $this->container['account_ids'] = $account_ids;
 
         return $this;
     }
 
     /**
-     * Gets modified_by_user
+     * Gets campaign_ids
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getModifiedByUser()
+    public function getCampaignIds()
     {
-        return $this->container['modified_by_user'];
+        return $this->container['campaign_ids'];
     }
 
     /**
-     * Sets modified_by_user
+     * Sets campaign_ids
      *
-     * @param string $modified_by_user Username who modified the insertion order.
+     * @param string[]|null $campaign_ids Campaign ids to filter line items by.
      *
      * @return self
      */
-    public function setModifiedByUser($modified_by_user)
+    public function setCampaignIds($campaign_ids)
     {
-        if (is_null($modified_by_user)) {
-            throw new \InvalidArgumentException('non-nullable modified_by_user cannot be null');
+        if (is_null($campaign_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('campaign_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['modified_by_user'] = $modified_by_user;
+        $this->container['campaign_ids'] = $campaign_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets include_children_accounts
+     *
+     * @return bool|null
+     */
+    public function getIncludeChildrenAccounts()
+    {
+        return $this->container['include_children_accounts'];
+    }
+
+    /**
+     * Sets include_children_accounts
+     *
+     * @param bool|null $include_children_accounts Include line items from child demand accounts of requested private supply accounts.
+     *
+     * @return self
+     */
+    public function setIncludeChildrenAccounts($include_children_accounts)
+    {
+        if (is_null($include_children_accounts)) {
+            throw new \InvalidArgumentException('non-nullable include_children_accounts cannot be null');
+        }
+        $this->container['include_children_accounts'] = $include_children_accounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets limit
+     *
+     * @return int|null
+     */
+    public function getLimit()
+    {
+        return $this->container['limit'];
+    }
+
+    /**
+     * Sets limit
+     *
+     * @param int|null $limit Optional result limit. Defaults to the maximum allowed page size when omitted.
+     *
+     * @return self
+     */
+    public function setLimit($limit)
+    {
+        if (is_null($limit)) {
+            array_push($this->openAPINullablesSetToNull, 'limit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('limit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets line_item_ids
+     *
+     * @return string[]|null
+     */
+    public function getLineItemIds()
+    {
+        return $this->container['line_item_ids'];
+    }
+
+    /**
+     * Sets line_item_ids
+     *
+     * @param string[]|null $line_item_ids Line item ids to filter line items by.
+     *
+     * @return self
+     */
+    public function setLineItemIds($line_item_ids)
+    {
+        if (is_null($line_item_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_item_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['line_item_ids'] = $line_item_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets offset
+     *
+     * @return int|null
+     */
+    public function getOffset()
+    {
+        return $this->container['offset'];
+    }
+
+    /**
+     * Sets offset
+     *
+     * @param int|null $offset Optional result offset.
+     *
+     * @return self
+     */
+    public function setOffset($offset)
+    {
+        if (is_null($offset)) {
+            array_push($this->openAPINullablesSetToNull, 'offset');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('offset', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['offset'] = $offset;
 
         return $this;
     }

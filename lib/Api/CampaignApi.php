@@ -89,6 +89,9 @@ class CampaignApi
         'createCreative' => [
             'application/json',
         ],
+        'createLineItem' => [
+            'application/json',
+        ],
         'createPreferredLineItemByCampaignId' => [
             'application/json',
         ],
@@ -131,6 +134,12 @@ class CampaignApi
         'getProductButtonsByLineItemId' => [
             'application/json',
         ],
+        'lineItemsDemandSearch' => [
+            'application/json',
+        ],
+        'lineItemsSupplySearch' => [
+            'application/json',
+        ],
         'pausePromotedProducts' => [
             'application/json',
         ],
@@ -147,6 +156,9 @@ class CampaignApi
             'application/json',
         ],
         'updateCreative' => [
+            'application/json',
+        ],
+        'updateLineItem' => [
             'application/json',
         ],
         'updatePreferredLineItemByLineItemId' => [
@@ -1990,6 +2002,296 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($creative_create_model2));
             } else {
                 $httpBody = $creative_create_model2;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createLineItem
+     *
+     * /experimental/retail-media/line-items
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest $experimental_create_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLineItem'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+     */
+    public function createLineItem($experimental_create_line_item_model_request, string $contentType = self::contentTypes['createLineItem'][0])
+    {
+        list($response) = $this->createLineItemWithHttpInfo($experimental_create_line_item_model_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createLineItemWithHttpInfo
+     *
+     * /experimental/retail-media/line-items
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest $experimental_create_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLineItem'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createLineItemWithHttpInfo($experimental_create_line_item_model_request, string $contentType = self::contentTypes['createLineItem'][0])
+    {
+        $request = $this->createLineItemRequest($experimental_create_line_item_model_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createLineItemAsync
+     *
+     * /experimental/retail-media/line-items
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest $experimental_create_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLineItemAsync($experimental_create_line_item_model_request, string $contentType = self::contentTypes['createLineItem'][0])
+    {
+        return $this->createLineItemAsyncWithHttpInfo($experimental_create_line_item_model_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createLineItemAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/line-items
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest $experimental_create_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLineItemAsyncWithHttpInfo($experimental_create_line_item_model_request, string $contentType = self::contentTypes['createLineItem'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse';
+        $request = $this->createLineItemRequest($experimental_create_line_item_model_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createLineItem'
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest $experimental_create_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createLineItemRequest($experimental_create_line_item_model_request, string $contentType = self::contentTypes['createLineItem'][0])
+    {
+
+        // verify the required parameter 'experimental_create_line_item_model_request' is set
+        if ($experimental_create_line_item_model_request === null || (is_array($experimental_create_line_item_model_request) && count($experimental_create_line_item_model_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $experimental_create_line_item_model_request when calling createLineItem'
+            );
+        }
+
+
+        $resourcePath = '/experimental/retail-media/line-items';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($experimental_create_line_item_model_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($experimental_create_line_item_model_request));
+            } else {
+                $httpBody = $experimental_create_line_item_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -6355,6 +6657,586 @@ class CampaignApi
     }
 
     /**
+     * Operation lineItemsDemandSearch
+     *
+     * /experimental/retail-media/line-items/demand-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\DemandSearchRequest $demand_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsDemandSearch'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination
+     */
+    public function lineItemsDemandSearch($demand_search_request, string $contentType = self::contentTypes['lineItemsDemandSearch'][0])
+    {
+        list($response) = $this->lineItemsDemandSearchWithHttpInfo($demand_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation lineItemsDemandSearchWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/demand-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\DemandSearchRequest $demand_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsDemandSearch'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function lineItemsDemandSearchWithHttpInfo($demand_search_request, string $contentType = self::contentTypes['lineItemsDemandSearch'][0])
+    {
+        $request = $this->lineItemsDemandSearchRequest($demand_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation lineItemsDemandSearchAsync
+     *
+     * /experimental/retail-media/line-items/demand-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\DemandSearchRequest $demand_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsDemandSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lineItemsDemandSearchAsync($demand_search_request, string $contentType = self::contentTypes['lineItemsDemandSearch'][0])
+    {
+        return $this->lineItemsDemandSearchAsyncWithHttpInfo($demand_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation lineItemsDemandSearchAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/demand-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\DemandSearchRequest $demand_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsDemandSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lineItemsDemandSearchAsyncWithHttpInfo($demand_search_request, string $contentType = self::contentTypes['lineItemsDemandSearch'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination';
+        $request = $this->lineItemsDemandSearchRequest($demand_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'lineItemsDemandSearch'
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\DemandSearchRequest $demand_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsDemandSearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function lineItemsDemandSearchRequest($demand_search_request, string $contentType = self::contentTypes['lineItemsDemandSearch'][0])
+    {
+
+        // verify the required parameter 'demand_search_request' is set
+        if ($demand_search_request === null || (is_array($demand_search_request) && count($demand_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $demand_search_request when calling lineItemsDemandSearch'
+            );
+        }
+
+
+        $resourcePath = '/experimental/retail-media/line-items/demand-search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($demand_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($demand_search_request));
+            } else {
+                $httpBody = $demand_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation lineItemsSupplySearch
+     *
+     * /experimental/retail-media/line-items/supply-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\SupplySearchRequest $supply_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsSupplySearch'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination
+     */
+    public function lineItemsSupplySearch($supply_search_request, string $contentType = self::contentTypes['lineItemsSupplySearch'][0])
+    {
+        list($response) = $this->lineItemsSupplySearchWithHttpInfo($supply_search_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation lineItemsSupplySearchWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/supply-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\SupplySearchRequest $supply_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsSupplySearch'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function lineItemsSupplySearchWithHttpInfo($supply_search_request, string $contentType = self::contentTypes['lineItemsSupplySearch'][0])
+    {
+        $request = $this->lineItemsSupplySearchRequest($supply_search_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation lineItemsSupplySearchAsync
+     *
+     * /experimental/retail-media/line-items/supply-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\SupplySearchRequest $supply_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsSupplySearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lineItemsSupplySearchAsync($supply_search_request, string $contentType = self::contentTypes['lineItemsSupplySearch'][0])
+    {
+        return $this->lineItemsSupplySearchAsyncWithHttpInfo($supply_search_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation lineItemsSupplySearchAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/supply-search
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\SupplySearchRequest $supply_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsSupplySearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lineItemsSupplySearchAsyncWithHttpInfo($supply_search_request, string $contentType = self::contentTypes['lineItemsSupplySearch'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemListResponseWithPagination';
+        $request = $this->lineItemsSupplySearchRequest($supply_search_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'lineItemsSupplySearch'
+     *
+     * @param  \criteo\api\retailmedia\experimental\Model\SupplySearchRequest $supply_search_request Search criteria and pagination. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['lineItemsSupplySearch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function lineItemsSupplySearchRequest($supply_search_request, string $contentType = self::contentTypes['lineItemsSupplySearch'][0])
+    {
+
+        // verify the required parameter 'supply_search_request' is set
+        if ($supply_search_request === null || (is_array($supply_search_request) && count($supply_search_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $supply_search_request when calling lineItemsSupplySearch'
+            );
+        }
+
+
+        $resourcePath = '/experimental/retail-media/line-items/supply-search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($supply_search_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($supply_search_request));
+            } else {
+                $httpBody = $supply_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation pausePromotedProducts
      *
      * /experimental/retail-media/line-items/{line-item-id}/products/pause
@@ -6617,7 +7499,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
      */
     public function searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
@@ -6638,7 +7520,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAccountCreativesWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
@@ -6681,23 +7563,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6718,7 +7600,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse',
+                        '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6768,7 +7650,7 @@ class CampaignApi
      */
     public function searchAccountCreativesAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
+        $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata';
         $request = $this->searchAccountCreativesRequest($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType);
 
         return $this->client
@@ -8192,6 +9074,316 @@ class CampaignApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateLineItem
+     *
+     * /experimental/retail-media/line-items/{line-item-id}
+     *
+     * @param  string $line_item_id The line item id (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest $experimental_update_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+     */
+    public function updateLineItem($line_item_id, $experimental_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    {
+        list($response) = $this->updateLineItemWithHttpInfo($line_item_id, $experimental_update_line_item_model_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateLineItemWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/{line-item-id}
+     *
+     * @param  string $line_item_id The line item id (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest $experimental_update_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateLineItemWithHttpInfo($line_item_id, $experimental_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    {
+        $request = $this->updateLineItemRequest($line_item_id, $experimental_update_line_item_model_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateLineItemAsync
+     *
+     * /experimental/retail-media/line-items/{line-item-id}
+     *
+     * @param  string $line_item_id The line item id (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest $experimental_update_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLineItemAsync($line_item_id, $experimental_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    {
+        return $this->updateLineItemAsyncWithHttpInfo($line_item_id, $experimental_update_line_item_model_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateLineItemAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/{line-item-id}
+     *
+     * @param  string $line_item_id The line item id (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest $experimental_update_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLineItemAsyncWithHttpInfo($line_item_id, $experimental_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse';
+        $request = $this->updateLineItemRequest($line_item_id, $experimental_update_line_item_model_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateLineItem'
+     *
+     * @param  string $line_item_id The line item id (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest $experimental_update_line_item_model_request Line item details (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateLineItemRequest($line_item_id, $experimental_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    {
+
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling updateLineItem'
+            );
+        }
+
+        // verify the required parameter 'experimental_update_line_item_model_request' is set
+        if ($experimental_update_line_item_model_request === null || (is_array($experimental_update_line_item_model_request) && count($experimental_update_line_item_model_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $experimental_update_line_item_model_request when calling updateLineItem'
+            );
+        }
+
+
+        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($experimental_update_line_item_model_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($experimental_update_line_item_model_request));
+            } else {
+                $httpBody = $experimental_update_line_item_model_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

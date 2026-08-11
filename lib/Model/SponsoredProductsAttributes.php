@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeCreativeSearchResponse
+ * SponsoredProductsAttributes
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeCreativeSearchResponse Class Doc Comment
+ * SponsoredProductsAttributes Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities.
+ * @description Extended attributes for a Auction Sponsored Products Line Item
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductsAttributes implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeCreativeSearchResponse';
+    protected static $openAPIModelName = 'SponsoredProductsAttributes';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchResponse[]',
-        'errors' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]'
+        'auction' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsAuctionAttributes'
     ];
 
     /**
@@ -71,9 +69,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'auction' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'auction' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'auction' => 'auction'
     ];
 
     /**
@@ -184,9 +176,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'auction' => 'setAuction'
     ];
 
     /**
@@ -195,9 +185,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'auction' => 'getAuction'
     ];
 
     /**
@@ -257,9 +245,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('auction', $data ?? [], null);
     }
 
     /**
@@ -305,103 +291,35 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
 
 
     /**
-     * Gets data
+     * Gets auction
      *
-     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchResponse[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsAuctionAttributes|null
      */
-    public function getData()
+    public function getAuction()
     {
-        return $this->container['data'];
+        return $this->container['auction'];
     }
 
     /**
-     * Sets data
+     * Sets auction
      *
-     * @param \criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchResponse[]|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsAuctionAttributes|null $auction auction
      *
      * @return self
      */
-    public function setData($data)
+    public function setAuction($auction)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($auction)) {
+            array_push($this->openAPINullablesSetToNull, 'auction');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('auction', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
+        $this->container['auction'] = $auction;
 
         return $this;
     }
