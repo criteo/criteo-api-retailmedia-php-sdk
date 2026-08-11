@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityResourceCollectionOutcomeCreativeSearchResponse
+ * EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * EntityResourceCollectionOutcomeCreativeSearchResponse Class Doc Comment
+ * EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for several entities.
+ * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
       *
       * @var string
       */
-    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeCreativeSearchResponse';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,6 +60,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static $openAPITypes = [
         'data' => '\criteo\api\retailmedia\preview\Model\EntityResourceCreativeSearchResponse[]',
         'errors' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\preview\Model\Metadata',
         'warnings' => '\criteo\api\retailmedia\preview\Model\SdkApiRestCommonProblem[]'
     ];
 
@@ -73,6 +74,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static $openAPIFormats = [
         'data' => null,
         'errors' => null,
+        'metadata' => null,
         'warnings' => null
     ];
 
@@ -84,6 +86,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static array $openAPINullables = [
         'data' => true,
 		'errors' => true,
+		'metadata' => true,
 		'warnings' => true
     ];
 
@@ -175,6 +178,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static $attributeMap = [
         'data' => 'data',
         'errors' => 'errors',
+        'metadata' => 'metadata',
         'warnings' => 'warnings'
     ];
 
@@ -186,6 +190,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static $setters = [
         'data' => 'setData',
         'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
         'warnings' => 'setWarnings'
     ];
 
@@ -197,6 +202,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     protected static $getters = [
         'data' => 'getData',
         'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
         'warnings' => 'getWarnings'
     ];
 
@@ -259,6 +265,7 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
     {
         $this->setIfExists('data', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('warnings', $data ?? [], null);
     }
 
@@ -368,6 +375,40 @@ class EntityResourceCollectionOutcomeCreativeSearchResponse implements ModelInte
             }
         }
         $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\preview\Model\Metadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\preview\Model\Metadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

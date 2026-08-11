@@ -253,19 +253,19 @@ class BalanceHistoryChangeDataCaptureV1 implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const CHANGE_TYPE_BALANCE_CREATED = 'balanceCreated';
-    public const CHANGE_TYPE_BALANCE_ADDED = 'balanceAdded';
-    public const CHANGE_TYPE_BALANCE_REMOVED = 'balanceRemoved';
-    public const CHANGE_TYPE_BALANCE_UNCAPPED = 'balanceUncapped';
-    public const CHANGE_TYPE_BALANCE_CAPPED = 'balanceCapped';
-    public const CHANGE_TYPE_END_DATE = 'endDate';
-    public const CHANGE_TYPE_START_DATE = 'startDate';
-    public const CHANGE_TYPE_BALANCE_NAME = 'balanceName';
-    public const CHANGE_TYPE_RETAILER_PO_NUMBER = 'retailerPoNumber';
-    public const CHANGE_TYPE_CRITEO_PO_NUMBER = 'criteoPoNumber';
-    public const CHANGE_TYPE_RETAILER_ID = 'retailerId';
-    public const CHANGE_TYPE_VALUE_ADD = 'valueAdd';
-    public const CHANGE_TYPE_UNKNOWN = 'unknown';
+    public const CHANGE_TYPE_BALANCE_CREATED = 'BalanceCreated';
+    public const CHANGE_TYPE_BALANCE_ADDED = 'BalanceAdded';
+    public const CHANGE_TYPE_BALANCE_REMOVED = 'BalanceRemoved';
+    public const CHANGE_TYPE_BALANCE_UNCAPPED = 'BalanceUncapped';
+    public const CHANGE_TYPE_BALANCE_CAPPED = 'BalanceCapped';
+    public const CHANGE_TYPE_END_DATE = 'EndDate';
+    public const CHANGE_TYPE_START_DATE = 'StartDate';
+    public const CHANGE_TYPE_BALANCE_NAME = 'BalanceName';
+    public const CHANGE_TYPE_RETAILER_PO_NUMBER = 'RetailerPoNumber';
+    public const CHANGE_TYPE_CRITEO_PO_NUMBER = 'CriteoPoNumber';
+    public const CHANGE_TYPE_RETAILER_ID = 'RetailerId';
+    public const CHANGE_TYPE_VALUE_ADD = 'ValueAdd';
+    public const CHANGE_TYPE_UNKNOWN = 'Unknown';
 
     /**
      * Gets allowable values of the enum

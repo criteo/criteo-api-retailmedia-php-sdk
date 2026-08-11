@@ -1404,7 +1404,7 @@ void (empty response body)
 ## `searchAccountCreatives()`
 
 ```php
-searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse
+searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit, $offset): \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
 ```
 
 /preview/retail-media/accounts/{account-id}/creatives/search
@@ -1455,7 +1455,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse**](../Model/EntityResourceCollectionOutcomeCreativeSearchResponse.md)
+[**\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata**](../Model/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
 
 ### Authorization
 

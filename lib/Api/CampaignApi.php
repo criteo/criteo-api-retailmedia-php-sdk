@@ -6617,7 +6617,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse
+     * @return \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata
      */
     public function searchAccountCreatives($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
@@ -6638,7 +6638,7 @@ class CampaignApi
      *
      * @throws \criteo\api\retailmedia\preview\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAccountCreativesWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
@@ -6681,23 +6681,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
+            $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6718,7 +6718,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse',
+                        '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6768,7 +6768,7 @@ class CampaignApi
      */
     public function searchAccountCreativesAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreatives'][0])
     {
-        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponse';
+        $returnType = '\criteo\api\retailmedia\preview\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata';
         $request = $this->searchAccountCreativesRequest($account_id, $entity_resource_input_creative_search_request, $limit, $offset, $contentType);
 
         return $this->client
