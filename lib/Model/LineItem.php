@@ -61,12 +61,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'string',
         'buy_type' => 'string',
         'campaign_id' => 'string',
-        'commerce_display' => '\criteo\api\retailmedia\experimental\Model\CommerceDisplayAttributes',
         'conquesting_settings' => '\criteo\api\retailmedia\experimental\Model\ConquestingSettings',
         'flight_dates' => '\criteo\api\retailmedia\experimental\Model\FlightDates',
         'line_item_id' => 'string',
         'line_item_type' => 'string',
         'name' => 'string',
+        'onsite_display' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAttributes',
         'retailer_id' => 'string',
         'serve_to_opt_out_user' => 'bool',
         'sponsored_products' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsAttributes'
@@ -83,12 +83,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => null,
         'buy_type' => null,
         'campaign_id' => null,
-        'commerce_display' => null,
         'conquesting_settings' => null,
         'flight_dates' => null,
         'line_item_id' => null,
         'line_item_type' => null,
         'name' => null,
+        'onsite_display' => null,
         'retailer_id' => null,
         'serve_to_opt_out_user' => null,
         'sponsored_products' => null
@@ -103,12 +103,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => true,
 		'buy_type' => true,
 		'campaign_id' => true,
-		'commerce_display' => true,
 		'conquesting_settings' => true,
 		'flight_dates' => true,
 		'line_item_id' => true,
 		'line_item_type' => true,
 		'name' => true,
+		'onsite_display' => true,
 		'retailer_id' => true,
 		'serve_to_opt_out_user' => true,
 		'sponsored_products' => true
@@ -203,12 +203,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'accountId',
         'buy_type' => 'buyType',
         'campaign_id' => 'campaignId',
-        'commerce_display' => 'commerceDisplay',
         'conquesting_settings' => 'conquestingSettings',
         'flight_dates' => 'flightDates',
         'line_item_id' => 'lineItemId',
         'line_item_type' => 'lineItemType',
         'name' => 'name',
+        'onsite_display' => 'onsiteDisplay',
         'retailer_id' => 'retailerId',
         'serve_to_opt_out_user' => 'serveToOptOutUser',
         'sponsored_products' => 'sponsoredProducts'
@@ -223,12 +223,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'setAccountId',
         'buy_type' => 'setBuyType',
         'campaign_id' => 'setCampaignId',
-        'commerce_display' => 'setCommerceDisplay',
         'conquesting_settings' => 'setConquestingSettings',
         'flight_dates' => 'setFlightDates',
         'line_item_id' => 'setLineItemId',
         'line_item_type' => 'setLineItemType',
         'name' => 'setName',
+        'onsite_display' => 'setOnsiteDisplay',
         'retailer_id' => 'setRetailerId',
         'serve_to_opt_out_user' => 'setServeToOptOutUser',
         'sponsored_products' => 'setSponsoredProducts'
@@ -243,12 +243,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'getAccountId',
         'buy_type' => 'getBuyType',
         'campaign_id' => 'getCampaignId',
-        'commerce_display' => 'getCommerceDisplay',
         'conquesting_settings' => 'getConquestingSettings',
         'flight_dates' => 'getFlightDates',
         'line_item_id' => 'getLineItemId',
         'line_item_type' => 'getLineItemType',
         'name' => 'getName',
+        'onsite_display' => 'getOnsiteDisplay',
         'retailer_id' => 'getRetailerId',
         'serve_to_opt_out_user' => 'getServeToOptOutUser',
         'sponsored_products' => 'getSponsoredProducts'
@@ -299,7 +299,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public const BUY_TYPE_PREFERRED_DEALS = 'PreferredDeals';
     public const BUY_TYPE_SPONSORSHIP = 'Sponsorship';
     public const LINE_ITEM_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
-    public const LINE_ITEM_TYPE_COMMERCE_DISPLAY = 'CommerceDisplay';
+    public const LINE_ITEM_TYPE_ONSITE_DISPLAY = 'OnsiteDisplay';
 
     /**
      * Gets allowable values of the enum
@@ -324,7 +324,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::LINE_ITEM_TYPE_SPONSORED_PRODUCT,
-            self::LINE_ITEM_TYPE_COMMERCE_DISPLAY,
+            self::LINE_ITEM_TYPE_ONSITE_DISPLAY,
         ];
     }
 
@@ -346,12 +346,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('commerce_display', $data ?? [], null);
         $this->setIfExists('conquesting_settings', $data ?? [], null);
         $this->setIfExists('flight_dates', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
         $this->setIfExists('line_item_type', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('onsite_display', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
         $this->setIfExists('sponsored_products', $data ?? [], null);
@@ -525,40 +525,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets commerce_display
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\CommerceDisplayAttributes|null
-     */
-    public function getCommerceDisplay()
-    {
-        return $this->container['commerce_display'];
-    }
-
-    /**
-     * Sets commerce_display
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\CommerceDisplayAttributes|null $commerce_display commerce_display
-     *
-     * @return self
-     */
-    public function setCommerceDisplay($commerce_display)
-    {
-        if (is_null($commerce_display)) {
-            array_push($this->openAPINullablesSetToNull, 'commerce_display');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('commerce_display', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['commerce_display'] = $commerce_display;
 
         return $this;
     }
@@ -739,6 +705,40 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets onsite_display
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayAttributes|null
+     */
+    public function getOnsiteDisplay()
+    {
+        return $this->container['onsite_display'];
+    }
+
+    /**
+     * Sets onsite_display
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayAttributes|null $onsite_display onsite_display
+     *
+     * @return self
+     */
+    public function setOnsiteDisplay($onsite_display)
+    {
+        if (is_null($onsite_display)) {
+            array_push($this->openAPINullablesSetToNull, 'onsite_display');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('onsite_display', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['onsite_display'] = $onsite_display;
 
         return $this;
     }
