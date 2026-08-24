@@ -7,7 +7,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**appendCampaignsToBalanceV1()**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/append | /preview/retail-media/balances/{balanceId}/campaigns/append |
 | [**appendProductButtonByLineItemId()**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create | /preview/retail-media/line-items/{line-item-id}/product-buttons/create |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append | /preview/retail-media/line-items/{line-item-id}/products/append |
-| [**computeDisplayMinBidByRetailerId()**](CampaignApi.md#computeDisplayMinBidByRetailerId) | **POST** /preview/retail-media/retailers/{retailerId}/compute-display-min-bid | /preview/retail-media/retailers/{retailerId}/compute-display-min-bid |
 | [**createAuctionLineItem()**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items | /preview/retail-media/campaigns/{campaignId}/auction-line-items |
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives | /preview/retail-media/accounts/{account-id}/creatives |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items | /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |
@@ -215,71 +214,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\ProductResourceOutcome**](../Model/ProductResourceOutcome.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `computeDisplayMinBidByRetailerId()`
-
-```php
-computeDisplayMinBidByRetailerId($retailer_id, $value_resource_input_display_auction_min_bid_request): \criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeDisplayAuctionMinBidResult
-```
-
-/preview/retail-media/retailers/{retailerId}/compute-display-min-bid
-
-Computes the min bid for relevant page types based on the provided information
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$retailer_id = 'retailer_id_example'; // string | The retailer id
-$value_resource_input_display_auction_min_bid_request = new \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest(); // \criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest | The details for what creatives and product ids to use to compute the min bids
-
-try {
-    $result = $apiInstance->computeDisplayMinBidByRetailerId($retailer_id, $value_resource_input_display_auction_min_bid_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->computeDisplayMinBidByRetailerId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **retailer_id** | **string**| The retailer id | |
-| **value_resource_input_display_auction_min_bid_request** | [**\criteo\api\retailmedia\preview\Model\ValueResourceInputDisplayAuctionMinBidRequest**](../Model/ValueResourceInputDisplayAuctionMinBidRequest.md)| The details for what creatives and product ids to use to compute the min bids | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ValueResourceCollectionOutcomeDisplayAuctionMinBidResult**](../Model/ValueResourceCollectionOutcomeDisplayAuctionMinBidResult.md)
 
 ### Authorization
 
