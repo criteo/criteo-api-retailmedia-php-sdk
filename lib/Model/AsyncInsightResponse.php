@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * AsyncInsightResponse Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single entity.
+ * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

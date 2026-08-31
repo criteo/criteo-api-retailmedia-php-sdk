@@ -1,6 +1,6 @@
 <?php
 /**
- * SkuFilter
+ * DigitalShelfIntelligenceFilters
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\preview\ObjectSerializer;
 
 /**
- * SkuFilter Class Doc Comment
+ * DigitalShelfIntelligenceFilters Class Doc Comment
  *
  * @category Class
- * @description A set of retailer SKUs to filter on.
+ * @description Filters for a Digital Shelf Intelligence insight.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
+class DigitalShelfIntelligenceFilters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SkuFilter';
+    protected static $openAPIModelName = 'DigitalShelfIntelligenceFilters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'retailer_id' => 'string',
-        'retailer_sku_ids' => 'string[]'
+        'brand_ids' => 'string[]',
+        'categories' => 'string[]',
+        'retailer_ids' => 'string[]',
+        'sku_ids' => '\criteo\api\retailmedia\preview\Model\SkuFilter[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'retailer_id' => null,
-        'retailer_sku_ids' => null
+        'brand_ids' => null,
+        'categories' => null,
+        'retailer_ids' => null,
+        'sku_ids' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'retailer_id' => false,
-		'retailer_sku_ids' => false
+        'brand_ids' => true,
+		'categories' => true,
+		'retailer_ids' => true,
+		'sku_ids' => true
     ];
 
     /**
@@ -170,8 +176,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'retailer_id' => 'retailerId',
-        'retailer_sku_ids' => 'retailerSkuIds'
+        'brand_ids' => 'brandIds',
+        'categories' => 'categories',
+        'retailer_ids' => 'retailerIds',
+        'sku_ids' => 'skuIds'
     ];
 
     /**
@@ -180,8 +188,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'retailer_id' => 'setRetailerId',
-        'retailer_sku_ids' => 'setRetailerSkuIds'
+        'brand_ids' => 'setBrandIds',
+        'categories' => 'setCategories',
+        'retailer_ids' => 'setRetailerIds',
+        'sku_ids' => 'setSkuIds'
     ];
 
     /**
@@ -190,8 +200,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'retailer_id' => 'getRetailerId',
-        'retailer_sku_ids' => 'getRetailerSkuIds'
+        'brand_ids' => 'getBrandIds',
+        'categories' => 'getCategories',
+        'retailer_ids' => 'getRetailerIds',
+        'sku_ids' => 'getSkuIds'
     ];
 
     /**
@@ -251,8 +263,10 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('retailer_id', $data ?? [], null);
-        $this->setIfExists('retailer_sku_ids', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
+        $this->setIfExists('sku_ids', $data ?? [], null);
     }
 
     /**
@@ -282,16 +296,6 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['retailer_id'] === null) {
-            $invalidProperties[] = "'retailer_id' can't be null";
-        }
-        if ($this->container['retailer_sku_ids'] === null) {
-            $invalidProperties[] = "'retailer_sku_ids' can't be null";
-        }
-        if ((count($this->container['retailer_sku_ids']) < 1)) {
-            $invalidProperties[] = "invalid value for 'retailer_sku_ids', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -308,60 +312,137 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets retailer_id
+     * Gets brand_ids
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getRetailerId()
+    public function getBrandIds()
     {
-        return $this->container['retailer_id'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets retailer_id
+     * Sets brand_ids
      *
-     * @param string $retailer_id Retailer the SKUs belong to.
+     * @param string[]|null $brand_ids Brands to filter on.
      *
      * @return self
      */
-    public function setRetailerId($retailer_id)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($retailer_id)) {
-            throw new \InvalidArgumentException('non-nullable retailer_id cannot be null');
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('brand_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['retailer_id'] = $retailer_id;
+        $this->container['brand_ids'] = $brand_ids;
 
         return $this;
     }
 
     /**
-     * Gets retailer_sku_ids
+     * Gets categories
      *
-     * @return string[]
+     * @return string[]|null
      */
-    public function getRetailerSkuIds()
+    public function getCategories()
     {
-        return $this->container['retailer_sku_ids'];
+        return $this->container['categories'];
     }
 
     /**
-     * Sets retailer_sku_ids
+     * Sets categories
      *
-     * @param string[] $retailer_sku_ids Retailer SKU IDs to filter on.
+     * @param string[]|null $categories Category taxonomy values to filter on.
      *
      * @return self
      */
-    public function setRetailerSkuIds($retailer_sku_ids)
+    public function setCategories($categories)
     {
-        if (is_null($retailer_sku_ids)) {
-            throw new \InvalidArgumentException('non-nullable retailer_sku_ids cannot be null');
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categories', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
+        $this->container['categories'] = $categories;
 
+        return $this;
+    }
 
-        if ((count($retailer_sku_ids) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $retailer_sku_ids when calling SkuFilter., number of items must be greater than or equal to 1.');
+    /**
+     * Gets retailer_ids
+     *
+     * @return string[]|null
+     */
+    public function getRetailerIds()
+    {
+        return $this->container['retailer_ids'];
+    }
+
+    /**
+     * Sets retailer_ids
+     *
+     * @param string[]|null $retailer_ids Retailers to filter on.
+     *
+     * @return self
+     */
+    public function setRetailerIds($retailer_ids)
+    {
+        if (is_null($retailer_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('retailer_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['retailer_sku_ids'] = $retailer_sku_ids;
+        $this->container['retailer_ids'] = $retailer_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_ids
+     *
+     * @return \criteo\api\retailmedia\preview\Model\SkuFilter[]|null
+     */
+    public function getSkuIds()
+    {
+        return $this->container['sku_ids'];
+    }
+
+    /**
+     * Sets sku_ids
+     *
+     * @param \criteo\api\retailmedia\preview\Model\SkuFilter[]|null $sku_ids SKUs to filter on, grouped by retailer.
+     *
+     * @return self
+     */
+    public function setSkuIds($sku_ids)
+    {
+        if (is_null($sku_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku_ids'] = $sku_ids;
 
         return $this;
     }

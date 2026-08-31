@@ -65,6 +65,7 @@ docs/Model/CustomAttribute.md
 docs/Model/DataCompleteThrough.md
 docs/Model/DeleteCampaignsRequestV1.md
 docs/Model/DeleteEntry.md
+docs/Model/DigitalShelfIntelligenceFilters.md
 docs/Model/DigitalShelfIntelligenceInsight.md
 docs/Model/DigitalShelfIntelligenceInsightRequest.md
 docs/Model/DigitalShelfIntelligenceInsightResource.md
@@ -256,6 +257,7 @@ docs/Model/RmEventsV1.md
 docs/Model/RmcaCommonProblem.md
 docs/Model/SdkApiRestCommonProblem.md
 docs/Model/SetProductBuyBoxWinnersRequest.md
+docs/Model/ShareOfVoiceFilters.md
 docs/Model/ShareOfVoiceInsight.md
 docs/Model/ShareOfVoiceInsightRequest.md
 docs/Model/ShareOfVoiceInsightResource.md
@@ -387,6 +389,7 @@ lib/Model/CustomAttribute.php
 lib/Model/DataCompleteThrough.php
 lib/Model/DeleteCampaignsRequestV1.php
 lib/Model/DeleteEntry.php
+lib/Model/DigitalShelfIntelligenceFilters.php
 lib/Model/DigitalShelfIntelligenceInsight.php
 lib/Model/DigitalShelfIntelligenceInsightRequest.php
 lib/Model/DigitalShelfIntelligenceInsightResource.php
@@ -579,6 +582,7 @@ lib/Model/RmEventsV1.php
 lib/Model/RmcaCommonProblem.php
 lib/Model/SdkApiRestCommonProblem.php
 lib/Model/SetProductBuyBoxWinnersRequest.php
+lib/Model/ShareOfVoiceFilters.php
 lib/Model/ShareOfVoiceInsight.php
 lib/Model/ShareOfVoiceInsightRequest.php
 lib/Model/ShareOfVoiceInsightResource.php

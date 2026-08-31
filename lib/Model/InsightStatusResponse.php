@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * InsightStatusResponse Class Doc Comment
  *
  * @category Class
- * @description Status of an async insight request
+ * @description Status of an asynchronous insight report request.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -377,7 +377,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets created_at
      *
-     * @param string|null $created_at created_at
+     * @param string|null $created_at When the insight report was created.
      *
      * @return self
      */
@@ -411,7 +411,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets expires_at
      *
-     * @param string|null $expires_at expires_at
+     * @param string|null $expires_at When the insight report expires and can no longer be downloaded.
      *
      * @return self
      */
@@ -445,7 +445,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets file_size_bytes
      *
-     * @param int|null $file_size_bytes file_size_bytes
+     * @param int|null $file_size_bytes Size of the generated report file in bytes, when available.
      *
      * @return self
      */
@@ -479,7 +479,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets md5_check_sum
      *
-     * @param string|null $md5_check_sum md5_check_sum
+     * @param string|null $md5_check_sum MD5 checksum of the generated report file, when available.
      *
      * @return self
      */
@@ -513,7 +513,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string|null $message Additional information about the report status, when available.
      *
      * @return self
      */
@@ -547,7 +547,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets row_count
      *
-     * @param int|null $row_count row_count
+     * @param int|null $row_count Number of rows in the generated report, when available.
      *
      * @return self
      */
@@ -581,7 +581,7 @@ class InsightStatusResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets status
      *
-     * @param string|null $status Status of an async insight request
+     * @param string|null $status Current status of the insight report.
      *
      * @return self
      */

@@ -444,6 +444,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_WIN_RATE = 'winRate';
     public const METRICS_SAMPLED_BIDS_WON = 'sampledBidsWon';
     public const METRICS_SAMPLED_BIDS_PARTICIPATED = 'sampledBidsParticipated';
+    public const METRICS_MAKE_GOOD_SPEND = 'makeGoodSpend';
     public const REPORT_TYPE_SUMMARY = 'summary';
     public const REPORT_TYPE_PAGE_TYPE = 'pageType';
     public const REPORT_TYPE_KEYWORD = 'keyword';
@@ -680,6 +681,7 @@ class AsyncAccountsReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_WIN_RATE,
             self::METRICS_SAMPLED_BIDS_WON,
             self::METRICS_SAMPLED_BIDS_PARTICIPATED,
+            self::METRICS_MAKE_GOOD_SPEND,
         ];
     }
 
