@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncInsightResponse
+ * DigitalShelfIntelligenceFilters
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AsyncInsightResponse Class Doc Comment
+ * DigitalShelfIntelligenceFilters Class Doc Comment
  *
  * @category Class
- * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
+ * @description Filters for a Digital Shelf Intelligence insight.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class DigitalShelfIntelligenceFilters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncInsightResponse';
+    protected static $openAPIModelName = 'DigitalShelfIntelligenceFilters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource',
-        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
+        'brand_ids' => 'string[]',
+        'categories' => 'string[]',
+        'retailer_ids' => 'string[]',
+        'sku_ids' => '\criteo\api\retailmedia\experimental\Model\SkuFilter[]'
     ];
 
     /**
@@ -71,9 +72,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'brand_ids' => null,
+        'categories' => null,
+        'retailer_ids' => null,
+        'sku_ids' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'brand_ids' => true,
+		'categories' => true,
+		'retailer_ids' => true,
+		'sku_ids' => true
     ];
 
     /**
@@ -173,9 +176,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'brand_ids' => 'brandIds',
+        'categories' => 'categories',
+        'retailer_ids' => 'retailerIds',
+        'sku_ids' => 'skuIds'
     ];
 
     /**
@@ -184,9 +188,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'brand_ids' => 'setBrandIds',
+        'categories' => 'setCategories',
+        'retailer_ids' => 'setRetailerIds',
+        'sku_ids' => 'setSkuIds'
     ];
 
     /**
@@ -195,9 +200,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'brand_ids' => 'getBrandIds',
+        'categories' => 'getCategories',
+        'retailer_ids' => 'getRetailerIds',
+        'sku_ids' => 'getSkuIds'
     ];
 
     /**
@@ -257,9 +263,10 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('brand_ids', $data ?? [], null);
+        $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('retailer_ids', $data ?? [], null);
+        $this->setIfExists('sku_ids', $data ?? [], null);
     }
 
     /**
@@ -305,103 +312,137 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets data
+     * Gets brand_ids
      *
-     * @return \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null
+     * @return string[]|null
      */
-    public function getData()
+    public function getBrandIds()
     {
-        return $this->container['data'];
+        return $this->container['brand_ids'];
     }
 
     /**
-     * Sets data
+     * Sets brand_ids
      *
-     * @param \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null $data data
+     * @param string[]|null $brand_ids Brands to filter on.
      *
      * @return self
      */
-    public function setData($data)
+    public function setBrandIds($brand_ids)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($brand_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'brand_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('brand_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['brand_ids'] = $brand_ids;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets categories
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     * @return string[]|null
      */
-    public function getErrors()
+    public function getCategories()
     {
-        return $this->container['errors'];
+        return $this->container['categories'];
     }
 
     /**
-     * Sets errors
+     * Sets categories
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
+     * @param string[]|null $categories Category taxonomy values to filter on.
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setCategories($categories)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($categories)) {
+            array_push($this->openAPINullablesSetToNull, 'categories');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('categories', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['categories'] = $categories;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets retailer_ids
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     * @return string[]|null
      */
-    public function getWarnings()
+    public function getRetailerIds()
     {
-        return $this->container['warnings'];
+        return $this->container['retailer_ids'];
     }
 
     /**
-     * Sets warnings
+     * Sets retailer_ids
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param string[]|null $retailer_ids Retailers to filter on.
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setRetailerIds($retailer_ids)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($retailer_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('retailer_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['retailer_ids'] = $retailer_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets sku_ids
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\SkuFilter[]|null
+     */
+    public function getSkuIds()
+    {
+        return $this->container['sku_ids'];
+    }
+
+    /**
+     * Sets sku_ids
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\SkuFilter[]|null $sku_ids SKUs to filter on, grouped by retailer.
+     *
+     * @return self
+     */
+    public function setSkuIds($sku_ids)
+    {
+        if (is_null($sku_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'sku_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sku_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['sku_ids'] = $sku_ids;
 
         return $this;
     }

@@ -4232,7 +4232,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportOutput
      *
-     * /experimental/retail-media/insights/{insightId}/output
+     * /experimental/retail-media/insights/{insight-id}/output
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
@@ -4250,7 +4250,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportOutputWithHttpInfo
      *
-     * /experimental/retail-media/insights/{insightId}/output
+     * /experimental/retail-media/insights/{insight-id}/output
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
@@ -4350,7 +4350,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportOutputAsync
      *
-     * /experimental/retail-media/insights/{insightId}/output
+     * /experimental/retail-media/insights/{insight-id}/output
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
@@ -4371,7 +4371,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportOutputAsyncWithHttpInfo
      *
-     * /experimental/retail-media/insights/{insightId}/output
+     * /experimental/retail-media/insights/{insight-id}/output
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportOutput'] to see the possible values for this operation
@@ -4440,7 +4440,7 @@ class AnalyticsApi
         }
 
 
-        $resourcePath = '/experimental/retail-media/insights/{insightId}/output';
+        $resourcePath = '/experimental/retail-media/insights/{insight-id}/output';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4452,7 +4452,7 @@ class AnalyticsApi
         // path params
         if ($insight_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'insightId' . '}',
+                '{' . 'insight-id' . '}',
                 ObjectSerializer::toPathValue($insight_id),
                 $resourcePath
             );
@@ -4460,7 +4460,7 @@ class AnalyticsApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['text/plain', ],
             $contentType,
             $multipart
         );
@@ -4523,7 +4523,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportStatus
      *
-     * /experimental/retail-media/insights/{insightId}/status
+     * /experimental/retail-media/insights/{insight-id}/status
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
@@ -4541,7 +4541,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportStatusWithHttpInfo
      *
-     * /experimental/retail-media/insights/{insightId}/status
+     * /experimental/retail-media/insights/{insight-id}/status
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
@@ -4641,7 +4641,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportStatusAsync
      *
-     * /experimental/retail-media/insights/{insightId}/status
+     * /experimental/retail-media/insights/{insight-id}/status
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
@@ -4662,7 +4662,7 @@ class AnalyticsApi
     /**
      * Operation getInsightReportStatusAsyncWithHttpInfo
      *
-     * /experimental/retail-media/insights/{insightId}/status
+     * /experimental/retail-media/insights/{insight-id}/status
      *
      * @param  string $insight_id The ID of the asynchronous insight report. Must be a valid ID format. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInsightReportStatus'] to see the possible values for this operation
@@ -4731,7 +4731,7 @@ class AnalyticsApi
         }
 
 
-        $resourcePath = '/experimental/retail-media/insights/{insightId}/status';
+        $resourcePath = '/experimental/retail-media/insights/{insight-id}/status';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4743,7 +4743,7 @@ class AnalyticsApi
         // path params
         if ($insight_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'insightId' . '}',
+                '{' . 'insight-id' . '}',
                 ObjectSerializer::toPathValue($insight_id),
                 $resourcePath
             );

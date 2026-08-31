@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncInsightResponse
+ * CreateTargetRequestModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AsyncInsightResponse Class Doc Comment
+ * CreateTargetRequestModel Class Doc Comment
  *
  * @category Class
- * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
+ * @description Target to configure on a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTargetRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncInsightResponse';
+    protected static $openAPIModelName = 'CreateTargetRequestModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource',
-        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
+        'bid_multiplier' => 'float',
+        'category_target_details' => '\criteo\api\retailmedia\experimental\Model\CategoryTargetDetails',
+        'manual_keyword_target_details' => '\criteo\api\retailmedia\experimental\Model\ManualKeywordTargetDetails',
+        'negative' => 'bool',
+        'page_type_target_details' => '\criteo\api\retailmedia\experimental\Model\PageTypeTargetDetails',
+        'target_type' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'bid_multiplier' => 'double',
+        'category_target_details' => null,
+        'manual_keyword_target_details' => null,
+        'negative' => null,
+        'page_type_target_details' => null,
+        'target_type' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'bid_multiplier' => true,
+		'category_target_details' => true,
+		'manual_keyword_target_details' => true,
+		'negative' => false,
+		'page_type_target_details' => true,
+		'target_type' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'bid_multiplier' => 'bidMultiplier',
+        'category_target_details' => 'categoryTargetDetails',
+        'manual_keyword_target_details' => 'manualKeywordTargetDetails',
+        'negative' => 'negative',
+        'page_type_target_details' => 'pageTypeTargetDetails',
+        'target_type' => 'targetType'
     ];
 
     /**
@@ -184,9 +196,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'bid_multiplier' => 'setBidMultiplier',
+        'category_target_details' => 'setCategoryTargetDetails',
+        'manual_keyword_target_details' => 'setManualKeywordTargetDetails',
+        'negative' => 'setNegative',
+        'page_type_target_details' => 'setPageTypeTargetDetails',
+        'target_type' => 'setTargetType'
     ];
 
     /**
@@ -195,9 +210,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'bid_multiplier' => 'getBidMultiplier',
+        'category_target_details' => 'getCategoryTargetDetails',
+        'manual_keyword_target_details' => 'getManualKeywordTargetDetails',
+        'negative' => 'getNegative',
+        'page_type_target_details' => 'getPageTypeTargetDetails',
+        'target_type' => 'getTargetType'
     ];
 
     /**
@@ -241,6 +259,25 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const TARGET_TYPE_UNKNOWN = 'Unknown';
+    public const TARGET_TYPE_MANUAL_KEYWORD = 'ManualKeyword';
+    public const TARGET_TYPE_PAGE_TYPE = 'PageType';
+    public const TARGET_TYPE_CATEGORY = 'Category';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTargetTypeAllowableValues()
+    {
+        return [
+            self::TARGET_TYPE_UNKNOWN,
+            self::TARGET_TYPE_MANUAL_KEYWORD,
+            self::TARGET_TYPE_PAGE_TYPE,
+            self::TARGET_TYPE_CATEGORY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +294,12 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('bid_multiplier', $data ?? [], null);
+        $this->setIfExists('category_target_details', $data ?? [], null);
+        $this->setIfExists('manual_keyword_target_details', $data ?? [], null);
+        $this->setIfExists('negative', $data ?? [], null);
+        $this->setIfExists('page_type_target_details', $data ?? [], null);
+        $this->setIfExists('target_type', $data ?? [], null);
     }
 
     /**
@@ -289,6 +329,21 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['negative'] === null) {
+            $invalidProperties[] = "'negative' can't be null";
+        }
+        if ($this->container['target_type'] === null) {
+            $invalidProperties[] = "'target_type' can't be null";
+        }
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!is_null($this->container['target_type']) && !in_array($this->container['target_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'target_type', must be one of '%s'",
+                $this->container['target_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +360,201 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets data
+     * Gets bid_multiplier
      *
-     * @return \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null
+     * @return float|null
      */
-    public function getData()
+    public function getBidMultiplier()
     {
-        return $this->container['data'];
+        return $this->container['bid_multiplier'];
     }
 
     /**
-     * Sets data
+     * Sets bid_multiplier
      *
-     * @param \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null $data data
+     * @param float|null $bid_multiplier bid_multiplier
      *
      * @return self
      */
-    public function setData($data)
+    public function setBidMultiplier($bid_multiplier)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($bid_multiplier)) {
+            array_push($this->openAPINullablesSetToNull, 'bid_multiplier');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('bid_multiplier', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['bid_multiplier'] = $bid_multiplier;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets category_target_details
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\CategoryTargetDetails|null
      */
-    public function getErrors()
+    public function getCategoryTargetDetails()
     {
-        return $this->container['errors'];
+        return $this->container['category_target_details'];
     }
 
     /**
-     * Sets errors
+     * Sets category_target_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
+     * @param \criteo\api\retailmedia\experimental\Model\CategoryTargetDetails|null $category_target_details category_target_details
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setCategoryTargetDetails($category_target_details)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
+        if (is_null($category_target_details)) {
+            array_push($this->openAPINullablesSetToNull, 'category_target_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
+            $index = array_search('category_target_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['errors'] = $errors;
+        $this->container['category_target_details'] = $category_target_details;
 
         return $this;
     }
 
     /**
-     * Gets warnings
+     * Gets manual_keyword_target_details
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\ManualKeywordTargetDetails|null
      */
-    public function getWarnings()
+    public function getManualKeywordTargetDetails()
     {
-        return $this->container['warnings'];
+        return $this->container['manual_keyword_target_details'];
     }
 
     /**
-     * Sets warnings
+     * Sets manual_keyword_target_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
+     * @param \criteo\api\retailmedia\experimental\Model\ManualKeywordTargetDetails|null $manual_keyword_target_details manual_keyword_target_details
      *
      * @return self
      */
-    public function setWarnings($warnings)
+    public function setManualKeywordTargetDetails($manual_keyword_target_details)
     {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
+        if (is_null($manual_keyword_target_details)) {
+            array_push($this->openAPINullablesSetToNull, 'manual_keyword_target_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
+            $index = array_search('manual_keyword_target_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['manual_keyword_target_details'] = $manual_keyword_target_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets negative
+     *
+     * @return bool
+     */
+    public function getNegative()
+    {
+        return $this->container['negative'];
+    }
+
+    /**
+     * Sets negative
+     *
+     * @param bool $negative negative
+     *
+     * @return self
+     */
+    public function setNegative($negative)
+    {
+        if (is_null($negative)) {
+            throw new \InvalidArgumentException('non-nullable negative cannot be null');
+        }
+        $this->container['negative'] = $negative;
+
+        return $this;
+    }
+
+    /**
+     * Gets page_type_target_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\PageTypeTargetDetails|null
+     */
+    public function getPageTypeTargetDetails()
+    {
+        return $this->container['page_type_target_details'];
+    }
+
+    /**
+     * Sets page_type_target_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\PageTypeTargetDetails|null $page_type_target_details page_type_target_details
+     *
+     * @return self
+     */
+    public function setPageTypeTargetDetails($page_type_target_details)
+    {
+        if (is_null($page_type_target_details)) {
+            array_push($this->openAPINullablesSetToNull, 'page_type_target_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('page_type_target_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['page_type_target_details'] = $page_type_target_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets target_type
+     *
+     * @return string
+     */
+    public function getTargetType()
+    {
+        return $this->container['target_type'];
+    }
+
+    /**
+     * Sets target_type
+     *
+     * @param string $target_type target_type
+     *
+     * @return self
+     */
+    public function setTargetType($target_type)
+    {
+        if (is_null($target_type)) {
+            throw new \InvalidArgumentException('non-nullable target_type cannot be null');
+        }
+        $allowedValues = $this->getTargetTypeAllowableValues();
+        if (!in_array($target_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'target_type', must be one of '%s'",
+                    $target_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['target_type'] = $target_type;
 
         return $this;
     }

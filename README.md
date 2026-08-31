@@ -84,8 +84,8 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**generateSyncRealTimePerformanceReport**](docs/Api/AnalyticsApi.md#generatesyncrealtimeperformancereport) | **POST** /experimental/retail-media/reports/sync/real-time-performance | /experimental/retail-media/reports/sync/real-time-performance
 *AnalyticsApi* | [**getAsyncExportOutput**](docs/Api/AnalyticsApi.md#getasyncexportoutput) | **GET** /experimental/retail-media/reports/{reportId}/output | /experimental/retail-media/reports/{reportId}/output
 *AnalyticsApi* | [**getAsyncExportStatus**](docs/Api/AnalyticsApi.md#getasyncexportstatus) | **GET** /experimental/retail-media/reports/{reportId}/status | /experimental/retail-media/reports/{reportId}/status
-*AnalyticsApi* | [**getInsightReportOutput**](docs/Api/AnalyticsApi.md#getinsightreportoutput) | **GET** /experimental/retail-media/insights/{insightId}/output | /experimental/retail-media/insights/{insightId}/output
-*AnalyticsApi* | [**getInsightReportStatus**](docs/Api/AnalyticsApi.md#getinsightreportstatus) | **GET** /experimental/retail-media/insights/{insightId}/status | /experimental/retail-media/insights/{insightId}/status
+*AnalyticsApi* | [**getInsightReportOutput**](docs/Api/AnalyticsApi.md#getinsightreportoutput) | **GET** /experimental/retail-media/insights/{insight-id}/output | /experimental/retail-media/insights/{insight-id}/output
+*AnalyticsApi* | [**getInsightReportStatus**](docs/Api/AnalyticsApi.md#getinsightreportstatus) | **GET** /experimental/retail-media/insights/{insight-id}/status | /experimental/retail-media/insights/{insight-id}/status
 *AudienceApi* | [**addRemoveContactListByAudienceSegment**](docs/Api/AudienceApi.md#addremovecontactlistbyaudiencesegment) | **POST** /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove | /experimental/retail-media/audience-segments/{audience-segment-id}/contact-list/add-remove
 *AudienceApi* | [**bulkCreateAudience**](docs/Api/AudienceApi.md#bulkcreateaudience) | **POST** /experimental/retail-media/accounts/{account-id}/audiences/create | /experimental/retail-media/accounts/{account-id}/audiences/create
 *AudienceApi* | [**bulkCreateAudienceSegments**](docs/Api/AudienceApi.md#bulkcreateaudiencesegments) | **POST** /experimental/retail-media/accounts/{account-id}/audience-segments/create | /experimental/retail-media/accounts/{account-id}/audience-segments/create
@@ -114,9 +114,10 @@ Class | Method | HTTP request | Description
 *CampaignApi* | [**createCreative**](docs/Api/CampaignApi.md#createcreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives
 *CampaignApi* | [**createLineItem**](docs/Api/CampaignApi.md#createlineitem) | **POST** /experimental/retail-media/line-items | /experimental/retail-media/line-items
 *CampaignApi* | [**createPreferredLineItemByCampaignId**](docs/Api/CampaignApi.md#createpreferredlineitembycampaignid) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items
+*CampaignApi* | [**createTargetsByLineItemId**](docs/Api/CampaignApi.md#createtargetsbylineitemid) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/create | /experimental/retail-media/line-items/{line-item-id}/targets/create
 *CampaignApi* | [**deleteCampaignsFromBalanceV1**](docs/Api/CampaignApi.md#deletecampaignsfrombalancev1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/delete | /experimental/retail-media/balances/{balanceId}/campaigns/delete
 *CampaignApi* | [**deleteProductButtonByLineItemAndProductButtonId**](docs/Api/CampaignApi.md#deleteproductbuttonbylineitemandproductbuttonid) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-*CampaignApi* | [**deletePromotedProducts**](docs/Api/CampaignApi.md#deletepromotedproducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete
+*CampaignApi* | [**deleteProducts**](docs/Api/CampaignApi.md#deleteproducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete
 *CampaignApi* | [**fetchPromotedProducts**](docs/Api/CampaignApi.md#fetchpromotedproducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products
 *CampaignApi* | [**getAuctionLineItem**](docs/Api/CampaignApi.md#getauctionlineitem) | **GET** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId}
 *CampaignApi* | [**getAuctionLineItemsByCampaign**](docs/Api/CampaignApi.md#getauctionlineitemsbycampaign) | **GET** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items
@@ -227,6 +228,9 @@ Class | Method | HTTP request | Description
  - [CommonProblem](docs/Model/CommonProblem.md)
  - [ConquestingSettings](docs/Model/ConquestingSettings.md)
  - [CpmBiddingSettings](docs/Model/CpmBiddingSettings.md)
+ - [CreateTargetRequestModel](docs/Model/CreateTargetRequestModel.md)
+ - [CreateTargetRequestModelListRequest](docs/Model/CreateTargetRequestModelListRequest.md)
+ - [CreateTargetRequestModelResource](docs/Model/CreateTargetRequestModelResource.md)
  - [Creative2](docs/Model/Creative2.md)
  - [Creative2Response](docs/Model/Creative2Response.md)
  - [CreativeCreateModel2](docs/Model/CreativeCreateModel2.md)
@@ -244,9 +248,13 @@ Class | Method | HTTP request | Description
  - [DataCompleteThrough](docs/Model/DataCompleteThrough.md)
  - [DeleteCampaignsRequestV1](docs/Model/DeleteCampaignsRequestV1.md)
  - [DeleteEntry](docs/Model/DeleteEntry.md)
+ - [DeleteProductModel](docs/Model/DeleteProductModel.md)
+ - [DeleteProductModelRequest](docs/Model/DeleteProductModelRequest.md)
+ - [DeleteProductModelResource](docs/Model/DeleteProductModelResource.md)
  - [DemandSearch](docs/Model/DemandSearch.md)
  - [DemandSearchRequest](docs/Model/DemandSearchRequest.md)
  - [DemandSearchResource](docs/Model/DemandSearchResource.md)
+ - [DigitalShelfIntelligenceFilters](docs/Model/DigitalShelfIntelligenceFilters.md)
  - [DigitalShelfIntelligenceInsight](docs/Model/DigitalShelfIntelligenceInsight.md)
  - [DigitalShelfIntelligenceInsightRequest](docs/Model/DigitalShelfIntelligenceInsightRequest.md)
  - [DigitalShelfIntelligenceInsightResource](docs/Model/DigitalShelfIntelligenceInsightResource.md)
@@ -475,6 +483,7 @@ Class | Method | HTTP request | Description
  - [ScheduleDetailsModel](docs/Model/ScheduleDetailsModel.md)
  - [SdkApiRestCommonProblem](docs/Model/SdkApiRestCommonProblem.md)
  - [SetProductBuyBoxWinnersRequest](docs/Model/SetProductBuyBoxWinnersRequest.md)
+ - [ShareOfVoiceFilters](docs/Model/ShareOfVoiceFilters.md)
  - [ShareOfVoiceInsight](docs/Model/ShareOfVoiceInsight.md)
  - [ShareOfVoiceInsightRequest](docs/Model/ShareOfVoiceInsightRequest.md)
  - [ShareOfVoiceInsightResource](docs/Model/ShareOfVoiceInsightResource.md)
@@ -505,6 +514,7 @@ Class | Method | HTTP request | Description
  - [SyncRealTimePerformanceReportRequest](docs/Model/SyncRealTimePerformanceReportRequest.md)
  - [SyncRealTimePerformanceReportResource](docs/Model/SyncRealTimePerformanceReportResource.md)
  - [Target](docs/Model/Target.md)
+ - [TargetListResponse](docs/Model/TargetListResponse.md)
  - [TargetListResponseWithPageMetadata](docs/Model/TargetListResponseWithPageMetadata.md)
  - [TargetResource](docs/Model/TargetResource.md)
  - [TemplateVariableValue](docs/Model/TemplateVariableValue.md)

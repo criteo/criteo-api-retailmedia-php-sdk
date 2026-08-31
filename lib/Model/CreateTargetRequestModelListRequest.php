@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncInsightResponse
+ * CreateTargetRequestModelListRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AsyncInsightResponse Class Doc Comment
+ * CreateTargetRequestModelListRequest Class Doc Comment
  *
  * @category Class
- * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
+ * @description A top-level object that encapsulates a Criteo API request for several value objects.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTargetRequestModelListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncInsightResponse';
+    protected static $openAPIModelName = 'CreateTargetRequestModelListRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource',
-        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
+        'data' => '\criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelResource[]'
     ];
 
     /**
@@ -71,9 +69,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'data' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'data' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'data' => 'data'
     ];
 
     /**
@@ -184,9 +176,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'data' => 'setData'
     ];
 
     /**
@@ -195,9 +185,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'data' => 'getData'
     ];
 
     /**
@@ -258,8 +246,6 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -307,7 +293,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelResource[]|null
      */
     public function getData()
     {
@@ -317,7 +303,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelResource[]|null $data data
      *
      * @return self
      */
@@ -334,74 +320,6 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             }
         }
         $this->container['data'] = $data;
-
-        return $this;
-    }
-
-    /**
-     * Gets errors
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
-     */
-    public function getErrors()
-    {
-        return $this->container['errors'];
-    }
-
-    /**
-     * Sets errors
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
-     *
-     * @return self
-     */
-    public function setErrors($errors)
-    {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['warnings'] = $warnings;
 
         return $this;
     }

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **campaign_id** | **string** | The campaign id of the associated campaign. | [optional]
 **conquesting_settings** | [**\criteo\api\retailmedia\experimental\Model\ConquestingSettings**](ConquestingSettings.md) |  | [optional]
 **flight_dates** | [**\criteo\api\retailmedia\experimental\Model\FlightDates**](FlightDates.md) |  | [optional]
+**funding_status** | **string** | Indicates whether the line item is funded. | [optional]
+**is_paused** | **bool** | Indicates whether the line item is paused. | [optional]
 **line_item_id** | **string** | The id of the line item. | [optional]
 **line_item_type** | **string** | The type of the line item. | [optional]
 **name** | **string** | The name of the line item. | [optional]

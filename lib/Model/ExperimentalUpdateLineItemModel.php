@@ -365,7 +365,7 @@ class ExperimentalUpdateLineItemModel implements ModelInterface, ArrayAccess, \J
     /**
      * Sets is_paused
      *
-     * @param bool|null $is_paused Whether the line item should be paused or unpaused.
+     * @param bool|null $is_paused Indicates whether the line item is paused.
      *
      * @return self
      */

@@ -1,10 +1,10 @@
-# # SkuFilter
+# # CreateTargetRequestModelResource
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**retailer_id** | **string** | Retailer the SKUs belong to. |
-**retailer_sku_ids** | **string[]** | Retailer SKU IDs to filter on. |
+**attributes** | [**\criteo\api\retailmedia\experimental\Model\CreateTargetRequestModel**](CreateTargetRequestModel.md) |  | [optional]
+**type** | **string** | Type of the resource. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

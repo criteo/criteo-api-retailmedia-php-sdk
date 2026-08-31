@@ -13,9 +13,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /experimental/retail-media/accounts/{account-id}/creatives | /experimental/retail-media/accounts/{account-id}/creatives |
 | [**createLineItem()**](CampaignApi.md#createLineItem) | **POST** /experimental/retail-media/line-items | /experimental/retail-media/line-items |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items | /experimental/retail-media/campaigns/{campaign-id}/preferred-line-items |
+| [**createTargetsByLineItemId()**](CampaignApi.md#createTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/create | /experimental/retail-media/line-items/{line-item-id}/targets/create |
 | [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /experimental/retail-media/balances/{balanceId}/campaigns/delete | /experimental/retail-media/balances/{balanceId}/campaigns/delete |
 | [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
-| [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
+| [**deleteProducts()**](CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
 | [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
 | [**getAuctionLineItem()**](CampaignApi.md#getAuctionLineItem) | **GET** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
 | [**getAuctionLineItemsByCampaign()**](CampaignApi.md#getAuctionLineItemsByCampaign) | **GET** /experimental/retail-media/campaigns/{campaignId}/auction-line-items | /experimental/retail-media/campaigns/{campaignId}/auction-line-items |
@@ -625,6 +626,71 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createTargetsByLineItemId()`
+
+```php
+createTargetsByLineItemId($line_item_id, $create_target_request_model_list_request): \criteo\api\retailmedia\experimental\Model\TargetListResponse
+```
+
+/experimental/retail-media/line-items/{line-item-id}/targets/create
+
+Creates a given target
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | Unique identifier for the line item
+$create_target_request_model_list_request = new \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest(); // \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest | Target to configure on the line item
+
+try {
+    $result = $apiInstance->createTargetsByLineItemId($line_item_id, $create_target_request_model_list_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->createTargetsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| Unique identifier for the line item | |
+| **create_target_request_model_list_request** | [**\criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest**](../Model/CreateTargetRequestModelListRequest.md)| Target to configure on the line item | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\TargetListResponse**](../Model/TargetListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteCampaignsFromBalanceV1()`
 
 ```php
@@ -755,15 +821,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `deletePromotedProducts()`
+## `deleteProducts()`
 
 ```php
-deletePromotedProducts($line_item_id, $promoted_product_resource_collection_input)
+deleteProducts($line_item_id, $delete_product_model_request): \criteo\api\retailmedia\experimental\Model\Outcome
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/products/delete
 
-Remove a collection of promoted products from a line item
+Delete products from a line item.
 
 ### Example
 
@@ -785,13 +851,14 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | ID of the line item
-$promoted_product_resource_collection_input = new \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput(); // \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput | Request body whose {data} contains an array of promoted products.
+$line_item_id = 'line_item_id_example'; // string | The line item id.
+$delete_product_model_request = new \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest(); // \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest | The products to delete.
 
 try {
-    $apiInstance->deletePromotedProducts($line_item_id, $promoted_product_resource_collection_input);
+    $result = $apiInstance->deleteProducts($line_item_id, $delete_product_model_request);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->deletePromotedProducts: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->deleteProducts: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -799,12 +866,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| ID of the line item | |
-| **promoted_product_resource_collection_input** | [**\criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput**](../Model/PromotedProductResourceCollectionInput.md)| Request body whose {data} contains an array of promoted products. | [optional] |
+| **line_item_id** | **string**| The line item id. | |
+| **delete_product_model_request** | [**\criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest**](../Model/DeleteProductModelRequest.md)| The products to delete. | |
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\experimental\Model\Outcome**](../Model/Outcome.md)
 
 ### Authorization
 
@@ -813,7 +880,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

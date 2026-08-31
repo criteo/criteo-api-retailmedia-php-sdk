@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncInsightResponse
+ * DeleteProductModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AsyncInsightResponse Class Doc Comment
+ * DeleteProductModel Class Doc Comment
  *
  * @category Class
- * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
+ * @description The products to soft delete from a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncInsightResponse';
+    protected static $openAPIModelName = 'DeleteProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource',
-        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
-        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
+        'product_ids' => 'string[]',
+        'product_type' => 'string'
     ];
 
     /**
@@ -71,9 +70,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null,
-        'errors' => null,
-        'warnings' => null
+        'product_ids' => null,
+        'product_type' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true,
-		'errors' => true,
-		'warnings' => true
+        'product_ids' => true,
+		'product_type' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data',
-        'errors' => 'errors',
-        'warnings' => 'warnings'
+        'product_ids' => 'productIds',
+        'product_type' => 'productType'
     ];
 
     /**
@@ -184,9 +180,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData',
-        'errors' => 'setErrors',
-        'warnings' => 'setWarnings'
+        'product_ids' => 'setProductIds',
+        'product_type' => 'setProductType'
     ];
 
     /**
@@ -195,9 +190,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData',
-        'errors' => 'getErrors',
-        'warnings' => 'getWarnings'
+        'product_ids' => 'getProductIds',
+        'product_type' => 'getProductType'
     ];
 
     /**
@@ -241,6 +235,21 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
+    public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getProductTypeAllowableValues()
+    {
+        return [
+            self::PRODUCT_TYPE_DISPLAY_PRODUCT,
+            self::PRODUCT_TYPE_SPONSORED_PRODUCT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,9 +266,8 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
-        $this->setIfExists('errors', $data ?? [], null);
-        $this->setIfExists('warnings', $data ?? [], null);
+        $this->setIfExists('product_ids', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], 'DisplayProduct');
     }
 
     /**
@@ -289,6 +297,15 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'product_type', must be one of '%s'",
+                $this->container['product_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -305,103 +322,72 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets data
+     * Gets product_ids
      *
-     * @return \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null
+     * @return string[]|null
      */
-    public function getData()
+    public function getProductIds()
     {
-        return $this->container['data'];
+        return $this->container['product_ids'];
     }
 
     /**
-     * Sets data
+     * Sets product_ids
      *
-     * @param \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null $data data
+     * @param string[]|null $product_ids The products ids to soft delete from the line item.
      *
      * @return self
      */
-    public function setData($data)
+    public function setProductIds($product_ids)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($product_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'product_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('product_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['product_ids'] = $product_ids;
 
         return $this;
     }
 
     /**
-     * Gets errors
+     * Gets product_type
      *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     * @return string|null
      */
-    public function getErrors()
+    public function getProductType()
     {
-        return $this->container['errors'];
+        return $this->container['product_type'];
     }
 
     /**
-     * Sets errors
+     * Sets product_type
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
+     * @param string|null $product_type The type of product being deleted.
      *
      * @return self
      */
-    public function setErrors($errors)
+    public function setProductType($product_type)
     {
-        if (is_null($errors)) {
-            array_push($this->openAPINullablesSetToNull, 'errors');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('errors', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($product_type)) {
+            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
         }
-        $this->container['errors'] = $errors;
-
-        return $this;
-    }
-
-    /**
-     * Gets warnings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
-     */
-    public function getWarnings()
-    {
-        return $this->container['warnings'];
-    }
-
-    /**
-     * Sets warnings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
-     *
-     * @return self
-     */
-    public function setWarnings($warnings)
-    {
-        if (is_null($warnings)) {
-            array_push($this->openAPINullablesSetToNull, 'warnings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('warnings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!in_array($product_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'product_type', must be one of '%s'",
+                    $product_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['warnings'] = $warnings;
+        $this->container['product_type'] = $product_type;
 
         return $this;
     }

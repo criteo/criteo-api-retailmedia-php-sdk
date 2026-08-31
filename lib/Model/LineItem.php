@@ -63,6 +63,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_id' => 'string',
         'conquesting_settings' => '\criteo\api\retailmedia\experimental\Model\ConquestingSettings',
         'flight_dates' => '\criteo\api\retailmedia\experimental\Model\FlightDates',
+        'funding_status' => 'string',
+        'is_paused' => 'bool',
         'line_item_id' => 'string',
         'line_item_type' => 'string',
         'name' => 'string',
@@ -85,6 +87,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_id' => null,
         'conquesting_settings' => null,
         'flight_dates' => null,
+        'funding_status' => null,
+        'is_paused' => null,
         'line_item_id' => null,
         'line_item_type' => null,
         'name' => null,
@@ -105,6 +109,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
 		'campaign_id' => true,
 		'conquesting_settings' => true,
 		'flight_dates' => true,
+		'funding_status' => true,
+		'is_paused' => true,
 		'line_item_id' => true,
 		'line_item_type' => true,
 		'name' => true,
@@ -205,6 +211,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_id' => 'campaignId',
         'conquesting_settings' => 'conquestingSettings',
         'flight_dates' => 'flightDates',
+        'funding_status' => 'fundingStatus',
+        'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
         'line_item_type' => 'lineItemType',
         'name' => 'name',
@@ -225,6 +233,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_id' => 'setCampaignId',
         'conquesting_settings' => 'setConquestingSettings',
         'flight_dates' => 'setFlightDates',
+        'funding_status' => 'setFundingStatus',
+        'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
         'line_item_type' => 'setLineItemType',
         'name' => 'setName',
@@ -245,6 +255,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'campaign_id' => 'getCampaignId',
         'conquesting_settings' => 'getConquestingSettings',
         'flight_dates' => 'getFlightDates',
+        'funding_status' => 'getFundingStatus',
+        'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
         'line_item_type' => 'getLineItemType',
         'name' => 'getName',
@@ -298,6 +310,12 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     public const BUY_TYPE_AUCTION = 'Auction';
     public const BUY_TYPE_PREFERRED_DEALS = 'PreferredDeals';
     public const BUY_TYPE_SPONSORSHIP = 'Sponsorship';
+    public const FUNDING_STATUS_UNKNOWN = 'Unknown';
+    public const FUNDING_STATUS_FUNDED = 'Funded';
+    public const FUNDING_STATUS_DAILY_BUDGET_REACHED = 'DailyBudgetReached';
+    public const FUNDING_STATUS_MONTHLY_BUDGET_REACHED = 'MonthlyBudgetReached';
+    public const FUNDING_STATUS_TOTAL_BUDGET_REACHED = 'TotalBudgetReached';
+    public const FUNDING_STATUS_BALANCE_EXHAUSTED = 'BalanceExhausted';
     public const LINE_ITEM_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
     public const LINE_ITEM_TYPE_ONSITE_DISPLAY = 'OnsiteDisplay';
 
@@ -312,6 +330,23 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             self::BUY_TYPE_AUCTION,
             self::BUY_TYPE_PREFERRED_DEALS,
             self::BUY_TYPE_SPONSORSHIP,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFundingStatusAllowableValues()
+    {
+        return [
+            self::FUNDING_STATUS_UNKNOWN,
+            self::FUNDING_STATUS_FUNDED,
+            self::FUNDING_STATUS_DAILY_BUDGET_REACHED,
+            self::FUNDING_STATUS_MONTHLY_BUDGET_REACHED,
+            self::FUNDING_STATUS_TOTAL_BUDGET_REACHED,
+            self::FUNDING_STATUS_BALANCE_EXHAUSTED,
         ];
     }
 
@@ -348,6 +383,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('conquesting_settings', $data ?? [], null);
         $this->setIfExists('flight_dates', $data ?? [], null);
+        $this->setIfExists('funding_status', $data ?? [], null);
+        $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
         $this->setIfExists('line_item_type', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -389,6 +426,15 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'buy_type', must be one of '%s'",
                 $this->container['buy_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getFundingStatusAllowableValues();
+        if (!is_null($this->container['funding_status']) && !in_array($this->container['funding_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'funding_status', must be one of '%s'",
+                $this->container['funding_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -593,6 +639,84 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['flight_dates'] = $flight_dates;
+
+        return $this;
+    }
+
+    /**
+     * Gets funding_status
+     *
+     * @return string|null
+     */
+    public function getFundingStatus()
+    {
+        return $this->container['funding_status'];
+    }
+
+    /**
+     * Sets funding_status
+     *
+     * @param string|null $funding_status Indicates whether the line item is funded.
+     *
+     * @return self
+     */
+    public function setFundingStatus($funding_status)
+    {
+        if (is_null($funding_status)) {
+            array_push($this->openAPINullablesSetToNull, 'funding_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('funding_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getFundingStatusAllowableValues();
+        if (!is_null($funding_status) && !in_array($funding_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'funding_status', must be one of '%s'",
+                    $funding_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['funding_status'] = $funding_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_paused
+     *
+     * @return bool|null
+     */
+    public function getIsPaused()
+    {
+        return $this->container['is_paused'];
+    }
+
+    /**
+     * Sets is_paused
+     *
+     * @param bool|null $is_paused Indicates whether the line item is paused.
+     *
+     * @return self
+     */
+    public function setIsPaused($is_paused)
+    {
+        if (is_null($is_paused)) {
+            array_push($this->openAPINullablesSetToNull, 'is_paused');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_paused', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['is_paused'] = $is_paused;
 
         return $this;
     }

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * DigitalShelfIntelligenceInsight Class Doc Comment
  *
  * @category Class
- * @description Description of a Digital Shelf Intelligence insight
+ * @description Parameters of a Digital Shelf Intelligence insight.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,14 +60,11 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'account_id' => 'string',
         'aggregation_level' => 'string',
-        'brand_ids' => 'string[]',
-        'categories' => 'string[]',
-        'end_date' => '\DateTime',
+        'end_date' => 'string',
+        'filters' => '\criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceFilters',
         'format' => 'string',
         'metrics' => 'string[]',
-        'retailer_ids' => 'string[]',
-        'sku_ids' => '\criteo\api\retailmedia\experimental\Model\SkuFilter[]',
-        'start_date' => '\DateTime'
+        'start_date' => 'string'
     ];
 
     /**
@@ -80,14 +77,11 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'account_id' => null,
         'aggregation_level' => null,
-        'brand_ids' => null,
-        'categories' => null,
-        'end_date' => 'date-time',
+        'end_date' => null,
+        'filters' => null,
         'format' => null,
         'metrics' => null,
-        'retailer_ids' => null,
-        'sku_ids' => null,
-        'start_date' => 'date-time'
+        'start_date' => null
     ];
 
     /**
@@ -98,13 +92,10 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'account_id' => false,
 		'aggregation_level' => false,
-		'brand_ids' => true,
-		'categories' => true,
 		'end_date' => false,
+		'filters' => false,
 		'format' => false,
 		'metrics' => false,
-		'retailer_ids' => true,
-		'sku_ids' => true,
 		'start_date' => false
     ];
 
@@ -196,13 +187,10 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'account_id' => 'accountId',
         'aggregation_level' => 'aggregationLevel',
-        'brand_ids' => 'brandIds',
-        'categories' => 'categories',
         'end_date' => 'endDate',
+        'filters' => 'filters',
         'format' => 'format',
         'metrics' => 'metrics',
-        'retailer_ids' => 'retailerIds',
-        'sku_ids' => 'skuIds',
         'start_date' => 'startDate'
     ];
 
@@ -214,13 +202,10 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'account_id' => 'setAccountId',
         'aggregation_level' => 'setAggregationLevel',
-        'brand_ids' => 'setBrandIds',
-        'categories' => 'setCategories',
         'end_date' => 'setEndDate',
+        'filters' => 'setFilters',
         'format' => 'setFormat',
         'metrics' => 'setMetrics',
-        'retailer_ids' => 'setRetailerIds',
-        'sku_ids' => 'setSkuIds',
         'start_date' => 'setStartDate'
     ];
 
@@ -232,13 +217,10 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'account_id' => 'getAccountId',
         'aggregation_level' => 'getAggregationLevel',
-        'brand_ids' => 'getBrandIds',
-        'categories' => 'getCategories',
         'end_date' => 'getEndDate',
+        'filters' => 'getFilters',
         'format' => 'getFormat',
         'metrics' => 'getMetrics',
-        'retailer_ids' => 'getRetailerIds',
-        'sku_ids' => 'getSkuIds',
         'start_date' => 'getStartDate'
     ];
 
@@ -362,13 +344,10 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('aggregation_level', $data ?? [], null);
-        $this->setIfExists('brand_ids', $data ?? [], null);
-        $this->setIfExists('categories', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('filters', $data ?? [], null);
         $this->setIfExists('format', $data ?? [], 'json-compact');
         $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('retailer_ids', $data ?? [], null);
-        $this->setIfExists('sku_ids', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
     }
 
@@ -464,7 +443,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets account_id
      *
-     * @param string $account_id account_id
+     * @param string $account_id Account ID the insight report is generated for.
      *
      * @return self
      */
@@ -491,7 +470,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets aggregation_level
      *
-     * @param string $aggregation_level aggregation_level
+     * @param string $aggregation_level Aggregation level of the report. Allowed values: `brand`, `sku`.
      *
      * @return self
      */
@@ -516,77 +495,9 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets brand_ids
-     *
-     * @return string[]|null
-     */
-    public function getBrandIds()
-    {
-        return $this->container['brand_ids'];
-    }
-
-    /**
-     * Sets brand_ids
-     *
-     * @param string[]|null $brand_ids brand_ids
-     *
-     * @return self
-     */
-    public function setBrandIds($brand_ids)
-    {
-        if (is_null($brand_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'brand_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('brand_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['brand_ids'] = $brand_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets categories
-     *
-     * @return string[]|null
-     */
-    public function getCategories()
-    {
-        return $this->container['categories'];
-    }
-
-    /**
-     * Sets categories
-     *
-     * @param string[]|null $categories categories
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        if (is_null($categories)) {
-            array_push($this->openAPINullablesSetToNull, 'categories');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('categories', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['categories'] = $categories;
-
-        return $this;
-    }
-
-    /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getEndDate()
     {
@@ -596,7 +507,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date end_date
+     * @param string $end_date End date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Sunday of the week containing the provided date.
      *
      * @return self
      */
@@ -606,6 +517,33 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
         $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceFilters|null
+     */
+    public function getFilters()
+    {
+        return $this->container['filters'];
+    }
+
+    /**
+     * Sets filters
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\DigitalShelfIntelligenceFilters|null $filters filters
+     *
+     * @return self
+     */
+    public function setFilters($filters)
+    {
+        if (is_null($filters)) {
+            throw new \InvalidArgumentException('non-nullable filters cannot be null');
+        }
+        $this->container['filters'] = $filters;
 
         return $this;
     }
@@ -623,7 +561,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets format
      *
-     * @param string|null $format format
+     * @param string|null $format Output format of the report. Allowed values: `json`, `json-compact`, `json-newline`, `csv`. Defaults to `json-compact`.
      *
      * @return self
      */
@@ -660,7 +598,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets metrics
      *
-     * @param string[] $metrics metrics
+     * @param string[] $metrics Metrics to report on.
      *
      * @return self
      */
@@ -689,77 +627,9 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets retailer_ids
-     *
-     * @return string[]|null
-     */
-    public function getRetailerIds()
-    {
-        return $this->container['retailer_ids'];
-    }
-
-    /**
-     * Sets retailer_ids
-     *
-     * @param string[]|null $retailer_ids retailer_ids
-     *
-     * @return self
-     */
-    public function setRetailerIds($retailer_ids)
-    {
-        if (is_null($retailer_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'retailer_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('retailer_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['retailer_ids'] = $retailer_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets sku_ids
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\SkuFilter[]|null
-     */
-    public function getSkuIds()
-    {
-        return $this->container['sku_ids'];
-    }
-
-    /**
-     * Sets sku_ids
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\SkuFilter[]|null $sku_ids sku_ids
-     *
-     * @return self
-     */
-    public function setSkuIds($sku_ids)
-    {
-        if (is_null($sku_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'sku_ids');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sku_ids', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sku_ids'] = $sku_ids;
-
-        return $this;
-    }
-
-    /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartDate()
     {
@@ -769,7 +639,7 @@ class DigitalShelfIntelligenceInsight implements ModelInterface, ArrayAccess, \J
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date start_date
+     * @param string $start_date Start date of the report (inclusive), in ISO 8601 format (YYYY-MM-DD).  Adjusted to the Monday of the week containing the provided date.
      *
      * @return self
      */

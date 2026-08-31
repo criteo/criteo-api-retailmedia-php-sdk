@@ -61,7 +61,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => 'string',
         'conquesting_settings' => '\criteo\api\retailmedia\experimental\Model\ExperimentalConquestingSettingsModel',
         'effective_flight_dates' => '\criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel',
-        'financial_status' => 'string',
+        'funding_status' => 'string',
         'is_paused' => 'bool',
         'line_item_id' => 'string',
         'name' => 'string',
@@ -82,7 +82,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => null,
         'conquesting_settings' => null,
         'effective_flight_dates' => null,
-        'financial_status' => null,
+        'funding_status' => null,
         'is_paused' => null,
         'line_item_id' => null,
         'name' => null,
@@ -101,7 +101,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => true,
 		'conquesting_settings' => true,
 		'effective_flight_dates' => true,
-		'financial_status' => true,
+		'funding_status' => true,
 		'is_paused' => true,
 		'line_item_id' => true,
 		'name' => true,
@@ -200,7 +200,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => 'campaignId',
         'conquesting_settings' => 'conquestingSettings',
         'effective_flight_dates' => 'effectiveFlightDates',
-        'financial_status' => 'financialStatus',
+        'funding_status' => 'fundingStatus',
         'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
         'name' => 'name',
@@ -219,7 +219,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => 'setCampaignId',
         'conquesting_settings' => 'setConquestingSettings',
         'effective_flight_dates' => 'setEffectiveFlightDates',
-        'financial_status' => 'setFinancialStatus',
+        'funding_status' => 'setFundingStatus',
         'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
         'name' => 'setName',
@@ -238,7 +238,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_id' => 'getCampaignId',
         'conquesting_settings' => 'getConquestingSettings',
         'effective_flight_dates' => 'getEffectiveFlightDates',
-        'financial_status' => 'getFinancialStatus',
+        'funding_status' => 'getFundingStatus',
         'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
         'name' => 'getName',
@@ -289,12 +289,12 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const FINANCIAL_STATUS_UNKNOWN = 'Unknown';
-    public const FINANCIAL_STATUS_ACTIVE = 'Active';
-    public const FINANCIAL_STATUS_BUDGET_HIT_DAILY = 'BudgetHitDaily';
-    public const FINANCIAL_STATUS_BUDGET_HIT_MONTHLY = 'BudgetHitMonthly';
-    public const FINANCIAL_STATUS_BUDGET_HIT_TOTAL = 'BudgetHitTotal';
-    public const FINANCIAL_STATUS_BALANCE_HIT = 'BalanceHit';
+    public const FUNDING_STATUS_UNKNOWN = 'Unknown';
+    public const FUNDING_STATUS_FUNDED = 'Funded';
+    public const FUNDING_STATUS_DAILY_BUDGET_REACHED = 'DailyBudgetReached';
+    public const FUNDING_STATUS_MONTHLY_BUDGET_REACHED = 'MonthlyBudgetReached';
+    public const FUNDING_STATUS_TOTAL_BUDGET_REACHED = 'TotalBudgetReached';
+    public const FUNDING_STATUS_BALANCE_EXHAUSTED = 'BalanceExhausted';
     public const TYPE_UNKNOWN = 'Unknown';
     public const TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
     public const TYPE_ONSITE_DISPLAY = 'OnsiteDisplay';
@@ -304,15 +304,15 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
      *
      * @return string[]
      */
-    public function getFinancialStatusAllowableValues()
+    public function getFundingStatusAllowableValues()
     {
         return [
-            self::FINANCIAL_STATUS_UNKNOWN,
-            self::FINANCIAL_STATUS_ACTIVE,
-            self::FINANCIAL_STATUS_BUDGET_HIT_DAILY,
-            self::FINANCIAL_STATUS_BUDGET_HIT_MONTHLY,
-            self::FINANCIAL_STATUS_BUDGET_HIT_TOTAL,
-            self::FINANCIAL_STATUS_BALANCE_HIT,
+            self::FUNDING_STATUS_UNKNOWN,
+            self::FUNDING_STATUS_FUNDED,
+            self::FUNDING_STATUS_DAILY_BUDGET_REACHED,
+            self::FUNDING_STATUS_MONTHLY_BUDGET_REACHED,
+            self::FUNDING_STATUS_TOTAL_BUDGET_REACHED,
+            self::FUNDING_STATUS_BALANCE_EXHAUSTED,
         ];
     }
 
@@ -348,7 +348,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('campaign_id', $data ?? [], null);
         $this->setIfExists('conquesting_settings', $data ?? [], null);
         $this->setIfExists('effective_flight_dates', $data ?? [], null);
-        $this->setIfExists('financial_status', $data ?? [], null);
+        $this->setIfExists('funding_status', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
@@ -385,11 +385,11 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getFinancialStatusAllowableValues();
-        if (!is_null($this->container['financial_status']) && !in_array($this->container['financial_status'], $allowedValues, true)) {
+        $allowedValues = $this->getFundingStatusAllowableValues();
+        if (!is_null($this->container['funding_status']) && !in_array($this->container['funding_status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'financial_status', must be one of '%s'",
-                $this->container['financial_status'],
+                "invalid value '%s' for 'funding_status', must be one of '%s'",
+                $this->container['funding_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -521,45 +521,45 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets financial_status
+     * Gets funding_status
      *
      * @return string|null
      */
-    public function getFinancialStatus()
+    public function getFundingStatus()
     {
-        return $this->container['financial_status'];
+        return $this->container['funding_status'];
     }
 
     /**
-     * Sets financial_status
+     * Sets funding_status
      *
-     * @param string|null $financial_status The financial status of the line item.
+     * @param string|null $funding_status Indicates whether the line item is funded.
      *
      * @return self
      */
-    public function setFinancialStatus($financial_status)
+    public function setFundingStatus($funding_status)
     {
-        if (is_null($financial_status)) {
-            array_push($this->openAPINullablesSetToNull, 'financial_status');
+        if (is_null($funding_status)) {
+            array_push($this->openAPINullablesSetToNull, 'funding_status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('financial_status', $nullablesSetToNull);
+            $index = array_search('funding_status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = $this->getFinancialStatusAllowableValues();
-        if (!is_null($financial_status) && !in_array($financial_status, $allowedValues, true)) {
+        $allowedValues = $this->getFundingStatusAllowableValues();
+        if (!is_null($funding_status) && !in_array($funding_status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'financial_status', must be one of '%s'",
-                    $financial_status,
+                    "Invalid value '%s' for 'funding_status', must be one of '%s'",
+                    $funding_status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['financial_status'] = $financial_status;
+        $this->container['funding_status'] = $funding_status;
 
         return $this;
     }
@@ -577,7 +577,7 @@ class ExperimentalLineItemModel implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets is_paused
      *
-     * @param bool|null $is_paused Whether the line item should be paused or unpaused.
+     * @param bool|null $is_paused Indicates whether the line item is paused.
      *
      * @return self
      */

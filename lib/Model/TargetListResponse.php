@@ -1,6 +1,6 @@
 <?php
 /**
- * AsyncInsightResponse
+ * TargetListResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AsyncInsightResponse Class Doc Comment
+ * TargetListResponse Class Doc Comment
  *
  * @category Class
- * @description Response returned by the asynchronous insight endpoints, carrying the insight report status.
+ * @description A top-level object that encapsulates a Criteo API response for several value objects.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class TargetListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AsyncInsightResponse';
+    protected static $openAPIModelName = 'TargetListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource',
+        'data' => '\criteo\api\retailmedia\experimental\Model\TargetResource[]',
         'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
         'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
     ];
@@ -307,7 +307,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\TargetResource[]|null
      */
     public function getData()
     {
@@ -317,7 +317,7 @@ class AsyncInsightResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\InsightStatusResponseResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\TargetResource[]|null $data data
      *
      * @return self
      */

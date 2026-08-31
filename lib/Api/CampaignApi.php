@@ -98,13 +98,16 @@ class CampaignApi
         'createPreferredLineItemByCampaignId' => [
             'application/json',
         ],
+        'createTargetsByLineItemId' => [
+            'application/json',
+        ],
         'deleteCampaignsFromBalanceV1' => [
             'application/json',
         ],
         'deleteProductButtonByLineItemAndProductButtonId' => [
             'application/json',
         ],
-        'deletePromotedProducts' => [
+        'deleteProducts' => [
             'application/json',
         ],
         'fetchPromotedProducts' => [
@@ -2986,6 +2989,310 @@ class CampaignApi
     }
 
     /**
+     * Operation createTargetsByLineItemId
+     *
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     *
+     * @param  string $line_item_id Unique identifier for the line item (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest $create_target_request_model_list_request Target to configure on the line item (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTargetsByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\TargetListResponse
+     */
+    public function createTargetsByLineItemId($line_item_id, $create_target_request_model_list_request = null, string $contentType = self::contentTypes['createTargetsByLineItemId'][0])
+    {
+        list($response) = $this->createTargetsByLineItemIdWithHttpInfo($line_item_id, $create_target_request_model_list_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createTargetsByLineItemIdWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     *
+     * @param  string $line_item_id Unique identifier for the line item (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest $create_target_request_model_list_request Target to configure on the line item (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTargetsByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\TargetListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createTargetsByLineItemIdWithHttpInfo($line_item_id, $create_target_request_model_list_request = null, string $contentType = self::contentTypes['createTargetsByLineItemId'][0])
+    {
+        $request = $this->createTargetsByLineItemIdRequest($line_item_id, $create_target_request_model_list_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\TargetListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\TargetListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\TargetListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\TargetListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\TargetListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createTargetsByLineItemIdAsync
+     *
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     *
+     * @param  string $line_item_id Unique identifier for the line item (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest $create_target_request_model_list_request Target to configure on the line item (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTargetsByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTargetsByLineItemIdAsync($line_item_id, $create_target_request_model_list_request = null, string $contentType = self::contentTypes['createTargetsByLineItemId'][0])
+    {
+        return $this->createTargetsByLineItemIdAsyncWithHttpInfo($line_item_id, $create_target_request_model_list_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createTargetsByLineItemIdAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/line-items/{line-item-id}/targets/create
+     *
+     * @param  string $line_item_id Unique identifier for the line item (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest $create_target_request_model_list_request Target to configure on the line item (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTargetsByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTargetsByLineItemIdAsyncWithHttpInfo($line_item_id, $create_target_request_model_list_request = null, string $contentType = self::contentTypes['createTargetsByLineItemId'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\TargetListResponse';
+        $request = $this->createTargetsByLineItemIdRequest($line_item_id, $create_target_request_model_list_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createTargetsByLineItemId'
+     *
+     * @param  string $line_item_id Unique identifier for the line item (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\CreateTargetRequestModelListRequest $create_target_request_model_list_request Target to configure on the line item (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTargetsByLineItemId'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createTargetsByLineItemIdRequest($line_item_id, $create_target_request_model_list_request = null, string $contentType = self::contentTypes['createTargetsByLineItemId'][0])
+    {
+
+        // verify the required parameter 'line_item_id' is set
+        if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $line_item_id when calling createTargetsByLineItemId'
+            );
+        }
+
+
+
+        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/targets/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($line_item_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'line-item-id' . '}',
+                ObjectSerializer::toPathValue($line_item_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_target_request_model_list_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_target_request_model_list_request));
+            } else {
+                $httpBody = $create_target_request_model_list_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteCampaignsFromBalanceV1
      *
      * /experimental/retail-media/balances/{balanceId}/campaigns/delete
@@ -3607,39 +3914,40 @@ class CampaignApi
     }
 
     /**
-     * Operation deletePromotedProducts
+     * Operation deleteProducts
      *
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
-     * @param  string $line_item_id ID of the line item (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
+     * @param  string $line_item_id The line item id. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\experimental\Model\Outcome
      */
-    public function deletePromotedProducts($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['deletePromotedProducts'][0])
+    public function deleteProducts($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        $this->deletePromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input, $contentType);
+        list($response) = $this->deleteProductsWithHttpInfo($line_item_id, $delete_product_model_request, $contentType);
+        return $response;
     }
 
     /**
-     * Operation deletePromotedProductsWithHttpInfo
+     * Operation deleteProductsWithHttpInfo
      *
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
-     * @param  string $line_item_id ID of the line item (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
+     * @param  string $line_item_id The line item id. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deletePromotedProductsWithHttpInfo($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['deletePromotedProducts'][0])
+    public function deleteProductsWithHttpInfo($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        $request = $this->deletePromotedProductsRequest($line_item_id, $promoted_product_resource_collection_input, $contentType);
+        $request = $this->deleteProductsRequest($line_item_id, $delete_product_model_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3676,30 +3984,70 @@ class CampaignApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\Outcome' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\Outcome' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\Outcome', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\Outcome';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\Outcome',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation deletePromotedProductsAsync
+     * Operation deleteProductsAsync
      *
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
-     * @param  string $line_item_id ID of the line item (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
+     * @param  string $line_item_id The line item id. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePromotedProductsAsync($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['deletePromotedProducts'][0])
+    public function deleteProductsAsync($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        return $this->deletePromotedProductsAsyncWithHttpInfo($line_item_id, $promoted_product_resource_collection_input, $contentType)
+        return $this->deleteProductsAsyncWithHttpInfo($line_item_id, $delete_product_model_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3708,27 +4056,40 @@ class CampaignApi
     }
 
     /**
-     * Operation deletePromotedProductsAsyncWithHttpInfo
+     * Operation deleteProductsAsyncWithHttpInfo
      *
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
-     * @param  string $line_item_id ID of the line item (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
+     * @param  string $line_item_id The line item id. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deletePromotedProductsAsyncWithHttpInfo($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['deletePromotedProducts'][0])
+    public function deleteProductsAsyncWithHttpInfo($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        $returnType = '';
-        $request = $this->deletePromotedProductsRequest($line_item_id, $promoted_product_resource_collection_input, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\Outcome';
+        $request = $this->deleteProductsRequest($line_item_id, $delete_product_model_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3748,25 +4109,31 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'deletePromotedProducts'
+     * Create request for operation 'deleteProducts'
      *
-     * @param  string $line_item_id ID of the line item (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\PromotedProductResourceCollectionInput $promoted_product_resource_collection_input Request body whose {data} contains an array of promoted products. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePromotedProducts'] to see the possible values for this operation
+     * @param  string $line_item_id The line item id. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deletePromotedProductsRequest($line_item_id, $promoted_product_resource_collection_input = null, string $contentType = self::contentTypes['deletePromotedProducts'][0])
+    public function deleteProductsRequest($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling deletePromotedProducts'
+                'Missing the required parameter $line_item_id when calling deleteProducts'
             );
         }
 
+        // verify the required parameter 'delete_product_model_request' is set
+        if ($delete_product_model_request === null || (is_array($delete_product_model_request) && count($delete_product_model_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $delete_product_model_request when calling deleteProducts'
+            );
+        }
 
 
         $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/products/delete';
@@ -3789,18 +4156,18 @@ class CampaignApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            [],
+            ['application/json', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($promoted_product_resource_collection_input)) {
+        if (isset($delete_product_model_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($promoted_product_resource_collection_input));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_product_model_request));
             } else {
-                $httpBody = $promoted_product_resource_collection_input;
+                $httpBody = $delete_product_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

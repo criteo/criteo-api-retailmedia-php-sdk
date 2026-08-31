@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * SkuFilter Class Doc Comment
  *
  * @category Class
- * @description The filters to apply
+ * @description A set of retailer SKUs to filter on.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -320,7 +320,7 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retailer_id
      *
-     * @param string $retailer_id retailer_id
+     * @param string $retailer_id Retailer the SKUs belong to.
      *
      * @return self
      */
@@ -347,7 +347,7 @@ class SkuFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets retailer_sku_ids
      *
-     * @param string[] $retailer_sku_ids retailer_sku_ids
+     * @param string[] $retailer_sku_ids Retailer SKU IDs to filter on.
      *
      * @return self
      */

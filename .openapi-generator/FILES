@@ -81,6 +81,9 @@ docs/Model/ColorVariableValue.md
 docs/Model/CommonProblem.md
 docs/Model/ConquestingSettings.md
 docs/Model/CpmBiddingSettings.md
+docs/Model/CreateTargetRequestModel.md
+docs/Model/CreateTargetRequestModelListRequest.md
+docs/Model/CreateTargetRequestModelResource.md
 docs/Model/Creative2.md
 docs/Model/Creative2Response.md
 docs/Model/CreativeCreateModel2.md
@@ -98,9 +101,13 @@ docs/Model/CustomAttribute.md
 docs/Model/DataCompleteThrough.md
 docs/Model/DeleteCampaignsRequestV1.md
 docs/Model/DeleteEntry.md
+docs/Model/DeleteProductModel.md
+docs/Model/DeleteProductModelRequest.md
+docs/Model/DeleteProductModelResource.md
 docs/Model/DemandSearch.md
 docs/Model/DemandSearchRequest.md
 docs/Model/DemandSearchResource.md
+docs/Model/DigitalShelfIntelligenceFilters.md
 docs/Model/DigitalShelfIntelligenceInsight.md
 docs/Model/DigitalShelfIntelligenceInsightRequest.md
 docs/Model/DigitalShelfIntelligenceInsightResource.md
@@ -329,6 +336,7 @@ docs/Model/ScheduleDetailsCreateModel.md
 docs/Model/ScheduleDetailsModel.md
 docs/Model/SdkApiRestCommonProblem.md
 docs/Model/SetProductBuyBoxWinnersRequest.md
+docs/Model/ShareOfVoiceFilters.md
 docs/Model/ShareOfVoiceInsight.md
 docs/Model/ShareOfVoiceInsightRequest.md
 docs/Model/ShareOfVoiceInsightResource.md
@@ -359,6 +367,7 @@ docs/Model/SyncRealTimePerformanceReport.md
 docs/Model/SyncRealTimePerformanceReportRequest.md
 docs/Model/SyncRealTimePerformanceReportResource.md
 docs/Model/Target.md
+docs/Model/TargetListResponse.md
 docs/Model/TargetListResponseWithPageMetadata.md
 docs/Model/TargetResource.md
 docs/Model/TemplateVariableValue.md
@@ -488,6 +497,9 @@ lib/Model/ColorVariableValue.php
 lib/Model/CommonProblem.php
 lib/Model/ConquestingSettings.php
 lib/Model/CpmBiddingSettings.php
+lib/Model/CreateTargetRequestModel.php
+lib/Model/CreateTargetRequestModelListRequest.php
+lib/Model/CreateTargetRequestModelResource.php
 lib/Model/Creative2.php
 lib/Model/Creative2Response.php
 lib/Model/CreativeCreateModel2.php
@@ -505,9 +517,13 @@ lib/Model/CustomAttribute.php
 lib/Model/DataCompleteThrough.php
 lib/Model/DeleteCampaignsRequestV1.php
 lib/Model/DeleteEntry.php
+lib/Model/DeleteProductModel.php
+lib/Model/DeleteProductModelRequest.php
+lib/Model/DeleteProductModelResource.php
 lib/Model/DemandSearch.php
 lib/Model/DemandSearchRequest.php
 lib/Model/DemandSearchResource.php
+lib/Model/DigitalShelfIntelligenceFilters.php
 lib/Model/DigitalShelfIntelligenceInsight.php
 lib/Model/DigitalShelfIntelligenceInsightRequest.php
 lib/Model/DigitalShelfIntelligenceInsightResource.php
@@ -737,6 +753,7 @@ lib/Model/ScheduleDetailsCreateModel.php
 lib/Model/ScheduleDetailsModel.php
 lib/Model/SdkApiRestCommonProblem.php
 lib/Model/SetProductBuyBoxWinnersRequest.php
+lib/Model/ShareOfVoiceFilters.php
 lib/Model/ShareOfVoiceInsight.php
 lib/Model/ShareOfVoiceInsightRequest.php
 lib/Model/ShareOfVoiceInsightResource.php
@@ -767,6 +784,7 @@ lib/Model/SyncRealTimePerformanceReport.php
 lib/Model/SyncRealTimePerformanceReportRequest.php
 lib/Model/SyncRealTimePerformanceReportResource.php
 lib/Model/Target.php
+lib/Model/TargetListResponse.php
 lib/Model/TargetListResponseWithPageMetadata.php
 lib/Model/TargetResource.php
 lib/Model/TemplateVariableValue.php

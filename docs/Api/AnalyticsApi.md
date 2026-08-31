@@ -18,8 +18,8 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**generateSyncRealTimePerformanceReport()**](AnalyticsApi.md#generateSyncRealTimePerformanceReport) | **POST** /experimental/retail-media/reports/sync/real-time-performance | /experimental/retail-media/reports/sync/real-time-performance |
 | [**getAsyncExportOutput()**](AnalyticsApi.md#getAsyncExportOutput) | **GET** /experimental/retail-media/reports/{reportId}/output | /experimental/retail-media/reports/{reportId}/output |
 | [**getAsyncExportStatus()**](AnalyticsApi.md#getAsyncExportStatus) | **GET** /experimental/retail-media/reports/{reportId}/status | /experimental/retail-media/reports/{reportId}/status |
-| [**getInsightReportOutput()**](AnalyticsApi.md#getInsightReportOutput) | **GET** /experimental/retail-media/insights/{insightId}/output | /experimental/retail-media/insights/{insightId}/output |
-| [**getInsightReportStatus()**](AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insightId}/status | /experimental/retail-media/insights/{insightId}/status |
+| [**getInsightReportOutput()**](AnalyticsApi.md#getInsightReportOutput) | **GET** /experimental/retail-media/insights/{insight-id}/output | /experimental/retail-media/insights/{insight-id}/output |
+| [**getInsightReportStatus()**](AnalyticsApi.md#getInsightReportStatus) | **GET** /experimental/retail-media/insights/{insight-id}/status | /experimental/retail-media/insights/{insight-id}/status |
 
 
 ## `generateAsyncAccountsReportV2()`
@@ -408,7 +408,7 @@ generateDigitalShelfIntelligenceInsight($digital_shelf_intelligence_insight_requ
 
 /experimental/retail-media/insights/digital-shelf-intelligence
 
-Generate a Digital Shelf Intelligence insight
+Requests a Digital Shelf Intelligence insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
 
 ### Example
 
@@ -471,7 +471,7 @@ generateShareOfVoiceInsight($share_of_voice_insight_request): \criteo\api\retail
 
 /experimental/retail-media/insights/share-of-voice
 
-Generate a share of voice insight
+Requests a Share of Voice insight report. This is an asynchronous, non-transactional operation:  it does not return the analytic data. It enqueues an export job and returns the created insight  report, whose id is then used to poll the insight status endpoint until the report is ready and to  download the result from the insight output endpoint.
 
 ### Example
 
@@ -910,9 +910,9 @@ try {
 getInsightReportOutput($insight_id): \SplFileObject
 ```
 
-/experimental/retail-media/insights/{insightId}/output
+/experimental/retail-media/insights/{insight-id}/output
 
-Returns the output of an async insight
+Downloads the file output of a completed insight report. The report must have reached the `Success`  status; otherwise an error is returned. Check readiness first with the insight status endpoint.
 
 ### Example
 
@@ -961,7 +961,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `text/plain`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -973,9 +973,9 @@ try {
 getInsightReportStatus($insight_id): \criteo\api\retailmedia\experimental\Model\AsyncInsightResponse
 ```
 
-/experimental/retail-media/insights/{insightId}/status
+/experimental/retail-media/insights/{insight-id}/status
 
-Returns the status of an async insight
+Returns the current status of an asynchronously generated insight report. Poll this endpoint until the  status is `Success`, then download the report from the insight output endpoint.
 
 ### Example
 
