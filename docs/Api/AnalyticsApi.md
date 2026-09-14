@@ -534,7 +534,7 @@ generateSyncAttributedTransactionsReport($sync_attributed_transactions_report_re
 
 /preview/retail-media/reports/sync/attributed-transactions
 
-Returns a synchronous Attributed Transactions Report
+Returns a synchronous Attributed Transactions Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -597,7 +597,7 @@ generateSyncCampaignsReport($sync_campaigns_report_request): \criteo\api\retailm
 
 /preview/retail-media/reports/sync/campaigns
 
-Returns a synchronous Campaigns Report
+Returns a synchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -660,7 +660,7 @@ generateSyncLineItemsReport($sync_line_items_report_request): \criteo\api\retail
 
 /preview/retail-media/reports/sync/line-items
 
-Returns a synchronous Line Items Report
+Returns a synchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
 
 ### Example
 
