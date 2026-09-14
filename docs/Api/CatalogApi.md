@@ -4,23 +4,23 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteStoreInventoryPerMerchantId()**](CatalogApi.md#deleteStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete |
+| [**getCatalogIngestionReportSummary()**](CatalogApi.md#getCatalogIngestionReportSummary) | **GET** /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary | /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary |
+| [**getCatalogIngestionReports()**](CatalogApi.md#getCatalogIngestionReports) | **GET** /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports | /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports |
 | [**getCatalogProductsBatchReport()**](CatalogApi.md#getCatalogProductsBatchReport) | **GET** /experimental/retail-media/catalog/products/batch/report/{operation-token} | /experimental/retail-media/catalog/products/batch/report/{operation-token} |
 | [**offerSetBbwV1()**](CatalogApi.md#offerSetBbwV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners | /experimental/retail-media/retailers/{retailer-id}/products/set-buy-box-winners |
 | [**offerUpdateV1()**](CatalogApi.md#offerUpdateV1) | **POST** /experimental/retail-media/retailers/{retailer-id}/offers/update | /experimental/retail-media/retailers/{retailer-id}/offers/update |
 | [**submitCatalogProductsBatch()**](CatalogApi.md#submitCatalogProductsBatch) | **POST** /experimental/retail-media/catalog/products/batch | /experimental/retail-media/catalog/products/batch |
-| [**upsertStoreInventoryPerMerchantId()**](CatalogApi.md#upsertStoreInventoryPerMerchantId) | **POST** /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert | /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert |
 
 
-## `deleteStoreInventoryPerMerchantId()`
+## `getCatalogIngestionReportSummary()`
 
 ```php
-deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request)
+getCatalogIngestionReportSummary($ingestion_id): \criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse
 ```
 
-/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+/experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
 
-Used to publish a batch of store inventories to delete. The batch is processed asynchronously.
+Get the summary report of a catalog ingestion: what triggered it, how long it ran, how many offers it held, what it changed and how clean the data was.
 
 ### Example
 
@@ -42,13 +42,13 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CatalogApi(
     new GuzzleHttp\Client(),
     $config
 );
-$merchant_id = 'merchant_id_example'; // string | Identifies the merchant, can also be called partnerId
-$batch_store_inventory_delete_request = new \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest(); // \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest
+$ingestion_id = 'ingestion_id_example'; // string | Identifies the catalog ingestion to report on.
 
 try {
-    $apiInstance->deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request);
+    $result = $apiInstance->getCatalogIngestionReportSummary($ingestion_id);
+    print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CatalogApi->deleteStoreInventoryPerMerchantId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CatalogApi->getCatalogIngestionReportSummary: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -56,12 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **merchant_id** | **string**| Identifies the merchant, can also be called partnerId | |
-| **batch_store_inventory_delete_request** | [**\criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest**](../Model/BatchStoreInventoryDeleteRequest.md)|  | |
+| **ingestion_id** | **string**| Identifies the catalog ingestion to report on. | |
 
 ### Return type
 
-void (empty response body)
+[**\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse**](../Model/CatalogIngestionSummaryResponse.md)
 
 ### Authorization
 
@@ -69,7 +68,74 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCatalogIngestionReports()`
+
+```php
+getCatalogIngestionReports($merchant_id, $limit, $offset): \criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse
+```
+
+/experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+
+List the catalog ingestions of a merchant, most recent first, with their type, status and timing.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CatalogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$merchant_id = 'merchant_id_example'; // string | Identifies the merchant whose catalog ingestions are reported.
+$limit = 25; // int | Maximum number of ingestion reports returned in the page.
+$offset = 0; // int | Index of the first ingestion report of the page, used to page through the collection.
+
+try {
+    $result = $apiInstance->getCatalogIngestionReports($merchant_id, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CatalogApi->getCatalogIngestionReports: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **merchant_id** | **string**| Identifies the merchant whose catalog ingestions are reported. | |
+| **limit** | **int**| Maximum number of ingestion reports returned in the page. | [optional] [default to 25] |
+| **offset** | **int**| Index of the first ingestion report of the page, used to page through the collection. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse**](../Model/CatalogIngestionReportListResponse.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -318,70 +384,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\BatchAcceptedResponse**](../Model/BatchAcceptedResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `upsertStoreInventoryPerMerchantId()`
-
-```php
-upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request)
-```
-
-/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-
-Used to publish a batch of store inventories to upsert. The batch is processed asynchronously.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\experimental\Api\CatalogApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$merchant_id = 'merchant_id_example'; // string | Identifies the merchant, can also be called partnerId
-$batch_store_inventory_request = new \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest(); // \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest
-
-try {
-    $apiInstance->upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request);
-} catch (Exception $e) {
-    echo 'Exception when calling CatalogApi->upsertStoreInventoryPerMerchantId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **merchant_id** | **string**| Identifies the merchant, can also be called partnerId | |
-| **batch_store_inventory_request** | [**\criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest**](../Model/BatchStoreInventoryRequest.md)|  | |
-
-### Return type
-
-void (empty response body)
 
 ### Authorization
 

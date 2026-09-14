@@ -61,6 +61,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => 'string',
         'bid_multiplier' => 'float',
         'category_target_details' => '\criteo\api\retailmedia\experimental\Model\CategoryTargetDetails',
+        'geography_target_details' => '\criteo\api\retailmedia\experimental\Model\GeographyTargetDetails',
         'manual_keyword_target_details' => '\criteo\api\retailmedia\experimental\Model\ManualKeywordTargetDetails',
         'negative' => 'bool',
         'page_type_target_details' => '\criteo\api\retailmedia\experimental\Model\PageTypeTargetDetails',
@@ -78,6 +79,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => null,
         'bid_multiplier' => 'double',
         'category_target_details' => null,
+        'geography_target_details' => null,
         'manual_keyword_target_details' => null,
         'negative' => null,
         'page_type_target_details' => null,
@@ -93,6 +95,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => true,
 		'bid_multiplier' => true,
 		'category_target_details' => true,
+		'geography_target_details' => true,
 		'manual_keyword_target_details' => true,
 		'negative' => true,
 		'page_type_target_details' => true,
@@ -188,6 +191,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => 'approvalStatus',
         'bid_multiplier' => 'bidMultiplier',
         'category_target_details' => 'categoryTargetDetails',
+        'geography_target_details' => 'geographyTargetDetails',
         'manual_keyword_target_details' => 'manualKeywordTargetDetails',
         'negative' => 'negative',
         'page_type_target_details' => 'pageTypeTargetDetails',
@@ -203,6 +207,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => 'setApprovalStatus',
         'bid_multiplier' => 'setBidMultiplier',
         'category_target_details' => 'setCategoryTargetDetails',
+        'geography_target_details' => 'setGeographyTargetDetails',
         'manual_keyword_target_details' => 'setManualKeywordTargetDetails',
         'negative' => 'setNegative',
         'page_type_target_details' => 'setPageTypeTargetDetails',
@@ -218,6 +223,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         'approval_status' => 'getApprovalStatus',
         'bid_multiplier' => 'getBidMultiplier',
         'category_target_details' => 'getCategoryTargetDetails',
+        'geography_target_details' => 'getGeographyTargetDetails',
         'manual_keyword_target_details' => 'getManualKeywordTargetDetails',
         'negative' => 'getNegative',
         'page_type_target_details' => 'getPageTypeTargetDetails',
@@ -276,6 +282,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
     public const TARGET_TYPE_MANUAL_KEYWORD = 'ManualKeyword';
     public const TARGET_TYPE_PAGE_TYPE = 'PageType';
     public const TARGET_TYPE_CATEGORY = 'Category';
+    public const TARGET_TYPE_GEOGRAPHY = 'Geography';
 
     /**
      * Gets allowable values of the enum
@@ -307,6 +314,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
             self::TARGET_TYPE_MANUAL_KEYWORD,
             self::TARGET_TYPE_PAGE_TYPE,
             self::TARGET_TYPE_CATEGORY,
+            self::TARGET_TYPE_GEOGRAPHY,
         ];
     }
 
@@ -328,6 +336,7 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('approval_status', $data ?? [], null);
         $this->setIfExists('bid_multiplier', $data ?? [], null);
         $this->setIfExists('category_target_details', $data ?? [], null);
+        $this->setIfExists('geography_target_details', $data ?? [], null);
         $this->setIfExists('manual_keyword_target_details', $data ?? [], null);
         $this->setIfExists('negative', $data ?? [], null);
         $this->setIfExists('page_type_target_details', $data ?? [], null);
@@ -502,6 +511,40 @@ class Target implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['category_target_details'] = $category_target_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets geography_target_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\GeographyTargetDetails|null
+     */
+    public function getGeographyTargetDetails()
+    {
+        return $this->container['geography_target_details'];
+    }
+
+    /**
+     * Sets geography_target_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\GeographyTargetDetails|null $geography_target_details geography_target_details
+     *
+     * @return self
+     */
+    public function setGeographyTargetDetails($geography_target_details)
+    {
+        if (is_null($geography_target_details)) {
+            array_push($this->openAPINullablesSetToNull, 'geography_target_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('geography_target_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['geography_target_details'] = $geography_target_details;
 
         return $this;
     }

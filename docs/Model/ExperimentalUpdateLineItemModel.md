@@ -4,7 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**flight_dates** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel**](ExperimentalFlightDatesModel.md) |  | [optional]
 **is_paused** | **bool** | Indicates whether the line item is paused. | [optional]
 **name** | **string** | The name of the line item. | [optional]
 **onsite_display_details** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalUpdateOnsiteDisplayLineItemDetails**](ExperimentalUpdateOnsiteDisplayLineItemDetails.md) |  | [optional]

@@ -71,7 +71,10 @@ class CatalogApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'deleteStoreInventoryPerMerchantId' => [
+        'getCatalogIngestionReportSummary' => [
+            'application/json',
+        ],
+        'getCatalogIngestionReports' => [
             'application/json',
         ],
         'getCatalogProductsBatchReport' => [
@@ -84,9 +87,6 @@ class CatalogApi
             'application/json',
         ],
         'submitCatalogProductsBatch' => [
-            'application/json',
-        ],
-        'upsertStoreInventoryPerMerchantId' => [
             'application/json',
         ],
     ];
@@ -138,39 +138,38 @@ class CatalogApi
     }
 
     /**
-     * Operation deleteStoreInventoryPerMerchantId
+     * Operation getCatalogIngestionReportSummary
      *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
      *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request batch_store_inventory_delete_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     * @param  string $ingestion_id Identifies the catalog ingestion to report on. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReportSummary'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse
      */
-    public function deleteStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    public function getCatalogIngestionReportSummary($ingestion_id, string $contentType = self::contentTypes['getCatalogIngestionReportSummary'][0])
     {
-        $this->deleteStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, $contentType);
+        list($response) = $this->getCatalogIngestionReportSummaryWithHttpInfo($ingestion_id, $contentType);
+        return $response;
     }
 
     /**
-     * Operation deleteStoreInventoryPerMerchantIdWithHttpInfo
+     * Operation getCatalogIngestionReportSummaryWithHttpInfo
      *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
      *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     * @param  string $ingestion_id Identifies the catalog ingestion to report on. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReportSummary'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    public function getCatalogIngestionReportSummaryWithHttpInfo($ingestion_id, string $contentType = self::contentTypes['getCatalogIngestionReportSummary'][0])
     {
-        $request = $this->deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, $contentType);
+        $request = $this->getCatalogIngestionReportSummaryRequest($ingestion_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -207,30 +206,69 @@ class CatalogApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
     }
 
     /**
-     * Operation deleteStoreInventoryPerMerchantIdAsync
+     * Operation getCatalogIngestionReportSummaryAsync
      *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
      *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     * @param  string $ingestion_id Identifies the catalog ingestion to report on. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReportSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteStoreInventoryPerMerchantIdAsync($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    public function getCatalogIngestionReportSummaryAsync($ingestion_id, string $contentType = self::contentTypes['getCatalogIngestionReportSummary'][0])
     {
-        return $this->deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, $contentType)
+        return $this->getCatalogIngestionReportSummaryAsyncWithHttpInfo($ingestion_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -239,27 +277,39 @@ class CatalogApi
     }
 
     /**
-     * Operation deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo
+     * Operation getCatalogIngestionReportSummaryAsyncWithHttpInfo
      *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete
+     * /experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary
      *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     * @param  string $ingestion_id Identifies the catalog ingestion to report on. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReportSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    public function getCatalogIngestionReportSummaryAsyncWithHttpInfo($ingestion_id, string $contentType = self::contentTypes['getCatalogIngestionReportSummary'][0])
     {
-        $returnType = '';
-        $request = $this->deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\CatalogIngestionSummaryResponse';
+        $request = $this->getCatalogIngestionReportSummaryRequest($ingestion_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -279,34 +329,26 @@ class CatalogApi
     }
 
     /**
-     * Create request for operation 'deleteStoreInventoryPerMerchantId'
+     * Create request for operation 'getCatalogIngestionReportSummary'
      *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryDeleteRequest $batch_store_inventory_delete_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteStoreInventoryPerMerchantId'] to see the possible values for this operation
+     * @param  string $ingestion_id Identifies the catalog ingestion to report on. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReportSummary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_delete_request, string $contentType = self::contentTypes['deleteStoreInventoryPerMerchantId'][0])
+    public function getCatalogIngestionReportSummaryRequest($ingestion_id, string $contentType = self::contentTypes['getCatalogIngestionReportSummary'][0])
     {
 
-        // verify the required parameter 'merchant_id' is set
-        if ($merchant_id === null || (is_array($merchant_id) && count($merchant_id) === 0)) {
+        // verify the required parameter 'ingestion_id' is set
+        if ($ingestion_id === null || (is_array($ingestion_id) && count($ingestion_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $merchant_id when calling deleteStoreInventoryPerMerchantId'
-            );
-        }
-
-        // verify the required parameter 'batch_store_inventory_delete_request' is set
-        if ($batch_store_inventory_delete_request === null || (is_array($batch_store_inventory_delete_request) && count($batch_store_inventory_delete_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_store_inventory_delete_request when calling deleteStoreInventoryPerMerchantId'
+                'Missing the required parameter $ingestion_id when calling getCatalogIngestionReportSummary'
             );
         }
 
 
-        $resourcePath = '/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/delete';
+        $resourcePath = '/experimental/retail-media/catalog/ingestion/{ingestion-id}/reports/summary';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -316,10 +358,10 @@ class CatalogApi
 
 
         // path params
-        if ($merchant_id !== null) {
+        if ($ingestion_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'merchantId' . '}',
-                ObjectSerializer::toPathValue($merchant_id),
+                '{' . 'ingestion-id' . '}',
+                ObjectSerializer::toPathValue($ingestion_id),
                 $resourcePath
             );
         }
@@ -332,14 +374,7 @@ class CatalogApi
         );
 
         // for model (json/xml)
-        if (isset($batch_store_inventory_delete_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_store_inventory_delete_request));
-            } else {
-                $httpBody = $batch_store_inventory_delete_request;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -386,7 +421,334 @@ class CatalogApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getCatalogIngestionReports
+     *
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     *
+     * @param  string $merchant_id Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param  int $limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param  int $offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReports'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse
+     */
+    public function getCatalogIngestionReports($merchant_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getCatalogIngestionReports'][0])
+    {
+        list($response) = $this->getCatalogIngestionReportsWithHttpInfo($merchant_id, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getCatalogIngestionReportsWithHttpInfo
+     *
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     *
+     * @param  string $merchant_id Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param  int $limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param  int $offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReports'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getCatalogIngestionReportsWithHttpInfo($merchant_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getCatalogIngestionReports'][0])
+    {
+        $request = $this->getCatalogIngestionReportsRequest($merchant_id, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getCatalogIngestionReportsAsync
+     *
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     *
+     * @param  string $merchant_id Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param  int $limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param  int $offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReports'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCatalogIngestionReportsAsync($merchant_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getCatalogIngestionReports'][0])
+    {
+        return $this->getCatalogIngestionReportsAsyncWithHttpInfo($merchant_id, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getCatalogIngestionReportsAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports
+     *
+     * @param  string $merchant_id Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param  int $limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param  int $offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReports'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getCatalogIngestionReportsAsyncWithHttpInfo($merchant_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getCatalogIngestionReports'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\CatalogIngestionReportListResponse';
+        $request = $this->getCatalogIngestionReportsRequest($merchant_id, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getCatalogIngestionReports'
+     *
+     * @param  string $merchant_id Identifies the merchant whose catalog ingestions are reported. (required)
+     * @param  int $limit Maximum number of ingestion reports returned in the page. (optional, default to 25)
+     * @param  int $offset Index of the first ingestion report of the page, used to page through the collection. (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCatalogIngestionReports'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getCatalogIngestionReportsRequest($merchant_id, $limit = 25, $offset = 0, string $contentType = self::contentTypes['getCatalogIngestionReports'][0])
+    {
+
+        // verify the required parameter 'merchant_id' is set
+        if ($merchant_id === null || (is_array($merchant_id) && count($merchant_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $merchant_id when calling getCatalogIngestionReports'
+            );
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CatalogApi.getCatalogIngestionReports, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CatalogApi.getCatalogIngestionReports, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/experimental/retail-media/catalog/merchants/{merchant-id}/ingestion/reports';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($merchant_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'merchant-id' . '}',
+                ObjectSerializer::toPathValue($merchant_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1539,262 +1901,6 @@ class CatalogApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($products_custom_batch_request));
             } else {
                 $httpBody = $products_custom_batch_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation upsertStoreInventoryPerMerchantId
-     *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest $batch_store_inventory_request batch_store_inventory_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function upsertStoreInventoryPerMerchantId($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
-    {
-        $this->upsertStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_request, $contentType);
-    }
-
-    /**
-     * Operation upsertStoreInventoryPerMerchantIdWithHttpInfo
-     *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
-     *
-     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function upsertStoreInventoryPerMerchantIdWithHttpInfo($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
-    {
-        $request = $this->upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return [null, $statusCode, $response->getHeaders()];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation upsertStoreInventoryPerMerchantIdAsync
-     *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function upsertStoreInventoryPerMerchantIdAsync($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
-    {
-        return $this->upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo
-     *
-     * /experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert
-     *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function upsertStoreInventoryPerMerchantIdAsyncWithHttpInfo($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
-    {
-        $returnType = '';
-        $request = $this->upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'upsertStoreInventoryPerMerchantId'
-     *
-     * @param  string $merchant_id Identifies the merchant, can also be called partnerId (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BatchStoreInventoryRequest $batch_store_inventory_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['upsertStoreInventoryPerMerchantId'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function upsertStoreInventoryPerMerchantIdRequest($merchant_id, $batch_store_inventory_request, string $contentType = self::contentTypes['upsertStoreInventoryPerMerchantId'][0])
-    {
-
-        // verify the required parameter 'merchant_id' is set
-        if ($merchant_id === null || (is_array($merchant_id) && count($merchant_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $merchant_id when calling upsertStoreInventoryPerMerchantId'
-            );
-        }
-
-        // verify the required parameter 'batch_store_inventory_request' is set
-        if ($batch_store_inventory_request === null || (is_array($batch_store_inventory_request) && count($batch_store_inventory_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_store_inventory_request when calling upsertStoreInventoryPerMerchantId'
-            );
-        }
-
-
-        $resourcePath = '/experimental/retail-media/catalog/merchants/{merchantId}/store-inventory/upsert';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($merchant_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'merchantId' . '}',
-                ObjectSerializer::toPathValue($merchant_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_store_inventory_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_store_inventory_request));
-            } else {
-                $httpBody = $batch_store_inventory_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

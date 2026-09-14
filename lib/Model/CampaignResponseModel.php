@@ -330,6 +330,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public const OBJECTIVE_CLICKS = 'Clicks';
     public const OBJECTIVE_CONVERSION = 'Conversion';
     public const OBJECTIVE_REVENUE = 'Revenue';
+    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
     public const OBJECTIVE_UNKNOWN = 'Unknown';
     public const STATUS_UNKNOWN = 'Unknown';
     public const STATUS_ACTIVE = 'Active';
@@ -376,6 +377,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
             self::OBJECTIVE_CLICKS,
             self::OBJECTIVE_CONVERSION,
             self::OBJECTIVE_REVENUE,
+            self::OBJECTIVE_IMPRESSIONS,
             self::OBJECTIVE_UNKNOWN,
         ];
     }
@@ -905,7 +907,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets objective
      *
-     * @param string|null $objective Dynamic Campaign Budgets control: manual keeps today's behavior; clicks, conversion and  revenue activate campaign-level budget allocation.
+     * @param string|null $objective Dynamic Campaign Budgets control: manual keeps today's behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective.
      *
      * @return self
      */

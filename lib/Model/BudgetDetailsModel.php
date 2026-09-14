@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * BudgetDetailsModel Class Doc Comment
  *
  * @category Class
- * @description Budget and pacing of the campaign, including the amounts spent and remaining.
+ * @description Indexed budget and pacing details returned for Sponsored Products campaigns.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,8 +59,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'budget' => 'float',
-        'budget_remaining' => 'float',
-        'budget_spent' => 'float',
         'daily_pacing' => 'float',
         'is_auto_daily_pacing' => 'bool',
         'monthly_pacing' => 'float'
@@ -75,8 +73,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPIFormats = [
         'budget' => 'double',
-        'budget_remaining' => 'double',
-        'budget_spent' => 'double',
         'daily_pacing' => 'double',
         'is_auto_daily_pacing' => null,
         'monthly_pacing' => 'double'
@@ -89,8 +85,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static array $openAPINullables = [
         'budget' => true,
-		'budget_remaining' => true,
-		'budget_spent' => true,
 		'daily_pacing' => true,
 		'is_auto_daily_pacing' => true,
 		'monthly_pacing' => true
@@ -183,8 +177,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $attributeMap = [
         'budget' => 'budget',
-        'budget_remaining' => 'budgetRemaining',
-        'budget_spent' => 'budgetSpent',
         'daily_pacing' => 'dailyPacing',
         'is_auto_daily_pacing' => 'isAutoDailyPacing',
         'monthly_pacing' => 'monthlyPacing'
@@ -197,8 +189,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $setters = [
         'budget' => 'setBudget',
-        'budget_remaining' => 'setBudgetRemaining',
-        'budget_spent' => 'setBudgetSpent',
         'daily_pacing' => 'setDailyPacing',
         'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
         'monthly_pacing' => 'setMonthlyPacing'
@@ -211,8 +201,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     protected static $getters = [
         'budget' => 'getBudget',
-        'budget_remaining' => 'getBudgetRemaining',
-        'budget_spent' => 'getBudgetSpent',
         'daily_pacing' => 'getDailyPacing',
         'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
         'monthly_pacing' => 'getMonthlyPacing'
@@ -276,8 +264,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(array $data = null)
     {
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('budget_remaining', $data ?? [], null);
-        $this->setIfExists('budget_spent', $data ?? [], null);
         $this->setIfExists('daily_pacing', $data ?? [], null);
         $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
         $this->setIfExists('monthly_pacing', $data ?? [], null);
@@ -355,74 +341,6 @@ class BudgetDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializab
             }
         }
         $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_remaining
-     *
-     * @return float|null
-     */
-    public function getBudgetRemaining()
-    {
-        return $this->container['budget_remaining'];
-    }
-
-    /**
-     * Sets budget_remaining
-     *
-     * @param float|null $budget_remaining budget_remaining
-     *
-     * @return self
-     */
-    public function setBudgetRemaining($budget_remaining)
-    {
-        if (is_null($budget_remaining)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_remaining');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_remaining', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_remaining'] = $budget_remaining;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_spent
-     *
-     * @return float|null
-     */
-    public function getBudgetSpent()
-    {
-        return $this->container['budget_spent'];
-    }
-
-    /**
-     * Sets budget_spent
-     *
-     * @param float|null $budget_spent budget_spent
-     *
-     * @return self
-     */
-    public function setBudgetSpent($budget_spent)
-    {
-        if (is_null($budget_spent)) {
-            array_push($this->openAPINullablesSetToNull, 'budget_spent');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget_spent', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['budget_spent'] = $budget_spent;
 
         return $this;
     }

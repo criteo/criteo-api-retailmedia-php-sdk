@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **drawable_balance_ids** | **string[]** |  |
 **id** | **string** |  | [optional]
 **name** | **string** |  |
-**objective** | **string** | Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. | [optional]
+**objective** | **string** | Dynamic Campaign Budgets control: manual keeps today&#39;s behavior; clicks, conversion and  revenue activate campaign-level budget allocation. Impressions is the Onsite Display  objective. | [optional]
 **on_behalf_company_name** | **string** |  | [optional]
 **schedule_details** | [**\criteo\api\retailmedia\experimental\Model\ScheduleDetailsModel**](ScheduleDetailsModel.md) |  | [optional]
 **status** | **string** | Campaign status, derived from the status of Line Items it holds; active if at least  one line item is active. |

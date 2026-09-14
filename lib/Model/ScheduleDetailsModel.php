@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * ScheduleDetailsModel Class Doc Comment
  *
  * @category Class
- * @description Flight dates of the campaign. Applies to SponsoredProducts only; OnsiteDisplay campaigns  derive their dates from their line items.
+ * @description Flight dates of the campaign. Always complete: both dates are present on every read.  A SponsoredProducts campaign that runs indefinitely reports the documented indefinite end date  rather than omitting it.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -310,7 +310,7 @@ class ScheduleDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets end_date
      *
-     * @param \DateTime|null $end_date Campaign end date. Omitted for a campaign that runs open-ended.
+     * @param \DateTime|null $end_date Campaign end date. A SponsoredProducts campaign that runs indefinitely reports  {9999-12-30T00:00:00Z}.
      *
      * @return self
      */

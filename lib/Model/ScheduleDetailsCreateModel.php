@@ -316,7 +316,7 @@ class ScheduleDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Campaign end date.
+     * @param \DateTime $end_date Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.
      *
      * @return self
      */

@@ -296,6 +296,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public const OBJECTIVE_CLICKS = 'Clicks';
     public const OBJECTIVE_CONVERSION = 'Conversion';
     public const OBJECTIVE_REVENUE = 'Revenue';
+    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
 
     /**
      * Gets allowable values of the enum
@@ -334,6 +335,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
             self::OBJECTIVE_CLICKS,
             self::OBJECTIVE_CONVERSION,
             self::OBJECTIVE_REVENUE,
+            self::OBJECTIVE_IMPRESSIONS,
         ];
     }
 

@@ -5,8 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **budget** | **float** |  | [optional]
-**budget_remaining** | **float** |  | [optional]
-**budget_spent** | **float** |  | [optional]
 **daily_pacing** | **float** |  | [optional]
 **is_auto_daily_pacing** | **bool** |  | [optional]
 **monthly_pacing** | **float** |  | [optional]
