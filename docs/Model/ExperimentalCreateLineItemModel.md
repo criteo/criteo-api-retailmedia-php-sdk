@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaign_id** | **string** | The campaign id of the associated campaign. | [optional]
-**flight_dates** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel**](ExperimentalFlightDatesModel.md) |  | [optional]
 **is_paused** | **bool** | Indicates whether the line item is paused. Defaults to false. | [optional]
 **name** | **string** | The name of the line item. | [optional]
 **onsite_display_details** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalCreateOnsiteDisplayLineItemDetails**](ExperimentalCreateOnsiteDisplayLineItemDetails.md) |  | [optional]

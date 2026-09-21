@@ -1,6 +1,6 @@
 <?php
 /**
- * BudgetDetailsUpdateModel
+ * SponsoredProductsDetailsUpdateModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BudgetDetailsUpdateModel Class Doc Comment
+ * SponsoredProductsDetailsUpdateModel Class Doc Comment
  *
  * @category Class
- * @description Writable budget and pacing fields for a SponsoredProducts campaign.  Omitted fields remain unchanged.
+ * @description SponsoredProducts settings to update. Omitted settings remain unchanged.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductsDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BudgetDetailsUpdateModel';
+    protected static $openAPIModelName = 'SponsoredProductsDetailsUpdateModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'budget' => '\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2',
-        'daily_pacing' => '\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2',
-        'is_auto_daily_pacing' => 'bool',
-        'monthly_pacing' => '\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2'
+        'budget' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetUpdateModel'
     ];
 
     /**
@@ -72,10 +69,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => null,
-        'daily_pacing' => null,
-        'is_auto_daily_pacing' => null,
-        'monthly_pacing' => null
+        'budget' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'budget' => false,
-		'daily_pacing' => false,
-		'is_auto_daily_pacing' => true,
-		'monthly_pacing' => false
+        'budget' => false
     ];
 
     /**
@@ -176,10 +167,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'budget' => 'budget',
-        'daily_pacing' => 'dailyPacing',
-        'is_auto_daily_pacing' => 'isAutoDailyPacing',
-        'monthly_pacing' => 'monthlyPacing'
+        'budget' => 'budget'
     ];
 
     /**
@@ -188,10 +176,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'budget' => 'setBudget',
-        'daily_pacing' => 'setDailyPacing',
-        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
-        'monthly_pacing' => 'setMonthlyPacing'
+        'budget' => 'setBudget'
     ];
 
     /**
@@ -200,10 +185,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'budget' => 'getBudget',
-        'daily_pacing' => 'getDailyPacing',
-        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
-        'monthly_pacing' => 'getMonthlyPacing'
+        'budget' => 'getBudget'
     ];
 
     /**
@@ -264,9 +246,6 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(array $data = null)
     {
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
-        $this->setIfExists('monthly_pacing', $data ?? [], null);
     }
 
     /**
@@ -314,7 +293,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets budget
      *
-     * @return \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetUpdateModel|null
      */
     public function getBudget()
     {
@@ -324,7 +303,7 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets budget
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetUpdateModel|null $budget budget
      *
      * @return self
      */
@@ -334,94 +313,6 @@ class BudgetDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
         $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets daily_pacing
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null
-     */
-    public function getDailyPacing()
-    {
-        return $this->container['daily_pacing'];
-    }
-
-    /**
-     * Sets daily_pacing
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null $daily_pacing daily_pacing
-     *
-     * @return self
-     */
-    public function setDailyPacing($daily_pacing)
-    {
-        if (is_null($daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable daily_pacing cannot be null');
-        }
-        $this->container['daily_pacing'] = $daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_auto_daily_pacing
-     *
-     * @return bool|null
-     */
-    public function getIsAutoDailyPacing()
-    {
-        return $this->container['is_auto_daily_pacing'];
-    }
-
-    /**
-     * Sets is_auto_daily_pacing
-     *
-     * @param bool|null $is_auto_daily_pacing is_auto_daily_pacing
-     *
-     * @return self
-     */
-    public function setIsAutoDailyPacing($is_auto_daily_pacing)
-    {
-        if (is_null($is_auto_daily_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'is_auto_daily_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_auto_daily_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly_pacing
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null
-     */
-    public function getMonthlyPacing()
-    {
-        return $this->container['monthly_pacing'];
-    }
-
-    /**
-     * Sets monthly_pacing
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null $monthly_pacing monthly_pacing
-     *
-     * @return self
-     */
-    public function setMonthlyPacing($monthly_pacing)
-    {
-        if (is_null($monthly_pacing)) {
-            throw new \InvalidArgumentException('non-nullable monthly_pacing cannot be null');
-        }
-        $this->container['monthly_pacing'] = $monthly_pacing;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleDetailsUpdateModel
+ * BudgetCappingRequestModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ScheduleDetailsUpdateModel Class Doc Comment
+ * BudgetCappingRequestModel Class Doc Comment
  *
  * @category Class
- * @description New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
+ * @description A ceiling on what a campaign may spend within one period.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class BudgetCappingRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ScheduleDetailsUpdateModel';
+    protected static $openAPIModelName = 'BudgetCappingRequestModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\DateTime',
-        'start_date' => '\DateTime'
+        'amount' => 'float',
+        'type' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => 'date-time',
-        'start_date' => 'date-time'
+        'amount' => 'double',
+        'type' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => false,
-		'start_date' => false
+        'amount' => false,
+		'type' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'start_date' => 'startDate'
+        'amount' => 'amount',
+        'type' => 'type'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'start_date' => 'setStartDate'
+        'amount' => 'setAmount',
+        'type' => 'setType'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'start_date' => 'getStartDate'
+        'amount' => 'getAmount',
+        'type' => 'getType'
     ];
 
     /**
@@ -235,6 +235,21 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const TYPE_DAILY = 'Daily';
+    public const TYPE_MONTHLY = 'Monthly';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_DAILY,
+            self::TYPE_MONTHLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +266,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -282,12 +297,21 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -304,55 +328,65 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets end_date
+     * Gets amount
      *
-     * @return \DateTime
+     * @return float
      */
-    public function getEndDate()
+    public function getAmount()
     {
-        return $this->container['end_date'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets end_date
+     * Sets amount
      *
-     * @param \DateTime $end_date New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
+     * @param float $amount Ceiling for the period.
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setAmount($amount)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
-        $this->container['end_date'] = $end_date;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets type
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getStartDate()
+    public function getType()
     {
-        return $this->container['start_date'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets start_date
+     * Sets type
      *
-     * @param \DateTime $start_date New campaign start date.
+     * @param string $type Period the ceiling applies to. Each period may appear at most once on a budget.
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setType($type)
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['start_date'] = $start_date;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * BudgetDetailsCreateModel
+ * SubmitLineItemRequestModelResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BudgetDetailsCreateModel Class Doc Comment
+ * SubmitLineItemRequestModelResource Class Doc Comment
  *
  * @category Class
- * @description Budget and pacing of the campaign.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitLineItemRequestModelResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BudgetDetailsCreateModel';
+    protected static $openAPIModelName = 'SubmitLineItemRequestModelResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'budget' => 'float',
-        'daily_pacing' => 'float',
-        'is_auto_daily_pacing' => 'bool',
-        'monthly_pacing' => 'float'
+        'attributes' => '\criteo\api\retailmedia\experimental\Model\SubmitLineItemRequestModel',
+        'type' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => 'double',
-        'daily_pacing' => 'double',
-        'is_auto_daily_pacing' => null,
-        'monthly_pacing' => 'double'
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'budget' => true,
-		'daily_pacing' => true,
-		'is_auto_daily_pacing' => false,
-		'monthly_pacing' => true
+        'attributes' => false,
+		'type' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'budget' => 'budget',
-        'daily_pacing' => 'dailyPacing',
-        'is_auto_daily_pacing' => 'isAutoDailyPacing',
-        'monthly_pacing' => 'monthlyPacing'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -188,10 +180,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'budget' => 'setBudget',
-        'daily_pacing' => 'setDailyPacing',
-        'is_auto_daily_pacing' => 'setIsAutoDailyPacing',
-        'monthly_pacing' => 'setMonthlyPacing'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -200,10 +190,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'budget' => 'getBudget',
-        'daily_pacing' => 'getDailyPacing',
-        'is_auto_daily_pacing' => 'getIsAutoDailyPacing',
-        'monthly_pacing' => 'getMonthlyPacing'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -263,10 +251,8 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('daily_pacing', $data ?? [], null);
-        $this->setIfExists('is_auto_daily_pacing', $data ?? [], null);
-        $this->setIfExists('monthly_pacing', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -312,130 +298,62 @@ class BudgetDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets budget
+     * Gets attributes
      *
-     * @return float|null
+     * @return \criteo\api\retailmedia\experimental\Model\SubmitLineItemRequestModel|null
      */
-    public function getBudget()
+    public function getAttributes()
     {
-        return $this->container['budget'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets budget
+     * Sets attributes
      *
-     * @param float|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\SubmitLineItemRequestModel|null $attributes attributes
      *
      * @return self
      */
-    public function setBudget($budget)
+    public function setAttributes($attributes)
     {
-        if (is_null($budget)) {
-            array_push($this->openAPINullablesSetToNull, 'budget');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($attributes)) {
+            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
         }
-        $this->container['budget'] = $budget;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets daily_pacing
+     * Gets type
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getDailyPacing()
+    public function getType()
     {
-        return $this->container['daily_pacing'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets daily_pacing
+     * Sets type
      *
-     * @param float|null $daily_pacing daily_pacing
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
-    public function setDailyPacing($daily_pacing)
+    public function setType($type)
     {
-        if (is_null($daily_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'daily_pacing');
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily_pacing', $nullablesSetToNull);
+            $index = array_search('type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily_pacing'] = $daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_auto_daily_pacing
-     *
-     * @return bool|null
-     */
-    public function getIsAutoDailyPacing()
-    {
-        return $this->container['is_auto_daily_pacing'];
-    }
-
-    /**
-     * Sets is_auto_daily_pacing
-     *
-     * @param bool|null $is_auto_daily_pacing is_auto_daily_pacing
-     *
-     * @return self
-     */
-    public function setIsAutoDailyPacing($is_auto_daily_pacing)
-    {
-        if (is_null($is_auto_daily_pacing)) {
-            throw new \InvalidArgumentException('non-nullable is_auto_daily_pacing cannot be null');
-        }
-        $this->container['is_auto_daily_pacing'] = $is_auto_daily_pacing;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly_pacing
-     *
-     * @return float|null
-     */
-    public function getMonthlyPacing()
-    {
-        return $this->container['monthly_pacing'];
-    }
-
-    /**
-     * Sets monthly_pacing
-     *
-     * @param float|null $monthly_pacing monthly_pacing
-     *
-     * @return self
-     */
-    public function setMonthlyPacing($monthly_pacing)
-    {
-        if (is_null($monthly_pacing)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly_pacing');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly_pacing', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly_pacing'] = $monthly_pacing;
+        $this->container['type'] = $type;
 
         return $this;
     }

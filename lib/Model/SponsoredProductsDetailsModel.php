@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleDetailsUpdateModel
+ * SponsoredProductsDetailsModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ScheduleDetailsUpdateModel Class Doc Comment
+ * SponsoredProductsDetailsModel Class Doc Comment
  *
  * @category Class
- * @description New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
+ * @description Settings that apply only to a SponsoredProducts campaign. Present only on campaigns of that  type.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductsDetailsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ScheduleDetailsUpdateModel';
+    protected static $openAPIModelName = 'SponsoredProductsDetailsModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\DateTime',
-        'start_date' => '\DateTime'
+        'budget' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetModel',
+        'objective' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => 'date-time',
-        'start_date' => 'date-time'
+        'budget' => null,
+        'objective' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => false,
-		'start_date' => false
+        'budget' => true,
+		'objective' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'start_date' => 'startDate'
+        'budget' => 'budget',
+        'objective' => 'objective'
     ];
 
     /**
@@ -180,8 +180,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'start_date' => 'setStartDate'
+        'budget' => 'setBudget',
+        'objective' => 'setObjective'
     ];
 
     /**
@@ -190,8 +190,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'start_date' => 'getStartDate'
+        'budget' => 'getBudget',
+        'objective' => 'getObjective'
     ];
 
     /**
@@ -235,6 +235,27 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
+    public const OBJECTIVE_MANUAL = 'Manual';
+    public const OBJECTIVE_CLICKS = 'Clicks';
+    public const OBJECTIVE_CONVERSION = 'Conversion';
+    public const OBJECTIVE_REVENUE = 'Revenue';
+    public const OBJECTIVE_UNKNOWN = 'Unknown';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectiveAllowableValues()
+    {
+        return [
+            self::OBJECTIVE_MANUAL,
+            self::OBJECTIVE_CLICKS,
+            self::OBJECTIVE_CONVERSION,
+            self::OBJECTIVE_REVENUE,
+            self::OBJECTIVE_UNKNOWN,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +272,8 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('objective', $data ?? [], null);
     }
 
     /**
@@ -282,12 +303,15 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'objective', must be one of '%s'",
+                $this->container['objective'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -304,55 +328,79 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets end_date
+     * Gets budget
      *
-     * @return \DateTime
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetModel|null
      */
-    public function getEndDate()
+    public function getBudget()
     {
-        return $this->container['end_date'];
+        return $this->container['budget'];
     }
 
     /**
-     * Sets end_date
+     * Sets budget
      *
-     * @param \DateTime $end_date New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetModel|null $budget budget
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setBudget($budget)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($budget)) {
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end_date'] = $end_date;
+        $this->container['budget'] = $budget;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets objective
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getStartDate()
+    public function getObjective()
     {
-        return $this->container['start_date'];
+        return $this->container['objective'];
     }
 
     /**
-     * Sets start_date
+     * Sets objective
      *
-     * @param \DateTime $start_date New campaign start date.
+     * @param string|null $objective Objective of a SponsoredProducts campaign.
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setObjective($objective)
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($objective)) {
+            array_push($this->openAPINullablesSetToNull, 'objective');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('objective', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['start_date'] = $start_date;
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($objective) && !in_array($objective, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'objective', must be one of '%s'",
+                    $objective,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['objective'] = $objective;
 
         return $this;
     }

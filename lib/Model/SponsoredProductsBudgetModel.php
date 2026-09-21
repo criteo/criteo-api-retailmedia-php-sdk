@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleDetailsUpdateModel
+ * SponsoredProductsBudgetModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ScheduleDetailsUpdateModel Class Doc Comment
+ * SponsoredProductsBudgetModel Class Doc Comment
  *
  * @category Class
- * @description New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
+ * @description Financial intent of a SponsoredProducts campaign.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductsBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ScheduleDetailsUpdateModel';
+    protected static $openAPIModelName = 'SponsoredProductsBudgetModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\DateTime',
-        'start_date' => '\DateTime'
+        'amount' => 'float',
+        'cappings' => '\criteo\api\retailmedia\experimental\Model\BudgetCappingModel[]',
+        'pacing' => '\criteo\api\retailmedia\experimental\Model\PacingModel'
     ];
 
     /**
@@ -70,8 +71,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => 'date-time',
-        'start_date' => 'date-time'
+        'amount' => 'double',
+        'cappings' => null,
+        'pacing' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => false,
-		'start_date' => false
+        'amount' => true,
+		'cappings' => true,
+		'pacing' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'start_date' => 'startDate'
+        'amount' => 'amount',
+        'cappings' => 'cappings',
+        'pacing' => 'pacing'
     ];
 
     /**
@@ -180,8 +184,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'start_date' => 'setStartDate'
+        'amount' => 'setAmount',
+        'cappings' => 'setCappings',
+        'pacing' => 'setPacing'
     ];
 
     /**
@@ -190,8 +195,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'start_date' => 'getStartDate'
+        'amount' => 'getAmount',
+        'cappings' => 'getCappings',
+        'pacing' => 'getPacing'
     ];
 
     /**
@@ -251,8 +257,9 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
+        $this->setIfExists('cappings', $data ?? [], null);
+        $this->setIfExists('pacing', $data ?? [], null);
     }
 
     /**
@@ -282,12 +289,6 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -304,55 +305,103 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets end_date
+     * Gets amount
      *
-     * @return \DateTime
+     * @return float|null
      */
-    public function getEndDate()
+    public function getAmount()
     {
-        return $this->container['end_date'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets end_date
+     * Sets amount
      *
-     * @param \DateTime $end_date New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
+     * @param float|null $amount amount
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setAmount($amount)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($amount)) {
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end_date'] = $end_date;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets cappings
      *
-     * @return \DateTime
+     * @return \criteo\api\retailmedia\experimental\Model\BudgetCappingModel[]|null
      */
-    public function getStartDate()
+    public function getCappings()
     {
-        return $this->container['start_date'];
+        return $this->container['cappings'];
     }
 
     /**
-     * Sets start_date
+     * Sets cappings
      *
-     * @param \DateTime $start_date New campaign start date.
+     * @param \criteo\api\retailmedia\experimental\Model\BudgetCappingModel[]|null $cappings Per-period ceilings. Only capped periods are reported.
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setCappings($cappings)
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($cappings)) {
+            array_push($this->openAPINullablesSetToNull, 'cappings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cappings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['start_date'] = $start_date;
+        $this->container['cappings'] = $cappings;
+
+        return $this;
+    }
+
+    /**
+     * Gets pacing
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\PacingModel|null
+     */
+    public function getPacing()
+    {
+        return $this->container['pacing'];
+    }
+
+    /**
+     * Sets pacing
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\PacingModel|null $pacing pacing
+     *
+     * @return self
+     */
+    public function setPacing($pacing)
+    {
+        if (is_null($pacing)) {
+            array_push($this->openAPINullablesSetToNull, 'pacing');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pacing', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['pacing'] = $pacing;
 
         return $this;
     }

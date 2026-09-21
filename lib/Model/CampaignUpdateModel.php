@@ -59,12 +59,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'attribution_settings' => '\criteo\api\retailmedia\experimental\Model\AttributionSettingsUpdateModel',
-        'budget_details' => '\criteo\api\retailmedia\experimental\Model\BudgetDetailsUpdateModel',
         'company_name' => '\criteo\api\retailmedia\experimental\Model\StringNillableV2',
         'name' => 'string',
-        'objective' => 'string',
         'on_behalf_company_name' => '\criteo\api\retailmedia\experimental\Model\StringNillableV2',
-        'schedule_details' => '\criteo\api\retailmedia\experimental\Model\ScheduleDetailsUpdateModel'
+        'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsUpdateModel',
+        'schedule_details' => '\criteo\api\retailmedia\experimental\Model\ScheduleDetailsUpdateModel',
+        'sponsored_products_details' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsUpdateModel'
     ];
 
     /**
@@ -76,12 +76,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'attribution_settings' => null,
-        'budget_details' => null,
         'company_name' => null,
         'name' => null,
-        'objective' => null,
         'on_behalf_company_name' => null,
-        'schedule_details' => null
+        'onsite_display_details' => null,
+        'schedule_details' => null,
+        'sponsored_products_details' => null
     ];
 
     /**
@@ -91,12 +91,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'attribution_settings' => false,
-		'budget_details' => false,
 		'company_name' => false,
 		'name' => true,
-		'objective' => true,
 		'on_behalf_company_name' => false,
-		'schedule_details' => false
+		'onsite_display_details' => false,
+		'schedule_details' => false,
+		'sponsored_products_details' => false
     ];
 
     /**
@@ -186,12 +186,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'attribution_settings' => 'attributionSettings',
-        'budget_details' => 'budgetDetails',
         'company_name' => 'companyName',
         'name' => 'name',
-        'objective' => 'objective',
         'on_behalf_company_name' => 'onBehalfCompanyName',
-        'schedule_details' => 'scheduleDetails'
+        'onsite_display_details' => 'onsiteDisplayDetails',
+        'schedule_details' => 'scheduleDetails',
+        'sponsored_products_details' => 'sponsoredProductsDetails'
     ];
 
     /**
@@ -201,12 +201,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'attribution_settings' => 'setAttributionSettings',
-        'budget_details' => 'setBudgetDetails',
         'company_name' => 'setCompanyName',
         'name' => 'setName',
-        'objective' => 'setObjective',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'schedule_details' => 'setScheduleDetails'
+        'onsite_display_details' => 'setOnsiteDisplayDetails',
+        'schedule_details' => 'setScheduleDetails',
+        'sponsored_products_details' => 'setSponsoredProductsDetails'
     ];
 
     /**
@@ -216,12 +216,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'attribution_settings' => 'getAttributionSettings',
-        'budget_details' => 'getBudgetDetails',
         'company_name' => 'getCompanyName',
         'name' => 'getName',
-        'objective' => 'getObjective',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'schedule_details' => 'getScheduleDetails'
+        'onsite_display_details' => 'getOnsiteDisplayDetails',
+        'schedule_details' => 'getScheduleDetails',
+        'sponsored_products_details' => 'getSponsoredProductsDetails'
     ];
 
     /**
@@ -265,27 +265,6 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const OBJECTIVE_MANUAL = 'Manual';
-    public const OBJECTIVE_CLICKS = 'Clicks';
-    public const OBJECTIVE_CONVERSION = 'Conversion';
-    public const OBJECTIVE_REVENUE = 'Revenue';
-    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getObjectiveAllowableValues()
-    {
-        return [
-            self::OBJECTIVE_MANUAL,
-            self::OBJECTIVE_CLICKS,
-            self::OBJECTIVE_CONVERSION,
-            self::OBJECTIVE_REVENUE,
-            self::OBJECTIVE_IMPRESSIONS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -303,12 +282,12 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('attribution_settings', $data ?? [], null);
-        $this->setIfExists('budget_details', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('objective', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
+        $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('schedule_details', $data ?? [], null);
+        $this->setIfExists('sponsored_products_details', $data ?? [], null);
     }
 
     /**
@@ -337,15 +316,6 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getObjectiveAllowableValues();
-        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'objective', must be one of '%s'",
-                $this->container['objective'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -385,33 +355,6 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable attribution_settings cannot be null');
         }
         $this->container['attribution_settings'] = $attribution_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget_details
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\BudgetDetailsUpdateModel|null
-     */
-    public function getBudgetDetails()
-    {
-        return $this->container['budget_details'];
-    }
-
-    /**
-     * Sets budget_details
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\BudgetDetailsUpdateModel|null $budget_details budget_details
-     *
-     * @return self
-     */
-    public function setBudgetDetails($budget_details)
-    {
-        if (is_null($budget_details)) {
-            throw new \InvalidArgumentException('non-nullable budget_details cannot be null');
-        }
-        $this->container['budget_details'] = $budget_details;
 
         return $this;
     }
@@ -478,50 +421,6 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets objective
-     *
-     * @return string|null
-     */
-    public function getObjective()
-    {
-        return $this->container['objective'];
-    }
-
-    /**
-     * Sets objective
-     *
-     * @param string|null $objective objective
-     *
-     * @return self
-     */
-    public function setObjective($objective)
-    {
-        if (is_null($objective)) {
-            array_push($this->openAPINullablesSetToNull, 'objective');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('objective', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getObjectiveAllowableValues();
-        if (!is_null($objective) && !in_array($objective, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'objective', must be one of '%s'",
-                    $objective,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['objective'] = $objective;
-
-        return $this;
-    }
-
-    /**
      * Gets on_behalf_company_name
      *
      * @return \criteo\api\retailmedia\experimental\Model\StringNillableV2|null
@@ -549,6 +448,33 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets onsite_display_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsUpdateModel|null
+     */
+    public function getOnsiteDisplayDetails()
+    {
+        return $this->container['onsite_display_details'];
+    }
+
+    /**
+     * Sets onsite_display_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsUpdateModel|null $onsite_display_details onsite_display_details
+     *
+     * @return self
+     */
+    public function setOnsiteDisplayDetails($onsite_display_details)
+    {
+        if (is_null($onsite_display_details)) {
+            throw new \InvalidArgumentException('non-nullable onsite_display_details cannot be null');
+        }
+        $this->container['onsite_display_details'] = $onsite_display_details;
+
+        return $this;
+    }
+
+    /**
      * Gets schedule_details
      *
      * @return \criteo\api\retailmedia\experimental\Model\ScheduleDetailsUpdateModel|null
@@ -571,6 +497,33 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable schedule_details cannot be null');
         }
         $this->container['schedule_details'] = $schedule_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets sponsored_products_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsUpdateModel|null
+     */
+    public function getSponsoredProductsDetails()
+    {
+        return $this->container['sponsored_products_details'];
+    }
+
+    /**
+     * Sets sponsored_products_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsUpdateModel|null $sponsored_products_details sponsored_products_details
+     *
+     * @return self
+     */
+    public function setSponsoredProductsDetails($sponsored_products_details)
+    {
+        if (is_null($sponsored_products_details)) {
+            throw new \InvalidArgumentException('non-nullable sponsored_products_details cannot be null');
+        }
+        $this->container['sponsored_products_details'] = $sponsored_products_details;
 
         return $this;
     }

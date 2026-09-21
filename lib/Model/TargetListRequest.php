@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleDetailsUpdateModel
+ * TargetListRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ScheduleDetailsUpdateModel Class Doc Comment
+ * TargetListRequest Class Doc Comment
  *
  * @category Class
- * @description New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
+ * @description A top-level object that encapsulates a Criteo API request for several value objects.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class TargetListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ScheduleDetailsUpdateModel';
+    protected static $openAPIModelName = 'TargetListRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\DateTime',
-        'start_date' => '\DateTime'
+        'data' => '\criteo\api\retailmedia\experimental\Model\TargetResource[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => 'date-time',
-        'start_date' => 'date-time'
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => false,
-		'start_date' => false
+        'data' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'start_date' => 'startDate'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'start_date' => 'setStartDate'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'start_date' => 'getStartDate'
+        'data' => 'getData'
     ];
 
     /**
@@ -251,8 +245,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -282,12 +275,6 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
-        }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -304,55 +291,35 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets end_date
+     * Gets data
      *
-     * @return \DateTime
+     * @return \criteo\api\retailmedia\experimental\Model\TargetResource[]|null
      */
-    public function getEndDate()
+    public function getData()
     {
-        return $this->container['end_date'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets end_date
+     * Sets data
      *
-     * @param \DateTime $end_date New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
+     * @param \criteo\api\retailmedia\experimental\Model\TargetResource[]|null $data data
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setData($data)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date New campaign start date.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
-        }
-        $this->container['start_date'] = $start_date;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * ScheduleDetailsCreateModel Class Doc Comment
  *
  * @category Class
- * @description Flight dates of the campaign. Applies to SponsoredProducts only; OnsiteDisplay campaigns  derive their dates from their line items and reject this node.
+ * @description Flight dates the campaign holds itself. A SponsoredProducts or OnsiteDisplay Auction campaign  owns its dates and requires this node; any other OnsiteDisplay campaign derives its dates from  its line items and rejects it.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -316,7 +316,7 @@ class ScheduleDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.
+     * @param \DateTime $end_date Campaign end date. Pass exactly {9999-12-30T00:00:00Z} for a SponsoredProducts campaign that  runs indefinitely; any other value, including a neighbouring far-future date, is a real end date.  An OnsiteDisplay Auction campaign cannot run indefinitely and rejects that date.
      *
      * @return self
      */

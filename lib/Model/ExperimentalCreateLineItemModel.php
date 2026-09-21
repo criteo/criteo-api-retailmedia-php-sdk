@@ -59,7 +59,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'campaign_id' => 'string',
-        'flight_dates' => '\criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel',
         'is_paused' => 'bool',
         'name' => 'string',
         'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExperimentalCreateOnsiteDisplayLineItemDetails',
@@ -76,7 +75,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         'campaign_id' => null,
-        'flight_dates' => null,
         'is_paused' => null,
         'name' => null,
         'onsite_display_details' => null,
@@ -91,7 +89,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         'campaign_id' => true,
-		'flight_dates' => true,
 		'is_paused' => true,
 		'name' => true,
 		'onsite_display_details' => false,
@@ -186,7 +183,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         'campaign_id' => 'campaignId',
-        'flight_dates' => 'flightDates',
         'is_paused' => 'isPaused',
         'name' => 'name',
         'onsite_display_details' => 'onsiteDisplayDetails',
@@ -201,7 +197,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         'campaign_id' => 'setCampaignId',
-        'flight_dates' => 'setFlightDates',
         'is_paused' => 'setIsPaused',
         'name' => 'setName',
         'onsite_display_details' => 'setOnsiteDisplayDetails',
@@ -216,7 +211,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         'campaign_id' => 'getCampaignId',
-        'flight_dates' => 'getFlightDates',
         'is_paused' => 'getIsPaused',
         'name' => 'getName',
         'onsite_display_details' => 'getOnsiteDisplayDetails',
@@ -282,7 +276,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('flight_dates', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('onsite_display_details', $data ?? [], null);
@@ -362,40 +355,6 @@ class ExperimentalCreateLineItemModel implements ModelInterface, ArrayAccess, \J
             }
         }
         $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flight_dates
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel|null
-     */
-    public function getFlightDates()
-    {
-        return $this->container['flight_dates'];
-    }
-
-    /**
-     * Sets flight_dates
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ExperimentalFlightDatesModel|null $flight_dates flight_dates
-     *
-     * @return self
-     */
-    public function setFlightDates($flight_dates)
-    {
-        if (is_null($flight_dates)) {
-            array_push($this->openAPINullablesSetToNull, 'flight_dates');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('flight_dates', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['flight_dates'] = $flight_dates;
 
         return $this;
     }

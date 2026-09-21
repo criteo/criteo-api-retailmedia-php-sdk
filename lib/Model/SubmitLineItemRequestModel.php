@@ -1,6 +1,6 @@
 <?php
 /**
- * ScheduleDetailsUpdateModel
+ * SubmitLineItemRequestModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ScheduleDetailsUpdateModel Class Doc Comment
+ * SubmitLineItemRequestModel Class Doc Comment
  *
  * @category Class
- * @description New flight dates for a campaign that owns them: a SponsoredProducts or OnsiteDisplay Auction  campaign. Omit the whole node to leave the schedule unchanged; when present, both dates are  required together. Any other OnsiteDisplay campaign derives its dates from its line items and  rejects this node.
+ * @description Details supplied when submitting a line item for retailer review.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitLineItemRequestModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ScheduleDetailsUpdateModel';
+    protected static $openAPIModelName = 'SubmitLineItemRequestModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'end_date' => '\DateTime',
-        'start_date' => '\DateTime'
+        'comment' => 'string'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'end_date' => 'date-time',
-        'start_date' => 'date-time'
+        'comment' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'end_date' => false,
-		'start_date' => false
+        'comment' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'end_date' => 'endDate',
-        'start_date' => 'startDate'
+        'comment' => 'comment'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'end_date' => 'setEndDate',
-        'start_date' => 'setStartDate'
+        'comment' => 'setComment'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'end_date' => 'getEndDate',
-        'start_date' => 'getStartDate'
+        'comment' => 'getComment'
     ];
 
     /**
@@ -251,8 +245,7 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('end_date', $data ?? [], null);
-        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('comment', $data ?? [], null);
     }
 
     /**
@@ -282,12 +275,10 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        if ($this->container['end_date'] === null) {
-            $invalidProperties[] = "'end_date' can't be null";
+        if (!is_null($this->container['comment']) && (mb_strlen($this->container['comment']) > 255)) {
+            $invalidProperties[] = "invalid value for 'comment', the character length must be smaller than or equal to 255.";
         }
-        if ($this->container['start_date'] === null) {
-            $invalidProperties[] = "'start_date' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -304,55 +295,39 @@ class ScheduleDetailsUpdateModel implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets end_date
+     * Gets comment
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getEndDate()
+    public function getComment()
     {
-        return $this->container['end_date'];
+        return $this->container['comment'];
     }
 
     /**
-     * Sets end_date
+     * Sets comment
      *
-     * @param \DateTime $end_date New campaign end date. Pass exactly {9999-12-30T00:00:00Z} to make a SponsoredProducts  campaign run indefinitely; any other value is a real end date. An OnsiteDisplay Auction  campaign cannot run indefinitely and rejects that date.
+     * @param string|null $comment Optional comment for the retailer reviewing the line item.
      *
      * @return self
      */
-    public function setEndDate($end_date)
+    public function setComment($comment)
     {
-        if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+        if (is_null($comment)) {
+            array_push($this->openAPINullablesSetToNull, 'comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('comment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date New campaign start date.
-     *
-     * @return self
-     */
-    public function setStartDate($start_date)
-    {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (!is_null($comment) && (mb_strlen($comment) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $comment when calling SubmitLineItemRequestModel., must be smaller than or equal to 255.');
         }
-        $this->container['start_date'] = $start_date;
+
+        $this->container['comment'] = $comment;
 
         return $this;
     }

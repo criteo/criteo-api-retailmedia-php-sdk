@@ -1,6 +1,6 @@
 <?php
 /**
- * DecimalNullableNillableV2
+ * SponsoredProductsDetailsCreateModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * DecimalNullableNillableV2 Class Doc Comment
+ * SponsoredProductsDetailsCreateModel Class Doc Comment
  *
  * @category Class
- * @description A wrapper around an optional decimal value in an update payload. Omit the property to leave the current value unchanged, or send a null value to clear it.
+ * @description Settings that apply only to a SponsoredProducts campaign. Sending this node on a campaign of  another type is refused.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DecimalNullableNillableV2';
+    protected static $openAPIModelName = 'SponsoredProductsDetailsCreateModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => 'float'
+        'budget' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel',
+        'objective' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => 'double'
+        'budget' => null,
+        'objective' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => true
+        'budget' => false,
+		'objective' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value'
+        'budget' => 'budget',
+        'objective' => 'objective'
     ];
 
     /**
@@ -176,7 +180,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue'
+        'budget' => 'setBudget',
+        'objective' => 'setObjective'
     ];
 
     /**
@@ -185,7 +190,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue'
+        'budget' => 'getBudget',
+        'objective' => 'getObjective'
     ];
 
     /**
@@ -229,6 +235,25 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const OBJECTIVE_MANUAL = 'Manual';
+    public const OBJECTIVE_CLICKS = 'Clicks';
+    public const OBJECTIVE_CONVERSION = 'Conversion';
+    public const OBJECTIVE_REVENUE = 'Revenue';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectiveAllowableValues()
+    {
+        return [
+            self::OBJECTIVE_MANUAL,
+            self::OBJECTIVE_CLICKS,
+            self::OBJECTIVE_CONVERSION,
+            self::OBJECTIVE_REVENUE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -245,7 +270,8 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('objective', $data ?? [], null);
     }
 
     /**
@@ -275,6 +301,15 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'objective', must be one of '%s'",
+                $this->container['objective'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -291,35 +326,72 @@ class DecimalNullableNillableV2 implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets value
+     * Gets budget
      *
-     * @return float|null
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel|null
      */
-    public function getValue()
+    public function getBudget()
     {
-        return $this->container['value'];
+        return $this->container['budget'];
     }
 
     /**
-     * Sets value
+     * Sets budget
      *
-     * @param float|null $value value
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel|null $budget budget
      *
      * @return self
      */
-    public function setValue($value)
+    public function setBudget($budget)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
+        if (is_null($budget)) {
+            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+        }
+        $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets objective
+     *
+     * @return string|null
+     */
+    public function getObjective()
+    {
+        return $this->container['objective'];
+    }
+
+    /**
+     * Sets objective
+     *
+     * @param string|null $objective Defaults to manual when omitted.
+     *
+     * @return self
+     */
+    public function setObjective($objective)
+    {
+        if (is_null($objective)) {
+            array_push($this->openAPINullablesSetToNull, 'objective');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
+            $index = array_search('objective', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['value'] = $value;
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($objective) && !in_array($objective, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'objective', must be one of '%s'",
+                    $objective,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['objective'] = $objective;
 
         return $this;
     }
