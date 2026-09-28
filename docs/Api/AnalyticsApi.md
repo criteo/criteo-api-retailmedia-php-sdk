@@ -30,7 +30,7 @@ generateAsyncAccountsReportV2($async_accounts_report_request): \criteo\api\retai
 
 /preview/retail-media/reports/accounts
 
-Returns an asynchronous Accounts Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -93,7 +93,7 @@ generateAsyncCampaignsReportV2($async_campaigns_report_request): \criteo\api\ret
 
 /preview/retail-media/reports/campaigns
 
-Return an asynchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
+Return an asynchronous Campaigns Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -156,7 +156,7 @@ generateAsyncFillRateReport($async_fill_rate_report_request): \criteo\api\retail
 
 /preview/retail-media/reports/fillrate
 
-Returns an asynchronous Fill Rate Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Fill Rate Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -219,7 +219,7 @@ generateAsyncLineItemsReportV2($async_line_items_report_request): \criteo\api\re
 
 /preview/retail-media/reports/line-items
 
-Returns an asynchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Line Items Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -282,7 +282,7 @@ generateAsyncOffsiteReport($async_offsite_report_request): \criteo\api\retailmed
 
 /preview/retail-media/reports/offsite
 
-Returns an asynchronous Offsite Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Offsite Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -345,7 +345,7 @@ generateAsyncUnfilledPlacementsReport($async_unfilled_placements_report_request)
 
 /preview/retail-media/reports/unfilled-placements
 
-Returns an asynchronous Unfilled Placements Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Unfilled Placements Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -534,7 +534,7 @@ generateSyncAttributedTransactionsReport($sync_attributed_transactions_report_re
 
 /preview/retail-media/reports/sync/attributed-transactions
 
-Returns a synchronous Attributed Transactions Report  <br />  This endpoint is subject to specific rate limits.
+Returns a synchronous Attributed Transactions Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -597,7 +597,7 @@ generateSyncCampaignsReport($sync_campaigns_report_request): \criteo\api\retailm
 
 /preview/retail-media/reports/sync/campaigns
 
-Returns a synchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
+Returns a synchronous Campaigns Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -660,7 +660,7 @@ generateSyncLineItemsReport($sync_line_items_report_request): \criteo\api\retail
 
 /preview/retail-media/reports/sync/line-items
 
-Returns a synchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
+Returns a synchronous Line Items Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -723,7 +723,7 @@ generateSyncRealTimePerformanceReport($sync_real_time_performance_report_request
 
 /preview/retail-media/reports/sync/real-time-performance
 
-Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  <br />  This endpoint is subject to specific rate limits.
+Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone). <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 

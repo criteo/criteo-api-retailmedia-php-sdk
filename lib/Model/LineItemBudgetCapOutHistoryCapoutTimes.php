@@ -176,10 +176,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'Daily',
-        'hourly' => 'Hourly',
-        'monthly' => 'Monthly',
-        'total' => 'Total'
+        'daily' => 'daily',
+        'hourly' => 'hourly',
+        'monthly' => 'monthly',
+        'total' => 'total'
     ];
 
     /**
