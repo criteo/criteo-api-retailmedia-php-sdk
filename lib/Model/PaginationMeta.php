@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * PaginationMeta
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * PaginationMeta Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Pagination metadata for a Fetch Products response.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class PaginationMeta implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'PaginationMeta';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'count' => 'int',
+        'limit' => 'int',
+        'offset' => 'int',
+        'response_count' => 'int'
     ];
 
     /**
@@ -72,10 +72,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'count' => 'int32',
+        'limit' => 'int32',
+        'offset' => 'int32',
+        'response_count' => 'int32'
     ];
 
     /**
@@ -84,10 +84,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'count' => true,
+		'limit' => true,
+		'offset' => true,
+		'response_count' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'count' => 'count',
+        'limit' => 'limit',
+        'offset' => 'offset',
+        'response_count' => 'responseCount'
     ];
 
     /**
@@ -188,10 +188,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'count' => 'setCount',
+        'limit' => 'setLimit',
+        'offset' => 'setOffset',
+        'response_count' => 'setResponseCount'
     ];
 
     /**
@@ -200,10 +200,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'count' => 'getCount',
+        'limit' => 'getLimit',
+        'offset' => 'getOffset',
+        'response_count' => 'getResponseCount'
     ];
 
     /**
@@ -263,10 +263,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('offset', $data ?? [], null);
+        $this->setIfExists('response_count', $data ?? [], null);
     }
 
     /**
@@ -312,137 +312,137 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets count
      *
-     * @return \DateTime[]|null
+     * @return int|null
      */
-    public function getDaily()
+    public function getCount()
     {
-        return $this->container['daily'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets daily
+     * Sets count
      *
-     * @param \DateTime[]|null $daily daily
+     * @param int|null $count The total number of products in the line item's pool matching the request.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setCount($count)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($count)) {
+            array_push($this->openAPINullablesSetToNull, 'count');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('count', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['count'] = $count;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets limit
      *
-     * @return \DateTime[]|null
+     * @return int|null
      */
-    public function getHourly()
+    public function getLimit()
     {
-        return $this->container['hourly'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets hourly
+     * Sets limit
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param int|null $limit The applied page size, echoed back.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setLimit($limit)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($limit)) {
+            array_push($this->openAPINullablesSetToNull, 'limit');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('limit', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
+        $this->container['limit'] = $limit;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets offset
      *
-     * @return \DateTime[]|null
+     * @return int|null
      */
-    public function getMonthly()
+    public function getOffset()
     {
-        return $this->container['monthly'];
+        return $this->container['offset'];
     }
 
     /**
-     * Sets monthly
+     * Sets offset
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param int|null $offset The requested zero-based offset, echoed back.
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setOffset($offset)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
+        if (is_null($offset)) {
+            array_push($this->openAPINullablesSetToNull, 'offset');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
+            $index = array_search('offset', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['monthly'] = $monthly;
+        $this->container['offset'] = $offset;
 
         return $this;
     }
 
     /**
-     * Gets total
+     * Gets response_count
      *
-     * @return \DateTime[]|null
+     * @return int|null
      */
-    public function getTotal()
+    public function getResponseCount()
     {
-        return $this->container['total'];
+        return $this->container['response_count'];
     }
 
     /**
-     * Sets total
+     * Sets response_count
      *
-     * @param \DateTime[]|null $total total
+     * @param int|null $response_count The number of products returned in this page.
      *
      * @return self
      */
-    public function setTotal($total)
+    public function setResponseCount($response_count)
     {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
+        if (is_null($response_count)) {
+            array_push($this->openAPINullablesSetToNull, 'response_count');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
+            $index = array_search('response_count', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['total'] = $total;
+        $this->container['response_count'] = $response_count;
 
         return $this;
     }

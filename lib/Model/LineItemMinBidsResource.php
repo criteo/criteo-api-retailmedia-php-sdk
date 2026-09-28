@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * LineItemMinBidsResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * LineItemMinBidsResource Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'LineItemMinBidsResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'attributes' => '\criteo\api\retailmedia\experimental\Model\LineItemMinBids',
+        'type' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'attributes' => true,
+		'type' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -188,10 +180,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -200,10 +190,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -263,10 +251,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -312,137 +298,69 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets attributes
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBids|null
      */
-    public function getDaily()
+    public function getAttributes()
     {
-        return $this->container['daily'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets daily
+     * Sets attributes
      *
-     * @param \DateTime[]|null $daily daily
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemMinBids|null $attributes attributes
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setAttributes($attributes)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['attributes'] = $attributes;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets type
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getHourly()
+    public function getType()
     {
-        return $this->container['hourly'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets hourly
+     * Sets type
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string|null $type Type of the resource.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setType($type)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['type'] = $type;
 
         return $this;
     }

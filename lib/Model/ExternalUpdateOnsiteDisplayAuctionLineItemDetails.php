@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * ExternalUpdateOnsiteDisplayAuctionLineItemDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * ExternalUpdateOnsiteDisplayAuctionLineItemDetails Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description The auction settings to change on an onsite display line item. Omitted fields are left unchanged.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalUpdateOnsiteDisplayAuctionLineItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'ExternalUpdateOnsiteDisplayAuctionLineItemDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'is_dynamic_match' => 'bool'
     ];
 
     /**
@@ -72,10 +69,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'is_dynamic_match' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'is_dynamic_match' => true
     ];
 
     /**
@@ -176,10 +167,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'is_dynamic_match' => 'isDynamicMatch'
     ];
 
     /**
@@ -188,10 +176,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'is_dynamic_match' => 'setIsDynamicMatch'
     ];
 
     /**
@@ -200,10 +185,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'is_dynamic_match' => 'getIsDynamicMatch'
     ];
 
     /**
@@ -263,10 +245,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('is_dynamic_match', $data ?? [], null);
     }
 
     /**
@@ -312,137 +291,35 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets is_dynamic_match
      *
-     * @return \DateTime[]|null
+     * @return bool|null
      */
-    public function getDaily()
+    public function getIsDynamicMatch()
     {
-        return $this->container['daily'];
+        return $this->container['is_dynamic_match'];
     }
 
     /**
-     * Sets daily
+     * Sets is_dynamic_match
      *
-     * @param \DateTime[]|null $daily daily
+     * @param bool|null $is_dynamic_match Whether to serve only products relevant to the page context, replacing manual SKU curation.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setIsDynamicMatch($is_dynamic_match)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($is_dynamic_match)) {
+            array_push($this->openAPINullablesSetToNull, 'is_dynamic_match');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('is_dynamic_match', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
-
-        return $this;
-    }
-
-    /**
-     * Gets hourly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getHourly()
-    {
-        return $this->container['hourly'];
-    }
-
-    /**
-     * Sets hourly
-     *
-     * @param \DateTime[]|null $hourly hourly
-     *
-     * @return self
-     */
-    public function setHourly($hourly)
-    {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['is_dynamic_match'] = $is_dynamic_match;
 
         return $this;
     }

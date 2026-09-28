@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * SponsoredProductDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * SponsoredProductDetails Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Sponsored Product-specific product details.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'SponsoredProductDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'bid_override' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'bid_override' => 'double',
+        'status' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'bid_override' => true,
+		'status' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'bid_override' => 'bidOverride',
+        'status' => 'status'
     ];
 
     /**
@@ -188,10 +180,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'bid_override' => 'setBidOverride',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -200,10 +190,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'bid_override' => 'getBidOverride',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -247,6 +235,29 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const STATUS_UNKNOWN = 'Unknown';
+    public const STATUS_ACTIVE = 'Active';
+    public const STATUS_INACTIVE = 'Inactive';
+    public const STATUS_EXPIRED = 'Expired';
+    public const STATUS_REMOVED = 'Removed';
+    public const STATUS_DELETED = 'Deleted';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_UNKNOWN,
+            self::STATUS_ACTIVE,
+            self::STATUS_INACTIVE,
+            self::STATUS_EXPIRED,
+            self::STATUS_REMOVED,
+            self::STATUS_DELETED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +274,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('bid_override', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -296,6 +305,15 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +330,79 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets bid_override
      *
-     * @return \DateTime[]|null
+     * @return float|null
      */
-    public function getDaily()
+    public function getBidOverride()
     {
-        return $this->container['daily'];
+        return $this->container['bid_override'];
     }
 
     /**
-     * Sets daily
+     * Sets bid_override
      *
-     * @param \DateTime[]|null $daily daily
+     * @param float|null $bid_override The per-product bid override. Null means the line-item bid applies.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setBidOverride($bid_override)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($bid_override)) {
+            array_push($this->openAPINullablesSetToNull, 'bid_override');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('bid_override', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['bid_override'] = $bid_override;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets status
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getHourly()
+    public function getStatus()
     {
-        return $this->container['hourly'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets hourly
+     * Sets status
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string|null $status The product's status in the sponsored products pool.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setStatus($status)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['status'] = $status;
 
         return $this;
     }

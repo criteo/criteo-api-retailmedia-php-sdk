@@ -16,11 +16,13 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**deleteProducts()**](CampaignApi.md#deleteProducts) | **POST** /experimental/retail-media/line-items/{line-item-id}/products/delete | /experimental/retail-media/line-items/{line-item-id}/products/delete |
 | [**fetchCreatives()**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
+| [**fetchProducts()**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
 | [**getBiddingStrategyByLineItemId()**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
 | [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
 | [**getCapoutHistory()**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getMinBidsByLineItemId()**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
 | [**getProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId()**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
 | [**getTargetsByLineItemId()**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
@@ -368,7 +370,7 @@ try {
 ## `createLineItem()`
 
 ```php
-createLineItem($experimental_create_line_item_model_request): \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+createLineItem($external_create_line_item_model_request): \criteo\api\retailmedia\experimental\Model\LineItemResponse
 ```
 
 /experimental/retail-media/line-items
@@ -395,10 +397,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$experimental_create_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest | Line item details
+$external_create_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExternalCreateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExternalCreateLineItemModelRequest | Line item details
 
 try {
-    $result = $apiInstance->createLineItem($experimental_create_line_item_model_request);
+    $result = $apiInstance->createLineItem($external_create_line_item_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->createLineItem: ', $e->getMessage(), PHP_EOL;
@@ -409,11 +411,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **experimental_create_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalCreateLineItemModelRequest**](../Model/ExperimentalCreateLineItemModelRequest.md)| Line item details | |
+| **external_create_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExternalCreateLineItemModelRequest**](../Model/ExternalCreateLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse**](../Model/ExperimentalLineItemModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemResponse**](../Model/LineItemResponse.md)
 
 ### Authorization
 
@@ -816,6 +818,73 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `fetchProducts()`
+
+```php
+fetchProducts($line_item_id, $limit, $offset): \criteo\api\retailmedia\experimental\Model\LineItemProductListResponseV2WithPaginationMeta
+```
+
+/experimental/retail-media/line-items/{line-item-id}/products
+
+Retrieve a page of products configured on a line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item id.
+$limit = 500; // int | The maximum number of products to return.
+$offset = 0; // int | The zero-based offset into the line item's product pool.
+
+try {
+    $result = $apiInstance->fetchProducts($line_item_id, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->fetchProducts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item id. | |
+| **limit** | **int**| The maximum number of products to return. | [optional] [default to 500] |
+| **offset** | **int**| The zero-based offset into the line item&#39;s product pool. | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\LineItemProductListResponseV2WithPaginationMeta**](../Model/LineItemProductListResponseV2WithPaginationMeta.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getBiddingStrategyByLineItemId()`
 
 ```php
@@ -1123,6 +1192,69 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMinBidsByLineItemId()`
+
+```php
+getMinBidsByLineItemId($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse
+```
+
+/experimental/retail-media/line-items/{line-item-id}/min-bids
+
+Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose minimum bids are requested.
+
+try {
+    $result = $apiInstance->getMinBidsByLineItemId($line_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getMinBidsByLineItemId: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The identifier of the line item whose minimum bids are requested. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse**](../Model/LineItemMinBidsResponse.md)
 
 ### Authorization
 
@@ -1923,7 +2055,7 @@ try {
 ## `updateLineItem()`
 
 ```php
-updateLineItem($line_item_id, $experimental_update_line_item_model_request): \criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse
+updateLineItem($line_item_id, $external_update_line_item_model_request): \criteo\api\retailmedia\experimental\Model\LineItemResponse
 ```
 
 /experimental/retail-media/line-items/{line-item-id}
@@ -1951,10 +2083,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item id
-$experimental_update_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest | Line item details
+$external_update_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest | Line item details
 
 try {
-    $result = $apiInstance->updateLineItem($line_item_id, $experimental_update_line_item_model_request);
+    $result = $apiInstance->updateLineItem($line_item_id, $external_update_line_item_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateLineItem: ', $e->getMessage(), PHP_EOL;
@@ -1966,11 +2098,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The line item id | |
-| **experimental_update_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExperimentalUpdateLineItemModelRequest**](../Model/ExperimentalUpdateLineItemModelRequest.md)| Line item details | |
+| **external_update_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest**](../Model/ExternalUpdateLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\ExperimentalLineItemModelResponse**](../Model/ExperimentalLineItemModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemResponse**](../Model/LineItemResponse.md)
 
 ### Authorization
 

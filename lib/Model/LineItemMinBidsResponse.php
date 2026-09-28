@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * LineItemMinBidsResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * LineItemMinBidsResponse Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description A top-level object that encapsulates a Criteo API response for a single value object.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemMinBidsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'LineItemMinBidsResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'data' => '\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResource',
+        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
     ];
 
     /**
@@ -72,10 +71,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'data' => null,
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'data' => 'data',
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -188,10 +184,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -200,10 +195,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -263,10 +257,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -312,137 +305,103 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets data
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResource|null
      */
-    public function getDaily()
+    public function getData()
     {
-        return $this->container['daily'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets daily
+     * Sets data
      *
-     * @param \DateTime[]|null $daily daily
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResource|null $data data
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setData($data)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets errors
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
      */
-    public function getHourly()
+    public function getErrors()
     {
-        return $this->container['hourly'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets hourly
+     * Sets errors
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setErrors($errors)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets warnings
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
      */
-    public function getMonthly()
+    public function getWarnings()
     {
-        return $this->container['monthly'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets monthly
+     * Sets warnings
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setWarnings($warnings)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
+            $index = array_search('warnings', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

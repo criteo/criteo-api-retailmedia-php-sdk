@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * ExternalCreateOnsiteDisplayLineItemDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * ExternalCreateOnsiteDisplayLineItemDetails Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Onsite display settings to create a line item with.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'ExternalCreateOnsiteDisplayLineItemDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'auction_details' => '\criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayAuctionLineItemDetails',
+        'frequency_capping' => '\criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel'
     ];
 
     /**
@@ -72,10 +70,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'auction_details' => null,
+        'frequency_capping' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'auction_details' => false,
+		'frequency_capping' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'auction_details' => 'auctionDetails',
+        'frequency_capping' => 'frequencyCapping'
     ];
 
     /**
@@ -188,10 +180,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'auction_details' => 'setAuctionDetails',
+        'frequency_capping' => 'setFrequencyCapping'
     ];
 
     /**
@@ -200,10 +190,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'auction_details' => 'getAuctionDetails',
+        'frequency_capping' => 'getFrequencyCapping'
     ];
 
     /**
@@ -263,10 +251,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('auction_details', $data ?? [], null);
+        $this->setIfExists('frequency_capping', $data ?? [], null);
     }
 
     /**
@@ -312,137 +298,62 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets auction_details
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayAuctionLineItemDetails|null
      */
-    public function getDaily()
+    public function getAuctionDetails()
     {
-        return $this->container['daily'];
+        return $this->container['auction_details'];
     }
 
     /**
-     * Sets daily
+     * Sets auction_details
      *
-     * @param \DateTime[]|null $daily daily
+     * @param \criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayAuctionLineItemDetails|null $auction_details auction_details
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setAuctionDetails($auction_details)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($auction_details)) {
+            throw new \InvalidArgumentException('non-nullable auction_details cannot be null');
         }
-        $this->container['daily'] = $daily;
+        $this->container['auction_details'] = $auction_details;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets frequency_capping
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null
      */
-    public function getHourly()
+    public function getFrequencyCapping()
     {
-        return $this->container['hourly'];
+        return $this->container['frequency_capping'];
     }
 
     /**
-     * Sets hourly
+     * Sets frequency_capping
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null $frequency_capping frequency_capping
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setFrequencyCapping($frequency_capping)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($frequency_capping)) {
+            array_push($this->openAPINullablesSetToNull, 'frequency_capping');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('frequency_capping', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['frequency_capping'] = $frequency_capping;
 
         return $this;
     }

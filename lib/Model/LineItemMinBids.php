@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * LineItemMinBids
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * LineItemMinBids Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Represents minimum bidding guidance calculated for a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'LineItemMinBids';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'adaptive_min_bid' => 'float',
+        'adaptive_recommended_min_bid' => 'float',
+        'page_type_min_bids' => '\criteo\api\retailmedia\experimental\Model\PageTypeMinBid[]'
     ];
 
     /**
@@ -72,10 +71,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'adaptive_min_bid' => 'double',
+        'adaptive_recommended_min_bid' => 'double',
+        'page_type_min_bids' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'adaptive_min_bid' => false,
+		'adaptive_recommended_min_bid' => true,
+		'page_type_min_bids' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'adaptive_min_bid' => 'adaptiveMinBid',
+        'adaptive_recommended_min_bid' => 'adaptiveRecommendedMinBid',
+        'page_type_min_bids' => 'pageTypeMinBids'
     ];
 
     /**
@@ -188,10 +184,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'adaptive_min_bid' => 'setAdaptiveMinBid',
+        'adaptive_recommended_min_bid' => 'setAdaptiveRecommendedMinBid',
+        'page_type_min_bids' => 'setPageTypeMinBids'
     ];
 
     /**
@@ -200,10 +195,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'adaptive_min_bid' => 'getAdaptiveMinBid',
+        'adaptive_recommended_min_bid' => 'getAdaptiveRecommendedMinBid',
+        'page_type_min_bids' => 'getPageTypeMinBids'
     ];
 
     /**
@@ -263,10 +257,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('adaptive_min_bid', $data ?? [], null);
+        $this->setIfExists('adaptive_recommended_min_bid', $data ?? [], null);
+        $this->setIfExists('page_type_min_bids', $data ?? [], null);
     }
 
     /**
@@ -296,6 +289,12 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['adaptive_min_bid'] === null) {
+            $invalidProperties[] = "'adaptive_min_bid' can't be null";
+        }
+        if ($this->container['page_type_min_bids'] === null) {
+            $invalidProperties[] = "'page_type_min_bids' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -312,137 +311,89 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets adaptive_min_bid
      *
-     * @return \DateTime[]|null
+     * @return float
      */
-    public function getDaily()
+    public function getAdaptiveMinBid()
     {
-        return $this->container['daily'];
+        return $this->container['adaptive_min_bid'];
     }
 
     /**
-     * Sets daily
+     * Sets adaptive_min_bid
      *
-     * @param \DateTime[]|null $daily daily
+     * @param float $adaptive_min_bid The lowest strictly positive page-type minimum in the line item's currency, or zero when no positive minimum exists.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setAdaptiveMinBid($adaptive_min_bid)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($adaptive_min_bid)) {
+            throw new \InvalidArgumentException('non-nullable adaptive_min_bid cannot be null');
         }
-        $this->container['daily'] = $daily;
+        $this->container['adaptive_min_bid'] = $adaptive_min_bid;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets adaptive_recommended_min_bid
      *
-     * @return \DateTime[]|null
+     * @return float|null
      */
-    public function getHourly()
+    public function getAdaptiveRecommendedMinBid()
     {
-        return $this->container['hourly'];
+        return $this->container['adaptive_recommended_min_bid'];
     }
 
     /**
-     * Sets hourly
+     * Sets adaptive_recommended_min_bid
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param float|null $adaptive_recommended_min_bid The bid below which Adaptive bidding validation emits a low-bid warning in the line item's currency.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setAdaptiveRecommendedMinBid($adaptive_recommended_min_bid)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($adaptive_recommended_min_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'adaptive_recommended_min_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('adaptive_recommended_min_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
+        $this->container['adaptive_recommended_min_bid'] = $adaptive_recommended_min_bid;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets page_type_min_bids
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\PageTypeMinBid[]
      */
-    public function getMonthly()
+    public function getPageTypeMinBids()
     {
-        return $this->container['monthly'];
+        return $this->container['page_type_min_bids'];
     }
 
     /**
-     * Sets monthly
+     * Sets page_type_min_bids
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param \criteo\api\retailmedia\experimental\Model\PageTypeMinBid[] $page_type_min_bids The minimum bidding guidance for every page type configured on the line item.
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setPageTypeMinBids($page_type_min_bids)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($page_type_min_bids)) {
+            throw new \InvalidArgumentException('non-nullable page_type_min_bids cannot be null');
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['page_type_min_bids'] = $page_type_min_bids;
 
         return $this;
     }

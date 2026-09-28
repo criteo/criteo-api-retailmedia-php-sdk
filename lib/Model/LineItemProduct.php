@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * LineItemProduct
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * LineItemProduct Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description One product in a line item&#39;s product pool. The product identifier is the resource id;  type-specific fields are grouped under the detail object selected by Criteo.RetailMedia.LineItem.AdContent.Contract.V2.Models.Products.ProductAttributesModel.ProductType.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemProduct implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'LineItemProduct';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'display_product_details' => '\criteo\api\retailmedia\experimental\Model\DisplayProductDetails',
+        'product_type' => 'string',
+        'sponsored_product_details' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductDetails'
     ];
 
     /**
@@ -72,10 +71,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'display_product_details' => null,
+        'product_type' => null,
+        'sponsored_product_details' => null
     ];
 
     /**
@@ -84,10 +82,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'display_product_details' => true,
+		'product_type' => true,
+		'sponsored_product_details' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'display_product_details' => 'displayProductDetails',
+        'product_type' => 'productType',
+        'sponsored_product_details' => 'sponsoredProductDetails'
     ];
 
     /**
@@ -188,10 +184,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'display_product_details' => 'setDisplayProductDetails',
+        'product_type' => 'setProductType',
+        'sponsored_product_details' => 'setSponsoredProductDetails'
     ];
 
     /**
@@ -200,10 +195,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'display_product_details' => 'getDisplayProductDetails',
+        'product_type' => 'getProductType',
+        'sponsored_product_details' => 'getSponsoredProductDetails'
     ];
 
     /**
@@ -247,6 +241,23 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const PRODUCT_TYPE_UNKNOWN = 'Unknown';
+    public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
+    public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getProductTypeAllowableValues()
+    {
+        return [
+            self::PRODUCT_TYPE_UNKNOWN,
+            self::PRODUCT_TYPE_DISPLAY_PRODUCT,
+            self::PRODUCT_TYPE_SPONSORED_PRODUCT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +274,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('display_product_details', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
+        $this->setIfExists('sponsored_product_details', $data ?? [], null);
     }
 
     /**
@@ -296,6 +306,15 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'product_type', must be one of '%s'",
+                $this->container['product_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +331,113 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets display_product_details
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\DisplayProductDetails|null
      */
-    public function getDaily()
+    public function getDisplayProductDetails()
     {
-        return $this->container['daily'];
+        return $this->container['display_product_details'];
     }
 
     /**
-     * Sets daily
+     * Sets display_product_details
      *
-     * @param \DateTime[]|null $daily daily
+     * @param \criteo\api\retailmedia\experimental\Model\DisplayProductDetails|null $display_product_details display_product_details
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setDisplayProductDetails($display_product_details)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($display_product_details)) {
+            array_push($this->openAPINullablesSetToNull, 'display_product_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('display_product_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['display_product_details'] = $display_product_details;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets product_type
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getHourly()
+    public function getProductType()
     {
-        return $this->container['hourly'];
+        return $this->container['product_type'];
     }
 
     /**
-     * Sets hourly
+     * Sets product_type
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string|null $product_type The type of the product, selecting which detail object is populated.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setProductType($product_type)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($product_type)) {
+            array_push($this->openAPINullablesSetToNull, 'product_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('product_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
+        $allowedValues = $this->getProductTypeAllowableValues();
+        if (!is_null($product_type) && !in_array($product_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'product_type', must be one of '%s'",
+                    $product_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['product_type'] = $product_type;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets sponsored_product_details
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductDetails|null
      */
-    public function getMonthly()
+    public function getSponsoredProductDetails()
     {
-        return $this->container['monthly'];
+        return $this->container['sponsored_product_details'];
     }
 
     /**
-     * Sets monthly
+     * Sets sponsored_product_details
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductDetails|null $sponsored_product_details sponsored_product_details
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setSponsoredProductDetails($sponsored_product_details)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
+        if (is_null($sponsored_product_details)) {
+            array_push($this->openAPINullablesSetToNull, 'sponsored_product_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
+            $index = array_search('sponsored_product_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['sponsored_product_details'] = $sponsored_product_details;
 
         return $this;
     }

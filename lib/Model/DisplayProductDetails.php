@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * DisplayProductDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * DisplayProductDetails Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Onsite Display-specific product details.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class DisplayProductDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'DisplayProductDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'approval_status' => 'string'
     ];
 
     /**
@@ -72,10 +69,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'approval_status' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'approval_status' => true
     ];
 
     /**
@@ -176,10 +167,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'approval_status' => 'approvalStatus'
     ];
 
     /**
@@ -188,10 +176,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'approval_status' => 'setApprovalStatus'
     ];
 
     /**
@@ -200,10 +185,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'approval_status' => 'getApprovalStatus'
     ];
 
     /**
@@ -247,6 +229,31 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const APPROVAL_STATUS_UNKNOWN = 'Unknown';
+    public const APPROVAL_STATUS_APPROVED = 'Approved';
+    public const APPROVAL_STATUS_AUTO_APPROVED = 'AutoApproved';
+    public const APPROVAL_STATUS_IN_REVIEW = 'InReview';
+    public const APPROVAL_STATUS_REJECTED = 'Rejected';
+    public const APPROVAL_STATUS_AUTO_REJECTED = 'AutoRejected';
+    public const APPROVAL_STATUS_UNSUBMITTED = 'Unsubmitted';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getApprovalStatusAllowableValues()
+    {
+        return [
+            self::APPROVAL_STATUS_UNKNOWN,
+            self::APPROVAL_STATUS_APPROVED,
+            self::APPROVAL_STATUS_AUTO_APPROVED,
+            self::APPROVAL_STATUS_IN_REVIEW,
+            self::APPROVAL_STATUS_REJECTED,
+            self::APPROVAL_STATUS_AUTO_REJECTED,
+            self::APPROVAL_STATUS_UNSUBMITTED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +270,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('approval_status', $data ?? [], null);
     }
 
     /**
@@ -296,6 +300,15 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getApprovalStatusAllowableValues();
+        if (!is_null($this->container['approval_status']) && !in_array($this->container['approval_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'approval_status', must be one of '%s'",
+                $this->container['approval_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +325,45 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets approval_status
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getDaily()
+    public function getApprovalStatus()
     {
-        return $this->container['daily'];
+        return $this->container['approval_status'];
     }
 
     /**
-     * Sets daily
+     * Sets approval_status
      *
-     * @param \DateTime[]|null $daily daily
+     * @param string|null $approval_status The approval status of the product, calculated by the Approvals API.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setApprovalStatus($approval_status)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($approval_status)) {
+            array_push($this->openAPINullablesSetToNull, 'approval_status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('approval_status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
-
-        return $this;
-    }
-
-    /**
-     * Gets hourly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getHourly()
-    {
-        return $this->container['hourly'];
-    }
-
-    /**
-     * Sets hourly
-     *
-     * @param \DateTime[]|null $hourly hourly
-     *
-     * @return self
-     */
-    public function setHourly($hourly)
-    {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getApprovalStatusAllowableValues();
+        if (!is_null($approval_status) && !in_array($approval_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'approval_status', must be one of '%s'",
+                    $approval_status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['approval_status'] = $approval_status;
 
         return $this;
     }

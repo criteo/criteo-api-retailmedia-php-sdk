@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * ExternalFrequencyCappingModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * ExternalFrequencyCappingModel Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description How often a single user may be shown the line item&#39;s ads.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'ExternalFrequencyCappingModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'capping_count' => 'int',
+        'capping_duration_type' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'capping_count' => 'int32',
+        'capping_duration_type' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'capping_count' => true,
+		'capping_duration_type' => true
     ];
 
     /**
@@ -176,10 +170,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'capping_count' => 'cappingCount',
+        'capping_duration_type' => 'cappingDurationType'
     ];
 
     /**
@@ -188,10 +180,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'capping_count' => 'setCappingCount',
+        'capping_duration_type' => 'setCappingDurationType'
     ];
 
     /**
@@ -200,10 +190,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'capping_count' => 'getCappingCount',
+        'capping_duration_type' => 'getCappingDurationType'
     ];
 
     /**
@@ -247,6 +235,23 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const CAPPING_DURATION_TYPE_UNKNOWN = 'Unknown';
+    public const CAPPING_DURATION_TYPE_SESSION = 'Session';
+    public const CAPPING_DURATION_TYPE_DAY = 'Day';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCappingDurationTypeAllowableValues()
+    {
+        return [
+            self::CAPPING_DURATION_TYPE_UNKNOWN,
+            self::CAPPING_DURATION_TYPE_SESSION,
+            self::CAPPING_DURATION_TYPE_DAY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +268,8 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('capping_count', $data ?? [], null);
+        $this->setIfExists('capping_duration_type', $data ?? [], null);
     }
 
     /**
@@ -296,6 +299,15 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getCappingDurationTypeAllowableValues();
+        if (!is_null($this->container['capping_duration_type']) && !in_array($this->container['capping_duration_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'capping_duration_type', must be one of '%s'",
+                $this->container['capping_duration_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +324,79 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets capping_count
      *
-     * @return \DateTime[]|null
+     * @return int|null
      */
-    public function getDaily()
+    public function getCappingCount()
     {
-        return $this->container['daily'];
+        return $this->container['capping_count'];
     }
 
     /**
-     * Sets daily
+     * Sets capping_count
      *
-     * @param \DateTime[]|null $daily daily
+     * @param int|null $capping_count How many times the ads may be shown within the duration.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setCappingCount($capping_count)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($capping_count)) {
+            array_push($this->openAPINullablesSetToNull, 'capping_count');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('capping_count', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['capping_count'] = $capping_count;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets capping_duration_type
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getHourly()
+    public function getCappingDurationType()
     {
-        return $this->container['hourly'];
+        return $this->container['capping_duration_type'];
     }
 
     /**
-     * Sets hourly
+     * Sets capping_duration_type
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string|null $capping_duration_type The period the count applies to.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setCappingDurationType($capping_duration_type)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($capping_duration_type)) {
+            array_push($this->openAPINullablesSetToNull, 'capping_duration_type');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('capping_duration_type', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
-
-        return $this;
-    }
-
-    /**
-     * Gets monthly
-     *
-     * @return \DateTime[]|null
-     */
-    public function getMonthly()
-    {
-        return $this->container['monthly'];
-    }
-
-    /**
-     * Sets monthly
-     *
-     * @param \DateTime[]|null $monthly monthly
-     *
-     * @return self
-     */
-    public function setMonthly($monthly)
-    {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        $allowedValues = $this->getCappingDurationTypeAllowableValues();
+        if (!is_null($capping_duration_type) && !in_array($capping_duration_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'capping_duration_type', must be one of '%s'",
+                    $capping_duration_type,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['capping_duration_type'] = $capping_duration_type;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * PageTypeMinBid
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * PageTypeMinBid Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Represents minimum bidding guidance for one page type configured on a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'PageTypeMinBid';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'min_bid' => 'float',
+        'page_type' => 'string',
+        'recommended_min_bid' => 'float'
     ];
 
     /**
@@ -72,10 +71,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'min_bid' => 'double',
+        'page_type' => null,
+        'recommended_min_bid' => 'double'
     ];
 
     /**
@@ -84,10 +82,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'min_bid' => false,
+		'page_type' => false,
+		'recommended_min_bid' => true
     ];
 
     /**
@@ -176,10 +173,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'min_bid' => 'minBid',
+        'page_type' => 'pageType',
+        'recommended_min_bid' => 'recommendedMinBid'
     ];
 
     /**
@@ -188,10 +184,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'min_bid' => 'setMinBid',
+        'page_type' => 'setPageType',
+        'recommended_min_bid' => 'setRecommendedMinBid'
     ];
 
     /**
@@ -200,10 +195,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'min_bid' => 'getMinBid',
+        'page_type' => 'getPageType',
+        'recommended_min_bid' => 'getRecommendedMinBid'
     ];
 
     /**
@@ -247,6 +241,45 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
+    public const PAGE_TYPE_UNKNOWN = 'Unknown';
+    public const PAGE_TYPE_SEARCH = 'Search';
+    public const PAGE_TYPE_HOME = 'Home';
+    public const PAGE_TYPE_BROWSE = 'Browse';
+    public const PAGE_TYPE_CHECKOUT = 'Checkout';
+    public const PAGE_TYPE_CATEGORY = 'Category';
+    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
+    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
+    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
+    public const PAGE_TYPE_DEALS = 'Deals';
+    public const PAGE_TYPE_FAVORITES = 'Favorites';
+    public const PAGE_TYPE_SEARCH_BAR = 'SearchBar';
+    public const PAGE_TYPE_CATEGORY_MENU = 'CategoryMenu';
+    public const PAGE_TYPE_AI_ASSISTANT = 'AiAssistant';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPageTypeAllowableValues()
+    {
+        return [
+            self::PAGE_TYPE_UNKNOWN,
+            self::PAGE_TYPE_SEARCH,
+            self::PAGE_TYPE_HOME,
+            self::PAGE_TYPE_BROWSE,
+            self::PAGE_TYPE_CHECKOUT,
+            self::PAGE_TYPE_CATEGORY,
+            self::PAGE_TYPE_PRODUCT_DETAIL,
+            self::PAGE_TYPE_CONFIRMATION,
+            self::PAGE_TYPE_MERCHANDISING,
+            self::PAGE_TYPE_DEALS,
+            self::PAGE_TYPE_FAVORITES,
+            self::PAGE_TYPE_SEARCH_BAR,
+            self::PAGE_TYPE_CATEGORY_MENU,
+            self::PAGE_TYPE_AI_ASSISTANT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +296,9 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('min_bid', $data ?? [], null);
+        $this->setIfExists('page_type', $data ?? [], null);
+        $this->setIfExists('recommended_min_bid', $data ?? [], null);
     }
 
     /**
@@ -296,6 +328,21 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['min_bid'] === null) {
+            $invalidProperties[] = "'min_bid' can't be null";
+        }
+        if ($this->container['page_type'] === null) {
+            $invalidProperties[] = "'page_type' can't be null";
+        }
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'page_type', must be one of '%s'",
+                $this->container['page_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -312,137 +359,99 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets min_bid
      *
-     * @return \DateTime[]|null
+     * @return float
      */
-    public function getDaily()
+    public function getMinBid()
     {
-        return $this->container['daily'];
+        return $this->container['min_bid'];
     }
 
     /**
-     * Sets daily
+     * Sets min_bid
      *
-     * @param \DateTime[]|null $daily daily
+     * @param float $min_bid The inclusive minimum valid bid in the line item's currency.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setMinBid($min_bid)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($min_bid)) {
+            throw new \InvalidArgumentException('non-nullable min_bid cannot be null');
         }
-        $this->container['daily'] = $daily;
+        $this->container['min_bid'] = $min_bid;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets page_type
      *
-     * @return \DateTime[]|null
+     * @return string
      */
-    public function getHourly()
+    public function getPageType()
     {
-        return $this->container['hourly'];
+        return $this->container['page_type'];
     }
 
     /**
-     * Sets hourly
+     * Sets page_type
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string $page_type The page type to which the bidding guidance applies.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setPageType($page_type)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($page_type)) {
+            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
         }
-        $this->container['hourly'] = $hourly;
+        $allowedValues = $this->getPageTypeAllowableValues();
+        if (!in_array($page_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'page_type', must be one of '%s'",
+                    $page_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['page_type'] = $page_type;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets recommended_min_bid
      *
-     * @return \DateTime[]|null
+     * @return float|null
      */
-    public function getMonthly()
+    public function getRecommendedMinBid()
     {
-        return $this->container['monthly'];
+        return $this->container['recommended_min_bid'];
     }
 
     /**
-     * Sets monthly
+     * Sets recommended_min_bid
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param float|null $recommended_min_bid The bid below which validation emits a low-bid warning in the line item's currency.
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setRecommendedMinBid($recommended_min_bid)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
+        if (is_null($recommended_min_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'recommended_min_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
+            $index = array_search('recommended_min_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['monthly'] = $monthly;
-
-        return $this;
-    }
-
-    /**
-     * Gets total
-     *
-     * @return \DateTime[]|null
-     */
-    public function getTotal()
-    {
-        return $this->container['total'];
-    }
-
-    /**
-     * Sets total
-     *
-     * @param \DateTime[]|null $total total
-     *
-     * @return self
-     */
-    public function setTotal($total)
-    {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['total'] = $total;
+        $this->container['recommended_min_bid'] = $recommended_min_bid;
 
         return $this;
     }

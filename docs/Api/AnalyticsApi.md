@@ -23,7 +23,7 @@ generateAsyncAccountsReportV2($async_accounts_report_request): \criteo\api\retai
 
 /experimental/retail-media/reports/accounts
 
-Returns an asynchronous Accounts Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -86,7 +86,7 @@ generateAsyncCampaignsReportV2($async_campaigns_report_request): \criteo\api\ret
 
 /experimental/retail-media/reports/campaigns
 
-Return an asynchronous Campaigns Report  <br />  This endpoint is subject to specific rate limits.
+Return an asynchronous Campaigns Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -149,7 +149,7 @@ generateAsyncLineItemsReportV2($async_line_items_report_request): \criteo\api\re
 
 /experimental/retail-media/reports/line-items
 
-Returns an asynchronous Line Items Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Line Items Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -212,7 +212,7 @@ generateAsyncOffsiteReport($async_offsite_report_request): \criteo\api\retailmed
 
 /experimental/retail-media/reports/offsite
 
-Returns an asynchronous Offsite Report  <br />  This endpoint is subject to specific rate limits.
+Returns an asynchronous Offsite Report <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -401,7 +401,7 @@ generateSyncRealTimePerformanceReport($sync_real_time_performance_report_request
 
 /experimental/retail-media/reports/sync/real-time-performance
 
-Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone).  <br />  This endpoint is subject to specific rate limits.
+Returns a synchronous Real Time Performance Report. Returns empty rows; metadata includes dataCompleteThrough (latest time from streaming table in the request timezone). <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 

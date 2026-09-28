@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * ExternalConquestingSettings
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * ExternalConquestingSettings Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description Which categories of search keyword the line item is eligible to bid on.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalConquestingSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'ExternalConquestingSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'conquesting_ad_strategy_enabled' => 'bool',
+        'defensive_ad_strategy_enabled' => 'bool',
+        'is_ad_strategy_locked' => 'bool',
+        'neutral_ad_strategy_enabled' => 'bool'
     ];
 
     /**
@@ -72,10 +72,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'conquesting_ad_strategy_enabled' => null,
+        'defensive_ad_strategy_enabled' => null,
+        'is_ad_strategy_locked' => null,
+        'neutral_ad_strategy_enabled' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'conquesting_ad_strategy_enabled' => false,
+		'defensive_ad_strategy_enabled' => false,
+		'is_ad_strategy_locked' => false,
+		'neutral_ad_strategy_enabled' => false
     ];
 
     /**
@@ -176,10 +176,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'conquesting_ad_strategy_enabled' => 'conquestingAdStrategyEnabled',
+        'defensive_ad_strategy_enabled' => 'defensiveAdStrategyEnabled',
+        'is_ad_strategy_locked' => 'isAdStrategyLocked',
+        'neutral_ad_strategy_enabled' => 'neutralAdStrategyEnabled'
     ];
 
     /**
@@ -188,10 +188,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'conquesting_ad_strategy_enabled' => 'setConquestingAdStrategyEnabled',
+        'defensive_ad_strategy_enabled' => 'setDefensiveAdStrategyEnabled',
+        'is_ad_strategy_locked' => 'setIsAdStrategyLocked',
+        'neutral_ad_strategy_enabled' => 'setNeutralAdStrategyEnabled'
     ];
 
     /**
@@ -200,10 +200,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'conquesting_ad_strategy_enabled' => 'getConquestingAdStrategyEnabled',
+        'defensive_ad_strategy_enabled' => 'getDefensiveAdStrategyEnabled',
+        'is_ad_strategy_locked' => 'getIsAdStrategyLocked',
+        'neutral_ad_strategy_enabled' => 'getNeutralAdStrategyEnabled'
     ];
 
     /**
@@ -263,10 +263,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('conquesting_ad_strategy_enabled', $data ?? [], null);
+        $this->setIfExists('defensive_ad_strategy_enabled', $data ?? [], null);
+        $this->setIfExists('is_ad_strategy_locked', $data ?? [], null);
+        $this->setIfExists('neutral_ad_strategy_enabled', $data ?? [], null);
     }
 
     /**
@@ -296,6 +296,18 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
+        if ($this->container['conquesting_ad_strategy_enabled'] === null) {
+            $invalidProperties[] = "'conquesting_ad_strategy_enabled' can't be null";
+        }
+        if ($this->container['defensive_ad_strategy_enabled'] === null) {
+            $invalidProperties[] = "'defensive_ad_strategy_enabled' can't be null";
+        }
+        if ($this->container['is_ad_strategy_locked'] === null) {
+            $invalidProperties[] = "'is_ad_strategy_locked' can't be null";
+        }
+        if ($this->container['neutral_ad_strategy_enabled'] === null) {
+            $invalidProperties[] = "'neutral_ad_strategy_enabled' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -312,137 +324,109 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets conquesting_ad_strategy_enabled
      *
-     * @return \DateTime[]|null
+     * @return bool
      */
-    public function getDaily()
+    public function getConquestingAdStrategyEnabled()
     {
-        return $this->container['daily'];
+        return $this->container['conquesting_ad_strategy_enabled'];
     }
 
     /**
-     * Sets daily
+     * Sets conquesting_ad_strategy_enabled
      *
-     * @param \DateTime[]|null $daily daily
+     * @param bool $conquesting_ad_strategy_enabled Whether the line item may bid on competitors' branded keywords. Defaults to false.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setConquestingAdStrategyEnabled($conquesting_ad_strategy_enabled)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($conquesting_ad_strategy_enabled)) {
+            throw new \InvalidArgumentException('non-nullable conquesting_ad_strategy_enabled cannot be null');
         }
-        $this->container['daily'] = $daily;
+        $this->container['conquesting_ad_strategy_enabled'] = $conquesting_ad_strategy_enabled;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets defensive_ad_strategy_enabled
      *
-     * @return \DateTime[]|null
+     * @return bool
      */
-    public function getHourly()
+    public function getDefensiveAdStrategyEnabled()
     {
-        return $this->container['hourly'];
+        return $this->container['defensive_ad_strategy_enabled'];
     }
 
     /**
-     * Sets hourly
+     * Sets defensive_ad_strategy_enabled
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param bool $defensive_ad_strategy_enabled Whether the line item may bid on the advertiser's own branded keywords. Defaults to true.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setDefensiveAdStrategyEnabled($defensive_ad_strategy_enabled)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($defensive_ad_strategy_enabled)) {
+            throw new \InvalidArgumentException('non-nullable defensive_ad_strategy_enabled cannot be null');
         }
-        $this->container['hourly'] = $hourly;
+        $this->container['defensive_ad_strategy_enabled'] = $defensive_ad_strategy_enabled;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets is_ad_strategy_locked
      *
-     * @return \DateTime[]|null
+     * @return bool
      */
-    public function getMonthly()
+    public function getIsAdStrategyLocked()
     {
-        return $this->container['monthly'];
+        return $this->container['is_ad_strategy_locked'];
     }
 
     /**
-     * Sets monthly
+     * Sets is_ad_strategy_locked
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param bool $is_ad_strategy_locked Whether the keyword strategy flags have been set and can no longer be changed.
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setIsAdStrategyLocked($is_ad_strategy_locked)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($is_ad_strategy_locked)) {
+            throw new \InvalidArgumentException('non-nullable is_ad_strategy_locked cannot be null');
         }
-        $this->container['monthly'] = $monthly;
+        $this->container['is_ad_strategy_locked'] = $is_ad_strategy_locked;
 
         return $this;
     }
 
     /**
-     * Gets total
+     * Gets neutral_ad_strategy_enabled
      *
-     * @return \DateTime[]|null
+     * @return bool
      */
-    public function getTotal()
+    public function getNeutralAdStrategyEnabled()
     {
-        return $this->container['total'];
+        return $this->container['neutral_ad_strategy_enabled'];
     }
 
     /**
-     * Sets total
+     * Sets neutral_ad_strategy_enabled
      *
-     * @param \DateTime[]|null $total total
+     * @param bool $neutral_ad_strategy_enabled Whether the line item may bid on generic, unbranded category keywords. Defaults to true.
      *
      * @return self
      */
-    public function setTotal($total)
+    public function setNeutralAdStrategyEnabled($neutral_ad_strategy_enabled)
     {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($neutral_ad_strategy_enabled)) {
+            throw new \InvalidArgumentException('non-nullable neutral_ad_strategy_enabled cannot be null');
         }
-        $this->container['total'] = $total;
+        $this->container['neutral_ad_strategy_enabled'] = $neutral_ad_strategy_enabled;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes
+ * ExternalUpdateLineItemModel
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemBudgetCapOutHistoryCapoutTimes Class Doc Comment
+ * ExternalUpdateLineItemModel Class Doc Comment
  *
  * @category Class
- * @description The dictionary of budget type to the list of cap out times up to 3 most recent cap out times
+ * @description The line item settings to change. Omitted fields are left unchanged.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalUpdateLineItemModel implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemBudgetCapOutHistory_capoutTimes';
+    protected static $openAPIModelName = 'ExternalUpdateLineItemModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily' => '\DateTime[]',
-        'hourly' => '\DateTime[]',
-        'monthly' => '\DateTime[]',
-        'total' => '\DateTime[]'
+        'is_paused' => 'bool',
+        'name' => 'string',
+        'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExternalUpdateOnsiteDisplayLineItemDetails',
+        'serve_to_opt_out_user' => 'bool'
     ];
 
     /**
@@ -72,10 +72,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'daily' => 'date-time',
-        'hourly' => 'date-time',
-        'monthly' => 'date-time',
-        'total' => 'date-time'
+        'is_paused' => null,
+        'name' => null,
+        'onsite_display_details' => null,
+        'serve_to_opt_out_user' => null
     ];
 
     /**
@@ -84,10 +84,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'daily' => true,
-		'hourly' => true,
-		'monthly' => true,
-		'total' => true
+        'is_paused' => true,
+		'name' => true,
+		'onsite_display_details' => false,
+		'serve_to_opt_out_user' => true
     ];
 
     /**
@@ -176,10 +176,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'daily' => 'daily',
-        'hourly' => 'hourly',
-        'monthly' => 'monthly',
-        'total' => 'total'
+        'is_paused' => 'isPaused',
+        'name' => 'name',
+        'onsite_display_details' => 'onsiteDisplayDetails',
+        'serve_to_opt_out_user' => 'serveToOptOutUser'
     ];
 
     /**
@@ -188,10 +188,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'daily' => 'setDaily',
-        'hourly' => 'setHourly',
-        'monthly' => 'setMonthly',
-        'total' => 'setTotal'
+        'is_paused' => 'setIsPaused',
+        'name' => 'setName',
+        'onsite_display_details' => 'setOnsiteDisplayDetails',
+        'serve_to_opt_out_user' => 'setServeToOptOutUser'
     ];
 
     /**
@@ -200,10 +200,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'daily' => 'getDaily',
-        'hourly' => 'getHourly',
-        'monthly' => 'getMonthly',
-        'total' => 'getTotal'
+        'is_paused' => 'getIsPaused',
+        'name' => 'getName',
+        'onsite_display_details' => 'getOnsiteDisplayDetails',
+        'serve_to_opt_out_user' => 'getServeToOptOutUser'
     ];
 
     /**
@@ -263,10 +263,10 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('daily', $data ?? [], null);
-        $this->setIfExists('hourly', $data ?? [], null);
-        $this->setIfExists('monthly', $data ?? [], null);
-        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('is_paused', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('onsite_display_details', $data ?? [], null);
+        $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
     }
 
     /**
@@ -312,137 +312,130 @@ class LineItemBudgetCapOutHistoryCapoutTimes implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets daily
+     * Gets is_paused
      *
-     * @return \DateTime[]|null
+     * @return bool|null
      */
-    public function getDaily()
+    public function getIsPaused()
     {
-        return $this->container['daily'];
+        return $this->container['is_paused'];
     }
 
     /**
-     * Sets daily
+     * Sets is_paused
      *
-     * @param \DateTime[]|null $daily daily
+     * @param bool|null $is_paused Indicates whether the line item is paused.
      *
      * @return self
      */
-    public function setDaily($daily)
+    public function setIsPaused($is_paused)
     {
-        if (is_null($daily)) {
-            array_push($this->openAPINullablesSetToNull, 'daily');
+        if (is_null($is_paused)) {
+            array_push($this->openAPINullablesSetToNull, 'is_paused');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('daily', $nullablesSetToNull);
+            $index = array_search('is_paused', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['daily'] = $daily;
+        $this->container['is_paused'] = $is_paused;
 
         return $this;
     }
 
     /**
-     * Gets hourly
+     * Gets name
      *
-     * @return \DateTime[]|null
+     * @return string|null
      */
-    public function getHourly()
+    public function getName()
     {
-        return $this->container['hourly'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets hourly
+     * Sets name
      *
-     * @param \DateTime[]|null $hourly hourly
+     * @param string|null $name The name of the line item.
      *
      * @return self
      */
-    public function setHourly($hourly)
+    public function setName($name)
     {
-        if (is_null($hourly)) {
-            array_push($this->openAPINullablesSetToNull, 'hourly');
+        if (is_null($name)) {
+            array_push($this->openAPINullablesSetToNull, 'name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hourly', $nullablesSetToNull);
+            $index = array_search('name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hourly'] = $hourly;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets monthly
+     * Gets onsite_display_details
      *
-     * @return \DateTime[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\ExternalUpdateOnsiteDisplayLineItemDetails|null
      */
-    public function getMonthly()
+    public function getOnsiteDisplayDetails()
     {
-        return $this->container['monthly'];
+        return $this->container['onsite_display_details'];
     }
 
     /**
-     * Sets monthly
+     * Sets onsite_display_details
      *
-     * @param \DateTime[]|null $monthly monthly
+     * @param \criteo\api\retailmedia\experimental\Model\ExternalUpdateOnsiteDisplayLineItemDetails|null $onsite_display_details onsite_display_details
      *
      * @return self
      */
-    public function setMonthly($monthly)
+    public function setOnsiteDisplayDetails($onsite_display_details)
     {
-        if (is_null($monthly)) {
-            array_push($this->openAPINullablesSetToNull, 'monthly');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('monthly', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($onsite_display_details)) {
+            throw new \InvalidArgumentException('non-nullable onsite_display_details cannot be null');
         }
-        $this->container['monthly'] = $monthly;
+        $this->container['onsite_display_details'] = $onsite_display_details;
 
         return $this;
     }
 
     /**
-     * Gets total
+     * Gets serve_to_opt_out_user
      *
-     * @return \DateTime[]|null
+     * @return bool|null
      */
-    public function getTotal()
+    public function getServeToOptOutUser()
     {
-        return $this->container['total'];
+        return $this->container['serve_to_opt_out_user'];
     }
 
     /**
-     * Sets total
+     * Sets serve_to_opt_out_user
      *
-     * @param \DateTime[]|null $total total
+     * @param bool|null $serve_to_opt_out_user Whether to serve ads to users who have opted out of personalization.
      *
      * @return self
      */
-    public function setTotal($total)
+    public function setServeToOptOutUser($serve_to_opt_out_user)
     {
-        if (is_null($total)) {
-            array_push($this->openAPINullablesSetToNull, 'total');
+        if (is_null($serve_to_opt_out_user)) {
+            array_push($this->openAPINullablesSetToNull, 'serve_to_opt_out_user');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('total', $nullablesSetToNull);
+            $index = array_search('serve_to_opt_out_user', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['total'] = $total;
+        $this->container['serve_to_opt_out_user'] = $serve_to_opt_out_user;
 
         return $this;
     }
