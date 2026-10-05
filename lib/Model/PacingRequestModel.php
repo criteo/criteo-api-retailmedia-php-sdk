@@ -229,6 +229,7 @@ class PacingRequestModel implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const TYPE_NONE = 'None';
     public const TYPE_AUTOMATIC = 'Automatic';
 
     /**
@@ -239,6 +240,7 @@ class PacingRequestModel implements ModelInterface, ArrayAccess, \JsonSerializab
     public function getTypeAllowableValues()
     {
         return [
+            self::TYPE_NONE,
             self::TYPE_AUTOMATIC,
         ];
     }

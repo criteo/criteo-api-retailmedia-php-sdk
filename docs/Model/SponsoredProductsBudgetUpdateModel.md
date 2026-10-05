@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **float** |  | [optional]
+**amount** | [**\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2**](DecimalNullableNillableV2.md) |  | [optional]
 **cappings** | [**\criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]**](BudgetCappingRequestModel.md) | Per-period ceilings. At most one entry per period. | [optional]
 **pacing** | [**\criteo\api\retailmedia\experimental\Model\PacingRequestModel**](PacingRequestModel.md) |  | [optional]
 

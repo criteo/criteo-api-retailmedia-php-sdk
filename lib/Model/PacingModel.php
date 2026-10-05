@@ -229,8 +229,9 @@ class PacingModel implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_UNKNOWN = 'Unknown';
+    public const TYPE_NONE = 'None';
     public const TYPE_AUTOMATIC = 'Automatic';
+    public const TYPE_UNKNOWN = 'Unknown';
 
     /**
      * Gets allowable values of the enum
@@ -240,8 +241,9 @@ class PacingModel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_UNKNOWN,
+            self::TYPE_NONE,
             self::TYPE_AUTOMATIC,
+            self::TYPE_UNKNOWN,
         ];
     }
 

@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** | The account id of the associated account. | [optional]
+**budget_status** | **string** | Indicates whether the line item has budget headroom to serve ads. | [optional]
 **buy_type** | **string** | The buy type of the line item. | [optional]
 **campaign_id** | **string** | The campaign id of the associated campaign. | [optional]
 **conquesting_settings** | [**\criteo\api\retailmedia\experimental\Model\ConquestingSettings**](ConquestingSettings.md) |  | [optional]
 **flight_dates** | [**\criteo\api\retailmedia\experimental\Model\FlightDates**](FlightDates.md) |  | [optional]
-**funding_status** | **string** | Indicates whether the line item is funded. | [optional]
 **is_paused** | **bool** | Indicates whether the line item is paused. | [optional]
 **line_item_id** | **string** | The id of the line item. | [optional]
 **line_item_type** | **string** | The type of the line item. | [optional]

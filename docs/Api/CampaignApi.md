@@ -22,6 +22,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getCapoutHistory()**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
+| [**getLineItem()**](CampaignApi.md#getLineItem) | **GET** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**getMinBidsByLineItemId()**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
 | [**getProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /experimental/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**getProductButtonsByLineItemId()**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/product-buttons | /experimental/retail-media/line-items/{line-item-id}/product-buttons |
@@ -563,7 +564,7 @@ try {
 ## `deleteCreatives()`
 
 ```php
-deleteCreatives($line_item_id, $delete_creatives_model_request): \criteo\api\retailmedia\experimental\Model\Outcome
+deleteCreatives($line_item_id, $delete_line_item_creatives_request): \criteo\api\retailmedia\experimental\Model\Outcome
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/delete
@@ -591,10 +592,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The external line item id.
-$delete_creatives_model_request = new \criteo\api\retailmedia\experimental\Model\DeleteCreativesModelRequest(); // \criteo\api\retailmedia\experimental\Model\DeleteCreativesModelRequest | The stable creative identifiers to delete.
+$delete_line_item_creatives_request = new \criteo\api\retailmedia\experimental\Model\DeleteLineItemCreativesRequest(); // \criteo\api\retailmedia\experimental\Model\DeleteLineItemCreativesRequest | The stable creative identifiers to delete.
 
 try {
-    $result = $apiInstance->deleteCreatives($line_item_id, $delete_creatives_model_request);
+    $result = $apiInstance->deleteCreatives($line_item_id, $delete_line_item_creatives_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->deleteCreatives: ', $e->getMessage(), PHP_EOL;
@@ -606,7 +607,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The external line item id. | |
-| **delete_creatives_model_request** | [**\criteo\api\retailmedia\experimental\Model\DeleteCreativesModelRequest**](../Model/DeleteCreativesModelRequest.md)| The stable creative identifiers to delete. | |
+| **delete_line_item_creatives_request** | [**\criteo\api\retailmedia\experimental\Model\DeleteLineItemCreativesRequest**](../Model/DeleteLineItemCreativesRequest.md)| The stable creative identifiers to delete. | |
 
 ### Return type
 
@@ -758,7 +759,7 @@ try {
 ## `fetchCreatives()`
 
 ```php
-fetchCreatives($line_item_id): \criteo\api\retailmedia\experimental\Model\FetchCreativesModelResponse
+fetchCreatives($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemCreativesResponse
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/creatives
@@ -803,7 +804,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\FetchCreativesModelResponse**](../Model/FetchCreativesModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemCreativesResponse**](../Model/LineItemCreativesResponse.md)
 
 ### Authorization
 
@@ -1192,6 +1193,69 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\Creative2Response**](../Model/Creative2Response.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getLineItem()`
+
+```php
+getLineItem($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemDetailsResponse
+```
+
+/experimental/retail-media/line-items/{line-item-id}
+
+Retrieves a consolidated line item view from the line item domain services.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$line_item_id = 'line_item_id_example'; // string | The line item identifier.
+
+try {
+    $result = $apiInstance->getLineItem($line_item_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->getLineItem: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **line_item_id** | **string**| The line item identifier. | |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\LineItemDetailsResponse**](../Model/LineItemDetailsResponse.md)
 
 ### Authorization
 
@@ -2317,7 +2381,7 @@ try {
 ## `upsertCreatives()`
 
 ```php
-upsertCreatives($line_item_id, $upsert_creatives_model_request): \criteo\api\retailmedia\experimental\Model\CreativesModelResponse
+upsertCreatives($line_item_id, $upsert_line_item_creatives_request): \criteo\api\retailmedia\experimental\Model\UpsertLineItemCreativesResponse
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
@@ -2345,10 +2409,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item id.
-$upsert_creatives_model_request = new \criteo\api\retailmedia\experimental\Model\UpsertCreativesModelRequest(); // \criteo\api\retailmedia\experimental\Model\UpsertCreativesModelRequest | The creatives to upsert.
+$upsert_line_item_creatives_request = new \criteo\api\retailmedia\experimental\Model\UpsertLineItemCreativesRequest(); // \criteo\api\retailmedia\experimental\Model\UpsertLineItemCreativesRequest | The creatives to upsert.
 
 try {
-    $result = $apiInstance->upsertCreatives($line_item_id, $upsert_creatives_model_request);
+    $result = $apiInstance->upsertCreatives($line_item_id, $upsert_line_item_creatives_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->upsertCreatives: ', $e->getMessage(), PHP_EOL;
@@ -2360,11 +2424,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The line item id. | |
-| **upsert_creatives_model_request** | [**\criteo\api\retailmedia\experimental\Model\UpsertCreativesModelRequest**](../Model/UpsertCreativesModelRequest.md)| The creatives to upsert. | |
+| **upsert_line_item_creatives_request** | [**\criteo\api\retailmedia\experimental\Model\UpsertLineItemCreativesRequest**](../Model/UpsertLineItemCreativesRequest.md)| The creatives to upsert. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\CreativesModelResponse**](../Model/CreativesModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\UpsertLineItemCreativesResponse**](../Model/UpsertLineItemCreativesResponse.md)
 
 ### Authorization
 

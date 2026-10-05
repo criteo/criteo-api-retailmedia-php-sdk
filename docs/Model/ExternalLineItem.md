@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**budget_status** | **string** | Indicates whether the line item has budget headroom to serve ads. | [optional]
 **campaign_id** | **string** | The campaign id of the associated campaign. | [optional]
 **conquesting_settings** | [**\criteo\api\retailmedia\experimental\Model\ExternalConquestingSettings**](ExternalConquestingSettings.md) |  | [optional]
 **effective_flight_dates** | [**\criteo\api\retailmedia\experimental\Model\ExternalFlightDatesModel**](ExternalFlightDatesModel.md) |  | [optional]
-**funding_status** | **string** | Indicates whether the line item is funded. | [optional]
 **is_paused** | **bool** | Indicates whether the line item is paused. | [optional]
 **line_item_id** | **string** | The unique identifier of the line item. | [optional]
 **name** | **string** | The name of the line item. | [optional]

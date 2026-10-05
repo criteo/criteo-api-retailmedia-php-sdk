@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * SponsoredProductsBudgetUpdateModel Class Doc Comment
  *
  * @category Class
- * @description New financial intent of a SponsoredProducts campaign. The whole node replaces the previous  budget; omit it to leave the budget unchanged.
+ * @description Budget fields of a SponsoredProducts campaign to update. An omitted field is left unchanged.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
+        'amount' => '\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2',
         'cappings' => '\criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]',
         'pacing' => '\criteo\api\retailmedia\experimental\Model\PacingRequestModel'
     ];
@@ -71,7 +71,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
+        'amount' => null,
         'cappings' => null,
         'pacing' => null
     ];
@@ -82,7 +82,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => true,
+        'amount' => false,
 		'cappings' => true,
 		'pacing' => false
     ];
@@ -307,7 +307,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     /**
      * Gets amount
      *
-     * @return float|null
+     * @return \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null
      */
     public function getAmount()
     {
@@ -317,21 +317,14 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     /**
      * Sets amount
      *
-     * @param float|null $amount amount
+     * @param \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null $amount amount
      *
      * @return self
      */
     public function setAmount($amount)
     {
         if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
 

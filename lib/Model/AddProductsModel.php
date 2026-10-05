@@ -58,7 +58,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_product_details' => '\criteo\api\retailmedia\experimental\Model\ProductModel[]',
+        'display_product_details' => '\criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]',
         'product_type' => 'string'
     ];
 
@@ -328,7 +328,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets display_product_details
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ProductModel[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]|null
      */
     public function getDisplayProductDetails()
     {
@@ -338,7 +338,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets display_product_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ProductModel[]|null $display_product_details The display products to add to the line item.
+     * @param \criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]|null $display_product_details The display products to add to the line item.
      *
      * @return self
      */

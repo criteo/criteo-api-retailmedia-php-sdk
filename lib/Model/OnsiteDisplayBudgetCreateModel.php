@@ -78,7 +78,7 @@ class OnsiteDisplayBudgetCreateModel implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => true
+        'amount' => false
     ];
 
     /**
@@ -275,6 +275,9 @@ class OnsiteDisplayBudgetCreateModel implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class OnsiteDisplayBudgetCreateModel implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets amount
      *
-     * @return float|null
+     * @return float
      */
     public function getAmount()
     {
@@ -303,21 +306,14 @@ class OnsiteDisplayBudgetCreateModel implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets amount
      *
-     * @param float|null $amount Total the campaign may spend over its flight.
+     * @param float $amount Total the campaign may spend over its flight.
      *
      * @return self
      */
     public function setAmount($amount)
     {
         if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
 
