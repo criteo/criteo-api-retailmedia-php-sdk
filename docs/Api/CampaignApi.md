@@ -29,7 +29,10 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getTargetsByLineItemId()**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
 | [**lineItemsDemandSearch()**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
 | [**lineItemsSupplySearch()**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
+| [**listAccountChangeHistoryEntries()**](CampaignApi.md#listAccountChangeHistoryEntries) | **GET** /experimental/retail-media/accounts/{account-id}/change-history-entries | /experimental/retail-media/accounts/{account-id}/change-history-entries |
+| [**listRetailerChangeHistoryEntries()**](CampaignApi.md#listRetailerChangeHistoryEntries) | **GET** /experimental/retail-media/retailers/{retailer-id}/change-history-entries | /experimental/retail-media/retailers/{retailer-id}/change-history-entries |
 | [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search | /experimental/retail-media/accounts/{account-id}/creatives/search |
+| [**searchAccountCreativesEnriched()**](CampaignApi.md#searchAccountCreativesEnriched) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search-enriched | /experimental/retail-media/accounts/{account-id}/creatives/search-enriched |
 | [**searchCampaigns()**](CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search |
 | [**setBiddingStrategyByLineItemId()**](CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy |
 | [**submitLineItem()**](CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit |
@@ -46,7 +49,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 ## `addProducts()`
 
 ```php
-addProducts($line_item_id, $add_products_model_request): \criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse
+addProducts($line_item_id, $add_line_item_products_list_request): \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/products/add
@@ -74,10 +77,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item id.
-$add_products_model_request = new \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest(); // \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest | The products to add.
+$add_line_item_products_list_request = new \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest(); // \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest | The products to add.
 
 try {
-    $result = $apiInstance->addProducts($line_item_id, $add_products_model_request);
+    $result = $apiInstance->addProducts($line_item_id, $add_line_item_products_list_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->addProducts: ', $e->getMessage(), PHP_EOL;
@@ -89,11 +92,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The line item id. | |
-| **add_products_model_request** | [**\criteo\api\retailmedia\experimental\Model\AddProductsModelRequest**](../Model/AddProductsModelRequest.md)| The products to add. | |
+| **add_line_item_products_list_request** | [**\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest**](../Model/AddLineItemProductsListRequest.md)| The products to add. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse**](../Model/AddProductsResultModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse**](../Model/AddLineItemProductsListResponse.md)
 
 ### Authorization
 
@@ -694,7 +697,7 @@ try {
 ## `deleteProducts()`
 
 ```php
-deleteProducts($line_item_id, $delete_product_model_request): \criteo\api\retailmedia\experimental\Model\Outcome
+deleteProducts($line_item_id, $delete_line_item_products_list_request): \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse
 ```
 
 /experimental/retail-media/line-items/{line-item-id}/products/delete
@@ -722,10 +725,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item id.
-$delete_product_model_request = new \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest(); // \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest | The products to delete.
+$delete_line_item_products_list_request = new \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest(); // \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest | The products to delete.
 
 try {
-    $result = $apiInstance->deleteProducts($line_item_id, $delete_product_model_request);
+    $result = $apiInstance->deleteProducts($line_item_id, $delete_line_item_products_list_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->deleteProducts: ', $e->getMessage(), PHP_EOL;
@@ -737,11 +740,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The line item id. | |
-| **delete_product_model_request** | [**\criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest**](../Model/DeleteProductModelRequest.md)| The products to delete. | |
+| **delete_line_item_products_list_request** | [**\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest**](../Model/DeleteLineItemProductsListRequest.md)| The products to delete. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\Outcome**](../Model/Outcome.md)
+[**\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse**](../Model/DeleteLineItemProductsListResponse.md)
 
 ### Authorization
 
@@ -1654,6 +1657,164 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAccountChangeHistoryEntries()`
+
+```php
+listAccountChangeHistoryEntries($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
+```
+
+/experimental/retail-media/accounts/{account-id}/change-history-entries
+
+Returns a paginated collection of changes to Retail Media objects under the requested account. Use `event-types` and `entity-types` to narrow the results.  Requests for inaccessible or unknown accounts return `403`. Changes outside the caller's access are omitted. Actor information is limited to role labels; user identifiers are not returned.  Results are returned in descending order by `occurredAt`. The relative order of entries with identical `occurredAt` values is unspecified.  Additional `eventType`, entity `type`, and change `field` values may be returned. Clients must tolerate values they do not recognize.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | External opaque identifier of the advertiser account whose change history is requested.
+$campaign_ids = array('campaign_ids_example'); // string[] | When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller's account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array.
+$end_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted.
+$entity_types = array('entity_types_example'); // string[] | Restrict results to changes on the given entity types (see the entity `type` field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
+$event_types = array('event_types_example'); // string[] | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
+$limit = 25; // int | Maximum number of change-history entries to return in a single page.
+$line_item_ids = array('line_item_ids_example'); // string[] | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.
+$offset = 0; // int | Zero-based index of the first change-history entry to return.
+$start_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
+
+try {
+    $result = $apiInstance->listAccountChangeHistoryEntries($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->listAccountChangeHistoryEntries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External opaque identifier of the advertiser account whose change history is requested. | |
+| **campaign_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. | [optional] |
+| **end_time** | **\DateTime**| Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. | [optional] |
+| **entity_types** | [**string[]**](../Model/string.md)| Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
+| **event_types** | [**string[]**](../Model/string.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
+| **limit** | **int**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
+| **line_item_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. | [optional] |
+| **offset** | **int**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **start_time** | **\DateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata**](../Model/EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listRetailerChangeHistoryEntries()`
+
+```php
+listRetailerChangeHistoryEntries($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
+```
+
+/experimental/retail-media/retailers/{retailer-id}/change-history-entries
+
+Returns a paginated collection of changes to Retail Media objects under the requested retailer. Use `event-types` and `entity-types` to narrow the results.  Requests for inaccessible or unknown retailers return `403`. Changes outside the caller's access are omitted. Offsite campaign-level changes are not returned; offsite line-item changes are included. Actor information is limited to role labels; user identifiers are not returned.  Results are returned in descending order by `occurredAt`. The relative order of entries with identical `occurredAt` values is unspecified.  Additional `eventType`, entity `type`, and change `field` values may be returned. Clients must tolerate values they do not recognize.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$retailer_id = 'retailer_id_example'; // string | External opaque identifier of the retailer whose change history is requested.
+$campaign_ids = array('campaign_ids_example'); // string[] | When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller's retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array.
+$end_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted.
+$entity_types = array('entity_types_example'); // string[] | Restrict results to changes on the given entity types (see the entity `type` field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
+$event_types = array('event_types_example'); // string[] | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
+$limit = 25; // int | Maximum number of change-history entries to return in a single page.
+$line_item_ids = array('line_item_ids_example'); // string[] | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.
+$offset = 0; // int | Zero-based index of the first change-history entry to return.
+$start_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
+
+try {
+    $result = $apiInstance->listRetailerChangeHistoryEntries($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->listRetailerChangeHistoryEntries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **retailer_id** | **string**| External opaque identifier of the retailer whose change history is requested. | |
+| **campaign_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. | [optional] |
+| **end_time** | **\DateTime**| Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. | [optional] |
+| **entity_types** | [**string[]**](../Model/string.md)| Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
+| **event_types** | [**string[]**](../Model/string.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
+| **limit** | **int**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
+| **line_item_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. | [optional] |
+| **offset** | **int**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **start_time** | **\DateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata**](../Model/EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `searchAccountCreatives()`
 
 ```php
@@ -1709,6 +1870,75 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata**](../Model/EntityResourceCollectionOutcomeCreativeSearchResponseAndMetadata.md)
+
+### Authorization
+
+[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchAccountCreativesEnriched()`
+
+```php
+searchAccountCreativesEnriched($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset): \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata
+```
+
+/experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+
+Get account creatives enriched with the product collection constraints of their template.              The returned id is the first parent external id of the creative (stable across versions).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+// Configure OAuth2 access token for authorization: oauth
+$config = criteo\api\retailmedia\experimental\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | External account id to retrieve creatives for
+$entity_resource_input_creative_search_enriched_request = new \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest(); // \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest | search request filter
+$limit = 50; // int | limit to paginated result
+$offset = 0; // int | offset to paginated result
+
+try {
+    $result = $apiInstance->searchAccountCreativesEnriched($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CampaignApi->searchAccountCreativesEnriched: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| External account id to retrieve creatives for | |
+| **entity_resource_input_creative_search_enriched_request** | [**\criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest**](../Model/EntityResourceInputCreativeSearchEnrichedRequest.md)| search request filter | |
+| **limit** | **int**| limit to paginated result | [optional] [default to 50] |
+| **offset** | **int**| offset to paginated result | [optional] [default to 0] |
+
+### Return type
+
+[**\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata**](../Model/EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata.md)
 
 ### Authorization
 

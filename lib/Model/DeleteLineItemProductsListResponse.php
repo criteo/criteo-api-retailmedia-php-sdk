@@ -1,6 +1,6 @@
 <?php
 /**
- * DeleteProductModel
+ * DeleteLineItemProductsListResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * DeleteProductModel Class Doc Comment
+ * DeleteLineItemProductsListResponse Class Doc Comment
  *
  * @category Class
- * @description The products to soft delete from a line item.
+ * @description The outcome of soft deleting products from a line item&#39;s product pool.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteLineItemProductsListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DeleteProductModel';
+    protected static $openAPIModelName = 'DeleteLineItemProductsListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product_ids' => 'string[]',
-        'product_type' => 'string'
+        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product_ids' => null,
-        'product_type' => null
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product_ids' => true,
-		'product_type' => false
+        'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -170,8 +170,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'product_ids' => 'productIds',
-        'product_type' => 'productType'
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -180,8 +180,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'product_ids' => 'setProductIds',
-        'product_type' => 'setProductType'
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -190,8 +190,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'product_ids' => 'getProductIds',
-        'product_type' => 'getProductType'
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -235,21 +235,6 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
         return self::$openAPIModelName;
     }
 
-    public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
-    public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getProductTypeAllowableValues()
-    {
-        return [
-            self::PRODUCT_TYPE_DISPLAY_PRODUCT,
-            self::PRODUCT_TYPE_SPONSORED_PRODUCT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,8 +251,8 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('product_ids', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], 'DisplayProduct');
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -297,15 +282,6 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'product_type', must be one of '%s'",
-                $this->container['product_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -322,72 +298,69 @@ class DeleteProductModel implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets product_ids
+     * Gets errors
      *
-     * @return string[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
      */
-    public function getProductIds()
+    public function getErrors()
     {
-        return $this->container['product_ids'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets product_ids
+     * Sets errors
      *
-     * @param string[]|null $product_ids The products ids to soft delete from the line item.
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setProductIds($product_ids)
+    public function setErrors($errors)
     {
-        if (is_null($product_ids)) {
-            array_push($this->openAPINullablesSetToNull, 'product_ids');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_ids', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['product_ids'] = $product_ids;
+        $this->container['errors'] = $errors;
 
         return $this;
     }
 
     /**
-     * Gets product_type
+     * Gets warnings
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
      */
-    public function getProductType()
+    public function getWarnings()
     {
-        return $this->container['product_type'];
+        return $this->container['warnings'];
     }
 
     /**
-     * Sets product_type
+     * Sets warnings
      *
-     * @param string|null $product_type The type of product being deleted.
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
      *
      * @return self
      */
-    public function setProductType($product_type)
+    public function setWarnings($warnings)
     {
-        if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!in_array($product_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_type', must be one of '%s'",
-                    $product_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_type'] = $product_type;
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * AddProductsResultModelResource
+ * AddLineItemProductsListResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AddProductsResultModelResource Class Doc Comment
+ * AddLineItemProductsListResponse Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description The products added to a line item&#39;s product pool, one resource per product.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddLineItemProductsListResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddProductsResultModelResource';
+    protected static $openAPIModelName = 'AddLineItemProductsListResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\AddProductsResultModel',
-        'type' => 'string'
+        'data' => '\criteo\api\retailmedia\experimental\Model\LineItemProductResource[]',
+        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
     ];
 
     /**
@@ -70,8 +71,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'data' => null,
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'type' => true
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -170,8 +173,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'data' => 'data',
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -180,8 +184,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -190,8 +195,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -251,8 +257,9 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -298,69 +305,103 @@ class AddProductsResultModelResource implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets attributes
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\AddProductsResultModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemProductResource[]|null
      */
-    public function getAttributes()
+    public function getData()
     {
-        return $this->container['attributes'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets attributes
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\AddProductsResultModel|null $attributes attributes
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemProductResource[]|null $data data
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setData($data)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
+        $this->container['data'] = $data;
 
         return $this;
     }
 
     /**
-     * Gets type
+     * Gets errors
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
      */
-    public function getType()
+    public function getErrors()
     {
-        return $this->container['type'];
+        return $this->container['errors'];
     }
 
     /**
-     * Sets type
+     * Sets errors
      *
-     * @param string|null $type Type of the resource.
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
      *
      * @return self
      */
-    public function setType($type)
+    public function setErrors($errors)
     {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
+            $index = array_search('errors', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['type'] = $type;
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

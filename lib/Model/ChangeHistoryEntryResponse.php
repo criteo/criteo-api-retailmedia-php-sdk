@@ -1,6 +1,6 @@
 <?php
 /**
- * DisplayProductResultModel
+ * ChangeHistoryEntryResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * DisplayProductResultModel Class Doc Comment
+ * ChangeHistoryEntryResponse Class Doc Comment
  *
  * @category Class
- * @description A display product returned after being added to a line item.
+ * @description A single configuration change.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChangeHistoryEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DisplayProductResultModel';
+    protected static $openAPIModelName = 'ChangeHistoryEntryResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'approval_status' => 'string',
-        'product_id' => 'string'
+        'actor_role' => 'ActorRole',
+        'changes' => '\criteo\api\retailmedia\experimental\Model\ChangedField[]',
+        'entity' => '\criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponseEntity',
+        'event_type' => 'string',
+        'occurred_at' => '\DateTime'
     ];
 
     /**
@@ -70,8 +73,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'approval_status' => null,
-        'product_id' => null
+        'actor_role' => null,
+        'changes' => null,
+        'entity' => null,
+        'event_type' => null,
+        'occurred_at' => 'date-time'
     ];
 
     /**
@@ -80,8 +86,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'approval_status' => true,
-		'product_id' => true
+        'actor_role' => false,
+		'changes' => false,
+		'entity' => false,
+		'event_type' => false,
+		'occurred_at' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'approval_status' => 'approvalStatus',
-        'product_id' => 'productId'
+        'actor_role' => 'actorRole',
+        'changes' => 'changes',
+        'entity' => 'entity',
+        'event_type' => 'eventType',
+        'occurred_at' => 'occurredAt'
     ];
 
     /**
@@ -180,8 +192,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'approval_status' => 'setApprovalStatus',
-        'product_id' => 'setProductId'
+        'actor_role' => 'setActorRole',
+        'changes' => 'setChanges',
+        'entity' => 'setEntity',
+        'event_type' => 'setEventType',
+        'occurred_at' => 'setOccurredAt'
     ];
 
     /**
@@ -190,8 +205,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'approval_status' => 'getApprovalStatus',
-        'product_id' => 'getProductId'
+        'actor_role' => 'getActorRole',
+        'changes' => 'getChanges',
+        'entity' => 'getEntity',
+        'event_type' => 'getEventType',
+        'occurred_at' => 'getOccurredAt'
     ];
 
     /**
@@ -235,31 +253,6 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const APPROVAL_STATUS_UNKNOWN = 'Unknown';
-    public const APPROVAL_STATUS_APPROVED = 'Approved';
-    public const APPROVAL_STATUS_AUTO_APPROVED = 'AutoApproved';
-    public const APPROVAL_STATUS_IN_REVIEW = 'InReview';
-    public const APPROVAL_STATUS_REJECTED = 'Rejected';
-    public const APPROVAL_STATUS_AUTO_REJECTED = 'AutoRejected';
-    public const APPROVAL_STATUS_UNSUBMITTED = 'Unsubmitted';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getApprovalStatusAllowableValues()
-    {
-        return [
-            self::APPROVAL_STATUS_UNKNOWN,
-            self::APPROVAL_STATUS_APPROVED,
-            self::APPROVAL_STATUS_AUTO_APPROVED,
-            self::APPROVAL_STATUS_IN_REVIEW,
-            self::APPROVAL_STATUS_REJECTED,
-            self::APPROVAL_STATUS_AUTO_REJECTED,
-            self::APPROVAL_STATUS_UNSUBMITTED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -276,8 +269,11 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('approval_status', $data ?? [], null);
-        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('actor_role', $data ?? [], null);
+        $this->setIfExists('changes', $data ?? [], null);
+        $this->setIfExists('entity', $data ?? [], null);
+        $this->setIfExists('event_type', $data ?? [], null);
+        $this->setIfExists('occurred_at', $data ?? [], null);
     }
 
     /**
@@ -307,15 +303,21 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getApprovalStatusAllowableValues();
-        if (!is_null($this->container['approval_status']) && !in_array($this->container['approval_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'approval_status', must be one of '%s'",
-                $this->container['approval_status'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['actor_role'] === null) {
+            $invalidProperties[] = "'actor_role' can't be null";
         }
-
+        if ($this->container['changes'] === null) {
+            $invalidProperties[] = "'changes' can't be null";
+        }
+        if ($this->container['entity'] === null) {
+            $invalidProperties[] = "'entity' can't be null";
+        }
+        if ($this->container['event_type'] === null) {
+            $invalidProperties[] = "'event_type' can't be null";
+        }
+        if ($this->container['occurred_at'] === null) {
+            $invalidProperties[] = "'occurred_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -332,79 +334,136 @@ class DisplayProductResultModel implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets approval_status
+     * Gets actor_role
      *
-     * @return string|null
+     * @return ActorRole
      */
-    public function getApprovalStatus()
+    public function getActorRole()
     {
-        return $this->container['approval_status'];
+        return $this->container['actor_role'];
     }
 
     /**
-     * Sets approval_status
+     * Sets actor_role
      *
-     * @param string|null $approval_status The approval status of the product.
+     * @param ActorRole $actor_role Role label of the actor that performed the change. No user identifiers are exposed.
      *
      * @return self
      */
-    public function setApprovalStatus($approval_status)
+    public function setActorRole($actor_role)
     {
-        if (is_null($approval_status)) {
-            array_push($this->openAPINullablesSetToNull, 'approval_status');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('approval_status', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($actor_role)) {
+            throw new \InvalidArgumentException('non-nullable actor_role cannot be null');
         }
-        $allowedValues = $this->getApprovalStatusAllowableValues();
-        if (!is_null($approval_status) && !in_array($approval_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'approval_status', must be one of '%s'",
-                    $approval_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['approval_status'] = $approval_status;
+        $this->container['actor_role'] = $actor_role;
 
         return $this;
     }
 
     /**
-     * Gets product_id
+     * Gets changes
      *
-     * @return string|null
+     * @return \criteo\api\retailmedia\experimental\Model\ChangedField[]
      */
-    public function getProductId()
+    public function getChanges()
     {
-        return $this->container['product_id'];
+        return $this->container['changes'];
     }
 
     /**
-     * Sets product_id
+     * Sets changes
      *
-     * @param string|null $product_id The identifier of the product.
+     * @param \criteo\api\retailmedia\experimental\Model\ChangedField[] $changes Old and new values for each field changed as part of this event.
      *
      * @return self
      */
-    public function setProductId($product_id)
+    public function setChanges($changes)
     {
-        if (is_null($product_id)) {
-            array_push($this->openAPINullablesSetToNull, 'product_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($changes)) {
+            throw new \InvalidArgumentException('non-nullable changes cannot be null');
         }
-        $this->container['product_id'] = $product_id;
+        $this->container['changes'] = $changes;
+
+        return $this;
+    }
+
+    /**
+     * Gets entity
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponseEntity
+     */
+    public function getEntity()
+    {
+        return $this->container['entity'];
+    }
+
+    /**
+     * Sets entity
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponseEntity $entity entity
+     *
+     * @return self
+     */
+    public function setEntity($entity)
+    {
+        if (is_null($entity)) {
+            throw new \InvalidArgumentException('non-nullable entity cannot be null');
+        }
+        $this->container['entity'] = $entity;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_type
+     *
+     * @return string
+     */
+    public function getEventType()
+    {
+        return $this->container['event_type'];
+    }
+
+    /**
+     * Sets event_type
+     *
+     * @param string $event_type Semantic type of the configuration change, `<entityType><Action>` style — for example `campaignCreated`, `lineItemUpdated`, `balanceUpdated`. Additional values may be returned.
+     *
+     * @return self
+     */
+    public function setEventType($event_type)
+    {
+        if (is_null($event_type)) {
+            throw new \InvalidArgumentException('non-nullable event_type cannot be null');
+        }
+        $this->container['event_type'] = $event_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets occurred_at
+     *
+     * @return \DateTime
+     */
+    public function getOccurredAt()
+    {
+        return $this->container['occurred_at'];
+    }
+
+    /**
+     * Sets occurred_at
+     *
+     * @param \DateTime $occurred_at UTC timestamp when the change occurred (ISO-8601).
+     *
+     * @return self
+     */
+    public function setOccurredAt($occurred_at)
+    {
+        if (is_null($occurred_at)) {
+            throw new \InvalidArgumentException('non-nullable occurred_at cannot be null');
+        }
+        $this->container['occurred_at'] = $occurred_at;
 
         return $this;
     }

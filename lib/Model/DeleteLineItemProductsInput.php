@@ -1,6 +1,6 @@
 <?php
 /**
- * AddProductsModel
+ * DeleteLineItemProductsInput
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AddProductsModel Class Doc Comment
+ * DeleteLineItemProductsInput Class Doc Comment
  *
  * @category Class
- * @description The products to add to a line item.
+ * @description The products to soft delete from a line item&#39;s product pool.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddProductsModel';
+    protected static $openAPIModelName = 'DeleteLineItemProductsInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_product_details' => '\criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]',
+        'product_ids' => 'string[]',
         'product_type' => 'string'
     ];
 
@@ -70,7 +70,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_product_details' => null,
+        'product_ids' => null,
         'product_type' => null
     ];
 
@@ -80,7 +80,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'display_product_details' => true,
+        'product_ids' => true,
 		'product_type' => false
     ];
 
@@ -170,7 +170,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_product_details' => 'displayProductDetails',
+        'product_ids' => 'productIds',
         'product_type' => 'productType'
     ];
 
@@ -180,7 +180,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'display_product_details' => 'setDisplayProductDetails',
+        'product_ids' => 'setProductIds',
         'product_type' => 'setProductType'
     ];
 
@@ -190,7 +190,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'display_product_details' => 'getDisplayProductDetails',
+        'product_ids' => 'getProductIds',
         'product_type' => 'getProductType'
     ];
 
@@ -235,6 +235,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const PRODUCT_TYPE_UNKNOWN = 'Unknown';
     public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
     public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
 
@@ -246,6 +247,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getProductTypeAllowableValues()
     {
         return [
+            self::PRODUCT_TYPE_UNKNOWN,
             self::PRODUCT_TYPE_DISPLAY_PRODUCT,
             self::PRODUCT_TYPE_SPONSORED_PRODUCT,
         ];
@@ -266,8 +268,8 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('display_product_details', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], 'DisplayProduct');
+        $this->setIfExists('product_ids', $data ?? [], null);
+        $this->setIfExists('product_type', $data ?? [], null);
     }
 
     /**
@@ -297,10 +299,9 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['display_product_details']) && (count($this->container['display_product_details']) > 1500)) {
-            $invalidProperties[] = "invalid value for 'display_product_details', number of items must be less than or equal to 1500.";
+        if ($this->container['product_type'] === null) {
+            $invalidProperties[] = "'product_type' can't be null";
         }
-
         $allowedValues = $this->getProductTypeAllowableValues();
         if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -326,39 +327,35 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets display_product_details
+     * Gets product_ids
      *
-     * @return \criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]|null
+     * @return string[]|null
      */
-    public function getDisplayProductDetails()
+    public function getProductIds()
     {
-        return $this->container['display_product_details'];
+        return $this->container['product_ids'];
     }
 
     /**
-     * Sets display_product_details
+     * Sets product_ids
      *
-     * @param \criteo\api\retailmedia\experimental\Model\AddDisplayProductDetailModel[]|null $display_product_details The display products to add to the line item.
+     * @param string[]|null $product_ids The product ids to soft delete from the line item.
      *
      * @return self
      */
-    public function setDisplayProductDetails($display_product_details)
+    public function setProductIds($product_ids)
     {
-        if (is_null($display_product_details)) {
-            array_push($this->openAPINullablesSetToNull, 'display_product_details');
+        if (is_null($product_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'product_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('display_product_details', $nullablesSetToNull);
+            $index = array_search('product_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-
-        if (!is_null($display_product_details) && (count($display_product_details) > 1500)) {
-            throw new \InvalidArgumentException('invalid value for $display_product_details when calling AddProductsModel., number of items must be less than or equal to 1500.');
-        }
-        $this->container['display_product_details'] = $display_product_details;
+        $this->container['product_ids'] = $product_ids;
 
         return $this;
     }
@@ -366,7 +363,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets product_type
      *
-     * @return string|null
+     * @return string
      */
     public function getProductType()
     {
@@ -376,7 +373,7 @@ class AddProductsModel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets product_type
      *
-     * @param string|null $product_type The type of product being added.
+     * @param string $product_type The type of the products being deleted.
      *
      * @return self
      */

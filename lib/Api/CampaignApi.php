@@ -146,7 +146,16 @@ class CampaignApi
         'lineItemsSupplySearch' => [
             'application/json',
         ],
+        'listAccountChangeHistoryEntries' => [
+            'application/json',
+        ],
+        'listRetailerChangeHistoryEntries' => [
+            'application/json',
+        ],
         'searchAccountCreatives' => [
+            'application/json',
+        ],
+        'searchAccountCreativesEnriched' => [
             'application/json',
         ],
         'searchCampaigns' => [
@@ -236,16 +245,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/add
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest $add_products_model_request The products to add. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest $add_line_item_products_list_request The products to add. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse
+     * @return \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse
      */
-    public function addProducts($line_item_id, $add_products_model_request, string $contentType = self::contentTypes['addProducts'][0])
+    public function addProducts($line_item_id, $add_line_item_products_list_request, string $contentType = self::contentTypes['addProducts'][0])
     {
-        list($response) = $this->addProductsWithHttpInfo($line_item_id, $add_products_model_request, $contentType);
+        list($response) = $this->addProductsWithHttpInfo($line_item_id, $add_line_item_products_list_request, $contentType);
         return $response;
     }
 
@@ -255,16 +264,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/add
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest $add_products_model_request The products to add. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest $add_line_item_products_list_request The products to add. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addProductsWithHttpInfo($line_item_id, $add_products_model_request, string $contentType = self::contentTypes['addProducts'][0])
+    public function addProductsWithHttpInfo($line_item_id, $add_line_item_products_list_request, string $contentType = self::contentTypes['addProducts'][0])
     {
-        $request = $this->addProductsRequest($line_item_id, $add_products_model_request, $contentType);
+        $request = $this->addProductsRequest($line_item_id, $add_line_item_products_list_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -303,23 +312,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -340,7 +349,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse',
+                        '\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -356,15 +365,15 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/add
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest $add_products_model_request The products to add. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest $add_line_item_products_list_request The products to add. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addProductsAsync($line_item_id, $add_products_model_request, string $contentType = self::contentTypes['addProducts'][0])
+    public function addProductsAsync($line_item_id, $add_line_item_products_list_request, string $contentType = self::contentTypes['addProducts'][0])
     {
-        return $this->addProductsAsyncWithHttpInfo($line_item_id, $add_products_model_request, $contentType)
+        return $this->addProductsAsyncWithHttpInfo($line_item_id, $add_line_item_products_list_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -378,16 +387,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/add
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest $add_products_model_request The products to add. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest $add_line_item_products_list_request The products to add. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addProductsAsyncWithHttpInfo($line_item_id, $add_products_model_request, string $contentType = self::contentTypes['addProducts'][0])
+    public function addProductsAsyncWithHttpInfo($line_item_id, $add_line_item_products_list_request, string $contentType = self::contentTypes['addProducts'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\AddProductsResultModelResponse';
-        $request = $this->addProductsRequest($line_item_id, $add_products_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\AddLineItemProductsListResponse';
+        $request = $this->addProductsRequest($line_item_id, $add_line_item_products_list_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -429,13 +438,13 @@ class CampaignApi
      * Create request for operation 'addProducts'
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\AddProductsModelRequest $add_products_model_request The products to add. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\AddLineItemProductsListRequest $add_line_item_products_list_request The products to add. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function addProductsRequest($line_item_id, $add_products_model_request, string $contentType = self::contentTypes['addProducts'][0])
+    public function addProductsRequest($line_item_id, $add_line_item_products_list_request, string $contentType = self::contentTypes['addProducts'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -445,10 +454,10 @@ class CampaignApi
             );
         }
 
-        // verify the required parameter 'add_products_model_request' is set
-        if ($add_products_model_request === null || (is_array($add_products_model_request) && count($add_products_model_request) === 0)) {
+        // verify the required parameter 'add_line_item_products_list_request' is set
+        if ($add_line_item_products_list_request === null || (is_array($add_line_item_products_list_request) && count($add_line_item_products_list_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $add_products_model_request when calling addProducts'
+                'Missing the required parameter $add_line_item_products_list_request when calling addProducts'
             );
         }
 
@@ -479,12 +488,12 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (isset($add_products_model_request)) {
+        if (isset($add_line_item_products_list_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_products_model_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_line_item_products_list_request));
             } else {
-                $httpBody = $add_products_model_request;
+                $httpBody = $add_line_item_products_list_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3305,16 +3314,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest $delete_line_item_products_list_request The products to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\Outcome
+     * @return \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse
      */
-    public function deleteProducts($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
+    public function deleteProducts($line_item_id, $delete_line_item_products_list_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        list($response) = $this->deleteProductsWithHttpInfo($line_item_id, $delete_product_model_request, $contentType);
+        list($response) = $this->deleteProductsWithHttpInfo($line_item_id, $delete_line_item_products_list_request, $contentType);
         return $response;
     }
 
@@ -3324,16 +3333,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest $delete_line_item_products_list_request The products to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\Outcome, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteProductsWithHttpInfo($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
+    public function deleteProductsWithHttpInfo($line_item_id, $delete_line_item_products_list_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        $request = $this->deleteProductsRequest($line_item_id, $delete_product_model_request, $contentType);
+        $request = $this->deleteProductsRequest($line_item_id, $delete_line_item_products_list_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3372,23 +3381,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\Outcome' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\Outcome' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\Outcome', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\Outcome';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -3409,7 +3418,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\Outcome',
+                        '\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3425,15 +3434,15 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest $delete_line_item_products_list_request The products to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductsAsync($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
+    public function deleteProductsAsync($line_item_id, $delete_line_item_products_list_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        return $this->deleteProductsAsyncWithHttpInfo($line_item_id, $delete_product_model_request, $contentType)
+        return $this->deleteProductsAsyncWithHttpInfo($line_item_id, $delete_line_item_products_list_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3447,16 +3456,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}/products/delete
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest $delete_line_item_products_list_request The products to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteProductsAsyncWithHttpInfo($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
+    public function deleteProductsAsyncWithHttpInfo($line_item_id, $delete_line_item_products_list_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\Outcome';
-        $request = $this->deleteProductsRequest($line_item_id, $delete_product_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListResponse';
+        $request = $this->deleteProductsRequest($line_item_id, $delete_line_item_products_list_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3498,13 +3507,13 @@ class CampaignApi
      * Create request for operation 'deleteProducts'
      *
      * @param  string $line_item_id The line item id. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\DeleteProductModelRequest $delete_product_model_request The products to delete. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\DeleteLineItemProductsListRequest $delete_line_item_products_list_request The products to delete. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProducts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteProductsRequest($line_item_id, $delete_product_model_request, string $contentType = self::contentTypes['deleteProducts'][0])
+    public function deleteProductsRequest($line_item_id, $delete_line_item_products_list_request, string $contentType = self::contentTypes['deleteProducts'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -3514,10 +3523,10 @@ class CampaignApi
             );
         }
 
-        // verify the required parameter 'delete_product_model_request' is set
-        if ($delete_product_model_request === null || (is_array($delete_product_model_request) && count($delete_product_model_request) === 0)) {
+        // verify the required parameter 'delete_line_item_products_list_request' is set
+        if ($delete_line_item_products_list_request === null || (is_array($delete_line_item_products_list_request) && count($delete_line_item_products_list_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $delete_product_model_request when calling deleteProducts'
+                'Missing the required parameter $delete_line_item_products_list_request when calling deleteProducts'
             );
         }
 
@@ -3548,12 +3557,12 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (isset($delete_product_model_request)) {
+        if (isset($delete_line_item_products_list_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_product_model_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_line_item_products_list_request));
             } else {
-                $httpBody = $delete_product_model_request;
+                $httpBody = $delete_line_item_products_list_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4123,8 +4132,8 @@ class CampaignApi
         if ($limit !== null && $limit > 1000) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.fetchProducts, must be smaller than or equal to 1000.');
         }
-        if ($limit !== null && $limit < 0) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.fetchProducts, must be bigger than or equal to 0.');
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.fetchProducts, must be bigger than or equal to 1.');
         }
         
         if ($offset !== null && $offset > 2147483647) {
@@ -7833,6 +7842,846 @@ class CampaignApi
     }
 
     /**
+     * Operation listAccountChangeHistoryEntries
+     *
+     * /experimental/retail-media/accounts/{account-id}/change-history-entries
+     *
+     * @param  string $account_id External opaque identifier of the advertiser account whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
+     */
+    public function listAccountChangeHistoryEntries($account_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listAccountChangeHistoryEntries'][0])
+    {
+        list($response) = $this->listAccountChangeHistoryEntriesWithHttpInfo($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAccountChangeHistoryEntriesWithHttpInfo
+     *
+     * /experimental/retail-media/accounts/{account-id}/change-history-entries
+     *
+     * @param  string $account_id External opaque identifier of the advertiser account whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAccountChangeHistoryEntriesWithHttpInfo($account_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listAccountChangeHistoryEntries'][0])
+    {
+        $request = $this->listAccountChangeHistoryEntriesRequest($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAccountChangeHistoryEntriesAsync
+     *
+     * /experimental/retail-media/accounts/{account-id}/change-history-entries
+     *
+     * @param  string $account_id External opaque identifier of the advertiser account whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountChangeHistoryEntriesAsync($account_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listAccountChangeHistoryEntries'][0])
+    {
+        return $this->listAccountChangeHistoryEntriesAsyncWithHttpInfo($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAccountChangeHistoryEntriesAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/accounts/{account-id}/change-history-entries
+     *
+     * @param  string $account_id External opaque identifier of the advertiser account whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAccountChangeHistoryEntriesAsyncWithHttpInfo($account_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listAccountChangeHistoryEntries'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata';
+        $request = $this->listAccountChangeHistoryEntriesRequest($account_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAccountChangeHistoryEntries'
+     *
+     * @param  string $account_id External opaque identifier of the advertiser account whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s account access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAccountChangeHistoryEntriesRequest($account_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listAccountChangeHistoryEntries'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAccountChangeHistoryEntries'
+            );
+        }
+
+
+
+
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listAccountChangeHistoryEntries, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listAccountChangeHistoryEntries, must be bigger than or equal to 1.');
+        }
+        
+
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listAccountChangeHistoryEntries, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/experimental/retail-media/accounts/{account-id}/change-history-entries';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaign_ids,
+            'campaign-ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_time,
+            'end-time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $entity_types,
+            'entity-types', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_types,
+            'event-types', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $line_item_ids,
+            'line-item-ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_time,
+            'start-time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listRetailerChangeHistoryEntries
+     *
+     * /experimental/retail-media/retailers/{retailer-id}/change-history-entries
+     *
+     * @param  string $retailer_id External opaque identifier of the retailer whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata
+     */
+    public function listRetailerChangeHistoryEntries($retailer_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listRetailerChangeHistoryEntries'][0])
+    {
+        list($response) = $this->listRetailerChangeHistoryEntriesWithHttpInfo($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listRetailerChangeHistoryEntriesWithHttpInfo
+     *
+     * /experimental/retail-media/retailers/{retailer-id}/change-history-entries
+     *
+     * @param  string $retailer_id External opaque identifier of the retailer whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listRetailerChangeHistoryEntriesWithHttpInfo($retailer_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listRetailerChangeHistoryEntries'][0])
+    {
+        $request = $this->listRetailerChangeHistoryEntriesRequest($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listRetailerChangeHistoryEntriesAsync
+     *
+     * /experimental/retail-media/retailers/{retailer-id}/change-history-entries
+     *
+     * @param  string $retailer_id External opaque identifier of the retailer whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listRetailerChangeHistoryEntriesAsync($retailer_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listRetailerChangeHistoryEntries'][0])
+    {
+        return $this->listRetailerChangeHistoryEntriesAsyncWithHttpInfo($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listRetailerChangeHistoryEntriesAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/retailers/{retailer-id}/change-history-entries
+     *
+     * @param  string $retailer_id External opaque identifier of the retailer whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listRetailerChangeHistoryEntriesAsyncWithHttpInfo($retailer_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listRetailerChangeHistoryEntries'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeV2OfChangeHistoryEntryResponseAndSdkPageMetadata';
+        $request = $this->listRetailerChangeHistoryEntriesRequest($retailer_id, $campaign_ids, $end_time, $entity_types, $event_types, $limit, $line_item_ids, $offset, $start_time, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listRetailerChangeHistoryEntries'
+     *
+     * @param  string $retailer_id External opaque identifier of the retailer whose change history is requested. (required)
+     * @param  string[] $campaign_ids When provided, only changes for these external opaque campaign identifiers are returned. Entries for campaigns outside the caller&#39;s retailer access are excluded without revealing whether the campaign exists. Omission is equivalent to an empty array. (optional)
+     * @param  \DateTime $end_time Inclusive upper bound on change time, in UTC (ISO-8601 date-time). Defaults to the request time when omitted. (optional)
+     * @param  string[] $entity_types Restrict results to changes on the given entity types (see the entity &#x60;type&#x60; field). Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
+     * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
+     * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
+     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listRetailerChangeHistoryEntriesRequest($retailer_id, $campaign_ids = null, $end_time = null, $entity_types = null, $event_types = null, $limit = 25, $line_item_ids = null, $offset = 0, $start_time = null, string $contentType = self::contentTypes['listRetailerChangeHistoryEntries'][0])
+    {
+
+        // verify the required parameter 'retailer_id' is set
+        if ($retailer_id === null || (is_array($retailer_id) && count($retailer_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $retailer_id when calling listRetailerChangeHistoryEntries'
+            );
+        }
+
+
+
+
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listRetailerChangeHistoryEntries, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.listRetailerChangeHistoryEntries, must be bigger than or equal to 1.');
+        }
+        
+
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listRetailerChangeHistoryEntries, must be bigger than or equal to 0.');
+        }
+        
+
+
+        $resourcePath = '/experimental/retail-media/retailers/{retailer-id}/change-history-entries';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaign_ids,
+            'campaign-ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_time,
+            'end-time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $entity_types,
+            'entity-types', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_types,
+            'event-types', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $line_item_ids,
+            'line-item-ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_time,
+            'start-time', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($retailer_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'retailer-id' . '}',
+                ObjectSerializer::toPathValue($retailer_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation searchAccountCreatives
      *
      * /experimental/retail-media/accounts/{account-id}/creatives/search
@@ -8129,6 +8978,358 @@ class CampaignApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($entity_resource_input_creative_search_request));
             } else {
                 $httpBody = $entity_resource_input_creative_search_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchAccountCreativesEnriched
+     *
+     * /experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest $entity_resource_input_creative_search_enriched_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreativesEnriched'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata
+     */
+    public function searchAccountCreativesEnriched($account_id, $entity_resource_input_creative_search_enriched_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreativesEnriched'][0])
+    {
+        list($response) = $this->searchAccountCreativesEnrichedWithHttpInfo($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchAccountCreativesEnrichedWithHttpInfo
+     *
+     * /experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest $entity_resource_input_creative_search_enriched_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreativesEnriched'] to see the possible values for this operation
+     *
+     * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchAccountCreativesEnrichedWithHttpInfo($account_id, $entity_resource_input_creative_search_enriched_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreativesEnriched'][0])
+    {
+        $request = $this->searchAccountCreativesEnrichedRequest($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchAccountCreativesEnrichedAsync
+     *
+     * /experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest $entity_resource_input_creative_search_enriched_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreativesEnriched'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountCreativesEnrichedAsync($account_id, $entity_resource_input_creative_search_enriched_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreativesEnriched'][0])
+    {
+        return $this->searchAccountCreativesEnrichedAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchAccountCreativesEnrichedAsyncWithHttpInfo
+     *
+     * /experimental/retail-media/accounts/{account-id}/creatives/search-enriched
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest $entity_resource_input_creative_search_enriched_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreativesEnriched'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountCreativesEnrichedAsyncWithHttpInfo($account_id, $entity_resource_input_creative_search_enriched_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreativesEnriched'][0])
+    {
+        $returnType = '\criteo\api\retailmedia\experimental\Model\EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata';
+        $request = $this->searchAccountCreativesEnrichedRequest($account_id, $entity_resource_input_creative_search_enriched_request, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchAccountCreativesEnriched'
+     *
+     * @param  string $account_id External account id to retrieve creatives for (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\EntityResourceInputCreativeSearchEnrichedRequest $entity_resource_input_creative_search_enriched_request search request filter (required)
+     * @param  int $limit limit to paginated result (optional, default to 50)
+     * @param  int $offset offset to paginated result (optional, default to 0)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountCreativesEnriched'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchAccountCreativesEnrichedRequest($account_id, $entity_resource_input_creative_search_enriched_request, $limit = 50, $offset = 0, string $contentType = self::contentTypes['searchAccountCreativesEnriched'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling searchAccountCreativesEnriched'
+            );
+        }
+
+        // verify the required parameter 'entity_resource_input_creative_search_enriched_request' is set
+        if ($entity_resource_input_creative_search_enriched_request === null || (is_array($entity_resource_input_creative_search_enriched_request) && count($entity_resource_input_creative_search_enriched_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $entity_resource_input_creative_search_enriched_request when calling searchAccountCreativesEnriched'
+            );
+        }
+
+        if ($limit !== null && $limit > 500) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountCreativesEnriched, must be smaller than or equal to 500.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling CampaignApi.searchAccountCreativesEnriched, must be bigger than or equal to 1.');
+        }
+        
+        if ($offset !== null && $offset > 2147483647) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountCreativesEnriched, must be smaller than or equal to 2147483647.');
+        }
+        if ($offset !== null && $offset < 0) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.searchAccountCreativesEnriched, must be bigger than or equal to 0.');
+        }
+        
+
+        $resourcePath = '/experimental/retail-media/accounts/{account-id}/creatives/search-enriched';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'account-id' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($entity_resource_input_creative_search_enriched_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($entity_resource_input_creative_search_enriched_request));
+            } else {
+                $httpBody = $entity_resource_input_creative_search_enriched_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

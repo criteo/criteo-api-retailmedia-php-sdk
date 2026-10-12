@@ -1,6 +1,6 @@
 <?php
 /**
- * DeleteProductModelResource
+ * EntityResourceOfChangeHistoryEntryResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * DeleteProductModelResource Class Doc Comment
+ * EntityResourceOfChangeHistoryEntryResponse Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description A domain entity exposed by the API, identified by a unique id.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceOfChangeHistoryEntryResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DeleteProductModelResource';
+    protected static $openAPIModelName = 'EntityResourceOfChangeHistoryEntryResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\DeleteProductModel',
+        'attributes' => '\criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponse',
+        'id' => 'string',
         'type' => 'string'
     ];
 
@@ -71,6 +72,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'attributes' => null,
+        'id' => null,
         'type' => null
     ];
 
@@ -80,7 +82,8 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
+        'attributes' => true,
+		'id' => true,
 		'type' => true
     ];
 
@@ -171,6 +174,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'attributes' => 'attributes',
+        'id' => 'id',
         'type' => 'type'
     ];
 
@@ -181,6 +185,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'attributes' => 'setAttributes',
+        'id' => 'setId',
         'type' => 'setType'
     ];
 
@@ -191,6 +196,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'attributes' => 'getAttributes',
+        'id' => 'getId',
         'type' => 'getType'
     ];
 
@@ -252,6 +258,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
     }
 
@@ -300,7 +307,7 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\experimental\Model\DeleteProductModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponse|null
      */
     public function getAttributes()
     {
@@ -310,16 +317,57 @@ class DeleteProductModelResource implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DeleteProductModel|null $attributes attributes
+     * @param \criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponse|null $attributes attributes
      *
      * @return self
      */
     public function setAttributes($attributes)
     {
         if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attributes');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attributes', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id Unique id of the entity.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id'] = $id;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * AddProductsModelRequest
+ * EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AddProductsModelRequest Class Doc Comment
+ * EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description A top-level object that encapsulates a Criteo API response for several entities and metadata.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddProductsModelRequest';
+    protected static $openAPIModelName = 'EntityResourceCollectionOutcomeCreativeSearchEnrichedResponseAndMetadata';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\AddProductsModelResource'
+        'data' => '\criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchEnrichedResponse[]',
+        'errors' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]',
+        'metadata' => '\criteo\api\retailmedia\experimental\Model\Metadata',
+        'warnings' => '\criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]'
     ];
 
     /**
@@ -69,7 +72,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'data' => null,
+        'errors' => null,
+        'metadata' => null,
+        'warnings' => null
     ];
 
     /**
@@ -78,7 +84,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => false
+        'data' => true,
+		'errors' => true,
+		'metadata' => true,
+		'warnings' => true
     ];
 
     /**
@@ -167,7 +176,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'data' => 'data',
+        'errors' => 'errors',
+        'metadata' => 'metadata',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -176,7 +188,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'metadata' => 'setMetadata',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -185,7 +200,10 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'metadata' => 'getMetadata',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -246,6 +264,9 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(array $data = null)
     {
         $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -293,7 +314,7 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\AddProductsModelResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchEnrichedResponse[]|null
      */
     public function getData()
     {
@@ -303,16 +324,125 @@ class AddProductsModelRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\AddProductsModelResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\EntityResourceCreativeSearchEnrichedResponse[]|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null $errors Errors that occured during this call.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\Metadata|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\Metadata|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            array_push($this->openAPINullablesSetToNull, 'metadata');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('metadata', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\SdkApiRestCommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

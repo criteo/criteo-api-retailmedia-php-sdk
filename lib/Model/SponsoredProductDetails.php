@@ -58,7 +58,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'bid_override' => 'float',
         'status' => 'string'
     ];
 
@@ -70,7 +69,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'bid_override' => 'double',
         'status' => null
     ];
 
@@ -80,8 +78,7 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'bid_override' => true,
-		'status' => true
+        'status' => true
     ];
 
     /**
@@ -170,7 +167,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'bid_override' => 'bidOverride',
         'status' => 'status'
     ];
 
@@ -180,7 +176,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'bid_override' => 'setBidOverride',
         'status' => 'setStatus'
     ];
 
@@ -190,7 +185,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'bid_override' => 'getBidOverride',
         'status' => 'getStatus'
     ];
 
@@ -238,7 +232,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
     public const STATUS_UNKNOWN = 'Unknown';
     public const STATUS_ACTIVE = 'Active';
     public const STATUS_INACTIVE = 'Inactive';
-    public const STATUS_EXPIRED = 'Expired';
     public const STATUS_REMOVED = 'Removed';
     public const STATUS_DELETED = 'Deleted';
 
@@ -253,7 +246,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
             self::STATUS_UNKNOWN,
             self::STATUS_ACTIVE,
             self::STATUS_INACTIVE,
-            self::STATUS_EXPIRED,
             self::STATUS_REMOVED,
             self::STATUS_DELETED,
         ];
@@ -274,7 +266,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('bid_override', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -328,40 +319,6 @@ class SponsoredProductDetails implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets bid_override
-     *
-     * @return float|null
-     */
-    public function getBidOverride()
-    {
-        return $this->container['bid_override'];
-    }
-
-    /**
-     * Sets bid_override
-     *
-     * @param float|null $bid_override The per-product bid override. Null means the line-item bid applies.
-     *
-     * @return self
-     */
-    public function setBidOverride($bid_override)
-    {
-        if (is_null($bid_override)) {
-            array_push($this->openAPINullablesSetToNull, 'bid_override');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('bid_override', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['bid_override'] = $bid_override;
-
-        return $this;
-    }
 
     /**
      * Gets status

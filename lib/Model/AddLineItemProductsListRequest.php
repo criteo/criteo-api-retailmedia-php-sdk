@@ -1,6 +1,6 @@
 <?php
 /**
- * AddProductsResultModel
+ * AddLineItemProductsListRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AddProductsResultModel Class Doc Comment
+ * AddLineItemProductsListRequest Class Doc Comment
  *
  * @category Class
- * @description The result of adding products to a line item.
+ * @description The products to add to a line item&#39;s product pool, one resource per product.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class AddLineItemProductsListRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddProductsResultModel';
+    protected static $openAPIModelName = 'AddLineItemProductsListRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'display_product_details' => '\criteo\api\retailmedia\experimental\Model\DisplayProductResultModel[]',
-        'product_type' => 'string'
+        'data' => '\criteo\api\retailmedia\experimental\Model\LineItemProductInputResource[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'display_product_details' => null,
-        'product_type' => null
+        'data' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'display_product_details' => true,
-		'product_type' => true
+        'data' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'display_product_details' => 'displayProductDetails',
-        'product_type' => 'productType'
+        'data' => 'data'
     ];
 
     /**
@@ -180,8 +176,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'display_product_details' => 'setDisplayProductDetails',
-        'product_type' => 'setProductType'
+        'data' => 'setData'
     ];
 
     /**
@@ -190,8 +185,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'display_product_details' => 'getDisplayProductDetails',
-        'product_type' => 'getProductType'
+        'data' => 'getData'
     ];
 
     /**
@@ -235,21 +229,6 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
-    public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getProductTypeAllowableValues()
-    {
-        return [
-            self::PRODUCT_TYPE_DISPLAY_PRODUCT,
-            self::PRODUCT_TYPE_SPONSORED_PRODUCT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -266,8 +245,7 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('display_product_details', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -297,15 +275,6 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'product_type', must be one of '%s'",
-                $this->container['product_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -322,79 +291,35 @@ class AddProductsResultModel implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets display_product_details
+     * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\DisplayProductResultModel[]|null
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemProductInputResource[]|null
      */
-    public function getDisplayProductDetails()
+    public function getData()
     {
-        return $this->container['display_product_details'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets display_product_details
+     * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DisplayProductResultModel[]|null $display_product_details The display products added to the line item.
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemProductInputResource[]|null $data data
      *
      * @return self
      */
-    public function setDisplayProductDetails($display_product_details)
+    public function setData($data)
     {
-        if (is_null($display_product_details)) {
-            array_push($this->openAPINullablesSetToNull, 'display_product_details');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('display_product_details', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['display_product_details'] = $display_product_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_type
-     *
-     * @return string|null
-     */
-    public function getProductType()
-    {
-        return $this->container['product_type'];
-    }
-
-    /**
-     * Sets product_type
-     *
-     * @param string|null $product_type The type of product that was added.
-     *
-     * @return self
-     */
-    public function setProductType($product_type)
-    {
-        if (is_null($product_type)) {
-            array_push($this->openAPINullablesSetToNull, 'product_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!is_null($product_type) && !in_array($product_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_type', must be one of '%s'",
-                    $product_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_type'] = $product_type;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -1,10 +1,9 @@
-# # DeleteProductModel
+# # AddLineItemProductsListRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**product_ids** | **string[]** | The products ids to soft delete from the line item. | [optional]
-**product_type** | **string** | The type of product being deleted. | [optional] [default to 'DisplayProduct']
+**data** | [**\criteo\api\retailmedia\experimental\Model\LineItemProductInputResource[]**](LineItemProductInputResource.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

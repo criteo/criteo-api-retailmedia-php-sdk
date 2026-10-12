@@ -1,6 +1,6 @@
 <?php
 /**
- * AddDisplayProductDetailModel
+ * ChangeHistoryEntryResponseEntity
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * AddDisplayProductDetailModel Class Doc Comment
+ * ChangeHistoryEntryResponseEntity Class Doc Comment
  *
  * @category Class
- * @description A product associated with a line item.
+ * @description Primary entity affected by the change.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ChangeHistoryEntryResponseEntity implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AddDisplayProductDetailModel';
+    protected static $openAPIModelName = 'ChangeHistoryEntryResponse_entity';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product_id' => 'string'
+        'campaign_id' => 'string',
+        'id' => 'string',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +71,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product_id' => null
+        'campaign_id' => null,
+        'id' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product_id' => true
+        'campaign_id' => true,
+		'id' => false,
+		'type' => false
     ];
 
     /**
@@ -167,7 +173,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'product_id' => 'productId'
+        'campaign_id' => 'campaignId',
+        'id' => 'id',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +184,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'product_id' => 'setProductId'
+        'campaign_id' => 'setCampaignId',
+        'id' => 'setId',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +195,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'product_id' => 'getProductId'
+        'campaign_id' => 'getCampaignId',
+        'id' => 'getId',
+        'type' => 'getType'
     ];
 
     /**
@@ -245,7 +257,9 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('product_id', $data ?? [], null);
+        $this->setIfExists('campaign_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -275,6 +289,12 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -291,35 +311,89 @@ class AddDisplayProductDetailModel implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets product_id
+     * Gets campaign_id
      *
      * @return string|null
      */
-    public function getProductId()
+    public function getCampaignId()
     {
-        return $this->container['product_id'];
+        return $this->container['campaign_id'];
     }
 
     /**
-     * Sets product_id
+     * Sets campaign_id
      *
-     * @param string|null $product_id The identifier of the product.
+     * @param string|null $campaign_id External opaque campaign identifier when the changed entity belongs to a campaign (for example a line item). Omitted otherwise; omission and `null` have the same meaning.
      *
      * @return self
      */
-    public function setProductId($product_id)
+    public function setCampaignId($campaign_id)
     {
-        if (is_null($product_id)) {
-            array_push($this->openAPINullablesSetToNull, 'product_id');
+        if (is_null($campaign_id)) {
+            array_push($this->openAPINullablesSetToNull, 'campaign_id');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('product_id', $nullablesSetToNull);
+            $index = array_search('campaign_id', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['product_id'] = $product_id;
+        $this->container['campaign_id'] = $campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id External opaque identifier of the entity that changed.
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type Type of entity that changed, such as `campaign`, `lineItem`, `balance`, `audience`, `audienceSegment`, `creative`, or `targetingList`. Additional values may be returned.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
