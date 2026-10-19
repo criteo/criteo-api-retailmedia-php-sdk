@@ -317,7 +317,7 @@ class PromotedProduct implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_override
      *
-     * @param float|null $bid_override The bid override for the promoted product for this line item. Ignored unless adding a product.
+     * @param float|null $bid_override The bid override for the promoted product for this line item. Only honored by the products `/append` endpoint; ignored by the `/delete`, `/pause`, and `/unpause` endpoints.
      *
      * @return self
      */

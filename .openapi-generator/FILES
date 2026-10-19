@@ -146,11 +146,6 @@ docs/Model/PreferredLineItemV2PagedListResponse.md
 docs/Model/PreferredLineItemV2Response.md
 docs/Model/Price.md
 docs/Model/Product.md
-docs/Model/ProductButtonRequest.md
-docs/Model/ProductButtonRequestListRequest.md
-docs/Model/ProductButtonRequestRequest.md
-docs/Model/ProductButtonResponse.md
-docs/Model/ProductButtonResponseListResponse.md
 docs/Model/ProductBuyBoxWinner.md
 docs/Model/ProductMetadata.md
 docs/Model/ProductRecommendation.md
@@ -177,8 +172,6 @@ docs/Model/ReportResponse.md
 docs/Model/ResourceOfCreative2.md
 docs/Model/ResourceOfPreferredLineItemUpdateModelV2.md
 docs/Model/ResourceOfPreferredLineItemV2.md
-docs/Model/ResourceOfProductButtonRequest.md
-docs/Model/ResourceOfProductButtonResponse.md
 docs/Model/RetailMediaContactlistAmendment.md
 docs/Model/RetailMediaContactlistAmendmentAttributes.md
 docs/Model/RetailMediaContactlistAmendmentRequest.md
@@ -471,11 +464,6 @@ lib/Model/PreferredLineItemV2PagedListResponse.php
 lib/Model/PreferredLineItemV2Response.php
 lib/Model/Price.php
 lib/Model/Product.php
-lib/Model/ProductButtonRequest.php
-lib/Model/ProductButtonRequestListRequest.php
-lib/Model/ProductButtonRequestRequest.php
-lib/Model/ProductButtonResponse.php
-lib/Model/ProductButtonResponseListResponse.php
 lib/Model/ProductBuyBoxWinner.php
 lib/Model/ProductMetadata.php
 lib/Model/ProductRecommendation.php
@@ -502,8 +490,6 @@ lib/Model/ReportResponse.php
 lib/Model/ResourceOfCreative2.php
 lib/Model/ResourceOfPreferredLineItemUpdateModelV2.php
 lib/Model/ResourceOfPreferredLineItemV2.php
-lib/Model/ResourceOfProductButtonRequest.php
-lib/Model/ResourceOfProductButtonResponse.php
 lib/Model/RetailMediaContactlistAmendment.php
 lib/Model/RetailMediaContactlistAmendmentAttributes.php
 lib/Model/RetailMediaContactlistAmendmentRequest.php

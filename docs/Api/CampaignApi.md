@@ -5,13 +5,11 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**appendCampaignsToBalanceV1()**](CampaignApi.md#appendCampaignsToBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/append | /preview/retail-media/balances/{balanceId}/campaigns/append |
-| [**appendProductButtonByLineItemId()**](CampaignApi.md#appendProductButtonByLineItemId) | **POST** /preview/retail-media/line-items/{line-item-id}/product-buttons/create | /preview/retail-media/line-items/{line-item-id}/product-buttons/create |
 | [**appendPromotedProducts()**](CampaignApi.md#appendPromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/append | /preview/retail-media/line-items/{line-item-id}/products/append |
 | [**createAuctionLineItem()**](CampaignApi.md#createAuctionLineItem) | **POST** /preview/retail-media/campaigns/{campaignId}/auction-line-items | /preview/retail-media/campaigns/{campaignId}/auction-line-items |
 | [**createCreative()**](CampaignApi.md#createCreative) | **POST** /preview/retail-media/accounts/{account-id}/creatives | /preview/retail-media/accounts/{account-id}/creatives |
 | [**createPreferredLineItemByCampaignId()**](CampaignApi.md#createPreferredLineItemByCampaignId) | **POST** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items | /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |
 | [**deleteCampaignsFromBalanceV1()**](CampaignApi.md#deleteCampaignsFromBalanceV1) | **POST** /preview/retail-media/balances/{balanceId}/campaigns/delete | /preview/retail-media/balances/{balanceId}/campaigns/delete |
-| [**deleteProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#deleteProductButtonByLineItemAndProductButtonId) | **DELETE** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 | [**deletePromotedProducts()**](CampaignApi.md#deletePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/delete | /preview/retail-media/line-items/{line-item-id}/products/delete |
 | [**fetchPromotedProducts()**](CampaignApi.md#fetchPromotedProducts) | **GET** /preview/retail-media/line-items/{line-item-id}/products | /preview/retail-media/line-items/{line-item-id}/products |
 | [**getAuctionLineItem()**](CampaignApi.md#getAuctionLineItem) | **GET** /preview/retail-media/auction-line-items/{lineItemId} | /preview/retail-media/auction-line-items/{lineItemId} |
@@ -21,8 +19,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} | /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**getPreferredLineItemsByCampaignId()**](CampaignApi.md#getPreferredLineItemsByCampaignId) | **GET** /preview/retail-media/campaigns/{campaign-id}/preferred-line-items | /preview/retail-media/campaigns/{campaign-id}/preferred-line-items |
 | [**getPreferredLineItemsByLineItemId()**](CampaignApi.md#getPreferredLineItemsByLineItemId) | **GET** /preview/retail-media/preferred-line-items/{line-item-id} | /preview/retail-media/preferred-line-items/{line-item-id} |
-| [**getProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#getProductButtonByLineItemAndProductButtonId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
-| [**getProductButtonsByLineItemId()**](CampaignApi.md#getProductButtonsByLineItemId) | **GET** /preview/retail-media/line-items/{line-item-id}/product-buttons | /preview/retail-media/line-items/{line-item-id}/product-buttons |
 | [**pausePromotedProducts()**](CampaignApi.md#pausePromotedProducts) | **POST** /preview/retail-media/line-items/{line-item-id}/products/pause | /preview/retail-media/line-items/{line-item-id}/products/pause |
 | [**searchAccountCreatives()**](CampaignApi.md#searchAccountCreatives) | **POST** /preview/retail-media/accounts/{account-id}/creatives/search | /preview/retail-media/accounts/{account-id}/creatives/search |
 | [**searchAccountRetailers()**](CampaignApi.md#searchAccountRetailers) | **POST** /preview/retail-media/accounts/{accountId}/retailers/search | /preview/retail-media/accounts/{accountId}/retailers/search |
@@ -30,7 +26,6 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /preview/retail-media/auction-line-items/{lineItemId} | /preview/retail-media/auction-line-items/{lineItemId} |
 | [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /preview/retail-media/accounts/{account-id}/creatives/{creative-id} | /preview/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /preview/retail-media/preferred-line-items/{line-item-id} | /preview/retail-media/preferred-line-items/{line-item-id} |
-| [**updateProductButtonByLineItemAndProductButtonId()**](CampaignApi.md#updateProductButtonByLineItemAndProductButtonId) | **PUT** /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} | /preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id} |
 
 
 ## `appendCampaignsToBalanceV1()`
@@ -84,71 +79,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\ValueResourceOutcomeBalanceCampaignsV1**](../Model/ValueResourceOutcomeBalanceCampaignsV1.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `appendProductButtonByLineItemId()`
-
-```php
-appendProductButtonByLineItemId($line_item_id, $product_button_request_list_request): \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
-```
-
-/preview/retail-media/line-items/{line-item-id}/product-buttons/create
-
-Add Specific Product Buttons
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
-$product_button_request_list_request = new \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest(); // \criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest | List of Product Buttons to append
-
-try {
-    $result = $apiInstance->appendProductButtonByLineItemId($line_item_id, $product_button_request_list_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->appendProductButtonByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| LineItemId for productButton retrieval | |
-| **product_button_request_list_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestListRequest**](../Model/ProductButtonRequestListRequest.md)| List of Product Buttons to append | [optional] |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse**](../Model/ProductButtonResponseListResponse.md)
 
 ### Authorization
 
@@ -482,71 +412,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `deleteProductButtonByLineItemAndProductButtonId()`
-
-```php
-deleteProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id): \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
-```
-
-/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Delete Specific Product Button
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton delete
-$product_button_id = 'product_button_id_example'; // string | productButtonId used for delete
-
-try {
-    $result = $apiInstance->deleteProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->deleteProductButtonByLineItemAndProductButtonId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| LineItemId for productButton delete | |
-| **product_button_id** | **string**| productButtonId used for delete | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse**](../Model/ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1143,134 +1008,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getProductButtonByLineItemAndProductButtonId()`
-
-```php
-getProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id): \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
-```
-
-/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Get Specific Product Button
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
-$product_button_id = 'product_button_id_example'; // string | productButtonId used for retrieval
-
-try {
-    $result = $apiInstance->getProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getProductButtonByLineItemAndProductButtonId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| LineItemId for productButton retrieval | |
-| **product_button_id** | **string**| productButtonId used for retrieval | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse**](../Model/ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getProductButtonsByLineItemId()`
-
-```php
-getProductButtonsByLineItemId($line_item_id): \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
-```
-
-/preview/retail-media/line-items/{line-item-id}/product-buttons
-
-Get LineItem Product Buttons
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton retrieval
-
-try {
-    $result = $apiInstance->getProductButtonsByLineItemId($line_item_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getProductButtonsByLineItemId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| LineItemId for productButton retrieval | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse**](../Model/ProductButtonResponseListResponse.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `pausePromotedProducts()`
 
 ```php
@@ -1720,73 +1457,6 @@ try {
 ### Return type
 
 [**\criteo\api\retailmedia\preview\Model\PreferredLineItemV2Response**](../Model/PreferredLineItemV2Response.md)
-
-### Authorization
-
-[oauth](../../README.md#oauth), [oauth](../../README.md#oauth)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `updateProductButtonByLineItemAndProductButtonId()`
-
-```php
-updateProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id, $product_button_request_request): \criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse
-```
-
-/preview/retail-media/line-items/{line-item-id}/product-buttons/{product-button-id}
-
-Update Specific Product Button
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-// Configure OAuth2 access token for authorization: oauth
-$config = criteo\api\retailmedia\preview\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new criteo\api\retailmedia\preview\Api\CampaignApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$line_item_id = 'line_item_id_example'; // string | LineItemId for productButton update
-$product_button_id = 'product_button_id_example'; // string | productButtonId used for update
-$product_button_request_request = new \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest(); // \criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest | Specific Product button update info
-
-try {
-    $result = $apiInstance->updateProductButtonByLineItemAndProductButtonId($line_item_id, $product_button_id, $product_button_request_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->updateProductButtonByLineItemAndProductButtonId: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| LineItemId for productButton update | |
-| **product_button_id** | **string**| productButtonId used for update | |
-| **product_button_request_request** | [**\criteo\api\retailmedia\preview\Model\ProductButtonRequestRequest**](../Model/ProductButtonRequestRequest.md)| Specific Product button update info | |
-
-### Return type
-
-[**\criteo\api\retailmedia\preview\Model\ProductButtonResponseListResponse**](../Model/ProductButtonResponseListResponse.md)
 
 ### Authorization
 

@@ -313,6 +313,8 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
     public const METRICS_PLACEMENTS_WITH_CANDIDATES = 'placementsWithCandidates';
     public const METRICS_COVERED_PLACEMENTS = 'coveredPlacements';
     public const METRICS_COVERAGE_RATE = 'coverageRate';
+    public const METRICS_COVERED_SLOTS = 'coveredSlots';
+    public const METRICS_DELIVERABLE_SLOTS_INFERRED = 'deliverableSlotsInferred';
 
     /**
      * Gets allowable values of the enum
@@ -397,6 +399,8 @@ class AsyncFillRateReport implements ModelInterface, ArrayAccess, \JsonSerializa
             self::METRICS_PLACEMENTS_WITH_CANDIDATES,
             self::METRICS_COVERED_PLACEMENTS,
             self::METRICS_COVERAGE_RATE,
+            self::METRICS_COVERED_SLOTS,
+            self::METRICS_DELIVERABLE_SLOTS_INFERRED,
         ];
     }
 
