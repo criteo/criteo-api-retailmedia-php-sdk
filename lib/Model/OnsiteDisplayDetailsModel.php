@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * OnsiteDisplayDetailsModel Class Doc Comment
  *
  * @category Class
- * @description Settings that apply only to an OnsiteDisplay campaign. The objective is not exposed externally.
+ * @description Settings that apply only to an OnsiteDisplay campaign. Present only on campaigns of that type.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'budget' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetModel'
+        'budget' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetModel',
+        'objective' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => null
+        'budget' => null,
+        'objective' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'budget' => true
+        'budget' => true,
+		'objective' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'budget' => 'budget'
+        'budget' => 'budget',
+        'objective' => 'objective'
     ];
 
     /**
@@ -176,7 +180,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'budget' => 'setBudget'
+        'budget' => 'setBudget',
+        'objective' => 'setObjective'
     ];
 
     /**
@@ -185,7 +190,8 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'budget' => 'getBudget'
+        'budget' => 'getBudget',
+        'objective' => 'getObjective'
     ];
 
     /**
@@ -229,6 +235,23 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const OBJECTIVE_MANUAL = 'Manual';
+    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
+    public const OBJECTIVE_UNKNOWN = 'Unknown';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectiveAllowableValues()
+    {
+        return [
+            self::OBJECTIVE_MANUAL,
+            self::OBJECTIVE_IMPRESSIONS,
+            self::OBJECTIVE_UNKNOWN,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -246,6 +269,7 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(array $data = null)
     {
         $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('objective', $data ?? [], null);
     }
 
     /**
@@ -274,6 +298,15 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'objective', must be one of '%s'",
+                $this->container['objective'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -320,6 +353,50 @@ class OnsiteDisplayDetailsModel implements ModelInterface, ArrayAccess, \JsonSer
             }
         }
         $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets objective
+     *
+     * @return string|null
+     */
+    public function getObjective()
+    {
+        return $this->container['objective'];
+    }
+
+    /**
+     * Sets objective
+     *
+     * @param string|null $objective Objective of an OnsiteDisplay campaign.
+     *
+     * @return self
+     */
+    public function setObjective($objective)
+    {
+        if (is_null($objective)) {
+            array_push($this->openAPINullablesSetToNull, 'objective');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('objective', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($objective) && !in_array($objective, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'objective', must be one of '%s'",
+                    $objective,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['objective'] = $objective;
 
         return $this;
     }

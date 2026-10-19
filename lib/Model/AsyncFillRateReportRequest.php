@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductButtonRequestRequest
+ * AsyncFillRateReportRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ProductButtonRequestRequest Class Doc Comment
+ * AsyncFillRateReportRequest Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single entity
+ * @description A top-level object that encapsulates a Criteo API request for a single value
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class AsyncFillRateReportRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductButtonRequestRequest';
+    protected static $openAPIModelName = 'AsyncFillRateReportRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\ResourceOfProductButtonRequest'
+        'data' => '\criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource'
     ];
 
     /**
@@ -78,7 +78,7 @@ class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true
+        'data' => false
     ];
 
     /**
@@ -293,7 +293,7 @@ class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ResourceOfProductButtonRequest|null
+     * @return \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource|null
      */
     public function getData()
     {
@@ -303,21 +303,14 @@ class ProductButtonRequestRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ResourceOfProductButtonRequest|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource|null $data data
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
         $this->container['data'] = $data;
 

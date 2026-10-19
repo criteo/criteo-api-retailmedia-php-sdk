@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductButtonResponse
+ * ExternalFlightDatesModelV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ProductButtonResponse Class Doc Comment
+ * ExternalFlightDatesModelV2 Class Doc Comment
  *
  * @category Class
- * @description The Product Button entity
+ * @description Active date range for a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExternalFlightDatesModelV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductButtonResponse';
+    protected static $openAPIModelName = 'ExternalFlightDatesModelV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'background_image' => 'string',
-        'is_mandatory' => 'int',
-        'name' => 'string',
-        'rank' => 'int',
-        'skus' => 'string[]'
+        'end_date' => '\DateTime',
+        'start_date' => '\DateTime'
     ];
 
     /**
@@ -73,11 +70,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'background_image' => null,
-        'is_mandatory' => 'int32',
-        'name' => null,
-        'rank' => 'int32',
-        'skus' => null
+        'end_date' => 'date-time',
+        'start_date' => 'date-time'
     ];
 
     /**
@@ -86,11 +80,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'background_image' => false,
-		'is_mandatory' => false,
-		'name' => false,
-		'rank' => false,
-		'skus' => false
+        'end_date' => true,
+		'start_date' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'background_image' => 'backgroundImage',
-        'is_mandatory' => 'isMandatory',
-        'name' => 'name',
-        'rank' => 'rank',
-        'skus' => 'skus'
+        'end_date' => 'endDate',
+        'start_date' => 'startDate'
     ];
 
     /**
@@ -192,11 +180,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'background_image' => 'setBackgroundImage',
-        'is_mandatory' => 'setIsMandatory',
-        'name' => 'setName',
-        'rank' => 'setRank',
-        'skus' => 'setSkus'
+        'end_date' => 'setEndDate',
+        'start_date' => 'setStartDate'
     ];
 
     /**
@@ -205,11 +190,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'background_image' => 'getBackgroundImage',
-        'is_mandatory' => 'getIsMandatory',
-        'name' => 'getName',
-        'rank' => 'getRank',
-        'skus' => 'getSkus'
+        'end_date' => 'getEndDate',
+        'start_date' => 'getStartDate'
     ];
 
     /**
@@ -269,11 +251,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('background_image', $data ?? [], null);
-        $this->setIfExists('is_mandatory', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('rank', $data ?? [], null);
-        $this->setIfExists('skus', $data ?? [], null);
+        $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
     }
 
     /**
@@ -303,20 +282,8 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if ($this->container['background_image'] === null) {
-            $invalidProperties[] = "'background_image' can't be null";
-        }
-        if ($this->container['is_mandatory'] === null) {
-            $invalidProperties[] = "'is_mandatory' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['rank'] === null) {
-            $invalidProperties[] = "'rank' can't be null";
-        }
-        if ($this->container['skus'] === null) {
-            $invalidProperties[] = "'skus' can't be null";
+        if ($this->container['start_date'] === null) {
+            $invalidProperties[] = "'start_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -334,136 +301,62 @@ class ProductButtonResponse implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets background_image
+     * Gets end_date
      *
-     * @return string
+     * @return \DateTime|null
      */
-    public function getBackgroundImage()
+    public function getEndDate()
     {
-        return $this->container['background_image'];
+        return $this->container['end_date'];
     }
 
     /**
-     * Sets background_image
+     * Sets end_date
      *
-     * @param string $background_image URL of the background image
+     * @param \DateTime|null $end_date When the line item expires.
      *
      * @return self
      */
-    public function setBackgroundImage($background_image)
+    public function setEndDate($end_date)
     {
-        if (is_null($background_image)) {
-            throw new \InvalidArgumentException('non-nullable background_image cannot be null');
+        if (is_null($end_date)) {
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['background_image'] = $background_image;
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
 
     /**
-     * Gets is_mandatory
+     * Gets start_date
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getIsMandatory()
+    public function getStartDate()
     {
-        return $this->container['is_mandatory'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets is_mandatory
+     * Sets start_date
      *
-     * @param int $is_mandatory If the Product Button is Mandatory
+     * @param \DateTime $start_date When the line item becomes active.
      *
      * @return self
      */
-    public function setIsMandatory($is_mandatory)
+    public function setStartDate($start_date)
     {
-        if (is_null($is_mandatory)) {
-            throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
         }
-        $this->container['is_mandatory'] = $is_mandatory;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the Product Button
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets rank
-     *
-     * @return int
-     */
-    public function getRank()
-    {
-        return $this->container['rank'];
-    }
-
-    /**
-     * Sets rank
-     *
-     * @param int $rank Rank of the Product Button
-     *
-     * @return self
-     */
-    public function setRank($rank)
-    {
-        if (is_null($rank)) {
-            throw new \InvalidArgumentException('non-nullable rank cannot be null');
-        }
-        $this->container['rank'] = $rank;
-
-        return $this;
-    }
-
-    /**
-     * Gets skus
-     *
-     * @return string[]
-     */
-    public function getSkus()
-    {
-        return $this->container['skus'];
-    }
-
-    /**
-     * Sets skus
-     *
-     * @param string[] $skus List of skus on the Product Button
-     *
-     * @return self
-     */
-    public function setSkus($skus)
-    {
-        if (is_null($skus)) {
-            throw new \InvalidArgumentException('non-nullable skus cannot be null');
-        }
-        $this->container['skus'] = $skus;
+        $this->container['start_date'] = $start_date;
 
         return $this;
     }

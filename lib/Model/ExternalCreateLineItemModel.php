@@ -59,7 +59,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'campaign_id' => 'string',
-        'is_paused' => 'bool',
         'name' => 'string',
         'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayLineItemDetails',
         'retailer_id' => 'string',
@@ -75,7 +74,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'campaign_id' => null,
-        'is_paused' => null,
         'name' => null,
         'onsite_display_details' => null,
         'retailer_id' => null,
@@ -89,7 +87,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'campaign_id' => true,
-		'is_paused' => true,
 		'name' => true,
 		'onsite_display_details' => false,
 		'retailer_id' => true,
@@ -183,7 +180,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'campaign_id' => 'campaignId',
-        'is_paused' => 'isPaused',
         'name' => 'name',
         'onsite_display_details' => 'onsiteDisplayDetails',
         'retailer_id' => 'retailerId',
@@ -197,7 +193,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'campaign_id' => 'setCampaignId',
-        'is_paused' => 'setIsPaused',
         'name' => 'setName',
         'onsite_display_details' => 'setOnsiteDisplayDetails',
         'retailer_id' => 'setRetailerId',
@@ -211,7 +206,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'campaign_id' => 'getCampaignId',
-        'is_paused' => 'getIsPaused',
         'name' => 'getName',
         'onsite_display_details' => 'getOnsiteDisplayDetails',
         'retailer_id' => 'getRetailerId',
@@ -276,7 +270,6 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
@@ -310,6 +303,15 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['campaign_id'] === null) {
+            $invalidProperties[] = "'campaign_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['retailer_id'] === null) {
+            $invalidProperties[] = "'retailer_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,7 +330,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets campaign_id
      *
-     * @return string|null
+     * @return string
      */
     public function getCampaignId()
     {
@@ -338,7 +340,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets campaign_id
      *
-     * @param string|null $campaign_id The campaign id of the associated campaign.
+     * @param string $campaign_id The campaign id of the associated campaign.
      *
      * @return self
      */
@@ -360,43 +362,9 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets is_paused
-     *
-     * @return bool|null
-     */
-    public function getIsPaused()
-    {
-        return $this->container['is_paused'];
-    }
-
-    /**
-     * Sets is_paused
-     *
-     * @param bool|null $is_paused Indicates whether the line item is paused. Defaults to false.
-     *
-     * @return self
-     */
-    public function setIsPaused($is_paused)
-    {
-        if (is_null($is_paused)) {
-            array_push($this->openAPINullablesSetToNull, 'is_paused');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_paused', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_paused'] = $is_paused;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -406,7 +374,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets name
      *
-     * @param string|null $name The name of the line item.
+     * @param string $name The name of the line item.
      *
      * @return self
      */
@@ -457,7 +425,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets retailer_id
      *
-     * @return string|null
+     * @return string
      */
     public function getRetailerId()
     {
@@ -467,7 +435,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets retailer_id
      *
-     * @param string|null $retailer_id The retailer id of the associated retailer.
+     * @param string $retailer_id The retailer id of the associated retailer.
      *
      * @return self
      */

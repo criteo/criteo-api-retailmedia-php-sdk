@@ -1,6 +1,6 @@
 <?php
 /**
- * ProductButtonRequest
+ * OnsiteDisplayLineItemDetailsV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ProductButtonRequest Class Doc Comment
+ * OnsiteDisplayLineItemDetailsV2 Class Doc Comment
  *
  * @category Class
- * @description The Product Button entity used for Input
+ * @description Settings that only apply to onsite display line items.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnsiteDisplayLineItemDetailsV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ProductButtonRequest';
+    protected static $openAPIModelName = 'OnsiteDisplayLineItemDetailsV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'background_image' => 'string',
-        'is_mandatory' => 'int',
-        'name' => 'string',
-        'skus' => 'string[]'
+        'auction_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAuctionLineItemDetailsV2'
     ];
 
     /**
@@ -72,10 +69,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'background_image' => null,
-        'is_mandatory' => 'int32',
-        'name' => null,
-        'skus' => null
+        'auction_details' => null
     ];
 
     /**
@@ -84,10 +78,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'background_image' => false,
-		'is_mandatory' => false,
-		'name' => false,
-		'skus' => false
+        'auction_details' => true
     ];
 
     /**
@@ -176,10 +167,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'background_image' => 'backgroundImage',
-        'is_mandatory' => 'isMandatory',
-        'name' => 'name',
-        'skus' => 'skus'
+        'auction_details' => 'auctionDetails'
     ];
 
     /**
@@ -188,10 +176,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'background_image' => 'setBackgroundImage',
-        'is_mandatory' => 'setIsMandatory',
-        'name' => 'setName',
-        'skus' => 'setSkus'
+        'auction_details' => 'setAuctionDetails'
     ];
 
     /**
@@ -200,10 +185,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'background_image' => 'getBackgroundImage',
-        'is_mandatory' => 'getIsMandatory',
-        'name' => 'getName',
-        'skus' => 'getSkus'
+        'auction_details' => 'getAuctionDetails'
     ];
 
     /**
@@ -263,10 +245,7 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('background_image', $data ?? [], null);
-        $this->setIfExists('is_mandatory', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('skus', $data ?? [], null);
+        $this->setIfExists('auction_details', $data ?? [], null);
     }
 
     /**
@@ -296,18 +275,6 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['background_image'] === null) {
-            $invalidProperties[] = "'background_image' can't be null";
-        }
-        if ($this->container['is_mandatory'] === null) {
-            $invalidProperties[] = "'is_mandatory' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['skus'] === null) {
-            $invalidProperties[] = "'skus' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -324,109 +291,35 @@ class ProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets background_image
+     * Gets auction_details
      *
-     * @return string
+     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayAuctionLineItemDetailsV2|null
      */
-    public function getBackgroundImage()
+    public function getAuctionDetails()
     {
-        return $this->container['background_image'];
+        return $this->container['auction_details'];
     }
 
     /**
-     * Sets background_image
+     * Sets auction_details
      *
-     * @param string $background_image URL of the background image
+     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayAuctionLineItemDetailsV2|null $auction_details auction_details
      *
      * @return self
      */
-    public function setBackgroundImage($background_image)
+    public function setAuctionDetails($auction_details)
     {
-        if (is_null($background_image)) {
-            throw new \InvalidArgumentException('non-nullable background_image cannot be null');
+        if (is_null($auction_details)) {
+            array_push($this->openAPINullablesSetToNull, 'auction_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('auction_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['background_image'] = $background_image;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_mandatory
-     *
-     * @return int
-     */
-    public function getIsMandatory()
-    {
-        return $this->container['is_mandatory'];
-    }
-
-    /**
-     * Sets is_mandatory
-     *
-     * @param int $is_mandatory If the Product Button is Mandatory
-     *
-     * @return self
-     */
-    public function setIsMandatory($is_mandatory)
-    {
-        if (is_null($is_mandatory)) {
-            throw new \InvalidArgumentException('non-nullable is_mandatory cannot be null');
-        }
-        $this->container['is_mandatory'] = $is_mandatory;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name of the Product Button
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets skus
-     *
-     * @return string[]
-     */
-    public function getSkus()
-    {
-        return $this->container['skus'];
-    }
-
-    /**
-     * Sets skus
-     *
-     * @param string[] $skus List of skus on the Product Button
-     *
-     * @return self
-     */
-    public function setSkus($skus)
-    {
-        if (is_null($skus)) {
-            throw new \InvalidArgumentException('non-nullable skus cannot be null');
-        }
-        $this->container['skus'] = $skus;
+        $this->container['auction_details'] = $auction_details;
 
         return $this;
     }

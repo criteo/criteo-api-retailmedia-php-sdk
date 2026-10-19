@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * SponsoredProductsBudgetCreateModel Class Doc Comment
  *
  * @category Class
- * @description Financial intent of a SponsoredProducts campaign.
+ * @description Financial intent of a SponsoredProducts campaign. An amount only: the platform derives the  periods and pacing from the objective.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,9 +58,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => 'float',
-        'cappings' => '\criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]',
-        'pacing' => '\criteo\api\retailmedia\experimental\Model\PacingRequestModel'
+        'amount' => 'float'
     ];
 
     /**
@@ -71,9 +69,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => 'double',
-        'cappings' => null,
-        'pacing' => null
+        'amount' => 'double'
     ];
 
     /**
@@ -82,9 +78,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => true,
-		'cappings' => true,
-		'pacing' => false
+        'amount' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'cappings' => 'cappings',
-        'pacing' => 'pacing'
+        'amount' => 'amount'
     ];
 
     /**
@@ -184,9 +176,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'cappings' => 'setCappings',
-        'pacing' => 'setPacing'
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -195,9 +185,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'cappings' => 'getCappings',
-        'pacing' => 'getPacing'
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -258,8 +246,6 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('cappings', $data ?? [], null);
-        $this->setIfExists('pacing', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,9 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -307,7 +296,7 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
     /**
      * Gets amount
      *
-     * @return float|null
+     * @return float
      */
     public function getAmount()
     {
@@ -317,84 +306,16 @@ class SponsoredProductsBudgetCreateModel implements ModelInterface, ArrayAccess,
     /**
      * Sets amount
      *
-     * @param float|null $amount Total the campaign may spend over its flight.
+     * @param float $amount Total the campaign may spend over its flight.
      *
      * @return self
      */
     public function setAmount($amount)
     {
         if (is_null($amount)) {
-            array_push($this->openAPINullablesSetToNull, 'amount');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('amount', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets cappings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]|null
-     */
-    public function getCappings()
-    {
-        return $this->container['cappings'];
-    }
-
-    /**
-     * Sets cappings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]|null $cappings Per-period ceilings. At most one entry per period.
-     *
-     * @return self
-     */
-    public function setCappings($cappings)
-    {
-        if (is_null($cappings)) {
-            array_push($this->openAPINullablesSetToNull, 'cappings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cappings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cappings'] = $cappings;
-
-        return $this;
-    }
-
-    /**
-     * Gets pacing
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\PacingRequestModel|null
-     */
-    public function getPacing()
-    {
-        return $this->container['pacing'];
-    }
-
-    /**
-     * Sets pacing
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\PacingRequestModel|null $pacing pacing
-     *
-     * @return self
-     */
-    public function setPacing($pacing)
-    {
-        if (is_null($pacing)) {
-            throw new \InvalidArgumentException('non-nullable pacing cannot be null');
-        }
-        $this->container['pacing'] = $pacing;
 
         return $this;
     }

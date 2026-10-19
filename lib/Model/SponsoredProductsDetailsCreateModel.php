@@ -81,7 +81,7 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'budget' => false,
-		'objective' => true
+		'objective' => false
     ];
 
     /**
@@ -235,7 +235,6 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const OBJECTIVE_MANUAL = 'Manual';
     public const OBJECTIVE_CLICKS = 'Clicks';
     public const OBJECTIVE_CONVERSION = 'Conversion';
     public const OBJECTIVE_REVENUE = 'Revenue';
@@ -248,7 +247,6 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     public function getObjectiveAllowableValues()
     {
         return [
-            self::OBJECTIVE_MANUAL,
             self::OBJECTIVE_CLICKS,
             self::OBJECTIVE_CONVERSION,
             self::OBJECTIVE_REVENUE,
@@ -301,6 +299,12 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['budget'] === null) {
+            $invalidProperties[] = "'budget' can't be null";
+        }
+        if ($this->container['objective'] === null) {
+            $invalidProperties[] = "'objective' can't be null";
+        }
         $allowedValues = $this->getObjectiveAllowableValues();
         if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -328,7 +332,7 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     /**
      * Gets budget
      *
-     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel
      */
     public function getBudget()
     {
@@ -338,7 +342,7 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     /**
      * Sets budget
      *
-     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsBudgetCreateModel $budget budget
      *
      * @return self
      */
@@ -355,7 +359,7 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     /**
      * Gets objective
      *
-     * @return string|null
+     * @return string
      */
     public function getObjective()
     {
@@ -365,24 +369,17 @@ class SponsoredProductsDetailsCreateModel implements ModelInterface, ArrayAccess
     /**
      * Sets objective
      *
-     * @param string|null $objective Defaults to manual when omitted.
+     * @param string $objective Objective a SponsoredProducts campaign is optimized for. The platform derives the line item  budgets from the campaign budget to serve it.
      *
      * @return self
      */
     public function setObjective($objective)
     {
         if (is_null($objective)) {
-            array_push($this->openAPINullablesSetToNull, 'objective');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('objective', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable objective cannot be null');
         }
         $allowedValues = $this->getObjectiveAllowableValues();
-        if (!is_null($objective) && !in_array($objective, $allowedValues, true)) {
+        if (!in_array($objective, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'objective', must be one of '%s'",

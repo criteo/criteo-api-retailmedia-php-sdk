@@ -27,6 +27,9 @@ docs/Model/AsyncAccountsReportResource.md
 docs/Model/AsyncCampaignsReport.md
 docs/Model/AsyncCampaignsReportRequest.md
 docs/Model/AsyncCampaignsReportResource.md
+docs/Model/AsyncFillRateReport.md
+docs/Model/AsyncFillRateReportRequest.md
+docs/Model/AsyncFillRateReportResource.md
 docs/Model/AsyncInsightResponse.md
 docs/Model/AsyncLineItemsReport.md
 docs/Model/AsyncLineItemsReportRequest.md
@@ -50,7 +53,6 @@ docs/Model/BotMessage.md
 docs/Model/BrandIdSearchRequest.md
 docs/Model/BrandIdSearchResult.md
 docs/Model/BudgetCappingModel.md
-docs/Model/BudgetCappingRequestModel.md
 docs/Model/CampaignCreateModel.md
 docs/Model/CampaignCreateModelRequest.md
 docs/Model/CampaignCreateModelResource.md
@@ -108,7 +110,6 @@ docs/Model/CreativeSearchResponse.md
 docs/Model/CreativeUpdateModel2.md
 docs/Model/CustomAttribute.md
 docs/Model/DataCompleteThrough.md
-docs/Model/DecimalNullableNillableV2.md
 docs/Model/DeleteLineItemCreativesInput.md
 docs/Model/DeleteLineItemCreativesInputResource.md
 docs/Model/DeleteLineItemCreativesRequest.md
@@ -156,6 +157,7 @@ docs/Model/ExternalCreateLineItemModelResource.md
 docs/Model/ExternalCreateOnsiteDisplayAuctionLineItemDetails.md
 docs/Model/ExternalCreateOnsiteDisplayLineItemDetails.md
 docs/Model/ExternalFlightDatesModel.md
+docs/Model/ExternalFlightDatesModelV2.md
 docs/Model/ExternalFrequencyCappingModel.md
 docs/Model/ExternalFrequencyCappingModelNillableV2.md
 docs/Model/ExternalLineItem.md
@@ -217,8 +219,11 @@ docs/Model/LineItemProductInputResource.md
 docs/Model/LineItemProductListResponseV2WithPaginationMeta.md
 docs/Model/LineItemProductResource.md
 docs/Model/LineItemResource.md
+docs/Model/LineItemResourceV2.md
 docs/Model/LineItemResponse.md
+docs/Model/LineItemResponseV2.md
 docs/Model/LineItemTargetingDetails.md
+docs/Model/LineItemV2.md
 docs/Model/LoyaltyPoints.md
 docs/Model/ManualKeywordTargetDetails.md
 docs/Model/Message.md
@@ -240,6 +245,7 @@ docs/Model/OfferUpdate.md
 docs/Model/OnsiteDisplayAttributes.md
 docs/Model/OnsiteDisplayAuctionAttributes.md
 docs/Model/OnsiteDisplayAuctionLineItemDetails.md
+docs/Model/OnsiteDisplayAuctionLineItemDetailsV2.md
 docs/Model/OnsiteDisplayBudgetCreateModel.md
 docs/Model/OnsiteDisplayBudgetModel.md
 docs/Model/OnsiteDisplayBudgetUpdateModel.md
@@ -247,9 +253,9 @@ docs/Model/OnsiteDisplayDetailsCreateModel.md
 docs/Model/OnsiteDisplayDetailsModel.md
 docs/Model/OnsiteDisplayDetailsUpdateModel.md
 docs/Model/OnsiteDisplayLineItemDetails.md
+docs/Model/OnsiteDisplayLineItemDetailsV2.md
 docs/Model/Outcome.md
 docs/Model/PacingModel.md
-docs/Model/PacingRequestModel.md
 docs/Model/PageTypeEnvironment2.md
 docs/Model/PageTypeMinBid.md
 docs/Model/PageTypeTargetDetails.md
@@ -267,11 +273,6 @@ docs/Model/PreferredLineItemV2.md
 docs/Model/PreferredLineItemV2Response.md
 docs/Model/Price.md
 docs/Model/Product.md
-docs/Model/ProductButtonRequest.md
-docs/Model/ProductButtonRequestListRequest.md
-docs/Model/ProductButtonRequestRequest.md
-docs/Model/ProductButtonResponse.md
-docs/Model/ProductButtonResponseListResponse.md
 docs/Model/ProductBuyBoxWinner.md
 docs/Model/ProductRecommendation.md
 docs/Model/ProductShipping.md
@@ -294,8 +295,6 @@ docs/Model/ReportResponse.md
 docs/Model/ResourceOfCreative2.md
 docs/Model/ResourceOfPreferredLineItemUpdateModelV2.md
 docs/Model/ResourceOfPreferredLineItemV2.md
-docs/Model/ResourceOfProductButtonRequest.md
-docs/Model/ResourceOfProductButtonResponse.md
 docs/Model/RmAlgebraNodeV1.md
 docs/Model/RmAudienceBulkCreateInputV1.md
 docs/Model/RmAudienceBulkDeleteInputV1.md
@@ -441,6 +440,9 @@ lib/Model/AsyncAccountsReportResource.php
 lib/Model/AsyncCampaignsReport.php
 lib/Model/AsyncCampaignsReportRequest.php
 lib/Model/AsyncCampaignsReportResource.php
+lib/Model/AsyncFillRateReport.php
+lib/Model/AsyncFillRateReportRequest.php
+lib/Model/AsyncFillRateReportResource.php
 lib/Model/AsyncInsightResponse.php
 lib/Model/AsyncLineItemsReport.php
 lib/Model/AsyncLineItemsReportRequest.php
@@ -464,7 +466,6 @@ lib/Model/BotMessage.php
 lib/Model/BrandIdSearchRequest.php
 lib/Model/BrandIdSearchResult.php
 lib/Model/BudgetCappingModel.php
-lib/Model/BudgetCappingRequestModel.php
 lib/Model/CampaignCreateModel.php
 lib/Model/CampaignCreateModelRequest.php
 lib/Model/CampaignCreateModelResource.php
@@ -522,7 +523,6 @@ lib/Model/CreativeSearchResponse.php
 lib/Model/CreativeUpdateModel2.php
 lib/Model/CustomAttribute.php
 lib/Model/DataCompleteThrough.php
-lib/Model/DecimalNullableNillableV2.php
 lib/Model/DeleteLineItemCreativesInput.php
 lib/Model/DeleteLineItemCreativesInputResource.php
 lib/Model/DeleteLineItemCreativesRequest.php
@@ -570,6 +570,7 @@ lib/Model/ExternalCreateLineItemModelResource.php
 lib/Model/ExternalCreateOnsiteDisplayAuctionLineItemDetails.php
 lib/Model/ExternalCreateOnsiteDisplayLineItemDetails.php
 lib/Model/ExternalFlightDatesModel.php
+lib/Model/ExternalFlightDatesModelV2.php
 lib/Model/ExternalFrequencyCappingModel.php
 lib/Model/ExternalFrequencyCappingModelNillableV2.php
 lib/Model/ExternalLineItem.php
@@ -631,8 +632,11 @@ lib/Model/LineItemProductInputResource.php
 lib/Model/LineItemProductListResponseV2WithPaginationMeta.php
 lib/Model/LineItemProductResource.php
 lib/Model/LineItemResource.php
+lib/Model/LineItemResourceV2.php
 lib/Model/LineItemResponse.php
+lib/Model/LineItemResponseV2.php
 lib/Model/LineItemTargetingDetails.php
+lib/Model/LineItemV2.php
 lib/Model/LoyaltyPoints.php
 lib/Model/ManualKeywordTargetDetails.php
 lib/Model/Message.php
@@ -655,6 +659,7 @@ lib/Model/OfferUpdate.php
 lib/Model/OnsiteDisplayAttributes.php
 lib/Model/OnsiteDisplayAuctionAttributes.php
 lib/Model/OnsiteDisplayAuctionLineItemDetails.php
+lib/Model/OnsiteDisplayAuctionLineItemDetailsV2.php
 lib/Model/OnsiteDisplayBudgetCreateModel.php
 lib/Model/OnsiteDisplayBudgetModel.php
 lib/Model/OnsiteDisplayBudgetUpdateModel.php
@@ -662,9 +667,9 @@ lib/Model/OnsiteDisplayDetailsCreateModel.php
 lib/Model/OnsiteDisplayDetailsModel.php
 lib/Model/OnsiteDisplayDetailsUpdateModel.php
 lib/Model/OnsiteDisplayLineItemDetails.php
+lib/Model/OnsiteDisplayLineItemDetailsV2.php
 lib/Model/Outcome.php
 lib/Model/PacingModel.php
-lib/Model/PacingRequestModel.php
 lib/Model/PageTypeEnvironment2.php
 lib/Model/PageTypeMinBid.php
 lib/Model/PageTypeTargetDetails.php
@@ -682,11 +687,6 @@ lib/Model/PreferredLineItemV2.php
 lib/Model/PreferredLineItemV2Response.php
 lib/Model/Price.php
 lib/Model/Product.php
-lib/Model/ProductButtonRequest.php
-lib/Model/ProductButtonRequestListRequest.php
-lib/Model/ProductButtonRequestRequest.php
-lib/Model/ProductButtonResponse.php
-lib/Model/ProductButtonResponseListResponse.php
 lib/Model/ProductBuyBoxWinner.php
 lib/Model/ProductRecommendation.php
 lib/Model/ProductShipping.php
@@ -709,8 +709,6 @@ lib/Model/ReportResponse.php
 lib/Model/ResourceOfCreative2.php
 lib/Model/ResourceOfPreferredLineItemUpdateModelV2.php
 lib/Model/ResourceOfPreferredLineItemV2.php
-lib/Model/ResourceOfProductButtonRequest.php
-lib/Model/ResourceOfProductButtonResponse.php
 lib/Model/RmAlgebraNodeV1.php
 lib/Model/RmAudienceBulkCreateInputV1.php
 lib/Model/RmAudienceBulkDeleteInputV1.php

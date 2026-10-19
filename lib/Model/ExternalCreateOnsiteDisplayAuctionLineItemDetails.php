@@ -303,7 +303,7 @@ class ExternalCreateOnsiteDisplayAuctionLineItemDetails implements ModelInterfac
     /**
      * Sets is_dynamic_match
      *
-     * @param bool|null $is_dynamic_match Whether to serve only products relevant to the page context, replacing manual SKU curation.
+     * @param bool|null $is_dynamic_match Whether only products relevant to the page context serve.
      *
      * @return self
      */

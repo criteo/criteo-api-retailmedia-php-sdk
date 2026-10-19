@@ -1,6 +1,6 @@
 <?php
 /**
- * ResourceOfProductButtonRequest
+ * OnsiteDisplayAuctionLineItemDetailsV2
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ResourceOfProductButtonRequest Class Doc Comment
+ * OnsiteDisplayAuctionLineItemDetailsV2 Class Doc Comment
  *
  * @category Class
- * @description A class that represents a domain entity exposed by an API
+ * @description Settings that only apply to auction-bought onsite display line items.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnsiteDisplayAuctionLineItemDetailsV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ResourceOfProductButtonRequest';
+    protected static $openAPIModelName = 'OnsiteDisplayAuctionLineItemDetailsV2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\ProductButtonRequest',
-        'id' => 'string',
-        'type' => 'string'
+        'is_dynamic_match' => 'bool'
     ];
 
     /**
@@ -71,9 +69,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'id' => null,
-        'type' => null
+        'is_dynamic_match' => null
     ];
 
     /**
@@ -82,9 +78,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => false,
-		'id' => false,
-		'type' => false
+        'is_dynamic_match' => true
     ];
 
     /**
@@ -173,9 +167,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'id' => 'id',
-        'type' => 'type'
+        'is_dynamic_match' => 'isDynamicMatch'
     ];
 
     /**
@@ -184,9 +176,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'id' => 'setId',
-        'type' => 'setType'
+        'is_dynamic_match' => 'setIsDynamicMatch'
     ];
 
     /**
@@ -195,9 +185,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'id' => 'getId',
-        'type' => 'getType'
+        'is_dynamic_match' => 'getIsDynamicMatch'
     ];
 
     /**
@@ -257,9 +245,7 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('is_dynamic_match', $data ?? [], null);
     }
 
     /**
@@ -305,82 +291,35 @@ class ResourceOfProductButtonRequest implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets attributes
+     * Gets is_dynamic_match
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ProductButtonRequest|null
+     * @return bool|null
      */
-    public function getAttributes()
+    public function getIsDynamicMatch()
     {
-        return $this->container['attributes'];
+        return $this->container['is_dynamic_match'];
     }
 
     /**
-     * Sets attributes
+     * Sets is_dynamic_match
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ProductButtonRequest|null $attributes attributes
+     * @param bool|null $is_dynamic_match Whether only products relevant to the page context serve, replacing manual SKU curation.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setIsDynamicMatch($is_dynamic_match)
     {
-        if (is_null($attributes)) {
-            throw new \InvalidArgumentException('non-nullable attributes cannot be null');
+        if (is_null($is_dynamic_match)) {
+            array_push($this->openAPINullablesSetToNull, 'is_dynamic_match');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('is_dynamic_match', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string|null
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string|null $id Id of the entity
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Canonical type name of the entity
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
+        $this->container['is_dynamic_match'] = $is_dynamic_match;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'auction_details' => '\criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayAuctionLineItemDetails',
-        'frequency_capping' => '\criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel'
+        'is_paused' => 'bool'
     ];
 
     /**
@@ -71,7 +71,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
       */
     protected static $openAPIFormats = [
         'auction_details' => null,
-        'frequency_capping' => null
+        'is_paused' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
       */
     protected static array $openAPINullables = [
         'auction_details' => false,
-		'frequency_capping' => true
+		'is_paused' => true
     ];
 
     /**
@@ -171,7 +171,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
      */
     protected static $attributeMap = [
         'auction_details' => 'auctionDetails',
-        'frequency_capping' => 'frequencyCapping'
+        'is_paused' => 'isPaused'
     ];
 
     /**
@@ -181,7 +181,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
      */
     protected static $setters = [
         'auction_details' => 'setAuctionDetails',
-        'frequency_capping' => 'setFrequencyCapping'
+        'is_paused' => 'setIsPaused'
     ];
 
     /**
@@ -191,7 +191,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
      */
     protected static $getters = [
         'auction_details' => 'getAuctionDetails',
-        'frequency_capping' => 'getFrequencyCapping'
+        'is_paused' => 'getIsPaused'
     ];
 
     /**
@@ -252,7 +252,7 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
     public function __construct(array $data = null)
     {
         $this->setIfExists('auction_details', $data ?? [], null);
-        $this->setIfExists('frequency_capping', $data ?? [], null);
+        $this->setIfExists('is_paused', $data ?? [], null);
     }
 
     /**
@@ -325,35 +325,35 @@ class ExternalCreateOnsiteDisplayLineItemDetails implements ModelInterface, Arra
     }
 
     /**
-     * Gets frequency_capping
+     * Gets is_paused
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null
+     * @return bool|null
      */
-    public function getFrequencyCapping()
+    public function getIsPaused()
     {
-        return $this->container['frequency_capping'];
+        return $this->container['is_paused'];
     }
 
     /**
-     * Sets frequency_capping
+     * Sets is_paused
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null $frequency_capping frequency_capping
+     * @param bool|null $is_paused Whether to pause the display line item. Defaults to false.
      *
      * @return self
      */
-    public function setFrequencyCapping($frequency_capping)
+    public function setIsPaused($is_paused)
     {
-        if (is_null($frequency_capping)) {
-            array_push($this->openAPINullablesSetToNull, 'frequency_capping');
+        if (is_null($is_paused)) {
+            array_push($this->openAPINullablesSetToNull, 'is_paused');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('frequency_capping', $nullablesSetToNull);
+            $index = array_search('is_paused', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['frequency_capping'] = $frequency_capping;
+        $this->container['is_paused'] = $is_paused;
 
         return $this;
     }

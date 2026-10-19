@@ -439,6 +439,9 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
 
+        if ($this->container['schedule_details'] === null) {
+            $invalidProperties[] = "'schedule_details' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -799,7 +802,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets schedule_details
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ScheduleDetailsCreateModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\ScheduleDetailsCreateModel
      */
     public function getScheduleDetails()
     {
@@ -809,7 +812,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets schedule_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ScheduleDetailsCreateModel|null $schedule_details schedule_details
+     * @param \criteo\api\retailmedia\experimental\Model\ScheduleDetailsCreateModel $schedule_details schedule_details
      *
      * @return self
      */

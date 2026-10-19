@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * SponsoredProductsBudgetUpdateModel Class Doc Comment
  *
  * @category Class
- * @description Budget fields of a SponsoredProducts campaign to update. An omitted field is left unchanged.
+ * @description New financial intent of a SponsoredProducts campaign. An amount only: the platform derives the  periods and pacing from the objective. Omit the node to leave the budget unchanged.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,9 +58,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'amount' => '\criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2',
-        'cappings' => '\criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]',
-        'pacing' => '\criteo\api\retailmedia\experimental\Model\PacingRequestModel'
+        'amount' => 'float'
     ];
 
     /**
@@ -71,9 +69,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'amount' => null,
-        'cappings' => null,
-        'pacing' => null
+        'amount' => 'double'
     ];
 
     /**
@@ -82,9 +78,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'amount' => false,
-		'cappings' => true,
-		'pacing' => false
+        'amount' => false
     ];
 
     /**
@@ -173,9 +167,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'amount' => 'amount',
-        'cappings' => 'cappings',
-        'pacing' => 'pacing'
+        'amount' => 'amount'
     ];
 
     /**
@@ -184,9 +176,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'amount' => 'setAmount',
-        'cappings' => 'setCappings',
-        'pacing' => 'setPacing'
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -195,9 +185,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'amount' => 'getAmount',
-        'cappings' => 'getCappings',
-        'pacing' => 'getPacing'
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -258,8 +246,6 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     public function __construct(array $data = null)
     {
         $this->setIfExists('amount', $data ?? [], null);
-        $this->setIfExists('cappings', $data ?? [], null);
-        $this->setIfExists('pacing', $data ?? [], null);
     }
 
     /**
@@ -289,6 +275,9 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -307,7 +296,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     /**
      * Gets amount
      *
-     * @return \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null
+     * @return float
      */
     public function getAmount()
     {
@@ -317,7 +306,7 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
     /**
      * Sets amount
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DecimalNullableNillableV2|null $amount amount
+     * @param float $amount New total the campaign may spend over its flight.
      *
      * @return self
      */
@@ -327,67 +316,6 @@ class SponsoredProductsBudgetUpdateModel implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets cappings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]|null
-     */
-    public function getCappings()
-    {
-        return $this->container['cappings'];
-    }
-
-    /**
-     * Sets cappings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\BudgetCappingRequestModel[]|null $cappings Per-period ceilings. At most one entry per period.
-     *
-     * @return self
-     */
-    public function setCappings($cappings)
-    {
-        if (is_null($cappings)) {
-            array_push($this->openAPINullablesSetToNull, 'cappings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cappings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cappings'] = $cappings;
-
-        return $this;
-    }
-
-    /**
-     * Gets pacing
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\PacingRequestModel|null
-     */
-    public function getPacing()
-    {
-        return $this->container['pacing'];
-    }
-
-    /**
-     * Sets pacing
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\PacingRequestModel|null $pacing pacing
-     *
-     * @return self
-     */
-    public function setPacing($pacing)
-    {
-        if (is_null($pacing)) {
-            throw new \InvalidArgumentException('non-nullable pacing cannot be null');
-        }
-        $this->container['pacing'] = $pacing;
 
         return $this;
     }

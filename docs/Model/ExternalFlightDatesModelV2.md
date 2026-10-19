@@ -1,9 +1,10 @@
-# # ProductButtonRequestListRequest
+# # ExternalFlightDatesModelV2
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\criteo\api\retailmedia\experimental\Model\ResourceOfProductButtonRequest[]**](ResourceOfProductButtonRequest.md) |  | [optional]
+**end_date** | **\DateTime** | When the line item expires. | [optional]
+**start_date** | **\DateTime** | When the line item becomes active. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

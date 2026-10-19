@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * OnsiteDisplayDetailsCreateModel Class Doc Comment
  *
  * @category Class
- * @description Settings that apply only to an OnsiteDisplay campaign. The objective is not exposed externally;  every campaign created through this endpoint is an impressions campaign.
+ * @description Settings that apply only to an OnsiteDisplay campaign. Sending this node on a campaign of  another type is refused.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,7 +58,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'budget' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel'
+        'budget' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel',
+        'objective' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'budget' => null
+        'budget' => null,
+        'objective' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'budget' => false
+        'budget' => false,
+		'objective' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'budget' => 'budget'
+        'budget' => 'budget',
+        'objective' => 'objective'
     ];
 
     /**
@@ -176,7 +180,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'budget' => 'setBudget'
+        'budget' => 'setBudget',
+        'objective' => 'setObjective'
     ];
 
     /**
@@ -185,7 +190,8 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'budget' => 'getBudget'
+        'budget' => 'getBudget',
+        'objective' => 'getObjective'
     ];
 
     /**
@@ -229,6 +235,19 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectiveAllowableValues()
+    {
+        return [
+            self::OBJECTIVE_IMPRESSIONS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -246,6 +265,7 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
     public function __construct(array $data = null)
     {
         $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('objective', $data ?? [], null);
     }
 
     /**
@@ -275,6 +295,21 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['budget'] === null) {
+            $invalidProperties[] = "'budget' can't be null";
+        }
+        if ($this->container['objective'] === null) {
+            $invalidProperties[] = "'objective' can't be null";
+        }
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'objective', must be one of '%s'",
+                $this->container['objective'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -293,7 +328,7 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
     /**
      * Gets budget
      *
-     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel
      */
     public function getBudget()
     {
@@ -303,7 +338,7 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
     /**
      * Sets budget
      *
-     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayBudgetCreateModel $budget budget
      *
      * @return self
      */
@@ -313,6 +348,43 @@ class OnsiteDisplayDetailsCreateModel implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
         $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets objective
+     *
+     * @return string
+     */
+    public function getObjective()
+    {
+        return $this->container['objective'];
+    }
+
+    /**
+     * Sets objective
+     *
+     * @param string $objective Objective an OnsiteDisplay campaign is optimized for. The platform derives the line item  budgets from the campaign budget to serve it.
+     *
+     * @return self
+     */
+    public function setObjective($objective)
+    {
+        if (is_null($objective)) {
+            throw new \InvalidArgumentException('non-nullable objective cannot be null');
+        }
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!in_array($objective, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'objective', must be one of '%s'",
+                    $objective,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['objective'] = $objective;
 
         return $this;
     }
