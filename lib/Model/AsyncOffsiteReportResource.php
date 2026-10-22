@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * AsyncOffsiteReportResource Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value
+ * @description A report request resource containing its type and required attributes.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -282,6 +282,9 @@ class AsyncOffsiteReportResource implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +303,7 @@ class AsyncOffsiteReportResource implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\experimental\Model\AsyncOffsiteReport|null
+     * @return \criteo\api\retailmedia\experimental\Model\AsyncOffsiteReport
      */
     public function getAttributes()
     {
@@ -310,7 +313,7 @@ class AsyncOffsiteReportResource implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\experimental\Model\AsyncOffsiteReport|null $attributes attributes
+     * @param \criteo\api\retailmedia\experimental\Model\AsyncOffsiteReport $attributes attributes
      *
      * @return self
      */

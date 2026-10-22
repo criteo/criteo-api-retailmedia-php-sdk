@@ -33,7 +33,7 @@ use \criteo\api\retailmedia\experimental\ObjectSerializer;
  * ActorRole Class Doc Comment
  *
  * @category Class
- * @description Role label exposed to external callers for the actor of a change.
+ * @description Role label of the actor that performed the change. No user identifiers are exposed.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

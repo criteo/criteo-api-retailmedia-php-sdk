@@ -1138,7 +1138,7 @@ class SponsoredProductsLineItem implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param string|null $status The current status of the line item.
+     * @param string|null $status The current status of the line item.                unknown: could not be determined (data issue, not a line item state).  draft: never fully configured, has never served.  scheduled: configured, start date is in the future.  active: in flight, funded, under no budget cap.  paused: previously active, manually deactivated.                ended: end date passed, within the last 90 days.  archived: end date passed more than 90 days ago - same as ended, just older, not reversible.                noFunds: no currently-active funding source (no Active mapped Insertion Order, no active  Make-Good credit IO) - a missing-funding problem, separate from any budget cap.  budgetHit: a budget cap (daily, hourly, monthly, or total) is capped with zero or below  remaining. Doesn't distinguish line item vs. campaign budget, or which cap type.                draft/scheduled/ended/archived short-circuit before the funding/budget check runs, so  those states never report noFunds or budgetHit regardless of underlying financial data.  Where both would apply, noFunds takes precedence over budgetHit.
      *
      * @return self
      */

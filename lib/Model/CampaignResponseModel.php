@@ -61,6 +61,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'account_id' => 'string',
         'attribution_settings' => '\criteo\api\retailmedia\experimental\Model\AttributionSettingsModel',
         'bill_by_retailer_id' => 'string',
+        'budget' => '\criteo\api\retailmedia\experimental\Model\CampaignBudgetModel',
         'buy_type' => 'string',
         'campaign_type' => 'string',
         'company_name' => 'string',
@@ -68,11 +69,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'drawable_balance_ids' => 'string[]',
         'id' => 'string',
         'name' => 'string',
+        'objective' => 'string',
         'on_behalf_company_name' => 'string',
-        'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsModel',
         'regulated_category' => 'string',
         'schedule_details' => '\criteo\api\retailmedia\experimental\Model\ScheduleDetailsModel',
-        'sponsored_products_details' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsModel',
         'status' => 'string',
         'updated_at' => '\DateTime'
     ];
@@ -88,6 +88,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'account_id' => null,
         'attribution_settings' => null,
         'bill_by_retailer_id' => null,
+        'budget' => null,
         'buy_type' => null,
         'campaign_type' => null,
         'company_name' => null,
@@ -95,11 +96,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'drawable_balance_ids' => null,
         'id' => null,
         'name' => null,
+        'objective' => null,
         'on_behalf_company_name' => null,
-        'onsite_display_details' => null,
         'regulated_category' => null,
         'schedule_details' => null,
-        'sponsored_products_details' => null,
         'status' => null,
         'updated_at' => 'date-time'
     ];
@@ -111,8 +111,9 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'account_id' => false,
-		'attribution_settings' => false,
+		'attribution_settings' => true,
 		'bill_by_retailer_id' => true,
+		'budget' => true,
 		'buy_type' => false,
 		'campaign_type' => false,
 		'company_name' => true,
@@ -120,11 +121,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
 		'drawable_balance_ids' => false,
 		'id' => true,
 		'name' => false,
+		'objective' => false,
 		'on_behalf_company_name' => true,
-		'onsite_display_details' => true,
 		'regulated_category' => false,
 		'schedule_details' => true,
-		'sponsored_products_details' => true,
 		'status' => false,
 		'updated_at' => false
     ];
@@ -218,6 +218,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'account_id' => 'accountId',
         'attribution_settings' => 'attributionSettings',
         'bill_by_retailer_id' => 'billByRetailerId',
+        'budget' => 'budget',
         'buy_type' => 'buyType',
         'campaign_type' => 'campaignType',
         'company_name' => 'companyName',
@@ -225,11 +226,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'drawable_balance_ids' => 'drawableBalanceIds',
         'id' => 'id',
         'name' => 'name',
+        'objective' => 'objective',
         'on_behalf_company_name' => 'onBehalfCompanyName',
-        'onsite_display_details' => 'onsiteDisplayDetails',
         'regulated_category' => 'regulatedCategory',
         'schedule_details' => 'scheduleDetails',
-        'sponsored_products_details' => 'sponsoredProductsDetails',
         'status' => 'status',
         'updated_at' => 'updatedAt'
     ];
@@ -243,6 +243,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'account_id' => 'setAccountId',
         'attribution_settings' => 'setAttributionSettings',
         'bill_by_retailer_id' => 'setBillByRetailerId',
+        'budget' => 'setBudget',
         'buy_type' => 'setBuyType',
         'campaign_type' => 'setCampaignType',
         'company_name' => 'setCompanyName',
@@ -250,11 +251,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'drawable_balance_ids' => 'setDrawableBalanceIds',
         'id' => 'setId',
         'name' => 'setName',
+        'objective' => 'setObjective',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
-        'onsite_display_details' => 'setOnsiteDisplayDetails',
         'regulated_category' => 'setRegulatedCategory',
         'schedule_details' => 'setScheduleDetails',
-        'sponsored_products_details' => 'setSponsoredProductsDetails',
         'status' => 'setStatus',
         'updated_at' => 'setUpdatedAt'
     ];
@@ -268,6 +268,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'account_id' => 'getAccountId',
         'attribution_settings' => 'getAttributionSettings',
         'bill_by_retailer_id' => 'getBillByRetailerId',
+        'budget' => 'getBudget',
         'buy_type' => 'getBuyType',
         'campaign_type' => 'getCampaignType',
         'company_name' => 'getCompanyName',
@@ -275,11 +276,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         'drawable_balance_ids' => 'getDrawableBalanceIds',
         'id' => 'getId',
         'name' => 'getName',
+        'objective' => 'getObjective',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
-        'onsite_display_details' => 'getOnsiteDisplayDetails',
         'regulated_category' => 'getRegulatedCategory',
         'schedule_details' => 'getScheduleDetails',
-        'sponsored_products_details' => 'getSponsoredProductsDetails',
         'status' => 'getStatus',
         'updated_at' => 'getUpdatedAt'
     ];
@@ -332,6 +332,12 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public const CAMPAIGN_TYPE_UNKNOWN = 'Unknown';
     public const CAMPAIGN_TYPE_SPONSORED_PRODUCTS = 'SponsoredProducts';
     public const CAMPAIGN_TYPE_ONSITE_DISPLAY = 'OnsiteDisplay';
+    public const OBJECTIVE_MANUAL = 'Manual';
+    public const OBJECTIVE_CLICKS = 'Clicks';
+    public const OBJECTIVE_CONVERSION = 'Conversion';
+    public const OBJECTIVE_REVENUE = 'Revenue';
+    public const OBJECTIVE_IMPRESSIONS = 'Impressions';
+    public const OBJECTIVE_UNKNOWN = 'Unknown';
     public const REGULATED_CATEGORY_UNKNOWN = 'Unknown';
     public const REGULATED_CATEGORY_NONE = 'None';
     public const REGULATED_CATEGORY_ALCOHOL = 'Alcohol';
@@ -365,6 +371,23 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
             self::CAMPAIGN_TYPE_UNKNOWN,
             self::CAMPAIGN_TYPE_SPONSORED_PRODUCTS,
             self::CAMPAIGN_TYPE_ONSITE_DISPLAY,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getObjectiveAllowableValues()
+    {
+        return [
+            self::OBJECTIVE_MANUAL,
+            self::OBJECTIVE_CLICKS,
+            self::OBJECTIVE_CONVERSION,
+            self::OBJECTIVE_REVENUE,
+            self::OBJECTIVE_IMPRESSIONS,
+            self::OBJECTIVE_UNKNOWN,
         ];
     }
 
@@ -414,6 +437,7 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('attribution_settings', $data ?? [], null);
         $this->setIfExists('bill_by_retailer_id', $data ?? [], null);
+        $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
@@ -421,11 +445,10 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('drawable_balance_ids', $data ?? [], null);
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('objective', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
-        $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('regulated_category', $data ?? [], null);
         $this->setIfExists('schedule_details', $data ?? [], null);
-        $this->setIfExists('sponsored_products_details', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
     }
@@ -502,6 +525,18 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
 
         if ((mb_strlen($this->container['name']) < 0)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 0.";
+        }
+
+        if ($this->container['objective'] === null) {
+            $invalidProperties[] = "'objective' can't be null";
+        }
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!is_null($this->container['objective']) && !in_array($this->container['objective'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'objective', must be one of '%s'",
+                $this->container['objective'],
+                implode("', '", $allowedValues)
+            );
         }
 
         if ($this->container['regulated_category'] === null) {
@@ -593,7 +628,14 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
     public function setAttributionSettings($attribution_settings)
     {
         if (is_null($attribution_settings)) {
-            throw new \InvalidArgumentException('non-nullable attribution_settings cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'attribution_settings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('attribution_settings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['attribution_settings'] = $attribution_settings;
 
@@ -630,6 +672,40 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['bill_by_retailer_id'] = $bill_by_retailer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CampaignBudgetModel|null
+     */
+    public function getBudget()
+    {
+        return $this->container['budget'];
+    }
+
+    /**
+     * Sets budget
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CampaignBudgetModel|null $budget budget
+     *
+     * @return self
+     */
+    public function setBudget($budget)
+    {
+        if (is_null($budget)) {
+            array_push($this->openAPINullablesSetToNull, 'budget');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['budget'] = $budget;
 
         return $this;
     }
@@ -865,6 +941,43 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets objective
+     *
+     * @return string
+     */
+    public function getObjective()
+    {
+        return $this->container['objective'];
+    }
+
+    /**
+     * Sets objective
+     *
+     * @param string $objective Objective of a campaign.
+     *
+     * @return self
+     */
+    public function setObjective($objective)
+    {
+        if (is_null($objective)) {
+            throw new \InvalidArgumentException('non-nullable objective cannot be null');
+        }
+        $allowedValues = $this->getObjectiveAllowableValues();
+        if (!in_array($objective, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'objective', must be one of '%s'",
+                    $objective,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['objective'] = $objective;
+
+        return $this;
+    }
+
+    /**
      * Gets on_behalf_company_name
      *
      * @return string|null
@@ -894,40 +1007,6 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['on_behalf_company_name'] = $on_behalf_company_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets onsite_display_details
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsModel|null
-     */
-    public function getOnsiteDisplayDetails()
-    {
-        return $this->container['onsite_display_details'];
-    }
-
-    /**
-     * Sets onsite_display_details
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\OnsiteDisplayDetailsModel|null $onsite_display_details onsite_display_details
-     *
-     * @return self
-     */
-    public function setOnsiteDisplayDetails($onsite_display_details)
-    {
-        if (is_null($onsite_display_details)) {
-            array_push($this->openAPINullablesSetToNull, 'onsite_display_details');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('onsite_display_details', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['onsite_display_details'] = $onsite_display_details;
 
         return $this;
     }
@@ -999,40 +1078,6 @@ class CampaignResponseModel implements ModelInterface, ArrayAccess, \JsonSeriali
             }
         }
         $this->container['schedule_details'] = $schedule_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets sponsored_products_details
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsModel|null
-     */
-    public function getSponsoredProductsDetails()
-    {
-        return $this->container['sponsored_products_details'];
-    }
-
-    /**
-     * Sets sponsored_products_details
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsDetailsModel|null $sponsored_products_details sponsored_products_details
-     *
-     * @return self
-     */
-    public function setSponsoredProductsDetails($sponsored_products_details)
-    {
-        if (is_null($sponsored_products_details)) {
-            array_push($this->openAPINullablesSetToNull, 'sponsored_products_details');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sponsored_products_details', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sponsored_products_details'] = $sponsored_products_details;
 
         return $this;
     }

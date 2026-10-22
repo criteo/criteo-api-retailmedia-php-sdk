@@ -16,7 +16,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**fetchCreatives()**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
 | [**fetchProducts()**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
 | [**getBiddingStrategyByLineItemId()**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
-| [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
+| [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**getCapoutHistory()**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
@@ -33,7 +33,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**setBiddingStrategyByLineItemId()**](CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy |
 | [**submitLineItem()**](CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit |
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
-| [**updateCampaign()**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} | /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id} |
+| [**updateCampaign()**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**updateCreative()**](CampaignApi.md#updateCreative) | **PUT** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**updateLineItem()**](CampaignApi.md#updateLineItem) | **PATCH** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
 | [**updatePreferredLineItemByLineItemId()**](CampaignApi.md#updatePreferredLineItemByLineItemId) | **PUT** /experimental/retail-media/preferred-line-items/{line-item-id} | /experimental/retail-media/preferred-line-items/{line-item-id} |
@@ -820,10 +820,10 @@ try {
 ## `getCampaign()`
 
 ```php
-getCampaign($account_id, $campaign_id): \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse
+getCampaign($campaign_id): \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse
 ```
 
-/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+/experimental/retail-media/campaigns/{campaign-id}
 
 Gets a campaign by its external id.
 
@@ -847,11 +847,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The external id of the account.
 $campaign_id = 'campaign_id_example'; // string | The external id of the campaign.
 
 try {
-    $result = $apiInstance->getCampaign($account_id, $campaign_id);
+    $result = $apiInstance->getCampaign($campaign_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->getCampaign: ', $e->getMessage(), PHP_EOL;
@@ -862,7 +861,6 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The external id of the account. | |
 | **campaign_id** | **string**| The external id of the campaign. | |
 
 ### Return type
@@ -1952,10 +1950,10 @@ try {
 ## `updateCampaign()`
 
 ```php
-updateCampaign($account_id, $campaign_id, $campaign_update_model_request): \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse
+updateCampaign($campaign_id, $campaign_update_model_request): \criteo\api\retailmedia\experimental\Model\CampaignModelResponse
 ```
 
-/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+/experimental/retail-media/campaigns/{campaign-id}
 
 Selectively updates a campaign. Omitted properties remain unchanged.
 
@@ -1979,12 +1977,11 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The external id of the account.
 $campaign_id = 'campaign_id_example'; // string | The external id of the campaign.
 $campaign_update_model_request = new \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest(); // \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest | The campaign fields to update.
 
 try {
-    $result = $apiInstance->updateCampaign($account_id, $campaign_id, $campaign_update_model_request);
+    $result = $apiInstance->updateCampaign($campaign_id, $campaign_update_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateCampaign: ', $e->getMessage(), PHP_EOL;
@@ -1995,13 +1992,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The external id of the account. | |
 | **campaign_id** | **string**| The external id of the campaign. | |
 | **campaign_update_model_request** | [**\criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest**](../Model/CampaignUpdateModelRequest.md)| The campaign fields to update. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse**](../Model/CampaignResponseModelResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\CampaignModelResponse**](../Model/CampaignModelResponse.md)
 
 ### Authorization
 
@@ -2086,7 +2082,7 @@ try {
 ## `updateLineItem()`
 
 ```php
-updateLineItem($line_item_id, $external_update_line_item_model_request): \criteo\api\retailmedia\experimental\Model\LineItemResponse
+updateLineItem($line_item_id, $external_patch_line_item_model_request): \criteo\api\retailmedia\experimental\Model\LineItemResponseV2
 ```
 
 /experimental/retail-media/line-items/{line-item-id}
@@ -2114,10 +2110,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     $config
 );
 $line_item_id = 'line_item_id_example'; // string | The line item id
-$external_update_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest | Line item details
+$external_patch_line_item_model_request = new \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest(); // \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest | Line item details
 
 try {
-    $result = $apiInstance->updateLineItem($line_item_id, $external_update_line_item_model_request);
+    $result = $apiInstance->updateLineItem($line_item_id, $external_patch_line_item_model_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CampaignApi->updateLineItem: ', $e->getMessage(), PHP_EOL;
@@ -2129,11 +2125,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **line_item_id** | **string**| The line item id | |
-| **external_update_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest**](../Model/ExternalUpdateLineItemModelRequest.md)| Line item details | |
+| **external_patch_line_item_model_request** | [**\criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest**](../Model/ExternalPatchLineItemModelRequest.md)| Line item details | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\LineItemResponse**](../Model/LineItemResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemResponseV2**](../Model/LineItemResponseV2.md)
 
 ### Authorization
 

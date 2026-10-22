@@ -62,7 +62,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget_status' => 'string',
         'buy_type' => 'string',
         'campaign_id' => 'string',
-        'conquesting_settings' => '\criteo\api\retailmedia\experimental\Model\ConquestingSettings',
         'flight_dates' => '\criteo\api\retailmedia\experimental\Model\FlightDates',
         'is_paused' => 'bool',
         'line_item_id' => 'string',
@@ -70,8 +69,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'string',
         'onsite_display' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAttributes',
         'retailer_id' => 'string',
-        'serve_to_opt_out_user' => 'bool',
-        'sponsored_products' => '\criteo\api\retailmedia\experimental\Model\SponsoredProductsAttributes'
+        'serve_to_opt_out_user' => 'bool'
     ];
 
     /**
@@ -86,7 +84,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget_status' => null,
         'buy_type' => null,
         'campaign_id' => null,
-        'conquesting_settings' => null,
         'flight_dates' => null,
         'is_paused' => null,
         'line_item_id' => null,
@@ -94,8 +91,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => null,
         'onsite_display' => null,
         'retailer_id' => null,
-        'serve_to_opt_out_user' => null,
-        'sponsored_products' => null
+        'serve_to_opt_out_user' => null
     ];
 
     /**
@@ -108,7 +104,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
 		'budget_status' => true,
 		'buy_type' => true,
 		'campaign_id' => true,
-		'conquesting_settings' => true,
 		'flight_dates' => true,
 		'is_paused' => true,
 		'line_item_id' => true,
@@ -116,8 +111,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
 		'name' => true,
 		'onsite_display' => true,
 		'retailer_id' => true,
-		'serve_to_opt_out_user' => true,
-		'sponsored_products' => true
+		'serve_to_opt_out_user' => true
     ];
 
     /**
@@ -210,7 +204,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget_status' => 'budgetStatus',
         'buy_type' => 'buyType',
         'campaign_id' => 'campaignId',
-        'conquesting_settings' => 'conquestingSettings',
         'flight_dates' => 'flightDates',
         'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
@@ -218,8 +211,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'name',
         'onsite_display' => 'onsiteDisplay',
         'retailer_id' => 'retailerId',
-        'serve_to_opt_out_user' => 'serveToOptOutUser',
-        'sponsored_products' => 'sponsoredProducts'
+        'serve_to_opt_out_user' => 'serveToOptOutUser'
     ];
 
     /**
@@ -232,7 +224,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget_status' => 'setBudgetStatus',
         'buy_type' => 'setBuyType',
         'campaign_id' => 'setCampaignId',
-        'conquesting_settings' => 'setConquestingSettings',
         'flight_dates' => 'setFlightDates',
         'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
@@ -240,8 +231,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'setName',
         'onsite_display' => 'setOnsiteDisplay',
         'retailer_id' => 'setRetailerId',
-        'serve_to_opt_out_user' => 'setServeToOptOutUser',
-        'sponsored_products' => 'setSponsoredProducts'
+        'serve_to_opt_out_user' => 'setServeToOptOutUser'
     ];
 
     /**
@@ -254,7 +244,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget_status' => 'getBudgetStatus',
         'buy_type' => 'getBuyType',
         'campaign_id' => 'getCampaignId',
-        'conquesting_settings' => 'getConquestingSettings',
         'flight_dates' => 'getFlightDates',
         'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
@@ -262,8 +251,7 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'name' => 'getName',
         'onsite_display' => 'getOnsiteDisplay',
         'retailer_id' => 'getRetailerId',
-        'serve_to_opt_out_user' => 'getServeToOptOutUser',
-        'sponsored_products' => 'getSponsoredProducts'
+        'serve_to_opt_out_user' => 'getServeToOptOutUser'
     ];
 
     /**
@@ -380,7 +368,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('budget_status', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('conquesting_settings', $data ?? [], null);
         $this->setIfExists('flight_dates', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
@@ -389,7 +376,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('onsite_display', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
-        $this->setIfExists('sponsored_products', $data ?? [], null);
     }
 
     /**
@@ -613,40 +599,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets conquesting_settings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ConquestingSettings|null
-     */
-    public function getConquestingSettings()
-    {
-        return $this->container['conquesting_settings'];
-    }
-
-    /**
-     * Sets conquesting_settings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ConquestingSettings|null $conquesting_settings conquesting_settings
-     *
-     * @return self
-     */
-    public function setConquestingSettings($conquesting_settings)
-    {
-        if (is_null($conquesting_settings)) {
-            array_push($this->openAPINullablesSetToNull, 'conquesting_settings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('conquesting_settings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['conquesting_settings'] = $conquesting_settings;
 
         return $this;
     }
@@ -929,40 +881,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['serve_to_opt_out_user'] = $serve_to_opt_out_user;
-
-        return $this;
-    }
-
-    /**
-     * Gets sponsored_products
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\SponsoredProductsAttributes|null
-     */
-    public function getSponsoredProducts()
-    {
-        return $this->container['sponsored_products'];
-    }
-
-    /**
-     * Sets sponsored_products
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\SponsoredProductsAttributes|null $sponsored_products sponsored_products
-     *
-     * @return self
-     */
-    public function setSponsoredProducts($sponsored_products)
-    {
-        if (is_null($sponsored_products)) {
-            array_push($this->openAPINullablesSetToNull, 'sponsored_products');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('sponsored_products', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['sponsored_products'] = $sponsored_products;
 
         return $this;
     }

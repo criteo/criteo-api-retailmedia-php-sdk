@@ -58,7 +58,7 @@ class ChangeHistoryEntryResponse implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'actor_role' => 'ActorRole',
+        'actor_role' => '\criteo\api\retailmedia\experimental\Model\ActorRole',
         'changes' => '\criteo\api\retailmedia\experimental\Model\ChangedField[]',
         'entity' => '\criteo\api\retailmedia\experimental\Model\ChangeHistoryEntryResponseEntity',
         'event_type' => 'string',
@@ -336,7 +336,7 @@ class ChangeHistoryEntryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets actor_role
      *
-     * @return ActorRole
+     * @return \criteo\api\retailmedia\experimental\Model\ActorRole
      */
     public function getActorRole()
     {
@@ -346,7 +346,7 @@ class ChangeHistoryEntryResponse implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets actor_role
      *
-     * @param ActorRole $actor_role Role label of the actor that performed the change. No user identifiers are exposed.
+     * @param \criteo\api\retailmedia\experimental\Model\ActorRole $actor_role actor_role
      *
      * @return self
      */

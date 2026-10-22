@@ -275,6 +275,9 @@ class SyncRealTimePerformanceReportRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class SyncRealTimePerformanceReportRequest implements ModelInterface, ArrayAcces
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\SyncRealTimePerformanceReportResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\SyncRealTimePerformanceReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class SyncRealTimePerformanceReportRequest implements ModelInterface, ArrayAcces
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\SyncRealTimePerformanceReportResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\SyncRealTimePerformanceReportResource $data data
      *
      * @return self
      */

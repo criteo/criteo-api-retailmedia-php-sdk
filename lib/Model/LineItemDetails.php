@@ -86,7 +86,7 @@ class LineItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'ad_content' => true,
 		'bidding' => true,
-		'core' => true,
+		'core' => false,
 		'targeting' => true
     ];
 
@@ -402,14 +402,7 @@ class LineItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCore($core)
     {
         if (is_null($core)) {
-            array_push($this->openAPINullablesSetToNull, 'core');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('core', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new \InvalidArgumentException('non-nullable core cannot be null');
         }
         $this->container['core'] = $core;
 

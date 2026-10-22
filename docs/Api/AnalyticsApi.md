@@ -24,7 +24,7 @@ generateAsyncAccountsReportV2($async_accounts_report_request): \criteo\api\retai
 
 /experimental/retail-media/reports/accounts
 
-Returns an asynchronous Accounts Report <br /> This endpoint is subject to specific rate limits.
+Returns an asynchronous Accounts Report  Returns 403 for access issues, such as when access to a requested account is refused. <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 
@@ -150,7 +150,7 @@ generateAsyncFillRateReport($async_fill_rate_report_request): \criteo\api\retail
 
 /experimental/retail-media/reports/fillrate
 
-Returns an asynchronous Fill Rate Report <br /> This endpoint is subject to specific rate limits.
+Returns an asynchronous Fill Rate Report  Returns 403 for access issues, such as when access to a requested account is refused. <br /> This endpoint is subject to specific rate limits.
 
 ### Example
 

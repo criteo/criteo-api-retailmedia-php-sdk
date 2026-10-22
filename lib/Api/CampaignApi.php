@@ -3906,9 +3906,8 @@ class CampaignApi
     /**
      * Operation getCampaign
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaign'] to see the possible values for this operation
      *
@@ -3916,18 +3915,17 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse
      */
-    public function getCampaign($account_id, $campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
+    public function getCampaign($campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
     {
-        list($response) = $this->getCampaignWithHttpInfo($account_id, $campaign_id, $contentType);
+        list($response) = $this->getCampaignWithHttpInfo($campaign_id, $contentType);
         return $response;
     }
 
     /**
      * Operation getCampaignWithHttpInfo
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaign'] to see the possible values for this operation
      *
@@ -3935,9 +3933,9 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return array of \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCampaignWithHttpInfo($account_id, $campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
+    public function getCampaignWithHttpInfo($campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
     {
-        $request = $this->getCampaignRequest($account_id, $campaign_id, $contentType);
+        $request = $this->getCampaignRequest($campaign_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4026,18 +4024,17 @@ class CampaignApi
     /**
      * Operation getCampaignAsync
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignAsync($account_id, $campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
+    public function getCampaignAsync($campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
     {
-        return $this->getCampaignAsyncWithHttpInfo($account_id, $campaign_id, $contentType)
+        return $this->getCampaignAsyncWithHttpInfo($campaign_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4048,19 +4045,18 @@ class CampaignApi
     /**
      * Operation getCampaignAsyncWithHttpInfo
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getCampaignAsyncWithHttpInfo($account_id, $campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
+    public function getCampaignAsyncWithHttpInfo($campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
     {
         $returnType = '\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse';
-        $request = $this->getCampaignRequest($account_id, $campaign_id, $contentType);
+        $request = $this->getCampaignRequest($campaign_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4101,22 +4097,14 @@ class CampaignApi
     /**
      * Create request for operation 'getCampaign'
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getCampaignRequest($account_id, $campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
+    public function getCampaignRequest($campaign_id, string $contentType = self::contentTypes['getCampaign'][0])
     {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getCampaign'
-            );
-        }
 
         // verify the required parameter 'campaign_id' is set
         if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
@@ -4126,7 +4114,7 @@ class CampaignApi
         }
 
 
-        $resourcePath = '/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}';
+        $resourcePath = '/experimental/retail-media/campaigns/{campaign-id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -4135,14 +4123,6 @@ class CampaignApi
 
 
 
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($campaign_id !== null) {
             $resourcePath = str_replace(
@@ -9324,40 +9304,38 @@ class CampaignApi
     /**
      * Operation updateCampaign
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest $campaign_update_model_request The campaign fields to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaign'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse
+     * @return \criteo\api\retailmedia\experimental\Model\CampaignModelResponse
      */
-    public function updateCampaign($account_id, $campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
+    public function updateCampaign($campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
     {
-        list($response) = $this->updateCampaignWithHttpInfo($account_id, $campaign_id, $campaign_update_model_request, $contentType);
+        list($response) = $this->updateCampaignWithHttpInfo($campaign_id, $campaign_update_model_request, $contentType);
         return $response;
     }
 
     /**
      * Operation updateCampaignWithHttpInfo
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest $campaign_update_model_request The campaign fields to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaign'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\CampaignModelResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCampaignWithHttpInfo($account_id, $campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
+    public function updateCampaignWithHttpInfo($campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
     {
-        $request = $this->updateCampaignRequest($account_id, $campaign_id, $campaign_update_model_request, $contentType);
+        $request = $this->updateCampaignRequest($campaign_id, $campaign_update_model_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9396,23 +9374,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\CampaignModelResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\CampaignModelResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\CampaignModelResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\CampaignModelResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9433,7 +9411,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse',
+                        '\criteo\api\retailmedia\experimental\Model\CampaignModelResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9446,9 +9424,8 @@ class CampaignApi
     /**
      * Operation updateCampaignAsync
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest $campaign_update_model_request The campaign fields to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaign'] to see the possible values for this operation
@@ -9456,9 +9433,9 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCampaignAsync($account_id, $campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
+    public function updateCampaignAsync($campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
     {
-        return $this->updateCampaignAsyncWithHttpInfo($account_id, $campaign_id, $campaign_update_model_request, $contentType)
+        return $this->updateCampaignAsyncWithHttpInfo($campaign_id, $campaign_update_model_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9469,9 +9446,8 @@ class CampaignApi
     /**
      * Operation updateCampaignAsyncWithHttpInfo
      *
-     * /experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}
+     * /experimental/retail-media/campaigns/{campaign-id}
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest $campaign_update_model_request The campaign fields to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaign'] to see the possible values for this operation
@@ -9479,10 +9455,10 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCampaignAsyncWithHttpInfo($account_id, $campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
+    public function updateCampaignAsyncWithHttpInfo($campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\CampaignResponseModelResponse';
-        $request = $this->updateCampaignRequest($account_id, $campaign_id, $campaign_update_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\CampaignModelResponse';
+        $request = $this->updateCampaignRequest($campaign_id, $campaign_update_model_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9523,7 +9499,6 @@ class CampaignApi
     /**
      * Create request for operation 'updateCampaign'
      *
-     * @param  string $account_id The external id of the account. (required)
      * @param  string $campaign_id The external id of the campaign. (required)
      * @param  \criteo\api\retailmedia\experimental\Model\CampaignUpdateModelRequest $campaign_update_model_request The campaign fields to update. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCampaign'] to see the possible values for this operation
@@ -9531,15 +9506,8 @@ class CampaignApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCampaignRequest($account_id, $campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
+    public function updateCampaignRequest($campaign_id, $campaign_update_model_request, string $contentType = self::contentTypes['updateCampaign'][0])
     {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling updateCampaign'
-            );
-        }
 
         // verify the required parameter 'campaign_id' is set
         if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
@@ -9556,7 +9524,7 @@ class CampaignApi
         }
 
 
-        $resourcePath = '/experimental/retail-media/accounts/{account-id}/campaigns/{campaign-id}';
+        $resourcePath = '/experimental/retail-media/campaigns/{campaign-id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9565,14 +9533,6 @@ class CampaignApi
 
 
 
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'account-id' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($campaign_id !== null) {
             $resourcePath = str_replace(
@@ -9987,16 +9947,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The line item id (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest $external_update_line_item_model_request Line item details (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest $external_patch_line_item_model_request Line item details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\LineItemResponse
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemResponseV2
      */
-    public function updateLineItem($line_item_id, $external_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    public function updateLineItem($line_item_id, $external_patch_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
     {
-        list($response) = $this->updateLineItemWithHttpInfo($line_item_id, $external_update_line_item_model_request, $contentType);
+        list($response) = $this->updateLineItemWithHttpInfo($line_item_id, $external_patch_line_item_model_request, $contentType);
         return $response;
     }
 
@@ -10006,16 +9966,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The line item id (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest $external_update_line_item_model_request Line item details (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest $external_patch_line_item_model_request Line item details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemResponseV2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateLineItemWithHttpInfo($line_item_id, $external_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    public function updateLineItemWithHttpInfo($line_item_id, $external_patch_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
     {
-        $request = $this->updateLineItemRequest($line_item_id, $external_update_line_item_model_request, $contentType);
+        $request = $this->updateLineItemRequest($line_item_id, $external_patch_line_item_model_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10054,23 +10014,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\LineItemResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemResponseV2' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\LineItemResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemResponseV2' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemResponseV2', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemResponseV2';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -10091,7 +10051,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\LineItemResponse',
+                        '\criteo\api\retailmedia\experimental\Model\LineItemResponseV2',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -10107,15 +10067,15 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The line item id (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest $external_update_line_item_model_request Line item details (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest $external_patch_line_item_model_request Line item details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLineItemAsync($line_item_id, $external_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    public function updateLineItemAsync($line_item_id, $external_patch_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
     {
-        return $this->updateLineItemAsyncWithHttpInfo($line_item_id, $external_update_line_item_model_request, $contentType)
+        return $this->updateLineItemAsyncWithHttpInfo($line_item_id, $external_patch_line_item_model_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10129,16 +10089,16 @@ class CampaignApi
      * /experimental/retail-media/line-items/{line-item-id}
      *
      * @param  string $line_item_id The line item id (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest $external_update_line_item_model_request Line item details (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest $external_patch_line_item_model_request Line item details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLineItemAsyncWithHttpInfo($line_item_id, $external_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    public function updateLineItemAsyncWithHttpInfo($line_item_id, $external_patch_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemResponse';
-        $request = $this->updateLineItemRequest($line_item_id, $external_update_line_item_model_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemResponseV2';
+        $request = $this->updateLineItemRequest($line_item_id, $external_patch_line_item_model_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10180,13 +10140,13 @@ class CampaignApi
      * Create request for operation 'updateLineItem'
      *
      * @param  string $line_item_id The line item id (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\ExternalUpdateLineItemModelRequest $external_update_line_item_model_request Line item details (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\ExternalPatchLineItemModelRequest $external_patch_line_item_model_request Line item details (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLineItem'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateLineItemRequest($line_item_id, $external_update_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
+    public function updateLineItemRequest($line_item_id, $external_patch_line_item_model_request, string $contentType = self::contentTypes['updateLineItem'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
@@ -10196,10 +10156,10 @@ class CampaignApi
             );
         }
 
-        // verify the required parameter 'external_update_line_item_model_request' is set
-        if ($external_update_line_item_model_request === null || (is_array($external_update_line_item_model_request) && count($external_update_line_item_model_request) === 0)) {
+        // verify the required parameter 'external_patch_line_item_model_request' is set
+        if ($external_patch_line_item_model_request === null || (is_array($external_patch_line_item_model_request) && count($external_patch_line_item_model_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $external_update_line_item_model_request when calling updateLineItem'
+                'Missing the required parameter $external_patch_line_item_model_request when calling updateLineItem'
             );
         }
 
@@ -10230,12 +10190,12 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (isset($external_update_line_item_model_request)) {
+        if (isset($external_patch_line_item_model_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($external_update_line_item_model_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($external_patch_line_item_model_request));
             } else {
-                $httpBody = $external_update_line_item_model_request;
+                $httpBody = $external_patch_line_item_model_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

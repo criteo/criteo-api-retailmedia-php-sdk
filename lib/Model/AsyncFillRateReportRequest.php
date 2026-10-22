@@ -275,6 +275,9 @@ class AsyncFillRateReportRequest implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class AsyncFillRateReportRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource|null
+     * @return \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class AsyncFillRateReportRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource|null $data data
+     * @param \criteo\api\retailmedia\experimental\Model\AsyncFillRateReportResource $data data
      *
      * @return self
      */
