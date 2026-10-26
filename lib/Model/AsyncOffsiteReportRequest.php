@@ -275,6 +275,9 @@ class AsyncOffsiteReportRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class AsyncOffsiteReportRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class AsyncOffsiteReportRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncOffsiteReportResource $data data
      *
      * @return self
      */

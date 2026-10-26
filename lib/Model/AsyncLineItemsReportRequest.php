@@ -275,6 +275,9 @@ class AsyncLineItemsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class AsyncLineItemsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportResource|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class AsyncLineItemsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportResource|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncLineItemsReportResource $data data
      *
      * @return self
      */

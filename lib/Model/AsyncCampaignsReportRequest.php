@@ -275,6 +275,9 @@ class AsyncCampaignsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class AsyncCampaignsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportResource|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class AsyncCampaignsReportRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportResource|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncCampaignsReportResource $data data
      *
      * @return self
      */

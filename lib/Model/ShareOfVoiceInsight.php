@@ -274,6 +274,10 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     public const AGGREGATION_LEVEL_CATEGORY = 'category';
     public const AGGREGATION_LEVEL_KEYWORD = 'keyword';
     public const DIMENSIONS_DATE = 'date';
+    public const DIMENSIONS_WEEK = 'week';
+    public const DIMENSIONS_MONTH = 'month';
+    public const DIMENSIONS_QUARTER = 'quarter';
+    public const DIMENSIONS_YEAR = 'year';
     public const DIMENSIONS_ACCOUNT_ID = 'accountId';
     public const DIMENSIONS_ACCOUNT_NAME = 'accountName';
     public const DIMENSIONS_RETAILER_ID = 'retailerId';
@@ -345,6 +349,10 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         return [
             self::DIMENSIONS_DATE,
+            self::DIMENSIONS_WEEK,
+            self::DIMENSIONS_MONTH,
+            self::DIMENSIONS_QUARTER,
+            self::DIMENSIONS_YEAR,
             self::DIMENSIONS_ACCOUNT_ID,
             self::DIMENSIONS_ACCOUNT_NAME,
             self::DIMENSIONS_RETAILER_ID,
@@ -603,7 +611,7 @@ class ShareOfVoiceInsight implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets dimensions
      *
-     * @param string[] $dimensions Dimensions to report on.
+     * @param string[] $dimensions Dimensions to report on. `week`, `month`, `quarter` and `year` return the first day of the period  (weeks start on Monday), which may be earlier than `startDate`; values cover only the requested range.
      *
      * @return self
      */

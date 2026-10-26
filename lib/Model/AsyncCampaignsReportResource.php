@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * AsyncCampaignsReportResource Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value
+ * @description A report request resource containing its type and required attributes.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -282,6 +282,9 @@ class AsyncCampaignsReportResource implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +303,7 @@ class AsyncCampaignsReportResource implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncCampaignsReport|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncCampaignsReport
      */
     public function getAttributes()
     {
@@ -310,7 +313,7 @@ class AsyncCampaignsReportResource implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncCampaignsReport|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\AsyncCampaignsReport $attributes attributes
      *
      * @return self
      */

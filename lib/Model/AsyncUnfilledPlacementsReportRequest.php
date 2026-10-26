@@ -275,6 +275,9 @@ class AsyncUnfilledPlacementsReportRequest implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['data'] === null) {
+            $invalidProperties[] = "'data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -293,7 +296,7 @@ class AsyncUnfilledPlacementsReportRequest implements ModelInterface, ArrayAcces
     /**
      * Gets data
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource
      */
     public function getData()
     {
@@ -303,7 +306,7 @@ class AsyncUnfilledPlacementsReportRequest implements ModelInterface, ArrayAcces
     /**
      * Sets data
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource|null $data data
+     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReportResource $data data
      *
      * @return self
      */

@@ -35,7 +35,7 @@ use \criteo\api\retailmedia\preview\ObjectSerializer;
  * AsyncUnfilledPlacementsReportResource Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API response for a single value
+ * @description A report request resource containing its type and required attributes.
  * @package  criteo\api\retailmedia\preview
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -282,6 +282,9 @@ class AsyncUnfilledPlacementsReportResource implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
+        if ($this->container['attributes'] === null) {
+            $invalidProperties[] = "'attributes' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +303,7 @@ class AsyncUnfilledPlacementsReportResource implements ModelInterface, ArrayAcce
     /**
      * Gets attributes
      *
-     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport|null
+     * @return \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport
      */
     public function getAttributes()
     {
@@ -310,7 +313,7 @@ class AsyncUnfilledPlacementsReportResource implements ModelInterface, ArrayAcce
     /**
      * Sets attributes
      *
-     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport|null $attributes attributes
+     * @param \criteo\api\retailmedia\preview\Model\AsyncUnfilledPlacementsReport $attributes attributes
      *
      * @return self
      */

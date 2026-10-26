@@ -330,6 +330,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
     public const DIMENSIONS_ADV_ENGAGEMENT = 'advEngagement';
     public const DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP = 'advToPurchasedProductRelationship';
     public const DIMENSIONS_SALES_CHANNEL = 'salesChannel';
+    public const DIMENSIONS_RETAILER_ID = 'retailerId';
     public const DIMENSIONS_RETAILER_NAME = 'retailerName';
     public const DIMENSIONS_PAGE_TYPE_NAME = 'pageTypeName';
     public const DIMENSIONS_KEYWORD = 'keyword';
@@ -412,6 +413,7 @@ class SyncAttributedTransactionsReport implements ModelInterface, ArrayAccess, \
             self::DIMENSIONS_ADV_ENGAGEMENT,
             self::DIMENSIONS_ADV_TO_PURCHASED_PRODUCT_RELATIONSHIP,
             self::DIMENSIONS_SALES_CHANNEL,
+            self::DIMENSIONS_RETAILER_ID,
             self::DIMENSIONS_RETAILER_NAME,
             self::DIMENSIONS_PAGE_TYPE_NAME,
             self::DIMENSIONS_KEYWORD,
