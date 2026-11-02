@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **account_id** | **string** |  |
 **attribution_settings** | [**\criteo\api\retailmedia\experimental\Model\AttributionSettingsModel**](AttributionSettingsModel.md) |  |
 **bill_by_retailer_id** | **string** |  | [optional]
-**budget** | [**\criteo\api\retailmedia\experimental\Model\CampaignBudgetModel**](CampaignBudgetModel.md) |  | [optional]
+**budget_details** | [**\criteo\api\retailmedia\experimental\Model\CampaignBudgetModel**](CampaignBudgetModel.md) |  | [optional]
 **buy_type** | **string** | Buy type of campaign, set only on creation. |
 **campaign_type** | **string** | Type of campaign, set only on creation. |
 **company_name** | **string** |  | [optional]

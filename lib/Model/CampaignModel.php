@@ -61,7 +61,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'string',
         'attribution_settings' => '\criteo\api\retailmedia\experimental\Model\AttributionSettingsModel',
         'bill_by_retailer_id' => 'string',
-        'budget' => '\criteo\api\retailmedia\experimental\Model\CampaignBudgetModel',
+        'budget_details' => '\criteo\api\retailmedia\experimental\Model\CampaignBudgetModel',
         'buy_type' => 'string',
         'campaign_type' => 'string',
         'company_name' => 'string',
@@ -87,7 +87,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => null,
         'attribution_settings' => null,
         'bill_by_retailer_id' => null,
-        'budget' => null,
+        'budget_details' => null,
         'buy_type' => null,
         'campaign_type' => null,
         'company_name' => null,
@@ -111,7 +111,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => true,
 		'attribution_settings' => true,
 		'bill_by_retailer_id' => true,
-		'budget' => true,
+		'budget_details' => true,
 		'buy_type' => true,
 		'campaign_type' => true,
 		'company_name' => true,
@@ -215,7 +215,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'accountId',
         'attribution_settings' => 'attributionSettings',
         'bill_by_retailer_id' => 'billByRetailerId',
-        'budget' => 'budget',
+        'budget_details' => 'budgetDetails',
         'buy_type' => 'buyType',
         'campaign_type' => 'campaignType',
         'company_name' => 'companyName',
@@ -239,7 +239,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'setAccountId',
         'attribution_settings' => 'setAttributionSettings',
         'bill_by_retailer_id' => 'setBillByRetailerId',
-        'budget' => 'setBudget',
+        'budget_details' => 'setBudgetDetails',
         'buy_type' => 'setBuyType',
         'campaign_type' => 'setCampaignType',
         'company_name' => 'setCompanyName',
@@ -263,7 +263,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'getAccountId',
         'attribution_settings' => 'getAttributionSettings',
         'bill_by_retailer_id' => 'getBillByRetailerId',
-        'budget' => 'getBudget',
+        'budget_details' => 'getBudgetDetails',
         'buy_type' => 'getBuyType',
         'campaign_type' => 'getCampaignType',
         'company_name' => 'getCompanyName',
@@ -431,7 +431,7 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('attribution_settings', $data ?? [], null);
         $this->setIfExists('bill_by_retailer_id', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('budget_details', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
@@ -636,35 +636,35 @@ class CampaignModel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets budget
+     * Gets budget_details
      *
      * @return \criteo\api\retailmedia\experimental\Model\CampaignBudgetModel|null
      */
-    public function getBudget()
+    public function getBudgetDetails()
     {
-        return $this->container['budget'];
+        return $this->container['budget_details'];
     }
 
     /**
-     * Sets budget
+     * Sets budget_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\CampaignBudgetModel|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\CampaignBudgetModel|null $budget_details budget_details
      *
      * @return self
      */
-    public function setBudget($budget)
+    public function setBudgetDetails($budget_details)
     {
-        if (is_null($budget)) {
-            array_push($this->openAPINullablesSetToNull, 'budget');
+        if (is_null($budget_details)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('budget', $nullablesSetToNull);
+            $index = array_search('budget_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['budget'] = $budget;
+        $this->container['budget_details'] = $budget_details;
 
         return $this;
     }

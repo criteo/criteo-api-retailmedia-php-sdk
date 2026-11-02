@@ -60,7 +60,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'attribution_settings' => '\criteo\api\retailmedia\experimental\Model\AttributionSettingsCreateModel',
         'bill_by_retailer_id' => 'string',
-        'budget' => '\criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel',
+        'budget_details' => '\criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel',
         'buy_type' => 'string',
         'campaign_type' => 'string',
         'company_name' => 'string',
@@ -82,7 +82,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPIFormats = [
         'attribution_settings' => null,
         'bill_by_retailer_id' => null,
-        'budget' => null,
+        'budget_details' => null,
         'buy_type' => null,
         'campaign_type' => null,
         'company_name' => null,
@@ -102,7 +102,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static array $openAPINullables = [
         'attribution_settings' => false,
 		'bill_by_retailer_id' => true,
-		'budget' => false,
+		'budget_details' => false,
 		'buy_type' => false,
 		'campaign_type' => false,
 		'company_name' => true,
@@ -202,7 +202,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $attributeMap = [
         'attribution_settings' => 'attributionSettings',
         'bill_by_retailer_id' => 'billByRetailerId',
-        'budget' => 'budget',
+        'budget_details' => 'budgetDetails',
         'buy_type' => 'buyType',
         'campaign_type' => 'campaignType',
         'company_name' => 'companyName',
@@ -222,7 +222,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $setters = [
         'attribution_settings' => 'setAttributionSettings',
         'bill_by_retailer_id' => 'setBillByRetailerId',
-        'budget' => 'setBudget',
+        'budget_details' => 'setBudgetDetails',
         'buy_type' => 'setBuyType',
         'campaign_type' => 'setCampaignType',
         'company_name' => 'setCompanyName',
@@ -242,7 +242,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $getters = [
         'attribution_settings' => 'getAttributionSettings',
         'bill_by_retailer_id' => 'getBillByRetailerId',
-        'budget' => 'getBudget',
+        'budget_details' => 'getBudgetDetails',
         'buy_type' => 'getBuyType',
         'campaign_type' => 'getCampaignType',
         'company_name' => 'getCompanyName',
@@ -375,7 +375,7 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('attribution_settings', $data ?? [], null);
         $this->setIfExists('bill_by_retailer_id', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('budget_details', $data ?? [], null);
         $this->setIfExists('buy_type', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
@@ -414,8 +414,8 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['budget'] === null) {
-            $invalidProperties[] = "'budget' can't be null";
+        if ($this->container['budget_details'] === null) {
+            $invalidProperties[] = "'budget_details' can't be null";
         }
         if ($this->container['buy_type'] === null) {
             $invalidProperties[] = "'buy_type' can't be null";
@@ -553,28 +553,28 @@ class CampaignCreateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets budget
+     * Gets budget_details
      *
      * @return \criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel
      */
-    public function getBudget()
+    public function getBudgetDetails()
     {
-        return $this->container['budget'];
+        return $this->container['budget_details'];
     }
 
     /**
-     * Sets budget
+     * Sets budget_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel $budget_details budget_details
      *
      * @return self
      */
-    public function setBudget($budget)
+    public function setBudgetDetails($budget_details)
     {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+        if (is_null($budget_details)) {
+            throw new \InvalidArgumentException('non-nullable budget_details cannot be null');
         }
-        $this->container['budget'] = $budget;
+        $this->container['budget_details'] = $budget_details;
 
         return $this;
     }

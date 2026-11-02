@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribution_settings** | [**\criteo\api\retailmedia\experimental\Model\AttributionSettingsUpdateModel**](AttributionSettingsUpdateModel.md) |  | [optional]
-**budget** | [**\criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel**](DynamicBudgetUpdateModel.md) |  | [optional]
+**budget_details** | [**\criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel**](DynamicBudgetUpdateModel.md) |  | [optional]
 **company_name** | [**\criteo\api\retailmedia\experimental\Model\StringNillableV2**](StringNillableV2.md) |  | [optional]
 **name** | **string** |  | [optional]
 **on_behalf_company_name** | [**\criteo\api\retailmedia\experimental\Model\StringNillableV2**](StringNillableV2.md) |  | [optional]

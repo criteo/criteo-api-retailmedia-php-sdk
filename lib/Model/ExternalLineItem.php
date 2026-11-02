@@ -60,7 +60,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'budget_status' => 'string',
         'campaign_id' => 'string',
-        'conquesting_settings' => '\criteo\api\retailmedia\experimental\Model\ExternalConquestingSettings',
         'effective_flight_dates' => '\criteo\api\retailmedia\experimental\Model\ExternalFlightDatesModel',
         'is_paused' => 'bool',
         'line_item_id' => 'string',
@@ -81,7 +80,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'budget_status' => null,
         'campaign_id' => null,
-        'conquesting_settings' => null,
         'effective_flight_dates' => null,
         'is_paused' => null,
         'line_item_id' => null,
@@ -100,7 +98,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'budget_status' => true,
 		'campaign_id' => true,
-		'conquesting_settings' => true,
 		'effective_flight_dates' => true,
 		'is_paused' => true,
 		'line_item_id' => true,
@@ -199,7 +196,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'budget_status' => 'budgetStatus',
         'campaign_id' => 'campaignId',
-        'conquesting_settings' => 'conquestingSettings',
         'effective_flight_dates' => 'effectiveFlightDates',
         'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
@@ -218,7 +214,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'budget_status' => 'setBudgetStatus',
         'campaign_id' => 'setCampaignId',
-        'conquesting_settings' => 'setConquestingSettings',
         'effective_flight_dates' => 'setEffectiveFlightDates',
         'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
@@ -237,7 +232,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'budget_status' => 'getBudgetStatus',
         'campaign_id' => 'getCampaignId',
-        'conquesting_settings' => 'getConquestingSettings',
         'effective_flight_dates' => 'getEffectiveFlightDates',
         'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
@@ -345,7 +339,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('budget_status', $data ?? [], null);
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('conquesting_settings', $data ?? [], null);
         $this->setIfExists('effective_flight_dates', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
@@ -490,40 +483,6 @@ class ExternalLineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets conquesting_settings
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ExternalConquestingSettings|null
-     */
-    public function getConquestingSettings()
-    {
-        return $this->container['conquesting_settings'];
-    }
-
-    /**
-     * Sets conquesting_settings
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ExternalConquestingSettings|null $conquesting_settings conquesting_settings
-     *
-     * @return self
-     */
-    public function setConquestingSettings($conquesting_settings)
-    {
-        if (is_null($conquesting_settings)) {
-            array_push($this->openAPINullablesSetToNull, 'conquesting_settings');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('conquesting_settings', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['conquesting_settings'] = $conquesting_settings;
 
         return $this;
     }

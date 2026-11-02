@@ -97,12 +97,12 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
         'account_ids' => false,
 		'campaign_ids' => false,
 		'dimensions' => false,
-		'end_date' => false,
+		'end_date' => true,
 		'line_item_ids' => false,
 		'metrics' => false,
 		'retailer_ids' => false,
 		'start_date' => false,
-		'timezone' => false
+		'timezone' => true
     ];
 
     /**
@@ -507,7 +507,14 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     public function setEndDate($end_date)
     {
         if (is_null($end_date)) {
-            throw new \InvalidArgumentException('non-nullable end_date cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'end_date');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('end_date', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['end_date'] = $end_date;
 
@@ -651,7 +658,14 @@ class SyncRealTimePerformanceReport implements ModelInterface, ArrayAccess, \Jso
     public function setTimezone($timezone)
     {
         if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'timezone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timezone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['timezone'] = $timezone;
 

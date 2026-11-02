@@ -58,8 +58,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'auction_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAuctionLineItemDetails',
-        'frequency_capping' => '\criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel'
+        'auction_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAuctionLineItemDetails'
     ];
 
     /**
@@ -70,8 +69,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'auction_details' => null,
-        'frequency_capping' => null
+        'auction_details' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'auction_details' => true,
-		'frequency_capping' => true
+        'auction_details' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'auction_details' => 'auctionDetails',
-        'frequency_capping' => 'frequencyCapping'
+        'auction_details' => 'auctionDetails'
     ];
 
     /**
@@ -180,8 +176,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'auction_details' => 'setAuctionDetails',
-        'frequency_capping' => 'setFrequencyCapping'
+        'auction_details' => 'setAuctionDetails'
     ];
 
     /**
@@ -190,8 +185,7 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'auction_details' => 'getAuctionDetails',
-        'frequency_capping' => 'getFrequencyCapping'
+        'auction_details' => 'getAuctionDetails'
     ];
 
     /**
@@ -252,7 +246,6 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
     public function __construct(array $data = null)
     {
         $this->setIfExists('auction_details', $data ?? [], null);
-        $this->setIfExists('frequency_capping', $data ?? [], null);
     }
 
     /**
@@ -327,40 +320,6 @@ class OnsiteDisplayLineItemDetails implements ModelInterface, ArrayAccess, \Json
             }
         }
         $this->container['auction_details'] = $auction_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets frequency_capping
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null
-     */
-    public function getFrequencyCapping()
-    {
-        return $this->container['frequency_capping'];
-    }
-
-    /**
-     * Sets frequency_capping
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null $frequency_capping frequency_capping
-     *
-     * @return self
-     */
-    public function setFrequencyCapping($frequency_capping)
-    {
-        if (is_null($frequency_capping)) {
-            array_push($this->openAPINullablesSetToNull, 'frequency_capping');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('frequency_capping', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['frequency_capping'] = $frequency_capping;
 
         return $this;
     }

@@ -58,8 +58,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'product_ids' => 'string[]',
-        'product_type' => 'string'
+        'product_ids' => 'string[]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'product_ids' => null,
-        'product_type' => null
+        'product_ids' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'product_ids' => true,
-		'product_type' => false
+        'product_ids' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'product_ids' => 'productIds',
-        'product_type' => 'productType'
+        'product_ids' => 'productIds'
     ];
 
     /**
@@ -180,8 +176,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'product_ids' => 'setProductIds',
-        'product_type' => 'setProductType'
+        'product_ids' => 'setProductIds'
     ];
 
     /**
@@ -190,8 +185,7 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'product_ids' => 'getProductIds',
-        'product_type' => 'getProductType'
+        'product_ids' => 'getProductIds'
     ];
 
     /**
@@ -235,23 +229,6 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
-    public const PRODUCT_TYPE_UNKNOWN = 'Unknown';
-    public const PRODUCT_TYPE_DISPLAY_PRODUCT = 'DisplayProduct';
-    public const PRODUCT_TYPE_SPONSORED_PRODUCT = 'SponsoredProduct';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getProductTypeAllowableValues()
-    {
-        return [
-            self::PRODUCT_TYPE_UNKNOWN,
-            self::PRODUCT_TYPE_DISPLAY_PRODUCT,
-            self::PRODUCT_TYPE_SPONSORED_PRODUCT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -269,7 +246,6 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->setIfExists('product_ids', $data ?? [], null);
-        $this->setIfExists('product_type', $data ?? [], null);
     }
 
     /**
@@ -298,18 +274,6 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if ($this->container['product_type'] === null) {
-            $invalidProperties[] = "'product_type' can't be null";
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!is_null($this->container['product_type']) && !in_array($this->container['product_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'product_type', must be one of '%s'",
-                $this->container['product_type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -356,43 +320,6 @@ class DeleteLineItemProductsInput implements ModelInterface, ArrayAccess, \JsonS
             }
         }
         $this->container['product_ids'] = $product_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets product_type
-     *
-     * @return string
-     */
-    public function getProductType()
-    {
-        return $this->container['product_type'];
-    }
-
-    /**
-     * Sets product_type
-     *
-     * @param string $product_type The type of the products being deleted.
-     *
-     * @return self
-     */
-    public function setProductType($product_type)
-    {
-        if (is_null($product_type)) {
-            throw new \InvalidArgumentException('non-nullable product_type cannot be null');
-        }
-        $allowedValues = $this->getProductTypeAllowableValues();
-        if (!in_array($product_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'product_type', must be one of '%s'",
-                    $product_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['product_type'] = $product_type;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'attribution_settings' => '\criteo\api\retailmedia\experimental\Model\AttributionSettingsUpdateModel',
-        'budget' => '\criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel',
+        'budget_details' => '\criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel',
         'company_name' => '\criteo\api\retailmedia\experimental\Model\StringNillableV2',
         'name' => 'string',
         'on_behalf_company_name' => '\criteo\api\retailmedia\experimental\Model\StringNillableV2',
@@ -75,7 +75,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'attribution_settings' => null,
-        'budget' => null,
+        'budget_details' => null,
         'company_name' => null,
         'name' => null,
         'on_behalf_company_name' => null,
@@ -89,7 +89,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'attribution_settings' => false,
-		'budget' => false,
+		'budget_details' => false,
 		'company_name' => false,
 		'name' => true,
 		'on_behalf_company_name' => false,
@@ -183,7 +183,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'attribution_settings' => 'attributionSettings',
-        'budget' => 'budget',
+        'budget_details' => 'budgetDetails',
         'company_name' => 'companyName',
         'name' => 'name',
         'on_behalf_company_name' => 'onBehalfCompanyName',
@@ -197,7 +197,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'attribution_settings' => 'setAttributionSettings',
-        'budget' => 'setBudget',
+        'budget_details' => 'setBudgetDetails',
         'company_name' => 'setCompanyName',
         'name' => 'setName',
         'on_behalf_company_name' => 'setOnBehalfCompanyName',
@@ -211,7 +211,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'attribution_settings' => 'getAttributionSettings',
-        'budget' => 'getBudget',
+        'budget_details' => 'getBudgetDetails',
         'company_name' => 'getCompanyName',
         'name' => 'getName',
         'on_behalf_company_name' => 'getOnBehalfCompanyName',
@@ -276,7 +276,7 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public function __construct(array $data = null)
     {
         $this->setIfExists('attribution_settings', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('budget_details', $data ?? [], null);
         $this->setIfExists('company_name', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('on_behalf_company_name', $data ?? [], null);
@@ -353,28 +353,28 @@ class CampaignUpdateModel implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
-     * Gets budget
+     * Gets budget_details
      *
      * @return \criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel|null
      */
-    public function getBudget()
+    public function getBudgetDetails()
     {
-        return $this->container['budget'];
+        return $this->container['budget_details'];
     }
 
     /**
-     * Sets budget
+     * Sets budget_details
      *
-     * @param \criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel|null $budget budget
+     * @param \criteo\api\retailmedia\experimental\Model\DynamicBudgetUpdateModel|null $budget_details budget_details
      *
      * @return self
      */
-    public function setBudget($budget)
+    public function setBudgetDetails($budget_details)
     {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
+        if (is_null($budget_details)) {
+            throw new \InvalidArgumentException('non-nullable budget_details cannot be null');
         }
-        $this->container['budget'] = $budget;
+        $this->container['budget_details'] = $budget_details;
 
         return $this;
     }

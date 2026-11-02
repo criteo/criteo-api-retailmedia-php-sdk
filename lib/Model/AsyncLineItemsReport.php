@@ -120,22 +120,22 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
 		'budget_models' => false,
 		'buy_types' => false,
 		'campaign_type' => false,
-		'click_attribution_window' => false,
+		'click_attribution_window' => true,
 		'dimensions' => false,
 		'end_date' => false,
 		'format' => false,
-		'id' => false,
+		'id' => true,
 		'ids' => false,
 		'media_type' => false,
 		'metrics' => false,
-		'report_type' => false,
+		'report_type' => true,
 		'sales_channel' => false,
 		'search_term_targetings' => false,
 		'search_term_types' => false,
 		'start_date' => false,
 		'targeted_keyword_types' => false,
-		'timezone' => false,
-		'view_attribution_window' => false
+		'timezone' => true,
+		'view_attribution_window' => true
     ];
 
     /**
@@ -1076,10 +1076,17 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setClickAttributionWindow($click_attribution_window)
     {
         if (is_null($click_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable click_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'click_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('click_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getClickAttributionWindowAllowableValues();
-        if (!in_array($click_attribution_window, $allowedValues, true)) {
+        if (!is_null($click_attribution_window) && !in_array($click_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'click_attribution_window', must be one of '%s'",
@@ -1213,7 +1220,14 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setId($id)
     {
         if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['id'] = $id;
 
@@ -1340,10 +1354,17 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setReportType($report_type)
     {
         if (is_null($report_type)) {
-            throw new \InvalidArgumentException('non-nullable report_type cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'report_type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('report_type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getReportTypeAllowableValues();
-        if (!in_array($report_type, $allowedValues, true)) {
+        if (!is_null($report_type) && !in_array($report_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'report_type', must be one of '%s'",
@@ -1549,7 +1570,14 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setTimezone($timezone)
     {
         if (is_null($timezone)) {
-            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'timezone');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('timezone', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['timezone'] = $timezone;
 
@@ -1576,10 +1604,17 @@ class AsyncLineItemsReport implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setViewAttributionWindow($view_attribution_window)
     {
         if (is_null($view_attribution_window)) {
-            throw new \InvalidArgumentException('non-nullable view_attribution_window cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'view_attribution_window');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('view_attribution_window', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $allowedValues = $this->getViewAttributionWindowAllowableValues();
-        if (!in_array($view_attribution_window, $allowedValues, true)) {
+        if (!is_null($view_attribution_window) && !in_array($view_attribution_window, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'view_attribution_window', must be one of '%s'",

@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **pacing** | [**\criteo\api\retailmedia\experimental\Model\PacingModel**](PacingModel.md) |  | [optional]
 **remaining** | **float** | Amount left under the cap. Null when the campaign is uncapped. | [optional]
 **spent** | **float** | Amount spent so far. | [optional]
+**status** | **string** | Which budget cap, if any, stops the campaign from spending. Omitted when no status is indexed, Unknown when the indexed one is not recognized. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

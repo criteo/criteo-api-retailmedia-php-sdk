@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **attribution_settings** | [**\criteo\api\retailmedia\experimental\Model\AttributionSettingsCreateModel**](AttributionSettingsCreateModel.md) |  | [optional]
 **bill_by_retailer_id** | **string** |  | [optional]
-**budget** | [**\criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel**](DynamicBudgetCreateModel.md) |  |
+**budget_details** | [**\criteo\api\retailmedia\experimental\Model\DynamicBudgetCreateModel**](DynamicBudgetCreateModel.md) |  |
 **buy_type** | **string** | Buy type of campaign, set only on creation. Auction is the only buy type currently supported. |
 **campaign_type** | **string** | Type of campaign, set only on creation. |
 **company_name** | **string** |  | [optional]

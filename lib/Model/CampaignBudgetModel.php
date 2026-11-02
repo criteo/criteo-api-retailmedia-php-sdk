@@ -63,7 +63,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         'memo' => 'string',
         'pacing' => '\criteo\api\retailmedia\experimental\Model\PacingModel',
         'remaining' => 'float',
-        'spent' => 'float'
+        'spent' => 'float',
+        'status' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         'memo' => null,
         'pacing' => null,
         'remaining' => 'double',
-        'spent' => 'double'
+        'spent' => 'double',
+        'status' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
 		'memo' => true,
 		'pacing' => true,
 		'remaining' => true,
-		'spent' => true
+		'spent' => true,
+		'status' => true
     ];
 
     /**
@@ -187,7 +190,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         'memo' => 'memo',
         'pacing' => 'pacing',
         'remaining' => 'remaining',
-        'spent' => 'spent'
+        'spent' => 'spent',
+        'status' => 'status'
     ];
 
     /**
@@ -201,7 +205,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         'memo' => 'setMemo',
         'pacing' => 'setPacing',
         'remaining' => 'setRemaining',
-        'spent' => 'setSpent'
+        'spent' => 'setSpent',
+        'status' => 'setStatus'
     ];
 
     /**
@@ -215,7 +220,8 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         'memo' => 'getMemo',
         'pacing' => 'getPacing',
         'remaining' => 'getRemaining',
-        'spent' => 'getSpent'
+        'spent' => 'getSpent',
+        'status' => 'getStatus'
     ];
 
     /**
@@ -259,6 +265,27 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const STATUS_UNKNOWN = 'Unknown';
+    public const STATUS_BUDGET_AVAILABLE = 'BudgetAvailable';
+    public const STATUS_DAILY_BUDGET_REACHED = 'DailyBudgetReached';
+    public const STATUS_MONTHLY_BUDGET_REACHED = 'MonthlyBudgetReached';
+    public const STATUS_TOTAL_BUDGET_REACHED = 'TotalBudgetReached';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_UNKNOWN,
+            self::STATUS_BUDGET_AVAILABLE,
+            self::STATUS_DAILY_BUDGET_REACHED,
+            self::STATUS_MONTHLY_BUDGET_REACHED,
+            self::STATUS_TOTAL_BUDGET_REACHED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,6 +308,7 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('pacing', $data ?? [], null);
         $this->setIfExists('remaining', $data ?? [], null);
         $this->setIfExists('spent', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
     }
 
     /**
@@ -309,6 +337,15 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -525,6 +562,50 @@ class CampaignBudgetModel implements ModelInterface, ArrayAccess, \JsonSerializa
             }
         }
         $this->container['spent'] = $spent;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status Which budget cap, if any, stops the campaign from spending. Omitted when no status is indexed, Unknown when the indexed one is not recognized.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
