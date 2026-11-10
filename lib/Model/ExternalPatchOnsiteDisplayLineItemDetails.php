@@ -58,8 +58,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'auction_details' => '\criteo\api\retailmedia\experimental\Model\ExternalPatchOnsiteDisplayAuctionLineItemDetails',
-        'frequency_capping' => '\criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModelNillableV2'
+        'auction_details' => '\criteo\api\retailmedia\experimental\Model\ExternalPatchOnsiteDisplayAuctionLineItemDetails'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'auction_details' => null,
-        'frequency_capping' => null
+        'auction_details' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'auction_details' => false,
-		'frequency_capping' => false
+        'auction_details' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'auction_details' => 'auctionDetails',
-        'frequency_capping' => 'frequencyCapping'
+        'auction_details' => 'auctionDetails'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'auction_details' => 'setAuctionDetails',
-        'frequency_capping' => 'setFrequencyCapping'
+        'auction_details' => 'setAuctionDetails'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'auction_details' => 'getAuctionDetails',
-        'frequency_capping' => 'getFrequencyCapping'
+        'auction_details' => 'getAuctionDetails'
     ];
 
     /**
@@ -252,7 +246,6 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
     public function __construct(array $data = null)
     {
         $this->setIfExists('auction_details', $data ?? [], null);
-        $this->setIfExists('frequency_capping', $data ?? [], null);
     }
 
     /**
@@ -320,33 +313,6 @@ class ExternalPatchOnsiteDisplayLineItemDetails implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable auction_details cannot be null');
         }
         $this->container['auction_details'] = $auction_details;
-
-        return $this;
-    }
-
-    /**
-     * Gets frequency_capping
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModelNillableV2|null
-     */
-    public function getFrequencyCapping()
-    {
-        return $this->container['frequency_capping'];
-    }
-
-    /**
-     * Sets frequency_capping
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModelNillableV2|null $frequency_capping frequency_capping
-     *
-     * @return self
-     */
-    public function setFrequencyCapping($frequency_capping)
-    {
-        if (is_null($frequency_capping)) {
-            throw new \InvalidArgumentException('non-nullable frequency_capping cannot be null');
-        }
-        $this->container['frequency_capping'] = $frequency_capping;
 
         return $this;
     }

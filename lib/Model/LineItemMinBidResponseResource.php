@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalFrequencyCappingModelNillableV2
+ * LineItemMinBidResponseResource
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ExternalFrequencyCappingModelNillableV2 Class Doc Comment
+ * LineItemMinBidResponseResource Class Doc Comment
  *
  * @category Class
- * @description Wraps an update value. Omit the containing property to leave it unchanged, or set &#x60;value&#x60; to null to remove the existing value.
+ * @description A value resource exposed by the API.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemMinBidResponseResource implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalFrequencyCappingModelNillableV2';
+    protected static $openAPIModelName = 'LineItemMinBidResponseResource';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'value' => '\criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel'
+        'attributes' => '\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponse',
+        'type' => 'string'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'value' => null
+        'attributes' => null,
+        'type' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'value' => true
+        'attributes' => true,
+		'type' => true
     ];
 
     /**
@@ -167,7 +170,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'value' => 'value'
+        'attributes' => 'attributes',
+        'type' => 'type'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'value' => 'setValue'
+        'attributes' => 'setAttributes',
+        'type' => 'setType'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'value' => 'getValue'
+        'attributes' => 'getAttributes',
+        'type' => 'getType'
     ];
 
     /**
@@ -245,7 +251,8 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('value', $data ?? [], null);
+        $this->setIfExists('attributes', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
     }
 
     /**
@@ -291,35 +298,69 @@ class ExternalFrequencyCappingModelNillableV2 implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets value
+     * Gets attributes
      *
-     * @return \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBidResponse|null
      */
-    public function getValue()
+    public function getAttributes()
     {
-        return $this->container['value'];
+        return $this->container['attributes'];
     }
 
     /**
-     * Sets value
+     * Sets attributes
      *
-     * @param \criteo\api\retailmedia\experimental\Model\ExternalFrequencyCappingModel|null $value value
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemMinBidResponse|null $attributes attributes
      *
      * @return self
      */
-    public function setValue($value)
+    public function setAttributes($attributes)
     {
-        if (is_null($value)) {
-            array_push($this->openAPINullablesSetToNull, 'value');
+        if (is_null($attributes)) {
+            array_push($this->openAPINullablesSetToNull, 'attributes');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('value', $nullablesSetToNull);
+            $index = array_search('attributes', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['value'] = $value;
+        $this->container['attributes'] = $attributes;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type of the resource.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            array_push($this->openAPINullablesSetToNull, 'type');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('type', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }

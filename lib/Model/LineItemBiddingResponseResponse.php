@@ -1,6 +1,6 @@
 <?php
 /**
- * PageTypeMinBid
+ * LineItemBiddingResponseResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * PageTypeMinBid Class Doc Comment
+ * LineItemBiddingResponseResponse Class Doc Comment
  *
  * @category Class
- * @description Represents minimum bidding guidance for one page type configured on a line item.
+ * @description A top-level object that encapsulates a Criteo API response for a single value object.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemBiddingResponseResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PageTypeMinBid';
+    protected static $openAPIModelName = 'LineItemBiddingResponseResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'min_bid' => 'float',
-        'page_type' => 'string',
-        'recommended_min_bid' => 'float'
+        'data' => '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResource',
+        'errors' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]',
+        'warnings' => '\criteo\api\retailmedia\experimental\Model\CommonProblem[]'
     ];
 
     /**
@@ -71,9 +71,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'min_bid' => 'double',
-        'page_type' => null,
-        'recommended_min_bid' => 'double'
+        'data' => null,
+        'errors' => null,
+        'warnings' => null
     ];
 
     /**
@@ -82,9 +82,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'min_bid' => false,
-		'page_type' => false,
-		'recommended_min_bid' => true
+        'data' => true,
+		'errors' => true,
+		'warnings' => true
     ];
 
     /**
@@ -173,9 +173,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'min_bid' => 'minBid',
-        'page_type' => 'pageType',
-        'recommended_min_bid' => 'recommendedMinBid'
+        'data' => 'data',
+        'errors' => 'errors',
+        'warnings' => 'warnings'
     ];
 
     /**
@@ -184,9 +184,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'min_bid' => 'setMinBid',
-        'page_type' => 'setPageType',
-        'recommended_min_bid' => 'setRecommendedMinBid'
+        'data' => 'setData',
+        'errors' => 'setErrors',
+        'warnings' => 'setWarnings'
     ];
 
     /**
@@ -195,9 +195,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'min_bid' => 'getMinBid',
-        'page_type' => 'getPageType',
-        'recommended_min_bid' => 'getRecommendedMinBid'
+        'data' => 'getData',
+        'errors' => 'getErrors',
+        'warnings' => 'getWarnings'
     ];
 
     /**
@@ -241,45 +241,6 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const PAGE_TYPE_UNKNOWN = 'Unknown';
-    public const PAGE_TYPE_SEARCH = 'Search';
-    public const PAGE_TYPE_HOME = 'Home';
-    public const PAGE_TYPE_BROWSE = 'Browse';
-    public const PAGE_TYPE_CHECKOUT = 'Checkout';
-    public const PAGE_TYPE_CATEGORY = 'Category';
-    public const PAGE_TYPE_PRODUCT_DETAIL = 'ProductDetail';
-    public const PAGE_TYPE_CONFIRMATION = 'Confirmation';
-    public const PAGE_TYPE_MERCHANDISING = 'Merchandising';
-    public const PAGE_TYPE_DEALS = 'Deals';
-    public const PAGE_TYPE_FAVORITES = 'Favorites';
-    public const PAGE_TYPE_SEARCH_BAR = 'SearchBar';
-    public const PAGE_TYPE_CATEGORY_MENU = 'CategoryMenu';
-    public const PAGE_TYPE_AI_ASSISTANT = 'AiAssistant';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPageTypeAllowableValues()
-    {
-        return [
-            self::PAGE_TYPE_UNKNOWN,
-            self::PAGE_TYPE_SEARCH,
-            self::PAGE_TYPE_HOME,
-            self::PAGE_TYPE_BROWSE,
-            self::PAGE_TYPE_CHECKOUT,
-            self::PAGE_TYPE_CATEGORY,
-            self::PAGE_TYPE_PRODUCT_DETAIL,
-            self::PAGE_TYPE_CONFIRMATION,
-            self::PAGE_TYPE_MERCHANDISING,
-            self::PAGE_TYPE_DEALS,
-            self::PAGE_TYPE_FAVORITES,
-            self::PAGE_TYPE_SEARCH_BAR,
-            self::PAGE_TYPE_CATEGORY_MENU,
-            self::PAGE_TYPE_AI_ASSISTANT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -296,9 +257,9 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('min_bid', $data ?? [], null);
-        $this->setIfExists('page_type', $data ?? [], null);
-        $this->setIfExists('recommended_min_bid', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('errors', $data ?? [], null);
+        $this->setIfExists('warnings', $data ?? [], null);
     }
 
     /**
@@ -328,21 +289,6 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['min_bid'] === null) {
-            $invalidProperties[] = "'min_bid' can't be null";
-        }
-        if ($this->container['page_type'] === null) {
-            $invalidProperties[] = "'page_type' can't be null";
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!is_null($this->container['page_type']) && !in_array($this->container['page_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'page_type', must be one of '%s'",
-                $this->container['page_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -359,99 +305,103 @@ class PageTypeMinBid implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets min_bid
+     * Gets data
      *
-     * @return float
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResource|null
      */
-    public function getMinBid()
+    public function getData()
     {
-        return $this->container['min_bid'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets min_bid
+     * Sets data
      *
-     * @param float $min_bid The inclusive minimum valid bid in the line item's currency.
+     * @param \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResource|null $data data
      *
      * @return self
      */
-    public function setMinBid($min_bid)
+    public function setData($data)
     {
-        if (is_null($min_bid)) {
-            throw new \InvalidArgumentException('non-nullable min_bid cannot be null');
-        }
-        $this->container['min_bid'] = $min_bid;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_type
-     *
-     * @return string
-     */
-    public function getPageType()
-    {
-        return $this->container['page_type'];
-    }
-
-    /**
-     * Sets page_type
-     *
-     * @param string $page_type The page type to which the bidding guidance applies.
-     *
-     * @return self
-     */
-    public function setPageType($page_type)
-    {
-        if (is_null($page_type)) {
-            throw new \InvalidArgumentException('non-nullable page_type cannot be null');
-        }
-        $allowedValues = $this->getPageTypeAllowableValues();
-        if (!in_array($page_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'page_type', must be one of '%s'",
-                    $page_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['page_type'] = $page_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets recommended_min_bid
-     *
-     * @return float|null
-     */
-    public function getRecommendedMinBid()
-    {
-        return $this->container['recommended_min_bid'];
-    }
-
-    /**
-     * Sets recommended_min_bid
-     *
-     * @param float|null $recommended_min_bid The bid below which validation emits a low-bid warning in the line item's currency.
-     *
-     * @return self
-     */
-    public function setRecommendedMinBid($recommended_min_bid)
-    {
-        if (is_null($recommended_min_bid)) {
-            array_push($this->openAPINullablesSetToNull, 'recommended_min_bid');
+        if (is_null($data)) {
+            array_push($this->openAPINullablesSetToNull, 'data');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('recommended_min_bid', $nullablesSetToNull);
+            $index = array_search('data', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['recommended_min_bid'] = $recommended_min_bid;
+        $this->container['data'] = $data;
+
+        return $this;
+    }
+
+    /**
+     * Gets errors
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     */
+    public function getErrors()
+    {
+        return $this->container['errors'];
+    }
+
+    /**
+     * Sets errors
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $errors Errors that occured during this call.
+     *
+     * @return self
+     */
+    public function setErrors($errors)
+    {
+        if (is_null($errors)) {
+            array_push($this->openAPINullablesSetToNull, 'errors');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('errors', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['errors'] = $errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets warnings
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null
+     */
+    public function getWarnings()
+    {
+        return $this->container['warnings'];
+    }
+
+    /**
+     * Sets warnings
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CommonProblem[]|null $warnings Warnings that occured during this call.
+     *
+     * @return self
+     */
+    public function setWarnings($warnings)
+    {
+        if (is_null($warnings)) {
+            array_push($this->openAPINullablesSetToNull, 'warnings');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('warnings', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['warnings'] = $warnings;
 
         return $this;
     }

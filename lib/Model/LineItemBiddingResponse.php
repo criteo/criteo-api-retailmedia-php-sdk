@@ -1,6 +1,6 @@
 <?php
 /**
- * ExternalFrequencyCappingModel
+ * LineItemBiddingResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * ExternalFrequencyCappingModel Class Doc Comment
+ * LineItemBiddingResponse Class Doc Comment
  *
  * @category Class
- * @description How often a single user may be shown the line item&#39;s ads.
+ * @description Represents the external bidding configuration for a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemBiddingResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExternalFrequencyCappingModel';
+    protected static $openAPIModelName = 'LineItemBiddingResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'capping_count' => 'int',
-        'capping_duration_type' => 'string'
+        'max_bid' => 'float'
     ];
 
     /**
@@ -70,8 +69,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'capping_count' => 'int32',
-        'capping_duration_type' => null
+        'max_bid' => 'double'
     ];
 
     /**
@@ -80,8 +78,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'capping_count' => true,
-		'capping_duration_type' => true
+        'max_bid' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'capping_count' => 'cappingCount',
-        'capping_duration_type' => 'cappingDurationType'
+        'max_bid' => 'maxBid'
     ];
 
     /**
@@ -180,8 +176,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'capping_count' => 'setCappingCount',
-        'capping_duration_type' => 'setCappingDurationType'
+        'max_bid' => 'setMaxBid'
     ];
 
     /**
@@ -190,8 +185,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'capping_count' => 'getCappingCount',
-        'capping_duration_type' => 'getCappingDurationType'
+        'max_bid' => 'getMaxBid'
     ];
 
     /**
@@ -235,23 +229,6 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const CAPPING_DURATION_TYPE_UNKNOWN = 'Unknown';
-    public const CAPPING_DURATION_TYPE_SESSION = 'Session';
-    public const CAPPING_DURATION_TYPE_DAY = 'Day';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCappingDurationTypeAllowableValues()
-    {
-        return [
-            self::CAPPING_DURATION_TYPE_UNKNOWN,
-            self::CAPPING_DURATION_TYPE_SESSION,
-            self::CAPPING_DURATION_TYPE_DAY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -268,8 +245,7 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('capping_count', $data ?? [], null);
-        $this->setIfExists('capping_duration_type', $data ?? [], null);
+        $this->setIfExists('max_bid', $data ?? [], null);
     }
 
     /**
@@ -299,15 +275,6 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getCappingDurationTypeAllowableValues();
-        if (!is_null($this->container['capping_duration_type']) && !in_array($this->container['capping_duration_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'capping_duration_type', must be one of '%s'",
-                $this->container['capping_duration_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -324,79 +291,35 @@ class ExternalFrequencyCappingModel implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets capping_count
+     * Gets max_bid
      *
-     * @return int|null
+     * @return float|null
      */
-    public function getCappingCount()
+    public function getMaxBid()
     {
-        return $this->container['capping_count'];
+        return $this->container['max_bid'];
     }
 
     /**
-     * Sets capping_count
+     * Sets max_bid
      *
-     * @param int|null $capping_count How many times the ads may be shown within the duration.
+     * @param float|null $max_bid The maximum bid that the Adaptive strategy may use.
      *
      * @return self
      */
-    public function setCappingCount($capping_count)
+    public function setMaxBid($max_bid)
     {
-        if (is_null($capping_count)) {
-            array_push($this->openAPINullablesSetToNull, 'capping_count');
+        if (is_null($max_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'max_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('capping_count', $nullablesSetToNull);
+            $index = array_search('max_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['capping_count'] = $capping_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets capping_duration_type
-     *
-     * @return string|null
-     */
-    public function getCappingDurationType()
-    {
-        return $this->container['capping_duration_type'];
-    }
-
-    /**
-     * Sets capping_duration_type
-     *
-     * @param string|null $capping_duration_type The period the count applies to.
-     *
-     * @return self
-     */
-    public function setCappingDurationType($capping_duration_type)
-    {
-        if (is_null($capping_duration_type)) {
-            array_push($this->openAPINullablesSetToNull, 'capping_duration_type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('capping_duration_type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $allowedValues = $this->getCappingDurationTypeAllowableValues();
-        if (!is_null($capping_duration_type) && !in_array($capping_duration_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'capping_duration_type', must be one of '%s'",
-                    $capping_duration_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['capping_duration_type'] = $capping_duration_type;
+        $this->container['max_bid'] = $max_bid;
 
         return $this;
     }

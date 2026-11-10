@@ -1,6 +1,6 @@
 <?php
 /**
- * BiddingSettingsResource
+ * LineItemBiddingRequest
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BiddingSettingsResource Class Doc Comment
+ * LineItemBiddingRequest Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description Represents the external bidding configuration to apply to a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemBiddingRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BiddingSettingsResource';
+    protected static $openAPIModelName = 'LineItemBiddingRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\BiddingSettings',
-        'type' => 'string'
+        'max_bid' => 'float'
     ];
 
     /**
@@ -70,8 +69,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'max_bid' => 'double'
     ];
 
     /**
@@ -80,8 +78,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'type' => true
+        'max_bid' => true
     ];
 
     /**
@@ -170,8 +167,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'max_bid' => 'maxBid'
     ];
 
     /**
@@ -180,8 +176,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'max_bid' => 'setMaxBid'
     ];
 
     /**
@@ -190,8 +185,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'max_bid' => 'getMaxBid'
     ];
 
     /**
@@ -251,8 +245,7 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('max_bid', $data ?? [], null);
     }
 
     /**
@@ -298,69 +291,35 @@ class BiddingSettingsResource implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets attributes
+     * Gets max_bid
      *
-     * @return \criteo\api\retailmedia\experimental\Model\BiddingSettings|null
+     * @return float|null
      */
-    public function getAttributes()
+    public function getMaxBid()
     {
-        return $this->container['attributes'];
+        return $this->container['max_bid'];
     }
 
     /**
-     * Sets attributes
+     * Sets max_bid
      *
-     * @param \criteo\api\retailmedia\experimental\Model\BiddingSettings|null $attributes attributes
+     * @param float|null $max_bid The maximum bid to set for the Adaptive strategy.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setMaxBid($max_bid)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
+        if (is_null($max_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'max_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
+            $index = array_search('max_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
+        $this->container['max_bid'] = $max_bid;
 
         return $this;
     }

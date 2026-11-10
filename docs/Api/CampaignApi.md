@@ -16,14 +16,14 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**deleteTargetsByLineItemId()**](CampaignApi.md#deleteTargetsByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/targets/delete | /experimental/retail-media/line-items/{line-item-id}/targets/delete |
 | [**fetchCreatives()**](CampaignApi.md#fetchCreatives) | **GET** /experimental/retail-media/line-items/{line-item-id}/creatives | /experimental/retail-media/line-items/{line-item-id}/creatives |
 | [**fetchProducts()**](CampaignApi.md#fetchProducts) | **GET** /experimental/retail-media/line-items/{line-item-id}/products | /experimental/retail-media/line-items/{line-item-id}/products |
-| [**getBiddingStrategyByLineItemId()**](CampaignApi.md#getBiddingStrategyByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/bidding-strategy |
+| [**getBiddingByLineItemId()**](CampaignApi.md#getBiddingByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/bidding | /experimental/retail-media/line-items/{line-item-id}/bidding |
 | [**getCampaign()**](CampaignApi.md#getCampaign) | **GET** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
 | [**getCapoutHistory()**](CampaignApi.md#getCapoutHistory) | **POST** /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history | /experimental/retail-media/accounts/{account-id}/line-items/cap-out-history |
 | [**getCatalogStatus()**](CampaignApi.md#getCatalogStatus) | **GET** /experimental/retail-media/catalogs/{catalogId}/status | /experimental/retail-media/catalogs/{catalogId}/status |
 | [**getCreative()**](CampaignApi.md#getCreative) | **GET** /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} | /experimental/retail-media/accounts/{account-id}/creatives/{creative-id} |
 | [**getExternalLineItemChecks()**](CampaignApi.md#getExternalLineItemChecks) | **GET** /experimental/retail-media/diagnostics/line-item-checks | /experimental/retail-media/diagnostics/line-item-checks |
 | [**getLineItem()**](CampaignApi.md#getLineItem) | **GET** /experimental/retail-media/line-items/{line-item-id} | /experimental/retail-media/line-items/{line-item-id} |
-| [**getMinBidsByLineItemId()**](CampaignApi.md#getMinBidsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bids | /experimental/retail-media/line-items/{line-item-id}/min-bids |
+| [**getMinBidByLineItemId()**](CampaignApi.md#getMinBidByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/min-bid | /experimental/retail-media/line-items/{line-item-id}/min-bid |
 | [**getTargetsByLineItemId()**](CampaignApi.md#getTargetsByLineItemId) | **GET** /experimental/retail-media/line-items/{line-item-id}/targets | /experimental/retail-media/line-items/{line-item-id}/targets |
 | [**lineItemsDemandSearch()**](CampaignApi.md#lineItemsDemandSearch) | **POST** /experimental/retail-media/line-items/demand-search | /experimental/retail-media/line-items/demand-search |
 | [**lineItemsSupplySearch()**](CampaignApi.md#lineItemsSupplySearch) | **POST** /experimental/retail-media/line-items/supply-search | /experimental/retail-media/line-items/supply-search |
@@ -33,7 +33,7 @@ All URIs are relative to https://api.criteo.com, except if the operation defines
 | [**searchAccountCreativesEnriched()**](CampaignApi.md#searchAccountCreativesEnriched) | **POST** /experimental/retail-media/accounts/{account-id}/creatives/search-enriched | /experimental/retail-media/accounts/{account-id}/creatives/search-enriched |
 | [**searchAccountRetailers()**](CampaignApi.md#searchAccountRetailers) | **POST** /experimental/retail-media/accounts/{accountId}/retailers/search | /experimental/retail-media/accounts/{accountId}/retailers/search |
 | [**searchCampaigns()**](CampaignApi.md#searchCampaigns) | **POST** /experimental/retail-media/accounts/{account-id}/campaigns/search | /experimental/retail-media/accounts/{account-id}/campaigns/search |
-| [**setBiddingStrategyByLineItemId()**](CampaignApi.md#setBiddingStrategyByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy | /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy |
+| [**setBiddingByLineItemId()**](CampaignApi.md#setBiddingByLineItemId) | **POST** /experimental/retail-media/line-items/{line-item-id}/set-bidding | /experimental/retail-media/line-items/{line-item-id}/set-bidding |
 | [**submitLineItem()**](CampaignApi.md#submitLineItem) | **POST** /experimental/retail-media/line-items/{line-item-id}/submit | /experimental/retail-media/line-items/{line-item-id}/submit |
 | [**updateAuctionLineItem()**](CampaignApi.md#updateAuctionLineItem) | **PUT** /experimental/retail-media/auction-line-items/{lineItemId} | /experimental/retail-media/auction-line-items/{lineItemId} |
 | [**updateCampaign()**](CampaignApi.md#updateCampaign) | **PATCH** /experimental/retail-media/campaigns/{campaign-id} | /experimental/retail-media/campaigns/{campaign-id} |
@@ -52,7 +52,7 @@ addProducts($line_item_id, $add_line_item_products_list_request): \criteo\api\re
 
 /experimental/retail-media/line-items/{line-item-id}/products/add
 
-Add products to a line item.
+Add products to a line item. <br />    Add products to a line item. The add is all-or-nothing.
 
 ### Example
 
@@ -312,7 +312,7 @@ createLineItem($external_create_line_item_model_request): \criteo\api\retailmedi
 
 /experimental/retail-media/line-items
 
-Create a new line item.
+Create a line item. <br />    Creates the line item under its parent campaign, then sets up its dynamic budgets when the campaign requires  them. If setting up the dynamic budgets fails, the request fails and the line item that was created is renamed  with a [FAILED] prefix.
 
 ### Example
 
@@ -505,7 +505,7 @@ deleteCreatives($line_item_id, $delete_line_item_creatives_request): \criteo\api
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/delete
 
-Delete creatives and their product collections from a line item.
+Delete creatives from a line item. <br />    Delete creatives and their product collections from a line item.
 
 ### Example
 
@@ -570,7 +570,7 @@ deleteProducts($line_item_id, $delete_line_item_products_list_request): \criteo\
 
 /experimental/retail-media/line-items/{line-item-id}/products/delete
 
-Delete products from a line item.
+Delete products from a line item. <br />    Delete products from a line item. The products are soft deleted.
 
 ### Example
 
@@ -700,7 +700,7 @@ fetchCreatives($line_item_id): \criteo\api\retailmedia\experimental\Model\LineIt
 
 /experimental/retail-media/line-items/{line-item-id}/creatives
 
-Retrieve the creatives and product collections associated with a line item.
+Retrieve the creatives and product collections associated with a line item. <br />    Returns each creative of the line item with its product collections.
 
 ### Example
 
@@ -763,7 +763,7 @@ fetchProducts($line_item_id, $limit, $offset): \criteo\api\retailmedia\experimen
 
 /experimental/retail-media/line-items/{line-item-id}/products
 
-Retrieve a page of products configured on a line item.
+Fetch the products of a line item. <br />    Retrieve a page of products configured on a line item.
 
 ### Example
 
@@ -822,15 +822,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getBiddingStrategyByLineItemId()`
+## `getBiddingByLineItemId()`
 
 ```php
-getBiddingStrategyByLineItemId($line_item_id): \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse
+getBiddingByLineItemId($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse
 ```
 
-/experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+/experimental/retail-media/line-items/{line-item-id}/bidding
 
-Returns the current bidding configuration for a Display auction line item, including the active  bidding strategy and any preserved Standard and Adaptive strategy settings. Other line item types are  not currently supported by this endpoint.
+Returns the Adaptive bidding configuration of a line item under an adaptive budget campaign.
 
 ### Example
 
@@ -852,13 +852,13 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose bidding settings are requested.
+$line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose bidding is requested.
 
 try {
-    $result = $apiInstance->getBiddingStrategyByLineItemId($line_item_id);
+    $result = $apiInstance->getBiddingByLineItemId($line_item_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getBiddingStrategyByLineItemId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getBiddingByLineItemId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -866,11 +866,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| The identifier of the line item whose bidding settings are requested. | |
+| **line_item_id** | **string**| The identifier of the line item whose bidding is requested. | |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse**](../Model/BiddingSettingsResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse**](../Model/LineItemBiddingResponseResponse.md)
 
 ### Authorization
 
@@ -1216,7 +1216,7 @@ getLineItem($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemD
 
 /experimental/retail-media/line-items/{line-item-id}
 
-Retrieves a consolidated line item view from the line item domain services.
+Get a line item. <br />    Returns the line item with its bidding settings, products, creatives and targets. A part that cannot be retrieved is left out and  reported as a warning.
 
 ### Example
 
@@ -1271,15 +1271,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getMinBidsByLineItemId()`
+## `getMinBidByLineItemId()`
 
 ```php
-getMinBidsByLineItemId($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse
+getMinBidByLineItemId($line_item_id): \criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse
 ```
 
-/experimental/retail-media/line-items/{line-item-id}/min-bids
+/experimental/retail-media/line-items/{line-item-id}/min-bid
 
-Returns page-type minimum bids and derived bidding thresholds for a Display auction line item.
+Returns the Adaptive minimum bid guidance of a line item.
 
 ### Example
 
@@ -1304,10 +1304,10 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
 $line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose minimum bids are requested.
 
 try {
-    $result = $apiInstance->getMinBidsByLineItemId($line_item_id);
+    $result = $apiInstance->getMinBidByLineItemId($line_item_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->getMinBidsByLineItemId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->getMinBidByLineItemId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1319,7 +1319,7 @@ try {
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse**](../Model/LineItemMinBidsResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse**](../Model/LineItemMinBidResponseResponse.md)
 
 ### Authorization
 
@@ -1409,7 +1409,7 @@ lineItemsDemandSearch($demand_search_request): \criteo\api\retailmedia\experimen
 
 /experimental/retail-media/line-items/demand-search
 
-Search line items accessible from demand accounts.
+Search line items of demand accounts. <br />    Search line items accessible from demand accounts.
 
 ### Example
 
@@ -1472,7 +1472,7 @@ lineItemsSupplySearch($supply_search_request): \criteo\api\retailmedia\experimen
 
 /experimental/retail-media/line-items/supply-search
 
-Search line items accessible from a supply account and its retailers.
+Search line items of a supply account. <br />    Search line items accessible from a supply account and its retailers.
 
 ### Example
 
@@ -1564,7 +1564,7 @@ $entity_types = array('entity_types_example'); // string[] | Restrict results to
 $event_types = array('event_types_example'); // string[] | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
 $limit = 25; // int | Maximum number of change-history entries to return in a single page.
 $line_item_ids = array('line_item_ids_example'); // string[] | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.
-$offset = 0; // int | Zero-based index of the first change-history entry to return.
+$offset = 0; // int | Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history.
 $start_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
 
 try {
@@ -1586,7 +1586,7 @@ try {
 | **event_types** | [**string[]**](../Model/string.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
 | **limit** | **int**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
 | **line_item_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. | [optional] |
-| **offset** | **int**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **offset** | **int**| Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. | [optional] [default to 0] |
 | **start_time** | **\DateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
 
 ### Return type
@@ -1643,7 +1643,7 @@ $entity_types = array('entity_types_example'); // string[] | Restrict results to
 $event_types = array('event_types_example'); // string[] | Restrict results to specific change-event types (see `eventType`). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array.
 $limit = 25; // int | Maximum number of change-history entries to return in a single page.
 $line_item_ids = array('line_item_ids_example'); // string[] | When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller's retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array.
-$offset = 0; // int | Zero-based index of the first change-history entry to return.
+$offset = 0; // int | Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history.
 $start_time = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted.
 
 try {
@@ -1665,7 +1665,7 @@ try {
 | **event_types** | [**string[]**](../Model/string.md)| Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. | [optional] |
 | **limit** | **int**| Maximum number of change-history entries to return in a single page. | [optional] [default to 25] |
 | **line_item_ids** | [**string[]**](../Model/string.md)| When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. | [optional] |
-| **offset** | **int**| Zero-based index of the first change-history entry to return. | [optional] [default to 0] |
+| **offset** | **int**| Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. | [optional] [default to 0] |
 | **start_time** | **\DateTime**| Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. | [optional] |
 
 ### Return type
@@ -1957,15 +1957,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `setBiddingStrategyByLineItemId()`
+## `setBiddingByLineItemId()`
 
 ```php
-setBiddingStrategyByLineItemId($line_item_id, $bidding_settings_request): \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse
+setBiddingByLineItemId($line_item_id, $line_item_bidding_request_request): \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse
 ```
 
-/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+/experimental/retail-media/line-items/{line-item-id}/set-bidding
 
-Replaces the submitted Standard page-type bids and updates the supplied strategy settings. Omitted  settings are preserved. Other line item types are not currently supported by this endpoint.
+Sets the Adaptive bidding configuration of a line item under an adaptive budget campaign.
 
 ### Example
 
@@ -1987,14 +1987,14 @@ $apiInstance = new criteo\api\retailmedia\experimental\Api\CampaignApi(
     new GuzzleHttp\Client(),
     $config
 );
-$line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose bidding settings are being updated.
-$bidding_settings_request = new \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest(); // \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest | The bidding settings to apply.
+$line_item_id = 'line_item_id_example'; // string | The identifier of the line item whose bidding is being set.
+$line_item_bidding_request_request = new \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest(); // \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest | The bidding configuration to apply.
 
 try {
-    $result = $apiInstance->setBiddingStrategyByLineItemId($line_item_id, $bidding_settings_request);
+    $result = $apiInstance->setBiddingByLineItemId($line_item_id, $line_item_bidding_request_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CampaignApi->setBiddingStrategyByLineItemId: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CampaignApi->setBiddingByLineItemId: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -2002,12 +2002,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **line_item_id** | **string**| The identifier of the line item whose bidding settings are being updated. | |
-| **bidding_settings_request** | [**\criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest**](../Model/BiddingSettingsRequest.md)| The bidding settings to apply. | [optional] |
+| **line_item_id** | **string**| The identifier of the line item whose bidding is being set. | |
+| **line_item_bidding_request_request** | [**\criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest**](../Model/LineItemBiddingRequestRequest.md)| The bidding configuration to apply. | [optional] |
 
 ### Return type
 
-[**\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse**](../Model/BiddingSettingsResponse.md)
+[**\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse**](../Model/LineItemBiddingResponseResponse.md)
 
 ### Authorization
 
@@ -2291,7 +2291,7 @@ updateLineItem($line_item_id, $external_patch_line_item_model_request): \criteo\
 
 /experimental/retail-media/line-items/{line-item-id}
 
-Update an existing line item.
+Update a line item. <br />    Updates the supplied fields of an existing line item. Omitted fields are left unchanged.
 
 ### Example
 
@@ -2486,7 +2486,7 @@ upsertCreatives($line_item_id, $upsert_line_item_creatives_request): \criteo\api
 
 /experimental/retail-media/line-items/{line-item-id}/creatives/upsert
 
-Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item's proposal.
+Add or update creatives on a line item. <br />    Resolves each supplied stable creative identifier to its latest revision and  associates those revisions with the line item's proposal.
 
 ### Example
 

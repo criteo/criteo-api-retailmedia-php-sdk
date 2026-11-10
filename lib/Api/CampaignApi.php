@@ -107,7 +107,7 @@ class CampaignApi
         'fetchProducts' => [
             'application/json',
         ],
-        'getBiddingStrategyByLineItemId' => [
+        'getBiddingByLineItemId' => [
             'application/json',
         ],
         'getCampaign' => [
@@ -128,7 +128,7 @@ class CampaignApi
         'getLineItem' => [
             'application/json',
         ],
-        'getMinBidsByLineItemId' => [
+        'getMinBidByLineItemId' => [
             'application/json',
         ],
         'getTargetsByLineItemId' => [
@@ -158,7 +158,7 @@ class CampaignApi
         'searchCampaigns' => [
             'application/json',
         ],
-        'setBiddingStrategyByLineItemId' => [
+        'setBiddingByLineItemId' => [
             'application/json',
         ],
         'submitLineItem' => [
@@ -3926,38 +3926,38 @@ class CampaignApi
     }
 
     /**
-     * Operation getBiddingStrategyByLineItemId
+     * Operation getBiddingByLineItemId
      *
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is requested. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse
      */
-    public function getBiddingStrategyByLineItemId($line_item_id, string $contentType = self::contentTypes['getBiddingStrategyByLineItemId'][0])
+    public function getBiddingByLineItemId($line_item_id, string $contentType = self::contentTypes['getBiddingByLineItemId'][0])
     {
-        list($response) = $this->getBiddingStrategyByLineItemIdWithHttpInfo($line_item_id, $contentType);
+        list($response) = $this->getBiddingByLineItemIdWithHttpInfo($line_item_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getBiddingStrategyByLineItemIdWithHttpInfo
+     * Operation getBiddingByLineItemIdWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is requested. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBiddingStrategyByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getBiddingStrategyByLineItemId'][0])
+    public function getBiddingByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getBiddingByLineItemId'][0])
     {
-        $request = $this->getBiddingStrategyByLineItemIdRequest($line_item_id, $contentType);
+        $request = $this->getBiddingByLineItemIdRequest($line_item_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3996,23 +3996,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -4033,7 +4033,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse',
+                        '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4044,19 +4044,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getBiddingStrategyByLineItemIdAsync
+     * Operation getBiddingByLineItemIdAsync
      *
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is requested. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBiddingStrategyByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getBiddingStrategyByLineItemId'][0])
+    public function getBiddingByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getBiddingByLineItemId'][0])
     {
-        return $this->getBiddingStrategyByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
+        return $this->getBiddingByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4065,20 +4065,20 @@ class CampaignApi
     }
 
     /**
-     * Operation getBiddingStrategyByLineItemIdAsyncWithHttpInfo
+     * Operation getBiddingByLineItemIdAsyncWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is requested. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBiddingStrategyByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getBiddingStrategyByLineItemId'][0])
+    public function getBiddingByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getBiddingByLineItemId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse';
-        $request = $this->getBiddingStrategyByLineItemIdRequest($line_item_id, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse';
+        $request = $this->getBiddingByLineItemIdRequest($line_item_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4117,26 +4117,26 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getBiddingStrategyByLineItemId'
+     * Create request for operation 'getBiddingByLineItemId'
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is requested. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBiddingStrategyByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getBiddingStrategyByLineItemId'][0])
+    public function getBiddingByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getBiddingByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getBiddingStrategyByLineItemId'
+                'Missing the required parameter $line_item_id when calling getBiddingByLineItemId'
             );
         }
 
 
-        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/bidding-strategy';
+        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/bidding';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -6027,38 +6027,38 @@ class CampaignApi
     }
 
     /**
-     * Operation getMinBidsByLineItemId
+     * Operation getMinBidByLineItemId
      *
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
      *
      * @param  string $line_item_id The identifier of the line item whose minimum bids are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidsByLineItemId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse
      */
-    public function getMinBidsByLineItemId($line_item_id, string $contentType = self::contentTypes['getMinBidsByLineItemId'][0])
+    public function getMinBidByLineItemId($line_item_id, string $contentType = self::contentTypes['getMinBidByLineItemId'][0])
     {
-        list($response) = $this->getMinBidsByLineItemIdWithHttpInfo($line_item_id, $contentType);
+        list($response) = $this->getMinBidByLineItemIdWithHttpInfo($line_item_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getMinBidsByLineItemIdWithHttpInfo
+     * Operation getMinBidByLineItemIdWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
      *
      * @param  string $line_item_id The identifier of the line item whose minimum bids are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidsByLineItemId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMinBidsByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getMinBidsByLineItemId'][0])
+    public function getMinBidByLineItemIdWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getMinBidByLineItemId'][0])
     {
-        $request = $this->getMinBidsByLineItemIdRequest($line_item_id, $contentType);
+        $request = $this->getMinBidByLineItemIdRequest($line_item_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6097,23 +6097,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -6134,7 +6134,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse',
+                        '\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6145,19 +6145,19 @@ class CampaignApi
     }
 
     /**
-     * Operation getMinBidsByLineItemIdAsync
+     * Operation getMinBidByLineItemIdAsync
      *
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
      *
      * @param  string $line_item_id The identifier of the line item whose minimum bids are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidsByLineItemId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMinBidsByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getMinBidsByLineItemId'][0])
+    public function getMinBidByLineItemIdAsync($line_item_id, string $contentType = self::contentTypes['getMinBidByLineItemId'][0])
     {
-        return $this->getMinBidsByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
+        return $this->getMinBidByLineItemIdAsyncWithHttpInfo($line_item_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6166,20 +6166,20 @@ class CampaignApi
     }
 
     /**
-     * Operation getMinBidsByLineItemIdAsyncWithHttpInfo
+     * Operation getMinBidByLineItemIdAsyncWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/min-bids
+     * /experimental/retail-media/line-items/{line-item-id}/min-bid
      *
      * @param  string $line_item_id The identifier of the line item whose minimum bids are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidsByLineItemId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMinBidsByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getMinBidsByLineItemId'][0])
+    public function getMinBidByLineItemIdAsyncWithHttpInfo($line_item_id, string $contentType = self::contentTypes['getMinBidByLineItemId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemMinBidsResponse';
-        $request = $this->getMinBidsByLineItemIdRequest($line_item_id, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemMinBidResponseResponse';
+        $request = $this->getMinBidByLineItemIdRequest($line_item_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6218,26 +6218,26 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'getMinBidsByLineItemId'
+     * Create request for operation 'getMinBidByLineItemId'
      *
      * @param  string $line_item_id The identifier of the line item whose minimum bids are requested. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidsByLineItemId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMinBidByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getMinBidsByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getMinBidsByLineItemId'][0])
+    public function getMinBidByLineItemIdRequest($line_item_id, string $contentType = self::contentTypes['getMinBidByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling getMinBidsByLineItemId'
+                'Missing the required parameter $line_item_id when calling getMinBidByLineItemId'
             );
         }
 
 
-        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/min-bids';
+        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/min-bid';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -7230,7 +7230,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7256,7 +7256,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7364,7 +7364,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7393,7 +7393,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7451,7 +7451,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s account access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7480,6 +7480,9 @@ class CampaignApi
         }
         
 
+        if ($offset !== null && $offset > 9999) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listAccountChangeHistoryEntries, must be smaller than or equal to 9999.');
+        }
         if ($offset !== null && $offset < 0) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listAccountChangeHistoryEntries, must be bigger than or equal to 0.');
         }
@@ -7650,7 +7653,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7676,7 +7679,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7784,7 +7787,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7813,7 +7816,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7871,7 +7874,7 @@ class CampaignApi
      * @param  string[] $event_types Restrict results to specific change-event types (see &#x60;eventType&#x60;). When omitted, all supported event types may be returned. Unknown values are not errors; they simply match no entries. Omission is equivalent to an empty array. (optional)
      * @param  int $limit Maximum number of change-history entries to return in a single page. (optional, default to 25)
      * @param  string[] $line_item_ids When provided, only changes for these external opaque line-item identifiers are returned. Entries for line items outside the caller&#39;s retailer access are excluded without revealing whether the line item exists. Omission is equivalent to an empty array. (optional)
-     * @param  int $offset Zero-based index of the first change-history entry to return. (optional, default to 0)
+     * @param  int $offset Zero-based index of the first change-history entry to return. The sum of offset and limit must not exceed 10000; narrow the time range to page through more history. (optional, default to 0)
      * @param  \DateTime $start_time Inclusive lower bound on change time, in UTC (ISO-8601 date-time). Defaults to 7 days before the request time when omitted. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listRetailerChangeHistoryEntries'] to see the possible values for this operation
      *
@@ -7900,6 +7903,9 @@ class CampaignApi
         }
         
 
+        if ($offset !== null && $offset > 9999) {
+            throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listRetailerChangeHistoryEntries, must be smaller than or equal to 9999.');
+        }
         if ($offset !== null && $offset < 0) {
             throw new \InvalidArgumentException('invalid value for "$offset" when calling CampaignApi.listRetailerChangeHistoryEntries, must be bigger than or equal to 0.');
         }
@@ -9419,40 +9425,40 @@ class CampaignApi
     }
 
     /**
-     * Operation setBiddingStrategyByLineItemId
+     * Operation setBiddingByLineItemId
      *
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are being updated. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest $bidding_settings_request The bidding settings to apply. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is being set. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest $line_item_bidding_request_request The bidding configuration to apply. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse
+     * @return \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse
      */
-    public function setBiddingStrategyByLineItemId($line_item_id, $bidding_settings_request = null, string $contentType = self::contentTypes['setBiddingStrategyByLineItemId'][0])
+    public function setBiddingByLineItemId($line_item_id, $line_item_bidding_request_request = null, string $contentType = self::contentTypes['setBiddingByLineItemId'][0])
     {
-        list($response) = $this->setBiddingStrategyByLineItemIdWithHttpInfo($line_item_id, $bidding_settings_request, $contentType);
+        list($response) = $this->setBiddingByLineItemIdWithHttpInfo($line_item_id, $line_item_bidding_request_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation setBiddingStrategyByLineItemIdWithHttpInfo
+     * Operation setBiddingByLineItemIdWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are being updated. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest $bidding_settings_request The bidding settings to apply. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is being set. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest $line_item_bidding_request_request The bidding configuration to apply. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \criteo\api\retailmedia\experimental\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setBiddingStrategyByLineItemIdWithHttpInfo($line_item_id, $bidding_settings_request = null, string $contentType = self::contentTypes['setBiddingStrategyByLineItemId'][0])
+    public function setBiddingByLineItemIdWithHttpInfo($line_item_id, $line_item_bidding_request_request = null, string $contentType = self::contentTypes['setBiddingByLineItemId'][0])
     {
-        $request = $this->setBiddingStrategyByLineItemIdRequest($line_item_id, $bidding_settings_request, $contentType);
+        $request = $this->setBiddingByLineItemIdRequest($line_item_id, $line_item_bidding_request_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9491,23 +9497,23 @@ class CampaignApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse' === '\SplFileObject') {
+                    if ('\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse' !== 'string') {
+                        if ('\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse', []),
+                        ObjectSerializer::deserialize($content, '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse';
+            $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -9528,7 +9534,7 @@ class CampaignApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse',
+                        '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9539,20 +9545,20 @@ class CampaignApi
     }
 
     /**
-     * Operation setBiddingStrategyByLineItemIdAsync
+     * Operation setBiddingByLineItemIdAsync
      *
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are being updated. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest $bidding_settings_request The bidding settings to apply. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is being set. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest $line_item_bidding_request_request The bidding configuration to apply. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setBiddingStrategyByLineItemIdAsync($line_item_id, $bidding_settings_request = null, string $contentType = self::contentTypes['setBiddingStrategyByLineItemId'][0])
+    public function setBiddingByLineItemIdAsync($line_item_id, $line_item_bidding_request_request = null, string $contentType = self::contentTypes['setBiddingByLineItemId'][0])
     {
-        return $this->setBiddingStrategyByLineItemIdAsyncWithHttpInfo($line_item_id, $bidding_settings_request, $contentType)
+        return $this->setBiddingByLineItemIdAsyncWithHttpInfo($line_item_id, $line_item_bidding_request_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9561,21 +9567,21 @@ class CampaignApi
     }
 
     /**
-     * Operation setBiddingStrategyByLineItemIdAsyncWithHttpInfo
+     * Operation setBiddingByLineItemIdAsyncWithHttpInfo
      *
-     * /experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy
+     * /experimental/retail-media/line-items/{line-item-id}/set-bidding
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are being updated. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest $bidding_settings_request The bidding settings to apply. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is being set. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest $line_item_bidding_request_request The bidding configuration to apply. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setBiddingStrategyByLineItemIdAsyncWithHttpInfo($line_item_id, $bidding_settings_request = null, string $contentType = self::contentTypes['setBiddingStrategyByLineItemId'][0])
+    public function setBiddingByLineItemIdAsyncWithHttpInfo($line_item_id, $line_item_bidding_request_request = null, string $contentType = self::contentTypes['setBiddingByLineItemId'][0])
     {
-        $returnType = '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResponse';
-        $request = $this->setBiddingStrategyByLineItemIdRequest($line_item_id, $bidding_settings_request, $contentType);
+        $returnType = '\criteo\api\retailmedia\experimental\Model\LineItemBiddingResponseResponse';
+        $request = $this->setBiddingByLineItemIdRequest($line_item_id, $line_item_bidding_request_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9614,28 +9620,28 @@ class CampaignApi
     }
 
     /**
-     * Create request for operation 'setBiddingStrategyByLineItemId'
+     * Create request for operation 'setBiddingByLineItemId'
      *
-     * @param  string $line_item_id The identifier of the line item whose bidding settings are being updated. (required)
-     * @param  \criteo\api\retailmedia\experimental\Model\BiddingSettingsRequest $bidding_settings_request The bidding settings to apply. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingStrategyByLineItemId'] to see the possible values for this operation
+     * @param  string $line_item_id The identifier of the line item whose bidding is being set. (required)
+     * @param  \criteo\api\retailmedia\experimental\Model\LineItemBiddingRequestRequest $line_item_bidding_request_request The bidding configuration to apply. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setBiddingByLineItemId'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setBiddingStrategyByLineItemIdRequest($line_item_id, $bidding_settings_request = null, string $contentType = self::contentTypes['setBiddingStrategyByLineItemId'][0])
+    public function setBiddingByLineItemIdRequest($line_item_id, $line_item_bidding_request_request = null, string $contentType = self::contentTypes['setBiddingByLineItemId'][0])
     {
 
         // verify the required parameter 'line_item_id' is set
         if ($line_item_id === null || (is_array($line_item_id) && count($line_item_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $line_item_id when calling setBiddingStrategyByLineItemId'
+                'Missing the required parameter $line_item_id when calling setBiddingByLineItemId'
             );
         }
 
 
 
-        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/set-bidding-strategy';
+        $resourcePath = '/experimental/retail-media/line-items/{line-item-id}/set-bidding';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -9661,12 +9667,12 @@ class CampaignApi
         );
 
         // for model (json/xml)
-        if (isset($bidding_settings_request)) {
+        if (isset($line_item_bidding_request_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($bidding_settings_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($line_item_bidding_request_request));
             } else {
-                $httpBody = $bidding_settings_request;
+                $httpBody = $line_item_bidding_request_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

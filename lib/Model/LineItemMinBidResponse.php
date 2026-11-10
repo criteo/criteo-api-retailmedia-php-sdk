@@ -1,6 +1,6 @@
 <?php
 /**
- * BiddingSettingsRequest
+ * LineItemMinBidResponse
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * BiddingSettingsRequest Class Doc Comment
+ * LineItemMinBidResponse Class Doc Comment
  *
  * @category Class
- * @description A top-level object that encapsulates a Criteo API request for a single value object.
+ * @description Represents the minimum bid guidance of a line item using Adaptive bidding.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class LineItemMinBidResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'BiddingSettingsRequest';
+    protected static $openAPIModelName = 'LineItemMinBidResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\criteo\api\retailmedia\experimental\Model\BiddingSettingsResource'
+        'bidding_type' => 'string',
+        'cpc_min_bid_details' => '\criteo\api\retailmedia\experimental\Model\CpcMinBidDetails',
+        'cpm_min_bid_details' => '\criteo\api\retailmedia\experimental\Model\CpmMinBidDetails'
     ];
 
     /**
@@ -69,7 +71,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'data' => null
+        'bidding_type' => null,
+        'cpc_min_bid_details' => null,
+        'cpm_min_bid_details' => null
     ];
 
     /**
@@ -78,7 +82,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'data' => true
+        'bidding_type' => false,
+		'cpc_min_bid_details' => true,
+		'cpm_min_bid_details' => true
     ];
 
     /**
@@ -167,7 +173,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'data' => 'data'
+        'bidding_type' => 'biddingType',
+        'cpc_min_bid_details' => 'cpcMinBidDetails',
+        'cpm_min_bid_details' => 'cpmMinBidDetails'
     ];
 
     /**
@@ -176,7 +184,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'data' => 'setData'
+        'bidding_type' => 'setBiddingType',
+        'cpc_min_bid_details' => 'setCpcMinBidDetails',
+        'cpm_min_bid_details' => 'setCpmMinBidDetails'
     ];
 
     /**
@@ -185,7 +195,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'data' => 'getData'
+        'bidding_type' => 'getBiddingType',
+        'cpc_min_bid_details' => 'getCpcMinBidDetails',
+        'cpm_min_bid_details' => 'getCpmMinBidDetails'
     ];
 
     /**
@@ -229,6 +241,23 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
+    public const BIDDING_TYPE_UNKNOWN = 'Unknown';
+    public const BIDDING_TYPE_CPM_BIDDING = 'CpmBidding';
+    public const BIDDING_TYPE_CPC_BIDDING = 'CpcBidding';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBiddingTypeAllowableValues()
+    {
+        return [
+            self::BIDDING_TYPE_UNKNOWN,
+            self::BIDDING_TYPE_CPM_BIDDING,
+            self::BIDDING_TYPE_CPC_BIDDING,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -245,7 +274,9 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('data', $data ?? [], null);
+        $this->setIfExists('bidding_type', $data ?? [], null);
+        $this->setIfExists('cpc_min_bid_details', $data ?? [], null);
+        $this->setIfExists('cpm_min_bid_details', $data ?? [], null);
     }
 
     /**
@@ -275,6 +306,18 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['bidding_type'] === null) {
+            $invalidProperties[] = "'bidding_type' can't be null";
+        }
+        $allowedValues = $this->getBiddingTypeAllowableValues();
+        if (!is_null($this->container['bidding_type']) && !in_array($this->container['bidding_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bidding_type', must be one of '%s'",
+                $this->container['bidding_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -291,35 +334,106 @@ class BiddingSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets data
+     * Gets bidding_type
      *
-     * @return \criteo\api\retailmedia\experimental\Model\BiddingSettingsResource|null
+     * @return string
      */
-    public function getData()
+    public function getBiddingType()
     {
-        return $this->container['data'];
+        return $this->container['bidding_type'];
     }
 
     /**
-     * Sets data
+     * Sets bidding_type
      *
-     * @param \criteo\api\retailmedia\experimental\Model\BiddingSettingsResource|null $data data
+     * @param string $bidding_type The type of bidding the guidance applies to. It matches the populated details:  Criteo.RetailMedia.LineItem.Bid.Contract.V1.Models.BiddingType.CpmBidding for CPM details and Criteo.RetailMedia.LineItem.Bid.Contract.V1.Models.BiddingType.CpcBidding for CPC details.
      *
      * @return self
      */
-    public function setData($data)
+    public function setBiddingType($bidding_type)
     {
-        if (is_null($data)) {
-            array_push($this->openAPINullablesSetToNull, 'data');
+        if (is_null($bidding_type)) {
+            throw new \InvalidArgumentException('non-nullable bidding_type cannot be null');
+        }
+        $allowedValues = $this->getBiddingTypeAllowableValues();
+        if (!in_array($bidding_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'bidding_type', must be one of '%s'",
+                    $bidding_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['bidding_type'] = $bidding_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets cpc_min_bid_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CpcMinBidDetails|null
+     */
+    public function getCpcMinBidDetails()
+    {
+        return $this->container['cpc_min_bid_details'];
+    }
+
+    /**
+     * Sets cpc_min_bid_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CpcMinBidDetails|null $cpc_min_bid_details cpc_min_bid_details
+     *
+     * @return self
+     */
+    public function setCpcMinBidDetails($cpc_min_bid_details)
+    {
+        if (is_null($cpc_min_bid_details)) {
+            array_push($this->openAPINullablesSetToNull, 'cpc_min_bid_details');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('data', $nullablesSetToNull);
+            $index = array_search('cpc_min_bid_details', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['data'] = $data;
+        $this->container['cpc_min_bid_details'] = $cpc_min_bid_details;
+
+        return $this;
+    }
+
+    /**
+     * Gets cpm_min_bid_details
+     *
+     * @return \criteo\api\retailmedia\experimental\Model\CpmMinBidDetails|null
+     */
+    public function getCpmMinBidDetails()
+    {
+        return $this->container['cpm_min_bid_details'];
+    }
+
+    /**
+     * Sets cpm_min_bid_details
+     *
+     * @param \criteo\api\retailmedia\experimental\Model\CpmMinBidDetails|null $cpm_min_bid_details cpm_min_bid_details
+     *
+     * @return self
+     */
+    public function setCpmMinBidDetails($cpm_min_bid_details)
+    {
+        if (is_null($cpm_min_bid_details)) {
+            array_push($this->openAPINullablesSetToNull, 'cpm_min_bid_details');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cpm_min_bid_details', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cpm_min_bid_details'] = $cpm_min_bid_details;
 
         return $this;
     }

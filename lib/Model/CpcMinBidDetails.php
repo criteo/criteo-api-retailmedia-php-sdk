@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemMinBidsResource
+ * CpcMinBidDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemMinBidsResource Class Doc Comment
+ * CpcMinBidDetails Class Doc Comment
  *
  * @category Class
- * @description A value resource exposed by the API.
+ * @description Represents the CPC minimum bid guidance of a Sponsored Products line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSerializable
+class CpcMinBidDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemMinBidsResource';
+    protected static $openAPIModelName = 'CpcMinBidDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\criteo\api\retailmedia\experimental\Model\LineItemMinBids',
-        'type' => 'string'
+        'min_bid' => 'float'
     ];
 
     /**
@@ -70,8 +69,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'attributes' => null,
-        'type' => null
+        'min_bid' => 'double'
     ];
 
     /**
@@ -80,8 +78,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'attributes' => true,
-		'type' => true
+        'min_bid' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'attributes' => 'attributes',
-        'type' => 'type'
+        'min_bid' => 'minBid'
     ];
 
     /**
@@ -180,8 +176,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'attributes' => 'setAttributes',
-        'type' => 'setType'
+        'min_bid' => 'setMinBid'
     ];
 
     /**
@@ -190,8 +185,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'attributes' => 'getAttributes',
-        'type' => 'getType'
+        'min_bid' => 'getMinBid'
     ];
 
     /**
@@ -251,8 +245,7 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('attributes', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('min_bid', $data ?? [], null);
     }
 
     /**
@@ -282,6 +275,9 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['min_bid'] === null) {
+            $invalidProperties[] = "'min_bid' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,69 +294,28 @@ class LineItemMinBidsResource implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets attributes
+     * Gets min_bid
      *
-     * @return \criteo\api\retailmedia\experimental\Model\LineItemMinBids|null
+     * @return float
      */
-    public function getAttributes()
+    public function getMinBid()
     {
-        return $this->container['attributes'];
+        return $this->container['min_bid'];
     }
 
     /**
-     * Sets attributes
+     * Sets min_bid
      *
-     * @param \criteo\api\retailmedia\experimental\Model\LineItemMinBids|null $attributes attributes
+     * @param float $min_bid The lowest allowed max CPC for the line item.  It is the lowest minimum bid across the line item SKUs.  A bid below this value is rejected.
      *
      * @return self
      */
-    public function setAttributes($attributes)
+    public function setMinBid($min_bid)
     {
-        if (is_null($attributes)) {
-            array_push($this->openAPINullablesSetToNull, 'attributes');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('attributes', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($min_bid)) {
+            throw new \InvalidArgumentException('non-nullable min_bid cannot be null');
         }
-        $this->container['attributes'] = $attributes;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type Type of the resource.
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            array_push($this->openAPINullablesSetToNull, 'type');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('type', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['type'] = $type;
+        $this->container['min_bid'] = $min_bid;
 
         return $this;
     }

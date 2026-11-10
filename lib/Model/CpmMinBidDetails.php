@@ -1,6 +1,6 @@
 <?php
 /**
- * LineItemMinBids
+ * CpmMinBidDetails
  *
  * PHP version 7.4
  *
@@ -32,16 +32,16 @@ use \ArrayAccess;
 use \criteo\api\retailmedia\experimental\ObjectSerializer;
 
 /**
- * LineItemMinBids Class Doc Comment
+ * CpmMinBidDetails Class Doc Comment
  *
  * @category Class
- * @description Represents minimum bidding guidance calculated for a line item.
+ * @description Represents the CPM minimum bid guidance of a line item.
  * @package  criteo\api\retailmedia\experimental
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
+class CpmMinBidDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LineItemMinBids';
+    protected static $openAPIModelName = 'CpmMinBidDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'adaptive_min_bid' => 'float',
-        'adaptive_recommended_min_bid' => 'float',
-        'page_type_min_bids' => '\criteo\api\retailmedia\experimental\Model\PageTypeMinBid[]'
+        'min_bid' => 'float',
+        'recommended_min_bid' => 'float'
     ];
 
     /**
@@ -71,9 +70,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'adaptive_min_bid' => 'double',
-        'adaptive_recommended_min_bid' => 'double',
-        'page_type_min_bids' => null
+        'min_bid' => 'double',
+        'recommended_min_bid' => 'double'
     ];
 
     /**
@@ -82,9 +80,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'adaptive_min_bid' => false,
-		'adaptive_recommended_min_bid' => true,
-		'page_type_min_bids' => false
+        'min_bid' => false,
+		'recommended_min_bid' => true
     ];
 
     /**
@@ -173,9 +170,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'adaptive_min_bid' => 'adaptiveMinBid',
-        'adaptive_recommended_min_bid' => 'adaptiveRecommendedMinBid',
-        'page_type_min_bids' => 'pageTypeMinBids'
+        'min_bid' => 'minBid',
+        'recommended_min_bid' => 'recommendedMinBid'
     ];
 
     /**
@@ -184,9 +180,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'adaptive_min_bid' => 'setAdaptiveMinBid',
-        'adaptive_recommended_min_bid' => 'setAdaptiveRecommendedMinBid',
-        'page_type_min_bids' => 'setPageTypeMinBids'
+        'min_bid' => 'setMinBid',
+        'recommended_min_bid' => 'setRecommendedMinBid'
     ];
 
     /**
@@ -195,9 +190,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'adaptive_min_bid' => 'getAdaptiveMinBid',
-        'adaptive_recommended_min_bid' => 'getAdaptiveRecommendedMinBid',
-        'page_type_min_bids' => 'getPageTypeMinBids'
+        'min_bid' => 'getMinBid',
+        'recommended_min_bid' => 'getRecommendedMinBid'
     ];
 
     /**
@@ -257,9 +251,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('adaptive_min_bid', $data ?? [], null);
-        $this->setIfExists('adaptive_recommended_min_bid', $data ?? [], null);
-        $this->setIfExists('page_type_min_bids', $data ?? [], null);
+        $this->setIfExists('min_bid', $data ?? [], null);
+        $this->setIfExists('recommended_min_bid', $data ?? [], null);
     }
 
     /**
@@ -289,11 +282,8 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['adaptive_min_bid'] === null) {
-            $invalidProperties[] = "'adaptive_min_bid' can't be null";
-        }
-        if ($this->container['page_type_min_bids'] === null) {
-            $invalidProperties[] = "'page_type_min_bids' can't be null";
+        if ($this->container['min_bid'] === null) {
+            $invalidProperties[] = "'min_bid' can't be null";
         }
         return $invalidProperties;
     }
@@ -311,89 +301,62 @@ class LineItemMinBids implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets adaptive_min_bid
+     * Gets min_bid
      *
      * @return float
      */
-    public function getAdaptiveMinBid()
+    public function getMinBid()
     {
-        return $this->container['adaptive_min_bid'];
+        return $this->container['min_bid'];
     }
 
     /**
-     * Sets adaptive_min_bid
+     * Sets min_bid
      *
-     * @param float $adaptive_min_bid The lowest strictly positive page-type minimum in the line item's currency, or zero when no positive minimum exists.
+     * @param float $min_bid The lowest allowed max CPM for the line item, or zero if there is no minimum.  A max bid below this value is rejected.
      *
      * @return self
      */
-    public function setAdaptiveMinBid($adaptive_min_bid)
+    public function setMinBid($min_bid)
     {
-        if (is_null($adaptive_min_bid)) {
-            throw new \InvalidArgumentException('non-nullable adaptive_min_bid cannot be null');
+        if (is_null($min_bid)) {
+            throw new \InvalidArgumentException('non-nullable min_bid cannot be null');
         }
-        $this->container['adaptive_min_bid'] = $adaptive_min_bid;
+        $this->container['min_bid'] = $min_bid;
 
         return $this;
     }
 
     /**
-     * Gets adaptive_recommended_min_bid
+     * Gets recommended_min_bid
      *
      * @return float|null
      */
-    public function getAdaptiveRecommendedMinBid()
+    public function getRecommendedMinBid()
     {
-        return $this->container['adaptive_recommended_min_bid'];
+        return $this->container['recommended_min_bid'];
     }
 
     /**
-     * Sets adaptive_recommended_min_bid
+     * Sets recommended_min_bid
      *
-     * @param float|null $adaptive_recommended_min_bid The bid below which Adaptive bidding validation emits a low-bid warning in the line item's currency.
+     * @param float|null $recommended_min_bid The recommended max CPM for the line item, or null if no recommendation is available.
      *
      * @return self
      */
-    public function setAdaptiveRecommendedMinBid($adaptive_recommended_min_bid)
+    public function setRecommendedMinBid($recommended_min_bid)
     {
-        if (is_null($adaptive_recommended_min_bid)) {
-            array_push($this->openAPINullablesSetToNull, 'adaptive_recommended_min_bid');
+        if (is_null($recommended_min_bid)) {
+            array_push($this->openAPINullablesSetToNull, 'recommended_min_bid');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('adaptive_recommended_min_bid', $nullablesSetToNull);
+            $index = array_search('recommended_min_bid', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['adaptive_recommended_min_bid'] = $adaptive_recommended_min_bid;
-
-        return $this;
-    }
-
-    /**
-     * Gets page_type_min_bids
-     *
-     * @return \criteo\api\retailmedia\experimental\Model\PageTypeMinBid[]
-     */
-    public function getPageTypeMinBids()
-    {
-        return $this->container['page_type_min_bids'];
-    }
-
-    /**
-     * Sets page_type_min_bids
-     *
-     * @param \criteo\api\retailmedia\experimental\Model\PageTypeMinBid[] $page_type_min_bids The minimum bidding guidance for every page type configured on the line item.
-     *
-     * @return self
-     */
-    public function setPageTypeMinBids($page_type_min_bids)
-    {
-        if (is_null($page_type_min_bids)) {
-            throw new \InvalidArgumentException('non-nullable page_type_min_bids cannot be null');
-        }
-        $this->container['page_type_min_bids'] = $page_type_min_bids;
+        $this->container['recommended_min_bid'] = $recommended_min_bid;
 
         return $this;
     }
