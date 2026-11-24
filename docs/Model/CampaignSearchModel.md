@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**budget_status_filter** | **string[]** |  | [optional]
 **buy_type_filter** | **string[]** |  | [optional]
 **campaign_id_filter** | **string[]** |  | [optional]
 **campaign_status_filter** | **string[]** |  | [optional]

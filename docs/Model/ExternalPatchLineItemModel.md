@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_paused** | **bool** | Whether the line item is paused. | [optional]
-**name** | **string** | The name of the line item. | [optional]
+**line_item_name** | **string** | The name of the line item. | [optional]
 **onsite_display_details** | [**\criteo\api\retailmedia\experimental\Model\ExternalPatchOnsiteDisplayLineItemDetails**](ExternalPatchOnsiteDisplayLineItemDetails.md) |  | [optional]
 **serve_to_opt_out_user** | **bool** | Whether to serve ads to users who have opted out of personalization. | [optional]
 

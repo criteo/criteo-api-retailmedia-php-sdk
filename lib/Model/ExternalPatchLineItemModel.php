@@ -59,7 +59,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'is_paused' => 'bool',
-        'name' => 'string',
+        'line_item_name' => 'string',
         'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExternalPatchOnsiteDisplayLineItemDetails',
         'serve_to_opt_out_user' => 'bool'
     ];
@@ -73,7 +73,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'is_paused' => null,
-        'name' => null,
+        'line_item_name' => null,
         'onsite_display_details' => null,
         'serve_to_opt_out_user' => null
     ];
@@ -85,7 +85,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'is_paused' => true,
-		'name' => true,
+		'line_item_name' => true,
 		'onsite_display_details' => false,
 		'serve_to_opt_out_user' => true
     ];
@@ -177,7 +177,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'is_paused' => 'isPaused',
-        'name' => 'name',
+        'line_item_name' => 'lineItemName',
         'onsite_display_details' => 'onsiteDisplayDetails',
         'serve_to_opt_out_user' => 'serveToOptOutUser'
     ];
@@ -189,7 +189,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'is_paused' => 'setIsPaused',
-        'name' => 'setName',
+        'line_item_name' => 'setLineItemName',
         'onsite_display_details' => 'setOnsiteDisplayDetails',
         'serve_to_opt_out_user' => 'setServeToOptOutUser'
     ];
@@ -201,7 +201,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'is_paused' => 'getIsPaused',
-        'name' => 'getName',
+        'line_item_name' => 'getLineItemName',
         'onsite_display_details' => 'getOnsiteDisplayDetails',
         'serve_to_opt_out_user' => 'getServeToOptOutUser'
     ];
@@ -264,7 +264,7 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(array $data = null)
     {
         $this->setIfExists('is_paused', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('line_item_name', $data ?? [], null);
         $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
     }
@@ -346,35 +346,35 @@ class ExternalPatchLineItemModel implements ModelInterface, ArrayAccess, \JsonSe
     }
 
     /**
-     * Gets name
+     * Gets line_item_name
      *
      * @return string|null
      */
-    public function getName()
+    public function getLineItemName()
     {
-        return $this->container['name'];
+        return $this->container['line_item_name'];
     }
 
     /**
-     * Sets name
+     * Sets line_item_name
      *
-     * @param string|null $name The name of the line item.
+     * @param string|null $line_item_name The name of the line item.
      *
      * @return self
      */
-    public function setName($name)
+    public function setLineItemName($line_item_name)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($line_item_name)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('line_item_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['line_item_name'] = $line_item_name;
 
         return $this;
     }

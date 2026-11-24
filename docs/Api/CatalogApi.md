@@ -343,7 +343,7 @@ submitCatalogProductsBatch($products_custom_batch_request): \criteo\api\retailme
 
 /experimental/retail-media/catalog/products/batch
 
-Used to publish a batch of operations to insert, update and deletes products.  The batch is processed asynchronously.The response provides an operationToken which can be used to track  the status of the report of the operation.
+Used to publish a batch of operations to insert, update and delete products.  The batch is processed asynchronously. The response provides an operation id in `operationToken`  which can be used to track the status of the report of the operation.
 
 ### Example
 

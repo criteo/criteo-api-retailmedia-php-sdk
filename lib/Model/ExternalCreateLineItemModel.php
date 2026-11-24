@@ -59,7 +59,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'campaign_id' => 'string',
-        'name' => 'string',
+        'line_item_name' => 'string',
         'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\ExternalCreateOnsiteDisplayLineItemDetails',
         'retailer_id' => 'string',
         'serve_to_opt_out_user' => 'bool'
@@ -74,7 +74,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPIFormats = [
         'campaign_id' => null,
-        'name' => null,
+        'line_item_name' => null,
         'onsite_display_details' => null,
         'retailer_id' => null,
         'serve_to_opt_out_user' => null
@@ -87,7 +87,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static array $openAPINullables = [
         'campaign_id' => true,
-		'name' => true,
+		'line_item_name' => true,
 		'onsite_display_details' => false,
 		'retailer_id' => true,
 		'serve_to_opt_out_user' => true
@@ -180,7 +180,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $attributeMap = [
         'campaign_id' => 'campaignId',
-        'name' => 'name',
+        'line_item_name' => 'lineItemName',
         'onsite_display_details' => 'onsiteDisplayDetails',
         'retailer_id' => 'retailerId',
         'serve_to_opt_out_user' => 'serveToOptOutUser'
@@ -193,7 +193,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $setters = [
         'campaign_id' => 'setCampaignId',
-        'name' => 'setName',
+        'line_item_name' => 'setLineItemName',
         'onsite_display_details' => 'setOnsiteDisplayDetails',
         'retailer_id' => 'setRetailerId',
         'serve_to_opt_out_user' => 'setServeToOptOutUser'
@@ -206,7 +206,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
      */
     protected static $getters = [
         'campaign_id' => 'getCampaignId',
-        'name' => 'getName',
+        'line_item_name' => 'getLineItemName',
         'onsite_display_details' => 'getOnsiteDisplayDetails',
         'retailer_id' => 'getRetailerId',
         'serve_to_opt_out_user' => 'getServeToOptOutUser'
@@ -270,7 +270,7 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     public function __construct(array $data = null)
     {
         $this->setIfExists('campaign_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('line_item_name', $data ?? [], null);
         $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
@@ -306,8 +306,8 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['campaign_id'] === null) {
             $invalidProperties[] = "'campaign_id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['line_item_name'] === null) {
+            $invalidProperties[] = "'line_item_name' can't be null";
         }
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
@@ -362,35 +362,35 @@ class ExternalCreateLineItemModel implements ModelInterface, ArrayAccess, \JsonS
     }
 
     /**
-     * Gets name
+     * Gets line_item_name
      *
      * @return string
      */
-    public function getName()
+    public function getLineItemName()
     {
-        return $this->container['name'];
+        return $this->container['line_item_name'];
     }
 
     /**
-     * Sets name
+     * Sets line_item_name
      *
-     * @param string $name The name of the line item.
+     * @param string $line_item_name The name of the line item.
      *
      * @return self
      */
-    public function setName($name)
+    public function setLineItemName($line_item_name)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($line_item_name)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('line_item_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['line_item_name'] = $line_item_name;
 
         return $this;
     }

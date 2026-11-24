@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **effective_flight_dates** | [**\criteo\api\retailmedia\experimental\Model\ExternalFlightDatesModelV2**](ExternalFlightDatesModelV2.md) |  | [optional]
 **is_paused** | **bool** | Indicates whether the line item is paused. |
 **line_item_id** | **string** | The unique identifier of the line item. |
-**name** | **string** | The name of the line item. |
+**line_item_name** | **string** | The name of the line item. |
 **onsite_display_details** | [**\criteo\api\retailmedia\experimental\Model\OnsiteDisplayLineItemDetailsV2**](OnsiteDisplayLineItemDetailsV2.md) |  | [optional]
 **retailer_id** | **string** | The retailer id of the associated retailer. |
 **serve_to_opt_out_user** | **bool** | Whether ads are served to users who have opted out of personalization. |

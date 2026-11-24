@@ -58,6 +58,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'budget_status_filter' => 'string[]',
         'buy_type_filter' => 'string[]',
         'campaign_id_filter' => 'string[]',
         'campaign_status_filter' => 'string[]',
@@ -74,6 +75,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'budget_status_filter' => null,
         'buy_type_filter' => null,
         'campaign_id_filter' => null,
         'campaign_status_filter' => null,
@@ -88,7 +90,8 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'buy_type_filter' => true,
+        'budget_status_filter' => true,
+		'buy_type_filter' => true,
 		'campaign_id_filter' => true,
 		'campaign_status_filter' => true,
 		'campaign_type_filter' => true,
@@ -182,6 +185,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'budget_status_filter' => 'budgetStatusFilter',
         'buy_type_filter' => 'buyTypeFilter',
         'campaign_id_filter' => 'campaignIdFilter',
         'campaign_status_filter' => 'campaignStatusFilter',
@@ -196,6 +200,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'budget_status_filter' => 'setBudgetStatusFilter',
         'buy_type_filter' => 'setBuyTypeFilter',
         'campaign_id_filter' => 'setCampaignIdFilter',
         'campaign_status_filter' => 'setCampaignStatusFilter',
@@ -210,6 +215,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'budget_status_filter' => 'getBudgetStatusFilter',
         'buy_type_filter' => 'getBuyTypeFilter',
         'campaign_id_filter' => 'getCampaignIdFilter',
         'campaign_status_filter' => 'getCampaignStatusFilter',
@@ -259,6 +265,10 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const BUDGET_STATUS_FILTER_BUDGET_AVAILABLE = 'BudgetAvailable';
+    public const BUDGET_STATUS_FILTER_DAILY_BUDGET_REACHED = 'DailyBudgetReached';
+    public const BUDGET_STATUS_FILTER_MONTHLY_BUDGET_REACHED = 'MonthlyBudgetReached';
+    public const BUDGET_STATUS_FILTER_TOTAL_BUDGET_REACHED = 'TotalBudgetReached';
     public const BUY_TYPE_FILTER_AUCTION = 'Auction';
     public const BUY_TYPE_FILTER_PREFERRED_DEALS = 'PreferredDeals';
     public const BUY_TYPE_FILTER_SPONSORSHIP = 'Sponsorship';
@@ -266,6 +276,21 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
     public const CAMPAIGN_STATUS_FILTER_INACTIVE = 'Inactive';
     public const CAMPAIGN_TYPE_FILTER_SPONSORED_PRODUCTS = 'SponsoredProducts';
     public const CAMPAIGN_TYPE_FILTER_ONSITE_DISPLAY = 'OnsiteDisplay';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetStatusFilterAllowableValues()
+    {
+        return [
+            self::BUDGET_STATUS_FILTER_BUDGET_AVAILABLE,
+            self::BUDGET_STATUS_FILTER_DAILY_BUDGET_REACHED,
+            self::BUDGET_STATUS_FILTER_MONTHLY_BUDGET_REACHED,
+            self::BUDGET_STATUS_FILTER_TOTAL_BUDGET_REACHED,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -322,6 +347,7 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
+        $this->setIfExists('budget_status_filter', $data ?? [], null);
         $this->setIfExists('buy_type_filter', $data ?? [], null);
         $this->setIfExists('campaign_id_filter', $data ?? [], null);
         $this->setIfExists('campaign_status_filter', $data ?? [], null);
@@ -371,6 +397,49 @@ class CampaignSearchModel implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets budget_status_filter
+     *
+     * @return string[]|null
+     */
+    public function getBudgetStatusFilter()
+    {
+        return $this->container['budget_status_filter'];
+    }
+
+    /**
+     * Sets budget_status_filter
+     *
+     * @param string[]|null $budget_status_filter budget_status_filter
+     *
+     * @return self
+     */
+    public function setBudgetStatusFilter($budget_status_filter)
+    {
+        if (is_null($budget_status_filter)) {
+            array_push($this->openAPINullablesSetToNull, 'budget_status_filter');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('budget_status_filter', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $allowedValues = $this->getBudgetStatusFilterAllowableValues();
+        if (!is_null($budget_status_filter) && array_diff($budget_status_filter, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'budget_status_filter', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_status_filter'] = $budget_status_filter;
+
+        return $this;
+    }
 
     /**
      * Gets buy_type_filter

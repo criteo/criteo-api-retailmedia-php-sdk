@@ -63,7 +63,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_flight_dates' => '\criteo\api\retailmedia\experimental\Model\ExternalFlightDatesModelV2',
         'is_paused' => 'bool',
         'line_item_id' => 'string',
-        'name' => 'string',
+        'line_item_name' => 'string',
         'onsite_display_details' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayLineItemDetailsV2',
         'retailer_id' => 'string',
         'serve_to_opt_out_user' => 'bool',
@@ -83,7 +83,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_flight_dates' => null,
         'is_paused' => null,
         'line_item_id' => null,
-        'name' => null,
+        'line_item_name' => null,
         'onsite_display_details' => null,
         'retailer_id' => null,
         'serve_to_opt_out_user' => null,
@@ -101,7 +101,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 		'effective_flight_dates' => true,
 		'is_paused' => false,
 		'line_item_id' => true,
-		'name' => true,
+		'line_item_name' => true,
 		'onsite_display_details' => true,
 		'retailer_id' => true,
 		'serve_to_opt_out_user' => false,
@@ -199,7 +199,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_flight_dates' => 'effectiveFlightDates',
         'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
-        'name' => 'name',
+        'line_item_name' => 'lineItemName',
         'onsite_display_details' => 'onsiteDisplayDetails',
         'retailer_id' => 'retailerId',
         'serve_to_opt_out_user' => 'serveToOptOutUser',
@@ -217,7 +217,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_flight_dates' => 'setEffectiveFlightDates',
         'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
-        'name' => 'setName',
+        'line_item_name' => 'setLineItemName',
         'onsite_display_details' => 'setOnsiteDisplayDetails',
         'retailer_id' => 'setRetailerId',
         'serve_to_opt_out_user' => 'setServeToOptOutUser',
@@ -235,7 +235,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         'effective_flight_dates' => 'getEffectiveFlightDates',
         'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
-        'name' => 'getName',
+        'line_item_name' => 'getLineItemName',
         'onsite_display_details' => 'getOnsiteDisplayDetails',
         'retailer_id' => 'getRetailerId',
         'serve_to_opt_out_user' => 'getServeToOptOutUser',
@@ -342,7 +342,7 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('effective_flight_dates', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('line_item_name', $data ?? [], null);
         $this->setIfExists('onsite_display_details', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
@@ -397,8 +397,8 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['line_item_id'] === null) {
             $invalidProperties[] = "'line_item_id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['line_item_name'] === null) {
+            $invalidProperties[] = "'line_item_name' can't be null";
         }
         if ($this->container['retailer_id'] === null) {
             $invalidProperties[] = "'retailer_id' can't be null";
@@ -600,35 +600,35 @@ class LineItemV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets line_item_name
      *
      * @return string
      */
-    public function getName()
+    public function getLineItemName()
     {
-        return $this->container['name'];
+        return $this->container['line_item_name'];
     }
 
     /**
-     * Sets name
+     * Sets line_item_name
      *
-     * @param string $name The name of the line item.
+     * @param string $line_item_name The name of the line item.
      *
      * @return self
      */
-    public function setName($name)
+    public function setLineItemName($line_item_name)
     {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
+        if (is_null($line_item_name)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_name');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
+            $index = array_search('line_item_name', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['name'] = $name;
+        $this->container['line_item_name'] = $line_item_name;
 
         return $this;
     }

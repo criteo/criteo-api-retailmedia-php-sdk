@@ -65,8 +65,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'flight_dates' => '\criteo\api\retailmedia\experimental\Model\FlightDates',
         'is_paused' => 'bool',
         'line_item_id' => 'string',
+        'line_item_name' => 'string',
         'line_item_type' => 'string',
-        'name' => 'string',
         'onsite_display' => '\criteo\api\retailmedia\experimental\Model\OnsiteDisplayAttributes',
         'retailer_id' => 'string',
         'serve_to_opt_out_user' => 'bool'
@@ -87,8 +87,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'flight_dates' => null,
         'is_paused' => null,
         'line_item_id' => null,
+        'line_item_name' => null,
         'line_item_type' => null,
-        'name' => null,
         'onsite_display' => null,
         'retailer_id' => null,
         'serve_to_opt_out_user' => null
@@ -107,8 +107,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
 		'flight_dates' => true,
 		'is_paused' => true,
 		'line_item_id' => true,
+		'line_item_name' => true,
 		'line_item_type' => true,
-		'name' => true,
 		'onsite_display' => true,
 		'retailer_id' => true,
 		'serve_to_opt_out_user' => true
@@ -207,8 +207,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'flight_dates' => 'flightDates',
         'is_paused' => 'isPaused',
         'line_item_id' => 'lineItemId',
+        'line_item_name' => 'lineItemName',
         'line_item_type' => 'lineItemType',
-        'name' => 'name',
         'onsite_display' => 'onsiteDisplay',
         'retailer_id' => 'retailerId',
         'serve_to_opt_out_user' => 'serveToOptOutUser'
@@ -227,8 +227,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'flight_dates' => 'setFlightDates',
         'is_paused' => 'setIsPaused',
         'line_item_id' => 'setLineItemId',
+        'line_item_name' => 'setLineItemName',
         'line_item_type' => 'setLineItemType',
-        'name' => 'setName',
         'onsite_display' => 'setOnsiteDisplay',
         'retailer_id' => 'setRetailerId',
         'serve_to_opt_out_user' => 'setServeToOptOutUser'
@@ -247,8 +247,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         'flight_dates' => 'getFlightDates',
         'is_paused' => 'getIsPaused',
         'line_item_id' => 'getLineItemId',
+        'line_item_name' => 'getLineItemName',
         'line_item_type' => 'getLineItemType',
-        'name' => 'getName',
         'onsite_display' => 'getOnsiteDisplay',
         'retailer_id' => 'getRetailerId',
         'serve_to_opt_out_user' => 'getServeToOptOutUser'
@@ -371,8 +371,8 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('flight_dates', $data ?? [], null);
         $this->setIfExists('is_paused', $data ?? [], null);
         $this->setIfExists('line_item_id', $data ?? [], null);
+        $this->setIfExists('line_item_name', $data ?? [], null);
         $this->setIfExists('line_item_type', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('onsite_display', $data ?? [], null);
         $this->setIfExists('retailer_id', $data ?? [], null);
         $this->setIfExists('serve_to_opt_out_user', $data ?? [], null);
@@ -706,6 +706,40 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets line_item_name
+     *
+     * @return string|null
+     */
+    public function getLineItemName()
+    {
+        return $this->container['line_item_name'];
+    }
+
+    /**
+     * Sets line_item_name
+     *
+     * @param string|null $line_item_name The name of the line item.
+     *
+     * @return self
+     */
+    public function setLineItemName($line_item_name)
+    {
+        if (is_null($line_item_name)) {
+            array_push($this->openAPINullablesSetToNull, 'line_item_name');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('line_item_name', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['line_item_name'] = $line_item_name;
+
+        return $this;
+    }
+
+    /**
      * Gets line_item_type
      *
      * @return string|null
@@ -745,40 +779,6 @@ class LineItem implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['line_item_type'] = $line_item_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name The name of the line item.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            array_push($this->openAPINullablesSetToNull, 'name');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('name', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['name'] = $name;
 
         return $this;
     }
